@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page not found — The Football Ledger</title>
+<meta name="description" content="The page you are looking for is not here. Return to The Football Ledger.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --ink-3: #1c1c1c;
+  --bone: #f5f1e8;
+  --bone-dim: #c4c0b6;
+  --bone-mute: #7a7770;
+  --gold: #d4a64a;
+  --line: #2e2e2e;
+  --line-soft: #1f1f1f;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: var(--ink);
+  color: var(--bone);
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.masthead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 60px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+}
+.brand-mark svg { display: block; width: 30px; height: 30px; }
+.primary-nav { display: flex; gap: 28px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  transition: color 0.3s ease;
+}
+.nav-item:hover { color: var(--gold); }
+.wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+}
+.code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+}
+.headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 7vw, 80px);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin-bottom: 24px;
+}
+.headline em { font-style: italic; color: var(--gold); }
+.sub {
+  color: var(--bone-dim);
+  max-width: 520px;
+  font-size: 18px;
+  margin-bottom: 44px;
+}
+.links { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 13px 22px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--bone-dim);
+  transition: all 0.3s ease;
+}
+.btn:hover { border-color: var(--gold); color: var(--gold); }
+.btn--primary { border-color: var(--gold); color: var(--gold); }
+.btn--primary:hover { background: var(--gold); color: var(--ink); }
+footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--bone-mute);
+}
+@media (max-width: 700px) {
+  .masthead { padding: 18px 24px; }
+  .primary-nav { gap: 16px; }
+  footer { padding: 18px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="/index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="/index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="/index.html#ws2" class="nav-item">Ledger</a>
+    <a href="/entities/index.html" class="nav-item">Entities</a>
+    <a href="/briefing/index.html" class="nav-item">Briefing</a>
+    <a href="/about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="code">Error 404</div>
+  <h1 class="headline">This page is <em>off the ledger</em></h1>
+  <p class="sub">The address you followed doesn't lead anywhere on The Football Ledger. The link may be outdated, or the piece may still be in production.</p>
+  <div class="links">
+    <a href="/index.html" class="btn btn--primary">Return home</a>
+    <a href="/entities/index.html" class="btn">Browse entities</a>
+    <a href="/about.html" class="btn">About</a>
+  </div>
+</main>
+
+<footer>
+  <div>The Football Ledger</div>
+  <div>Living document</div>
+</footer>
+
+</body>
+</html>

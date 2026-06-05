@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search — The Football Ledger</title>
+<meta name="description" content="Search The Football Ledger — articles, entity profiles, and briefings on the business of football.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c;
+  --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770;
+  --gold: #d4a64a; --line: #2e2e2e; --line-soft: #1f1f1f;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--ink); color: var(--bone);
+  font-family: 'Inter Tight', system-ui, sans-serif;
+  font-size: 17px; line-height: 1.6; min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+.masthead {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 24px 60px; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100;
+  flex-wrap: wrap; gap: 12px;
+}
+.brand { display: flex; align-items: center; gap: 14px; font-family: 'Fraunces', serif; font-weight: 500; font-size: 18px; }
+.brand-mark svg { display: block; width: 30px; height: 30px; }
+.primary-nav { display: flex; gap: 20px; flex-wrap: wrap; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); transition: color 0.3s ease; }
+.nav-item:hover, .nav-item.active { color: var(--gold); }
+.wrap { max-width: 880px; margin: 0 auto; padding: 72px 24px 100px; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+h1 { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(34px, 5vw, 56px); letter-spacing: -0.02em; margin-bottom: 36px; }
+.search-box {
+  display: flex; align-items: center; gap: 14px;
+  border: 1px solid var(--line); border-radius: 6px;
+  padding: 4px 20px; background: var(--ink-2);
+  transition: border-color 0.3s ease;
+}
+.search-box:focus-within { border-color: var(--gold); }
+.search-box svg { width: 18px; height: 18px; flex-shrink: 0; opacity: 0.6; }
+#q {
+  flex: 1; background: none; border: none; outline: none;
+  color: var(--bone); font-family: 'Inter Tight', sans-serif; font-size: 18px;
+  padding: 16px 0;
+}
+#q::placeholder { color: var(--bone-mute); }
+.status { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-mute); margin: 28px 0 8px; }
+.results { list-style: none; }
+.result {
+  display: block; padding: 24px 0; border-top: 1px solid var(--line-soft);
+  transition: opacity 0.2s ease;
+}
+.result:hover .result-title { color: var(--gold); }
+.result-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
+.badge { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid var(--line); color: var(--bone-mute); }
+.badge.article { color: var(--gold); border-color: var(--gold); }
+.badge.briefing { color: var(--bone); }
+.meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--bone-mute); }
+.result-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.2; transition: color 0.3s ease; }
+.result-summary { color: var(--bone-dim); font-size: 15px; line-height: 1.55; margin-top: 8px; }
+.empty { color: var(--bone-mute); padding: 48px 0; font-style: italic; font-family: 'Fraunces', serif; }
+@media (max-width: 700px) { .masthead { padding: 18px 24px; } .wrap { padding: 48px 24px 80px; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="/index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="/index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="/index.html#ws2" class="nav-item">Ledger</a>
+    <a href="/entities/index.html" class="nav-item">Entities</a>
+    <a href="/briefing/index.html" class="nav-item">Briefing</a>
+    <a href="/about.html" class="nav-item">About</a>
+    <a href="/search.html" class="nav-item active">Search</a>
+  </nav>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">The Ledger</div>
+  <h1>Search the archive</h1>
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="q" type="search" placeholder="Search articles, entities, briefings…" autocomplete="off" autofocus>
+  </div>
+  <div class="status" id="status">Loading index…</div>
+  <ul class="results" id="results"></ul>
+</main>
+
+<script>
+(function () {
+  var TYPE_LABEL = { article: 'Article', entity: 'Entity', briefing: 'Briefing' };
+  var TYPE_RANK = { article: 0, briefing: 1, entity: 2 };
+  var docs = [];
+  var qEl = document.getElementById('q');
+  var statusEl = document.getElementById('status');
+  var resultsEl = document.getElementById('results');
+
+  function fmtDate(d) {
+    if (!d) return '';
+    var parts = d.split('-');
+    if (parts.length !== 3) return d;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return parts[2] + ' ' + months[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+  }
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  function score(doc, terms) {
+    if (!terms.length) return 1;
+    var hay = (doc.title + ' ' + (doc.summary || '') + ' ' + (doc.tag || '')).toLowerCase();
+    var title = doc.title.toLowerCase();
+    var s = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var t = terms[i];
+      if (hay.indexOf(t) === -1) return 0;       // every term must match
+      if (title.indexOf(t) !== -1) s += 2;
+      s += 1;
+    }
+    return s;
+  }
+
+  function render(query) {
+    var terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var matched = [];
+    for (var i = 0; i < docs.length; i++) {
+      var sc = score(docs[i], terms);
+      if (sc > 0) matched.push({ d: docs[i], s: sc });
+    }
+    matched.sort(function (a, b) {
+      if (terms.length && b.s !== a.s) return b.s - a.s;      // relevance when searching
+      var ra = TYPE_RANK[a.d.type], rb = TYPE_RANK[b.d.type];
+      if (ra !== rb) return ra - rb;                          // articles, briefings, entities
+      if (a.d.date !== b.d.date) return (b.d.date || '').localeCompare(a.d.date || ''); // newest first
+      return (a.d.order || 99) - (b.d.order || 99);           // launch tie-break
+    });
+
+    if (!matched.length) {
+      statusEl.textContent = 'No matches';
+      resultsEl.innerHTML = '<li class="empty">Nothing matched “' + esc(query) + '”. Try a club, owner, league, or theme.</li>';
+      return;
+    }
+    statusEl.textContent = terms.length
+      ? matched.length + ' result' + (matched.length === 1 ? '' : 's')
+      : 'All ' + matched.length + ' entries · most recent first';
+
+    var html = '';
+    for (var j = 0; j < matched.length; j++) {
+      var d = matched[j].d;
+      var metaBits = [];
+      if (d.tag) metaBits.push(esc(d.tag));
+      if (d.date) metaBits.push(fmtDate(d.date));
+      html += '<li><a class="result" href="/' + esc(d.url) + '">'
+        + '<div class="result-top">'
+        + '<span class="badge ' + d.type + '">' + (TYPE_LABEL[d.type] || d.type) + '</span>'
+        + (metaBits.length ? '<span class="meta">' + metaBits.join(' · ') + '</span>' : '')
+        + '</div>'
+        + '<div class="result-title">' + esc(d.title) + '</div>'
+        + (d.summary ? '<div class="result-summary">' + esc(d.summary) + '</div>' : '')
+        + '</a></li>';
+    }
+    resultsEl.innerHTML = html;
+  }
+
+  fetch('/search-index.json')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      docs = (data && data.docs) || [];
+      var params = new URLSearchParams(location.search);
+      var initial = params.get('q') || '';
+      qEl.value = initial;
+      render(initial);
+      qEl.addEventListener('input', function () { render(qEl.value); });
+    })
+    .catch(function () {
+      statusEl.textContent = 'Could not load the search index.';
+    });
+})();
+</script>
+
+</body>
+</html>

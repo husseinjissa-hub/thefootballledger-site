@@ -1210,6 +1210,7 @@ footer {
     <a href="entities/index.html" class="nav-item">Entities</a>
     <a href="briefing/index.html" class="nav-item">Briefing</a>
     <a href="about.html" class="nav-item">About</a>
+    <a href="search.html" class="nav-item">Search</a>
   </nav>
 </header>
 
@@ -1265,6 +1266,55 @@ footer {
     </div>
   </div>
 </section>
+
+<!-- ============= LATEST ============= -->
+<section class="lt-rail" aria-label="Latest from the Ledger">
+  <div class="lt-rail-wrap">
+    <div class="lt-rail-head">
+      <div class="lt-rail-eyebrow">Latest</div>
+      <a class="lt-rail-all" href="search.html">Browse the archive →</a>
+    </div>
+    <div class="lt-rail-grid" id="lt-rail-grid"></div>
+  </div>
+</section>
+<style>
+  .lt-rail { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 60px; background: var(--ink-2); }
+  .lt-rail-wrap { max-width: 1400px; margin: 0 auto; }
+  .lt-rail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 28px; }
+  .lt-rail-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .lt-rail-all { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); transition: color 0.3s ease; white-space: nowrap; }
+  .lt-rail-all:hover { color: var(--gold); }
+  .lt-rail-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+  .lt-card { background: var(--ink); padding: 24px 26px; display: flex; flex-direction: column; gap: 10px; min-height: 150px; transition: background 0.3s ease; }
+  .lt-card:hover { background: var(--ink-3); }
+  .lt-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); display: flex; gap: 12px; flex-wrap: wrap; }
+  .lt-card-meta .t { color: var(--gold); }
+  .lt-card-title { font-family: 'Fraunces', serif; font-size: 19px; font-weight: 500; line-height: 1.22; color: var(--bone); }
+  @media (max-width: 700px) { .lt-rail { padding: 40px 24px; } }
+</style>
+<script>
+(function () {
+  var grid = document.getElementById('lt-rail-grid');
+  if (!grid) return;
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function fmt(d){ if(!d) return ''; var p=String(d).split('-'); return p.length===3 ? (p[2]+' '+months[parseInt(p[1],10)-1]+' '+p[0]) : d; }
+  function esc(s){ var e=document.createElement('div'); e.textContent=s||''; return e.innerHTML; }
+  fetch('search-index.json').then(function(r){ return r.json(); }).then(function(data){
+    var docs = ((data && data.docs) || []).filter(function(d){ return d.type==='article' || d.type==='briefing'; });
+    docs.sort(function(a,b){
+      if (a.date !== b.date) return (b.date||'').localeCompare(a.date||'');
+      return (a.order||99) - (b.order||99);
+    });
+    var html = '';
+    docs.slice(0, 6).forEach(function(d){
+      html += '<a class="lt-card" href="' + esc(d.url) + '">'
+        + '<div class="lt-card-meta"><span class="t">' + esc(d.type==='briefing' ? 'Briefing' : (d.tag || 'Article')) + '</span><span>' + fmt(d.date) + '</span></div>'
+        + '<div class="lt-card-title">' + esc(d.title) + '</div></a>';
+    });
+    grid.innerHTML = html;
+  }).catch(function(){ grid.innerHTML = ''; });
+})();
+</script>
 
 <!-- ============= FLOW DIAGRAM ============= -->
 <section class="flow-section">

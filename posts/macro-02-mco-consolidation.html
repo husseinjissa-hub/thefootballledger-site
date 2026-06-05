@@ -352,6 +352,21 @@ a { color: inherit; text-decoration: none; }
 .related-card:hover::after {
   opacity: 1; transform: translateX(0); color: var(--gold);
 }
+.related-card--upcoming { opacity: 0.55; cursor: default; }
+.related-card--upcoming:hover { background: var(--ink); }
+.related-card--upcoming::after { content: none; }
+.related-card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 9px;
+  align-self: flex-start;
+  margin-top: auto;
+}
 .related-card-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
@@ -640,16 +655,18 @@ footer {
         <h3 class="related-card-title">From <em>trophy assets</em> to operating businesses</h3>
         <p class="related-card-desc">Two decades of football capital was deployed for soft power. The next decade is deployed for return.</p>
       </a>
-      <a href="l3-group-hq-arms-race.html" class="related-card">
+      <div class="related-card related-card--upcoming">
         <div class="related-card-tag">Layer 3 · Trend 3.1</div>
         <h3 class="related-card-title">Group-HQ talent <em>arms race</em></h3>
         <p class="related-card-desc">30-to-80-person group functions at CFG, FSG, RedBird, BlueCo. The most leveraged seats in football operations.</p>
-      </a>
-      <a href="l3-synergy-claims-audit.html" class="related-card">
+        <span class="related-card-status">In production</span>
+      </div>
+      <div class="related-card related-card--upcoming">
         <div class="related-card-tag">Layer 3 · Trend 3.2</div>
         <h3 class="related-card-title">Synergy claims <em>under audit</em></h3>
         <p class="related-card-desc">Investors are starting to ask harder questions about whether the MCO synergy thesis actually works.</p>
-      </a>
+        <span class="related-card-status">In production</span>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Liga — Entity profile · The Football Ledger</title>
+<meta name="description" content="La Liga entity profile: cycle, distribution model, CVC LaLiga Boost partnership, salary-cap regime, strategic posture under Tebas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="../index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues &amp; competitions</a><span class="sep">/</span><span>La Liga</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L2 · Leagues · Sporting association</span>
+    <span class="eyebrow-meta">·  Madrid, Spain</span>
+  </div>
+  <h1 class="entity-title"><em>La Liga</em></h1>
+  <p class="entity-deck">The first major league to take outside private-equity money on its commercial business. Operates the strictest financial-control regime among the Big Five. The structural template every other league quietly studies.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sporting association · 20 clubs</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1929 · LFP 1984</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Madrid, ES</div></div>
+    <div class="fact"><div class="fact-label">President</div><div class="fact-value">Javier Tebas · since 2013</div></div>
+    <div class="fact"><div class="fact-label">Annual cycle</div><div class="fact-value"><em>~€2bn</em> · domestic + intl</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">International expansion · CVC build-out</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The <em>controlled</em> league</h2>
+    <p>La Liga (officially the Liga Nacional de Fútbol Profesional, LaLiga EA Sports for sponsorship purposes) operates Spain's professional football competitions. Twenty top-flight clubs and twenty-two second-division clubs pool centrally negotiated broadcast rights under a Royal Decree framework that gives the league significantly more redistributive authority than its English counterpart. The league enforces the most assertive financial-control regime among the Big Five — a salary-cap mechanism that has constrained Real Madrid and Barcelona's transfer activity in recent windows in ways the Premier League's PSR has not constrained any of its clubs.</p>
+    <p>La Liga is also the first major league to take third-party private capital on its commercial business. The 2021 LaLiga Boost transaction sold roughly 8.2 per cent of a fifty-year commercial vehicle to CVC Capital Partners for around €2bn. The structure is now the reference template every league commercial team has at some point modelled. Real Madrid, Barcelona, and Athletic Club opted out; the remaining thirty-eight clubs received accelerated capital for stadium and infrastructure investment.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Cycle, distribution, controls</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Format</div>
+        <div>
+          <div class="row-val">20 clubs in LaLiga EA Sports (top flight) · 38 matches · home and away · three-up, three-down promotion / relegation with LaLiga Hypermotion (second division)</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Domestic broadcast deal</div>
+        <div>
+          <div class="row-val">2022–2027 cycle: <strong>~€990m / yr</strong>, awarded to Telefónica (Movistar+) and DAZN. 2027–2032 tender expected to launch late 2026; market-watch flags Apple, DAZN, Mediapro reset bids likely.</div>
+          <div class="row-source">Source · Disclosed (LaLiga; CNMC filings)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">International broadcast deal</div>
+        <div>
+          <div class="row-val">Aggregate <em>~€900m / yr</em> equivalent across territories. Largest contracts: ESPN (USA), beIN Sports (MENA), Sky Mexico, Tencent (PRC). Trajectory: high single-digit growth, narrowing the gap to the Premier League's international cycle.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">CVC LaLiga Boost</div>
+        <div>
+          <div class="row-val">2021: CVC Capital Partners acquired <strong>~8.2%</strong> of a 50-year vehicle that holds LaLiga's centrally licensed commercial and audiovisual business (excluding domestic broadcast rights, which clubs hold). Transaction value <em>~€2bn</em>. Real Madrid, Barcelona, Athletic Club opted out and litigated unsuccessfully against the structure.</div>
+          <div class="row-source">Source · Disclosed (CVC; LaLiga; CNMC)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Central commercial pool</div>
+        <div>
+          <div class="row-val">Title sponsor: EA Sports (LaLiga EA Sports brand from 2023). Official partners include Puma (match ball), Coca-Cola, Banco Santander (legacy partner), Bwin, Microsoft. Aggregate central commercial: <em>~€150m+ per season</em>, expanding under the LaLiga Boost mandate.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Distribution model</div>
+        <div>
+          <div class="row-val">Royal Decree 5/2015 framework: domestic broadcast revenue distributed <strong>50%</strong> equal share, <strong>25%</strong> based on five-year sporting performance, <strong>25%</strong> based on social-implantation (TV audience and ticket revenue). Top-to-bottom ratio capped at <strong>4.5:1</strong> by statute (in practice ~3.5:1).</div>
+          <div class="row-source">Source · Disclosed (Real Decreto 5/2015)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Aggregate league revenue</div>
+        <div>
+          <div class="row-val">Combined 20-club revenue 2023–24 season: <strong>~€3.7bn</strong>. Per-club average ~€185m, with significant top-bottom dispersion driven by Real Madrid (~€1.07bn) and Barcelona (~€800m) at the top, ranging down to ~€60m at the lower end.</div>
+          <div class="row-source">Source · Reported (Deloitte; club financial reports)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Salary cap regime</div>
+        <div>
+          <div class="row-val"><strong>Límite de Coste de Plantilla</strong> — pre-season squad-cost limit set per club by the league's economic-control body. Clubs cannot register players whose aggregate cost exceeds the limit. Multi-year track record of binding enforcement against Barcelona (2021–2024) and ad hoc binding against several mid-table clubs.</div>
+          <div class="row-source">Source · Disclosed (LaLiga Reglamento)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">External regulatory layer</div>
+        <div>
+          <div class="row-val">Consejo Superior de Deportes (CSD) — government sport authority. Comisión Nacional de los Mercados y la Competencia (CNMC) — competition oversight. Royal Spanish Football Federation (RFEF) — federation. UEFA Financial Sustainability rules apply alongside domestic squad-cost regime for European competition.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Strategic posture (2026)</div>
+        <div>
+          <div class="row-val">International expansion: revived plan to play a regular-season match in Miami (Villarreal–Barcelona, blocked in 2018; new attempt under federation discussion 2025–26). LaLiga GO direct-to-consumer streaming across emerging markets. Continued enforcement of squad-cost regime; quiet investigation into Real Madrid stadium financing structure.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>How the institution actually functions</h2>
+    <p>La Liga's operating organisation is unusually large for a European league — roughly 600 staff across Madrid, Barcelona, and a network of regional offices in Beijing, Singapore, Mumbai, Dubai, New York, Mexico City, and Lagos. The international footprint is the deliberate choice of an organisation that has, since 2014, run as a marketing-and-commercial company first and a competition operator second. The LaLiga Boost capital infusion has accelerated that architecture: roughly half of the CVC capital was earmarked for international commercial and content investment, the rest channelled into club infrastructure and shareholder distributions.</p>
+    <p>The league's biggest operating tension in 2026 is the Real Madrid axis. The club's enterprise value, broadcast-rights claim, sponsorship economics, and stadium-financing structure all create incentives to renegotiate the central distribution model — incentives the league president has spent a decade containing through political alliances with the mid-table clubs. The Real Madrid-Barcelona Super League adjacency, the Real Madrid-led legal challenge to LaLiga Boost, and the running tension with the federation over scheduling and international fixtures keep that structural disagreement live.</p>
+    <p>The regulatory posture is forward-leaning. The squad-cost regime is the Big Five's most binding financial-control mechanism, and the league has been willing to enforce it against the marquee asset (Barcelona) repeatedly. The 2024 amendment introduced a ratchet allowing clubs to recover salary-cap headroom when long-term debt is materially repaid, designed to incentivise balance-sheet repair without rewarding short-term financial engineering.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The stated direction is international rights compression and the second wave of the LaLiga Boost capital deployment. The 2026–27 season is positioned as the year a competitive Spanish match is played in Miami; the federation, the RFEF presidential transition, and the CSD have all signalled openness in 2025 that they did not signal in 2018, partly under the influence of Saudi sovereign-aligned commercial interest in the format. The league's priority is the regulatory architecture — UEFA, FIFA, federation alignment — rather than the sporting case, which the membership has already accepted.</p>
+    <p>The 2027 cycle reset is the larger strategic horizon. Telefónica's lock on Spanish football is unwinding; DAZN's parallel rise has changed the bidding architecture; Apple's interest in non-US territory football rights has been quietly probed. A meaningful shift in the broadcast partner mix would change the league's commercial centre of gravity for the cycle that follows.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Open questions</div>
+    <h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the 2026–27 international match in Miami land — and if it does, what does that decision do to the federation, CSD, and RFEF authority over fixture geography?</li>
+      <li>Can the LaLiga Boost commercial vehicle deliver the international-revenue uplift CVC underwrote, or does the gap to the Premier League's international cycle stay structural?</li>
+      <li>What happens to the salary-cap regime if Real Madrid's stadium financing or Barcelona's lever-based balance-sheet engineering produces a litigated test case the league cannot enforce against?</li>
+      <li>Does the 2027 broadcast tender preserve the Telefónica–DAZN structure, attract a marquee tech-platform entrant, or fragment further into multi-package distribution?</li>
+      <li>How does the league navigate the post-Tebas presidential transition without losing the political coalition that sustained centralised commercial authority since 2014?</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>LaLiga Reglamento; Real Decreto 5/2015 on collective broadcast rights</li>
+      <li>CVC LaLiga Boost transaction documents; CNMC competition filings</li>
+      <li>Deloitte Annual Review of Football Finance (2025); club financial statements</li>
+      <li>UEFA Financial Sustainability Regulations; Spanish CSD economic-control framework</li>
+      <li>Trade press: SportBusiness, The Athletic, Marca, AS, Cinco Días, El País, Off the Pitch (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+</body>
+</html>

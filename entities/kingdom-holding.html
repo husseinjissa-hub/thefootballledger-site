@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom Holding — Entity profile · The Football Ledger</title>
+<meta name="description" content="Kingdom Holding Company entity profile: Alwaleed Bin Talal's listed vehicle, 70% Al-Hilal acquisition, the new private Saudi football owner archetype.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="../index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-4">Layer 04 · Capital</a><span class="sep">/</span><span>Kingdom Holding</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L4 · Capital · Family office (listed)</span>
+    <span class="eyebrow-meta">·  Riyadh, Saudi Arabia</span>
+  </div>
+  <h1 class="entity-title">Kingdom <em>Holding</em></h1>
+  <p class="entity-deck">Prince Alwaleed Bin Talal's listed investment vehicle. Now the majority owner of Al-Hilal — and, by virtue of the April 2026 PIF transaction, the most consequential private Saudi football owner in the post-reclassification era.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Listed family vehicle</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1980</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Riyadh, KSA</div></div>
+    <div class="fact"><div class="fact-label">Chair</div><div class="fact-value">Alwaleed Bin Talal</div></div>
+    <div class="fact"><div class="fact-label">Listed cap</div><div class="fact-value"><em>~SAR 60bn</em></div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">New SPL anchor owner</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The new private <em>anchor owner</em></h2>
+    <p>Kingdom Holding Company is the listed Saudi investment vehicle controlled by Prince Alwaleed Bin Talal. Founded in 1980 and listed on Tadawul since 2007, KHC has historically operated as a globally diversified family office in listed-equity wrapper — Citigroup, Twitter (pre-take-private), Lyft, Apple, Four Seasons Hotels, Movenpick, Banque Saudi Fransi — with a preference for marquee minority positions held over long horizons.</p>
+    <p>Football joined the portfolio in April 2026, when KHC acquired 70% of Al-Hilal Football Club from the Public Investment Fund for a sum reported at roughly $224 million. The transaction was the first divestment of one of the four PIF-anchored Saudi Pro League clubs and made KHC the most consequential private Saudi football owner in the post-reclassification era. The acquisition's significance is structural rather than financial: it establishes the template for the Saudi Pro League's privatisation phase and forces every subsequent SPL ownership decision to be referenced against it.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Capital type</div>
+        <div>
+          <div class="row-val">Family office, listed wrapper. Tadawul-listed (KINGDOM HOLDING CO, ticker 4280) with controlling-family ownership.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Total AUM / market cap</div>
+        <div>
+          <div class="row-val">Listed market capitalisation in the order of <strong>SAR 60 billion</strong> (~$16bn) at the time of the Al-Hilal transaction. Underlying portfolio NAV is materially larger; the listed wrapper carries a structural discount.</div>
+          <div class="row-source">Source · Disclosed (Tadawul filings)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Football-allocated capital</div>
+        <div>
+          <div class="row-val">Reported transaction value: <strong>~$224 million</strong> for 70% of Al-Hilal Football Club (April 2026). Implied 100% enterprise value of approximately $320 million pre-debt.</div>
+          <div class="row-source">Source · Reported (April 2026)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Fund structure</div>
+        <div>
+          <div class="row-val">Direct from balance sheet via the listed entity. No separate sport-specialist vehicle has been disclosed; football exposure consolidates into KHC's principal-investments segment.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Football portfolio</div>
+        <div>
+          <div class="row-val"><strong>Al-Hilal FC</strong> — 70%, acquired April 2026. The remaining 25% sits with PIF and a 5% supporters-trust allocation under the SPL privatisation framework. Al-Hilal is the most decorated club in Saudi football: 19 Saudi Pro League titles, four AFC Champions League titles, and the highest-revenue SPL club at the point of transaction.</div>
+          <div class="row-source">Source · Reported · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Realised exits in sport</div>
+        <div>
+          <div class="row-val"><em>None to date in football.</em> Adjacent: KHC has held minority stakes across hospitality and entertainment platforms (Four Seasons, Movenpick, AccorHotels) that intersect with sport infrastructure but are not sport investments per se.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Co-investor relationships</div>
+        <div>
+          <div class="row-val">PIF (post-transaction co-shareholder in Al-Hilal at 25%). Historical co-investment with global names — Apple, Citigroup, Lyft — is in non-sport contexts. Sport-specific co-investor relationships are early-stage.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>Founder and Chair:</strong> Prince Alwaleed Bin Talal. <strong>CEO:</strong> Talal Ibrahim Al Maiman (long-tenured). <strong>Sport-platform lead:</strong> Not yet publicly named at time of writing; the appointment is itself one of the most-watched signals in Saudi football for 2026.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Investment thesis</div>
+        <div>
+          <div class="row-val">Long-duration concentrated minority and majority positions in best-in-class assets. The Al-Hilal acquisition is the first explicit football thesis: control-grade ownership of the Kingdom's most valuable football brand, with operational professionalisation as the explicit value-creation lever.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Strategic posture (2026)</div>
+        <div>
+          <div class="row-val">Building Al-Hilal's operating organisation as a stand-alone professional club rather than a state-anchored asset. Hiring profile is being shaped to recruit a CEO with Premier League or top-five European league pedigree, supported by a sporting director and a commercial director appointed during 2026.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the institution is becoming</h2>
+    <p>The Al-Hilal acquisition is materially different from KHC's historical positions. Most of the listed vehicle's portfolio is liquid minority — equity stakes in marquee global names, held with a long horizon and minimal operating involvement. Al-Hilal is the opposite: an illiquid majority position in an operating business that requires a dedicated club CEO, a club-level executive bench, and a real-time operational tempo that the rest of the KHC portfolio does not impose. Building that operating capability inside, or alongside, the listed vehicle is the live organisational question of 2026.</p>
+    <p>The hiring profile being assembled is recognisable from European top-tier club operations. The expected CEO pedigree is Premier League / La Liga / Bundesliga commercial-and-operations rather than Saudi domestic-football administration. The sporting director profile is similarly European, with the explicit ambition that recruitment, contract management, and academy-pathway design at Al-Hilal mature to a benchmarked European standard rather than to the historical SPL norm.</p>
+    <p>The other operating dimension is the relationship with the Saudi Pro League and the residual PIF stake. The 70/25/5 ownership split is structurally novel for the SPL: it preserves a meaningful public-sector minority and a fan-stake floor while shifting day-to-day operating control to KHC. The governance mechanics — board composition, sponsorship-rights ownership, transfer-policy oversight — are the live workstream that the league and KHC are negotiating in real time.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The stated direction is to operate Al-Hilal as a privately-controlled, commercially self-supporting top-tier club within the AFC Champions League Elite competitive perimeter, rather than as a state-anchored marquee. The implicit second thesis is that the value-creation opportunity in Al-Hilal lies in the gap between the club's brand strength (the largest in Asia by some measures) and its current commercial monetisation. Closing that gap — through a renegotiated central-pool position in the SPL, through better-monetised sleeve and front-of-shirt deals, and through international tour activation — is the playbook.</p>
+    <p>KHC has not publicly committed to additional SPL acquisitions. The reading among Riyadh-based observers is that the Al-Hilal position will be operated for a 24-to-36-month window before any further football capital is deployed; if the operating-professionalisation thesis works, additional capital deployment becomes more likely.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Open questions</div>
+    <h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the 70/25/5 ownership template become the SPL standard for Al-Nassr, Al-Ittihad, and Al-Ahli — or is each of the next privatisations bespoke?</li>
+      <li>Who is the Al-Hilal CEO appointed in 2026, and what does the appointment signal about the depth of European executive willingness to take a Saudi top job?</li>
+      <li>Does Kingdom Holding build a sport-platform team inside the listed vehicle, or does it run Al-Hilal as a standalone with minimal central-team coordination?</li>
+      <li>How does KHC's commercial appetite at Al-Hilal interact with PIF's residual 25% — particularly on central-pool versus club-level commercial rights ownership?</li>
+      <li>Is this a single-asset football thesis, or the first move in a longer KHC sport-platform build with subsequent acquisitions?</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Kingdom Holding Company Tadawul filings and annual reports</li>
+      <li>Saudi Pro League and SAFF disclosures on the Al-Hilal divestment</li>
+      <li>Public Investment Fund Annual Report 2024 and 2026 strategy update</li>
+      <li>Al-Hilal Football Club commercial filings</li>
+      <li>Trade press: Sportico, FT, Bloomberg, Off the Pitch, Arab News, The Athletic (April–May 2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+</body>
+</html>

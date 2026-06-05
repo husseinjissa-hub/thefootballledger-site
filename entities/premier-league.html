@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premier League — Entity profile · The Football Ledger</title>
+<meta name="description" content="Premier League entity profile: rights cycle, distribution model, regulatory perimeter, strategic posture under the IFR.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="../index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues &amp; competitions</a><span class="sep">/</span><span>Premier League</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L2 · Leagues · Members' association</span>
+    <span class="eyebrow-meta">·  London, England</span>
+  </div>
+  <h1 class="entity-title"><em>Premier League</em></h1>
+  <p class="entity-deck">The world's most commercially developed domestic competition. International broadcast revenue surpassed domestic in the 2025–28 cycle. Operating now under statutory regulation for the first time in its history.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Members' association · 20 clubs</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1992</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Paddington, London</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Richard Masters · CEO</div></div>
+    <div class="fact"><div class="fact-label">Cycle value</div><div class="fact-value"><em>~£13bn</em> · 2025–28 (UK + intl)</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Defending model under IFR</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The global benchmark, <em>relitigated</em></h2>
+    <p>The Premier League is the most commercially developed domestic football competition in the world. Twenty member clubs hold equal voting rights; broadcast and central commercial revenue are pooled and redistributed under a formula that has remained structurally stable for three decades. The league's domestic cycle has set the global pricing reference for league rights since the early 2000s. Its international cycle, in 2025–28, exceeded its domestic cycle for the first time — a milestone that quietly reframes the league as a global media business with a domestic competition at its centre.</p>
+    <p>The 2025 introduction of the Independent Football Regulator changed the operating reality. For the first time since 1992, the league is supervised by a statutory body with the authority to refuse club operating licences, intervene on financial-distribution disputes with the EFL, and enforce fitness-and-propriety standards on owners. The league's strategic posture in 2026 is defensive in posture and constructive in tone: defend the model, work with the regulator, avoid an enforcement precedent that would narrow the perimeter further.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Format, cycle, distribution</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Format</div>
+        <div>
+          <div class="row-val">20 clubs · 38 matches · home and away · three-up, three-down promotion / relegation with the EFL Championship · no playoff</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Domestic broadcast deal</div>
+        <div>
+          <div class="row-val">2025–2028: <strong>£6.7bn / 4 years</strong> (~£1.67bn / yr). Sky Sports lead packages; TNT Sports, Amazon Prime Video, BBC (highlights). 270 live matches per season — the largest UK rights package in the league's history.</div>
+          <div class="row-source">Source · Disclosed (Premier League announcement, Dec 2023)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">International broadcast deal</div>
+        <div>
+          <div class="row-val">2025–2028: aggregate <em>~£7.1bn / 4 years</em>. <strong>First cycle in which international exceeds domestic.</strong> NBC (USA) and beIN Sports (MENA) headline; Sky Mexico, ESPN LATAM, Disney+ Hotstar, BeIN ASEAN, Tencent (PRC) round out the largest contracts.</div>
+          <div class="row-source">Source · Reported (Premier League, trade press)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Central commercial pool</div>
+        <div>
+          <div class="row-val">No title sponsor since 2016 (Barclays exit). Official partners include EA Sports, Coca-Cola, Hublot, Oracle, Castrol, Nike (match ball). Aggregate central commercial: <em>~£200m+ per season</em>, growing at single-digit pace.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Distribution model</div>
+        <div>
+          <div class="row-val">Domestic broadcast revenue split: <strong>50%</strong> equal share, <strong>25%</strong> merit-based, <strong>25%</strong> facility fees (number of live UK broadcasts). International broadcast: equally shared with merit overlay introduced in 2022. Top-to-bottom domestic-broadcast ratio capped at <strong>~1.8:1</strong>.</div>
+          <div class="row-source">Source · Disclosed (Premier League constitution)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Aggregate league revenue</div>
+        <div>
+          <div class="row-val">Combined 20-club revenue 2023–24 season: <strong>~£6.5bn</strong>. Aggregate trajectory expected to clear <em>£7bn</em> by 2025–26. Per-club average ~£325m, with significant top-bottom dispersion (Manchester United ~£661m vs Luton Town ~£140m, 2023–24).</div>
+          <div class="row-source">Source · Disclosed (Deloitte Annual Review of Football Finance 2025)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Ownership and governance</div>
+        <div>
+          <div class="row-val">Fitness-and-propriety regime under Premier League Rule F. No multi-club ownership cap (multiple PL clubs may share a parent if structural separation is demonstrated, e.g. Manchester City / CFG sister clubs in lower English tiers). Profit & Sustainability Rules (PSR) running parallel with new <strong>Squad Cost Ratio</strong> regime piloted from 2024–25, set to replace PSR in 2026.</div>
+          <div class="row-source">Source · Disclosed (Premier League Handbook)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">External regulatory layer</div>
+        <div>
+          <div class="row-val"><strong>Independent Football Regulator (IFR)</strong> — operational from 2025 under the Football Governance Act 2023. Supervises club operating licences, financial sustainability, owners' fitness-and-propriety, and a backstop power on financial distribution between the Premier League and the EFL. UK Competition and Markets Authority retains general competition oversight.</div>
+          <div class="row-source">Source · Disclosed (Football Governance Act 2023)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Strategic posture (2026)</div>
+        <div>
+          <div class="row-val">International expansion through the Premier League Asia and Premier League MENA programmes; Summer Series (USA) annual; women's-game expansion through league commercial alignment with the Women's Super League. Cautious posture on format change — no Game 39 revival under live discussion. Focus on regulator-friendly disclosure, voluntary distribution top-up to the EFL, and squad-cost rule implementation.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Recent litigation</div>
+        <div>
+          <div class="row-val">Manchester City Associated Party Transaction case (commission ruling Feb 2025; partial dismissal of charges, ongoing appeal). 115 charges from 2023 still under independent commission review, ruling pending. Everton, Nottingham Forest PSR points-deduction precedents from 2023–24.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>How the institution actually functions</h2>
+    <p>The Premier League's operating organisation is structurally light relative to its revenue. A central executive of roughly 250 staff coordinates broadcast operations, commercial sales, central marketing, regulatory and legal, and competition operations. Strategic decisions are taken by the twenty member clubs voting in shareholder meetings; a fourteen-club supermajority is required for material rule changes. The chief executive runs the executive but does not set policy without club mandate.</p>
+    <p>The league's biggest operating tensions in 2026 are internal. The squad-cost rule transition has divided the membership: the larger commercial clubs argue the model permits sustainable spending growth, while a cluster of mid-table clubs argue it preserves the existing competitive hierarchy. The financial-distribution dispute with the EFL — unresolved at the league-to-league level — has been escalated to the IFR's backstop, which the league had hoped to avoid testing in its first cycle of operation.</p>
+    <p>The hiring profile has shifted. The league's senior commercial appointments over the past twenty-four months have come from broadcast (Sky, Discovery, NBC), from international rights agencies (IMG, Pitch International), and from the FCA's media-and-rights regulatory function. Traditional football-administrative recruits remain in competition operations; the growth area is regulatory, international commercial, and content.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The stated direction is preservation of the model under regulatory pressure and selective international expansion. The Summer Series in the United States is now an annual fixture; a Premier League MENA presence office in Riyadh opened in late 2025; the league's content distribution to the Asia-Pacific region is expanding through bespoke OTT partnerships rather than wholesale rights licensing. The Asia office in Singapore and the regional commercial cells in Beijing, Mumbai, and Lagos are becoming the league's most consequential strategic infrastructure outside London.</p>
+    <p>The 2027 cycle reset is the next horizon. The 2028–2032 domestic broadcast tender is expected to attract bids from Amazon, Apple, and Netflix alongside the incumbent Sky and TNT. The league's preference is a continued multi-broadcaster pool to preserve pricing tension; a single-buyer DTC outcome remains an outside scenario but is no longer dismissed. Whichever path the league chooses will set the reference tender for La Liga, Serie A, and Bundesliga in the same window.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Open questions</div>
+    <h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the IFR's first material enforcement decision land inside the perimeter the league negotiated, or outside it — and how does that decision reset the relationship between the regulator and the membership?</li>
+      <li>Can the squad-cost rule transition produce a credible enforcement record before a major club challenges it in court, or does the rule arrive into the cycle already legally contested?</li>
+      <li>Does the 2028–2032 broadcast tender preserve the multi-buyer pool, or does an Amazon, Apple, or Netflix-led DTC outcome reset the league's revenue architecture and force a redistribution rethink?</li>
+      <li>How does the league's relationship with the EFL evolve once the IFR's distribution backstop is exercised — collaborative reset, or entrenched two-tier political conflict?</li>
+      <li>What does the international-revenue-exceeds-domestic milestone imply for governance: do the international markets earn meaningful representation in league strategic decisions, or remain commercial without political weight?</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Premier League Handbook (2025–26); rule books on PSR and Squad Cost Ratio</li>
+      <li>Deloitte Annual Review of Football Finance (2025 edition)</li>
+      <li>Football Governance Act 2023; IFR initial guidance documents (2025)</li>
+      <li>Premier League domestic and international broadcast announcements (2023–25)</li>
+      <li>Trade press: SportBusiness, The Athletic, Off the Pitch, FT, Reuters (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+</body>
+</html>

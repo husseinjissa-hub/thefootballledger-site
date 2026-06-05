@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USA — the next mega-cycle — The Football Ledger</title>
+<meta name="description" content="The 2026 World Cup will reset US soccer economics. MLS, NWSL, USL Premier, Apple-MLS DTC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --ink-3: #1c1c1c;
+  --ink-4: #2a2a2a;
+  --bone: #f5f1e8;
+  --bone-dim: #c4c0b6;
+  --bone-mute: #7a7770;
+  --rust: #c8102e;
+  --gold: #d4a64a;
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #2e2e2e;
+  --line-soft: #1f1f1f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.3s ease;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+/* ============= ARTICLE HEADER ============= */
+.article-header {
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.article-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.article-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 980px;
+}
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.article-meta {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.article-meta strong { color: var(--bone); font-weight: 500; }
+
+/* ============= ARTICLE BODY ============= */
+.article-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--bone);
+}
+.article-body p {
+  margin-bottom: 28px;
+}
+.article-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 40px;
+}
+.article-body p.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 76px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 8px 14px 0 0;
+  color: var(--gold);
+}
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: var(--bone);
+}
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(212, 166, 74, 0.4);
+  transition: border-color 0.2s ease;
+}
+.article-body a.in-link:hover { border-bottom-color: var(--gold); }
+
+.article-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone);
+}
+
+.callout {
+  background: rgba(212, 166, 74, 0.04);
+  border: 1px solid rgba(212, 166, 74, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.callout-text strong { color: var(--bone); }
+
+.kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin: 56px 0 -12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ============= SIGNALS BOX ============= */
+.signals {
+  max-width: 760px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.signals-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 32px 36px;
+}
+.signals-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signals-list li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  display: grid;
+  grid-template-columns: 8px 260px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.signals-list li::before {
+  content: ''; width: 8px; height: 1px; background: var(--gold);
+  flex-shrink: 0; margin-top: 10px;
+}
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) {
+  .signals-list li { grid-template-columns: 8px 1fr; }
+  .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; }
+}
+
+/* ============= RELATED ============= */
+.related {
+  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--ink-2);
+}
+.related-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.related-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.related-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.related-card {
+  background: var(--ink);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.related-card:hover { background: var(--ink-3); }
+.related-card::after {
+  content: '→';
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.related-card:hover::after {
+  opacity: 1; transform: translateX(0); color: var(--gold);
+}
+.related-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.related-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+
+/* ============= FOOTER ============= */
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .article-header { padding: 60px 24px 50px; }
+  .article-body { padding: 50px 24px 40px; font-size: 17px; }
+  .article-meta { flex-direction: column; gap: 12px; }
+  .signals { padding: 0 24px; }
+  .related { padding: 60px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .masthead { flex-wrap: wrap; gap: 12px; padding: 18px 24px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+}
+
+
+.chart {
+  margin: 60px -32px;
+  display: block;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.chart figcaption {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  font-style: normal;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.chart figcaption em {
+  font-style: italic;
+  color: var(--bone-dim);
+}
+.chart figcaption strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .chart { margin: 40px -24px; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="../index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="../entities/index.html" class="nav-item">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>Macro · Trend 03</span>
+      <span class="article-eyebrow-meta">·  Geography · Cycles</span>
+    </div>
+    <h1 class="article-title">USA — the<br><em>next mega-cycle</em></h1>
+    <p class="article-deck">The 2026 World Cup is the inflection point in a longer transition: US soccer moving from a market that consumed the global product to one that generates meaningful capital flow, institutional infrastructure, and commercial experiments other markets now watch. The Apple–MLS deal, the NWSL institutionalising, the USL Premier launch — each is an instance of that broader pivot. The 2027–2030 chapter will determine whether the pivot produces a third pole of football capital, or a still-secondary market that absorbs the cycle’s capital without competing at the top of the global game.</p>
+    <div class="article-meta">
+      <span><strong>5 min</strong> read</span>
+      <span>Published <strong>May 2026</strong></span>
+      <span>Volume <strong>01</strong> · Workstream <strong>02</strong></span>
+    </div>
+  </header>
+
+  <div class="article-body">
+
+<p class="lead">In June 2026, the FIFA World Cup arrives in the United States, Canada, and Mexico. Forty-eight teams. Sixteen host cities. An estimated five million in-stadium attendees and a global broadcast audience that will, in industry projections, exceed any previous edition. By the time the final is played in mid-July at MetLife Stadium in New Jersey, every credible commercial analysis suggests that the economic baseline of football in the United States will have been reset.</p>
+
+<h2>The asset class catches up to the audience</h2>
+
+<p>Soccer in the United States has been a genuinely interesting market for at least a decade. Major League Soccer's club valuations crossed $1 billion in 2023; expansion-franchise prices reached $500 million by 2024; San Diego FC entered as the league's thirtieth franchise at a reported $500 million entry fee. The National Women's Soccer League, until 2020 a structurally undervalued asset, has now produced several franchises with valuations above $100 million. Bay FC's $53 million expansion fee — paid by an investor group including the Sixth Street Partners platform — was, at the time of its announcement, the highest expansion fee in women's professional sports history.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MLS franchise average valuation, 2014–2026">
+  <rect x="0" y="0" width="720" height="400" fill="#141414"/>
+  <defs>
+    <linearGradient id="goldFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d4a64a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#d4a64a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <line x1="80" y1="277.8" x2="670" y2="277.8" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="68" y="277.8" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">$200m</text><line x1="80" y1="215.6" x2="670" y2="215.6" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="68" y="215.6" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">$400m</text><line x1="80" y1="153.3" x2="670" y2="153.3" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="68" y="153.3" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">$600m</text><line x1="80" y1="91.1" x2="670" y2="91.1" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="68" y="91.1" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">$800m</text>
+  <path d="M122.1,340.0 L122.1,308.0 164.3,291.2 248.6,271.6 290.7,265.3 375.0,242.6 459.3,168.9 543.6,125.3 627.9,101.4 L627.9,340.0 Z" fill="url(#goldFade)"/>
+  <polyline points="122.1,308.0 164.3,291.2 248.6,271.6 290.7,265.3 375.0,242.6 459.3,168.9 543.6,125.3 627.9,101.4" fill="none" stroke="#d4a64a" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="122.1" cy="308.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="164.3" cy="291.2" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="248.6" cy="271.6" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="290.7" cy="265.3" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="375.0" cy="242.6" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="459.3" cy="168.9" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="543.6" cy="125.3" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="627.9" cy="101.4" r="4" fill="#d4a64a" stroke="#0a0a0a" stroke-width="2"/>
+  <text x="122.1" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2014</text><text x="248.6" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2017</text><text x="375.0" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2020</text><text x="501.4" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2023</text><text x="627.9" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2026</text>
+  <text x="619.9" y="87.4" fill="#d4a64a" font-family="'Fraunces', Georgia, serif" font-size="22" font-weight="500" text-anchor="end" font-style="italic">$767m</text>
+<text x="619.9" y="105.4" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">2026 avg</text>
+  <text x="134.1" y="302.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">$103m · 2014</text>
+  <line x1="80" y1="340" x2="670" y2="340" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="80" y="22" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="80" y="40" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">MLS average franchise valuation, 2014–2026 ($USD millions)</text>
+</svg>
+<figcaption>Average estimated franchise valuation across all Major League Soccer clubs in each season. <em>The 2026 figure of $767m is verified from Sportico's February 2026 ranking; earlier figures are estimates derived from Forbes annual rankings and Sportico tracking. Trajectory captures both organic growth and the 2023 Messi/Apple-deal inflection.</em> <strong>Source:</strong> Forbes (annual), Sportico (Feb 2026), Wikipedia summary of Forbes valuations.</figcaption>
+</figure>
+
+
+<p>What changed is not the audience, which has been growing steadily for two decades. What changed is the asset class around the audience. Private capital in US sport — once concentrated in NBA, NFL, and MLB minority stakes — now treats soccer as a primary deployment category. Specialised firms (RedBird, Arctos, Sixth Street, Ares) have soccer-specific theses. Generalist megafunds (Apollo, KKR, Silver Lake) include soccer as a vertical. Single-team transactions in MLS have crossed thresholds that justify institutional ticket sizes for the first time. The United States Soccer Federation, MLS, and NWSL collectively now sit at the intersection of an under-monetised audience and an over-funded capital pool, with a generational tournament arriving as the catalyst.</p>
+
+<p>A second structural shift is approaching. In 2028, the United Soccer League will launch USL Premier as a parallel top-tier league: the US Soccer Federation will sanction both MLS and USL Premier as Division One. It is the first time the US men's game will have two leagues operating side by side at the top tier — the women's game has had this structure since 2024, with NWSL and the USL Super League both holding Division One sanctioning. USL Premier will sit atop a three-tier pyramid (Premier, USL Championship, USL League One) with promotion and relegation between all three, the first open league system in major US team sport. The economics, the broadcast architecture, and the ownership-rules framework are still being defined. What is already clear is that the launch will pressure-test MLS's closed-franchise model from a structural angle the league has not previously had to defend against, and that whichever model dominates by 2030 will define the operating-economics baseline for US soccer for the following decade.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 780 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MLS versus USL Premier structural comparison">
+  <rect x="0" y="0" width="780" height="560" fill="#141414"/>
+  <text x="60" y="32" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
+  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Two Division One models, side by side</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">The structural choices that distinguish MLS (closed-franchise, American sports model) from USL Premier (open-pyramid, global football model).</text>
+
+  <!-- Column headers -->
+  <line x1="60" y1="100" x2="720" y2="100" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="260" y="124" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" letter-spacing="0.5">MLS</text>
+  <text x="260" y="140" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9.5">established 1993 · 30 clubs</text>
+  <text x="540" y="124" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" letter-spacing="0.5">USL PREMIER</text>
+  <text x="540" y="140" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9.5">launches 2028 · target 20 clubs</text>
+  <line x1="60" y1="156" x2="720" y2="156" stroke="#2e2e2e" stroke-width="1"/>
+
+  <!-- Row 1: How clubs get in -->
+  <text x="60" y="180" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500">HOW CLUBS GET IN</text>
+  <text x="260" y="200" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Pay ~$500m expansion fee,</text>
+  <text x="260" y="216" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">receive league approval</text>
+  <text x="540" y="200" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Earn promotion from</text>
+  <text x="540" y="216" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">USL Championship (or found a club)</text>
+  <line x1="60" y1="238" x2="720" y2="238" stroke="#2a2a2a" stroke-width="0.5" stroke-dasharray="3,4"/>
+
+  <!-- Row 2: Can clubs lose their place? -->
+  <text x="60" y="262" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500">CAN A CLUB LOSE ITS PLACE?</text>
+  <text x="260" y="282" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">No — closed forever once in</text>
+  <text x="540" y="282" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Yes — bottom clubs relegated</text>
+  <text x="540" y="298" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">to USL Championship each year</text>
+  <line x1="60" y1="320" x2="720" y2="320" stroke="#2a2a2a" stroke-width="0.5" stroke-dasharray="3,4"/>
+
+  <!-- Row 3: Player movement -->
+  <text x="60" y="344" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500">PLAYER MOVEMENT</text>
+  <text x="260" y="364" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Draft, trades, salary cap</text>
+  <text x="260" y="380" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11" font-style="italic">(American sports model)</text>
+  <text x="540" y="364" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Standard transfers, no draft,</text>
+  <text x="540" y="380" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">no hard salary cap</text>
+  <text x="540" y="396" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11" font-style="italic">(global football model)</text>
+  <line x1="60" y1="418" x2="720" y2="418" stroke="#2a2a2a" stroke-width="0.5" stroke-dasharray="3,4"/>
+
+  <!-- Row 4: League structure -->
+  <text x="60" y="442" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500">LEAGUE STRUCTURE</text>
+  <text x="260" y="462" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">East / West conferences, playoffs</text>
+  <text x="540" y="462" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Single national table</text>
+  <line x1="60" y1="484" x2="720" y2="484" stroke="#2a2a2a" stroke-width="0.5" stroke-dasharray="3,4"/>
+
+  <!-- Row 5: Comparable to -->
+  <text x="60" y="508" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="500">COMPARABLE TO</text>
+  <text x="260" y="528" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">NFL, NBA, MLB</text>
+  <text x="540" y="528" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Premier League, La Liga,</text>
+  <text x="540" y="544" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12.5">Bundesliga, Serie A</text>
+</svg>
+<figcaption><strong>The two Division One models.</strong> The structural distinction matters because it determines who can participate, how players move, and how the league's economics behave. MLS is the American closed-franchise system applied to soccer; USL Premier brings the global open-pyramid model to the US for the first time on the men’s side. The question for the next decade is whether two parallel top-tier leagues can both sustain themselves, and which model proves more durable. <strong>Source:</strong> Major League Soccer, United Soccer League, US Soccer Federation Professional League Standards.</figcaption>
+</figure>
+
+<h2>The Apple-MLS reference test</h2>
+
+<p>The single most-watched experiment in US football media is the Apple–MLS deal, and the data is now in. The original 2022 agreement — a ten-year, $2.5 billion bet that put every MLS match behind a standalone $99-per-season paywall — was restructured in November 2025 after the subscriber threshold went unmet: the standalone product was discontinued and MLS folded into the standard Apple TV bundle. The directional finding for the US cycle is that the standalone-paywall configuration did not work, while football-as-content-inside-a-broader-bundle remains in test. The Premier League's 2027 tender, the Bundesliga renewal, and La Liga's posture are now being designed with that finding in evidence. <em>The Ledger examines the deal mechanics and the restructure in detail in its Apple–MLS case study; what matters here is the signal it sends about which broadcast-economics bets the US cycle will reward.</em></p>
+
+<h2>The women's professional inflection</h2>
+
+<p>The National Women's Soccer League is the cleanest expression of the asset-class thesis. Five years ago, NWSL franchise economics were structurally broken — under-capitalised teams, low broadcast revenue, fragile sponsorship relationships. Today, several factors have inverted simultaneously. The league signed a four-network broadcast package in 2023 worth $240 million over four years, multiplying its previous deal by roughly 40x. Bay FC and Boston Unity SC (the latter owned by Fenway Sports Group) entered at expansion fees previously associated with mid-tier MLS franchises. Apollo's Avenue Sports Fund and other generalist sports-PE platforms have built NWSL exposure as core portfolio positions.</p>
+
+<h2>The contrarian read</h2>
+
+<p>The consensus framing is that the 2026 World Cup will create a boom in US soccer economics from 2026 to 2030. <strong>The sharper read is that the post-tournament period is a buyer's market for operators rather than for assets</strong>. Most of the World Cup’s value to US soccer was priced in before the tournament arrived: asset valuations re-rated through 2023–26, sponsorship deals were locked in 18–36 months ahead, and the broadcast deals that monetise the audience boom were signed before the first ball was kicked. By July 2026, most of the discoverable upside will have been captured by the assets best positioned to capture it.</p>
+
+<p>The post-tournament window — late 2026 through 2029 — will accordingly produce the actual operating opportunities. Clubs and platforms that perform well during the tournament will trade at premium valuations; clubs and platforms that underperform, or that were over-leveraged in the run-up, will produce distressed entry points for operators with the discipline to underwrite normalised post-Cup economics. The market is shifting from a phase that rewarded asset acquisition toward a phase that rewards asset operation. The spread between top-quartile and bottom-quartile US soccer outcomes will widen meaningfully over the second half of the decade.</p>
+
+<p>The hiring is producing an unusual cohort. Senior US-soccer roles are filled, in increasing proportion, by operators arriving from technology, entertainment, professional services, and adjacent leagues — operators whose intuitions about what good looks like are calibrated against industries where US soccer's current operating practices would be considered immature. Whether the cohort accelerates the institutionalisation, or whether the imported intuitions struggle to translate into football-specific outcomes, is the operating question that the next four years of US soccer will answer.</p>
+
+<h2>The open question</h2>
+
+<p>The public conversation around US soccer has so far framed the next four years as a tournament cycle: the World Cup arrives, the audience uplift follows, valuations re-rate, and 2030 looks straightforwardly larger than 2026. The harder question is what the capital now flowing in actually builds. Football has two established poles of capital — the European Big Five and the Gulf wave — and the institutional money entering US soccer is large enough to ask whether a third is forming.</p>
+
+<blockquote>Does the capital now entering US soccer build a third pole of football capital — competing with the European Big Five for players, broadcast value, and institutional investment — or fund a still-secondary market that absorbs capital and supplies talent without competing at the top of the global game?</blockquote>
+
+
+
+  </div>
+
+  <aside class="signals">
+    <div class="signals-inner">
+      <div class="signals-label">Signals to track</div>
+      <ul class="signals-list">
+        <li><strong>Apple-MLS bundle performance:</strong><span class="signal-desc">Mid-cycle data emerging through 2026–28; renewed-terms outcome ahead of 2029 expiry</span></li>
+        <li><strong>USL Premier 2028 launch:</strong><span class="signal-desc">Investor positioning, broadcast architecture, and ownership-rules framework by Q4 2026</span></li>
+        <li><strong>NWSL franchise valuations:</strong><span class="signal-desc">Boston Unity SC and Bay FC operating performance set comparables for 2027–28 expansion round</span></li>
+        <li><strong>2026 host-city legacy:</strong><span class="signal-desc">Premium-hospitality data and city-level commercial relationships post-tournament</span></li>
+        <li><strong>Sixth Street and Avenue Sports Fund:</strong><span class="signal-desc">NWSL portfolio expansion, exit pricing, and follow-on capital deployment</span></li>
+        <li><strong>MLS league-office hiring:</strong><span class="signal-desc">Senior strategy and commercial roles through 2026–27 as the league professionalises</span></li>
+      </ul>
+    </div>
+  </aside>
+</article>
+
+<section class="related">
+  <div class="related-wrap">
+    <div class="related-eyebrow">Continue reading</div>
+    <h2 class="related-title">Related <em>deep-dives</em></h2>
+    <div class="related-grid">
+      <a href="macro-04-mena-second-wave.html" class="related-card">
+        <div class="related-card-tag">Macro · Trend 04</div>
+        <h3 class="related-card-title">MENA's <em>second wave</em></h3>
+        <p class="related-card-desc">The 2026 World Cup arrives in the US; the 2034 World Cup arrives in Saudi. The two events share more operating DNA than commonly appreciated.</p>
+      </a>
+      <a href="l6-apple-mls-case-study.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Trend 6.2</div>
+        <h3 class="related-card-title">Apple-MLS <em>case study</em></h3>
+        <p class="related-card-desc">First global football DTC at scale. Reference test for whether DTC economics replace pay-TV.</p>
+      </a>
+      <a href="l2-spl-privatisation.html" class="related-card">
+        <div class="related-card-tag">Layer 2 · Trend 2.4</div>
+        <h3 class="related-card-title">SPL <em>privatisation</em></h3>
+        <p class="related-card-desc">After Kingdom Holding's Al Hilal acquisition, the SPL is on a clear privatisation trajectory.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Workstream 02</div>
+  <div>Built May 2026 · Living document</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entities — The Football Ledger</title>
+<meta name="description" content="Reference profiles of the institutions, clubs, capital, and operators that shape the business of football.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c;
+  --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770;
+  --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a;
+  --line: #2e2e2e; --line-soft: #1f1f1f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink); color: var(--bone);
+  line-height: 1.6; font-weight: 400; letter-spacing: -0.005em;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000;
+  opacity: 0.04; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+
+.hero { padding: 100px 60px 60px; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--line); }
+.hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+.hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.hero-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 28px; max-width: 980px; }
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: 22px; line-height: 1.45; color: var(--bone-dim); max-width: 760px; }
+
+.layers-section { padding: 80px 60px; max-width: 1200px; margin: 0 auto; }
+.layer-block { border-top: 1px solid var(--line); padding: 48px 0 56px; display: grid; grid-template-columns: 240px 1fr; gap: 60px; }
+.layer-block:first-child { border-top: none; padding-top: 0; }
+.layer-meta { }
+.layer-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+.layer-name { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 16px; }
+.layer-name em { font-style: italic; color: var(--gold); }
+.layer-desc { font-size: 14px; line-height: 1.6; color: var(--bone-dim); }
+
+.entity-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.e-link { background: var(--ink-2); padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; min-height: 110px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; }
+.e-link:hover { background: var(--ink-3); }
+.e-link.coming { background: var(--ink-2); opacity: 0.55; cursor: default; }
+.e-name { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; color: var(--bone); }
+.e-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.e-link.live::after { content: '→'; position: absolute; top: 22px; right: 22px; font-family: 'Fraunces', serif; font-size: 16px; color: var(--gold); opacity: 0; transform: translateX(-4px); transition: all 0.3s ease; }
+.e-link.live:hover::after { opacity: 1; transform: translateX(0); }
+.e-link.coming .e-tag { color: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .hero { padding: 60px 24px 40px; }
+  .layers-section { padding: 50px 24px; }
+  .layer-block { grid-template-columns: 1fr; gap: 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="../index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow"><span>Reference · Volume 01</span></div>
+  <h1 class="hero-title"><em>Entities</em></h1>
+  <p class="hero-deck">A growing set of profile pages on the institutions, clubs, capital pools, and operators that shape the business of football. Profiles within each layer share the same data dimensions, so the reader can compare like with like.</p>
+</section>
+
+<section class="layers-section">
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 01</div>
+      <h2 class="layer-name">Governance</h2>
+      <p class="layer-desc">FIFA, the confederations, and national associations. Sets the rules and owns the IP of national-team and continental-club competitions.</p>
+    </div>
+    <div class="entity-list">
+      <a href="fifa.html" class="e-link live"><div class="e-tag">L1 · Global</div><div class="e-name">FIFA</div></a>
+      <a href="uefa.html" class="e-link live"><div class="e-tag">L1 · Europe</div><div class="e-name">UEFA</div></a>
+      <a href="afc.html" class="e-link live"><div class="e-tag">L1 · Asia</div><div class="e-name">AFC</div></a>
+      <a href="fa.html" class="e-link live"><div class="e-tag">L1 · England</div><div class="e-name">The FA</div></a>
+      <a href="saff.html" class="e-link live"><div class="e-tag">L1 · Saudi Arabia</div><div class="e-name">SAFF</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 02</div>
+      <h2 class="layer-name">Leagues &amp; competitions</h2>
+      <p class="layer-desc">Negotiate broadcast rights, run competition operations, increasingly act as commercial platforms in their own right.</p>
+    </div>
+    <div class="entity-list">
+      <a href="premier-league.html" class="e-link live"><div class="e-tag">L2 · England</div><div class="e-name">Premier League</div></a>
+      <a href="la-liga.html" class="e-link live"><div class="e-tag">L2 · Spain</div><div class="e-name">La Liga</div></a>
+      <a href="mls.html" class="e-link live"><div class="e-tag">L2 · USA</div><div class="e-name">MLS</div></a>
+      <a href="bundesliga.html" class="e-link live"><div class="e-tag">L2 · Germany</div><div class="e-name">Bundesliga</div></a>
+      <a href="spl.html" class="e-link live"><div class="e-tag">L2 · Saudi Arabia</div><div class="e-name">SPL</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 02a</div>
+      <h2 class="layer-name">Sportainment leagues</h2>
+      <p class="layer-desc">A parallel league tier built on non-traditional formats — 6- or 7-a-side competition, social-platform-native distribution, creator- or celebrity-anchored team ownership. League-class commercial scale, outside the federation pyramid.</p>
+    </div>
+    <div class="entity-list">
+      <a href="kings-league.html" class="e-link live"><div class="e-tag">L2a · Spain</div><div class="e-name">Kings League</div></a>
+      <a href="baller-league.html" class="e-link live"><div class="e-tag">L2a · Germany / UK</div><div class="e-name">Baller League</div></a>
+      <div class="e-link coming"><div class="e-tag">L2a · Germany</div><div class="e-name">Icon League</div></div>
+      <div class="e-link coming"><div class="e-tag">L2a · USA</div><div class="e-name">The Soccer Tournament</div></div>
+      <div class="e-link coming"><div class="e-tag">L2a · Women's</div><div class="e-name">World Sevens Football</div></div>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 03</div>
+      <h2 class="layer-name">Clubs &amp; multi-club ownership</h2>
+      <p class="layer-desc">Single clubs and the groups that increasingly own them. The asset class itself.</p>
+    </div>
+    <div class="entity-list">
+      <a href="fsg.html" class="e-link live"><div class="e-tag">L3 · Group</div><div class="e-name">FSG</div></a>
+      <a href="city-football-group.html" class="e-link live"><div class="e-tag">L3 · Group</div><div class="e-name">City Football Group</div></a>
+      <a href="redbird.html" class="e-link live"><div class="e-tag">L3 · Group</div><div class="e-name">RedBird</div></a>
+      <a href="blueco.html" class="e-link live"><div class="e-tag">L3 · Group</div><div class="e-name">BlueCo</div></a>
+      <a href="ineos-sport.html" class="e-link live"><div class="e-tag">L3 · Group</div><div class="e-name">INEOS Sport</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 04</div>
+      <h2 class="layer-name">Capital</h2>
+      <p class="layer-desc">Sovereign, generalist, and sport-specialist pools. The deployable money.</p>
+    </div>
+    <div class="entity-list">
+      <a href="pif.html" class="e-link live"><div class="e-tag">L4 · Sovereign</div><div class="e-name">PIF</div></a>
+      <a href="mubadala.html" class="e-link live"><div class="e-tag">L4 · Sovereign</div><div class="e-name">Mubadala</div></a>
+      <a href="qsi.html" class="e-link live"><div class="e-tag">L4 · State platform</div><div class="e-name">QSI</div></a>
+      <a href="apollo.html" class="e-link live"><div class="e-tag">L4 · PE</div><div class="e-name">Apollo</div></a>
+      <a href="arctos.html" class="e-link live"><div class="e-tag">L4 · Specialist</div><div class="e-name">Arctos</div></a>
+      <a href="cvc.html" class="e-link live"><div class="e-tag">L4 · PE</div><div class="e-name">CVC</div></a>
+      <a href="kingdom-holding.html" class="e-link live"><div class="e-tag">L4 · Family Office</div><div class="e-name">Kingdom Holding</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 05</div>
+      <h2 class="layer-name">Agencies</h2>
+      <p class="layer-desc">Player representation, brand-first agencies, multi-sport platforms.</p>
+    </div>
+    <div class="entity-list">
+      <a href="caa-stellar.html" class="e-link live"><div class="e-tag">L5 · Multi-sport</div><div class="e-name">CAA Stellar</div></a>
+      <a href="wasserman.html" class="e-link live"><div class="e-tag">L5 · Multi-sport</div><div class="e-name">Wasserman</div></a>
+      <a href="gestifute.html" class="e-link live"><div class="e-tag">L5 · Football</div><div class="e-name">Gestifute</div></a>
+      <a href="roc-nation-sports.html" class="e-link live"><div class="e-tag">L5 · Brand-first</div><div class="e-name">Roc Nation Sports</div></a>
+      <a href="img.html" class="e-link live"><div class="e-tag">L5 · Multi-sport</div><div class="e-name">IMG</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 06</div>
+      <h2 class="layer-name">Media</h2>
+      <p class="layer-desc">The broadcasters, OTT platforms, and aggregators that buy the rights.</p>
+    </div>
+    <div class="entity-list">
+      <a href="sky.html" class="e-link live"><div class="e-tag">L6 · Pay-TV</div><div class="e-name">Sky</div></a>
+      <a href="dazn.html" class="e-link live"><div class="e-tag">L6 · OTT</div><div class="e-name">DAZN</div></a>
+      <a href="apple.html" class="e-link live"><div class="e-tag">L6 · Tech</div><div class="e-name">Apple</div></a>
+      <a href="bein-sports.html" class="e-link live"><div class="e-tag">L6 · MENA</div><div class="e-name">beIN Sports</div></a>
+      <a href="ssc-shahid.html" class="e-link live"><div class="e-tag">L6 · MENA</div><div class="e-name">SSC / Shahid</div></a>
+      <a href="amazon.html" class="e-link live"><div class="e-tag">L6 · Tech</div><div class="e-name">Amazon</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 07</div>
+      <h2 class="layer-name">Commercial</h2>
+      <p class="layer-desc">Kit, sponsorship, merchandise, data-led commercial agencies, nation brands.</p>
+    </div>
+    <div class="entity-list">
+      <a href="nike.html" class="e-link live"><div class="e-tag">L7 · Kit</div><div class="e-name">Nike</div></a>
+      <a href="adidas.html" class="e-link live"><div class="e-tag">L7 · Kit</div><div class="e-name">adidas</div></a>
+      <a href="two-circles.html" class="e-link live"><div class="e-tag">L7 · Agency</div><div class="e-name">Two Circles</div></a>
+      <a href="fanatics.html" class="e-link live"><div class="e-tag">L7 · DTC</div><div class="e-name">Fanatics</div></a>
+      <a href="emirates.html" class="e-link live"><div class="e-tag">L7 · Sponsor</div><div class="e-name">Emirates</div></a>
+      <a href="etihad.html" class="e-link live"><div class="e-tag">L7 · Sponsor</div><div class="e-name">Etihad</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 08</div>
+      <h2 class="layer-name">Football-tech</h2>
+      <p class="layer-desc">Data, video analysis, wearables, transfer market, injury prediction.</p>
+    </div>
+    <div class="entity-list">
+      <a href="jamestown-analytics.html" class="e-link live"><div class="e-tag">L8 · Bespoke</div><div class="e-name">Jamestown Analytics</div></a>
+      <a href="statsbomb.html" class="e-link live"><div class="e-tag">L8 · Data</div><div class="e-name">StatsBomb</div></a>
+      <a href="hudl.html" class="e-link live"><div class="e-tag">L8 · Video</div><div class="e-name">Hudl</div></a>
+      <a href="catapult.html" class="e-link live"><div class="e-tag">L8 · Wearables</div><div class="e-name">Catapult</div></a>
+    </div>
+  </div>
+
+  <div class="layer-block">
+    <div class="layer-meta">
+      <div class="layer-num">Layer 09</div>
+      <h2 class="layer-name">Stadium &amp; matchday</h2>
+      <p class="layer-desc">Architects, venue operators, hospitality programmes, food-and-beverage.</p>
+    </div>
+    <div class="entity-list">
+      <a href="populous.html" class="e-link live"><div class="e-tag">L9 · Architect</div><div class="e-name">Populous</div></a>
+      <a href="legends.html" class="e-link live"><div class="e-tag">L9 · Operator</div><div class="e-name">Legends</div></a>
+      <a href="asm-global.html" class="e-link live"><div class="e-tag">L9 · Operator</div><div class="e-name">ASM Global</div></a>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  <div>The Football Ledger · Entities</div>
+  <div>Reference profiles · Built May 2026 · Living document</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — The Football Ledger</title>
+<meta name="description" content="The Football Ledger is an analytical publication on the business architecture of football — capital, governance, operations, and the institutions reshaping the sport.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c;
+  --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770;
+  --rust: #c8102e; --gold: #d4a64a;
+  --line: #2e2e2e; --line-soft: #1f1f1f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink); color: var(--bone);
+  line-height: 1.6; font-weight: 400;
+  letter-spacing: -0.005em;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none;
+  z-index: 1000; opacity: 0.04; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500; font-size: 17px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px; cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+.masthead-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: var(--bone-mute);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* ============= ABOUT ============= */
+.about-hero {
+  padding: 140px 60px 60px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px; margin: 0 auto;
+}
+.about-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.about-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.about-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 84px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+.about-title em { font-style: italic; color: var(--gold); }
+.about-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+}
+
+.about-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+}
+.about-body p { margin-bottom: 28px; color: var(--bone); }
+.about-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  line-height: 1.55;
+  margin-bottom: 40px;
+}
+.about-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+}
+.about-body h2 em { font-style: italic; color: var(--gold); }
+.about-body strong { color: var(--bone); font-weight: 600; }
+.about-body em { font-style: italic; }
+.about-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(212, 166, 74, 0.4);
+}
+
+/* Editorial principles list */
+.principles {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 0 60px;
+}
+.principles-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 36px 40px;
+}
+.principles-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.principles-list { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.principles-list li {
+  font-size: 15.5px; line-height: 1.6;
+  color: var(--bone-dim);
+  padding-left: 28px; position: relative;
+}
+.principles-list li::before {
+  content: ''; position: absolute;
+  left: 0; top: 12px;
+  width: 16px; height: 1px;
+  background: var(--gold);
+}
+.principles-list strong {
+  display: block; color: var(--bone);
+  font-weight: 500; margin-bottom: 4px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+}
+
+/* Subscribe block */
+.subscribe {
+  max-width: 760px;
+  margin: 56px auto 0;
+}
+.subscribe-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 40px 40px 36px;
+}
+.subscribe-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 18px;
+}
+.subscribe-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400; font-size: 26px; line-height: 1.25;
+  letter-spacing: -0.015em; margin-bottom: 14px;
+}
+.subscribe-title em { font-style: italic; color: var(--gold); }
+.subscribe-deck {
+  font-size: 15px; line-height: 1.55;
+  color: var(--bone-dim); margin-bottom: 24px;
+}
+.subscribe-form {
+  display: flex; gap: 0;
+  border: 1px solid var(--line);
+  background: var(--ink);
+  margin-bottom: 14px;
+}
+.subscribe-input {
+  flex: 1;
+  background: transparent; border: none; outline: none;
+  padding: 14px 18px;
+  color: var(--bone);
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+}
+.subscribe-input::placeholder { color: var(--bone-mute); }
+.subscribe-btn {
+  background: var(--gold); border: none;
+  color: var(--ink);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 600;
+  padding: 0 28px; cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.subscribe-btn:hover { opacity: 0.85; }
+.subscribe-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* Contact block */
+.contact-block {
+  max-width: 760px;
+  margin: 80px auto 0;
+  padding: 60px 60px 0;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+.contact-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 24px;
+}
+.contact-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300; font-style: italic;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.2; margin-bottom: 32px;
+}
+.contact-title strong { font-weight: 500; font-style: normal; color: var(--gold); }
+.contact-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+.contact-link:hover { color: var(--gold); }
+
+footer {
+  padding: 32px 60px;
+  margin-top: 80px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .about-hero { padding: 60px 24px 40px; }
+  .about-body { padding: 50px 24px 40px; font-size: 17px; }
+  .principles, .contact-block { padding-left: 24px; padding-right: 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <a href="index.html" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav">
+    <a href="index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="index.html#ws2" class="nav-item">Ledger</a>
+    <a href="entities/index.html" class="nav-item">Entities</a>
+    <a href="briefing/index.html" class="nav-item">Briefing</a>
+    <a href="about.html" class="nav-item active">About</a>
+  </nav>
+  <div class="masthead-meta">2026</div>
+</header>
+
+<section class="about-hero">
+  <div class="about-eyebrow">About the publication</div>
+  <h1 class="about-title">
+    The business<br>
+    architecture<br>
+    of <em>football.</em>
+  </h1>
+  <p class="about-deck">
+    The Football Ledger is an analytical publication on the institutions, capital flows, and operating shifts reshaping global football. It writes for the executives, investors, and students of the sport who want to understand how the industry actually works.
+  </p>
+</section>
+
+<div class="about-body">
+
+  <p class="lead">
+    Football is changing faster, and along more dimensions, than its traditional press is built to track. Capital structures, governance regimes, broadcast economics, and competitive formats are all in flux. The Football Ledger exists to make sense of those shifts, in long-form analysis directed at the people responsible for them.
+  </p>
+
+  <h2>What this publication <em>covers</em></h2>
+
+  <p>
+    The Ledger is organised around the layers of football's business ecosystem — governance, leagues (traditional and sportainment), clubs and multi-club ownership, capital, agencies, media, commercial, football-tech, and stadium and matchday. The full ecosystem map sits permanently at the heart of the site and is updated as the institutions change.
+  </p>
+
+  <p>
+    The Ledger section is the publication's running set of long-form deep-dives — the analytical pieces that read the cross-cutting shifts moving the industry. Each piece is a structural argument with evidence, a forward-looking implication, and a contrarian read of what the consensus framing misses. The Briefing section provides a weekly curated commentary on the stories that mattered.
+  </p>
+
+  <h2>The editorial <em>method</em></h2>
+
+  <p>
+    Three principles govern what appears on this site:
+  </p>
+
+  <aside class="principles">
+    <div class="principles-inner">
+      <div class="principles-label">Editorial Principles</div>
+      <ul class="principles-list">
+        <li>
+          <strong>Analysis, not description.</strong>
+          The publication is data-driven. It quantifies, attributes, and models — it does not simply narrate the news cycle. The work begins where the trade-press summary ends.
+        </li>
+        <li>
+          <strong>Forward-looking implications.</strong>
+          Every substantive piece carries an explicit read of what comes next — the signals to track, the cliff dates, the pieces of the structure most likely to move in the following cycle. Analysis that does not point forward is not the brief.
+        </li>
+        <li>
+          <strong>The contrarian read.</strong>
+          A second-order interpretation that runs against consensus framing — what the obvious read misses, what is likely to invert as the cycle progresses, and the questions a careful reader should be holding when they encounter the general statement. Where the trade press says "sport is now investable," the Ledger asks what governance discipline that actually requires; where the narrative says "MCO is the future," it asks which multi-club groups have proven cross-club value beyond shared scouting.
+        </li>
+        <li>
+          <strong>Specific over general.</strong>
+          Named entities, specific transactions, specific cliff dates. The Ledger writes about institutions and operating decisions, not abstractions. Where the trade press refers to "private equity in football," it names Apollo, Arctos, Clearlake, CVC, and what each is actually doing differently.
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <h2>The publication's <em>architecture</em></h2>
+
+  <p>
+    The site is organised around two workstreams. The <strong>Ecosystem</strong> map documents the institutions across the layers — governance, leagues (traditional and sportainment), clubs and multi-club ownership, capital, agencies, media, commercial, football-tech, and stadium and matchday — with reference profiles for each. The <strong>Ledger</strong> publishes the long-form analytical pieces that read the cross-cutting shifts moving the industry.
+  </p>
+
+  <p>
+    The Briefing is the weekly companion — a curated commentary on the four or five stories from the past week that materially moved football's business architecture, published Mondays.
+  </p>
+
+</div>
+
+<section class="contact-block">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">Contact</div>
+    <h2 class="contact-title">For correspondence,<br>tips, or <strong>corrections</strong>.</h2>
+    <a href="mailto:editor@footballledger.com" class="contact-link">editor@footballledger.com</a>
+  </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · About</div>
+  <div>Built May 2026 · Living document</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Populous — Entity profile · The Football Ledger</title>
+<meta name="description" content="Populous entity profile: dominant sports venue architect. Tottenham Hotspur Stadium, Wembley, Yankee Stadium, Wimbledon, plus broader stadium portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a href="../index.html" class="brand"><span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>The Football Ledger</a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-9">Layer 09 · Stadium / Venue</a><span class="sep">/</span><span>Populous</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L9 · Stadium / Venue · Sports venue architect</span><span class="eyebrow-meta">·  Kansas City, MO / global</span></div>
+  <h1 class="entity-title"><em>Populous</em></h1>
+  <p class="entity-deck">The dominant sports-venue architect globally. Tottenham Hotspur Stadium, Wembley, Yankee Stadium, Wimbledon, plus broader stadium portfolio across major North American, European, and emerging-market venues. Anchor architect for major football venue cycles.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sports venue architect</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1983 (HOK Sport)</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Kansas City, MO / global</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Earl Santee (Senior Principal · Co-founder)</div></div>
+    <div class="fact"><div class="fact-label">Scale headline</div><div class="fact-value"><em>2,500+</em> projects globally</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Marquee venue architecture</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The marquee venue architect</h2>
+<p>Populous is the dominant sports-venue architect globally with 40+ years of marquee venue experience. The football portfolio includes Tottenham Hotspur Stadium (2019), Wembley Stadium (2007), Emirates Stadium (Arsenal, 2006), plus selected major continental European and emerging-market venues. The broader portfolio extends across major North American venues (Yankee Stadium, T-Mobile Arena, Allegiant Stadium), tennis (Wimbledon), and large-scale entertainment venues.</p><p>The firm operates as a privately-held architecture practice with global office presence. The structural differentiator is the deep marquee-venue track record across multiple decades — Populous has the most credentialed sport-architecture portfolio globally.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Scale and structure</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Type</div><div><div class="row-val">Sports venue architecture practice. Privately-held.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Parent group</div><div><div class="row-val">Populous Holdings Inc. (private partnership structure).</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Notable football venues</div><div><div class="row-val"><strong>Tottenham Hotspur Stadium</strong> (2019) · <strong>Wembley Stadium</strong> (2007) · <strong>Emirates Stadium</strong> (2006) · selected continental European and emerging-market venues.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Geographic focus</div><div><div class="row-val">Global. Kansas City HQ. London, Brisbane, Denver, Dubai, New York offices.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Leadership</div><div><div class="row-val"><strong>Senior Principal:</strong> Earl Santee (co-founder). <strong>Regional principals:</strong> embedded across major project leadership.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Activation model</div><div><div class="row-val">Architecture and design services from concept through delivery, plus master-planning, venue-operations advisory, and post-completion advisory.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Strategic posture (2026)</div><div><div class="row-val"><em>Marquee venue architecture continuity.</em> Continued anchor-position bidding on major-cycle stadium projects. <em>Emerging-market expansion.</em> Saudi Arabia 2034, broader MENA. <em>Selective adjacency expansion.</em></div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Active major projects</div><div><div class="row-val">Selected confirmed: emerging-market stadium architecture for 2030 and 2034 World Cup cycle venues.</div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>What the institution actually does</h2>
+<p>Populous operates a global architecture practice with embedded principal-level leadership across regional offices. Major venue projects are led by senior principals with multi-decade specialisation. The firm's project pipeline draws on the marquee venue track record — clubs and federations with major stadium-build cycles approach Populous as the credentialed default.</p><p>The Saudi 2034 and broader MENA architecture cycle is a meaningful current pipeline. The post-Brexit London office continues serving European top-flight stadium-renewal cycles. The North American practice anchors broader sport-and-entertainment venue architecture.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>Populous's stated direction in 2026 is marquee venue architecture continuity. Continued anchor-position bidding on major-cycle stadium projects remains the central operating thread. Emerging-market expansion (Saudi Arabia 2034, broader MENA, selected Asian and Latin American markets) is a stated growth focus.</p>
+  </section>
+  <section class="section"><div class="section-label">Open questions</div><h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>How does Populous's competitive position hold against emerging-market local-architect partnerships, particularly in Saudi Arabia 2034 and broader MENA cycles?</li>
+      <li>Does the firm extend into broader venue-operations advisory and post-completion services, or maintain pure architecture-side positioning?</li>
+      <li>What is the strategic posture against AECOM and HOK on the major US sport-architecture market?</li>
+      <li>How does Populous's women's-football venue-architecture position evolve as the category professionalises?</li>
+      <li>Does the broader stadium-architecture category consolidate with Populous as continued category leader, or face competitive pressure from emerging-market competitors?</li>
+    </ul>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Populous corporate communications and project portfolio</li>
+      <li>Trade press: Architectural Record, Stadia Magazine, FT, Sports Business Journal</li>
+      <li>Tottenham, Arsenal, Wembley project disclosures</li>
+      <li>FIFA 2030 and 2034 World Cup venue communications</li>
+      <li>Industry reports on sports-venue architecture market</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
+</body>
+</html>

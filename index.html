@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Football Ledger — A Strategic Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --ink-3: #1c1c1c;
+  --ink-4: #2a2a2a;
+  --bone: #f5f1e8;
+  --bone-dim: #c4c0b6;
+  --bone-mute: #7a7770;
+  --rust: #c8102e;       /* liverpool red, used very sparingly */
+  --gold: #d4a64a;       /* editorial accent */
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #2e2e2e;
+  --line-soft: #1f1f1f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+a.entity { color: inherit; text-decoration: none; display: flex; }
+
+/* ============= GRAIN OVERLAY ============= */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ============= TYPOGRAPHY ============= */
+.serif { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.masthead-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--bone-mute);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  gap: 24px;
+}
+
+/* ============= HERO ============= */
+.hero {
+  padding: 140px 60px 100px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(54px, 7vw, 108px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold);
+}
+.hero-lede {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--bone-dim);
+  max-width: 480px;
+  margin-bottom: 40px;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 48px;
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  color: var(--bone);
+}
+.stat-num em {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 0.7em;
+  vertical-align: super;
+}
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= LAYER NAVIGATOR ============= */
+.layer-nav {
+  position: fixed;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+}
+.layer-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  text-decoration: none;
+  padding: 6px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.layer-nav-item-num {
+  width: 24px;
+  height: 1px;
+  background: var(--bone-mute);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.layer-nav-item-label {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+.layer-nav-item:hover .layer-nav-item-num,
+.layer-nav-item.active .layer-nav-item-num {
+  width: 48px;
+  background: var(--gold);
+}
+.layer-nav-item:hover .layer-nav-item-label,
+.layer-nav-item.active .layer-nav-item-label {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--bone);
+}
+
+/* ============= LAYER SECTION ============= */
+.layer {
+  padding: 100px 60px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.layer-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+.layer-header {
+  display: grid;
+  grid-template-columns: minmax(320px, max-content) minmax(0, 1fr);
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 64px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.layer-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.layer-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 20px;
+}
+.layer-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.layer-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--bone-dim);
+  max-width: 600px;
+}
+.layer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--bone-mute);
+  margin-top: 16px;
+}
+
+/* ============= ENTITY CARDS ============= */
+.entity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.entity {
+  background: var(--ink-2);
+  padding: 28px 28px 24px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 240px;
+}
+.entity:hover {
+  background: var(--ink-3);
+  transform: translateY(-2px);
+}
+.entity::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.entity:hover::after { transform: scaleX(1); }
+.entity-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: var(--bone);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+.entity-logo.dark { background: var(--ink-4); color: var(--bone); }
+.entity-logo.gold { background: var(--gold); color: var(--ink); }
+.entity-logo.rust { background: var(--rust); color: var(--bone); }
+.entity-logo.jade { background: var(--jade); color: var(--bone); }
+.entity-logo.sand { background: var(--sand); color: var(--ink); }
+.entity-logo img {
+  width: 100%; height: 100%; object-fit: contain; padding: 8px;
+}
+.entity-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.entity-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin-bottom: 8px;
+}
+.entity-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+.entity-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.entity-meta strong {
+  color: var(--gold);
+  font-weight: 500;
+}
+.entity.priority {
+  background: linear-gradient(135deg, var(--ink-3) 0%, var(--ink-2) 100%);
+}
+
+/* ============= FLOW DIAGRAM ============= */
+.flow-section {
+  padding: 120px 60px;
+  background: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.flow-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.flow-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+.flow-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.flow-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+.flow-title em { font-style: italic; color: var(--gold); }
+.flow-desc {
+  font-size: 16px;
+  color: var(--bone-dim);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.flow-pyramid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: stretch;
+  margin: 0 auto;
+  max-width: 1200px;
+  position: relative;
+}
+.flow-row {
+  display: grid;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.flow-row:hover { background: rgba(212, 166, 74, 0.02); }
+.flow-row:last-child { border-bottom: none; }
+.flow-row-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding-right: 32px;
+  text-align: right;
+}
+.flow-row-name {
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding: 0 24px;
+}
+.flow-row-name em { font-style: italic; color: var(--bone-dim); }
+.flow-row-players {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--bone-mute);
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+.flow-row.l1 { grid-template-columns: 180px 280px 1fr; }
+.flow-row.l1 .flow-row-name { color: var(--gold); }
+
+.flow-arrows {
+  position: absolute;
+  top: 80px;
+  bottom: 80px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.flow-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--bone-mute);
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+}
+
+/* ============= MENA SECTION ============= */
+.mena {
+  padding: 120px 60px;
+  background: linear-gradient(180deg, var(--ink) 0%, #0d0a06 100%);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.mena::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212, 166, 74, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.mena-wrap { max-width: 1600px; margin: 0 auto; position: relative; }
+.mena-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 80px;
+  align-items: end;
+}
+.mena-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.mena-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 88px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+}
+.mena-title em { font-style: italic; color: var(--gold); }
+.mena-lede {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+}
+.mena-callout {
+  background: rgba(212, 166, 74, 0.04);
+  border: 1px solid rgba(212, 166, 74, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 32px 36px;
+  margin-bottom: 64px;
+}
+.mena-callout-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.mena-callout-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.mena-callout-text {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+}
+.mena-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--line-soft);
+}
+.mena-country {
+  background: var(--ink-2);
+  padding: 40px;
+}
+.mena-country-flag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.mena-country-name {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.mena-country-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px dashed var(--line);
+}
+.mena-country-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+.mena-country-list li {
+  font-size: 13px;
+  line-height: 1.4;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.mena-country-list li::before {
+  content: '';
+  width: 6px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.mena-country-list strong {
+  font-weight: 500;
+  color: var(--bone);
+}
+
+/* ============= TRENDS SECTION ============= */
+.trends {
+  padding: 120px 60px;
+  border-bottom: 1px solid var(--line);
+}
+.trends-wrap { max-width: 1600px; margin: 0 auto; }
+.trends-header { margin-bottom: 80px; max-width: 800px; }
+.trends-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.trends-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 6vw, 80px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+.trends-title em { font-style: italic; color: var(--gold); }
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.trend {
+  background: var(--ink);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 280px;
+  position: relative;
+  transition: all 0.4s ease;
+}
+.trend:hover { background: var(--ink-2); }
+.trend-num {
+  font-family: 'Fraunces', serif;
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--gold);
+  font-style: italic;
+}
+.trend-title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.trend-desc {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+.trend-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  padding-top: 16px;
+  border-top: 1px dashed var(--line);
+}
+
+/* ============= CTA / FOOTER ============= */
+.coda {
+  padding: 140px 60px 100px;
+  background: var(--ink-2);
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.coda-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+.coda-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  max-width: 900px;
+  margin: 0 auto 48px;
+}
+.coda-title strong { font-style: normal; font-weight: 500; color: var(--gold); }
+.coda-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.ledger-cta {
+  text-align: center;
+  padding: 56px 60px 0;
+}
+.ledger-cta-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 6px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.ledger-cta-link:hover { color: var(--gold); }
+a.trend { text-decoration: none; cursor: pointer; }
+a.trend:hover .trend-title { color: var(--gold); }
+
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= ANIMATIONS ============= */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+}
+
+/* ============= PRIMARY NAVIGATION ============= */
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent;
+  border: none;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active {
+  color: var(--bone);
+}
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.workstream { display: none; }
+.workstream.active { display: block; }
+
+/* Make the brand link inherit color and not show as a hyperlink */
+.brand {
+  color: inherit;
+  text-decoration: none;
+}
+.brand:hover { opacity: 0.7; }
+
+/* ============= WS2 — TREND TAXONOMY ============= */
+.ws2-hero {
+  padding: 140px 60px 100px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.ws2-hero-wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: block;
+}
+.ws2-hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ws2-hero-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.ws2-hero-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(54px, 7vw, 108px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+}
+.ws2-hero-title em { font-style: italic; color: var(--gold); }
+.ws2-hero-lede {
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  max-width: 760px;
+}
+.ws2-hero-meta {
+  border-left: 1px solid var(--line);
+  padding-left: 48px;
+}
+.ws2-hero-meta-row {
+  padding: 20px 0;
+  border-bottom: 1px dashed var(--line);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.ws2-hero-meta-row:last-child { border-bottom: none; }
+.ws2-hero-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.ws2-hero-meta-val {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--bone);
+}
+.ws2-hero-meta-val em { font-style: italic; color: var(--gold); }
+
+/* General trends — premium card grid */
+.macro {
+  padding: 100px 60px;
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.macro-wrap { max-width: 1600px; margin: 0 auto; }
+.macro-header {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 64px;
+  margin-bottom: 64px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: end;
+}
+.macro-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.macro-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.macro-title em { font-style: italic; color: var(--gold); }
+.macro-desc {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+  max-width: 600px;
+}
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.macro-card {
+  background: var(--ink-2);
+  padding: 48px 52px;
+  display: grid;
+  grid-template-columns: 100px 1.2fr 1fr;
+  gap: 48px;
+  align-items: start;
+  transition: background 0.4s ease;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.macro-card:hover { background: var(--ink-3); }
+.macro-card::after {
+  content: '→';
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.macro-card:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--gold);
+}
+.macro-card-num {
+  font-family: 'Fraunces', serif;
+  font-size: 96px;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1;
+  color: var(--gold);
+  letter-spacing: -0.04em;
+}
+.macro-card-main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.macro-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.macro-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.macro-card-title em { font-style: italic; color: var(--gold); }
+.macro-card-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.macro-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.macro-card-meta-row {
+  border-left: 2px solid var(--gold);
+  padding-left: 16px;
+}
+.macro-card-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.macro-card-meta-text {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+.macro-card-meta-text strong { color: var(--bone); font-weight: 500; }
+
+/* Layer trends — compact stacked layout */
+.layer-trends {
+  padding: 100px 60px;
+  border-bottom: 1px solid var(--line);
+}
+.layer-trends.alt { background: var(--ink-2); }
+.layer-trends-wrap { max-width: 1600px; margin: 0 auto; }
+.layer-trends-header {
+  display: grid;
+  grid-template-columns: 200px 1fr 280px;
+  gap: 48px;
+  margin-bottom: 48px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: end;
+}
+.layer-trends-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.layer-trends-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 16px;
+}
+.layer-trends-title em { font-style: italic; color: var(--gold); }
+.layer-trends-summary {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+
+.lt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.lt {
+  background: var(--ink);
+  padding: 32px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  min-height: 280px;
+  transition: background 0.4s ease;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.layer-trends.alt .lt { background: var(--ink-2); }
+.lt:hover { background: var(--ink-3); }
+.lt::after {
+  content: '→';
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lt:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--gold);
+}
+.lt-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.lt-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.lt-title em { font-style: italic; color: var(--bone-dim); }
+.lt-body {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+.lt-signals {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--bone-mute);
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+  line-height: 1.5;
+}
+.lt-signals strong { color: var(--gold); font-weight: 500; }
+
+/* WIP — in-production cards (macro + layer-trend) */
+.macro-card.wip,
+.lt.wip {
+  opacity: 0.42;
+  cursor: default;
+  pointer-events: none;
+}
+.macro-card.wip:hover,
+.lt.wip:hover { background: var(--ink-2); }
+.layer-trends.alt .lt.wip:hover { background: var(--ink-2); }
+.macro-card.wip::after,
+.lt.wip::after { display: none; }
+.wip-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.macro-card.wip .wip-tag {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  margin-left: 0;
+}
+.lt.wip .wip-tag {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  margin-left: 0;
+  font-size: 8px;
+  padding: 3px 8px;
+}
+
+/* WS2 nav — different sections */
+.ws2-nav-mode .layer-nav-item { display: none; }
+
+
+@media (max-width: 1100px) {
+  .layer-nav { display: none; }
+  .hero-grid, .mena-header { grid-template-columns: 1fr; gap: 48px; }
+  .mena-grid { grid-template-columns: 1fr; }
+  .layer-header { grid-template-columns: 1fr; gap: 24px; }
+  .flow-row.l1 { grid-template-columns: 1fr !important; gap: 8px; }
+  .flow-row-label, .flow-row-name, .flow-row-players { padding: 4px 0; text-align: left; border: none; }
+  .ws2-hero-wrap { grid-template-columns: 1fr; gap: 48px; }
+  .ws2-hero-meta { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 24px; }
+  .macro-header { grid-template-columns: 1fr; gap: 24px; }
+  .macro-card { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
+  .macro-card-num { font-size: 64px; }
+  .layer-trends-header { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 700px) {
+  .masthead, .hero, .layer, .flow-section, .mena, .trends, .coda,
+  .ws2-hero, .macro, .layer-trends { padding-left: 24px; padding-right: 24px; }
+  .hero, .ws2-hero { padding-top: 80px; padding-bottom: 60px; }
+  .layer, .macro, .layer-trends { padding-top: 60px; padding-bottom: 60px; }
+  .hero-stats { grid-template-columns: 1fr; }
+  .primary-nav { width: 100%; margin-top: 12px; flex-wrap: wrap; gap: 0; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .masthead { flex-direction: column; align-items: flex-start; gap: 14px; padding: 20px 24px; }
+  .masthead-meta { flex-wrap: wrap; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============= MASTHEAD ============= -->
+<header class="masthead">
+  <a href="#ws1" class="brand">
+    <span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>
+    The Football Ledger
+  </a>
+  <nav class="primary-nav" role="navigation">
+    <button class="nav-item active" data-ws="ws1">Ecosystem</button>
+    <button class="nav-item" data-ws="ws2">Ledger</button>
+    <a href="entities/index.html" class="nav-item">Entities</a>
+    <a href="briefing/index.html" class="nav-item">Briefing</a>
+    <a href="about.html" class="nav-item">About</a>
+  </nav>
+</header>
+
+<!-- ============= WORKSTREAM 1 ============= -->
+<div class="workstream active" id="ws1">
+
+<!-- ============= LAYER NAVIGATOR ============= -->
+<nav class="layer-nav" aria-label="Layer navigation">
+  <a href="#layer-1" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Governance</span></a>
+  <a href="#layer-2" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Traditional leagues</span></a>
+  <a href="#layer-2a" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Sportainment leagues</span></a>
+  <a href="#layer-3" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Clubs / MCO</span></a>
+  <a href="#layer-4" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Capital</span></a>
+  <a href="#layer-5" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Agencies</span></a>
+  <a href="#layer-6" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Media</span></a>
+  <a href="#layer-7" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Commercial</span></a>
+  <a href="#layer-8" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Football-tech</span></a>
+  <a href="#layer-9" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Stadium / Fan</span></a>
+  <a href="#ledger-preview" class="layer-nav-item"><span class="layer-nav-item-num"></span><span class="layer-nav-item-label">Ledger</span></a>
+</nav>
+
+<!-- ============= HERO ============= -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="fade-in">
+      <div class="hero-eyebrow">A Strategic Map · 2026 Edition</div>
+      <h1 class="hero-title">
+        Football is no longer<br>
+        a sport.<br>
+        It is an <em>asset class.</em>
+      </h1>
+      <p class="hero-lede">
+        The institutions that shape the game, the capital flowing through them, and the operating shifts redrawing how value is created. A map for navigating the business architecture of the modern game.
+      </p>
+    </div>
+    <div class="hero-stats fade-in" style="animation-delay: 0.2s">
+      <div>
+        <div class="stat-num">36<em>%</em></div>
+        <div class="stat-label">of Big Five clubs<br>with PE / private debt</div>
+      </div>
+      <div>
+        <div class="stat-num">47.7<em>%</em></div>
+        <div class="stat-label">of Big Five clubs<br>now in MCO groups</div>
+      </div>
+      <div>
+        <div class="stat-num">$54.6<em>B</em></div>
+        <div class="stat-label">PE deployed in sport<br>since 2019</div>
+      </div>
+      <div>
+        <div class="stat-num">~2<em>×</em></div>
+        <div class="stat-label">growth in club AI &amp; data<br>spend since 2022</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FLOW DIAGRAM ============= -->
+<section class="flow-section">
+  <div class="flow-wrap">
+    <div class="flow-header">
+      <div class="flow-eyebrow">The Stack at a Glance</div>
+      <h2 class="flow-title">The stack. <em>One pyramid.</em></h2>
+      <p class="flow-desc">Money flows down. Influence flows up. Disruption now flows sideways. Layer 3 — clubs and multi-club groups — sits at the operating centre of the system, but the layers above and below define its constraints and opportunities.</p>
+    </div>
+
+    <div class="flow-pyramid">
+      <div class="flow-row l1"><div class="flow-row-label">L1 · Governance</div><div class="flow-row-name">FIFA, UEFA, AFC, FAs</div><div class="flow-row-players">Sets the rules · owns marquee IP · WC organising</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L2 · Traditional leagues</div><div class="flow-row-name">Premier League, La Liga, Bundesliga, MLS, SPL</div><div class="flow-row-players">~£10bn / 3yr top-tier broadcast value · members vs PE-backed</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L2a · Sportainment leagues</div><div class="flow-row-name">Kings League, Baller League, TST, World Sevens</div><div class="flow-row-players">Disruptive flank · Gen-Z attention · creator-led</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L3 · Clubs <em>/ MCO</em></div><div class="flow-row-name">FSG, CFG, RedBird, BlueCo, INEOS, Eagle</div><div class="flow-row-players">The operating centre · MCO the fastest-growing structure</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L4 · Capital</div><div class="flow-row-name">Sovereign · PE · Family · Credit</div><div class="flow-row-players">PIF · Apollo · CVC · Arctos · RedBird · Mubadala · Gamma Waves</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L5 · Agencies</div><div class="flow-row-name">CAA Stellar, Wasserman, Gestifute, Roc Nation</div><div class="flow-row-players">The labour-market plumbing · expanding into advisory</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L6 · Media</div><div class="flow-row-name">Sky, DAZN, Apple, Amazon, beIN, ESPN</div><div class="flow-row-players">50–60% of top-club revenue · DTC reshaping economics</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L7 · Commercial</div><div class="flow-row-name">Nike, adidas, Fanatics, Two Circles, Emirates</div><div class="flow-row-players">25–35% of top-club revenue · kit, sponsorship, retail</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L8 · Football-tech</div><div class="flow-row-name">StatsBomb, Hudl, Catapult, Zone7</div><div class="flow-row-players">Recruitment, performance, video — increasingly AI-supported</div></div>
+      <div class="flow-row l1"><div class="flow-row-label">L9 · Stadium / Fan</div><div class="flow-row-name">Populous, Legends, ASM Global</div><div class="flow-row-players">15–25% of revenue · architecture, hospitality, venue ops</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 1 — GOVERNANCE ============= -->
+<section class="layer" id="layer-1">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 01</div>
+        <h2 class="layer-title">Governing<br><em>bodies</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">The pyramid. FIFA, the six confederations, and national associations sit here. They set the rules of competition, license referees and agents, run the marquee national-team and continental-club tournaments, and distribute the rights revenues attached to those competitions.</p>
+        <div class="layer-meta">5 reference entities · regulators, federations, confederations</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <a href="entities/fifa.html" class="entity">
+        <div class="entity-logo gold">F</div>
+        <div>
+          <div class="entity-tag">Global · Zürich</div>
+          <div class="entity-name">FIFA</div>
+        </div>
+        <div class="entity-desc">Owns World Cup IP, transfer regulations, agent rules. 2026 (USA/MEX/CAN) and 2034 (Saudi) tournaments are the biggest project pipelines in football history.</div>
+        <div class="entity-meta"><span>211 nations</span><strong>L1</strong></div>
+      </a>
+      <a href="entities/uefa.html" class="entity">
+        <div class="entity-logo dark">U</div>
+        <div>
+          <div class="entity-tag">Europe · Nyon</div>
+          <div class="entity-name">UEFA</div>
+        </div>
+        <div class="entity-desc">Champions League, Europa, Euros. Distributes ~€4bn per UCL cycle. Sets squad-cost rules constraining Premier League spending. MCO regulations under live legal pressure.</div>
+        <div class="entity-meta"><span>55 associations</span><strong>L1</strong></div>
+      </a>
+      <a href="entities/afc.html" class="entity priority">
+        <div class="entity-logo jade">A</div>
+        <div>
+          <div class="entity-tag">Asia · Kuala Lumpur</div>
+          <div class="entity-name">AFC</div>
+        </div>
+        <div class="entity-desc">Asian Football Confederation. Owns AFC Champions League Elite — the marquee continental club property in Asia — and runs the AFC Asian Cup national-team tournament.</div>
+        <div class="entity-meta"><span>47 associations</span><strong>MENA</strong></div>
+      </a>
+      <a href="entities/fa.html" class="entity">
+        <div class="entity-logo sand">FA</div>
+        <div>
+          <div class="entity-tag">England · London</div>
+          <div class="entity-name">The FA</div>
+        </div>
+        <div class="entity-desc">National association of England. Runs the FA Cup and the England national teams. Under the 2025 Football Governance Act, an Independent Football Regulator now sits alongside the FA, overseeing Premier League and EFL clubs.</div>
+        <div class="entity-meta"><span>est. 1863</span><strong>L1</strong></div>
+      </a>
+      <a href="entities/saff.html" class="entity priority">
+        <div class="entity-logo rust">S</div>
+        <div>
+          <div class="entity-tag">Saudi Arabia · Riyadh</div>
+          <div class="entity-name">SAFF</div>
+        </div>
+        <div class="entity-desc">Saudi Arabian Football Federation. National association of Saudi Arabia. Coordinates with the Ministry of Sport and PIF on club privatisation. Host association for the 2027 AFC Asian Cup and the 2034 FIFA World Cup.</div>
+        <div class="entity-meta"><span>Vision 2030</span><strong>L1</strong></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 2 — TRADITIONAL LEAGUES ============= -->
+<section class="layer" id="layer-2" style="background: var(--ink-2);">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 02</div>
+        <h2 class="layer-title">Traditional leagues<br>&amp; <em>competitions</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">Leagues and competitions sit between the governing bodies above and the clubs below. They negotiate collective broadcast rights, run season-long and cup competition operations, and own the commercial inventory attached to those competitions.</p>
+        <div class="layer-meta">7 reference leagues · ~£15bn aggregate annual rights</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <a href="entities/premier-league.html" class="entity priority">
+        <div class="entity-logo rust">PL</div>
+        <div>
+          <div class="entity-tag">England · Members' assoc.</div>
+          <div class="entity-name">Premier League</div>
+        </div>
+        <div class="entity-desc">Top tier of English professional football. 20-club members'-association model. £10bn+ broadcast value per 3-year cycle (domestic plus international). Now sits under the Independent Football Regulator established in 2025.</div>
+        <div class="entity-meta"><span>£10bn / 3yr</span><strong>L2</strong></div>
+      </a>
+      <a href="entities/la-liga.html" class="entity">
+        <div class="entity-logo gold">LL</div>
+        <div>
+          <div class="entity-tag">Spain</div>
+          <div class="entity-name">La Liga</div>
+        </div>
+        <div class="entity-desc">Top tier of Spanish professional football. ~€2bn annual rights. CVC owns 8.2% of LaLiga's commercial business via the 50-year €2bn LaLiga Boost deal — the first major-league private-equity injection at the league level.</div>
+        <div class="entity-meta"><span>€2bn / yr</span><strong>L2</strong></div>
+      </a>
+      <div class="entity">
+        <div class="entity-logo dark">B</div>
+        <div>
+          <div class="entity-tag">Germany</div>
+          <div class="entity-name">Bundesliga</div>
+        </div>
+        <div class="entity-desc">Top tier of German professional football. ~€1.1bn annual rights. Run by the DFL members' association under the 50+1 rule, which keeps majority voting rights with member-clubs rather than outside owners.</div>
+        <div class="entity-meta"><span>50+1 rule</span><strong>L2</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">SA</div>
+        <div>
+          <div class="entity-tag">Italy</div>
+          <div class="entity-name">Serie A</div>
+        </div>
+        <div class="entity-desc">Top tier of Italian professional football. ~€900m annual rights. Of the Big Five leagues, the most penetrated by US private capital at the club level — RedBird owns Milan, Oaktree controls Inter.</div>
+        <div class="entity-meta"><span>€900m / yr</span><strong>L2</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">L1</div>
+        <div>
+          <div class="entity-tag">France</div>
+          <div class="entity-name">Ligue 1</div>
+        </div>
+        <div class="entity-desc">Top tier of French professional football. After the 2024 broadcast-deal collapse, the LFP launched its own DTC platform. CVC owns 13% of LFP's media business via the €1.5bn 2022 deal.</div>
+        <div class="entity-meta"><span>Post-collapse</span><strong>L2</strong></div>
+      </div>
+      <a href="entities/mls.html" class="entity priority">
+        <div class="entity-logo gold">M</div>
+        <div>
+          <div class="entity-tag">USA · Single-entity</div>
+          <div class="entity-name">MLS</div>
+        </div>
+        <div class="entity-desc">Top tier of US and Canadian professional football. Single-entity structure with $500m+ expansion fees. Distributed globally on Apple TV via a 10-year, $2.5bn rights deal.</div>
+        <div class="entity-meta"><span>$2.5bn / 10yr</span><strong>GROWTH</strong></div>
+      </a>
+      <div class="entity priority">
+        <div class="entity-logo rust">SPL</div>
+        <div>
+          <div class="entity-tag">Saudi Arabia · Roshn</div>
+          <div class="entity-name">Saudi Pro League</div>
+        </div>
+        <div class="entity-desc">Top tier of Saudi professional football. Roshn Saudi League. Title sponsor and majority of the Big Four club ownership historically sat with PIF; Kingdom Holding now owns 70% of Al-Hilal following the 2026 divestment.</div>
+        <div class="entity-meta"><span>Privatising</span><strong>L2</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 2a — SPORTAINMENT LEAGUES ============= -->
+<section class="layer" id="layer-2a" style="background: var(--ink-2);">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 02a</div>
+        <h2 class="layer-title">Sportainment<br><em>leagues</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">A parallel league tier built around non-traditional competition formats — typically 6- or 7-a-side, social-platform-native distribution, and creator- or celebrity-anchored team ownership. Operates alongside, rather than inside, the traditional federation pyramid.</p>
+        <div class="layer-meta">Creator-led · digital-native · league-class commercial scale</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <a href="entities/kings-league.html" class="entity priority">
+        <div class="entity-logo gold">KL</div>
+        <div>
+          <div class="entity-tag">Barcelona · Piqué</div>
+          <div class="entity-name">Kings League</div>
+        </div>
+        <div class="entity-desc">Hybrid 7-a-side football competition founded in 2022 by Gerard Piqué via Kosmos. Streamer-and-celebrity team-ownership model with Twitch- and YouTube-native distribution. Operates seasons in Spain, the Americas, and selected continental European markets.</div>
+        <div class="entity-meta"><span>Kosmos · Piqué</span><strong>L2a</strong></div>
+      </a>
+      <a href="entities/baller-league.html" class="entity priority">
+        <div class="entity-logo dark">BL</div>
+        <div>
+          <div class="entity-tag">Berlin / London / NYC</div>
+          <div class="entity-name">Baller League</div>
+        </div>
+        <div class="entity-desc">Hybrid 6-a-side indoor football competition. Active in Germany (since 2024) and the UK (since 2025), with selected international expansion. Backed by Michael Jordan's Courtside Ventures.</div>
+        <div class="entity-meta"><span>Courtside</span><strong>L2a</strong></div>
+      </a>
+      <div class="entity">
+        <div class="entity-logo sand">IC</div>
+        <div>
+          <div class="entity-tag">Germany</div>
+          <div class="entity-name">Icon League</div>
+        </div>
+        <div class="entity-desc">Hybrid 6-a-side football competition founded by Toni Kroos and Elias Nerlich. Player-and-creator-anchored team ownership.</div>
+        <div class="entity-meta"><span>Player-led</span><strong>L2a</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo rust">TST</div>
+        <div>
+          <div class="entity-tag">USA · 7-a-side</div>
+          <div class="entity-name">The Soccer Tournament</div>
+        </div>
+        <div class="entity-desc">US-based 7-a-side knockout football tournament with a $1m winner-take-all prize. 2025 edition fielded 64 teams across men's and women's draws.</div>
+        <div class="entity-meta"><span>$1m prize</span><strong>L2a</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo jade">W7</div>
+        <div>
+          <div class="entity-tag">Lisbon · Women's</div>
+          <div class="entity-name">World Sevens Football</div>
+        </div>
+        <div class="entity-desc">7-a-side women's football tournament. Participating teams have included the women's sides of Bayern Munich, Manchester City, and Paris Saint-Germain.</div>
+        <div class="entity-meta"><span>Women's</span><strong>L2a</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 3 — CLUBS / MCO ============= -->
+<section class="layer" id="layer-3">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 03</div>
+        <h2 class="layer-title">Clubs &amp;<br><em>multi-club</em> ownership</h2>
+      </div>
+      <div>
+        <p class="layer-desc">Clubs are the operating units of the system. Increasingly they sit inside multi-club ownership groups (MCOs) rather than standing alone — roughly 47.7% of Big Five clubs are now held inside such groups, and US investors account for around 40% of those owners.</p>
+        <div class="layer-meta">6 reference groups · the operating centre of the system</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity priority">
+        <div class="entity-logo rust">FSG</div>
+        <div>
+          <div class="entity-tag">Boston / Liverpool</div>
+          <div class="entity-name">Fenway Sports Group</div>
+        </div>
+        <div class="entity-desc">Liverpool FC, Boston Red Sox, Pittsburgh Penguins, Boston Common Golf, RFK Racing. Boston-based investor group, with RedBird Capital as a minority co-investor since 2021. Operates a multi-property sports-conglomerate model under a centralised group-holding structure.</div>
+        <div class="entity-meta"><span>5 properties</span><strong>L3</strong></div>
+      </div>
+      <div class="entity priority">
+        <div class="entity-logo dark">CFG</div>
+        <div>
+          <div class="entity-tag">Abu Dhabi · Manchester</div>
+          <div class="entity-name">City Football Group</div>
+        </div>
+        <div class="entity-desc">Manchester City plus 12 affiliated clubs across NYC, Melbourne, Mumbai, Yokohama, Palermo, Troyes and others. Majority owned by Abu Dhabi United Group (Sheikh Mansour); Silver Lake holds a minority position. The largest multi-club ownership group in football by network size.</div>
+        <div class="entity-meta"><span>13 clubs</span><strong>L3</strong></div>
+      </div>
+      <div class="entity priority">
+        <div class="entity-logo gold">RB</div>
+        <div>
+          <div class="entity-tag">New York · Sports PE</div>
+          <div class="entity-name">RedBird Capital</div>
+        </div>
+        <div class="entity-desc">Sport-and-media private investment firm. Majority owner of AC Milan and Toulouse; minority positions in FSG, YES Network, and RedBird IMI. Founded and led by Gerry Cardinale.</div>
+        <div class="entity-meta"><span>Cardinale-led</span><strong>L4</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">BC</div>
+        <div>
+          <div class="entity-tag">London · LA</div>
+          <div class="entity-name">BlueCo</div>
+        </div>
+        <div class="entity-desc">Chelsea FC and RC Strasbourg, held under a single ownership consortium of Clearlake Capital and Todd Boehly. One of the more recent multi-club ownership platforms in European top-flight football, formed following the 2022 Chelsea acquisition.</div>
+        <div class="entity-meta"><span>Boehly</span><strong>L3</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">IN</div>
+        <div>
+          <div class="entity-tag">UK · Industrial</div>
+          <div class="entity-name">INEOS Sport</div>
+        </div>
+        <div class="entity-desc">Manchester United (28% sporting control), OGC Nice, FC Lausanne-Sport, INEOS Britannia (sailing), INEOS Grenadiers (cycling), and a minority position in Mercedes-AMG F1. Sport-investment vehicle of Sir Jim Ratcliffe and the wider INEOS Group.</div>
+        <div class="entity-meta"><span>Ratcliffe</span><strong>L3</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo jade">RB</div>
+        <div>
+          <div class="entity-tag">Salzburg / global</div>
+          <div class="entity-name">Red Bull Football</div>
+        </div>
+        <div class="entity-desc">RB Leipzig + Salzburg + NY Red Bulls + Bragantino + Liefering. Most successful 'philosophy-led' MCO; not buying for IRR but for brand and talent system.</div>
+        <div class="entity-meta"><span>Brand-led</span><strong>L3</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 4 — CAPITAL ============= -->
+<section class="layer" id="layer-4" style="background: var(--ink-2);">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 04</div>
+        <h2 class="layer-title">Capital — sovereign,<br><em>PE,</em> family, debt</h2>
+      </div>
+      <div>
+        <p class="layer-desc">The capital pools deploying into football. Four broad archetypes sit at this layer: sovereign-wealth funds and state-aligned platforms; generalist private-equity firms; sport-specialist private-equity and family-office capital; and credit and structured-finance providers. Approximately $54.6bn of private capital has been deployed into sport since 2019.</p>
+        <div class="layer-meta">9 reference capital pools across 4 archetypes</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <a href="entities/pif.html" class="entity">
+        <div class="entity-logo gold">PIF</div>
+        <div>
+          <div class="entity-tag">Sovereign · Riyadh</div>
+          <div class="entity-name">Public Investment Fund</div>
+        </div>
+        <div class="entity-desc">Saudi Arabia's principal sovereign-wealth fund. Football positions include Newcastle United and minority holdings in Saudi Pro League clubs following the 2026 partial-divestment programme. Chaired by HE Yasir Al-Rumayyan.</div>
+        <div class="entity-meta"><span>Al-Rumayyan</span><strong>L4</strong></div>
+      </a>
+      <a href="entities/mubadala.html" class="entity">
+        <div class="entity-logo dark">M</div>
+        <div>
+          <div class="entity-tag">Sovereign · Abu Dhabi</div>
+          <div class="entity-name">Mubadala / ADQ</div>
+        </div>
+        <div class="entity-desc">Two Abu Dhabi state-aligned investors with cross-listed exposure to sports and adjacent assets. Mubadala holds direct positions in selected sport vehicles; ADQ is the ultimate parent of Etihad Aviation Group.</div>
+        <div class="entity-meta"><span>UAE sovereign</span><strong>L4</strong></div>
+      </a>
+      <a href="entities/arctos.html" class="entity">
+        <div class="entity-logo gold">A</div>
+        <div>
+          <div class="entity-tag">PE · New York</div>
+          <div class="entity-name">Arctos Partners</div>
+        </div>
+        <div class="entity-desc">Sport-specialist private-equity firm. Football positions include 12.5% of PSG (€4.3bn valuation) and a minority stake in Atalanta; broader portfolio spans multiple US franchises. Co-founded by Ian Charles, formerly of Landmark Partners.</div>
+        <div class="entity-meta"><span>Sports-only</span><strong>L4</strong></div>
+      </a>
+      <a href="entities/cvc.html" class="entity">
+        <div class="entity-logo dark">CVC</div>
+        <div>
+          <div class="entity-tag">PE · Luxembourg</div>
+          <div class="entity-name">CVC Capital Partners</div>
+        </div>
+        <div class="entity-desc">Generalist private-equity firm with a sport-specific platform. League-level positions include 8.2% of LaLiga's commercial business and 13% of Ligue 1's media business. Among the earliest large PE firms to invest at the league rather than the club level.</div>
+        <div class="entity-meta"><span>League-level</span><strong>L4</strong></div>
+      </a>
+      <a href="entities/apollo.html" class="entity">
+        <div class="entity-logo sand">AP</div>
+        <div>
+          <div class="entity-tag">PE · New York</div>
+          <div class="entity-name">Apollo Global</div>
+        </div>
+        <div class="entity-desc">Generalist private-equity firm. Football position: 55% control of Atlético de Madrid at a €2.9bn valuation, completed late 2025 — among the first PE-control deals at a Big Five club.</div>
+        <div class="entity-meta"><span>Control deals</span><strong>L4</strong></div>
+      </a>
+      <div class="entity">
+        <div class="entity-logo jade">SL</div>
+        <div>
+          <div class="entity-tag">PE · Menlo Park</div>
+          <div class="entity-name">Silver Lake</div>
+        </div>
+        <div class="entity-desc">Technology- and growth-focused private-equity firm. Football position: $500m+ minority stake in City Football Group. Adjacent sport positions across Endeavor and Fanatics.</div>
+        <div class="entity-meta"><span>Tech × Sport</span><strong>L4</strong></div>
+      </div>
+      <a href="entities/kingdom-holding.html" class="entity">
+        <div class="entity-logo rust">KH</div>
+        <div>
+          <div class="entity-tag">Family · Riyadh</div>
+          <div class="entity-name">Kingdom Holding</div>
+        </div>
+        <div class="entity-desc">Saudi family-office holding company chaired by HRH Prince Alwaleed bin Talal. Football position: 70% of Al-Hilal following the April 2026 transfer of shares from PIF.</div>
+        <div class="entity-meta"><span>New buyer</span><strong>WATCH</strong></div>
+      </a>
+      <div class="entity">
+        <div class="entity-logo gold">V</div>
+        <div>
+          <div class="entity-tag">Sports-tech VC · MENA</div>
+          <div class="entity-name">Verance Capital</div>
+        </div>
+        <div class="entity-desc">Sports-tech-focused investment fund founded by Imad Adli. Mandate spans football-tech platforms and non-traditional sport formats, with a stated MENA-Europe operating focus.</div>
+        <div class="entity-meta"><span>Adli</span><strong>L4</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">GW</div>
+        <div>
+          <div class="entity-tag">Sports-IP &amp; tech · Amsterdam</div>
+          <div class="entity-name">Gamma Waves Partners</div>
+        </div>
+        <div class="entity-desc">Permanent-capital sport-investment vehicle launched in April 2026 by Andrea Agnelli, Giorgio Chiellini, and Rocco Benetton. €100m target fund (€55m committed). Mandate: minority stakes in sports IP and growth-stage sports-tech (AI content, data, fan engagement).</div>
+        <div class="entity-meta"><span>Agnelli · 25% IRR</span><strong>NEW</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 5 — AGENCIES ============= -->
+<section class="layer" id="layer-5">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 05</div>
+        <h2 class="layer-title">Agencies &amp;<br><em>representation</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">Player-representation, brand-management, and executive-search businesses. Agencies negotiate transfers, contracts, image-rights and commercial deals on behalf of players, coaches, and executives, and increasingly run advisory mandates for clubs, leagues, and federations.</p>
+        <div class="layer-meta">5 reference agencies across player rep, brand, and multi-sport</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity">
+        <div class="entity-logo dark">CAA</div>
+        <div>
+          <div class="entity-tag">London / LA · merged 2019</div>
+          <div class="entity-name">CAA Stellar</div>
+        </div>
+        <div class="entity-desc">Multi-sport agency formed in 2019 from the merger of CAA Sports' football arm with Stellar Group. Roster includes Erling Haaland, Jack Grealish, Gareth Southgate, Mauricio Pochettino. Operates a separate executive-search practice.</div>
+        <div class="entity-meta"><span>English-leaning</span><strong>L5</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo gold">W</div>
+        <div>
+          <div class="entity-tag">LA · Global</div>
+          <div class="entity-name">Wasserman Football</div>
+        </div>
+        <div class="entity-desc">Multi-sport global agency representing 2,500+ athletes. Football roster includes Jude Bellingham and Aitana Bonmatí. Among the largest agency platforms in the world by roster size.</div>
+        <div class="entity-meta"><span>2,500+ roster</span><strong>L5</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">G</div>
+        <div>
+          <div class="entity-tag">Lisbon</div>
+          <div class="entity-name">Gestifute</div>
+        </div>
+        <div class="entity-desc">Lisbon-based football agency founded by Jorge Mendes. Roster includes Cristiano Ronaldo, Bruno Fernandes, José Mourinho, João Félix, and Bernardo Silva. Specialised football-only practice with extensive Portuguese, Premier League, and Saudi connections.</div>
+        <div class="entity-meta"><span>Mendes</span><strong>L5</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">RN</div>
+        <div>
+          <div class="entity-tag">London / NY · Jay-Z</div>
+          <div class="entity-name">Roc Nation Sports</div>
+        </div>
+        <div class="entity-desc">Sport-and-entertainment agency founded by Jay-Z within the Roc Nation media group. Football roster and commercial mandates include Marcus Rashford, Romelu Lukaku, and Kevin De Bruyne (commercial). Brand-and-culture-led positioning.</div>
+        <div class="entity-meta"><span>Brand-led</span><strong>L5</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo jade">IMG</div>
+        <div>
+          <div class="entity-tag">Global · Endeavor</div>
+          <div class="entity-name">IMG (Endeavor)</div>
+        </div>
+        <div class="entity-desc">Multi-sport agency and content business inside the Endeavor group. Mandates span coaches, broadcast talent, club commercial advisory, and media-rights distribution.</div>
+        <div class="entity-meta"><span>Endeavor group</span><strong>L5</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 6 — MEDIA ============= -->
+<section class="layer" id="layer-6" style="background: var(--ink-2);">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 06</div>
+        <h2 class="layer-title">Media &amp;<br><em>broadcasting</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">Broadcasters and streaming platforms that buy rights from leagues, clubs, and federations. Broadcast revenue typically accounts for 50–60% of top-tier club income. The category includes pay-TV incumbents, global streaming aggregators, and tech-platform DTC distributors.</p>
+        <div class="layer-meta">6 reference entities · pay-TV, OTT, tech-platform DTC</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity">
+        <div class="entity-logo dark">SK</div>
+        <div>
+          <div class="entity-tag">UK · Comcast</div>
+          <div class="entity-name">Sky Sports</div>
+        </div>
+        <div class="entity-desc">UK and Ireland pay-TV broadcaster. Owned by Comcast. Long-standing primary domestic Premier League rights-holder. Next negotiation cycle opens in 2027.</div>
+        <div class="entity-meta"><span>PL incumbent</span><strong>L6</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo gold">D</div>
+        <div>
+          <div class="entity-tag">Global · DTC</div>
+          <div class="entity-name">DAZN</div>
+        </div>
+        <div class="entity-desc">Global subscription-streaming sport service. Founded by Len Blavatnik via Access Industries. Holds rights across multiple football competitions and adjacent sports across European and global territories.</div>
+        <div class="entity-meta"><span>Aggregator bet</span><strong>L6</strong></div>
+      </div>
+      <div class="entity priority">
+        <div class="entity-logo bone" style="background:#fff;color:#000;">A</div>
+        <div>
+          <div class="entity-tag">Cupertino · DTC</div>
+          <div class="entity-name">Apple TV</div>
+        </div>
+        <div class="entity-desc">Apple's subscription-video service. Holds the 10-year, $2.5bn exclusive global rights to MLS via the MLS Season Pass product — the largest single-league exclusive direct-to-consumer football rights deal to date.</div>
+        <div class="entity-meta"><span>MLS global</span><strong>WATCH</strong></div>
+      </div>
+      <div class="entity priority">
+        <div class="entity-logo rust">bIN</div>
+        <div>
+          <div class="entity-tag">MENA · Doha</div>
+          <div class="entity-name">beIN Sports</div>
+        </div>
+        <div class="entity-desc">Qatar-owned subscription-sport broadcaster. Holds extensive football rights across MENA and selected European, North American, and Asia-Pacific territories. Long-standing FIFA broadcast partner.</div>
+        <div class="entity-meta"><span>QSI-owned</span><strong>MENA</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">SSC</div>
+        <div>
+          <div class="entity-tag">Saudi · State broadcaster</div>
+          <div class="entity-name">SSC / Shahid</div>
+        </div>
+        <div class="entity-desc">SSC is the Saudi state-aligned sport broadcaster, holding domestic Saudi Pro League rights. Shahid is MBC's subscription-streaming platform; the two operate as the Saudi-anchored sport-rights distribution stack across MENA.</div>
+        <div class="entity-meta"><span>Saudi-led</span><strong>MENA</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">AM</div>
+        <div>
+          <div class="entity-tag">Seattle · Global</div>
+          <div class="entity-name">Amazon Prime</div>
+        </div>
+        <div class="entity-desc">Amazon's subscription-streaming service. Holds a Premier League package in the UK plus selected UEFA Champions League rights across Italy, Germany, and the UK; selectively bids on national-team and club rights in additional territories.</div>
+        <div class="entity-meta"><span>Patient buyer</span><strong>L6</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 7 — COMMERCIAL ============= -->
+<section class="layer" id="layer-7">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 07</div>
+        <h2 class="layer-title">Commercial —<br><em>kit, sponsor,</em> retail</h2>
+      </div>
+      <div>
+        <p class="layer-desc">Kit suppliers, front-of-shirt and sleeve sponsors, retail and merchandise platforms, and data-led commercial agencies. Commercial revenue typically accounts for 25–35% of top-tier club income, sourced through long-cycle kit deals, multi-tier sponsorship inventory, retail and licensing programmes.</p>
+        <div class="layer-meta">6 reference entities across kit, sponsorship, retail, agencies</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity">
+        <div class="entity-logo dark">N</div>
+        <div>
+          <div class="entity-tag">Beaverton · Apparel</div>
+          <div class="entity-name">Nike</div>
+        </div>
+        <div class="entity-desc">Global sportswear company headquartered in Beaverton, Oregon. Football kit-supply partners include Barcelona, Liverpool, PSG, Tottenham, Chelsea, plus a deep athlete-endorsement roster.</div>
+        <div class="entity-meta"><span>$50bn+ co.</span><strong>L7</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">aD</div>
+        <div>
+          <div class="entity-tag">Herzogenaurach · Apparel</div>
+          <div class="entity-name">adidas</div>
+        </div>
+        <div class="entity-desc">Global sportswear company headquartered in Herzogenaurach, Germany. Football kit-supply partners include Real Madrid, Bayern Munich, Manchester United, Arsenal, plus a long roster of national associations including Germany, Argentina, and Spain.</div>
+        <div class="entity-meta"><span>Heritage</span><strong>L7</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo gold">2C</div>
+        <div>
+          <div class="entity-tag">London · Strategy + data</div>
+          <div class="entity-name">Two Circles</div>
+        </div>
+        <div class="entity-desc">Data-led commercial agency advising leagues, federations, clubs, and rights-holders on partnership architecture, ticketing, broadcast distribution, and direct-to-consumer activation. Owned by Charterhouse Capital Partners since 2022.</div>
+        <div class="entity-meta"><span>Charterhouse</span><strong>L7</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo rust">F</div>
+        <div>
+          <div class="entity-tag">Florida · Licensing</div>
+          <div class="entity-name">Fanatics</div>
+        </div>
+        <div class="entity-desc">US-headquartered licensed-merchandise platform. Operates retail and e-commerce partnerships with major leagues globally, plus selected European football clubs including Manchester United, PSG, and Real Madrid. Backed by a consortium of private investors.</div>
+        <div class="entity-meta"><span>$30bn val</span><strong>L7</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">EM</div>
+        <div>
+          <div class="entity-tag">Dubai / Abu Dhabi · Sponsor</div>
+          <div class="entity-name">Emirates / Etihad</div>
+        </div>
+        <div class="entity-desc">UAE state-aligned airline sponsors. Emirates holds shirt and stadium-naming partnerships at Arsenal, Real Madrid, and AC Milan among others; Etihad holds the Manchester City shirt and stadium-naming partnership.</div>
+        <div class="entity-meta"><span>UAE state-aligned</span><strong>L7</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo gold">RA</div>
+        <div>
+          <div class="entity-tag">Riyadh · Tourism / Carrier</div>
+          <div class="entity-name">Riyadh Air / AlUla / NEOM</div>
+        </div>
+        <div class="entity-desc">Saudi state-aligned tourism authorities and carriers, including Riyadh Air, AlUla, and NEOM. Hold front-of-shirt and sleeve sponsorships across selected La Liga, Serie A, and Bundesliga clubs as part of the Vision 2030 commercial programme.</div>
+        <div class="entity-meta"><span>Vision 2030</span><strong>L7</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 8 — FOOTBALL TECH ============= -->
+<section class="layer" id="layer-8" style="background: var(--ink-2);">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 08</div>
+        <h2 class="layer-title">Football-tech,<br><em>data &amp; performance</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">Football-tech vendors supporting recruitment, performance, video analysis, wearable tracking, and operations workflows — increasingly with AI and machine-learning components. Customers span clubs, leagues, federations, and adjacent rights-holders across the global football market.</p>
+        <div class="layer-meta">6 reference players across data, video, performance, recruitment</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <a href="entities/jamestown-analytics.html" class="entity">
+        <div class="entity-logo gold">JA</div>
+        <div>
+          <div class="entity-tag">Camden · Bespoke</div>
+          <div class="entity-name">Jamestown Analytics</div>
+        </div>
+        <div class="entity-desc">Owner-funded football analytics consultancy associated with Tony Bloom. Engages with a small set of clubs — Brighton, Union Saint-Gilloise, Como, Ipswich, Hearts, Castellón — under exclusivity-within-market terms.</div>
+        <div class="entity-meta"><span>Bespoke</span><strong>L8</strong></div>
+      </a>
+      <div class="entity">
+        <div class="entity-logo gold">SB</div>
+        <div>
+          <div class="entity-tag">London · Event data</div>
+          <div class="entity-name">StatsBomb</div>
+        </div>
+        <div class="entity-desc">London-based football-data analytics platform. Provides tagged event data, advanced metrics, and a recruitment-platform product (StatsBomb IQ) used across European top-flight clubs. Acquired into the Stats Perform group in 2024 (reported).</div>
+        <div class="entity-meta"><span>Event data</span><strong>L8</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">H</div>
+        <div>
+          <div class="entity-tag">Lincoln · Video</div>
+          <div class="entity-name">Hudl (Wyscout, InStat)</div>
+        </div>
+        <div class="entity-desc">Sports-performance video and analytics platform. Owns Wyscout (acquired 2019) and Statsports (acquired 2024). Bain Capital is the majority investor.</div>
+        <div class="entity-meta"><span>Bain Capital</span><strong>L8</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">C</div>
+        <div>
+          <div class="entity-tag">Melbourne · Wearables</div>
+          <div class="entity-name">Catapult Sports</div>
+        </div>
+        <div class="entity-desc">Sports-wearable analytics platform. ASX-listed (ASX:CAT). Provides GPS-tracking hardware and integrated performance-analytics software across elite football, rugby, and adjacent codes.</div>
+        <div class="entity-meta"><span>ASX-listed</span><strong>L8</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo jade">SP</div>
+        <div>
+          <div class="entity-tag">London · Data</div>
+          <div class="entity-name">Opta (Stats Perform)</div>
+        </div>
+        <div class="entity-desc">Football-data brand operated within the Stats Perform group. Supplies the underlying tagged event data and statistical feeds used by broadcasters, clubs, and rights-holders.</div>
+        <div class="entity-meta"><span>Stats Perform</span><strong>L8</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo rust">TR</div>
+        <div>
+          <div class="entity-tag">Amsterdam · Marketplace</div>
+          <div class="entity-name">TransferRoom</div>
+        </div>
+        <div class="entity-desc">Online platform connecting clubs, agents, and sporting directors for transfer-market workflow. Provides a structured marketplace and integrated scouting tools.</div>
+        <div class="entity-meta"><span>Marketplace</span><strong>L8</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">Z7</div>
+        <div>
+          <div class="entity-tag">Tel Aviv · Medical AI</div>
+          <div class="entity-name">Zone7</div>
+        </div>
+        <div class="entity-desc">Football-medical analytics platform. Provides predictive-injury-risk modelling derived from training and match-load data, in use at clubs across the Premier League, MLS, and adjacent leagues.</div>
+        <div class="entity-meta"><span>Medical AI</span><strong>L8</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LAYER 9 — STADIUM ============= -->
+<section class="layer" id="layer-9">
+  <div class="layer-wrap">
+    <div class="layer-header">
+      <div>
+        <div class="layer-num">Layer 09</div>
+        <h2 class="layer-title">Stadium, matchday<br>&amp; <em>fan experience</em></h2>
+      </div>
+      <div>
+        <p class="layer-desc">Architects, venue operators, hospitality programmes, and food-and-beverage providers attached to football stadia and matchday operations. Matchday revenue typically accounts for 15–25% of top-tier club income; venue projects are usually the single largest capital programmes a club undertakes.</p>
+        <div class="layer-meta">5 reference players · architecture, hospitality, venue ops</div>
+      </div>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity">
+        <div class="entity-logo gold">P</div>
+        <div>
+          <div class="entity-tag">Kansas City · Architecture</div>
+          <div class="entity-name">Populous</div>
+        </div>
+        <div class="entity-desc">Global sports-venue architecture practice. Football portfolio includes Tottenham Hotspur Stadium, the new Wembley, and Emirates Stadium, plus selected continental European and emerging-market venues.</div>
+        <div class="entity-meta"><span>Architecture</span><strong>L9</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo dark">L</div>
+        <div>
+          <div class="entity-tag">NY · Venue ops</div>
+          <div class="entity-name">Legends</div>
+        </div>
+        <div class="entity-desc">Venue-services and hospitality platform. Football positions include the Real Madrid Bernabéu hospitality redevelopment and selected European venue mandates. Sixth Street Partners is the lead investor.</div>
+        <div class="entity-meta"><span>Hospitality + ops</span><strong>L9</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo sand">F</div>
+        <div>
+          <div class="entity-tag">London · Architecture</div>
+          <div class="entity-name">Foster + Partners</div>
+        </div>
+        <div class="entity-desc">Global architecture practice founded by Norman Foster. Football-related projects include Lusail Stadium (host of the 2022 FIFA World Cup final) and selected continental European stadium designs.</div>
+        <div class="entity-meta"><span>Architecture</span><strong>L9</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo jade">OL</div>
+        <div>
+          <div class="entity-tag">Endeavor · Hospitality</div>
+          <div class="entity-name">On Location</div>
+        </div>
+        <div class="entity-desc">Premium-experiences and hospitality business. Holds the FIFA World Cup hospitality programme, Olympic hospitality mandates, and selected club-premium-product partnerships. Owned by Endeavor.</div>
+        <div class="entity-meta"><span>Endeavor</span><strong>L9</strong></div>
+      </div>
+      <div class="entity">
+        <div class="entity-logo rust">AS</div>
+        <div>
+          <div class="entity-tag">LA · Venue mgmt</div>
+          <div class="entity-name">ASM Global</div>
+        </div>
+        <div class="entity-desc">Venue-management and operations platform. Operates 350+ arenas, stadiums, and convention centres globally. Co-owned by AEG and Onex Partners.</div>
+        <div class="entity-meta"><span>Operator</span><strong>L9</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= LEDGER PREVIEW ============= -->
+<section class="trends" id="ledger-preview">
+  <div class="trends-wrap">
+    <div class="trends-header">
+      <div class="trends-eyebrow">From The Ledger</div>
+      <h2 class="trends-title">Recent<br><em>deep-dives.</em></h2>
+    </div>
+
+    <div class="trends-grid">
+      <a href="posts/l3-barcelona-crisis-recovery.html" class="trend">
+        <div class="trend-num">L3</div>
+        <h3 class="trend-title">Barcelona's crisis &amp; recovery</h3>
+        <p class="trend-desc">How Barcelona went into balance-sheet crisis, the Messi cliff, the controversial economic levers, and the partial-recovery 2026 read.</p>
+        <div class="trend-tag">Layer 3 · Case study · 8 min</div>
+      </a>
+      <a href="posts/l6-apple-mls-case-study.html" class="trend">
+        <div class="trend-num">L6</div>
+        <h3 class="trend-title">Apple TV &amp; MLS — the global DTC bet</h3>
+        <p class="trend-desc">The $2.5bn 10-year exclusive global rights deal, the Messi inflection, what changed in MLS, and the 2026 mid-cycle read.</p>
+        <div class="trend-tag">Layer 6 · Case study · 5 min</div>
+      </a>
+      <a href="posts/l4-permanent-capital.html" class="trend">
+        <div class="trend-num">L4</div>
+        <h3 class="trend-title">Permanent capital arrives</h3>
+        <p class="trend-desc">Why family-office and evergreen-fund structures are increasingly the natural buyer of European club equity.</p>
+        <div class="trend-tag">Layer 4 · Capital · 4 min</div>
+      </a>
+      <a href="posts/l3-mco-blowup-risk.html" class="trend">
+        <div class="trend-num">L3</div>
+        <h3 class="trend-title">The MCO blow-up risk</h3>
+        <p class="trend-desc">Multi-club ownership has scaled fast. The structural fragility under that growth — and what it means for the next cycle.</p>
+        <div class="trend-tag">Layer 3 · Trend · 4 min</div>
+      </a>
+      <a href="posts/l8-llm-native-scouting.html" class="trend">
+        <div class="trend-num">L8</div>
+        <h3 class="trend-title">The AI-native football-tech stack</h3>
+        <p class="trend-desc">LLM-mediated scouting, computer-vision auto-tagging, injury-risk modelling — what an AI-native club operating model actually looks like.</p>
+        <div class="trend-tag">Layer 8 · Trend · 4 min</div>
+      </a>
+      <a href="posts/l6-bein-mena-fragmentation.html" class="trend">
+        <div class="trend-num">L6</div>
+        <h3 class="trend-title">beIN &amp; the MENA broadcast reset</h3>
+        <p class="trend-desc">The Qatari soft-power thesis, pressure from SSC and Shahid, and the 2034 Saudi-led architecture — the regional reset under way.</p>
+        <div class="trend-tag">Layer 6 · Case study · 5 min</div>
+      </a>
+    </div>
+
+    <div class="ledger-cta">
+      <a href="#ws2" class="ledger-cta-link" data-ws="ws2">Read all in The Ledger →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CODA ============= -->
+<section class="coda">
+  <div class="coda-eyebrow">A note from the editor</div>
+  <h2 class="coda-title">
+    Football is no longer just a game.<br>
+    It is <strong>a business</strong> — and<br>
+    <strong>the business</strong> tells the better story.
+  </h2>
+  <div class="coda-meta">Next · Stories from the business of football</div>
+</section>
+
+<footer>
+  <div>The Football Ledger</div>
+  <div>2026</div>
+</footer>
+
+</div><!-- /ws1 -->
+
+<!-- ============= WORKSTREAM 2 — TRENDS ============= -->
+<div class="workstream" id="ws2">
+
+<!-- WS2 HERO -->
+<section class="ws2-hero">
+  <div class="ws2-hero-wrap">
+    <div class="fade-in">
+      <div class="ws2-hero-eyebrow">Section B · The Ledger</div>
+      <h1 class="ws2-hero-title">
+        The moves that<br>
+        <em>redraw</em><br>
+        the map.
+      </h1>
+      <p class="ws2-hero-lede">
+        The map shows where capital and influence sit today. The Ledger reads where they are moving — where the next operating playbooks will be written, where the white space sits, and where the strategic questions for the next decade are emerging.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO TRENDS -->
+<section class="macro">
+  <div class="macro-wrap">
+    <div class="macro-header">
+      <div>
+        <div class="macro-eyebrow">Section A · Macro</div>
+        <h2 class="macro-title">The shifts<br>that <em>cut across</em><br>the ecosystem.</h2>
+      </div>
+      <p class="macro-desc">These are the structural shifts shaping the industry's next decade. Each is well known in isolation. The argument here is that they are connected — and that the most consequential operating decisions of the next five years sit at the intersections.</p>
+    </div>
+
+    <div class="macro-grid">
+
+      <a class="macro-card" href="posts/macro-01-trophy-to-operating.html">
+        <div class="macro-card-num">01</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">Capital · Governance · Operating Models</div>
+          <h3 class="macro-card-title">From <em>trophy assets</em> to operating businesses</h3>
+          <p class="macro-card-body">For 15 years, sovereign and family capital bought football clubs as identity assets — political prestige, brand projection, soft power. Sport produced returns the way Picassos do: unmodelled and emotional. That era is closing. PIF's April 2026 strategy reset removes sport from its priority ecosystems. Apollo's €2.9bn control deal at Atlético is structured like a leveraged buyout. The next decade rewards operators, not collectors.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">The consensus framing is that "sport is now investable" — which captures the surface but misses the mechanism. The sharper read is that <strong>governance discipline now matters more than capital availability</strong>. Capital is abundant; operating capability that can deploy it responsibly is scarce.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"What's the operating muscle this club doesn't yet have, that the new capital structure will need?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">PIF strategy reset · Apollo–Atlético · Kingdom Holding–Al Hilal · FSG appointing CFO-track operators</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card" href="posts/macro-02-mco-consolidation.html">
+        <div class="macro-card-num">02</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">Ownership · Strategy · MCO</div>
+          <h3 class="macro-card-title">MCO consolidates;<br><em>regulation chases.</em></h3>
+          <p class="macro-card-body">47.7% of Big Five clubs sit in MCO groups, up from 41.7% a year earlier. US capital makes up ~40% of MCO ownership. UEFA tightens cross-ownership rules; CAS rulings keep weakening the lever. The most interesting strategy roles are no longer at single clubs — they are at group HQs, where the playbook is built and replicated.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">The bull case is "MCO synergies"; the realist case is that <strong>most MCOs underperform their stand-alone parts</strong> because integration is harder than acquisition. The operators who solve integration win.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"Which MCO has actually proven cross-club value beyond shared scouting? Almost none."</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">CFG's 13-club operating manual · FSG's restraint · INEOS sport · Eagle Football stress · UEFA MCO ruling on Drogheda/Man United</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card" href="posts/macro-03-usa-mega-cycle.html">
+        <div class="macro-card-num">03</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">Geography · Cycles</div>
+          <h3 class="macro-card-title">USA — the <em>next mega-cycle</em></h3>
+          <p class="macro-card-body">The 2026 World Cup (USA / Mexico / Canada) is the inflection point. MLS valuations have doubled in five years; NWSL franchise prices have crossed $100m; USL Premier launches in 2028; the NWSL is now PE-investable. Apple-MLS is the world's only football DTC at scale and will be the case study for whether DTC economics can replace pay-TV. The 2027–2030 chapter is where the next round of senior US-soccer operating talent will be tested.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">Most assume the World Cup will <em>create</em> the boom. The sharper read is that <strong>most of the value is captured pre-tournament</strong> (already priced in by 2025–26) and the post-tournament period will sort winners from losers — a buyer's market for operators, not assets.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"What does an MLS club look like in 2030 when the WC bump fades and Apple's contract resets?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">Apple-MLS renewal economics · NWSL valuations · USL Premier launch · Bay FC and Boston Unity SC trajectories</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card wip" href="posts/macro-04-mena-second-wave.html"><span class="wip-tag">In production</span>
+        <div class="macro-card-num">04</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">MENA · Operating Era</div>
+          <h3 class="macro-card-title">MENA's <em>second wave</em> — operations, not signings</h3>
+          <p class="macro-card-body">Phase 1 (2021–2025) was acquisition: marquee signings, club takeovers, the launch of LIV Golf and the Esports World Cup. Phase 2 (2026 onwards) is value-realisation, privatisation, governance, commercial sophistication, stadium delivery, and academy infrastructure. Eleven new stadiums for 2034. Privatisation of Saudi Pro League clubs underway. The 2027 AFC Asian Cup co-hosted with the UAE. The operating profile required for Phase 2 — financial discipline, club governance, infrastructure delivery — is materially different from the dealmaker profile that defined Phase 1.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">Most public commentary on MENA football still describes the Phase 1 narrative — oil money, marquee signings, large public bets. The sharper read is that <strong>Phase 2 is technocratic</strong>, and the operating profile required is fundamentally different: financial discipline, club governance, commercial sophistication, infrastructure delivery.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"What does the operating playbook for a privatised Saudi Pro League club look like, and which group writes it first?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">PIF strategy reset · Kingdom Holding–Al Hilal · SPL privatisation timeline · 2027 Asian Cup operating org · NEOM SC build-out</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card wip" href="posts/macro-05-sportainment-genz.html"><span class="wip-tag">In production</span>
+        <div class="macro-card-num">05</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">Attention · Formats · Gen-Z</div>
+          <h3 class="macro-card-title">Sportainment as a <em>Gen-Z bridge</em></h3>
+          <p class="macro-card-body">Kings League, Baller League, TST, Icon League, World Sevens — now mainstream-funded by Michael Jordan's Courtside Ventures, Verance Capital, and now adjacent to Gamma Waves Partners. 2025 Kings World Cup final drew 3.5m unique device interactions. These will not replace traditional football. They will reshape what <em>fan engagement</em> means at traditional clubs — shorter formats, creator-led storytelling, native-digital broadcast, blurred line between athlete and entertainer.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">The hype frames sportainment as competitive to traditional football. The sharper read is that <strong>traditional clubs that absorb sportainment lessons fastest will widen the gap</strong> against clubs that dismiss it.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"Which top-flight clubs are running the sportainment playbook on their own platforms, and which are leaving the format to outsiders?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">Kings League MENA edition · Baller League US growth · Gamma Waves' sports-IP thesis · iShowSpeed-Baller League · CJEU ruling residue</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card wip" href="posts/macro-06-womens-football.html"><span class="wip-tag">In production</span>
+        <div class="macro-card-num">06</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">Women's Football · Investability</div>
+          <h3 class="macro-card-title">Women's football <em>institutionalises</em></h3>
+          <p class="macro-card-body">A standalone investable category for the first time. Avenue Sports Fund's NWSL entry, Apollo's continued NWSL exposure, Mercury13 (Chiellini-backed MCO), World Sevens Football, FSG's Boston Unity SC, Liverpool FC Women, CFG adding women's clubs systematically. NWSL franchise valuations crossed $100m. Women's football MENA is greenfield — almost no capital, regulator-supportive, low competition.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">Consensus says "growth category." The sharper read is that <strong>women's football MENA is the single largest white space in global football</strong> — and the first credible operator wins category-defining position.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"Why has no major MCO yet built a serious women's football platform in MENA, given the structural conditions that favour it?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">Mercury13 deals · NWSL valuations · Boston Unity SC · Saudi Women's Premier League · UEFA Women's CL economics</div>
+          </div>
+        </div>
+      </a>
+
+      <a class="macro-card wip" href="posts/macro-07-ai-native-ops.html"><span class="wip-tag">In production</span>
+        <div class="macro-card-num">07</div>
+        <div class="macro-card-main">
+          <div class="macro-card-tag">AI · Operations · Edge</div>
+          <h3 class="macro-card-title">AI-native football <em>operations</em></h3>
+          <p class="macro-card-body">Every major workflow is being rebuilt around foundation models — recruitment (Twelve Football's WhatsApp scout chatbot, SkillCorner's tracking AI, Comparisonator's universal performance currency), video analysis (computer-vision auto-tagging at Sevilla, Brighton's psychological profiling via Inside Out Analytics), injury risk (Zone7), fan content personalisation. The clubs that integrate first will have a 5–10% sustainable competitive edge for half a decade. This is exactly the kind of systemic change a strategy director leads.</p>
+        </div>
+        <div class="macro-card-meta">
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Contrarian read</div>
+            <div class="macro-card-meta-text">The dominant framing of AI in football is as a <em>tooling</em> question. The sharper read is that <strong>it is an operating-model question</strong> — clubs that use AI to redesign workflows beat clubs that bolt AI onto existing workflows.</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">The strategic question</div>
+            <div class="macro-card-meta-text">"In which club workflows does AI change who makes the decision, rather than only how quickly the decision gets made?"</div>
+          </div>
+          <div class="macro-card-meta-row">
+            <div class="macro-card-meta-label">Signals</div>
+            <div class="macro-card-meta-text">SkillCorner's 250-team footprint · Twelve Football's WhatsApp scout · Sevilla AI-led scouting · Brighton/Inside Out · Liverpool's "football IQ" model</div>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 1 — GOVERNANCE TRENDS -->
+<section class="layer-trends">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 01 · Section B</div>
+        <h2 class="layer-trends-title">Governance,<br><em>shifting</em></h2>
+      </div>
+      <p class="layer-trends-summary">Governing bodies have lost some monopoly power (CJEU, CAS rulings) and gained operating complexity (2026 + 2034 World Cups). Slow-moving, but the operating arms are scaling fast.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l1-fifa-mega-events.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 1.1</div>
+        <h3 class="lt-title">FIFA's <em>era of mega-events</em></h3>
+        <p class="lt-body">2026 (US/MEX/CAN, 48 teams), 2030 (centenary, 6 hosts across 3 continents), 2034 (Saudi). The next decade is a continuous mega-event delivery cycle. FIFA's operating org has to triple in technical capability — and most of that hiring is in non-traditional FIFA disciplines (digital, hospitality, infra delivery, regulator liaison).</p>
+        <div class="lt-signals"><strong>Watch:</strong> FIFA WC 2034 organising committee build · senior commercial hires · Riyadh-based operating cell</div>
+      </a>
+      <a class="lt wip" href="posts/l1-uefa-legal-pressure.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 1.2</div>
+        <h3 class="lt-title">UEFA <em>under legal pressure</em></h3>
+        <p class="lt-body">CJEU ruling (Dec 2023) on Super League removed UEFA's prior-approval monopoly over new competitions. Recent CAS rulings on multi-club ownership cases consistently weaken UEFA's enforcement lever. UEFA's response — squad-cost rules, MCO tightening — is increasingly a rear-guard action.</p>
+        <div class="lt-signals"><strong>Watch:</strong> A22 Sports Management's next move · UEFA squad-cost rule challenges · MCO competition exemptions</div>
+      </a>
+      <a class="lt wip" href="posts/l1-national-regulators.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 1.3</div>
+        <h3 class="lt-title">National regulators <em>arrive</em></h3>
+        <p class="lt-body">UK's Football Governance Act (2025) created the Independent Football Regulator. Other European jurisdictions watching closely. For the first time in modern football, club ownership is subject to a domestic regulatory layer above league rules — fitness-and-propriety tests now have legal teeth.</p>
+        <div class="lt-signals"><strong>Watch:</strong> IFR enforcement actions · French / German parallel proposals · MCO approval cases</div>
+      </a>
+      <a class="lt wip" href="posts/l1-afc-saff-professionalising.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 1.4</div>
+        <h3 class="lt-title">AFC + SAFF <em>professionalising fast</em></h3>
+        <p class="lt-body">The 2027 Asian Cup (Saudi/UAE) and 2034 World Cup are forcing AFC and SAFF into operating models that look more like UEFA or FIFA than the traditional Asian-confederation governance template. SAFF in particular is hiring senior commercial, technical, and infrastructure leaders at a pace previously unseen in the federation. The result is a federation rebuild happening in real time alongside the tournaments it is preparing to deliver.</p>
+        <div class="lt-signals"><strong>Watch:</strong> SAFF chief commercial hire · AFC Champions League Elite commercial · 2034 LOC formation</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 2 — LEAGUES TRENDS -->
+<section class="layer-trends alt">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 02 · Section B</div>
+        <h2 class="layer-trends-title">Leagues —<br><em>league-as-platform</em></h2>
+      </div>
+      <p class="layer-trends-summary">Leagues are transitioning from competition-organisers to commercial platforms in their own right. The CVC playbook is the template. Rights cycles compress; DTC economics force re-design.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l2-league-pe-infrastructure.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 2.1</div>
+        <h3 class="lt-title">League-level <em>PE infrastructure</em></h3>
+        <p class="lt-body">CVC took 8.2% of LaLiga and 13% of Ligue 1 commercial businesses. The model — long-dated commercial JV at the league level rather than club level — is increasingly attractive to mid-tier leagues looking to professionalise without losing club governance. Expect at least one MENA league deal in this shape by 2028.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Bundesliga DFL commercial vehicle · SPL commercial structure · Serie A media-co spin-out</div>
+      </a>
+      <a class="lt wip" href="posts/l2-dtc-or-die.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 2.2</div>
+        <h3 class="lt-title">DTC <em>or die trying</em></h3>
+        <p class="lt-body">Ligue 1's 2024 broadcast collapse forced the LFP to launch its own DTC platform — a cautionary tale every league is now studying. Apple-MLS is the only football DTC at scale. La Liga and Serie A are quietly preparing DTC contingencies. The 2027 Premier League rights cycle is the next big test.</p>
+        <div class="lt-signals"><strong>Watch:</strong> LFP DTC subscriber numbers · 2027 PL rights bidders · La Liga international DTC plans</div>
+      </a>
+      <a class="lt wip" href="posts/l2-pl-exports-model.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 2.3</div>
+        <h3 class="lt-title">PL exports <em>the model</em></h3>
+        <p class="lt-body">Premier League international rights exceeded domestic for the first time in 2025–28 cycle. The PL is now operationally a global media business with a domestic competition appendage. MLS, SPL, J.League all explicitly studying PL international commercial playbook.</p>
+        <div class="lt-signals"><strong>Watch:</strong> PL Asia/MENA office expansion · Saudi-PL partnership rumours · Summer Tour economics</div>
+      </a>
+      <a class="lt wip" href="posts/l2-spl-privatisation.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 2.4</div>
+        <h3 class="lt-title">SPL <em>privatisation</em></h3>
+        <p class="lt-body">After Kingdom Holding's 70% Al-Hilal acquisition, SPL is on a clear path to privatising the four PIF-anchored clubs. This is the single most interesting league-level operating story in football right now. Strategy and governance roles being scoped this year.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Al-Nassr / Al-Ittihad / Al-Ahli ownership announcements · SPL commercial rights restructuring · Roshn League commercial team build</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 02b — SPORTAINMENT LEAGUES TRENDS -->
+<section class="layer-trends alt">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 02a · Section B</div>
+        <h2 class="layer-trends-title">Sportainment —<br><em>institutional</em> phase</h2>
+      </div>
+      <p class="layer-trends-summary">Three years ago, sportainment was creator-led experimentation. Today, it's institutional capital, top-club partnerships, and global formats. Mainstream by 2027.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l10-format-convergence.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 10.1</div>
+        <h3 class="lt-title">Sportainment, <em>institutionalising</em></h3>
+        <p class="lt-body">The "creator side project" framing is dead. Mainstream capital has arrived (Courtside Ventures backing Baller League, Verance and Gamma Waves treating sport IP as an asset class, Kosmos building an institutional LP base). Top clubs are joining established formats (Bayern, Man City, PSG women's teams in World Sevens). A MENA edition is widely expected in 2026–27. And five formats won't all survive — by 2028 expect 2–3 dominant global brands and a small regional tail. One layer, four converging dynamics.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Courtside follow-on rounds · Gamma Waves first sports-IP deal · top-club participation in 2026/27 Kings League · GEA sportainment hosting bids · format consolidation rumours</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 3 — CLUBS / MCO TRENDS -->
+<section class="layer-trends">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 03 · Section B</div>
+        <h2 class="layer-trends-title">Clubs &amp; MCO —<br><em>integration</em> wins</h2>
+      </div>
+      <p class="layer-trends-summary">The acquisition phase of MCO is over. The integration phase has barely begun. Strategy and operating talent at MCO group HQ is the highest-leverage seat in football right now.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt" href="posts/l3-barcelona-crisis-recovery.html">
+        <div class="lt-tag">Case study · Layer 3</div>
+        <h3 class="lt-title"><em>Barcelona</em>'s crisis &amp; recovery</h3>
+        <p class="lt-body">How FC Barcelona ran into the most severe balance-sheet crisis at any major European club this century, lost Messi as collateral, pulled the controversial "economic levers" to register a squad, and partially recovered. The strategic question — did the club solve the problem or push it ten years forward? — is still open.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Camp Nou full-capacity reopening · Espai Barça debt-service · 2027–28 La Liga commercial cycle · academy pipeline retention</div>
+      </a>
+      <a class="lt wip" href="posts/l3-group-hq-arms-race.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 3.1</div>
+        <h3 class="lt-title">Group-HQ talent <em>arms race</em></h3>
+        <p class="lt-body">CFG, FSG, RedBird, BlueCo, and INEOS Sport are each building 30-to-80 person group-HQ teams covering football operations, commercial, data and technology, finance, and legal. Most of these teams did not exist three years ago. The recruiting pattern is unusual for football: the hires are coming primarily from outside the industry, from management consulting, technology, and adjacent sectors.</p>
+        <div class="lt-signals"><strong>Watch:</strong> CFG group HQ org chart · FSG football-operations function · RedBird's club-platform team</div>
+      </a>
+      <a class="lt wip" href="posts/l3-mco-blowup-risk.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 3.2</div>
+        <h3 class="lt-title">Mid-tier MCO <em>blow-up risk</em></h3>
+        <p class="lt-body">Eagle Football, 777 Partners (collapsed), and several smaller MCOs have shown the model can fail under cash-flow stress when too many leveraged acquisitions happen too fast. Expect 2–3 more public failures by 2028, creating distressed-asset opportunities for better-capitalised platforms.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Lyon refinancing · Crystal Palace ownership stake reshuffles · multi-club leverage covenants</div>
+      </a>
+      <a class="lt wip" href="posts/l3-womens-clubs-systematic.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 3.3</div>
+        <h3 class="lt-title">Women's clubs <em>added systematically</em></h3>
+        <p class="lt-body">Most major MCO groups now treat women's clubs as a portfolio addition rather than a CSR add-on. CFG, FSG, Liverpool, Mercury13. The economics still don't fully justify it on a stand-alone basis — but the brand and pipeline arguments increasingly do.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Boston Unity SC (FSG) launch trajectory · CFG women's portfolio · Mercury13 acquisitions</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 4 — CAPITAL TRENDS -->
+<section class="layer-trends alt">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 04 · Section B</div>
+        <h2 class="layer-trends-title">Capital —<br><em>specialisation</em> deepens</h2>
+      </div>
+      <p class="layer-trends-summary">Sports PE has moved from "interesting niche" to "stand-alone asset class with its own talent market." Specialised vehicles outperform generalists. Sovereign capital recalibrates.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt" href="posts/l4-pif-phase-2.html">
+        <div class="lt-tag">Trend 4.2</div>
+        <h3 class="lt-title">PIF Phase 2 <em>recalibration</em></h3>
+        <p class="lt-body">Sport removed from PIF's six priority ecosystems. 70% Al-Hilal sold. LIV Golf funding ends 2026. This is not a retreat — it is a redesign. Phase 2 thesis: privatise, professionalise, partner. The most interesting MENA football operating roles will be created in this window.</p>
+        <div class="lt-signals"><strong>Watch:</strong> PIF sport portfolio restructuring · SPL privatisation pricing · partnership announcements</div>
+      </a>
+      <a class="lt wip" href="posts/l4-control-deals-normal.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 4.1</div>
+        <h3 class="lt-title">Control deals <em>become normal</em></h3>
+        <p class="lt-body">Apollo's 55% Atlético deal at €2.9bn breaks the "minority-only" convention. Expect more. Generalist PE firms now have a thesis (and the underwriting teams) to do control deals on big-five clubs. This re-prices everything in the asset class.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Apollo Atlético operating playbook · KKR / Blackstone first football control deal · Serie A control deal pipeline</div>
+      </a>
+      <a class="lt wip" href="posts/l4-sports-tech-vc-matures.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 4.3</div>
+        <h3 class="lt-title">Sports-tech VC <em>matures</em></h3>
+        <p class="lt-body">Verance Capital, Gamma Waves Partners, Courtside Ventures, a16z Sports Fund, Causeway Media. Five years ago, "football-tech investor" was a label two firms used. Today it's a credible dedicated category with €1bn+ in deployable capital. Specialist GPs win deal access; generalists overpay.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Gamma Waves first deal · Verance MENA sports-tech build · a16z sports portfolio depth</div>
+      </a>
+      <a class="lt wip" href="posts/l4-permanent-capital.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 4.4</div>
+        <h3 class="lt-title">Permanent capital <em>structures</em></h3>
+        <p class="lt-body">Gamma Waves Partners, FSG, INEOS, RedBird's evergreen vehicles. Football capital is moving away from 7–10 year fund life toward permanent or semi-permanent structures that match football's long-cycle ownership reality. Better governance fit, better strategic patience.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Permanent-capital vehicle launches · sport-dedicated SPACs return · evergreen vs PE fund pricing</div>
+      </a>
+      <a class="lt wip" href="posts/l4-family-offices-organised.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 4.5</div>
+        <h3 class="lt-title">Family offices <em>get organised</em></h3>
+        <p class="lt-body">Eldridge (Boehly), Kingdom Holding (Alwaleed), Reuben Brothers, Benetton-adjacent vehicles. Family-office football capital is professionalising — investment committees, dedicated CIOs, structured deal flow. The line between "private buyer" and "PE firm" continues to blur.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Kingdom Holding sport vertical hires · Eldridge sports portfolio · Reuben Brothers next acquisition</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 5 — AGENCIES TRENDS -->
+<section class="layer-trends">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 05 · Section B</div>
+        <h2 class="layer-trends-title">Agencies —<br><em>vertical expansion</em></h2>
+      </div>
+      <p class="layer-trends-summary">Player representation alone no longer makes the economics work. Top agencies expand into club advisory, executive search, broadcast representation, and increasingly investment.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l5-coach-staff-talent-ip.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 5.1</div>
+        <h3 class="lt-title">Coach + manager <em>talent IP</em></h3>
+        <p class="lt-body">Top coaches now move with their full backroom staff as a unit — recruitment, sports science, video analysis. Agencies increasingly represent the staff cluster rather than individual coaches. This makes manager hires more like M&amp;A than transfers.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Premier League manager-staff move patterns · CAA Stellar coach-staff bundling</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 6 — MEDIA TRENDS -->
+<section class="layer-trends alt">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 06 · Section B</div>
+        <h2 class="layer-trends-title">Media —<br><em>DTC reshapes</em><br>everything</h2>
+      </div>
+      <p class="layer-trends-summary">Sky / DAZN / beIN are all under pressure. Apple, Amazon, Netflix circle. The 2027 Premier League rights cycle is the inflection. Clubs build their own media stacks.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt" href="posts/l6-apple-mls-case-study.html">
+        <div class="lt-tag">Trend 6.2</div>
+        <h3 class="lt-title">Apple-MLS <em>case study</em></h3>
+        <p class="lt-body">First global football DTC at scale. Subscriber numbers, ARPU, churn — these data points will determine whether DTC economics can fund top-tier club operations or whether pay-TV remains the underlying model. Mid-cycle data emerging in 2026.</p>
+        <div class="lt-signals"><strong>Watch:</strong> MLS Season Pass subscriber milestones · Apple-MLS renewal terms · Messi-driven uplift mid-term</div>
+      </a>
+      <a class="lt" href="posts/l6-bein-mena-fragmentation.html">
+        <div class="lt-tag">Trend 6.4</div>
+        <h3 class="lt-title">beIN's <em>MENA fragmentation</em></h3>
+        <p class="lt-body">SSC capturing SPL rights, Shahid (MBC) building streaming. beIN's regional incumbency is real but eroding. The Saudi-led broadcast architecture for SPL and 2034 will likely be Saudi-controlled, not beIN-controlled.</p>
+        <div class="lt-signals"><strong>Watch:</strong> SSC-SPL contract terms · Shahid sports tier build-out · beIN renewal negotiations</div>
+      </a>
+      <a class="lt wip" href="posts/l6-2027-pl-cycle-reset.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 6.1</div>
+        <h3 class="lt-title">2027 PL cycle <em>reset</em></h3>
+        <p class="lt-body">Apple, Amazon, Netflix all expected to bid in the 2027–30 cycle. If a streaming entrant takes a meaningful package at scale, Sky's 30-year incumbency ends. Reshapes economics for every PL club, including Liverpool.</p>
+        <div class="lt-signals"><strong>Watch:</strong> 2027 bidder field · Sky-Comcast football strategy · Apple PL exclusive package rumours</div>
+      </a>
+      <a class="lt wip" href="posts/l6-club-as-media-company.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 6.3</div>
+        <h3 class="lt-title">Club-as-media-company <em>matures</em></h3>
+        <p class="lt-body">Real Madrid TV, LFCTV, City+, Inter+. Every top club now operates a content team, documentary pipeline, social-content production, and increasingly a DTC subscriber product. Liverpool's content strategy specifically is widely studied.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Club-DTC subscriber economics · Netflix sports-doc deal structures · in-house content team scale</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 7 — COMMERCIAL TRENDS -->
+<section class="layer-trends">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 07 · Section B</div>
+        <h2 class="layer-trends-title">Commercial —<br><em>MENA capital</em><br>moves upstream</h2>
+      </div>
+      <p class="layer-trends-summary">MENA tourism authorities and state carriers are now among the top three sponsors at several of the largest European clubs. The commercial strategy and activation work this requires is meaningfully reshaping the sponsorship economy of European football.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l7-front-of-shirt-multitier.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 7.1</div>
+        <h3 class="lt-title">Commercial architecture, <em>re-priced</em></h3>
+        <p class="lt-body">Top clubs are unbundling shirt real estate — primary, secondary, sleeve, training, women's, academy — into separately priced inventory units, and the renewal cycle on each is increasingly governed by real-time exposure and engagement data. Two Circles, Nielsen Sports, and Shikenso are importing digital-advertising pricing discipline into a category that previously ran on relationship and intuition.</p>
+        <div class="lt-signals"><strong>Watch:</strong> PL secondary-sponsor regulation · sleeve sponsor market data · Two Circles client list · in-house club analytics functions</div>
+      </a>
+      <a class="lt wip" href="posts/l7-fanatics-vertical.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 7.2</div>
+        <h3 class="lt-title">Category <em>power-shifts</em></h3>
+        <p class="lt-body">Fanatics has consolidated the licensed merchandise vertical — design, manufacturing, retail, e-commerce, in-stadium — and Saudi state-aligned tourism brands (Riyadh Air, AlUla, NEOM, Saudi Tourism, Diriyah) have moved upstream into front-of-shirt and sleeve. Two adjacent shifts in who actually controls the commercial value chain at top European clubs.</p>
+        <div class="lt-signals"><strong>Watch:</strong> PL Fanatics deal renewal economics · Castore as anti-Fanatics alternative · Saudi sponsorship at Liverpool / Newcastle · NEOM new club deals</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 8 — FOOTBALL TECH TRENDS -->
+<section class="layer-trends alt">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 08 · Section B</div>
+        <h2 class="layer-trends-title">Football-tech —<br><em>AI-native</em><br>workflows</h2>
+      </div>
+      <p class="layer-trends-summary">The fastest-moving layer. Foundation models rebuild recruitment, video, medical, and fan workflows. The clubs that adopt first build durable competitive edge.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt" href="posts/l8-data-led-underdogs.html">
+        <div class="lt-tag">Trend 8.2</div>
+        <h3 class="lt-title">The <em>data-led</em> underdog</h3>
+        <p class="lt-body">Hearts at the top of the Scottish Premiership. Como back in Serie A's upper half. Union Saint-Gilloise champions of Belgium. Bodø/Glimt in the UCL Round of 16. A small set of mid-budget clubs is punching above its weight by buying data-led recruitment as a service. Jamestown Analytics is the through-line. The Brentford effect, generalised — and a live test of how durable the data edge remains once the rest of the league catches up.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Jamestown Analytics client list · Como ownership-and-analytics integration · which Premier League side hires the next Brentford-trained operator</div>
+      </a>
+      <a class="lt wip" href="posts/l8-llm-native-scouting.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 8.1</div>
+        <h3 class="lt-title">The <em>AI-native</em> football-tech stack</h3>
+        <p class="lt-body">Foundation models are rebuilding the four dominant football-tech workflows in parallel: LLM-native scouting interfaces (Twelve Football, Comparisonator, SkillCorner), computer-vision auto-tagging that compresses 4–6 hour video sessions into near-real-time output (StatsBomb, Hudl), injury-risk prediction on training-load and biometric data (Zone7, Kitman Labs, Orreco), and the contested edge of psychological profiling from match footage (Inside Out Analytics). One stack, four use cases, one durable competitive edge for the clubs that adopt early.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Twelve Football pilots at top clubs · Hudl–Wyscout integration roadmap · Zone7 club partnership announcements · in-house club CV and medical-AI stacks</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 9 — STADIUM TRENDS -->
+<section class="layer-trends">
+  <div class="layer-trends-wrap">
+    <div class="layer-trends-header">
+      <div>
+        <div class="layer-trends-num">Layer 09 · Section B</div>
+        <h2 class="layer-trends-title">Stadium &amp; fan —<br><em>premium</em> economy</h2>
+      </div>
+      <p class="layer-trends-summary">Premium hospitality is the fastest-growing revenue line at top clubs. 2034 World Cup creates the largest stadium pipeline in 30 years. Fan-experience tech matures.</p>
+      <div></div>
+    </div>
+    <div class="lt-grid">
+      <a class="lt wip" href="posts/l9-premium-hospitality-boom.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 9.1</div>
+        <h3 class="lt-title">Stadium revenue <em>engineering</em></h3>
+        <p class="lt-body">Premium hospitality now drives 10–18% of matchday revenue at top clubs and is growing 15%+ annually (Tottenham premium tiers, Real Madrid's Bernabéu reconfiguration, Bayern club seats; Legends, On Location, Quintessentially Sport as operators). On the same matchday, dynamic ticket pricing imported from US sports — Ticketmaster, SeatGeek, DICE — is reshaping the rest of the bowl. The matchday P&amp;L is being re-engineered top-to-bottom.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Premium-tier average ticket prices · Legends MENA push · PL clubs' dynamic-pricing public response · DICE football expansion</div>
+      </a>
+      <a class="lt wip" href="posts/l9-stadium-as-365-venue.html"><span class="wip-tag">In production</span>
+        <div class="lt-tag">Trend 9.2</div>
+        <h3 class="lt-title">Stadium <em>as 365-day venue</em></h3>
+        <p class="lt-body">Tottenham (NFL games, concerts), Bernabéu (concert pivot), Etihad (concert stack). Top clubs now run their stadia as 365-day entertainment venues — concerts and other sports drive 20–30% of incremental revenue. Reshapes capex modelling for new stadia.</p>
+        <div class="lt-signals"><strong>Watch:</strong> Bernabéu post-renovation P&amp;L · Tottenham non-football revenue · Riyadh Season concert-stadium plays</div>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- WS2 CODA -->
+<section class="coda">
+  <div class="coda-eyebrow">End of section · The Ledger</div>
+  <h2 class="coda-title">
+    These are <strong>strategic questions</strong><br>
+    in disguise. The next decade will<br>
+    answer them <strong>club by club.</strong>
+  </h2>
+  <div class="coda-meta">The Football Ledger · A continuing analysis of football's business architecture</div>
+</section>
+
+<footer>
+  <div>The Football Ledger</div>
+  <div>2026</div>
+</footer>
+
+</div><!-- /ws2 -->
+
+<!-- ============= SCRIPT ============= -->
+<script>
+// ===== Section toggling (Ecosystem ↔ Trends) =====
+// Only the BUTTON nav-items have data-ws and toggle inline sections.
+// Anchor nav-items (Briefing, About) are real navigation to other pages.
+const sectionTabs = document.querySelectorAll('button.nav-item[data-ws]');
+const workstreams = document.querySelectorAll('.workstream');
+function activateWorkstream(target) {
+  sectionTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-ws') === target));
+  workstreams.forEach(w => w.classList.toggle('active', w.id === target));
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+sectionTabs.forEach(tab => {
+  tab.addEventListener('click', () => activateWorkstream(tab.getAttribute('data-ws')));
+});
+// Inline links elsewhere on the page can also trigger the toggle via [data-ws].
+document.querySelectorAll('a[data-ws]').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    activateWorkstream(link.getAttribute('data-ws'));
+  });
+});
+
+// ===== Side-nav active highlight (Ecosystem section only) =====
+const sections = document.querySelectorAll('#ws1 section[id]');
+const navItems = document.querySelectorAll('.layer-nav-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + id) {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -40% 0px' });
+
+sections.forEach(section => observer.observe(section));
+
+// ===== Stagger fade-in on cards =====
+const entityObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = `fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) ${i * 0.05}s backwards`;
+      entityObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.entity, .trend, .mena-country, .macro-card, .lt').forEach(el => entityObserver.observe(el));
+</script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INEOS Sport — Entity profile · The Football Ledger</title>
+<meta name="description" content="INEOS Sport entity profile: Manchester United minority control (~25%), OGC Nice, FC Lausanne-Sport, plus cycling, sailing, and motorsport adjacencies. The Ratcliffe-led sport platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a href="../index.html" class="brand"><span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>The Football Ledger</a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-3">Layer 03 · Clubs &amp; MCO</a><span class="sep">/</span><span>INEOS Sport</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L3 · Clubs &amp; MCO · Multi-club / multi-sport ownership group</span><span class="eyebrow-meta">·  London</span></div>
+  <h1 class="entity-title"><em>INEOS</em> Sport</h1>
+  <p class="entity-deck">Sir Jim Ratcliffe's INEOS chemicals empire's sport platform. Manchester United minority control (~25%, with sporting authority), OGC Nice in Ligue 1, FC Lausanne-Sport, plus cycling, sailing, motorsport adjacencies. The Brailsford-led football operating reset is the central story.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Multi-club / multi-sport ownership group</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">2017 (INEOS Sport)</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">London</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Sir Jim Ratcliffe · Sir Dave Brailsford (Director of Sport)</div></div>
+    <div class="fact"><div class="fact-label">Scale headline</div><div class="fact-value"><em>Manchester United</em> sporting authority</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Manchester United operating reset</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The Ratcliffe-led platform</h2>
+<p>INEOS Sport is the sport platform of INEOS Group, the chemicals empire founded by Sir Jim Ratcliffe. The platform was formalised around the 2017 acquisition of Sky Cycling (which became INEOS Grenadiers) and has since extended to football (OGC Nice 2019, FC Lausanne-Sport 2017, Manchester United minority 2024), sailing (INEOS Britannia America's Cup), Formula 1 (Mercedes-AMG Petronas minority), and adjacencies. Total INEOS Group revenue runs into the tens of billions; the sport platform is materially smaller but strategically central to the group brand.</p><p>The February 2024 Manchester United minority acquisition — approximately 27.7 per cent for ~$1.6bn including football operating authority — is the platform's marquee position and the central operating focus for 2024-2030. Sir Dave Brailsford's role as INEOS Sport Director — and his hands-on involvement in Manchester United's football reset — is the operating engine.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Scale and structure</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Group structure</div><div><div class="row-val">INEOS Group sport-vertical platform. Funded directly from INEOS Group balance sheet rather than a separate fund vehicle. Ratcliffe principal owner. Sport-specific holding companies for individual investments.</div><div class="row-source">Source · Disclosed · Reported</div></div></div>
+      <div class="row"><div class="row-key">Portfolio</div><div><div class="row-val"><strong>Manchester United (~27.7% minority, sporting authority)</strong> — February 2024. <strong>OGC Nice (100%)</strong> — 2019. <strong>FC Lausanne-Sport (100%)</strong> — 2017. <strong>INEOS Grenadiers (cycling)</strong>. <strong>INEOS Britannia (sailing, America's Cup)</strong>. <strong>Mercedes-AMG F1 (~33% minority)</strong>. Plus rugby and adjacencies.</div><div class="row-source">Source · Disclosed · Reported</div></div></div>
+      <div class="row"><div class="row-key">Aggregate group revenue</div><div><div class="row-val">Football-specific revenue dominated by Manchester United (£661m disclosed for 2023-24). OGC Nice and Lausanne materially smaller. Broader INEOS Sport platform revenue runs into the high hundreds of millions across all sports.</div><div class="row-source">Source · Disclosed (Manchester United)</div></div></div>
+      <div class="row"><div class="row-key">Group operating model</div><div><div class="row-val">Building. INEOS Sport central platform team in London under Brailsford, with embedded sport-specific operating leadership at each entity. Manchester United football operations refresh under Brailsford, Wilcox, Berrada continues through 2024-26.</div><div class="row-source">Source · Reported · LinkedIn-mapped</div></div></div>
+      <div class="row"><div class="row-key">Group leadership</div><div><div class="row-val"><strong>Principal Owner:</strong> Sir Jim Ratcliffe. <strong>Director of Sport:</strong> Sir Dave Brailsford. <strong>Manchester United Director of Football:</strong> Jason Wilcox. <strong>Manchester United CEO:</strong> Omar Berrada (2024). <strong>OGC Nice and Lausanne:</strong> embedded local leadership.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Most recent transactions</div><div><div class="row-val"><strong>2024 (February):</strong> Manchester United ~27.7% minority acquisition with sporting authority. <strong>2024:</strong> Senior management refresh at Manchester United (Berrada, Wilcox, Ashworth interim). <strong>2019:</strong> OGC Nice acquisition. <strong>2017:</strong> Sky Cycling becomes INEOS Grenadiers; Lausanne acquisition.</div><div class="row-source">Source · Disclosed · Reported</div></div></div>
+      <div class="row"><div class="row-key">Stated thesis</div><div><div class="row-val">Long-term operating compounding across multiple sport categories with shared INEOS Group brand and operating-discipline frameworks. Football-specific thesis emphasises sustained operating reset rather than transfer-market spend.</div><div class="row-source">Source · Reported · INEOS communications</div></div></div>
+      <div class="row"><div class="row-key">Strategic posture (2026)</div><div><div class="row-val"><em>Manchester United reset.</em> Football operations refresh continues under Brailsford-Wilcox-Berrada architecture. Old Trafford redevelopment in evaluation. <em>OGC Nice steady-state.</em> Ligue 1 operating compounding. <em>Adjacent-sport investment.</em></div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>What the institution actually does</h2>
+<p>INEOS Sport's most consequential investment is the Manchester United minority. The deal structure gave INEOS sporting authority despite the Glazer family retaining majority economic control, and the operating reset Brailsford has run since spring 2024 is the central question for the platform. Senior management refresh (Berrada as CEO from CFG, Wilcox as Director of Football from Southampton, Ashworth's interim Sporting Director role and subsequent departure, Ten Hag departure / Amorim arrival as manager in November 2024) has consumed most of the platform's strategic attention.</p><p>OGC Nice has run on a more disciplined operating basis through INEOS's ownership, with Christophe Galtier and subsequent managers producing competitive Ligue 1 finishes. Lausanne is smaller-scale steady-state. The cycling and sailing platforms have produced sustained competitive performance.</p><p>Old Trafford is the medium-term capex question. The stadium is widely understood to require either substantial redevelopment or replacement; INEOS's evaluation programme through 2024-25 has signalled a redevelopment-led approach, but the financing and timing are not yet public.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>INEOS Sport's stated direction in 2026 is the Manchester United operating reset. The Brailsford-led architecture, the Amorim-anchored sporting reset, and the Old Trafford redevelopment evaluation are the three central strategic threads. Other platform sports run on stable steady-state operating cycles.</p><p>The capital base is INEOS Group balance sheet — patient, indefinite-hold, no fund-life pressure. The Glazer minority position at Manchester United remains the structural overhang on the football platform; INEOS's ability to extend its position over time depends on Glazer family decisions that are not within INEOS's direct control.</p>
+  </section>
+  <section class="section"><div class="section-label">Open questions</div><h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the Brailsford-Wilcox-Berrada operating reset deliver sustained Manchester United sporting performance and Champions League qualification by 2027-28?</li>
+      <li>What is the Old Trafford redevelopment financing structure, and how does the capex programme interact with the broader Manchester United P&L recovery?</li>
+      <li>Does INEOS extend its Manchester United position over time toward majority control, or remain structurally minority with sporting authority?</li>
+      <li>How deep does the platform integration go between Manchester United, OGC Nice, and Lausanne, given UEFA MCO regulatory constraints?</li>
+      <li>What is the post-Ratcliffe succession architecture? Is the INEOS Sport platform structurally indefinite, or does the next decade see succession or capital restructuring?</li>
+    </ul>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Manchester United Annual Reports (2022, 2023, 2024)</li>
+      <li>INEOS Group communications, press releases</li>
+      <li>Trade press: FT, The Athletic, Sportico, Off the Pitch (2017-2026)</li>
+      <li>Manchester United Glazer transaction reporting (2024)</li>
+      <li>Premier League and UEFA financial controls disclosures</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
+</body>
+</html>

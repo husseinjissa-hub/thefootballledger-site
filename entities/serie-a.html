@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Serie A — Entity profile · The Football Ledger</title>
+<meta name="description" content="Serie A (Lega Serie A) profile: 20-club top flight, broadcast cycle pressures, media-co spin-out under evaluation, governance reset after Juventus FFP case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a href="../index.html" class="brand"><span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>The Football Ledger</a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues</a><span class="sep">/</span><span>Serie A</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L2 · Leagues · Top-flight league</span><span class="eyebrow-meta">·  Milan, Italy</span></div>
+  <h1 class="entity-title"><em>Serie A</em></h1>
+  <p class="entity-deck">Italy's top flight, governed by Lega Serie A. Multi-decade broadcast-revenue compression relative to peer big-five leagues. Media-co spin-out under PE evaluation; governance reset after the Juventus FFP case.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Top-flight national league</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1929 (Serie A)</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Milan, Italy</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Lorenzo Casini (President, Lega Serie A) · Luigi De Siervo (CEO)</div></div>
+    <div class="fact"><div class="fact-label">Scale headline</div><div class="fact-value"><em>~€2.6bn</em> aggregate club revenue</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Media-co exploration · governance rebuild</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The legacy league, repositioning</h2>
+<p>Serie A is Italy's top-flight football league, governed by Lega Serie A. The league's commercial trajectory has compressed materially relative to the Premier League and La Liga over the past two decades, but it remains a significant European competition with sustained sporting prestige and recent recovery in performance metrics. The 2026 picture is dominated by two threads: the media-co spin-out under PE evaluation, and the governance reset following the 2022-23 Juventus FFP case.</p><p>The league's institutional capital base — RedBird at AC Milan, Apollo at Atlético (with consequential adjacency), Oaktree at Inter following the 2024 ownership reset — has materially lifted the institutional-capital weight in the league. The structural commercial reform conversation continues alongside.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Scale and structure</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Format</div><div><div class="row-val">20 clubs, August-May season, two-leg round-robin (38 matches), no playoffs, three-up / three-down with Serie B.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Domestic broadcast deal</div><div><div class="row-val">DAZN (primary), Sky Italia (secondary). Current cycle 2024-29 worth ~€4.5bn across all packages.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">International broadcast deal</div><div><div class="row-val">Lega Serie A international rights. Aggregate value below La Liga's international portfolio.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Central commercial pool</div><div><div class="row-val">Lega Serie A central commercial. Title sponsor (currently EA Sports). Distribution formula combines fixed, performance, and audience components.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Distribution model</div><div><div class="row-val">50% equal-share, 30% based on historical results, 20% based on audience and fan-base metrics. Top-bottom ratio wider than Bundesliga, narrower than Premier League.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Aggregate league revenue</div><div><div class="row-val">Approximately <em>€2.6-2.8bn</em> across all 20 clubs for 2023-24. Inter, Juventus, Milan dominate the top tier.</div><div class="row-source">Source · Disclosed (Deloitte FML)</div></div></div>
+      <div class="row"><div class="row-key">Ownership and governance rules</div><div><div class="row-val">Standard fitness-and-propriety regime under FIGC. No 50+1 equivalent. UEFA MCO and FFP regimes apply.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">External regulatory layer</div><div><div class="row-val">FIGC (Italian Football Federation), CONI (national Olympic committee oversight), UEFA financial-fair-play, Italian competition law.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Strategic posture (2026)</div><div><div class="row-val"><em>Media-co spin-out under evaluation.</em> CVC-style league-level commercial vehicle conversation continuing. <em>Governance rebuild.</em> Post-Juventus FFP case oversight tightening. <em>Calcio Italiano international expansion.</em></div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>What the institution actually does</h2>
+<p>Serie A's commercial position has compressed since the late-1990s peak when Italian football dominated European broadcast economics. The 2024-29 broadcast cycle stabilised value but did not produce the inflection upward that the league's strategic planners had targeted. The aggregate revenue gap with the Premier League is structural and will not close materially under current architecture.</p><p>The media-co spin-out conversation — a CVC-style league-level commercial vehicle that would bring upfront capital into the league in exchange for a long-dated revenue-share — has been in active evaluation through 2024-26. The structuring choices, the PE counterparty, and the governance arrangements will mirror or diverge from the LaLiga template depending on regulatory and political constraints.</p><p>The Juventus FFP case (2022-23) — sanctions for capital-gains accounting and salary-deferral irregularities — produced a 10-point deduction in 2022-23 and forced a broader governance reset across Italian football. The follow-on operating discipline at peer clubs has tightened.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>Lega Serie A's stated direction in 2026 is to deliver the 2024-29 broadcast cycle, evaluate the media-co spin-out structure, and rebuild governance credibility post-Juventus. The league's competitive trajectory has improved (Inter's recent Champions League final, Milan's recovery, Juventus rebuild) but the commercial gap to the Premier League and La Liga remains.</p><p>The institutional-capital base across the league — RedBird at Milan, Oaktree at Inter, Friedkin Group at Roma, Comolli era at Juventus — is more institutionally diverse than at any previous point and provides a different operating-capability foundation than the legacy family-ownership era.</p>
+  </section>
+  <section class="section"><div class="section-label">Open questions</div><h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the media-co spin-out close, and at what valuation and structure relative to the LaLiga / Ligue 1 comparables?</li>
+      <li>How does the 2027-29 mid-cycle broadcast review unfold — does DAZN renew its position, or does the architecture re-fragment?</li>
+      <li>What is the post-Juventus FFP case governance structure, and does the league's financial-controls discipline hold across the next operating cycle?</li>
+      <li>Does Serie A's institutional-capital base produce sustained sporting performance uplift, particularly in the Champions League, that supports the commercial recovery?</li>
+      <li>How does the league navigate the structural commercial gap to the Premier League — through reform, through media-co capital, through international expansion, or through accepting the gap?</li>
+    </ul>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Lega Serie A annual reports and communications</li>
+      <li>Deloitte Football Money League (2019-2025)</li>
+      <li>Juventus FFP case documents (2022-23) and FIGC oversight responses</li>
+      <li>Trade press: FT, La Gazzetta dello Sport, Off the Pitch, Sport Business (2014-2026)</li>
+      <li>Italian competition authority and CONI disclosures</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
+</body>
+</html>

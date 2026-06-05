@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcelona — crisis and recovery — The Football Ledger</title>
+<meta name="description" content="How FC Barcelona ran into a balance-sheet crisis, lost Messi as collateral, pulled the controversial Laporta reset to register a squad, and partially recovered. The still-open question: did the club solve the problem or push it ten years forward?">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --ink-4: #2a2a2a; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --sand: #e8dcc4; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; overflow-x: hidden; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; transition: opacity 0.3s ease; }
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; display: inline-flex; align-items: center; white-space: nowrap; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.article-header { padding: 100px 60px 80px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.article-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+.article-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; margin-bottom: 40px; }
+.article-meta { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-mute); }
+.article-meta strong { color: var(--bone); font-weight: 500; }
+.article-body { max-width: 760px; margin: 0 auto; padding: 80px 60px 60px; font-size: 18px; line-height: 1.75; color: var(--bone); }
+.article-body p { margin-bottom: 28px; }
+.article-body p.lead { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 400; line-height: 1.55; color: var(--bone); margin-bottom: 40px; }
+.article-body p.lead::first-letter { font-family: 'Fraunces', serif; font-size: 76px; font-weight: 400; float: left; line-height: 0.9; margin: 8px 14px 0 0; color: var(--gold); }
+.article-body h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; line-height: 1.15; letter-spacing: -0.015em; margin-top: 64px; margin-bottom: 24px; color: var(--bone); }
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body blockquote { border-left: 3px solid var(--gold); padding: 4px 0 4px 28px; margin: 40px 0; font-family: 'Fraunces', serif; font-style: italic; font-size: 22px; line-height: 1.45; color: var(--bone); }
+.signals { max-width: 760px; margin: 60px auto 0; padding: 0 60px; }
+.signals-inner { border: 1px solid var(--line); background: var(--ink-2); padding: 32px 36px; }
+.signals-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; margin-bottom: 18px; }
+.signals-list { list-style: none; display: flex; flex-direction: column; gap: 22px; }
+.signals-list li { font-size: 14.5px; line-height: 1.55; color: var(--bone-dim); display: grid; grid-template-columns: 8px 260px 1fr; gap: 24px; align-items: baseline; }
+.signals-list li::before { content: ''; width: 8px; height: 1px; background: var(--gold); flex-shrink: 0; margin-top: 10px; }
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) { .signals-list li { grid-template-columns: 8px 1fr; } .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; } }
+.related { border-top: 1px solid var(--line); margin-top: 100px; padding: 80px 60px; background: var(--ink-2); }
+.related-wrap { max-width: 1400px; margin: 0 auto; }
+.related-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
+.related-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.related-card { background: var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; position: relative; transition: background 0.4s ease; }
+.related-card:hover { background: var(--ink-3); }
+.related-card::after { content: '→'; position: absolute; top: 28px; right: 28px; font-family: 'Fraunces', serif; font-size: 18px; color: var(--bone-mute); opacity: 0; transform: translateX(-6px); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+.related-card:hover::after { opacity: 1; transform: translateX(0); color: var(--gold); }
+.related-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+.related-card-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc { font-size: 13px; line-height: 1.55; color: var(--bone-dim); flex-grow: 1; }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.chart { margin: 60px -32px; display: block; }
+.chart svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+.chart figcaption { font-size: 13px; line-height: 1.55; color: var(--bone-mute); font-style: normal; margin-top: 16px; padding: 0 4px; font-family: 'Inter Tight', sans-serif; }
+.chart figcaption em { font-style: italic; color: var(--bone-dim); }
+.chart figcaption strong { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+@media (max-width: 900px) { .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; } .primary-nav { width: 100%; } .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; } .article-header { padding: 60px 24px 50px; } .article-body { padding: 50px 24px 40px; font-size: 17px; } .article-meta { flex-direction: column; gap: 12px; } .signals { padding: 0 24px; } .related { padding: 60px 24px; } footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; } }
+@media (max-width: 760px) { .chart { margin: 40px -24px; } }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a href="../index.html" class="brand"><span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>The Football Ledger</a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="../entities/index.html" class="nav-item">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow"><span>Layer 3 · Case study</span><span class="article-eyebrow-meta">·  FC Barcelona · Balance-sheet crisis · 2020–2026</span></div>
+    <h1 class="article-title"><em>Barcelona</em>'s crisis and recovery</h1>
+    <p class="article-deck">Between 2020 and 2022, FC Barcelona ran into the most severe balance-sheet crisis at any major European club this century. Messi left as collateral. The Laporta reset registered the next squad. Four years on, the recovery is partial, the debt is real, and the strategic question is open: did the club solve the problem, or just push it ten years into the future?</p>
+    <div class="article-meta"><span><strong>8 min</strong> read</span><span>Published <strong>May 2026</strong></span><span>Volume <strong>01</strong> · Workstream <strong>02</strong></span></div>
+  </header>
+  <div class="article-body">
+<p class="lead">In August 2021, FC Barcelona — the club Lionel Messi had been at since age thirteen, the institution that had defined a generation of football — was unable to register Messi's contract under La Liga's financial fair play framework. He left for Paris Saint-Germain on a free transfer. The trade press treated the moment as the unwinding of an era. The deeper story was that Barcelona had run into a balance-sheet crisis severe enough to rewrite a generational sporting institution in real time. Five years later, the club's recovery is genuine but partial, the debt is still real, and the strategic question that defined the response — whether the controversial financing structures used to rebuild bought a real solution or merely deferred the bill — is still open.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FC Barcelona financial trajectory, 2018-2026 illustrative">
+  <rect x="0" y="0" width="720" height="480" fill="#141414"/>
+  <text x="60" y="28" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="60" y="48" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">FC Barcelona — wage-to-revenue ratio, revenue, net debt (illustrative)</text>
+  <line x1="80" y1="380" x2="680" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="80" y1="80" x2="80" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="80" y1="320" x2="680" y2="320" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="260" x2="680" y2="260" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="200" x2="680" y2="200" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="140" x2="680" y2="140" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="74" y="384" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">0%</text>
+  <text x="74" y="324" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">25%</text>
+  <text x="74" y="264" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">50%</text>
+  <text x="74" y="204" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">75%</text>
+  <text x="74" y="144" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">100%</text>
+  <line x1="120" y1="200" x2="180" y2="180" stroke="#c8102e" stroke-width="2"/>
+  <line x1="180" y1="180" x2="240" y2="125" stroke="#c8102e" stroke-width="2"/>
+  <line x1="240" y1="125" x2="300" y2="100" stroke="#c8102e" stroke-width="2"/>
+  <line x1="300" y1="100" x2="360" y2="155" stroke="#c8102e" stroke-width="2"/>
+  <line x1="360" y1="155" x2="420" y2="195" stroke="#c8102e" stroke-width="2"/>
+  <line x1="420" y1="195" x2="480" y2="225" stroke="#c8102e" stroke-width="2"/>
+  <line x1="480" y1="225" x2="540" y2="245" stroke="#c8102e" stroke-width="2"/>
+  <line x1="540" y1="245" x2="600" y2="255" stroke="#c8102e" stroke-width="2"/>
+  <circle cx="120" cy="200" r="3" fill="#c8102e"/>
+  <circle cx="180" cy="180" r="3" fill="#c8102e"/>
+  <circle cx="240" cy="125" r="4" fill="#c8102e"/>
+  <circle cx="300" cy="100" r="5" fill="#c8102e"/>
+  <circle cx="360" cy="155" r="3" fill="#c8102e"/>
+  <circle cx="420" cy="195" r="3" fill="#c8102e"/>
+  <circle cx="480" cy="225" r="3" fill="#c8102e"/>
+  <circle cx="540" cy="245" r="3" fill="#c8102e"/>
+  <circle cx="600" cy="255" r="3" fill="#c8102e"/>
+  <text x="300" y="88" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">PEAK ~103-109% (2020-21)</text>
+  <text x="600" y="240" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">54% (2024-25 audited)</text>
+  <text x="120" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2018</text>
+  <text x="180" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2019</text>
+  <text x="240" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2020</text>
+  <text x="300" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2021</text>
+  <text x="360" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2022</text>
+  <text x="420" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2023</text>
+  <text x="480" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2024</text>
+  <text x="540" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2025</text>
+  <text x="600" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2026e</text>
+  <text x="380" y="416" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">WAGE-TO-REVENUE RATIO (RED)</text>
+  <line x1="120" y1="350" x2="180" y2="345" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="180" y1="345" x2="240" y2="370" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="240" y1="370" x2="300" y2="365" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="300" y1="365" x2="360" y2="345" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="360" y1="345" x2="420" y2="335" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="420" y1="335" x2="480" y2="320" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="480" y1="320" x2="540" y2="305" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <line x1="540" y1="305" x2="600" y2="295" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="600" y="288" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">REVENUE €1.0bn+</text>
+  <text x="380" y="446" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">REVENUE TRAJECTORY (GOLD DASH, INDEXED)</text>
+  <rect x="80" y="460" width="12" height="12" fill="#c8102e" opacity="0.85"/>
+  <text x="98" y="470" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">WAGE / REV</text>
+  <line x1="220" y1="466" x2="232" y2="466" stroke="#d4a64a" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="240" y="470" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">REVENUE INDEX</text>
+</svg>
+<figcaption>Barcelona's wage-to-revenue ratio — the principal La Liga and UEFA financial-control constraint — and revenue trajectory, 2018–2026. <em>The 2024–25 ratio is the UEFA sporting-cost figure (54%) from the club's audited annual accounts; earlier points combine disclosed and reported figures.</em> <strong>Source:</strong> FC Barcelona 2020/21–2024/25 audited accounts, La Liga financial controls, Deloitte Football Money League 2019–2025, FT and Off the Pitch reporting.</figcaption>
+</figure>
+
+<h2>How Barcelona went into crisis</h2>
+
+<p>The crisis was structural, not accidental. From 2014 through 2020, the club's wage bill grew faster than its revenue. The Bartomeu administration's transfer policy in particular — Coutinho at €120 million plus up to €40 million in add-ons, Griezmann at €120 million, Dembélé at €105 million plus add-ons, alongside a stack of expensive secondary signings — added long-duration high-wage commitments to a wage base that was already heavy with the Messi, Suárez, and ageing-star tier. The commitments compounded year after year and proved unusually difficult to unwind: Spanish football's contract-exit mechanics are stickier than England's, where loan subsidies and paid-up settlements give clubs an effective forced-exit path. In Spain, the legal and financial cost of cancelling a player contract unilaterally is closer to the full residual value, which is why bad multi-year contracts in La Liga have a longer half-life on the wage bill than equivalents in the Premier League.</p>
+
+<p>Revenue was strong by absolute standards. The club crossed €800 million of disclosed revenue in 2018–19 and held above that level into 2019–20 before COVID. But revenue growth flattened while wages compounded. The wage-to-revenue ratio, which La Liga's financial fair play framework caps at 70 per cent for the squad-cost calculation, drifted up through the late 2010s. By 2019–20, before the pandemic, the ratio was already brushing the cap.</p>
+
+<p>Then COVID arrived. Matchday revenue collapsed in 2020–21 — Camp Nou capacity was effectively zero for most of the season. Sponsorship and broadcast revenue held up better than matchday but did not compensate. The club closed 2020–21 with disclosed losses of €481 million and a wage-to-revenue ratio reportedly above 100 per cent — meaning the club was paying more in wages than it was bringing in across all revenue lines. Net debt approached €1.35 billion. Short-term liabilities exceeded short-term assets by a margin that, in any other industry, would have triggered a refinancing crisis.</p>
+
+<h2>The Messi cliff</h2>
+
+<p>Messi's contract had expired on 30 June 2021. The club intended to renew on a discounted long-term deal — Messi had agreed to a 50 per cent wage cut as part of the renegotiation. The mechanical problem was that La Liga's financial-control framework is applied at the squad level, not the individual one. With the club's wage-to-revenue ratio already above 100 per cent, even a Messi contract at zero would not have brought the squad-cost total inside the cap — every other contract on the books was already overshooting. The regulator also looks through the workarounds: deferred payments, contingent bonuses, or off-balance-sheet commitments that promise to make up the discount later. The club could not present a financial picture compatible with the registration framework. On 5 August 2021, the club announced that Messi would not continue. He signed for Paris Saint-Germain three days later.</p>
+
+<p>The exit was the most visible symptom of the underlying constraint, not the constraint itself. La Liga's squad-registration regime requires every club to file its full squad each summer against a calculated cost ceiling — wages, transfer amortisation, coaching staff, and agent fees combined cannot exceed roughly 70 per cent of audited revenue. Across the 2021–22 and 2022–23 transfer windows, Barcelona had to navigate registration crises for nearly every senior signing and renewal. Lewandowski, Raphinha, Koundé, and the academy graduates being promoted into the first team — each required structural financial actions before the league would file the contract. The squad was being rebuilt under live financial constraint, with registration deadlines that became the most visible expression of an otherwise abstract balance-sheet problem.</p>
+
+<p>The collateral damage was real. Frenkie de Jong's wage situation became a years-long political story. Pierre-Emerick Aubameyang was registered, then released the same season under cap pressure. Several first-team contracts had to be deferred or restructured. The 2022–23 La Liga title returned under Xavi largely through resources the cap did not penalise — Lewandowski arrived on a free transfer from Bayern, internal academy promotions filled senior roles (Gavi, Balde, Araújo into the rotation), and the spending the cap blocked never happened. Throughout, the parallel Negreira investigation — into payments by the club to a former vice-president of Spain's refereeing committee — remained a non-financial overhang the recovery thesis cannot fully neutralise.</p>
+
+<h2>The Laporta reset</h2>
+
+<p>The Laporta administration's response was the most controversial set of financial structuring decisions any major European club has made this century. Three transactions, taken together, defined the strategy.</p>
+
+<p>The first lever, executed across two tranches in summer 2022, was the sale of approximately 25 per cent of Barcelona's La Liga broadcast rights for the next 25 years to Sixth Street: €207.5 million for an initial 10 per cent in June, followed by €320 million for a further 15 per cent in July, for a combined €527.5 million in cash. The structural effect was to bring forward, in cash, a quarter-century of broadcast revenue. The accounting effect was to register a one-off gain in the fiscal year of the transactions — the club cited a capital gain of €267 million on the first tranche alone — materially improving the wage-to-revenue ratio for that year and clearing the squad-registration headroom.</p>
+
+<p>The second lever, also in 2022, was the sale of 49 per cent of Barça Studios — the club's media and content subsidiary — to Socios.com (Chiliz) and Orpheus Media in two equal 24.5 per cent tranches for €100 million each, for a combined €200 million. Again the principal effect was a one-time accounting gain, monetising a non-core subsidiary in exchange for a permanent share of its future income. The Socios component drew separate scrutiny because of the broader controversy around fan-token financing in football.</p>
+
+<p>The third lever, structurally larger and slower-moving than the first two, was the Espai Barça stadium redevelopment financing programme. Camp Nou's full-scope redevelopment — bowl reconfiguration, capacity reset, hospitality build, new commercial estate around the stadium — was structured by Goldman Sachs (lead) and JP Morgan as a €1.45 billion debt programme placed with twenty institutional investors, secured against future stadium revenue and amortised across tranches of 5, 7, 9, 20, and 24 years with a grace period until the stadium revenue ramped. The financing allowed the capex to proceed without consuming current operating cash flow; the trade-off was a multi-decade interest and principal-repayment commitment against a revenue line that had to perform when the stadium reopened.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FC Barcelona structuring choices: relative scale of the three transactions in the Laporta reset, 2022-23">
+  <rect x="0" y="0" width="720" height="360" fill="#141414"/>
+  <text x="60" y="28" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
+  <text x="60" y="48" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">The Laporta reset — relative scale of the three structuring choices</text>
+  <text x="60" y="66" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">€ millions, total transaction or facility size</text>
+
+  <!-- Y axis labels (levers) -->
+  <text x="280" y="115" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Sixth Street rights monetisation</text>
+  <text x="280" y="130" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">25% / 25 years · cash</text>
+
+  <text x="280" y="180" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Barça Studios stake</text>
+  <text x="280" y="195" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">49% · cash · Socios + Orpheus</text>
+
+  <text x="280" y="245" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Espai Barça financing</text>
+  <text x="280" y="260" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">€1.45bn debt · 20 investors · 24yr</text>
+
+  <!-- Bars (scale: €1.45bn = 380px wide; ratios 527.5/200/1450) -->
+  <rect x="290" y="95" width="138" height="36" fill="#c8102e"/>
+  <rect x="290" y="160" width="52" height="36" fill="#c8102e" opacity="0.85"/>
+  <rect x="290" y="225" width="380" height="36" fill="#d4a64a"/>
+
+  <!-- Bar value labels -->
+  <text x="438" y="118" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€527.5m</text>
+  <text x="352" y="183" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€200m</text>
+  <text x="680" y="248" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="end">€1,450m</text>
+
+  <!-- Annotation -->
+  <line x1="290" y1="290" x2="670" y2="290" stroke="#2e2e2e" stroke-width="1"/>
+  <text x="290" y="310" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Cash levers (red) registered as one-off accounting gains in fiscal year of transaction.</text>
+  <text x="290" y="328" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Stadium debt (gold) is a multi-decade liability against future Camp Nou revenue.</text>
+</svg>
+<figcaption>Relative scale of Barcelona's three principal structuring choices, 2022–23. <em>The two cash levers — broadcast-rights forward sale and Barça Studios stake — were registered as one-off accounting gains in the year of the transactions. The Espai Barça debt programme is the structurally larger commitment and the slower-moving constraint.</em> <strong>Source:</strong> FC Barcelona official disclosures, Sixth Street press releases, FC Barcelona 2022/23 and 2023/24 audited accounts.</figcaption>
+</figure>
+
+<p>Wage discipline ran alongside the levers. Senior players including Pedri, Gavi, and the academy core were signed on relatively long but cost-disciplined deals. Outgoing transfers were used to reduce wage-bill exposure where possible. The commercial reset added new central revenue: Spotify as front-of-shirt sponsor from 2022 and stadium naming-rights partner under a multi-year package the club has cited at approximately $310 million, alongside the broader sponsorship architecture.</p>
+
+<h2>The 2026 read</h2>
+
+<p>By May 2026 the recovery has produced harder evidence than the article would have read on at the time of writing. Spotify Camp Nou returned to operation on 22 November 2025 at a capacity of around 45,000; the Phase 1C licence granted on 10 March 2026 lifted capacity to 62,652. Full capacity (~105,000) is targeted for summer 2026, with the roof and final completion scheduled for 2027. Barcelona sealed the 2024–25 La Liga title (28th) under Hansi Flick in May 2025 — alongside the Copa del Rey and the Spanish Supercopa for a domestic treble — and clinched the 2025–26 league (29th) at Camp Nou on 10 May 2026 with a 2–0 win against Real Madrid, the latter sealed three matches before the season's close. Squad registration has stabilised; the financial-control crises that defined 2021–23 are no longer the dominant story.</p>
+
+<p>The audited 2024–25 accounts show ordinary revenue of €994 million on a UEFA sporting-cost ratio of 54 per cent — comfortably inside the 70 per cent guardrail and a marked improvement on the post-crisis years. The 2025–26 budget approved at the October 2025 assembly projects ordinary revenue of €1.075 billion against expenses of €1.019 billion, for a €4 million net profit. Total disclosed debt at fiscal year close 2024–25 was €469 million — €211 million below the 2021 peak. By the headline metrics, Barcelona has recovered.</p>
+
+<p>The deeper picture is more textured. The economic levers monetised real value forward. The TV-rights sale committed the club to 25 years of foregone broadcast cash flow that would otherwise have funded operations across multiple economic cycles. The Barça Studios stake transferred a permanent share of the content business to outside holders. The Espai Barça financing locked in a multi-decade debt-service obligation against a stadium revenue line that has to deliver on plan — the club's own underwriting case projects roughly €247 million in annual incremental stadium revenue once the venue is fully operational. The cumulative cost of the structuring choices is real, even if the accounting gains in the year of each transaction were the headline number.</p>
+
+<h2>Implications for the heritage tier</h2>
+
+<p>Barcelona's crisis-and-recovery is the cleanest case study in Europe of a heritage, member-owned club running into a balance-sheet constraint severe enough to threaten the sporting platform itself. The implications travel beyond Catalonia. For the other heritage clubs in Europe with member-owned governance — Real Madrid and Athletic Bilbao in Spain, Benfica, Porto, and Sporting in Portugal, and the German clubs operating under the Bundesliga's 50+1 rule (Bayern, Dortmund, Schalke, and others) — the Laporta playbook now has both a precedent and a price tag. None of these clubs can summon a sovereign cheque or a private-equity recap when a crisis hits; if it does, the levers Laporta pulled — forward-monetising broadcast rights, divesting subsidiary stakes, and structuring stadium debt against incremental future revenue — are the ones their boards will be asked to ratify with their own members. The trade-off is also now demonstrated: each lever pulled is a future revenue line that no longer accrues to the club whose members will be sitting in the assembly twenty years from now.</p>
+
+<p>The capital-side implication is sharper still. Sixth Street's TV-rights position, and the Goldman / JP Morgan-led stadium debt programme, established that institutional capital is willing to underwrite the heritage tier provided the structure isolates ownership: rights monetisations and securitised debt facilities rather than equity stakes. That distinction matters. It is the architecture under which membership-owned governance can absorb institutional capital without ceding control — and it will be the architecture other heritage clubs reach for first when the next idiosyncratic crisis hits.</p>
+
+<h2>The contrarian read</h2>
+
+<p>The reset solved the crisis it was designed to solve. Whether it created a larger one is the question that remains.</p>
+
+<p>Consensus among trade-press observers — and a meaningful share of Barcelona socio members — is that the levers solved the registration crises but mortgaged the club's future revenue base, and that the next operating cycle (2026–2032) will absorb the cost of the choices made in 2022. The pessimistic case is that the broadcast-rights and stadium-debt commitments lock the club into a structurally tighter budget through the late 2020s and into the 2030s, even as headline revenue and sporting performance look healthier on the surface.</p>
+
+<p><strong>The sharper read is that the consensus underweights what the available alternatives actually looked like.</strong> The comparable European cases — Internazionale's multi-year forced-sales cycle ending in Suning's loan default and Oaktree's takeover of the club in May 2024; Juventus's capital raise of over €700 million across the same period alongside multi-year European competition exclusions and a board restructuring; Atlético Madrid accepting Apollo as an equity holder in 2024 to recapitalise — all carried real costs that a "do nothing structural" path could not have avoided. Laporta's choices were not costless. Neither were the alternatives. The honest question is not whether the reset bought the club a free option, but whether the price paid was lower than the price the comparable paths extracted from clubs that faced equivalent constraints.</p>
+
+<p>That is the test the cliff zone of the early 2030s will run. By then, Espai Barça's debt service ramps to roughly €100 million a year and stays there. Whether the stadium-revenue line clears that debt with comfortable headroom — or barely clears it — depends entirely on how the underwriting case lands.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Espai Barça debt service vs stadium revenue scenarios, 2026-2035 schematic">
+  <rect x="0" y="0" width="760" height="480" fill="#141414"/>
+  <text x="60" y="32" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 3 · SCHEMATIC</text>
+  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="16" font-weight="500">The cliff zone — debt service vs stadium-revenue scenarios, 2026–2035</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">€m per year · stadium-related cash flows only · grace period through 2027</text>
+
+  <line x1="80" y1="380" x2="700" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="80" y1="110" x2="80" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+
+  <line x1="80" y1="335" x2="700" y2="335" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="290" x2="700" y2="290" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="245" x2="700" y2="245" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="200" x2="700" y2="200" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="155" x2="700" y2="155" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="110" x2="700" y2="110" stroke="#1f1f1f" stroke-width="1"/>
+
+  <text x="74" y="384" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">0</text>
+  <text x="74" y="339" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">50</text>
+  <text x="74" y="294" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">100</text>
+  <text x="74" y="249" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">150</text>
+  <text x="74" y="204" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">200</text>
+  <text x="74" y="159" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">250</text>
+  <text x="74" y="114" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">300</text>
+
+  <rect x="328" y="110" width="186" height="270" fill="#d4a64a" opacity="0.045"/>
+
+  <g opacity="0.85">
+    <rect x="90" y="380" width="42" height="0" fill="#d4a64a"/>
+    <rect x="152" y="380" width="42" height="0" fill="#d4a64a"/>
+    <rect x="214" y="353" width="42" height="27" fill="#d4a64a"/>
+    <rect x="276" y="330.5" width="42" height="49.5" fill="#d4a64a"/>
+    <rect x="338" y="312.5" width="42" height="67.5" fill="#d4a64a"/>
+    <rect x="400" y="299" width="42" height="81" fill="#d4a64a"/>
+    <rect x="462" y="290" width="42" height="90" fill="#d4a64a"/>
+    <rect x="524" y="285.5" width="42" height="94.5" fill="#d4a64a"/>
+    <rect x="586" y="285.5" width="42" height="94.5" fill="#d4a64a"/>
+    <rect x="648" y="285.5" width="42" height="94.5" fill="#d4a64a"/>
+  </g>
+
+  <text x="111" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2026</text>
+  <text x="173" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2027</text>
+  <text x="235" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2028</text>
+  <text x="297" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2029</text>
+  <text x="359" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2030</text>
+  <text x="421" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2031</text>
+  <text x="483" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2032</text>
+  <text x="545" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2033</text>
+  <text x="607" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2034</text>
+  <text x="669" y="400" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2035</text>
+
+  <text x="421" y="100" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" letter-spacing="1">CLIFF ZONE · 2030–2033</text>
+
+  <polyline points="111,353 173,263 235,157.7 297,157.7 359,157.7 421,157.7 483,157.7 545,157.7 607,157.7 669,157.7"
+            fill="none" stroke="#d4a64a" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="111" cy="353" r="3.5" fill="#d4a64a"/>
+  <circle cx="173" cy="263" r="3.5" fill="#d4a64a"/>
+  <circle cx="235" cy="157.7" r="3.5" fill="#d4a64a"/>
+  <circle cx="421" cy="157.7" r="3.5" fill="#d4a64a"/>
+  <circle cx="669" cy="157.7" r="3.5" fill="#d4a64a"/>
+
+  <polyline points="111,357.5 173,290 235,213.5 297,213.5 359,213.5 421,213.5 483,213.5 545,213.5 607,213.5 669,213.5"
+            fill="none" stroke="#f5f1e8" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="235" cy="213.5" r="3" fill="#f5f1e8"/>
+  <circle cx="421" cy="213.5" r="3" fill="#f5f1e8"/>
+  <circle cx="669" cy="213.5" r="3" fill="#f5f1e8"/>
+
+  <polyline points="111,362 173,317 235,268.4 297,268.4 359,268.4 421,268.4 483,268.4 545,268.4 607,268.4 669,268.4"
+            fill="none" stroke="#c8102e" stroke-width="2" stroke-linejoin="round" stroke-dasharray="6,4"/>
+  <circle cx="235" cy="268.4" r="3" fill="#c8102e"/>
+  <circle cx="421" cy="268.4" r="3" fill="#c8102e"/>
+  <circle cx="669" cy="268.4" r="3" fill="#c8102e"/>
+
+  <text x="678" y="160" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="9">€247m</text>
+  <text x="678" y="216" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="9">€185m</text>
+  <text x="678" y="271" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9">€124m</text>
+  <text x="678" y="294" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">€105m</text>
+
+  <text x="421" y="125" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle" font-style="italic">where debt service compounds against ramped revenue</text>
+
+  <rect x="80" y="430" width="14" height="10" fill="#d4a64a" opacity="0.85"/>
+  <text x="100" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Espai Barça debt service</text>
+
+  <line x1="280" y1="435" x2="298" y2="435" stroke="#d4a64a" stroke-width="2.5"/>
+  <text x="304" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Underwriting (€247m)</text>
+
+  <line x1="450" y1="435" x2="468" y2="435" stroke="#f5f1e8" stroke-width="2"/>
+  <text x="474" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Base (–25%)</text>
+
+  <line x1="570" y1="435" x2="588" y2="435" stroke="#c8102e" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="594" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Downside (–50%)</text>
+
+  <text x="30" y="245" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" transform="rotate(-90 30 245)">€ MILLIONS PER YEAR</text>
+
+  <text x="111" y="465" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">Lines: incremental stadium revenue scenarios.   Bars: debt service against €1.45bn principal at ~5.19% blended.</text>
+</svg>
+<figcaption><strong>Editorially constructed schematic.</strong> The €247m underwriting case is the club's own disclosed Espai Barça incremental-revenue projection; the base (75%) and downside (50%) cases apply standard project-ramp haircuts. Debt-service profile is illustrative against the disclosed €1.45 billion principal at the 5.19% blended cost cited in the club's June 2025 €424m bond restructuring, with the construction-period grace through 2027. <em>This is a structural-pressure schematic, not a forecast of club P&amp;L or revenue.</em> <strong>Source:</strong> FC Barcelona Espai Barça financing disclosures (April 2023), FC Barcelona June 2025 bond restructuring statement, Espai Barça official project documentation.</figcaption>
+</figure>
+
+<p>Under the underwriting case, the cliff is absorbed with roughly €140 million a year of headroom and the reset looks prescient. Under the base case, the headroom narrows to €80 million. Under the downside case, it narrows to roughly €20 million — and at that point the structure becomes vulnerable to any second-order shock the club has historically struggled to control: a Champions League miss, a wage-cycle overshoot, a sponsorship reset gone wrong. The reset bought time. What the time was bought to do — fully ramp Camp Nou, hold the wage-discipline line, develop the academy into the next cycle's senior squad — is the test the early 2030s will run.</p>
+
+<h2>The strategic question</h2>
+
+<blockquote>Forty per cent of the new stadium's incremental revenue is already spoken for through the early 2030s — and that is the underwriting case; under any softer scenario the share climbs sharply. The question Laporta's choices defer to the next administration is not whether the rebuild was justified, but whether a club that has already sold a quarter-century of broadcast rights and half a media subsidiary can absorb a second balance-sheet shock without selling something it cannot afford to.</blockquote>
+  </div>
+  <aside class="signals"><div class="signals-inner"><div class="signals-label">Signals to track</div><ul class="signals-list">
+        <li><strong>Camp Nou full-capacity opening:</strong><span class="signal-desc">Operating P&amp;L through the first full season, performance against the €247m incremental-revenue underwriting case</span></li>
+        <li><strong>Wage-to-revenue ratio at fiscal year close:</strong><span class="signal-desc">UEFA and La Liga submissions, headroom for the next renewal cycle</span></li>
+        <li><strong>Espai Barça debt-service:</strong><span class="signal-desc">Refinancing windows in the late 2020s and 2030s, after the 2025 €424m bond restructuring</span></li>
+        <li><strong>2027–28 La Liga commercial cycle:</strong><span class="signal-desc">International rights growth and Barcelona's share net of the Sixth Street 25%</span></li>
+        <li><strong>Negreira case resolution:</strong><span class="signal-desc">Legal and sporting-sanctions exposure, UEFA or La Liga determinations</span></li>
+  </ul></div></aside>
+</article>
+<section class="related"><div class="related-wrap"><div class="related-eyebrow">Continue reading</div><h2 class="related-title">Related <em>deep-dives</em></h2><div class="related-grid">
+      <a href="l4-control-deals-normal.html" class="related-card"><div class="related-card-tag">Layer 4 · Trend 4.1</div><h3 class="related-card-title">Control deals <em>become normal</em></h3><p class="related-card-desc">Apollo's 55% Atlético deal and the new wave of institutional capital in big-five Europe.</p></a>
+      <a href="l3-mco-blowup-risk.html" class="related-card"><div class="related-card-tag">Layer 3 · Trend 3.2</div><h3 class="related-card-title">Mid-tier MCO <em>blow-up risk</em></h3><p class="related-card-desc">A different shape of crisis at the platform level — leveraged acquisitions outrunning operating capability.</p></a>
+      <a href="l6-apple-mls-case-study.html" class="related-card"><div class="related-card-tag">Layer 6 · Case study</div><h3 class="related-card-title"><em>Apple × MLS</em> — the streaming bet</h3><p class="related-card-desc">A different shape of broadcast-economics decision — a league monetising rights forward to a single global streamer.</p></a>
+</div></div></section>
+<footer><div>The Football Ledger · Volume 01 · Workstream 02</div><div>Built May 2026 · Living document</div></footer>
+</body>
+</html>

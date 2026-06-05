@@ -1,0 +1,19 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / tooling
+.vscode/
+.idea/
+*.swp
+
+# Local Claude settings (never commit)
+.claude/settings.local.json
+
+# Vercel
+.vercel/
+
+# Node (only if tooling is added later)
+node_modules/
+npm-debug.log*

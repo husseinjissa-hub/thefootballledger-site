@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saudi Pro League — Entity profile · The Football Ledger</title>
+<meta name="description" content="Saudi Pro League (SPL) profile: 18-club top flight, 2023 marquee signings era, PIF-led privatisation programme, 2027 Asian Cup integration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <a href="../index.html" class="brand"><span class="brand-mark"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="The Football Ledger"><rect width="64" height="64" fill="#d4a64a"/><rect x="4" y="4" width="56" height="56" fill="none" stroke="#0a0a0a" stroke-width="0.6"/><text x="32" y="44" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="32" fill="#0a0a0a" letter-spacing="-0.05em">FL</text></svg></span>The Football Ledger</a>
+  <nav class="primary-nav">
+    <a href="../index.html#ws1" class="nav-item">Ecosystem</a>
+    <a href="../index.html#ws2" class="nav-item">Ledger</a>
+    <a href="index.html" class="nav-item active">Entities</a>
+    <a href="../briefing/index.html" class="nav-item">Briefing</a>
+    <a href="../about.html" class="nav-item">About</a>
+  </nav>
+</header>
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues</a><span class="sep">/</span><span>Saudi Pro League</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L2 · Leagues · Top-flight league</span><span class="eyebrow-meta">·  Riyadh, Saudi Arabia</span></div>
+  <h1 class="entity-title"><em>Saudi</em> Pro League</h1>
+  <p class="entity-deck">Saudi Arabia's top-flight football league. The 2023 marquee-signings era (Ronaldo, Benzema, Mané and stack of stars) reset global perceptions. The 2026 framing is the privatisation programme, the operating-discipline reset, and the run-in to the 2027 Asian Cup.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Top-flight national league</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1976 (Saudi Premier League)</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Riyadh, Saudi Arabia</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Saad Al-Lazeez (Chair, SPL) · Omar Mugharbel (CEO)</div></div>
+    <div class="fact"><div class="fact-label">Scale headline</div><div class="fact-value"><em>~$1.5bn+</em> aggregate transfer spend (2023)</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Privatisation · operating reset · 2027 Asian Cup</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The post-2023 reset</h2>
+<p>The Saudi Pro League is the top flight of Saudi football, governed by the SPL company under SAFF (Saudi Arabian Football Federation). The 2023 transfer window — Cristiano Ronaldo at Al-Nassr (December 2022), then Karim Benzema (Al-Ittihad), Sadio Mané (Al-Nassr), Neymar (Al-Hilal), Riyad Mahrez (Al-Ahli), and approximately a dozen other senior European stars — reset global perceptions of the league overnight. The aggregate transfer spend in summer 2023 was approximately $1bn, with combined wage commitments substantially higher.</p><p>The 2026 picture is in the post-marquee-signings phase. The PIF-led privatisation programme (Al-Hilal to Kingdom Holding April 2026, Al-Nassr / Al-Ittihad / Al-Ahli to follow) is reshaping ownership. The operating-discipline reset is transitioning the league from acquisition-led to integration-led. The 2027 AFC Asian Cup co-hosted with the UAE provides the next-step operating audit.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Scale and structure</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Format</div><div><div class="row-val">18 clubs, August-May season aligned with European calendar, two-leg round-robin (34 matches), three-up / three-down with First Division.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Domestic broadcast deal</div><div><div class="row-val">SSC (Saudi Sports Company, state-aligned). Long-term central distribution architecture. Replaced previous beIN-anchored deal.</div><div class="row-source">Source · Disclosed · Reported</div></div></div>
+      <div class="row"><div class="row-key">International broadcast deal</div><div><div class="row-val">Building. SPL international rights distribution expanding alongside post-2023 global visibility uplift.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Central commercial pool</div><div><div class="row-val">SPL central commercial framework, structurally similar to the LaLiga / Premier League central-pool architecture.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Distribution model</div><div><div class="row-val">Combination of equal-share, performance-share, and broadcast-share elements. Distribution formula being refined alongside the privatisation programme.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Aggregate league revenue</div><div><div class="row-val">Approximately <em>$700-900m</em> aggregate across the 18 clubs for the most recent fiscal year, dominated by the four PIF-anchored Riyadh / Jeddah clubs.</div><div class="row-source">Source · Reported · Estimate</div></div></div>
+      <div class="row"><div class="row-key">Ownership architecture</div><div><div class="row-val">Privatisation framework: 70% PIF stakes in Al-Hilal, Al-Nassr, Al-Ittihad, Al-Ahli being progressively transferred to private and family-office capital. <strong>Al-Hilal:</strong> 70% Kingdom Holding (April 2026). Al-Nassr / Al-Ittihad / Al-Ahli to follow 2026-27.</div><div class="row-source">Source · Disclosed (Reuters)</div></div></div>
+      <div class="row"><div class="row-key">External regulatory layer</div><div><div class="row-val">SAFF (Saudi Arabian Football Federation), Ministry of Sport, AFC oversight. Sport Holding Company within PIF until privatisation, with PIF retaining 25% strategic minority post-privatisation.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Strategic posture (2026)</div><div><div class="row-val"><em>Privatise.</em> Programme execution across the four flagship clubs. <em>Professionalise.</em> Operating-discipline reset, central commercial maturation. <em>Partner.</em> 2027 AFC Asian Cup co-host with UAE; 2034 World Cup pipeline.</div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>What the institution actually does</h2>
+<p>The SPL's operating cadence in 2026 has shifted from the acquisition-led phase of 2023-2024 to integration and operational discipline. The privatisation programme is the central thread: Al-Hilal under Kingdom Holding is the first execution, with Al-Nassr (Cristiano Ronaldo flagship) the next consequential transaction. The structural intent is to lift the operating standard across the four flagship clubs simultaneously through private-capital operating partners while PIF retains a 25 per cent strategic minority.</p><p>The post-2023 marquee-signings story is more nuanced than the trade-press narrative suggested. Several star signings (Mahrez, Mané, others) have not delivered the sporting-and-commercial uplift the league's strategic planners had projected. Some have departed. The next sporting cycle is anchored by a more disciplined squad-building thesis: marquee at the top of each squad, regional and emerging-market signings filling the depth, academy investment lifting the supply pipeline.</p><p>The 2027 AFC Asian Cup co-hosted with the UAE is the immediate operating audit. The hosting cell, the broadcast architecture, the commercial activation, and the central-pool capital deployment all roll up into the SPL's operating story.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The SPL's stated direction in 2026 is privatisation, professionalisation, and partnership. The privatisation programme through 2026-27 is the structural reset. The operating-discipline maturation across the league transitions the SPL from a state-funded acquisition platform into a more commercial league architecture. The partnership posture extends to the broader AFC competitive infrastructure and the 2034 World Cup hosting context.</p><p>The institutional-capital base — Kingdom Holding at Al-Hilal, additional buyers across Al-Nassr / Al-Ittihad / Al-Ahli, with PIF retaining 25 per cent strategic minority across all four — provides a more diversified ownership architecture than the wholly-PIF era. The capital uplift to operating capability is the central thesis.</p>
+  </section>
+  <section class="section"><div class="section-label">Open questions</div><h2>What the industry's analysts should be asking</h2>
+    <ul class="questions">
+      <li>Does the privatisation programme close at terms that validate the operating thesis, or does the secondary market price the assets at a discount that complicates the broader Vision 2030 sport narrative?</li>
+      <li>How does the 2027 Asian Cup hosting cycle perform on broadcast, commercial, and operating-discipline metrics?</li>
+      <li>Does the post-marquee-signings squad-building thesis produce sustained competitive uplift in AFC and global club competitions, or does the league settle into a regional-platform position?</li>
+      <li>What is the SPL's broadcast-cycle architecture beyond SSC, and does international rights scale as the league's competitive depth improves?</li>
+      <li>How does the SPL navigate UEFA's posture on transfer flow, agent regulation, and broader European-football institutional dynamics?</li>
+    </ul>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>PIF Annual Reports (2023, 2024)</li>
+      <li>SPL company communications and press releases</li>
+      <li>Kingdom Holding-Al Hilal transaction reporting (2026): Reuters, Bloomberg, FT</li>
+      <li>Trade press: SportBusiness, The Athletic, Off the Pitch, Reuters (2022-2026)</li>
+      <li>AFC and FIFA tournament hosting documents</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
+</body>
+</html>

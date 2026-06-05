@@ -2743,10 +2743,19 @@ footer {
 // Anchor nav-items (Briefing, About) are real navigation to other pages.
 const sectionTabs = document.querySelectorAll('button.nav-item[data-ws]');
 const workstreams = document.querySelectorAll('.workstream');
-function activateWorkstream(target) {
+function setActiveWorkstream(target) {
   sectionTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-ws') === target));
   workstreams.forEach(w => w.classList.toggle('active', w.id === target));
+}
+function activateWorkstream(target) {
+  setActiveWorkstream(target);
+  // Reflect the active view in the URL so deep links (../index.html#ws2),
+  // the top nav, and the browser back button all land on the right section.
+  if (location.hash !== '#' + target) history.replaceState(null, '', '#' + target);
   window.scrollTo({ top: 0, behavior: 'instant' });
+}
+function applyWorkstreamFromHash() {
+  setActiveWorkstream(location.hash === '#ws2' ? 'ws2' : 'ws1');
 }
 sectionTabs.forEach(tab => {
   tab.addEventListener('click', () => activateWorkstream(tab.getAttribute('data-ws')));
@@ -2758,6 +2767,10 @@ document.querySelectorAll('a[data-ws]').forEach(link => {
     activateWorkstream(link.getAttribute('data-ws'));
   });
 });
+// Honor #ws2 on initial load, on hash changes, and on back/forward (incl. bfcache).
+window.addEventListener('hashchange', applyWorkstreamFromHash);
+window.addEventListener('pageshow', applyWorkstreamFromHash);
+applyWorkstreamFromHash();
 
 // ===== Side-nav active highlight (Ecosystem section only) =====
 const sections = document.querySelectorAll('#ws1 section[id]');

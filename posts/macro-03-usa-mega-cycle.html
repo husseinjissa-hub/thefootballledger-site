@@ -352,6 +352,21 @@ a { color: inherit; text-decoration: none; }
 .related-card:hover::after {
   opacity: 1; transform: translateX(0); color: var(--gold);
 }
+.related-card--upcoming { opacity: 0.55; cursor: default; }
+.related-card--upcoming:hover { background: var(--ink); }
+.related-card--upcoming::after { content: none; }
+.related-card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 9px;
+  align-self: flex-start;
+  margin-top: auto;
+}
 .related-card-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px;
@@ -630,21 +645,23 @@ footer {
     <div class="related-eyebrow">Continue reading</div>
     <h2 class="related-title">Related <em>deep-dives</em></h2>
     <div class="related-grid">
-      <a href="macro-04-mena-second-wave.html" class="related-card">
+      <div class="related-card related-card--upcoming">
         <div class="related-card-tag">Macro · Trend 04</div>
         <h3 class="related-card-title">MENA's <em>second wave</em></h3>
         <p class="related-card-desc">The 2026 World Cup arrives in the US; the 2034 World Cup arrives in Saudi. The two events share more operating DNA than commonly appreciated.</p>
-      </a>
+        <span class="related-card-status">In production</span>
+      </div>
       <a href="l6-apple-mls-case-study.html" class="related-card">
         <div class="related-card-tag">Layer 6 · Trend 6.2</div>
         <h3 class="related-card-title">Apple-MLS <em>case study</em></h3>
         <p class="related-card-desc">First global football DTC at scale. Reference test for whether DTC economics replace pay-TV.</p>
       </a>
-      <a href="l2-spl-privatisation.html" class="related-card">
+      <div class="related-card related-card--upcoming">
         <div class="related-card-tag">Layer 2 · Trend 2.4</div>
         <h3 class="related-card-title">SPL <em>privatisation</em></h3>
         <p class="related-card-desc">After Kingdom Holding's Al Hilal acquisition, the SPL is on a clear privatisation trajectory.</p>
-      </a>
+        <span class="related-card-status">In production</span>
+      </div>
     </div>
   </div>
 </section>

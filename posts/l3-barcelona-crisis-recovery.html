@@ -62,6 +62,21 @@ a { color: inherit; text-decoration: none; }
 .related-card:hover { background: var(--ink-3); }
 .related-card::after { content: '→'; position: absolute; top: 28px; right: 28px; font-family: 'Fraunces', serif; font-size: 18px; color: var(--bone-mute); opacity: 0; transform: translateX(-6px); transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
 .related-card:hover::after { opacity: 1; transform: translateX(0); color: var(--gold); }
+.related-card--upcoming { opacity: 0.55; cursor: default; }
+.related-card--upcoming:hover { background: var(--ink); }
+.related-card--upcoming::after { content: none; }
+.related-card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 9px;
+  align-self: flex-start;
+  margin-top: auto;
+}
 .related-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .related-card-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.15; letter-spacing: -0.01em; }
 .related-card-title em { font-style: italic; color: var(--bone-dim); }
@@ -361,8 +376,8 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   </ul></div></aside>
 </article>
 <section class="related"><div class="related-wrap"><div class="related-eyebrow">Continue reading</div><h2 class="related-title">Related <em>deep-dives</em></h2><div class="related-grid">
-      <a href="l4-control-deals-normal.html" class="related-card"><div class="related-card-tag">Layer 4 · Trend 4.1</div><h3 class="related-card-title">Control deals <em>become normal</em></h3><p class="related-card-desc">Apollo's 55% Atlético deal and the new wave of institutional capital in big-five Europe.</p></a>
-      <a href="l3-mco-blowup-risk.html" class="related-card"><div class="related-card-tag">Layer 3 · Trend 3.2</div><h3 class="related-card-title">Mid-tier MCO <em>blow-up risk</em></h3><p class="related-card-desc">A different shape of crisis at the platform level — leveraged acquisitions outrunning operating capability.</p></a>
+      <div class="related-card related-card--upcoming"><div class="related-card-tag">Layer 4 · Trend 4.1</div><h3 class="related-card-title">Control deals <em>become normal</em></h3><p class="related-card-desc">Apollo's 55% Atlético deal and the new wave of institutional capital in big-five Europe.</p><span class="related-card-status">In production</span></div>
+      <div class="related-card related-card--upcoming"><div class="related-card-tag">Layer 3 · Trend 3.2</div><h3 class="related-card-title">Mid-tier MCO <em>blow-up risk</em></h3><p class="related-card-desc">A different shape of crisis at the platform level — leveraged acquisitions outrunning operating capability.</p><span class="related-card-status">In production</span></div>
       <a href="l6-apple-mls-case-study.html" class="related-card"><div class="related-card-tag">Layer 6 · Case study</div><h3 class="related-card-title"><em>Apple × MLS</em> — the streaming bet</h3><p class="related-card-desc">A different shape of broadcast-economics decision — a league monetising rights forward to a single global streamer.</p></a>
 </div></div></section>
 <footer><div>The Football Ledger · Volume 01 · Workstream 02</div><div>Built May 2026 · Living document</div></footer>

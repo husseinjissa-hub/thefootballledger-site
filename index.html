@@ -1164,6 +1164,21 @@ footer {
   font-size: 8px;
   padding: 3px 8px;
 }
+/* In-production cards: compact — shorter box, clamped teaser, no signals line */
+.lt.wip {
+  min-height: 0;
+  padding: 22px 32px 24px;
+  gap: 10px;
+}
+.lt.wip .lt-body {
+  flex-grow: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lt.wip .lt-signals { display: none; }
 
 /* WS2 nav — different sections */
 .ws2-nav-mode .layer-nav-item { display: none; }
@@ -2708,9 +2723,8 @@ footer {
 <section class="coda">
   <div class="coda-eyebrow">End of section · The Ledger</div>
   <h2 class="coda-title">
-    These are <strong>strategic questions</strong><br>
-    in disguise. The next decade will<br>
-    answer them <strong>club by club.</strong>
+    Where the <strong>business of football</strong><br>
+    is read in <strong>one place.</strong>
   </h2>
   <div class="coda-meta">The Football Ledger · A continuing analysis of football's business architecture</div>
 </section>

@@ -70,4 +70,8 @@ done
 } > "$OUT"
 rm -f "$tmp"
 
-echo "Wrote $OUT ($(grep -c '"url":' "$OUT") documents)."
+# Also emit a JS wrapper so pages can load the index via <script src> — this
+# works when the site is opened directly (file://), where fetch() is blocked.
+{ printf 'window.FL_SEARCH = '; cat "$OUT"; printf ';\n'; } > search-index.js
+
+echo "Wrote $OUT and search-index.js ($(grep -c '"url":' "$OUT") documents)."

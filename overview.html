@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Football Ledger — A Strategic Map</title>
+<meta name="description" content="The Football Ledger is a neutral analytical publication on the business, governance, and capital flows of football — ownership, multi-club groups, media rights, and the operators shaping the game's next decade.">
+<link rel="canonical" href="https://thefootballledger.co/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="The Football Ledger — A Strategic Map">
+<meta property="og:description" content="A neutral analytical publication on the business, governance, and capital flows of football.">
+<meta property="og:url" content="https://thefootballledger.co/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== SHARED SHELL — reused on every surface. Only the active nav item differs. ===== */
+:root {
+  --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --ink-4: #2a2a2a;
+  --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770;
+  --rust: #c8102e; --gold: #d4a64a; --sand: #e8dcc4; --jade: #4a6b5a;
+  --line: #2e2e2e; --line-soft: #1f1f1f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; overflow-x: hidden; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+
+/* Masthead */
+.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+
+/* Framed FL lockup — the master mark of the entity-monogram family */
+.brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
+.mono-box { width: 26px; height: 26px; flex: 0 0 26px; border: 1.5px solid var(--bone); border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--bone); letter-spacing: 0.02em; }
+.wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; color: var(--bone); white-space: nowrap; }
+
+/* Desktop nav */
+.site-nav { display: flex; align-items: center; gap: 2px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; position: relative; transition: color 0.3s ease; white-space: nowrap; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 2px; height: 1px; background: var(--gold); }
+
+/* Hamburger + reserved (mobile only) */
+.nav-burger, .nav-reserved { display: none; }
+.nav-burger { width: 22px; height: 22px; background: none; border: 0; padding: 0; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
+.nav-burger span { display: block; height: 1.5px; width: 22px; background: var(--bone); border-radius: 1px; }
+.nav-reserved { width: 22px; height: 22px; }
+
+/* Full-screen overlay menu */
+.nav-overlay { position: fixed; inset: 0; background: var(--ink); z-index: 300; display: flex; flex-direction: column; padding: 28px 32px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-close { align-self: flex-end; width: 28px; height: 28px; background: none; border: 0; color: var(--bone); font-size: 26px; line-height: 1; cursor: pointer; font-family: 'Inter Tight', sans-serif; }
+.overlay-nav { display: flex; flex-direction: column; gap: 32px; margin-top: 12vh; padding-left: 8px; }
+.overlay-item { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; color: var(--bone); width: max-content; position: relative; }
+.overlay-item.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--gold); }
+
+/* Footer */
+.site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
+
+@media (max-width: 900px) {
+  .site-head { padding: 0 22px; }
+  .site-nav { display: none; }
+  .nav-burger { display: flex; }
+  .nav-reserved { display: block; }
+  .brand-lockup { margin: 0 auto; }
+  .site-foot { padding: 22px; justify-content: center; text-align: center; }
+}
+
+/* ===== OVERVIEW HERO (page-specific) ===== */
+.ov-hero { max-width: 1200px; margin: 0 auto; padding: 120px 60px 80px; }
+.ov-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
+.ov-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.ov-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(44px, 6vw, 82px); line-height: 1.02; letter-spacing: -0.025em; margin-bottom: 36px; max-width: 980px; }
+.ov-title em { font-style: italic; color: var(--gold); }
+.ov-dek { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 760px; }
+.ov-note { max-width: 1200px; margin: 0 auto; padding: 40px 60px 100px; }
+.ov-note p { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--bone-dim); max-width: 760px; border-top: 1px solid var(--line); padding-top: 40px; }
+.ov-note strong { font-style: normal; color: var(--bone); font-weight: 400; }
+@media (max-width: 900px) { .ov-hero { padding: 72px 22px 56px; } .ov-note { padding: 32px 22px 72px; } }
+</style>
+</head>
+<body>
+
+<!-- ===== SHARED SHELL ===== -->
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview">
+    <span class="mono-box">FL</span>
+    <span class="wordmark">The Football Ledger</span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item active">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item active">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
+<!-- ===== OVERVIEW (hero only for now — stat bar, doors, samples land in Phase 7) ===== -->
+<main>
+  <section class="ov-hero">
+    <div class="ov-eyebrow">A Strategic Map · 2026 Edition</div>
+    <h1 class="ov-title">Football is no longer a sport.<br>It is an <em>asset class.</em></h1>
+    <p class="ov-dek">The institutions that shape the game, the capital flowing through them, and the operating shifts redrawing how value is created.</p>
+  </section>
+  <div class="ov-note">
+    <p>Football is no longer just a game. It is a system of operating businesses with sovereign capital, institutional governance, and multi-decade infrastructure commitments. <strong>The Football Ledger reads the system.</strong></p>
+  </div>
+</main>
+
+<!-- ===== SHARED FOOTER ===== -->
+<footer class="site-foot">
+  <div>The Football Ledger · 2026</div>
+  <div>A continuing analysis of football's business architecture</div>
+</footer>
+
+<!-- ===== SHELL NAV SCRIPT ===== -->
+<script>
+(function () {
+  var overlay = document.getElementById('navOverlay');
+  var burger = document.querySelector('.nav-burger');
+  var closeBtn = document.querySelector('.nav-close');
+  if (!overlay || !burger) return;
+  function open() { overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+  function close() { overlay.classList.remove('open'); overlay.setAttribute('aria-hidden', 'true'); burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+  burger.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+</script>
+
+</body>
+</html>

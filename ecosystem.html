@@ -2058,57 +2058,6 @@ footer {
 </section>
 
 <!-- ============= LEDGER PREVIEW ============= -->
-<section class="trends" id="ledger-preview">
-  <div class="trends-wrap">
-    <div class="trends-header">
-      <div class="trends-eyebrow">From The Ledger</div>
-      <h2 class="trends-title">Recent<br><em>deep-dives.</em></h2>
-    </div>
-
-    <div class="trends-grid">
-      <a href="posts/l3-barcelona-crisis-recovery.html" class="trend">
-        <div class="trend-num">L3</div>
-        <h3 class="trend-title">Barcelona's crisis &amp; recovery</h3>
-        <p class="trend-desc">How Barcelona went into balance-sheet crisis, the Messi cliff, the controversial economic levers, and the partial-recovery 2026 read.</p>
-        <div class="trend-tag">Layer 3 · Case study · 8 min</div>
-      </a>
-      <a href="posts/l6-apple-mls-case-study.html" class="trend">
-        <div class="trend-num">L6</div>
-        <h3 class="trend-title">Apple TV &amp; MLS — the global DTC bet</h3>
-        <p class="trend-desc">The $2.5bn 10-year exclusive global rights deal, the Messi inflection, what changed in MLS, and the 2026 mid-cycle read.</p>
-        <div class="trend-tag">Layer 6 · Case study · 5 min</div>
-      </a>
-      <a href="posts/l4-permanent-capital.html" class="trend">
-        <div class="trend-num">L4</div>
-        <h3 class="trend-title">Permanent capital arrives</h3>
-        <p class="trend-desc">Why family-office and evergreen-fund structures are increasingly the natural buyer of European club equity.</p>
-        <div class="trend-tag">Layer 4 · Capital · 4 min</div>
-      </a>
-      <a href="posts/l3-mco-blowup-risk.html" class="trend">
-        <div class="trend-num">L3</div>
-        <h3 class="trend-title">The MCO blow-up risk</h3>
-        <p class="trend-desc">Multi-club ownership has scaled fast. The structural fragility under that growth — and what it means for the next cycle.</p>
-        <div class="trend-tag">Layer 3 · Trend · 4 min</div>
-      </a>
-      <a href="posts/l8-llm-native-scouting.html" class="trend">
-        <div class="trend-num">L8</div>
-        <h3 class="trend-title">The AI-native football-tech stack</h3>
-        <p class="trend-desc">LLM-mediated scouting, computer-vision auto-tagging, injury-risk modelling — what an AI-native club operating model actually looks like.</p>
-        <div class="trend-tag">Layer 8 · Trend · 4 min</div>
-      </a>
-      <a href="posts/l6-bein-mena-fragmentation.html" class="trend">
-        <div class="trend-num">L6</div>
-        <h3 class="trend-title">beIN &amp; the MENA broadcast reset</h3>
-        <p class="trend-desc">The Qatari soft-power thesis, pressure from SSC and Shahid, and the 2034 Saudi-led architecture — the regional reset under way.</p>
-        <div class="trend-tag">Layer 6 · Case study · 5 min</div>
-      </a>
-    </div>
-
-    <div class="ledger-cta">
-      <a href="/ledger" class="ledger-cta-link">Read all in The Ledger →</a>
-    </div>
-  </div>
-</section>
 
 <!-- ============= CODA ============= -->
 </div><!-- /ecosystem -->
@@ -2119,5 +2068,16 @@ footer {
 </footer>
 
 <script src="/assets/site.js"></script>
+<script>
+(function () {
+  document.querySelectorAll('section.layer[id^="layer-"]').forEach(function (sec) {
+    var n = (sec.id.match(/\d+/) || [])[0]; if (!n) return;
+    var head = sec.querySelector('.layer-header'); if (!head || head.querySelector('.layer-cta')) return;
+    var a = document.createElement('a');
+    a.className = 'layer-cta'; a.href = '/ledger?layer=' + n; a.textContent = 'See L' + n + ' analysis →';
+    head.appendChild(a);
+  });
+})();
+</script>
 </body>
 </html>

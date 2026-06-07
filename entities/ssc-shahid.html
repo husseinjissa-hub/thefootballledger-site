@@ -71,18 +71,32 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
 }
 </style>
-<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style></head>
+<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+</head>
 <body>
-<header class="masthead">
-  <a href="/" class="brand"><span class="brand-mark">FL</span>The Football Ledger</a>
-  <nav class="primary-nav" aria-label="Primary">
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
     <a href="/" class="nav-item">Overview</a>
     <a href="/ecosystem" class="nav-item">Ecosystem</a>
     <a href="/ledger" class="nav-item">The Ledger</a>
     <a href="/entities" class="nav-item">Entities</a>
     <a href="/briefing" class="nav-item">Briefing</a>
   </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
 <div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-6">Layer 06 · Media</a><span class="sep">/</span><span>SSC / Shahid</span></div>
 <header class="profile-header">
   <div class="eyebrow"><span>L6 · Media · State-aligned broadcasting platform</span><span class="eyebrow-meta">·  Riyadh, Saudi Arabia</span></div>
@@ -134,5 +148,6 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 <footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
 <script src="/content.js"></script>
 <script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
 </body>
 </html>

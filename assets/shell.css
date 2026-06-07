@@ -1,0 +1,28 @@
+/* Shell-only styles — safe to add to existing article/entity pages.
+   No global resets or body rules; component classes only. */
+.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
+.mono-box { width: 26px; height: 26px; flex: 0 0 26px; border: 1.5px solid var(--bone); border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--bone); }
+.wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; color: var(--bone); white-space: nowrap; }
+.site-nav { display: flex; align-items: center; gap: 2px; }
+.site-head .nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; position: relative; transition: color 0.3s ease; white-space: nowrap; background: none; border: 0; }
+.site-head .nav-item:hover { color: var(--bone); }
+.site-head .nav-item.active { color: var(--bone); }
+.site-head .nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 2px; height: 1px; background: var(--gold); }
+.nav-burger, .nav-reserved { display: none; }
+.nav-burger { width: 22px; height: 22px; background: none; border: 0; padding: 0; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; }
+.nav-burger span { display: block; height: 1.5px; width: 22px; background: var(--bone); border-radius: 1px; }
+.nav-reserved { width: 22px; height: 22px; }
+.nav-overlay { position: fixed; inset: 0; background: var(--ink); z-index: 300; display: flex; flex-direction: column; padding: 28px 32px; opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
+.nav-overlay.open { opacity: 1; pointer-events: auto; }
+.nav-close { align-self: flex-end; width: 28px; height: 28px; background: none; border: 0; color: var(--bone); font-size: 26px; line-height: 1; cursor: pointer; font-family: 'Inter Tight', sans-serif; }
+.overlay-nav { display: flex; flex-direction: column; gap: 32px; margin-top: 12vh; padding-left: 8px; }
+.overlay-item { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; color: var(--bone); width: max-content; position: relative; }
+.overlay-item.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--gold); }
+@media (max-width: 900px) {
+  .site-head { padding: 0 22px; }
+  .site-nav { display: none; }
+  .nav-burger { display: flex; }
+  .nav-reserved { display: block; }
+  .brand-lockup { margin: 0 auto; }
+}

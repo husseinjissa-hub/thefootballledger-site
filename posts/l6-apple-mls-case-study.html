@@ -100,18 +100,32 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 @media (max-width: 900px) { .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; } .primary-nav { width: 100%; } .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; } .article-header { padding: 60px 24px 50px; } .article-body { padding: 50px 24px 40px; font-size: 17px; } .article-meta { flex-direction: column; gap: 12px; } .signals { padding: 0 24px; } .related { padding: 60px 24px; } footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; } }
 @media (max-width: 760px) { .chart { margin: 40px -24px; } }
 </style>
-<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style></head>
+<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+</head>
 <body>
-<header class="masthead">
-  <a href="/" class="brand"><span class="brand-mark">FL</span>The Football Ledger</a>
-  <nav class="primary-nav" aria-label="Primary">
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
     <a href="/" class="nav-item">Overview</a>
     <a href="/ecosystem" class="nav-item">Ecosystem</a>
     <a href="/ledger" class="nav-item">The Ledger</a>
     <a href="/entities" class="nav-item">Entities</a>
     <a href="/briefing" class="nav-item">Briefing</a>
   </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
 <article>
   <header class="article-header">
     <div class="article-eyebrow"><span>Layer 6 · Case study</span><span class="article-eyebrow-meta">·  Apple TV × MLS · Streaming-led broadcast</span></div>
@@ -434,5 +448,6 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
       <div class="related-card related-card--upcoming"><div class="related-card-tag">Macro · Trend 04</div><h3 class="related-card-title">MENA's <em>second wave</em></h3><p class="related-card-desc">The broader broadcast and capital architecture in MENA football's Phase 2 era.</p><span class="related-card-status">In production</span></div>
 </div></div></section>
 <footer><div>The Football Ledger · Volume 01 · Workstream 02</div><div>Built May 2026 · Living document</div></footer>
+<script src="/assets/site.js"></script>
 </body>
 </html>

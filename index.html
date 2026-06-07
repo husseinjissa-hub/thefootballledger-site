@@ -128,13 +128,13 @@
     ];
 
     grid.innerHTML = doors.map(function (door) {
-      return '<a class="door" href="' + door.href + '">' +
+      return '<div class="door">' +
         '<div class="door-role">' + door.role + '</div>' +
-        '<div class="door-name">' + door.name + '</div>' +
+        '<a class="door-name" href="' + door.href + '">' + door.name + '</a>' +
         '<div class="door-desc">' + door.desc + '</div>' +
         '<div class="door-sample">' + door.sample + '</div>' +
-        '<div class="door-cta">' + door.cta + '</div>' +
-      '</a>';
+        '<a class="door-cta" href="' + door.href + '">' + door.cta + '</a>' +
+      '</div>';
     }).join('');
   });
 })();

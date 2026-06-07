@@ -132,11 +132,11 @@
     var tag = FL.tagHTML(a);
     if (a.layer != null) tag = tag.replace('<span class="t-layer">L' + a.layer + '</span>',
       '<a class="feed-layer-link" href="/ecosystem#layer-' + a.layer + '"><span class="t-layer">L' + a.layer + '</span></a>');
-    var inner = tag + '<div class="feed-title">' + FL.esc(a.title) + '</div><div class="feed-dek">' + FL.esc(a.dek) + '</div>';
+    var titleBlock = '<div class="feed-title">' + FL.esc(a.title) + '</div>';
+    var title = prod ? titleBlock : '<a href="' + FL.esc(a.url) + '">' + titleBlock + '</a>';
+    var inner = tag + title + '<div class="feed-dek">' + FL.esc(a.dek) + '</div>';
     var right = '<div class="feed-meta">' + meta + '</div>';
-    var body = '<div>' + inner + '</div>' + right;
-    return prod ? '<div class="feed-row is-prod">' + body + '</div>'
-                : '<a class="feed-row" href="' + FL.esc(a.url) + '">' + body + '</a>';
+    return '<div class="feed-row' + (prod ? ' is-prod' : '') + '"><div>' + inner + '</div>' + right + '</div>';
   }
 
   function renderFeed() {

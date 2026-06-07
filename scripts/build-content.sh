@@ -123,5 +123,8 @@ echo '  ]' >> "$OUT"
 echo '}' >> "$OUT"
 rm -f "$tmp"
 
-echo "Wrote $OUT: $(grep -c '"slug":"[^"]*","title"' "$OUT" 2>/dev/null || true) records"
+# JS wrapper so surfaces can load content when opened from file:// (fetch blocked)
+{ printf 'window.FL_CONTENT = '; cat "$OUT"; printf ';\n'; } > content.js
+
+echo "Wrote $OUT + content.js: $(grep -c '"slug":"[^"]*","title"' "$OUT" 2>/dev/null || true) records"
 echo "  articles: $(grep -oc '"type":"' "$OUT")  entities: $(grep -oc '"entityType":"' "$OUT")  briefings: $(grep -oc '"link":' "$OUT")"

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ledger — The Football Ledger</title>
+<meta name="description" content="The Ledger — analysis of the moves redrawing football's business map. Filter by type and layer.">
+<link rel="canonical" href="https://thefootballledger.co/ledger">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+  .ledger-body { display: grid; grid-template-columns: 240px 1fr; gap: 56px; padding: 48px 0 100px; }
+  .filter-rail { position: sticky; top: 88px; align-self: start; }
+  .ed-sel-wrap { padding: 40px 0 8px; }
+  .ed-sel { display: grid; grid-template-columns: 1.45fr 1fr; border: 1px solid var(--line); margin-top: 20px; }
+  .ed-lead { padding: 36px; border-right: 1px solid var(--line); }
+  .ed-lead .feed-title { font-size: clamp(26px, 3vw, 34px); margin: 14px 0 10px; }
+  .ed-lead .feed-dek { font-size: 17px; }
+  .ed-secs { display: flex; flex-direction: column; }
+  .ed-sec { padding: 22px 28px; border-bottom: 1px solid var(--line-soft); }
+  .ed-sec:last-child { border-bottom: 0; }
+  .ed-sec .feed-title { font-size: 19px; margin: 8px 0 4px; }
+  .ed-sec-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--bone-mute); margin-top: 6px; }
+  .ed-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-mute); }
+  .feed-layer-link { color: inherit; }
+  .feed-layer-link:hover .t-layer { border-color: var(--gold); color: var(--gold); }
+  @media (max-width: 900px) {
+    .ledger-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 0 72px; }
+    .filter-rail { position: static; border: 1px solid var(--line); border-radius: 4px; padding: 20px; }
+    .ed-sel { grid-template-columns: 1fr; }
+    .ed-lead { border-right: 0; border-bottom: 1px solid var(--line); }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item active">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item active">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
+<main class="wrap">
+  <header class="surface-head">
+    <div class="surface-eyebrow">Section B · The Ledger</div>
+    <h1 class="surface-title">The moves that <em>redraw the map.</em></h1>
+    <p class="surface-dek">Analysis ordered by editorial judgement and recency — not by layer. Layer is a lens you can filter by.</p>
+  </header>
+
+  <!-- Editor's Selection -->
+  <section class="ed-sel-wrap">
+    <div class="ed-eyebrow">Editor's Selection</div>
+    <div class="ed-sel" id="edSel"></div>
+  </section>
+
+  <!-- Filter + feed -->
+  <div class="ledger-body">
+    <aside class="filter-rail" id="filterRail"></aside>
+    <section>
+      <div class="feed-count" id="feedCount"></div>
+      <div id="feed"></div>
+    </section>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div>The Football Ledger · 2026</div>
+  <div>A continuing analysis of football's business architecture</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/site.js"></script>
+<script>
+(function () {
+  var LEAD_SLUG = 'macro-01-trophy-to-operating';
+  var TYPES = [ ['macro','Macro'], ['trend','Trend'], ['case-study','Case study'] ];
+  var typeKey = function (t) { return t.toLowerCase().replace(/\s+/g, '-'); };
+  var feedEl = document.getElementById('feed');
+  var countEl = document.getElementById('feedCount');
+  var railEl = document.getElementById('filterRail');
+  var edEl = document.getElementById('edSel');
+  var ARTICLES = [];
+  var state = { types: [], layers: [], hideProd: false };
+
+  function readURL() {
+    var p = new URLSearchParams(location.search);
+    state.types = (p.get('type') || '').split(',').filter(Boolean);
+    state.layers = (p.get('layer') || '').split(',').filter(Boolean).map(Number);
+    state.hideProd = p.get('prod') === '0';
+  }
+  function writeURL() {
+    var p = new URLSearchParams();
+    if (state.types.length) p.set('type', state.types.join(','));
+    if (state.layers.length) p.set('layer', state.layers.join(','));
+    if (state.hideProd) p.set('prod', '0');
+    var q = p.toString();
+    history.replaceState(null, '', q ? ('?' + q) : location.pathname);
+  }
+
+  function matches(a) {
+    if (state.hideProd && a.status === 'prod') return false;
+    if (state.types.length && state.types.indexOf(typeKey(a.type)) === -1) return false;
+    if (state.layers.length && (a.layer == null || state.layers.indexOf(a.layer) === -1)) return false;
+    return true;
+  }
+  function byDateDesc(a, b) { return (b.date || '').localeCompare(a.date || '') || a.slug.localeCompare(b.slug); }
+
+  function rowHTML(a) {
+    var prod = a.status === 'prod';
+    var meta = prod ? '<span class="prod-mark">In production</span>'
+      : (FL.fmtDate(a.date) + ' · ' + a.readMinutes + ' min');
+    var tag = FL.tagHTML(a);
+    if (a.layer != null) tag = tag.replace('<span class="t-layer">L' + a.layer + '</span>',
+      '<a class="feed-layer-link" href="/ecosystem#layer-' + a.layer + '"><span class="t-layer">L' + a.layer + '</span></a>');
+    var inner = tag + '<div class="feed-title">' + FL.esc(a.title) + '</div><div class="feed-dek">' + FL.esc(a.dek) + '</div>';
+    var right = '<div class="feed-meta">' + meta + '</div>';
+    var body = '<div>' + inner + '</div>' + right;
+    return prod ? '<div class="feed-row is-prod">' + body + '</div>'
+                : '<a class="feed-row" href="' + FL.esc(a.url) + '">' + body + '</a>';
+  }
+
+  function renderFeed() {
+    var list = ARTICLES.filter(matches).sort(byDateDesc);
+    countEl.textContent = list.length + (list.length === 1 ? ' piece' : ' pieces') + ' · matching current filters';
+    feedEl.innerHTML = list.length ? list.map(rowHTML).join('')
+      : '<div class="empty-state">No pieces match these filters. Clear a filter to see more.</div>';
+  }
+
+  function renderRail() {
+    var counts = {}; TYPES.forEach(function (t) { counts[t[0]] = 0; });
+    ARTICLES.forEach(function (a) { var k = typeKey(a.type); if (k in counts) counts[k]++; });
+    var typeChips = TYPES.map(function (t) {
+      var on = state.types.indexOf(t[0]) !== -1;
+      return '<button class="chip' + (on ? ' active' : '') + '" data-type="' + t[0] + '">' + t[1] + ' (' + counts[t[0]] + ')</button>';
+    }).join('');
+    var layerChips = ''; for (var i = 1; i <= 9; i++) {
+      var on = state.layers.indexOf(i) !== -1;
+      layerChips += '<button class="chip' + (on ? ' active' : '') + '" data-layer="' + i + '" title="' + FL.LAYER_NAMES[i] + '">' + i + '</button>';
+    }
+    railEl.innerHTML =
+      '<div class="filter-group"><div class="filter-label">Type</div><div class="chips">' + typeChips + '</div></div>' +
+      '<div class="filter-group"><div class="filter-label">Layer</div><div class="chip-grid">' + layerChips + '</div></div>' +
+      '<div class="filter-group"><div class="toggle' + (state.hideProd ? ' on' : '') + '" id="prodToggle"><span class="toggle-track"></span>Hide in-production</div></div>' +
+      '<div class="clear-link" id="clearAll">Clear all filters</div>';
+
+    railEl.querySelectorAll('[data-type]').forEach(function (b) { b.onclick = function () { toggle(state.types, b.dataset.type); apply(); }; });
+    railEl.querySelectorAll('[data-layer]').forEach(function (b) { b.onclick = function () { toggle(state.layers, Number(b.dataset.layer)); apply(); }; });
+    document.getElementById('prodToggle').onclick = function () { state.hideProd = !state.hideProd; apply(); };
+    document.getElementById('clearAll').onclick = function () { state.types = []; state.layers = []; state.hideProd = false; apply(); };
+  }
+  function toggle(arr, v) { var i = arr.indexOf(v); if (i === -1) arr.push(v); else arr.splice(i, 1); }
+  function apply() { writeURL(); renderRail(); renderFeed(); }
+
+  function renderEditorsSelection() {
+    var featured = ARTICLES.filter(function (a) { return a.featured; });
+    var lead = featured.filter(function (a) { return a.slug === LEAD_SLUG; })[0] || featured.sort(byDateDesc)[0];
+    var secs = featured.filter(function (a) { return a !== lead; }).sort(byDateDesc).slice(0, 3);
+    if (!lead) { edEl.style.display = 'none'; return; }
+    edEl.innerHTML =
+      '<a class="ed-lead feed-row" href="' + FL.esc(lead.url) + '" style="border-top:0;display:block">' +
+        FL.tagHTML(lead) + '<div class="feed-title">' + FL.esc(lead.title) + '</div><div class="feed-dek">' + FL.esc(lead.dek) + '</div>' +
+        '<div class="ed-sec-meta">' + FL.fmtDate(lead.date) + ' · ' + lead.readMinutes + ' min</div></a>' +
+      '<div class="ed-secs">' + secs.map(function (a) {
+        return '<a class="ed-sec feed-row" href="' + FL.esc(a.url) + '" style="border-top:0;display:block">' +
+          FL.tagHTML(a) + '<div class="feed-title">' + FL.esc(a.title) + '</div>' +
+          '<div class="ed-sec-meta">' + FL.fmtDate(a.date) + ' · ' + a.readMinutes + ' min</div></a>';
+      }).join('') + '</div>';
+  }
+
+  FL.loadContent(function (data) {
+    ARTICLES = (data.articles || []).slice();
+    readURL();
+    renderEditorsSelection();
+    renderRail();
+    renderFeed();
+  });
+})();
+</script>
+</body>
+</html>

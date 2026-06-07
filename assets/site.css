@@ -101,12 +101,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== Cards / doors / grids ===== */
 .door-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
-.door { background: var(--ink); padding: 36px; display: flex; flex-direction: column; gap: 14px; min-height: 260px; transition: background 0.3s ease; }
+.door { background: var(--ink); padding: 36px; display: flex; flex-direction: column; gap: 13px; min-height: 200px; transition: background 0.3s ease; }
 .door:hover { background: var(--ink-2); }
 .door-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
 .door-name { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 400; line-height: 1.05; }
 .door-desc { color: var(--bone-dim); font-size: 15px; line-height: 1.55; }
-.door-sample { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line-soft); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bone-mute); line-height: 1.9; }
+.door-sample { margin-top: 6px; padding-top: 14px; border-top: 1px solid var(--line-soft); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--bone-mute); line-height: 1.9; }
 .door-sample a { color: var(--bone-dim); }
 .door-sample a:hover { color: var(--gold); }
 .door-cta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); }

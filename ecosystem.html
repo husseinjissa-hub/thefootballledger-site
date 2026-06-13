@@ -1233,7 +1233,7 @@ footer {
 .overlay-item { font-family: 'Fraunces', serif; font-weight: 400; font-size: 32px; color: var(--bone); width: max-content; position: relative; }
 .overlay-item.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--gold); }
 .site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
-.layer-cta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); display: inline-block; margin-top: 14px; }
+.layer-cta { display: block; width: fit-content; margin-left: auto; margin-top: 28px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold); }
 .layer-cta:hover { text-decoration: underline; }
 @media (max-width: 900px) {
   .site-head { padding: 0 22px; }
@@ -2053,10 +2053,10 @@ footer {
 (function () {
   document.querySelectorAll('section.layer[id^="layer-"]').forEach(function (sec) {
     var n = (sec.id.match(/\d+/) || [])[0]; if (!n) return;
-    var head = sec.querySelector('.layer-header'); if (!head || head.querySelector('.layer-cta')) return;
+    var wrap = sec.querySelector('.layer-wrap'); if (!wrap || wrap.querySelector('.layer-cta')) return;
     var a = document.createElement('a');
     a.className = 'layer-cta'; a.href = '/ledger?layer=' + n; a.textContent = 'See L' + n + ' analysis →';
-    head.appendChild(a);
+    wrap.appendChild(a);
   });
 })();
 </script>

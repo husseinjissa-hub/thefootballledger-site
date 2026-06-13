@@ -90,7 +90,7 @@ window.FL_CONTENT = {
     {"slug":"wasserman","name":"Wasserman","mono":"WA","layer":5,"entityType":"agency","region":"Los Angeles","summary":"Wasserman entity profile: multi-sport agency anchored by football representation. Strong NWSL and WSL roster, growing men's-football presence, brand-first activation model."}
   ],
   "briefings": [
-    {"title":"Issue 01 · The Phase 2 reset — The Briefing","date":"2026-05-04","status":"live","url":"/briefing/2026-05-04.html","mentions":[],"link":null}
+    {"title":"Issue 01 · The Phase 2 reset — The Briefing","date":"2026-05-04","status":"live","url":"/briefing/2026-05-04.html","mentions":[],"link":null,"dek":"PIF's strategy reset, Apollo's Atlético operating reset, Gamma Waves Partners, Two Circles' footprint, and the Independent Football Regulator's first year."}
   ]
 }
 ;

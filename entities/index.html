@@ -60,7 +60,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="entSearch" type="search" placeholder="Search entities…" autocomplete="off">
     </div>
-    <div class="filter-group" style="margin:0"><div class="filter-label">Layer</div><div class="chip-grid" id="layerChips" style="grid-template-columns:repeat(9,1fr);max-width:520px"></div></div>
+    <div class="filter-group" style="margin:0"><div class="filter-label">Layer</div><div class="chip-list" id="layerChips" style="max-width:300px"></div></div>
     <div class="filter-group" style="margin:0"><div class="filter-label">Type</div><div class="chips" id="typeChips"></div></div>
   </div>
   <div class="ent-count" id="entCount"></div>
@@ -105,7 +105,9 @@
     ENTS = (data.entities || []).slice();
     var lc = document.getElementById('layerChips');
     for (var i = 1; i <= 9; i++) (function (n) {
-      var b = document.createElement('button'); b.className = 'chip'; b.textContent = n; b.title = FL.LAYER_NAMES[n];
+      var b = document.createElement('button'); b.className = 'chip chip-wide'; b.title = FL.LAYER_NAMES[n];
+      var nn = (n < 10 ? '0' + n : '' + n);
+      b.innerHTML = '<span class="chip-num">' + nn + '</span> ' + FL.esc(FL.LAYER_NAMES[n]);
       b.onclick = function () { b.classList.toggle('active'); toggle(state.layers, n); }; lc.appendChild(b);
     })(i);
     var types = ENTS.map(function (e) { return e.entityType; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort();

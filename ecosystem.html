@@ -2115,13 +2115,12 @@ footer {
     collapse.appendChild(inner); wrap.appendChild(collapse);
 
     var bodyId = sec.id + '-body'; collapse.id = bodyId;
-    var count = inner.querySelectorAll('.entity').length;
 
     var btn = document.createElement('button');
     btn.type = 'button'; btn.className = 'layer-toggle';
     btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', bodyId);
-    btn.innerHTML = '<span class="layer-toggle-count">' + count + (count === 1 ? ' entity' : ' entities') +
-      '</span><span class="layer-chevron" aria-hidden="true"></span>';
+    btn.innerHTML = '<span class="layer-toggle-count">Deep-dive examples</span>' +
+      '<span class="layer-chevron" aria-hidden="true"></span>';
     header.appendChild(btn);
 
     sec.classList.add('is-collapsed');

@@ -1237,6 +1237,31 @@ footer {
 .layer-cta:hover { text-decoration: underline; }
 .entity-subgroup { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin: 34px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line-soft); }
 .entity-subgroup:first-of-type { margin-top: 8px; }
+
+/* ===== Collapsible layers ===== */
+.layer { transition: padding 0.45s cubic-bezier(0.4,0,0.2,1); }
+.layer-header { position: relative; cursor: pointer; transition: margin-bottom 0.45s cubic-bezier(0.4,0,0.2,1), padding-bottom 0.45s cubic-bezier(0.4,0,0.2,1); }
+.layer.is-collapsed { padding-top: 56px; padding-bottom: 56px; }
+.layer.is-collapsed .layer-header { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+.layer-toggle { position: absolute; top: 0; right: 0; display: inline-flex; align-items: center; gap: 11px; background: none; border: 1px solid var(--line); border-radius: 999px; padding: 9px 17px; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-mute); white-space: nowrap; transition: color 0.3s ease, border-color 0.3s ease; }
+.layer-header:hover .layer-toggle, .layer-toggle:focus-visible { color: var(--bone); border-color: var(--bone-mute); }
+.layer-toggle:focus-visible { outline: none; }
+.layer-chevron { width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+.layer.is-open .layer-chevron { transform: translateY(1px) rotate(-135deg); }
+.layer-collapse { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1); }
+.layer.is-open .layer-collapse { grid-template-rows: 1fr; }
+.layer-collapse-inner { overflow: hidden; min-height: 0; opacity: 0; transform: translateY(-4px); transition: opacity 0.4s ease, transform 0.4s ease; }
+.layer.is-open .layer-collapse-inner { opacity: 1; transform: none; }
+.layer-allctl { max-width: 1600px; margin: 36px auto 0; padding: 0 60px; display: flex; justify-content: flex-end; gap: 22px; }
+.layer-allctl button { background: none; border: 0; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone-mute); transition: color 0.3s ease; }
+.layer-allctl button:hover { color: var(--gold); }
+@media (max-width: 1100px) {
+  .layer-toggle { position: static; margin-top: 22px; }
+  .layer-allctl { padding: 0 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .layer, .layer-header, .layer-collapse, .layer-collapse-inner, .layer-chevron { transition: none; }
+}
 @media (max-width: 900px) {
   .site-head { padding: 0 22px; }
   .site-nav { display: none; }
@@ -2073,6 +2098,74 @@ footer {
     a.className = 'layer-cta'; a.href = '/ledger?layer=' + n; a.textContent = 'See L' + n + ' analysis →';
     wrap.appendChild(a);
   });
+})();
+
+// Collapsible layers — entities hide under each layer header; smooth grid reveal.
+(function () {
+  var setters = {};
+  document.querySelectorAll('section.layer[id^="layer-"]').forEach(function (sec) {
+    var wrap = sec.querySelector('.layer-wrap'); if (!wrap) return;
+    var header = wrap.querySelector('.layer-header'); if (!header) return;
+
+    // Move everything after the header into a collapsible container (no DOM reordering)
+    var collapse = document.createElement('div'); collapse.className = 'layer-collapse';
+    var inner = document.createElement('div'); inner.className = 'layer-collapse-inner';
+    var node = header.nextSibling;
+    while (node) { var next = node.nextSibling; inner.appendChild(node); node = next; }
+    collapse.appendChild(inner); wrap.appendChild(collapse);
+
+    var bodyId = sec.id + '-body'; collapse.id = bodyId;
+    var count = inner.querySelectorAll('.entity').length;
+
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'layer-toggle';
+    btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', bodyId);
+    btn.innerHTML = '<span class="layer-toggle-count">' + count + (count === 1 ? ' entity' : ' entities') +
+      '</span><span class="layer-chevron" aria-hidden="true"></span>';
+    header.appendChild(btn);
+
+    sec.classList.add('is-collapsed');
+    function setOpen(open) {
+      sec.classList.toggle('is-open', open);
+      sec.classList.toggle('is-collapsed', !open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    setters[sec.id] = setOpen;
+
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(sec.classList.contains('is-collapsed')); });
+    header.addEventListener('click', function (e) {
+      if (e.target.closest('a') || e.target.closest('.layer-desc')) return; // keep links + text selectable
+      setOpen(sec.classList.contains('is-collapsed'));
+    });
+  });
+
+  // Auto-expand the target layer on deep-link / nav (layer-rail, Ledger chips, "See L# analysis")
+  function openFromHash(scroll) {
+    var id = (location.hash || '').replace('#', '');
+    if (id && setters[id]) {
+      setters[id](true);
+      if (scroll) {
+        var el = document.getElementById(id);
+        if (el) requestAnimationFrame(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      }
+    }
+  }
+  window.addEventListener('hashchange', function () { openFromHash(true); });
+  openFromHash(false);
+
+  // Expand all / Collapse all
+  var firstLayer = document.querySelector('section.layer[id^="layer-"]');
+  if (firstLayer && firstLayer.parentNode) {
+    var ctl = document.createElement('div'); ctl.className = 'layer-allctl';
+    ctl.innerHTML = '<button type="button" data-all="open">Expand all</button>' +
+      '<button type="button" data-all="close">Collapse all</button>';
+    firstLayer.parentNode.insertBefore(ctl, firstLayer);
+    ctl.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-all]'); if (!b) return;
+      var open = b.getAttribute('data-all') === 'open';
+      Object.keys(setters).forEach(function (k) { setters[k](open); });
+    });
+  }
 })();
 </script>
 </body>

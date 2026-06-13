@@ -44,6 +44,46 @@ l6-apple-mls-case-study|Case study|6|Media|2026-04-26|0|apple mls
 l6-bein-mena-fragmentation|Case study|6|Media|2026-05-04|0|bein-sports dazn ssc-shahid
 l8-data-led-underdogs|Trend|8|Football-tech|2026-05-28|1|jamestown-analytics statsbomb hudl catapult two-circles
 ARTICLES
+
+# ---- IN-PRODUCTION stubs (drafts live in thefootballledger-editorial; metadata
+# only — no body, no working link. title/dek hard-coded here because the draft
+# HTML is not present in this repo. Rendered as greyed, un-linked feed rows.)
+# slug | type | layer(0=none) | theme | title | dek
+while IFS='|' read -r slug type layer theme title dek; do
+  [ -z "$slug" ] && continue
+  lyr="$layer"; [ "$layer" = "0" ] && lyr="null"
+  printf '    {"slug":"%s","title":"%s","type":"%s","layer":%s,"theme":"%s","readMinutes":null,"date":null,"status":"prod","featured":false,"url":"/posts/%s.html","mentions":[],"dek":"%s"},\n' \
+    "$slug" "$title" "$type" "$lyr" "$theme" "$slug" "$dek" >> "$tmp"
+done <<'PROD'
+l1-afc-saff-professionalising|Trend|1|Governance|AFC and SAFF, professionalising on the clock|The 2027 Asian Cup and 2034 World Cup have compressed a generation of federation-building into roughly 24 months. AFC and SAFF are rebuilding their operating organisations in real time.
+l1-fifa-mega-events|Trend|1|Governance|FIFA's continuous calendar|FIFA's tournament pipeline now fires roughly every twelve months from 2025 to 2034. The federation is being remade from a quadrennial sanctioning body into a continuous global event-and-rights platform.
+l1-national-regulators|Trend|1|Governance|National regulators arrive|The UK's Independent Football Regulator is operational. France and Germany are watching. Where federation self-regulation breaks, the state arrives.
+l1-uefa-legal-pressure|Trend|1|Governance|UEFA under legal pressure|Three legal fronts — competition law, the transfer system, and financial sustainability — are reshaping UEFA's regulatory posture. The federation's room for manoeuvre is narrower than it has been in a generation.
+l2-dtc-or-die|Trend|2|Leagues|DTC or die|The Ligue 1 broadcast-deal collapse forced the LFP to launch its own DTC platform. The pattern is now visible across leagues that fail to attract a premium broadcaster.
+l2-league-pe-infrastructure|Trend|2|Leagues|League-level PE infrastructure|CVC's LaLiga and Ligue 1 commercial vehicles built the league-level PE template. Bundesliga, Serie A, SPL each studying or borrowing the structure.
+l2-pl-exports-model|Trend|2|Leagues|Premier League exports the model|The Premier League's broadcast and operating template is being studied and licensed by leagues from Saudi Arabia to MLS to the Bundesliga.
+l2-spl-privatisation|Trend|2|Leagues|SPL privatisation|Saudi Pro League's privatisation programme — staggered transfer of PIF anchor stakes in flagship clubs.
+l10-format-convergence|Trend|2|Leagues|Sportainment, institutionalising|Mainstream capital has arrived. Top clubs joining established formats. MENA edition expected. By 2028 expect 2-3 dominant global formats and a regional tail.
+l3-group-hq-arms-race|Trend|3|Clubs/MCO|Group-HQ talent arms race|CFG, FSG, RedBird, BlueCo, INEOS Sport are each building 30-to-80 person group-HQ teams that did not exist three years ago. The recruiting pattern is unusual for football: hires from outside the industry.
+l3-mco-blowup-risk|Trend|3|Clubs/MCO|Mid-tier MCO blow-up risk|777 Partners has collapsed. Eagle Football is under cash-flow stress. Several smaller MCOs have shown the model can fail when leveraged acquisitions outpace operating capability. Expect 2-3 more public failures by 2028.
+l3-womens-clubs-systematic|Trend|3|Clubs/MCO|Women's clubs added systematically|MCO groups now add women's clubs as a portfolio default rather than a CSR add-on. CFG, FSG, BlueCo, Mercury13. NWSL franchise valuations have crossed $100m. The economics still don't quite stand alone — but they may not need to.
+l4-control-deals-normal|Trend|4|Capital|Control deals become normal|Apollo's 55% Atlético deal at €2.9bn breaks the minority-only convention in big-five Europe. The asset class re-prices.
+l4-family-offices-organised|Trend|4|Capital|Family offices get organised|Family offices and HNW capital are building institutional underwriting capability around football. Eldridge, Kingdom Holding, Reuben Brothers, the Benetton-adjacent vehicles.
+l4-permanent-capital|Trend|4|Capital|Permanent capital structures|Football capital moves toward evergreen and permanent-capital vehicles that match the long-cycle reality of club ownership. Arctos, RedBird Capital, holding-company structures.
+l4-sports-tech-vc-matures|Trend|4|Capital|Sports-tech VC matures|The sports-tech VC category has crossed €1bn in dedicated capital. Verance, Gamma Waves, Courtside Ventures, a16z Sports Fund, Causeway Media. Specialist GPs win deal access; generalists overpay.
+l5-coach-staff-talent-ip|Trend|5|Agencies|Coach-and-staff talent IP|Top managers now move with their backroom staff as a unit. Manager hires increasingly look like M&A.
+l6-2027-pl-cycle-reset|Trend|6|Media|2027 PL cycle reset|The 2027-30 Premier League rights cycle is the inflection point for English football's broadcast economics.
+l6-club-as-media-company|Trend|6|Media|Club-as-media-company matures|Real Madrid TV, LFCTV, City+, Inter+. Every top club now operates a content team and increasingly a DTC subscriber product.
+l7-fanatics-vertical|Trend|7|Commercial|Category power-shifts|Fanatics has consolidated the licensed merchandise vertical end-to-end. Saudi state-aligned tourism brands have moved upstream into front-of-shirt and sleeve.
+l7-front-of-shirt-multitier|Trend|7|Commercial|Commercial architecture, re-priced|Front-of-shirt multi-tier inventory + Two Circles-style data-led sponsorship pricing. The commercial discipline imported from digital advertising.
+l8-llm-native-scouting|Trend|8|Football-tech|The AI-native football-tech stack|Foundation models are rebuilding the four dominant football-tech workflows in parallel: LLM scouting, CV auto-tagging, injury-risk prediction, psychological profiling.
+l9-premium-hospitality-boom|Trend|9|Stadium/Fan|Stadium revenue engineering|Premium hospitality drives 10-18% of matchday revenue at top clubs and is growing 15%+ annually. Dynamic pricing reshaping the rest of the bowl.
+l9-stadium-as-365-venue|Trend|9|Stadium/Fan|Stadium as 365-day venue|Top clubs run their stadia as 365-day entertainment venues. Concerts and other sports drive 20-30% of incremental revenue.
+macro-04-mena-second-wave|Macro|0|Geography · MENA|MENA's second wave|Phase 2 of MENA football is operations, not signings. PIF reclassification, 2027 Asian Cup, 2034 World Cup, Mubadala, QSI.
+macro-05-sportainment-genz|Macro|0|Sportainment · Audience|Sportainment and the Gen Z attention war|Kings League, Baller League, TST, World Sevens. Why traditional football's youth-attention problem is now a structural threat.
+macro-06-womens-football|Macro|0|Women's · Capital|The institutional decade for women's football|NWSL valuations, the WSL spin-out, Mercury13, Boston Unity SC. Why women's football is now an institutional asset class.
+macro-07-ai-native-ops|Macro|0|AI · Operations|AI-native football operations|From bolt-on tooling to operating substrate: a small set of clubs is rebuilding recruiting, medical, and content around foundation models. The durable edge is whether the org chart changes shape.
+PROD
 sed '$ s/,$//' "$tmp" >> "$OUT"
 echo '  ],' >> "$OUT"
 

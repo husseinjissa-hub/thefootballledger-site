@@ -17,6 +17,7 @@
   .brief-row:hover .brief-title { color: var(--gold); }
   .brief-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--bone-mute); }
   .brief-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.25; transition: color 0.3s ease; }
+  .brief-dek { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.5; color: var(--bone-dim); margin-top: 8px; max-width: 660px; }
   @media (max-width: 700px) { .brief-row { grid-template-columns: 1fr; gap: 6px; } }
 </style>
 </head>
@@ -72,7 +73,9 @@
       var title = b.title.replace(/\s*—\s*The Briefing.*$/, '');
       return '<a class="brief-row" href="/briefing/' + file + '">' +
         '<div class="brief-date">' + FL.fmtDate(b.date) + '</div>' +
-        '<div class="brief-title">' + FL.esc(title) + '</div></a>';
+        '<div><div class="brief-title">' + FL.esc(title) + '</div>' +
+        (b.dek ? '<div class="brief-dek">' + FL.esc(b.dek) + '</div>' : '') +
+        '</div></a>';
     }).join('');
   });
 })();

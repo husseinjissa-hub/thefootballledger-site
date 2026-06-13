@@ -155,8 +155,9 @@ echo '  "briefings": [' >> "$OUT"
 : > "$tmp"
 for f in $(ls briefing/[0-9]*.html 2>/dev/null | sort -r); do
   base="$(basename "$f" .html)"
-  printf '    {"title":"%s","date":"%s","status":"live","url":"/%s","mentions":[],"link":null},\n' \
-    "$(get_title "$f")" "$base" "$f" >> "$tmp"
+  dek="$(get_desc "$f" | sed -E 's/^The Briefing,? *Issue [0-9]+:? *//')"
+  printf '    {"title":"%s","date":"%s","status":"live","url":"/%s","mentions":[],"link":null,"dek":"%s"},\n' \
+    "$(get_title "$f")" "$base" "$f" "$dek" >> "$tmp"
 done
 sed '$ s/,$//' "$tmp" >> "$OUT"
 echo '  ]' >> "$OUT"

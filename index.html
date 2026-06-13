@@ -31,9 +31,22 @@
   .stat-label { font-size: 13px; color: var(--bone-dim); line-height: 1.4; margin: 8px 0 14px; }
   .stat-src { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; color: var(--bone-mute); text-transform: uppercase; }
   .ov-doors-head { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 20px; }
-  .ov-note { padding: 64px 0 100px; }
-  .ov-note p { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(18px, 2vw, 22px); line-height: 1.5; color: var(--bone-dim); max-width: 760px; border-top: 1px solid var(--line); padding-top: 40px; }
-  .ov-note strong { font-style: normal; color: var(--bone); font-weight: 400; }
+  .ov-note { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 80px 0; }
+  .ov-note p { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(26px, 4vw, 46px); line-height: 1.35; color: var(--bone-dim); max-width: 980px; border-top: 0; padding-top: 0; }
+  .ov-note strong { font-style: normal; color: var(--gold); font-weight: 400; display: block; margin-top: 0.4em; }
+  /* Visual door samples (§1) */
+  .door-stack { display: flex; flex-direction: column; gap: 3px; margin-top: 4px; }
+  .door-brick { display: flex; align-items: center; gap: 10px; padding: 5px 9px; background: var(--ink-2); border-left: 2px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--bone-dim); }
+  .door-brick:hover { border-left-color: var(--gold); }
+  .db-num { color: var(--gold); min-width: 22px; }
+  .door-ent-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-top: 4px; }
+  .door-ent { display: flex; align-items: center; gap: 8px; }
+  .door-ent-name { font-size: 11px; color: var(--bone-dim); }
+  .door-ent:hover .door-ent-name { color: var(--gold); }
+  .door-card { display: block; padding: 9px 11px; margin-bottom: 6px; border: 1px solid var(--line-soft); }
+  .door-card:hover { border-color: var(--gold); }
+  .door-card-tag { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
+  .door-card-title { font-family: 'Fraunces', serif; font-size: 13px; color: var(--bone); line-height: 1.25; }
   @media (max-width: 760px) { .stat-bar { grid-template-columns: 1fr 1fr; } .ov-hero { padding: 64px 0 48px; } }
 </style>
 </head>
@@ -101,24 +114,31 @@
     var ents = (data.entities || []);
     var briefs = (data.briefings || []).slice().sort(byDateDesc);
 
-    // Ecosystem sample: mini layer stack
-    var layers = [1,2,3,4,5,6,7,8,9].map(function (n) { return 'L' + n + ' · ' + FL.LAYER_NAMES[n]; });
-    var ecoSample = layers.slice(0, 5).map(function (s) { return '<div>' + s + '</div>'; }).join('') + '<div>+ four more layers</div>';
-
-    // Ledger sample: latest 2-3 pieces
-    var ledSample = arts.slice(0, 3).map(function (a) {
-      return '<div><a href="' + FL.esc(a.url) + '">' + FL.esc(a.title) + '</a></div>';
-    }).join('');
-
-    // Entities sample: 6 monogram chips
-    var entSample = '<div style="display:flex;gap:8px;flex-wrap:wrap">' + ents.slice(0, 6).map(function (e) {
-      return '<a href="/entities/' + e.slug + '.html" title="' + FL.esc(e.name) + '"><span class="ent-mono" style="width:30px;height:30px;font-size:10px">' + FL.esc(e.mono) + '</span></a>';
+    // Ecosystem sample: nine layers as stacked building blocks
+    var ecoSample = '<div class="door-stack">' + [1,2,3,4,5,6,7,8,9].map(function (n) {
+      return '<div class="door-brick"><span class="db-num">L' + n + '</span>' + FL.esc(FL.LAYER_NAMES[n]) + '</div>';
     }).join('') + '</div>';
 
-    // Briefing sample: 2 dated notes
+    // Ledger sample: latest 3 pieces as small cards
+    var ledSample = arts.slice(0, 3).map(function (a) {
+      return '<a class="door-card" href="' + FL.esc(a.url) + '">' +
+        '<span class="door-card-tag">' + FL.esc(a.type) + '</span>' +
+        '<span class="door-card-title">' + FL.esc(a.title) + '</span></a>';
+    }).join('');
+
+    // Entities sample: 6 monograms paired with names
+    var entSample = '<div class="door-ent-list">' + ents.slice(0, 6).map(function (e) {
+      return '<a class="door-ent" href="/entities/' + e.slug + '.html">' +
+        '<span class="ent-mono" style="width:26px;height:26px;flex:0 0 26px;font-size:9px">' + FL.esc(e.mono) + '</span>' +
+        '<span class="door-ent-name">' + FL.esc(e.name) + '</span></a>';
+    }).join('') + '</div>';
+
+    // Briefing sample: 2 dated notes as cards (matches ledger treatment)
     var briefSample = (briefs.length ? briefs.slice(0, 2).map(function (b) {
-      return '<div>' + FL.fmtDate(b.date) + ' — <a href="/' + 'briefing/' + (b.url.split('/').pop()) + '">' + FL.esc(b.title.replace(/ — The Briefing.*/, '')) + '</a></div>';
-    }).join('') : '<div>First briefing — 04 May 2026</div>');
+      return '<a class="door-card" href="/briefing/' + (b.url.split('/').pop()) + '">' +
+        '<span class="door-card-tag">' + FL.fmtDate(b.date) + '</span>' +
+        '<span class="door-card-title">' + FL.esc(b.title.replace(/ — The Briefing.*/, '')) + '</span></a>';
+    }).join('') : '<a class="door-card"><span class="door-card-tag">04 May 2026</span><span class="door-card-title">First briefing</span></a>');
 
     var doors = [
       { role: 'Atlas', name: 'Ecosystem', href: '/ecosystem', desc: 'The nine-layer map of who holds power and where the money moves.', sample: ecoSample, cta: 'Explore the map →' },

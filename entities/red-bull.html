@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Bull Football — Entity profile · The Football Ledger</title>
+<meta name="description" content="Red Bull Football entity profile: the industrialised multi-club model — RB Leipzig, Salzburg, New York, Bragantino, Omiya, plus minority plays at Leeds and Paris FC, run as a talent factory and brand channel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-3">Layer 03 · Clubs &amp; MCO</a><span class="sep">/</span><span>Red Bull</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L3 · Clubs &amp; MCO · Multi-club ownership group</span><span class="eyebrow-meta">·  Fuschl am See, Austria</span></div>
+  <h1 class="entity-title">Red Bull <em>Football</em></h1>
+  <p class="entity-deck">The energy-drink conglomerate that industrialised the multi-club model — a vertically integrated talent factory feeding RB Leipzig, monetised as much through transfer-trading and brand reach as through trophies.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">MCO within a beverage group</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">Salzburg 2005 · Leipzig 2009</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Fuschl am See, AT</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Oliver Mintzlaff · CEO Projects</div></div>
+    <div class="fact"><div class="fact-label">Parent net sales</div><div class="fact-value"><em>€12.2bn</em> · 2025</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Lighter stakes · Asia pipeline</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>A talent factory wearing <em>shirts</em></h2>
+<p>Red Bull's football network sits inside the privately held Red Bull GmbH (49% Mateschitz family, 51% the Yoovidhya family of Thailand). It is the most industrialised multi-club model in the game: peripheral clubs develop and trade players, RB Leipzig is the sell-on apex and Champions League cash node, and every shirt doubles as media inventory for the drinks brand. The strategic return is reach and trading margin, not trophies.</p>
+<p>Since founder Dietrich Mateschitz's death in 2022, the project has been institutionalised — Mark Mateschitz inherited the family stake, Oliver Mintzlaff runs sport as CEO of corporate projects and investments, and Jürgen Klopp joined as Head of Global Soccer in January 2025, a credibility hire as much as a sporting one. The newest moves — minority stakes paired with shirt sponsorship at Leeds and Paris FC — suggest a lighter ownership pattern designed to buy reach and optionality without tripping control regulation.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Portfolio and structure</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Group structure</div><div><div class="row-val">Football arm inside Red Bull GmbH (49% Mateschitz family / 51% Yoovidhya family). Control exercised de facto; club governance structured to satisfy German 50+1 and UEFA tests.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">RB Leipzig (DE)</div><div><div class="row-val">The apex club and talent destination. Receives <strong>~€68m</strong> in 2025–26 Bundesliga TV distribution; finished 3rd in 2024–25. Formal voting structured around a small membership.</div><div class="row-source">Source · Reported / Disclosed (league)</div></div></div>
+      <div class="row"><div class="row-key">Salzburg &amp; Bragantino</div><div><div class="row-val"><strong>FC Red Bull Salzburg</strong> (Austria, since 2005) — chief European feeder into Leipzig. <strong>Red Bull Bragantino</strong> (Brazil) — South American feeder/trading node.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">New York Red Bulls (US)</div><div><div class="row-val"><strong>100% owned</strong> since 2006. Valued at <em>~$645m</em>, 18th of MLS clubs (Sportico, Jan 2025).</div><div class="row-source">Source · Reported (Sportico)</div></div></div>
+      <div class="row"><div class="row-key">RB Omiya Ardija (JP)</div><div><div class="row-val">Acquired <strong>100%</strong> from NTT East in Aug 2024 (control late Nov 2024) — the first full foreign takeover of a Japanese pro club, enabled by a 2020 rule change.</div><div class="row-source">Source · Reported (Inside World Football, Japan Times)</div></div></div>
+      <div class="row"><div class="row-key">Leeds United (ENG)</div><div><div class="row-val"><strong>Undisclosed minority stake</strong> plus front-of-shirt sponsorship from 2024–25. Majority remains with 49ers Enterprises. Leeds promoted to the Premier League for 2025–26.</div><div class="row-source">Source · Reported (Bloomberg, ESPN, BBC) · stake % not disclosed</div></div></div>
+      <div class="row"><div class="row-key">Paris FC (FR)</div><div><div class="row-val">Red Bull holds <strong>~10.6%</strong>; Arnault family (Agache) holds the <strong>52.4%</strong> majority — an Arnault-led deal, not a Red Bull club. Paris FC promoted to Ligue 1 for 2025–26.</div><div class="row-source">Source · Reported (Sportcal, France24)</div></div></div>
+      <div class="row"><div class="row-key">UEFA MCO conflict</div><div><div class="row-val">Leipzig and Salzburg have repeatedly played the Champions League simultaneously, resolved through governance restructuring and, under UEFA's relaxed regime, blind-trust options.</div><div class="row-source">Source · Reported (SportBusiness)</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the network actually functions</h2>
+<p>The football network is a talent-arbitrage machine. Salzburg, Bragantino, New York and now Omiya develop and trade players; Leipzig is the sell-on apex and the European cash node; the brand, not the silverware, is the strategic asset. Control is deliberately obscured to clear two regulatory hurdles at once — Germany's 50+1 ownership rule and UEFA's multi-club rules — which is why formal voting structures rarely reflect where decisions are actually made.</p>
+<p>The Leeds and Paris FC moves point to an evolving model. Rather than full ownership, Red Bull has twice in twelve months taken a minority stake paired with shirt sponsorship, buying brand reach and future optionality while staying below the control thresholds that trigger MCO scrutiny. Paris FC is the clearest case: it is an Arnault-led acquisition in which Red Bull is a junior partner, not a portfolio club, and should be read as an associate stake.</p>
+<p>Succession risk is live but contained. The founder's death handed the family stake to Mark Mateschitz, with Mintzlaff operating the business and Klopp lending sporting credibility — a deliberate conversion of a founder-driven project into an institution. Valuations across most of the portfolio remain opaque; only the New York franchise carries a cleanly sourced public mark.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The 2026 posture is consolidation of the core network, continued Asian and talent-pipeline expansion through Omiya, and a tilt toward lighter stake-plus-sponsorship plays in major markets. The binding constraint is UEFA: tightening multi-club rules and floated grace-period deadlines raise the prospect that Red Bull eventually has to divest or ring-fence one of Leipzig or Salzburg if both keep reaching Europe.</p>
+<p>Watch the Leeds entanglement. An undisclosed stake plus a Premier League promotion creates a latent MCO question should Leeds and Leipzig both qualify for European competition — the kind of structural conflict the lighter-ownership model is designed to avoid but does not fully escape.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Bloomberg (Red Bull GmbH revenue and can sales, 2025–2026)</li>
+      <li>Sportico (NY Red Bulls valuation); ESPN, BBC (Leeds stake)</li>
+      <li>Sportcal, France24 (Paris FC ownership split)</li>
+      <li>Inside World Football, Japan Times (Omiya Ardija)</li>
+      <li>SportBusiness (UEFA MCO regime). Club valuations for Leipzig/Salzburg/Bragantino/Omiya not independently disclosed</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

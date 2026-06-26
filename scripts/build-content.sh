@@ -145,6 +145,46 @@ statsbomb|SB|8|football-tech|London
 two-circles|TC|7|commercial|London
 uefa|UE|1|federation|Nyon
 wasserman|WA|5|agency|Los Angeles
+ligue-1|L1|2|league|Paris
+icon-league|IC|2|league|Berlin
+the-soccer-tournament|TST|2|league|Cary
+world-sevens-football|W7|2|league|New York
+red-bull|RBF|3|MCO|Fuschl
+silver-lake|SL|4|PE|Menlo Park
+verance-capital|VC|4|PE|New York
+gamma-waves|GW|4|PE|Amsterdam
+riyadh-air-alula-neom|RA|7|commercial|Riyadh
+stats-perform|OP|8|football-tech|London
+transferroom|TR|8|football-tech|London
+ifr|IFR|1|regulator|Manchester
+conmebol|CMB|1|confederation|Luque
+concacaf|CCF|1|confederation|Miami
+eredivisie|ER|2|league|Zeist
+efl-championship|EFL|2|league|Preston
+liga-mx|MX|2|league|Mexico City
+eagle-football|EF|3|MCO|London
+777-partners|777|3|MCO|Miami
+v-sports|VS|3|MCO|Birmingham
+oaktree|OT|4|credit|Los Angeles
+clearlake|CL|4|PE|Santa Monica
+ares|ARE|4|credit|Los Angeles
+sixth-street|6S|4|structured|San Francisco
+caa-base|CB|5|agency|London
+you-first|YF|5|agency|Madrid
+pimenta|RP|5|agency|Monaco
+tnt-sports|TNT|6|broadcaster|London
+netflix|NF|6|broadcaster|Los Gatos
+canal-plus|C+|6|broadcaster|Paris
+puma|PU|7|commercial|Herzogenaurach
+new-balance|NB|7|commercial|Boston
+ea-sports|EA|7|commercial|Redwood City
+qatar-airways|QR|7|commercial|Doha
+sportradar|SR|8|football-tech|St. Gallen
+genius-sports|GS|8|football-tech|London
+skillcorner|SC|8|football-tech|Paris
+oak-view-group|OVG|9|stadium|Denver
+aeg|AEG|9|stadium|Los Angeles
+socios-chiliz|CHZ|9|fan-platform|Malta
 ENTITIES
 echo '  "entities": [' >> "$OUT"
 sed '$ s/,$//' "$tmp" >> "$OUT"

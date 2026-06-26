@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oaktree Capital — Entity profile · The Football Ledger</title>
+<meta name="description" content="Oaktree Capital profile: the distressed-debt giant that took control of Inter Milan after Suning's default — the ~€395m loan, the club's first profit, the 2025 bond refinancing, and the stabilise-then-sell posture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-4">Layer 04 · Capital</a><span class="sep">/</span><span>Oaktree Capital</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L4 · Capital · Distressed-debt / credit</span><span class="eyebrow-meta">·  Los Angeles, US</span></div>
+  <h1 class="entity-title"><em>Oaktree</em></h1>
+  <p class="entity-deck">The world's largest distressed-debt house became, almost by accident, the owner of a Champions League finalist — and is quietly engineering Inter Milan for sale, not for keeps.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Distressed-debt / credit PE</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1995</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Los Angeles, CA</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Marks &amp; Karsh · O'Leary &amp; Panossian (co-CEOs)</div></div>
+    <div class="fact"><div class="fact-label">AUM</div><div class="fact-value"><em>~$202bn</em></div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Stabilise-then-sell Inter</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The reluctant owner of <em>Inter Milan</em></h2>
+<p>Oaktree Capital Management is the world's largest distressed-debt investor, founded in 1995 and now a Brookfield subsidiary with roughly $202bn under management. It took control of Inter Milan in May 2024 when Suning defaulted on a loan that had accreted to about €395m, enforcing its share pledge rather than refinancing — making a credit fund the owner of one of Europe's biggest clubs.</p>
+<p>Under Oaktree, Inter has been run for cash discipline: the club posted its first-ever profitable year for 2024/25 and refinanced its bond at a lower coupon, cutting annual interest. Analysts read the refinancing as balance-sheet grooming ahead of a sale, though no formal process has been disclosed and Oaktree describes itself as a patient owner.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Scale, the takeover, and the exit set-up</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Capital type</div><div><div class="row-val">Distressed-debt and credit specialist; the largest such investor globally.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">AUM</div><div><div class="row-val"><strong>~$202bn</strong> (Dec 2024). Brookfield, majority owner since 2019, agreed to buy the remaining ~26% for ~$3bn (closing 2026).</div><div class="row-source">Source · Disclosed / Reported</div></div></div>
+      <div class="row"><div class="row-key">Inter takeover</div><div><div class="row-val">Took <strong>control of Inter on 22 May 2024</strong> when Suning defaulted on a loan that accreted from €275m to <em>~€395m</em>.</div><div class="row-source">Source · Reported (ESPN)</div></div></div>
+      <div class="row"><div class="row-key">Inter finances</div><div><div class="row-val">First-ever profitable year: <strong>€35.4m profit</strong> for FY ended June 2025.</div><div class="row-source">Source · Reported (SempreInter)</div></div></div>
+      <div class="row"><div class="row-key">Refinancing</div><div><div class="row-val">June 2025: refinanced the ~€415m bond at a <strong>4.52% coupon to 2030</strong>, cutting annual interest ~€12m — read as sale preparation.</div><div class="row-source">Source · Reported (SempreInter, BeBeez)</div></div></div>
+      <div class="row"><div class="row-key">Valuation</div><div><div class="row-val">Discussion centres on a <em>€2–2.5bn</em>+ range; no formal sale process confirmed by any primary source.</div><div class="row-source">Source · Reported / Estimate</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the firm actually deploys</h2>
+<p>Oaktree is behaving like a credit fund that ended up with the keys. It has run Inter for cash discipline — first profit, cheaper debt — precisely to maximise an eventual exit value rather than to build a footballing dynasty. The bond refinancing is balance-sheet grooming, and named potential buyers (Gulf sovereign funds) remain speculative with no process confirmed.</p>
+<p>The Brookfield full buyout changes who ultimately decides. Inter now sits inside a roughly trillion-dollar asset platform, so the hold-or-sell call may increasingly be Brookfield's rather than Oaktree's founders'. What Oaktree carries Inter at internally, and what return enforcement at €395m implies against a €2bn-plus ask, are not disclosed.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The posture is patient: stabilise, then sell at a favourable mark. The open questions are whether there is a live, mandated sale process or only opportunistic readiness, whether Brookfield wants Inter as a long-term platform asset rather than a disposal, and what internal valuation justifies holding. For a Ledger reader, Inter is the cleanest current case of football as a distressed-credit asset that a fund neither sought nor intends to keep.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Oaktree / Brookfield filings and releases; Institutional Investor</li>
+      <li>ESPN (Suning default); SempreInter, BeBeez (profit, refinancing)</li>
+      <li>OneFootball (sale-preparation framing)</li>
+      <li>Note: no mandated Inter sale process confirmed; buyer identities speculative</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

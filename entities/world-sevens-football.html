@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Sevens Football (W7F) — Entity profile · The Football Ledger</title>
+<meta name="description" content="World Sevens Football entity profile: the women's 7v7 grand-slam series with a $5m-per-event prize pool, DAZN distribution, Mackesy-Fishkin backing, and a fast multi-city scale-up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770; --rust: #c8102e; --gold: #d4a64a; --jade: #4a6b5a; --line: #2e2e2e; --line-soft: #1f1f1f; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.04; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02B · Sportainment leagues</a><span class="sep">/</span><span>World Sevens Football</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L2B · Sportainment · Women's 7v7 series</span><span class="eyebrow-meta">·  New York City, US</span></div>
+  <h1 class="entity-title">World Sevens <em>Football</em></h1>
+  <p class="entity-deck">A women's 7v7 grand-slam series launched in 2025 with a $5m-per-event prize pool — capital-led infrastructure betting that fast-format, club-branded football can accelerate the women's game's commercialisation.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sportainment · women's 7v7</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">2025 · first event May</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">New York City, US</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Justin Fishkin · CEO</div></div>
+    <div class="fact"><div class="fact-label">Prize pool</div><div class="fact-value"><em>$5m</em> per event</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Multi-city circuit scale-up</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>Manufacturing an elite property <em>fast</em></h2>
+<p>World Sevens Football is a women's seven-a-side “grand slam” series that stages eight elite club teams per event on a half-size pitch. Announced in March 2025 and run by co-founder and CEO Justin Fishkin, it is backed by philanthropist Jennifer Mackesy — a minority owner of both Gotham FC and Chelsea — with DAZN as global broadcast, production and marketing partner. The pitch is blunt: pay clubs and players immediate, outsized cash to assemble a broadcast-ready women's property at speed.</p>
+<p>The prize economics are the proposition. A $5m-per-event pool, with roughly $2m to the winner, dwarfs most women's-club prize money and functions as a manufactured incentive to attract the top clubs. Within twelve months the series moved from a single event to a multi-city circuit, an aggressive scale-up that is itself the entity's defining characteristic.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Format, prizes, and the circuit</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Format</div><div><div class="row-val">7v7 on a half-size pitch, <strong>eight club teams per event</strong>, two 15-minute halves, extra time for ties; a grand-slam series across host cities.</div><div class="row-source">Source · Disclosed (W7F)</div></div></div>
+      <div class="row"><div class="row-key">Prize pool</div><div><div class="row-val"><strong>$5m per event</strong>; winner takes ~$2m. Bayern's Estoril win reported at ~$2.5m; San Diego Wave took $2m at Fort Lauderdale.</div><div class="row-source">Source · Disclosed / Reported</div></div></div>
+      <div class="row"><div class="row-key">Founders &amp; backers</div><div><div class="row-val">Co-founder/CEO <strong>Justin Fishkin</strong>; co-founder/backer <strong>Jennifer Mackesy</strong> (Gotham FC / Chelsea minority owner). Aly Wagner, chief of strategy; Tobin Heath chairs the player advisory council.</div><div class="row-source">Source · Disclosed (W7F)</div></div></div>
+      <div class="row"><div class="row-key">Event 1 — Estoril</div><div><div class="row-val">Portugal, <strong>May 2025</strong>. Winner: <strong>Bayern Munich</strong> (beat Manchester United 2–1). The inaugural edition.</div><div class="row-source">Source · Reported / Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Event 2 — Fort Lauderdale</div><div><div class="row-val">Florida, <strong>December 2025</strong> — first in North America. Winner: <strong>San Diego Wave</strong> (beat Club Tigres 3–0).</div><div class="row-source">Source · Reported (W7F, San Diego Wave FC)</div></div></div>
+      <div class="row"><div class="row-key">Event 3 — London</div><div><div class="row-val">Gtech Community Stadium, <strong>May 2026</strong>. Winner: <strong>Chelsea</strong> (beat Manchester United 6–5 from 0–3 down; Aggie Beever-Jones hat-trick). A WSL-heavy field.</div><div class="row-source">Source · Reported (W7F)</div></div></div>
+      <div class="row"><div class="row-key">Commercial</div><div><div class="row-val">DAZN global media partner; Sky Sports carrying in the UK; Nike and Invisalign among brand partners; StubHub named ticketing partner (Dec 2025).</div><div class="row-source">Source · Reported (W7F, BusinessWire)</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the series actually works</h2>
+<p>W7F is a capital-and-format bet on the women's game's monetisation gap. It pays clubs and players immediate cash far above the women's norm to manufacture an elite, broadcast-ready property at speed, then relies on DAZN to distribute it. The DAZN partnership mirrors the broadcaster's wider women's-football and direct-to-consumer strategy: W7F is effectively premium content inventory for DAZN's women's-sports push as much as it is a standalone competition.</p>
+<p>Club participation is opportunistic rather than committed. There is no league structure, no promotion or relegation, and no calendar sanction — clubs appear for the money and the exposure, which means the franchise value accrues to W7F rather than to the teams. That is a feature for the organiser and a fragility for the model: the property depends on a single anchor financier and a single broadcast partner, and on continued willingness from clubs to lend their names to an off-calendar exhibition.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The 2026 posture is rapid circuit expansion across host cities, using outsized prize money and DAZN distribution to lock in the top women's clubs before any rival format scales. The sustainability question sits underneath the growth: whether a $5m-per-event pool is a durable economic base or a subsidised customer-acquisition cost that compresses once novelty and DAZN's underwriting normalise — and whether a non-sanctioned 7v7 series builds the women's game or competes with the eleven-a-side product clubs actually monetise.</p>
+<p>The governance horizon is FIFA and UEFA cooperation. Calendar congestion and sanctioning friction are the natural ceiling on a property that sits outside the official structure; securing institutional buy-in, or being deliberately kept outside it, will shape how large W7F can become.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>World Sevens Football releases (worldsevensfootball.com)</li>
+      <li>DAZN; San Diego Wave FC; BusinessWire</li>
+      <li>BBC Sport; Yahoo Sports; Women's Football News (2025–2026)</li>
+      <li>Note: co-founder is Justin Fishkin; three editions had been staged by June 2026 (Estoril, Fort Lauderdale, London)</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

@@ -5,10 +5,10 @@
    tokens/fonts; introduces no new palette or typeface.
    ============================================================ */
 :root {
-  --ink: #0a0a0a; --ink-2: #141414; --ink-3: #1c1c1c; --ink-4: #2a2a2a;
-  --bone: #f5f1e8; --bone-dim: #c4c0b6; --bone-mute: #7a7770;
-  --rust: #c8102e; --gold: #d4a64a; --sand: #e8dcc4; --jade: #4a6b5a;
-  --line: #2e2e2e; --line-soft: #1f1f1f;
+  --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --ink-4: #e0d9c6;
+  --bone: #17181a; --bone-dim: #55514a; --bone-mute: #8a857b;
+  --rust: #7a2233; --gold: #10402b; --sand: #e8dcc4; --jade: #4a6b5a;
+  --line: #dcd6c8; --line-soft: #ece7da;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scrollbar-gutter: stable; }
@@ -18,9 +18,9 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) { .wrap { padding: 0 22px; } }
 
 /* ===== Masthead ===== */
-.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(10,10,10,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(248,245,238,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
 .brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
-.mono-box { width: 26px; height: 26px; flex: 0 0 26px; background: var(--gold); border-radius: 3px; display: inline-flex; align-items: center; justify-content: center; font-family: "Fraunces", serif; font-size: 14px; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; box-shadow: inset 0 0 0 1px rgba(10,10,10,0.35); }
+
 .wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; color: var(--bone); white-space: nowrap; }
 .site-nav { display: flex; align-items: center; gap: 2px; }
 .nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; position: relative; transition: color 0.3s ease; white-space: nowrap; }
@@ -39,7 +39,9 @@ a { color: inherit; text-decoration: none; }
 .overlay-item.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--gold); }
 
 /* ===== Footer ===== */
-.site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
+.site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
+.foot-utility a { color: var(--bone-mute); transition: color 0.2s ease; }
+.foot-utility a:hover { color: var(--gold); }
 
 @media (max-width: 900px) {
   .site-head { padding: 0 22px; }

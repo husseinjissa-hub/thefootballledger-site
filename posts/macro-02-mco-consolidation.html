@@ -20,19 +20,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ink: #0a0a0a;
-  --ink-2: #141414;
-  --ink-3: #1c1c1c;
-  --ink-4: #2a2a2a;
-  --bone: #f5f1e8;
-  --bone-dim: #c4c0b6;
-  --bone-mute: #7a7770;
-  --rust: #c8102e;
-  --gold: #d4a64a;
+  --ink: #f8f5ee;
+  --ink-2: #f1ece0;
+  --ink-3: #eae4d6;
+  --ink-4: #e0d9c6;
+  --bone: #17181a;
+  --bone-dim: #55514a;
+  --bone-mute: #8a857b;
+  --rust: #7a2233;
+  --gold: #10402b;
   --sand: #e8dcc4;
   --jade: #4a6b5a;
-  --line: #2e2e2e;
-  --line-soft: #1f1f1f;
+  --line: #dcd6c8;
+  --line-soft: #ece7da;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -69,7 +69,7 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background: rgba(10,10,10,0.92);
+  background: rgba(248,245,238,0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 100;
@@ -208,7 +208,7 @@ a { color: inherit; text-decoration: none; }
 .article-body em { color: var(--bone); font-style: italic; }
 .article-body a.in-link {
   color: var(--gold);
-  border-bottom: 1px solid rgba(212, 166, 74, 0.4);
+  border-bottom: 1px solid rgba(16, 64, 43, 0.4);
   transition: border-color 0.2s ease;
 }
 .article-body a.in-link:hover { border-bottom-color: var(--gold); }
@@ -225,8 +225,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .callout {
-  background: rgba(212, 166, 74, 0.04);
-  border: 1px solid rgba(212, 166, 74, 0.3);
+  background: rgba(16, 64, 43, 0.04);
+  border: 1px solid rgba(16, 64, 43, 0.3);
   border-left: 3px solid var(--gold);
   padding: 28px 32px;
   margin: 40px 0;
@@ -486,13 +486,13 @@ footer {
 }
 
 </style>
-<style>.brand-mark{border:1.5px solid var(--bone);border-radius:3px;width:26px;height:26px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:var(--bone);display:inline-flex;align-items:center;justify-content:center}.brand-mark svg{display:none}</style><link rel="stylesheet" href="/assets/shell.css">
+<style></style><link rel="stylesheet" href="/assets/shell.css">
 </head>
 <body>
 
 <header class="site-head">
   <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="brand-lockup" href="/"><span class="mono-box">FL</span><span class="wordmark">The Football Ledger</span></a>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="wordmark">The Football Ledger</span></a>
   <nav class="site-nav" aria-label="Primary">
     <a href="/" class="nav-item">Overview</a>
     <a href="/ecosystem" class="nav-item">Ecosystem</a>
@@ -537,14 +537,14 @@ footer {
 <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Multi-club ownership share of Big Five clubs, 2015–2025">
   <rect x="0" y="0" width="720" height="400" fill="#141414"/>
   <line x1="70" y1="280.0" x2="680" y2="280.0" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="280.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">10%</text><line x1="70" y1="220.0" x2="680" y2="220.0" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="220.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">20%</text><line x1="70" y1="160.0" x2="680" y2="160.0" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="160.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">30%</text><line x1="70" y1="100.0" x2="680" y2="100.0" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="100.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">40%</text><line x1="70" y1="40.0" x2="680" y2="40.0" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="40.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">50%</text>
-  <polyline points="120.8,286.0 273.3,208.0 375.0,172.0 476.7,142.0 527.5,119.8 578.3,89.8 629.2,53.8" fill="none" stroke="#d4a64a" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="120.8" cy="286.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="273.3" cy="208.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="375.0" cy="172.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="476.7" cy="142.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="527.5" cy="119.8" r="4" fill="#d4a64a" stroke="#0a0a0a" stroke-width="2"/><circle cx="578.3" cy="89.8" r="4" fill="#d4a64a" stroke="#0a0a0a" stroke-width="2"/><circle cx="629.2" cy="53.8" r="4" fill="#d4a64a" stroke="#0a0a0a" stroke-width="2"/>
+  <polyline points="120.8,286.0 273.3,208.0 375.0,172.0 476.7,142.0 527.5,119.8 578.3,89.8 629.2,53.8" fill="none" stroke="#10402b" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="120.8" cy="286.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="273.3" cy="208.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="375.0" cy="172.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="476.7" cy="142.0" r="4" fill="#7a7770" stroke="#0a0a0a" stroke-width="2"/><circle cx="527.5" cy="119.8" r="4" fill="#10402b" stroke="#0a0a0a" stroke-width="2"/><circle cx="578.3" cy="89.8" r="4" fill="#10402b" stroke="#0a0a0a" stroke-width="2"/><circle cx="629.2" cy="53.8" r="4" fill="#10402b" stroke="#0a0a0a" stroke-width="2"/>
   <text x="120.8" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2015</text><text x="222.5" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2017</text><text x="324.2" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2019</text><text x="425.8" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2021</text><text x="527.5" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2023</text><text x="629.2" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2025</text>
-  <text x="621.2" y="39.8" fill="#d4a64a" font-family="'Fraunces', Georgia, serif" font-size="22" font-weight="500" text-anchor="end" font-style="italic">47.7%</text>
+  <text x="621.2" y="39.8" fill="#10402b" font-family="'Fraunces', Georgia, serif" font-size="22" font-weight="500" text-anchor="end" font-style="italic">47.7%</text>
 <text x="621.2" y="57.8" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">2025–26</text>
   <text x="132.8" y="282.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~9% est. 2015</text>
   <line x1="70" y1="340" x2="680" y2="340" stroke="#2e2e2e" stroke-width="1"/>
-  <text x="70" y="22" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="70" y="22" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
   <text x="70" y="38" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">Big Five clubs in MCO groups, 2015–2025</text>
 </svg>
 <figcaption>Share of clubs in the English, Spanish, German, Italian, and French top divisions affiliated with a multi-club ownership group. <em>Verified data points (gold) from PitchBook, UEFA Club Investment Report, and trade press. Earlier years (grey) estimated from documented growth trajectory.</em> <strong>Source:</strong> PitchBook (2024–2026), UEFA Club Investment Report (2024–2025), The Football Week.</figcaption>
@@ -573,7 +573,7 @@ footer {
 <figure class="chart">
 <svg viewBox="0 0 780 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MCO groups grouped by integration capability, 2026">
   <rect x="0" y="0" width="780" height="460" fill="#141414"/>
-  <text x="60" y="32" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2 · SCHEMATIC</text>
+  <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2 · SCHEMATIC</text>
   <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="16" font-weight="500">Where the major MCO groups sit in 2026</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Editorial composite of disclosed group-HQ infrastructure, audited cross-club flows, and published synergies.</text>
 
@@ -584,7 +584,7 @@ footer {
   <!-- Column headers -->
   <text x="160" y="130" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">ASSEMBLERS</text>
   <text x="400" y="130" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">BUILDING CAPABILITY</text>
-  <text x="640" y="130" fill="#d4a64a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">INTEGRATORS</text>
+  <text x="640" y="130" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">INTEGRATORS</text>
 
   <!-- Sub-headers describing each column -->
   <text x="160" y="152" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">Portfolios of independently</text>
@@ -619,11 +619,11 @@ footer {
   <text x="400" y="422" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Nice, Lausanne, 28.9% MUFC</text>
 
   <!-- Integrators (right column) -->
-  <circle cx="640" cy="220" r="9" fill="#d4a64a"/>
+  <circle cx="640" cy="220" r="9" fill="#10402b"/>
   <text x="640" y="246" fill="#f5f1e8" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">City Football Group</text>
   <text x="640" y="264" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">13 clubs · 5 continents</text>
 
-  <circle cx="640" cy="320" r="8" fill="#d4a64a"/>
+  <circle cx="640" cy="320" r="8" fill="#10402b"/>
   <text x="640" y="346" fill="#f5f1e8" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">Red Bull</text>
   <text x="640" y="364" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">5 clubs · integrated ladder</text>
 </svg>

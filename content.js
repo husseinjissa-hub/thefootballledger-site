@@ -130,6 +130,7 @@ window.FL_CONTENT = {
     {"slug":"socios-chiliz","name":"Socios / Chiliz","mono":"CHZ","layer":9,"entityType":"fan-platform","region":"Malta","summary":"Socios / Chiliz profile: the fan-token platform — the CHZ token's ~96% collapse, 70+ club partnerships, the supporters'-trust backlash, the World Cup-timed national-team push, and the US re-entry after a favourable regulatory ruling."}
   ],
   "briefings": [
+    {"title":"Issue 02 · Demand meets distress — The Briefing","date":"2026-06-27","status":"live","url":"/briefing/2026-06-27.html","mentions":[],"link":null,"dek":"Tottenham's stake sale, Botafogo's bankruptcy, football's crowded private-equity field, PIF's stadium financing, FIFA's late World Cup rights, and the commercial money finding new doors."},
     {"title":"Issue 01 · The Phase 2 reset — The Briefing","date":"2026-05-04","status":"live","url":"/briefing/2026-05-04.html","mentions":[],"link":null,"dek":"PIF's strategy reset, Apollo's Atlético operating reset, Gamma Waves Partners, Two Circles' footprint, and the Independent Football Regulator's first year."}
   ]
 }

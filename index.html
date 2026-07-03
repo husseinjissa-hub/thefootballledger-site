@@ -47,6 +47,18 @@
   .door-card:hover { border-color: var(--gold); }
   .door-card-tag { display: block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 3px; }
   .door-card-title { font-family: 'Fraunces', serif; font-size: 13px; color: var(--bone); line-height: 1.25; }
+  /* Top Stories (latest 5) */
+  .top-stories { padding: 8px 0 76px; }
+  .ts-head { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 20px; }
+  .ts-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+  .ts-card { background: var(--ink); padding: 22px 20px; display: flex; flex-direction: column; gap: 12px; min-height: 200px; transition: background 0.25s ease; }
+  .ts-card:hover { background: var(--ink-2); }
+  .ts-card:hover .ts-title { color: var(--gold); }
+  .ts-card .tag { margin-bottom: 2px; }
+  .ts-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 500; line-height: 1.25; transition: color 0.2s ease; }
+  .ts-date { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--bone-mute); margin-top: auto; }
+  @media (max-width: 1000px) { .ts-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .ts-grid { grid-template-columns: 1fr; } }
   @media (max-width: 760px) { .stat-bar { grid-template-columns: 1fr 1fr; } .ov-hero { padding: 64px 0 48px; } }
 </style>
 </head>
@@ -89,6 +101,11 @@
     <div class="stat"><div class="stat-num">~<em>2×</em></div><div class="stat-label">growth in club AI &amp; data spend since 2022</div><div class="stat-src">Source · Ledger / AI-native ops, 2026</div></div>
   </section>
 
+  <section class="top-stories">
+    <div class="ts-head">Top Stories</div>
+    <div class="ts-grid" id="tsGrid"></div>
+  </section>
+
   <div class="ov-doors-head">Start here</div>
   <section class="door-grid" id="doorGrid"></section>
 
@@ -114,6 +131,16 @@
     var arts = (data.articles || []).slice().sort(byDateDesc);
     var ents = (data.entities || []);
     var briefs = (data.briefings || []).slice().sort(byDateDesc);
+
+    // Top Stories: latest 5 published pieces (in-production excluded)
+    var tsGrid = document.getElementById('tsGrid');
+    var top = arts.filter(function (a) { return a.status !== 'prod'; }).slice(0, 5);
+    tsGrid.innerHTML = top.map(function (a) {
+      return '<a class="ts-card" href="' + FL.esc(a.url) + '">' +
+        FL.tagHTML(a) +
+        '<div class="ts-title">' + FL.esc(a.title) + '</div>' +
+        '<div class="ts-date">' + FL.fmtDate(a.date) + ' · ' + a.readMinutes + ' min</div></a>';
+    }).join('');
 
     // Ecosystem sample: nine layers as stacked building blocks
     var ecoSample = '<div class="door-stack">' + [1,2,3,4,5,6,7,8,9].map(function (n) {

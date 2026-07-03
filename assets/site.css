@@ -39,7 +39,9 @@ a { color: inherit; text-decoration: none; }
 .overlay-item.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--gold); }
 
 /* ===== Footer ===== */
-.site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
+.site-foot { border-top: 1px solid var(--line); padding: 24px 60px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: var(--bone-mute); }
+.foot-utility a { color: var(--bone-mute); transition: color 0.2s ease; }
+.foot-utility a:hover { color: var(--gold); }
 
 @media (max-width: 900px) {
   .site-head { padding: 0 22px; }

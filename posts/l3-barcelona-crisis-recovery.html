@@ -39,7 +39,7 @@ a { color: inherit; text-decoration: none; }
 .article-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
 .article-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
 .article-eyebrow-meta { color: var(--bone-mute); }
-.article-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
+.article-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
 .article-title em { font-style: italic; color: var(--gold); }
 .article-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; margin-bottom: 40px; }
 .article-meta { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-mute); }
@@ -65,7 +65,7 @@ a { color: inherit; text-decoration: none; }
 .related { border-top: 1px solid var(--line); margin-top: 100px; padding: 80px 60px; background: var(--ink-2); }
 .related-wrap { max-width: 1400px; margin: 0 auto; }
 .related-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
-.related-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
+.related-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
 .related-title em { font-style: italic; color: var(--gold); }
 .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
 .related-card { background: var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; position: relative; transition: background 0.4s ease; }
@@ -142,15 +142,15 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 720 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FC Barcelona financial trajectory, 2018-2026 illustrative">
-  <rect x="0" y="0" width="720" height="480" fill="#141414"/>
+  <rect x="0" y="0" width="720" height="480" fill="#f1ece0"/>
   <text x="60" y="28" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
-  <text x="60" y="48" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">FC Barcelona — wage-to-revenue ratio, revenue, net debt (illustrative)</text>
-  <line x1="80" y1="380" x2="680" y2="380" stroke="#2e2e2e" stroke-width="1"/>
-  <line x1="80" y1="80" x2="80" y2="380" stroke="#2e2e2e" stroke-width="1"/>
-  <line x1="80" y1="320" x2="680" y2="320" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="260" x2="680" y2="260" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="200" x2="680" y2="200" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="140" x2="680" y2="140" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="60" y="48" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">FC Barcelona — wage-to-revenue ratio, revenue, net debt (illustrative)</text>
+  <line x1="80" y1="380" x2="680" y2="380" stroke="#d8d2c4" stroke-width="1"/>
+  <line x1="80" y1="80" x2="80" y2="380" stroke="#d8d2c4" stroke-width="1"/>
+  <line x1="80" y1="320" x2="680" y2="320" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="260" x2="680" y2="260" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="200" x2="680" y2="200" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="140" x2="680" y2="140" stroke="#e6e0d2" stroke-width="1"/>
   <text x="74" y="384" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">0%</text>
   <text x="74" y="324" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">25%</text>
   <text x="74" y="264" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">50%</text>
@@ -184,7 +184,7 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="480" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2024</text>
   <text x="540" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2025</text>
   <text x="600" y="396" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2026e</text>
-  <text x="380" y="416" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">WAGE-TO-REVENUE RATIO (RED)</text>
+  <text x="380" y="416" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">WAGE-TO-REVENUE RATIO (RED)</text>
   <line x1="120" y1="350" x2="180" y2="345" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
   <line x1="180" y1="345" x2="240" y2="370" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
   <line x1="240" y1="370" x2="300" y2="365" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
@@ -194,11 +194,11 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <line x1="480" y1="320" x2="540" y2="305" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
   <line x1="540" y1="305" x2="600" y2="295" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
   <text x="600" y="288" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">REVENUE €1.0bn+</text>
-  <text x="380" y="446" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">REVENUE TRAJECTORY (GOLD DASH, INDEXED)</text>
+  <text x="380" y="446" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle">REVENUE TRAJECTORY (GOLD DASH, INDEXED)</text>
   <rect x="80" y="460" width="12" height="12" fill="#c8102e" opacity="0.85"/>
-  <text x="98" y="470" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">WAGE / REV</text>
+  <text x="98" y="470" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">WAGE / REV</text>
   <line x1="220" y1="466" x2="232" y2="466" stroke="#10402b" stroke-width="2" stroke-dasharray="3,3"/>
-  <text x="240" y="470" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">REVENUE INDEX</text>
+  <text x="240" y="470" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="0.5">REVENUE INDEX</text>
 </svg>
 <figcaption>Barcelona's wage-to-revenue ratio — the principal La Liga and UEFA financial-control constraint — and revenue trajectory, 2018–2026. <em>The 2024–25 ratio is the UEFA sporting-cost figure (54%) from the club's audited annual accounts; earlier points combine disclosed and reported figures.</em> <strong>Source:</strong> FC Barcelona 2020/21–2024/25 audited accounts, La Liga financial controls, Deloitte Football Money League 2019–2025, FT and Off the Pitch reporting.</figcaption>
 </figure>
@@ -231,19 +231,19 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="FC Barcelona structuring choices: relative scale of the three transactions in the Laporta reset, 2022-23">
-  <rect x="0" y="0" width="720" height="360" fill="#141414"/>
+  <rect x="0" y="0" width="720" height="360" fill="#f1ece0"/>
   <text x="60" y="28" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
-  <text x="60" y="48" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">The Laporta reset — relative scale of the three structuring choices</text>
+  <text x="60" y="48" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">The Laporta reset — relative scale of the three structuring choices</text>
   <text x="60" y="66" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">€ millions, total transaction or facility size</text>
 
   <!-- Y axis labels (levers) -->
-  <text x="280" y="115" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Sixth Street rights monetisation</text>
+  <text x="280" y="115" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Sixth Street rights monetisation</text>
   <text x="280" y="130" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">25% / 25 years · cash</text>
 
-  <text x="280" y="180" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Barça Studios stake</text>
+  <text x="280" y="180" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Barça Studios stake</text>
   <text x="280" y="195" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">49% · cash · Socios + Orpheus</text>
 
-  <text x="280" y="245" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Espai Barça financing</text>
+  <text x="280" y="245" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Espai Barça financing</text>
   <text x="280" y="260" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">€1.45bn debt · 20 investors · 24yr</text>
 
   <!-- Bars (scale: €1.45bn = 380px wide; ratios 527.5/200/1450) -->
@@ -252,12 +252,12 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <rect x="290" y="225" width="380" height="36" fill="#10402b"/>
 
   <!-- Bar value labels -->
-  <text x="438" y="118" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€527.5m</text>
-  <text x="352" y="183" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€200m</text>
-  <text x="660" y="248" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="end">€1,450m</text>
+  <text x="438" y="118" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€527.5m</text>
+  <text x="352" y="183" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="500">€200m</text>
+  <text x="660" y="248" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="end">€1,450m</text>
 
   <!-- Annotation -->
-  <line x1="290" y1="290" x2="670" y2="290" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="290" y1="290" x2="670" y2="290" stroke="#d8d2c4" stroke-width="1"/>
   <text x="290" y="310" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Cash levers (red) registered as one-off accounting gains in fiscal year of transaction.</text>
   <text x="290" y="328" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Stadium debt (gold) is a multi-decade liability against future Camp Nou revenue.</text>
 </svg>
@@ -292,20 +292,20 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Espai Barça debt service vs stadium revenue scenarios, 2026-2035 schematic">
-  <rect x="0" y="0" width="760" height="480" fill="#141414"/>
+  <rect x="0" y="0" width="760" height="480" fill="#f1ece0"/>
   <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 3 · SCHEMATIC</text>
-  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="16" font-weight="500">The cliff zone — debt service vs stadium-revenue scenarios, 2026–2035</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="16" font-weight="500">The cliff zone — debt service vs stadium-revenue scenarios, 2026–2035</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">€m per year · stadium-related cash flows only · grace period through 2027</text>
 
-  <line x1="80" y1="380" x2="700" y2="380" stroke="#2e2e2e" stroke-width="1"/>
-  <line x1="80" y1="110" x2="80" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="80" y1="380" x2="700" y2="380" stroke="#d8d2c4" stroke-width="1"/>
+  <line x1="80" y1="110" x2="80" y2="380" stroke="#d8d2c4" stroke-width="1"/>
 
-  <line x1="80" y1="335" x2="700" y2="335" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="290" x2="700" y2="290" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="245" x2="700" y2="245" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="200" x2="700" y2="200" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="155" x2="700" y2="155" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="80" y1="110" x2="700" y2="110" stroke="#1f1f1f" stroke-width="1"/>
+  <line x1="80" y1="335" x2="700" y2="335" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="290" x2="700" y2="290" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="245" x2="700" y2="245" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="200" x2="700" y2="200" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="155" x2="700" y2="155" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="80" y1="110" x2="700" y2="110" stroke="#e6e0d2" stroke-width="1"/>
 
   <text x="74" y="384" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">0</text>
   <text x="74" y="339" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">50</text>
@@ -352,10 +352,10 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <circle cx="669" cy="157.7" r="3.5" fill="#10402b"/>
 
   <polyline points="111,357.5 173,290 235,213.5 297,213.5 359,213.5 421,213.5 483,213.5 545,213.5 607,213.5 669,213.5"
-            fill="none" stroke="#f5f1e8" stroke-width="2" stroke-linejoin="round"/>
-  <circle cx="235" cy="213.5" r="3" fill="#f5f1e8"/>
-  <circle cx="421" cy="213.5" r="3" fill="#f5f1e8"/>
-  <circle cx="669" cy="213.5" r="3" fill="#f5f1e8"/>
+            fill="none" stroke="#23201a" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="235" cy="213.5" r="3" fill="#23201a"/>
+  <circle cx="421" cy="213.5" r="3" fill="#23201a"/>
+  <circle cx="669" cy="213.5" r="3" fill="#23201a"/>
 
   <polyline points="111,362 173,317 235,268.4 297,268.4 359,268.4 421,268.4 483,268.4 545,268.4 607,268.4 669,268.4"
             fill="none" stroke="#c8102e" stroke-width="2" stroke-linejoin="round" stroke-dasharray="6,4"/>
@@ -364,23 +364,23 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <circle cx="669" cy="268.4" r="3" fill="#c8102e"/>
 
   <text x="678" y="160" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="9">€247m</text>
-  <text x="678" y="216" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="9">€185m</text>
+  <text x="678" y="216" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9">€185m</text>
   <text x="678" y="271" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9">€124m</text>
   <text x="678" y="294" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">€105m</text>
 
-  <text x="421" y="125" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle" font-style="italic">where debt service compounds against ramped revenue</text>
+  <text x="421" y="125" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle" font-style="italic">where debt service compounds against ramped revenue</text>
 
   <rect x="80" y="430" width="14" height="10" fill="#10402b" opacity="0.85"/>
-  <text x="100" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Espai Barça debt service</text>
+  <text x="100" y="439" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Espai Barça debt service</text>
 
   <line x1="280" y1="435" x2="298" y2="435" stroke="#10402b" stroke-width="2.5"/>
-  <text x="304" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Underwriting (€247m)</text>
+  <text x="304" y="439" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Underwriting (€247m)</text>
 
-  <line x1="450" y1="435" x2="468" y2="435" stroke="#f5f1e8" stroke-width="2"/>
-  <text x="474" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Base (–25%)</text>
+  <line x1="450" y1="435" x2="468" y2="435" stroke="#23201a" stroke-width="2"/>
+  <text x="474" y="439" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Base (–25%)</text>
 
   <line x1="570" y1="435" x2="588" y2="435" stroke="#c8102e" stroke-width="2" stroke-dasharray="6,4"/>
-  <text x="594" y="439" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Downside (–50%)</text>
+  <text x="594" y="439" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Downside (–50%)</text>
 
   <text x="30" y="245" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" transform="rotate(-90 30 245)">€ MILLIONS PER YEAR</text>
 

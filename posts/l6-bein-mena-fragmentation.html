@@ -39,7 +39,7 @@ a { color: inherit; text-decoration: none; }
 .article-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
 .article-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
 .article-eyebrow-meta { color: var(--bone-mute); }
-.article-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
+.article-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
 .article-title em { font-style: italic; color: var(--gold); }
 .article-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; margin-bottom: 40px; }
 .article-meta { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-mute); }
@@ -64,7 +64,7 @@ a { color: inherit; text-decoration: none; }
 .related { border-top: 1px solid var(--line); margin-top: 100px; padding: 80px 60px; background: var(--ink-2); }
 .related-wrap { max-width: 1400px; margin: 0 auto; }
 .related-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
-.related-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
+.related-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
 .related-title em { font-style: italic; color: var(--gold); }
 .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
 .related-card { background: var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; position: relative; transition: background 0.4s ease; }
@@ -147,13 +147,13 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 780 490" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="beIN MENA major rights renewal trajectory 2020 to 2028">
-  <rect x="0" y="0" width="780" height="490" fill="#141414"/>
+  <rect x="0" y="0" width="780" height="490" fill="#f1ece0"/>
   <text x="60" y="28" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
-  <text x="60" y="48" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">beIN MENA — major premium rights renewals, 2020–2028</text>
+  <text x="60" y="48" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">beIN MENA — major premium rights renewals, 2020–2028</text>
   <text x="60" y="68" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Disclosed contract values where available; rights line, term, source date.</text>
 
   <!-- Horizontal axis -->
-  <line x1="100" y1="420" x2="700" y2="420" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="100" y1="420" x2="700" y2="420" stroke="#d8d2c4" stroke-width="1"/>
   <text x="140" y="440" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2020</text>
   <text x="260" y="440" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2022</text>
   <text x="380" y="440" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2024</text>
@@ -162,54 +162,54 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
   <!-- Rights bars: each is a horizontal segment representing a contract term -->
   <!-- Premier League: prior cycle (2022-25) at $500m + renewal (2025-28) at $742m -->
-  <text x="92" y="115" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Premier League</text>
+  <text x="92" y="115" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Premier League</text>
   <rect x="100" y="100" width="240" height="22" fill="#7a7770" opacity="0.45"/>
-  <text x="220" y="116" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">$500m · 2022–25</text>
+  <text x="220" y="116" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">$500m · 2022–25</text>
   <rect x="340" y="100" width="240" height="22" fill="#10402b" opacity="0.95"/>
-  <text x="460" y="116" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$742m · 2025–28 (+10%)</text>
+  <text x="460" y="116" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$742m · 2025–28 (+10%)</text>
 
   <!-- La Liga: renewal to 2027-28, announced Aug 2024 -->
-  <text x="92" y="155" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">La Liga</text>
+  <text x="92" y="155" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">La Liga</text>
   <rect x="100" y="140" width="240" height="22" fill="#7a7770" opacity="0.45"/>
-  <text x="220" y="156" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">prior cycle</text>
+  <text x="220" y="156" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">prior cycle</text>
   <rect x="340" y="140" width="200" height="22" fill="#10402b" opacity="0.95"/>
-  <text x="440" y="156" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Renewal · 2024–28</text>
+  <text x="440" y="156" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Renewal · 2024–28</text>
 
   <!-- UEFA: 2021-24 prior, then 2024-27 renewal (announced April 2025) -->
-  <text x="92" y="195" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">UEFA club</text>
+  <text x="92" y="195" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">UEFA club</text>
   <rect x="100" y="180" width="200" height="22" fill="#7a7770" opacity="0.45"/>
-  <text x="200" y="196" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">$600m · 2021–24</text>
+  <text x="200" y="196" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">$600m · 2021–24</text>
   <rect x="300" y="180" width="200" height="22" fill="#10402b" opacity="0.95"/>
-  <text x="400" y="196" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Renewal · 2024–27</text>
+  <text x="400" y="196" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Renewal · 2024–27</text>
 
   <!-- World Cup 2026 -->
-  <text x="92" y="235" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">FIFA WC 2026</text>
+  <text x="92" y="235" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">FIFA WC 2026</text>
   <rect x="470" y="220" width="80" height="22" fill="#10402b" opacity="0.95"/>
-  <text x="510" y="236" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">24 markets</text>
+  <text x="510" y="236" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">24 markets</text>
 
   <!-- Formula One: lost 2019, regained Feb 2024 through 2033 -->
-  <text x="92" y="275" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Formula One</text>
+  <text x="92" y="275" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Formula One</text>
   <rect x="100" y="260" width="280" height="22" fill="#c8102e" opacity="0.55"/>
-  <text x="240" y="276" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">non-renewal 2019–24</text>
+  <text x="240" y="276" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">non-renewal 2019–24</text>
   <rect x="385" y="260" width="300" height="22" fill="#10402b" opacity="0.95"/>
-  <text x="535" y="276" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Reacquired Feb 2024 · through 2033</text>
+  <text x="535" y="276" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">Reacquired Feb 2024 · through 2033</text>
 
   <!-- Serie A: dropped 2020-21, fresh bid Feb 2026 -->
-  <text x="92" y="315" fill="#c4c0b6" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Serie A</text>
+  <text x="92" y="315" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="12" text-anchor="end">Serie A</text>
   <rect x="100" y="300" width="120" height="22" fill="#c8102e" opacity="0.55"/>
-  <text x="160" y="316" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">held to 2020–21</text>
+  <text x="160" y="316" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">held to 2020–21</text>
   <rect x="220" y="300" width="240" height="22" fill="#c8102e" opacity="0.25"/>
   <text x="340" y="316" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">non-coverage period</text>
   <rect x="460" y="300" width="60" height="22" fill="#7a7770" opacity="0.55"/>
-  <text x="490" y="316" fill="#f5f1e8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">bid Feb &#39;26</text>
+  <text x="490" y="316" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">bid Feb &#39;26</text>
 
   <!-- Legend -->
   <rect x="100" y="465" width="14" height="14" fill="#10402b" opacity="0.95"/>
-  <text x="120" y="476" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Renewal · gain</text>
+  <text x="120" y="476" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Renewal · gain</text>
   <rect x="240" y="465" width="14" height="14" fill="#7a7770" opacity="0.45"/>
-  <text x="260" y="476" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Prior cycle</text>
+  <text x="260" y="476" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Prior cycle</text>
   <rect x="360" y="465" width="14" height="14" fill="#c8102e" opacity="0.55"/>
-  <text x="380" y="476" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Non-renewal · loss</text>
+  <text x="380" y="476" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Non-renewal · loss</text>
 </svg>
 <figcaption><strong>beIN MENA — major premium rights renewal trajectory.</strong> Premier League: $500m for 2022–25 (Dec 2020 announcement); $742m for 2025–28 (June 2025), a 10% cycle uplift. La Liga: extended to 2027–28 (August 2024 announcement); 23-year partnership. UEFA Champions League, Europa League, Conference League, Women's Champions League: extended to 2026–27 (April 2025). FIFA World Cup 2026: beIN holds all 24 MENA markets including Saudi Arabia. Formula One: non-renewal 2019, reacquired February 2024 through 2033. Serie A: dropped after 2020–21 over Supercoppa-in-Saudi tension; beIN tabled a fresh bid in February 2026. <strong>Source:</strong> beIN Media Group, Premier League, La Liga, UEFA / UC3, FIFA, Sportcal, SportBusiness press releases and trade-press confirmation, 2020–2026.</figcaption>
 </figure>

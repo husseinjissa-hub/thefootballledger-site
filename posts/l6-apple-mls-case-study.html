@@ -39,7 +39,7 @@ a { color: inherit; text-decoration: none; }
 .article-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: flex; align-items: center; gap: 16px; }
 .article-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
 .article-eyebrow-meta { color: var(--bone-mute); }
-.article-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
+.article-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.0; letter-spacing: -0.025em; margin-bottom: 32px; max-width: 980px; }
 .article-title em { font-style: italic; color: var(--gold); }
 .article-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; margin-bottom: 40px; }
 .article-meta { display: flex; gap: 40px; padding-top: 32px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone-mute); }
@@ -65,7 +65,7 @@ a { color: inherit; text-decoration: none; }
 .related { border-top: 1px solid var(--line); margin-top: 100px; padding: 80px 60px; background: var(--ink-2); }
 .related-wrap { max-width: 1400px; margin: 0 auto; }
 .related-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; margin-bottom: 24px; }
-.related-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
+.related-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(32px, 4vw, 48px); letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 48px; }
 .related-title em { font-style: italic; color: var(--gold); }
 .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
 .related-card { background: var(--ink); padding: 32px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; position: relative; transition: background 0.4s ease; }
@@ -155,35 +155,35 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MLS franchise valuation re-rating 2019 to 2026">
-  <rect x="0" y="0" width="780" height="480" fill="#141414"/>
+  <rect x="0" y="0" width="780" height="480" fill="#f1ece0"/>
   <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
-  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">MLS franchise valuations — what the original Apple deal actually delivered</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">MLS franchise valuations — what the original Apple deal actually delivered</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">League average and Inter Miami, 2019–2026. Expansion-fee benchmarks alongside.</text>
   <text x="90" y="130" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$1.5bn</text>
   <text x="90" y="200" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$1.0bn</text>
   <text x="90" y="270" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$0.5bn</text>
   <text x="90" y="340" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$0</text>
-  <line x1="100" y1="125" x2="720" y2="125" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="100" y1="195" x2="720" y2="195" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="100" y1="265" x2="720" y2="265" stroke="#1f1f1f" stroke-width="1"/>
-  <line x1="100" y1="335" x2="720" y2="335" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="100" y1="125" x2="720" y2="125" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="100" y1="195" x2="720" y2="195" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="100" y1="265" x2="720" y2="265" stroke="#e6e0d2" stroke-width="1"/>
+  <line x1="100" y1="335" x2="720" y2="335" stroke="#d8d2c4" stroke-width="1"/>
   <polyline points="160,291 360,254 480,243 660,228" fill="none" stroke="#10402b" stroke-width="2.5"/>
   <circle cx="160" cy="291" r="4" fill="#10402b"/>
   <circle cx="360" cy="254" r="4" fill="#10402b"/>
   <circle cx="480" cy="243" r="4" fill="#10402b"/>
   <circle cx="660" cy="228" r="4" fill="#10402b"/>
-  <text x="160" y="307" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">$313m</text>
+  <text x="160" y="307" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">$313m</text>
   <text x="660" y="217" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$767m</text>
-  <polyline points="260,253 480,191 660,132" fill="none" stroke="#e8dcc4" stroke-width="2" stroke-dasharray="4,3"/>
-  <circle cx="260" cy="253" r="3.5" fill="#e8dcc4"/>
-  <circle cx="480" cy="191" r="3.5" fill="#e8dcc4"/>
-  <circle cx="660" cy="132" r="3.5" fill="#e8dcc4"/>
-  <text x="260" y="270" fill="#e8dcc4" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">$585m</text>
-  <text x="660" y="120" fill="#e8dcc4" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$1.45bn</text>
-  <circle cx="160" cy="290" r="5" fill="#4a6b5a" stroke="#141414" stroke-width="1.5"/>
+  <polyline points="260,253 480,191 660,132" fill="none" stroke="#9c8859" stroke-width="2" stroke-dasharray="4,3"/>
+  <circle cx="260" cy="253" r="3.5" fill="#9c8859"/>
+  <circle cx="480" cy="191" r="3.5" fill="#9c8859"/>
+  <circle cx="660" cy="132" r="3.5" fill="#9c8859"/>
+  <text x="260" y="270" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">$585m</text>
+  <text x="660" y="120" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$1.45bn</text>
+  <circle cx="160" cy="290" r="5" fill="#4a6b5a" stroke="#f1ece0" stroke-width="1.5"/>
   <text x="160" y="350" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Charlotte</text>
   <text x="160" y="361" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">$325m</text>
-  <circle cx="360" cy="265" r="5" fill="#4a6b5a" stroke="#141414" stroke-width="1.5"/>
+  <circle cx="360" cy="265" r="5" fill="#4a6b5a" stroke="#f1ece0" stroke-width="1.5"/>
   <text x="360" y="350" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">San Diego</text>
   <text x="360" y="361" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">$500m</text>
   <text x="160" y="385" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2019</text>
@@ -195,12 +195,12 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="296" y="138" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9">Apple deal · Jun 2022</text>
   <line x1="100" y1="425" x2="120" y2="425" stroke="#10402b" stroke-width="2.5"/>
   <circle cx="110" cy="425" r="3" fill="#10402b"/>
-  <text x="128" y="429" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">League average</text>
-  <line x1="260" y1="425" x2="280" y2="425" stroke="#e8dcc4" stroke-width="2" stroke-dasharray="4,3"/>
-  <circle cx="270" cy="425" r="3" fill="#e8dcc4"/>
-  <text x="288" y="429" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Inter Miami</text>
-  <circle cx="425" cy="425" r="4" fill="#4a6b5a" stroke="#141414" stroke-width="1.5"/>
-  <text x="435" y="429" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10">Expansion fee</text>
+  <text x="128" y="429" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">League average</text>
+  <line x1="260" y1="425" x2="280" y2="425" stroke="#9c8859" stroke-width="2" stroke-dasharray="4,3"/>
+  <circle cx="270" cy="425" r="3" fill="#9c8859"/>
+  <text x="288" y="429" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Inter Miami</text>
+  <circle cx="425" cy="425" r="4" fill="#4a6b5a" stroke="#f1ece0" stroke-width="1.5"/>
+  <text x="435" y="429" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Expansion fee</text>
 </svg>
 <figcaption><strong>What the original Apple deal actually delivered for MLS.</strong> League average: $313m (Forbes 2019) → $577m (Forbes 2023) → $658m (Forbes 2024) → $767m (Sportico, Feb 2026). Inter Miami: $585m (Sportico 2022, pre-Messi) → $1.03bn (Forbes 2024) → $1.45bn (Sportico, Feb 2026). Expansion-fee benchmarks: Charlotte FC paid $325m in 2019; San Diego FC paid $500m in 2023, a 54% step-up. <strong>Source:</strong> Forbes annual MLS team valuations 2019–2024; Sportico MLS Team Values 2026.</figcaption>
 </figure>
@@ -221,38 +221,38 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 780 290" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paywall depth versus bundle reach commercial models">
-  <rect x="0" y="0" width="780" height="460" fill="#141414"/>
+  <rect x="0" y="0" width="780" height="460" fill="#f1ece0"/>
   <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
-  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Two commercial models — the one Apple originally bought, the one the restructure chose</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Two commercial models — the one Apple originally bought, the one the restructure chose</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">From standalone product to bundled content — the commercial model shift.</text>
 
-  <text x="200" y="115" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-weight="500">Original · standalone paywall</text>
+  <text x="200" y="115" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-weight="500">Original · standalone paywall</text>
   <text x="200" y="133" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">standalone product</text>
 
   <rect x="80" y="160" width="240" height="42" fill="#10402b" opacity="0.95"/>
-  <text x="200" y="180" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$99/yr standalone</text>
-  <text x="200" y="194" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">MLS Season Pass (no Apple TV+ required)</text>
+  <text x="200" y="180" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$99/yr standalone</text>
+  <text x="200" y="194" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">MLS Season Pass (no Apple TV+ required)</text>
 
-  <rect x="80" y="220" width="240" height="55" fill="#1c1c1c" stroke="#2e2e2e" stroke-width="1"/>
-  <text x="200" y="240" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Main persona:</text>
-  <text x="200" y="258" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">Loyal fans willing to pay</text>
-  <text x="200" y="272" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">for the league specifically</text>
+  <rect x="80" y="220" width="240" height="55" fill="#e6e0d2" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="200" y="240" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Main persona:</text>
+  <text x="200" y="258" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">Loyal fans willing to pay</text>
+  <text x="200" y="272" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">for the league specifically</text>
 
   
 
-  <line x1="400" y1="100" x2="400" y2="390" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="3,4"/>
+  <line x1="400" y1="100" x2="400" y2="390" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="3,4"/>
 
-  <text x="600" y="115" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-weight="500">Revised · bundled in Apple TV</text>
+  <text x="600" y="115" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-weight="500">Revised · bundled in Apple TV</text>
   <text x="600" y="133" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">bundled content</text>
 
   <rect x="480" y="160" width="240" height="42" fill="#10402b" opacity="0.95"/>
-  <text x="600" y="180" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$0 incremental for MLS</text>
-  <text x="600" y="194" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">included in Apple TV ($12.99/mo)</text>
+  <text x="600" y="180" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$0 incremental for MLS</text>
+  <text x="600" y="194" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">included in Apple TV ($12.99/mo)</text>
 
-  <rect x="480" y="220" width="240" height="55" fill="#1c1c1c" stroke="#2e2e2e" stroke-width="1"/>
-  <text x="600" y="240" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Main persona:</text>
-  <text x="600" y="258" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">All Apple TV subscribers,</text>
-  <text x="600" y="272" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">at no incremental cost</text>
+  <rect x="480" y="220" width="240" height="55" fill="#e6e0d2" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="600" y="240" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Main persona:</text>
+  <text x="600" y="258" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">All Apple TV subscribers,</text>
+  <text x="600" y="272" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" text-anchor="middle" font-style="italic">at no incremental cost</text>
 
   
 
@@ -267,9 +267,9 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 780 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three cash scenarios through summer 2029">
-  <rect x="0" y="0" width="780" height="540" fill="#141414"/>
+  <rect x="0" y="0" width="780" height="540" fill="#f1ece0"/>
   <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 3A</text>
-  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Three scenarios — cash through summer 2029</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Three scenarios — cash through summer 2029</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">What MLS receives in broadcast revenue between 2026 and summer 2029 under three structural paths. Illustrative.</text>
 
   <!-- Y axis labels (USD millions) -->
@@ -279,28 +279,28 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="105" y="305" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$250m</text>
   <text x="105" y="365" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">$0</text>
 
-  <line x1="115" y1="120" x2="720" y2="120" stroke="#1f1f1f"/>
-  <line x1="115" y1="180" x2="720" y2="180" stroke="#1f1f1f"/>
-  <line x1="115" y1="240" x2="720" y2="240" stroke="#1f1f1f"/>
-  <line x1="115" y1="300" x2="720" y2="300" stroke="#1f1f1f"/>
-  <line x1="115" y1="360" x2="720" y2="360" stroke="#2e2e2e"/>
+  <line x1="115" y1="120" x2="720" y2="120" stroke="#e6e0d2"/>
+  <line x1="115" y1="180" x2="720" y2="180" stroke="#e6e0d2"/>
+  <line x1="115" y1="240" x2="720" y2="240" stroke="#e6e0d2"/>
+  <line x1="115" y1="300" x2="720" y2="300" stroke="#e6e0d2"/>
+  <line x1="115" y1="360" x2="720" y2="360" stroke="#d8d2c4"/>
 
   <!-- Scale: y=360 is $0, y=120 is $1000m. So 1m = 0.24px -->
 
   <!-- Scenario 1: Apple opts out 2027, MLS reverts to multi-broadcaster fallback for 2028-29 -->
   <!-- Cash = $250 + $250 (Apple 2026, 2027) + $90 + $45 (multi-broadcaster 2028 + half-2029) = $635m -->
-  <text x="200" y="100" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 1</text>
+  <text x="200" y="100" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 1</text>
   <text x="200" y="116" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Apple opts out, multi-broadcaster fallback</text>
   
   <!-- Apple portion (2026-2027) and fallback portion (2028-29) stacked -->
   <!-- Apple portion: $500m. height = 120px. From y=360 going up, top at y=240 -->
   <rect x="135" y="240" width="130" height="120" fill="#c8102e" opacity="0.55"/>
-  <text x="200" y="285" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$500m</text>
-  <text x="200" y="300" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Apple 2026 + 2027</text>
+  <text x="200" y="285" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">$500m</text>
+  <text x="200" y="300" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">Apple 2026 + 2027</text>
   
   <!-- Fallback portion: $135m. height = 32px. Top at y=208 -->
   <rect x="135" y="208" width="130" height="32" fill="#c8102e" opacity="0.30"/>
-  <text x="200" y="226" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">~$135m fallback</text>
+  <text x="200" y="226" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle">~$135m fallback</text>
   
   <!-- Total label above -->
   <text x="200" y="200" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">≈ $635m total</text>
@@ -310,27 +310,27 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="200" y="409" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">fragmented broadcast model</text>
 
   <!-- Scenario 2: Actual restructure -->
-  <text x="390" y="100" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 2 (actual)</text>
+  <text x="390" y="100" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 2 (actual)</text>
   <text x="390" y="116" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">November 2025 restructure</text>
   
   <!-- $857.5m bar: height = 206px. Top at y=154 -->
   <rect x="325" y="154" width="130" height="206" fill="#10402b" opacity="0.95"/>
-  <text x="390" y="220" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">$857.5m</text>
-  <text x="390" y="237" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">through summer 2029</text>
-  <text x="390" y="252" fill="#0a0a0a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">+ bundle pivot</text>
+  <text x="390" y="220" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">$857.5m</text>
+  <text x="390" y="237" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">through summer 2029</text>
+  <text x="390" y="252" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">+ bundle pivot</text>
 
   <text x="390" y="395" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">+ structural pivot from paywall</text>
   <text x="390" y="409" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">to bundled distribution</text>
 
   <!-- Scenario 3: Original deal runs to 2032 -->
-  <text x="580" y="100" fill="#c4c0b6" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 3</text>
+  <text x="580" y="100" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="12" text-anchor="middle" font-weight="500">Scenario 3</text>
   <text x="580" y="116" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Original deal runs to 2032 untouched</text>
   
   <!-- Through summer 2029 under original = ~$880m. Height = 211px. Top at y=149 -->
   <rect x="515" y="149" width="130" height="211" fill="#7a7770" opacity="0.40"/>
-  <text x="580" y="220" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">~$880m</text>
-  <text x="580" y="237" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">through summer 2029</text>
-  <text x="580" y="252" fill="#c4c0b6" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">+ $750m more in 2030–32</text>
+  <text x="580" y="220" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">~$880m</text>
+  <text x="580" y="237" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">through summer 2029</text>
+  <text x="580" y="252" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">+ $750m more in 2030–32</text>
 
   <text x="580" y="395" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">but paywall friction persists,</text>
   <text x="580" y="409" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">long-term audience growth uncertain</text>
@@ -342,17 +342,17 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
 
 <figure class="chart">
 <svg viewBox="0 0 780 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three illustrative audience growth trajectories">
-  <rect x="0" y="0" width="780" height="500" fill="#141414"/>
+  <rect x="0" y="0" width="780" height="500" fill="#f1ece0"/>
   <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 3B</text>
-  <text x="60" y="54" fill="#f5f1e8" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">The strategic upside — illustrative audience trajectories under each scenario</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">The strategic upside — illustrative audience trajectories under each scenario</text>
   <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Directional only. Anchored on disclosed end-2023 ~2m Season Pass subscribers (paid + comped + promotional). No specific y-axis values.</text>
 
   <!-- DIRECTIONAL tag: grey box top-right -->
-  <rect x="625" y="92" width="100" height="22" fill="#2e2e2e" stroke="#5a5a5a" stroke-width="1"/>
-  <text x="675" y="107" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2" text-anchor="middle">DIRECTIONAL</text>
+  <rect x="625" y="92" width="100" height="22" fill="#d8d2c4" stroke="#8a857b" stroke-width="1"/>
+  <text x="675" y="107" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2" text-anchor="middle">DIRECTIONAL</text>
 
   <!-- Reference line for end-2023 ~2m anchor at y=290 -->
-  <line x1="135" y1="290" x2="720" y2="290" stroke="#2e2e2e" stroke-width="1" stroke-dasharray="2,3"/>
+  <line x1="135" y1="290" x2="720" y2="290" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,3"/>
   <text x="155" y="284" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="start">~2m end-2023 anchor</text>
 
   <!-- Y-axis -->
@@ -360,8 +360,8 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="100" y="380" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">lower</text>
   <text x="70" y="240" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" transform="rotate(-90, 70, 240)">audience reach</text>
 
-  <line x1="135" y1="100" x2="135" y2="380" stroke="#2e2e2e" stroke-width="1"/>
-  <line x1="135" y1="380" x2="720" y2="380" stroke="#2e2e2e" stroke-width="1"/>
+  <line x1="135" y1="100" x2="135" y2="380" stroke="#d8d2c4" stroke-width="1"/>
+  <line x1="135" y1="380" x2="720" y2="380" stroke="#d8d2c4" stroke-width="1"/>
 
   <!-- X-axis year labels -->
   <text x="160" y="398" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2023</text>
@@ -381,11 +381,11 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="345" y="127" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9">restructure</text>
 
   <!-- Historical period (2023-2025): observed trajectory, all paths follow it -->
-  <polyline points="160,265 220,275 280,285" fill="none" stroke="#bbb6a8" stroke-width="2.5"/>
-  <circle cx="160" cy="265" r="3" fill="#bbb6a8"/>
-  <circle cx="220" cy="275" r="3" fill="#bbb6a8"/>
-  <circle cx="280" cy="285" r="3" fill="#bbb6a8"/>
-  <text x="160" y="253" fill="#bbb6a8" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Messi launch</text>
+  <polyline points="160,265 220,275 280,285" fill="none" stroke="#8a857b" stroke-width="2.5"/>
+  <circle cx="160" cy="265" r="3" fill="#8a857b"/>
+  <circle cx="220" cy="275" r="3" fill="#8a857b"/>
+  <circle cx="280" cy="285" r="3" fill="#8a857b"/>
+  <text x="160" y="253" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Messi launch</text>
 
   <!-- Scenario 1 (red, flat) — bottom curve. Labels placed to the LEFT of the curve start, not on top of it -->
   <polyline points="280,285 340,288 400,292 460,295 520,295 580,294 640,293 695,292" fill="none" stroke="#c8102e" stroke-width="2" stroke-dasharray="3,3"/>
@@ -417,9 +417,9 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
   <text x="425" y="308" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Scenario 1 — flat / fragmented fallback</text>
 
   <!-- Synthesis -->
-  <line x1="60" y1="425" x2="720" y2="425" stroke="#2e2e2e" stroke-width="1"/>
-  <text x="390" y="450" fill="#bbb6a8" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">Through 2029 the scenarios sit close together — the bundle effects take time to compound.</text>
-  <text x="390" y="468" fill="#bbb6a8" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">Post-2029 is where the strategic case for the restructure becomes visible.</text>
+  <line x1="60" y1="425" x2="720" y2="425" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="390" y="450" fill="#8a857b" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">Through 2029 the scenarios sit close together — the bundle effects take time to compound.</text>
+  <text x="390" y="468" fill="#8a857b" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">Post-2029 is where the strategic case for the restructure becomes visible.</text>
   <text x="390" y="488" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle" font-style="italic">All three trajectories are directional inference; magnitudes are illustrative only.</text>
 </svg>
 <figcaption><strong>The strategic upside the restructure unlocks — schematic audience trajectories.</strong> The article’s argument that the bundle pivot is the structurally right move for MLS rests on a claim about audience reach. The paywall structure, even with Messi’s arrival, drove approximately 2 million subscribers by end-2023 (including comped season-ticket-holder accounts and free T-Mobile promotional sign-ups). The T-Mobile promotional deal was not renewed for 2024 and was brought back in 2025 — with the underlying paying-subscriber count understood by trade-press sources to have plateaued through 2024 and 2025, well below the threshold needed to unlock the deal’s revenue-share upside. Under Scenario 3 (paywall continues), audience trajectory likely sits close to the anchor line through 2032, against the same friction that prevented the threshold from being hit. Under Scenario 1 (Apple walks), audience stays roughly flat as MLS reverts to fragmented multi-broadcaster distribution — organic growth offsetting the loss of global single-platform exposure. Under Scenario 2 (the actual restructure), MLS sits inside Apple TV’s 45-million-plus global subscriber base from 2026 onward at no incremental cost; through 2029 the bundle effects are still compounding and the trajectory sits close to Scenario 3, but the dotted upper and lower bounds show the range of structural outcomes the bundle exposure could deliver from 2030 onward. The trajectories shown are directional only: there is no public-record disclosure of MLS audience attribution within Apple TV, and the shape of growth in each scenario is editorial inference. <strong>Source:</strong> end-2023 ~2m anchor per Sports Business Journal; Apple TV subscriber base per Eddy Cue (October 2025); trajectory shapes are editorial framing.</figcaption>

@@ -1,9 +1,12 @@
 /* Shell-only styles — safe to add to existing article/entity pages.
    No global resets or body rules; component classes only. */
-.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(248,245,238,0.9); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.site-head { border-bottom: 1px solid var(--line); padding: 0 60px; height: 64px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
 .brand-lockup { display: inline-flex; align-items: center; gap: 10px; }
 
-.wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 17px; letter-spacing: 0.02em; color: var(--bone); white-space: nowrap; }
+.wordmark { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; color: var(--bone); white-space: nowrap; }
+.brand-stack { display: inline-flex; flex-direction: column; justify-content: center; gap: 2px; }
+.brand-stack .wordmark { line-height: 1; }
+.brand-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--bone-mute); font-weight: 400; line-height: 1; white-space: nowrap; }
 .site-nav { display: flex; align-items: center; gap: 2px; }
 .site-head .nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; position: relative; transition: color 0.3s ease; white-space: nowrap; background: none; border: 0; }
 .site-head .nav-item:hover { color: var(--bone); }

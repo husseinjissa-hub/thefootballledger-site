@@ -11,7 +11,7 @@
 <style>
 :root {
   --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6;
-  --bone: #17181a; --bone-dim: #55514a; --bone-mute: #8a857b;
+  --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b;
   --rust: #7a2233; --gold: #10402b;
   --line: #dcd6c8; --line-soft: #ece7da;
 }
@@ -35,14 +35,14 @@ a { color: inherit; text-decoration: none; }
   padding: 24px 60px;
   display: flex; align-items: center; justify-content: space-between;
   position: sticky; top: 0;
-  background: rgba(248,245,238,0.9);
+  background: rgba(238,231,218,0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 100;
 }
 .brand {
   font-family: 'Fraunces', serif;
-  font-weight: 500; font-size: 17px;
+  font-weight: 500; font-size: 22px;
   display: flex; align-items: center; gap: 14px;
 }
 .brand:hover { opacity: 0.7; }
@@ -252,16 +252,37 @@ footer {
   footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
 }
 </style>
+<style>.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-word{line-height:1}.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute);font-weight:400;line-height:1;white-space:nowrap}</style>
+<link rel="stylesheet" href="/assets/shell.css">
 </head>
 <body>
 
-<header class="masthead">
-  <a href="/" class="brand">
-    <svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg>
-    The Football Ledger
-  </a>
-  <a href="index.html" class="back-link">All issues</a>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item active">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item active">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
 
 <section class="issue-header">
   <div class="issue-eyebrow">The Briefing · Issue 02 · 27 Jun 2026</div>
@@ -462,5 +483,6 @@ footer {
   <div>27 June 2026 · Built June 2026</div>
 </footer>
 
+<script src="/assets/site.js"></script>
 </body>
 </html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AFC — Entity profile · The Football Ledger</title>
+<meta name="description" content="AFC entity profile: leadership, scale, Asian Cup cycle, ACL Elite, 2027 host preparations, MENA operating cell.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-1">Layer 01 · Governance</a><span class="sep">/</span><span>AFC</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L1 · Governance · Asian confederation</span>
+    <span class="eyebrow-meta">·  Kuala Lumpur, Malaysia</span>
+  </div>
+  <h1 class="entity-title"><em>AFC</em></h1>
+  <p class="entity-deck">The Asian Football Confederation. Owns the Asian Cup and AFC Champions League Elite — and is the pivot institution between FIFA's mega-event pipeline and the operational rebuild under way across Saudi Arabia and the UAE.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Continental confederation</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1954</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Kuala Lumpur, MY</div></div>
+    <div class="fact"><div class="fact-label">President</div><div class="fact-value">Sheikh Salman bin Ebrahim Al Khalifa</div></div>
+    <div class="fact"><div class="fact-label">Member associations</div><div class="fact-value"><em>47</em></div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Operational rebuild ahead of 2027</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The confederation, <em>professionalising</em></h2>
+    <p>The AFC governs 47 member associations across Asia, from Lebanon and Saudi Arabia in the west to Australia, Japan, and Korea in the east. Historically a federation of more modest commercial scale than UEFA or CONMEBOL, it has been the most rapidly transforming continental confederation in football for the past five years. The transformation is being driven by two structural forces: the FIFA mega-event pipeline that runs through Asian hosts (Saudi 2034, the 2031 Women's World Cup bid landscape, the Club World Cup expansions), and the parallel professionalisation of Saudi Arabia and the UAE as operating environments for top-tier football.</p>
+    <p>The most consequential single fact about the AFC in 2026 is that the next eighteen months are dominated by a single operational test: the joint Saudi–UAE 2027 Asian Cup, the largest tournament the confederation has ever delivered, run for the first time across two host countries.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Member associations</div>
+        <div>
+          <div class="row-val">47 member associations across five sub-confederation regions: West Asian Football Federation (WAFF), Central Asian Football Association (CAFA), South Asian Football Federation (SAFF — distinct from Saudi Arabian Football Federation), ASEAN Football Federation (AFF), East Asian Football Federation (EAFF).</div>
+          <div class="row-source">Source · Disclosed (AFC statutes)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>President:</strong> Sheikh Salman bin Ebrahim Al Khalifa (since 2013, re-elected 2023). <strong>General Secretary:</strong> Datuk Seri Windsor John.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Annual revenue</div>
+        <div>
+          <div class="row-val">Smaller than UEFA by an order of magnitude. The confederation's commercial cycles are dominated by the Asian Cup (quadrennial) and the AFC Champions League Elite (annual). Specific aggregate figure not publicly disclosed at the same disclosure standard as UEFA; estimates place 2024 commercial revenue in the range of <em>~$300m–$400m</em> across all properties.</div>
+          <div class="row-source">Source · Estimate (trade press triangulation)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Marquee competitions owned</div>
+        <div>
+          <div class="row-val"><strong>AFC Asian Cup</strong> (quadrennial, men's). <strong>AFC Women's Asian Cup</strong> (quadrennial). <strong>AFC Champions League Elite</strong> (rebranded 2024, 24-club elite phase, marquee continental club property). <strong>AFC Champions League Two</strong>. <strong>AFC Challenge League</strong>. <strong>AFC U-23 Asian Cup</strong> (Olympic qualification). <strong>AFC Futsal Asian Cup</strong>.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">ACL Elite cycle</div>
+        <div>
+          <div class="row-val">2024/25 inaugural season under the new format. 24 clubs in the elite phase, league-style stage followed by knockout. New centralised commercial model, distribution to clubs increased materially vs. prior format. Saudi and UAE clubs (Al-Hilal, Al-Ahli, Al-Nassr, Shabab Al-Ahli) consistently in deep stages.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Mega-event pipeline</div>
+        <div>
+          <div class="row-val"><strong>2027 AFC Asian Cup</strong> (Saudi Arabia &amp; UAE — joint host, 24 nations, 8 host cities). <strong>2025 AFC Women's Asian Cup</strong> (Australia). <strong>2031 AFC Asian Cup</strong> (host TBC). <strong>FIFA 2034 World Cup</strong> coordination role with FIFA and SAFF.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Regulatory perimeter</div>
+        <div>
+          <div class="row-val">Asian competition sanctioning, club licensing for ACL Elite participation, technical development, refereeing, anti-doping in coordination with FIFA / WADA. AFC's regulatory authority is materially less commercially consequential than UEFA's, given the smaller centralised commercial revenue.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Recent rule changes</div>
+        <div>
+          <div class="row-val"><em>2024:</em> AFC Champions League restructured into ACL Elite (24 clubs) and ACL Two (32 clubs). <em>2024:</em> Updated club-licensing requirements aligned closer to UEFA standards. <em>2025:</em> Expanded prize-pool architecture for the ACL Elite to incentivise top-tier clubs' participation.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Operating org build</div>
+        <div>
+          <div class="row-val">The most rapidly expanding senior hiring footprint of any continental confederation in 2024–2026. Riyadh-based commercial operating cell formed during 2024. Senior commercial, broadcast, and venue-operations leaders recruited from UEFA, FIFA, the FA, the Premier League's commercial team, and from the Qatar 2022 World Cup organising committee. Headcount in tournament operations roughly doubling on the run-in to 2027.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Legal posture</div>
+        <div>
+          <div class="row-val">Materially less litigious than UEFA. No active CJEU-equivalent challenges to AFC sanctioning authority. Domestic-court engagement primarily through individual member-association disputes and FIFA-system referrals. CAS engagement via club-level sanctioning appeals.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the institution actually does, day to day</h2>
+    <p>The AFC's day-to-day work in 2026 is structured around the 2027 Asian Cup organising effort. The tournament's joint Saudi–UAE delivery model is the first of its kind for an AFC competition at this scale, and the operational complexity sits two levels above what the confederation has historically delivered. Eight host cities, two host countries, two distinct national-association partners (SAFF and the UAE Football Association), parallel infrastructure-readiness streams, joint broadcasting and hospitality programmes, and a single integrated commercial cycle.</p>
+    <p>The hiring profile required for that delivery is dominated by venue operators, broadcast technical executives, hospitality programme managers, and integrated competition-operations leaders. The confederation has, over the past eighteen months, recruited materially from UEFA's competition operations team, from FIFA's tournament-delivery function, from the Qatar 2022 organising committee, and from Premier League and FA commercial functions. The professionalisation is visible at every operating layer; the question is whether the rate of hiring catches the operational complexity by mid-2027.</p>
+    <p>Behind the Asian Cup, the ACL Elite cycle is the AFC's largest commercial property. The 2024/25 inaugural season under the new format produced increased distribution to participating clubs and a higher commercial standard for sponsor and broadcast packages. The 2025/26 cycle will be the first full normal-format year; 2026/27 is the first commercial-cycle reset year, and the renegotiation of central rights packages alongside the Saudi 2034 build is the most operationally consequential commercial event the confederation will conduct in this decade.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The confederation's stated direction is the consolidation of the ACL Elite as the marquee continental-club property in Asia, the delivery of the 2027 Asian Cup as the largest joint-host tournament in AFC history, and the operational coordination with FIFA and SAFF on the 2034 World Cup build. The Riyadh-based operating cell is being expanded to function as a near-permanent operational outpost of the Kuala Lumpur head office for the duration of the 2027 and 2034 cycles.</p>
+    <p>The political posture is unusually constructive — visible cooperation with FIFA on tournament operations, with SAFF on host-country delivery, with UEFA on technical and refereeing standards, and with member associations across South-East Asia and South Asia on grassroots and club-licensing development. The AFC's regulatory authority is less contested than UEFA's, partly because the confederation's commercial scale has not yet attracted the legal pressure that UEFA's has, and partly because the institution has positioned itself as a development partner rather than a sanctioning regulator.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>AFC statutes, ACL Elite competition regulations, club licensing manual</li>
+      <li>AFC Council decisions and competition awards (2023–2026)</li>
+      <li>Joint Saudi–UAE 2027 Asian Cup hosting documents</li>
+      <li>SAFF and UAE Football Association announcements (2024–2026)</li>
+      <li>Trade press: SportBusiness, Off the Pitch, The Athletic, Reuters, Arab News (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

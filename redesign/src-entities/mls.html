@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLS — Entity profile · The Football Ledger</title>
+<meta name="description" content="Major League Soccer entity profile: single-entity structure, Apple deal, 2026 World Cup uplift, salary cap, USL Premier emergence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues &amp; competitions</a><span class="sep">/</span><span>MLS</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L2 · Leagues · Single-entity</span>
+    <span class="eyebrow-meta">·  New York, USA</span>
+  </div>
+  <h1 class="entity-title">Major League <em>Soccer</em></h1>
+  <p class="entity-deck">The world's only top-flight football league running on a single-entity structure with a global DTC partner. The 2026 World Cup will reset the league's commercial frame; the 2027 Apple cycle review is the harder test.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Single-entity LLC · 30 clubs</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1993 · first season 1996</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">New York, USA</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Don Garber · Commissioner since 1999</div></div>
+    <div class="fact"><div class="fact-label">Apple cycle</div><div class="fact-value"><em>$2.5bn</em> · 10 years · 2023–2032</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">World Cup uplift · DTC stress test</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The league as <em>investment platform</em></h2>
+    <p>Major League Soccer is the United States and Canada's first-division football competition and, structurally, an unusual one. The league operates as a single legal entity: clubs are technically operators of league assets rather than independent businesses, players are contracted to the league rather than to individual clubs, and revenue at the central level is more deeply pooled than in any European league. The structure was designed in the 1990s to survive the failure of earlier US soccer leagues. It has, in the 2020s, become a feature rather than a workaround — it allows centralised commercial decisions of the kind a federated league could not coordinate.</p>
+    <p>The 2023 Apple deal — ten years, $2.5 billion in aggregate value, global rights bundled into a single subscription product (MLS Season Pass) inside Apple TV — was the league's most consequential commercial decision since its founding. It bypassed the traditional pay-TV stack entirely and made MLS the only top-flight football league running on a fully direct-to-consumer global distribution model. Three years in, the architecture is being audited by every other league watching how DTC economics actually behave at scale.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Format, deal, distribution, controls</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Format</div>
+        <div>
+          <div class="row-val">30 clubs in 2025 (San Diego FC joined as the 30th franchise). Eastern Conference / Western Conference. 34 regular-season matches. Audi MLS Cup playoffs (single-elimination knockout post-Round One). Calendar: late February to early December, with active discussion of a partial alignment to the international (autumn-spring) calendar.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Apple deal</div>
+        <div>
+          <div class="row-val">2023–2032 cycle: <strong>$2.5bn / 10 years</strong> ($250m / yr equivalent). Global rights, all matches live on Apple TV's MLS Season Pass. <em>Only club football league with global DTC at scale.</em> Apple bundle revenue split with MLS includes a baseline + subscriber-driven upside formula.</div>
+          <div class="row-source">Source · Reported (Apple; MLS)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Linear rights</div>
+        <div>
+          <div class="row-val">FOX (English-language match-of-week) and TelevisaUnivision (Spanish) hold limited domestic linear rights. Aggregate <em>~$25m / yr</em>. Most match coverage is exclusive to Apple TV via MLS Season Pass.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Central commercial pool</div>
+        <div>
+          <div class="row-val">Adidas kit supplier (long-running deal extended 2024 through 2030, reported value <em>~$830m+ aggregate</em>). Audi (MLS Cup title), Continental Tire, AT&amp;T, Coca-Cola, Allstate among headline central partners. Aggregate central commercial: <em>~$200m / season</em>.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Distribution model</div>
+        <div>
+          <div class="row-val">Single-entity structure: central revenue (national broadcast + national commercial) is pooled and redistributed to clubs after league operating costs. Local revenue (matchday, local sponsorship, regional commercial) is retained by clubs. Top-to-bottom revenue ratio significantly tighter than the Big Five — <em>~2:1 aggregate</em>.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Aggregate league revenue</div>
+        <div>
+          <div class="row-val">Combined 30-club revenue 2023–24 season: <strong>~$2.0bn</strong>. Per-club average ~$67m, ranging from ~$120m+ at top clubs (Inter Miami, LAFC, Atlanta United, Toronto FC) to ~$40m at smaller-market clubs.</div>
+          <div class="row-source">Source · Reported (Sportico; Forbes)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Salary regime</div>
+        <div>
+          <div class="row-val">Hard salary cap with three <strong>Designated Player</strong> slots (the "Beckham rule") whose salaries fall outside the cap. Targeted Allocation Money (TAM) and General Allocation Money (GAM) provide additional cap flexibility. Cap ~$5.95m per club for 2025; DP slots used to sign Messi (Inter Miami), Suárez (Inter Miami), and a growing roster of marquee international talent.</div>
+          <div class="row-source">Source · Disclosed (MLS Roster Rules)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Expansion fees</div>
+        <div>
+          <div class="row-val">San Diego FC (2025): <strong>$500m</strong> expansion fee. Most recent prior: Charlotte FC at $325m (2022), St. Louis City SC at $200m (2023). Implied franchise valuations across the league have roughly doubled in five years; Forbes' 2025 club valuations average $690m.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Ownership and governance</div>
+        <div>
+          <div class="row-val">Single-entity LLC governance. Clubs operated by approved owners under league licence. Foreign ownership permitted (Toronto FC: MLSE; CF Montréal: Saputo Group; Inter Miami: Mas family + Beckham). No multi-club ownership cap inside MLS but limits on cross-investment with foreign-league clubs. Owners' approval requires unanimous vote of existing membership for new entrants.</div>
+          <div class="row-source">Source · Disclosed (MLS LLC operating agreement)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">External regulatory layer</div>
+        <div>
+          <div class="row-val">United States Soccer Federation (USSF) — sanctioning federation. Canadian Soccer Association — for the three Canadian clubs. CONCACAF — confederation. FIFA international transfer regime applies. No US federal sport regulator equivalent to the UK IFR.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Strategic posture (2026)</div>
+        <div>
+          <div class="row-val">2026 World Cup commercial uplift the dominant theme. Roster-rule reform under live discussion (DP slot expansion, age-based exemptions, allocation simplification). USL Premier launch (2028) creates first credible second-tier competition in the US market. Calendar shift discussion ongoing. Inter Miami's Messi-driven uplift mid-cycle is the league's largest single revenue input.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>How the institution actually functions</h2>
+    <p>MLS's operating organisation is structured around three centres of gravity. The New York headquarters runs commissioner office, central commercial, broadcast operations, and league-wide marketing. The Tampa-based MLS Productions facility produces every match in the Apple Season Pass library. Soccer United Marketing (SUM), the league's commercial arm, holds rights to USSF, CONCACAF Gold Cup, and certain Mexican-federation properties — a portfolio that gives the league commercial leverage well beyond its own clubs' rights.</p>
+    <p>The league's biggest operating tensions in 2026 are commercial and competitive. The Messi effect at Inter Miami has pulled Apple TV subscriber growth materially above the underwriting case but has produced an outsized concentration risk: a meaningful share of subscriber adds is attributable to a single player at a single club. The league is actively building roster-rule pathways to spread that effect — additional DP slots, simplified TAM/GAM structures, age-based exemptions designed to enable peak-prime international signings rather than only late-career marquee names.</p>
+    <p>The 2026 World Cup is the operating priority. MLS provides the majority of host-stadium operating capacity for the eleven US host cities, and the league's senior venue, broadcast, and matchday operators are seconded into the FIFA LOC structure for 2026. The post-tournament commercial uplift to MLS is the Apple cycle's single largest scheduled input.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The stated direction is: deliver the 2026 World Cup operating role; convert the World Cup audience into Apple Season Pass subscriber retention; renegotiate the Apple cycle in 2027 from a position of demonstrated DTC viability; and use the strengthened commercial frame to shift the roster-rule conversation toward allowing Big Five-quality talent across more clubs. The USL Premier launch in 2028 introduces a competitive second tier the league has historically lacked; MLS's posture toward USL is cautious-cooperative rather than competitive.</p>
+    <p>The league's quietest strategic shift in 2026 is around the international calendar question. A partial alignment to autumn-spring would put MLS more naturally inside the Champions Cup and Club World Cup windows, would simplify integration with the FIFA international match calendar, and would reduce the awkwardness of a mid-summer Apple cycle peak. The membership has not yet voted; the discussion has moved from the periphery to the centre.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>MLS LLC operating agreement; MLS Roster Rules and Regulations</li>
+      <li>Apple TV / MLS Season Pass announcements and trade-press subscriber estimates</li>
+      <li>Sportico MLS franchise valuation series; Forbes MLS valuations 2025</li>
+      <li>USSF, Canadian Soccer Association, CONCACAF sanctioning frameworks</li>
+      <li>Trade press: SportBusiness, The Athletic, Sports Business Journal, ESPN FC, Off the Pitch (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

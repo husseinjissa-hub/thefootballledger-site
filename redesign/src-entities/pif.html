@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PIF — Entity profile · The Football Ledger</title>
+<meta name="description" content="Public Investment Fund of Saudi Arabia entity profile: AUM, football-allocated capital, portfolio, the April 2026 strategy reset, and the privatisation programme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-4">Layer 04 · Capital</a><span class="sep">/</span><span>PIF</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L4 · Capital · Sovereign wealth</span>
+    <span class="eyebrow-meta">·  Riyadh, Saudi Arabia</span>
+  </div>
+  <h1 class="entity-title"><em>PIF</em></h1>
+  <p class="entity-deck">The Public Investment Fund of Saudi Arabia. Approximately $925bn AUM and the principal capital architect of the Kingdom's modern football posture. In April 2026, sport was reclassified from infrastructure tier to portfolio tier — a smaller change in framing than in operating consequence.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sovereign wealth fund</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1971 (Vision 2030 reset 2017)</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Riyadh, KSA</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Mohammed bin Salman (Chair) · Yasir Al-Rumayyan (Governor)</div></div>
+    <div class="fact"><div class="fact-label">Total AUM</div><div class="fact-value"><em>~$925bn</em> · 2025</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Sport reclassified to portfolio tier</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The fund, <em>recalibrated</em></h2>
+    <p>The Public Investment Fund is the principal sovereign wealth vehicle of the Kingdom of Saudi Arabia and the largest single capital pool deployed into football in the past five years. Established in 1971 and reorganised under Vision 2030 in 2017, the fund operates from a balance-sheet structure with mandates spanning domestic infrastructure, international diversification, and the development of new economic ecosystems. By 2025 it had reached approximately $925 billion of assets under management, on a stated trajectory to roughly $2 trillion by 2030.</p>
+    <p>Football is not the largest of PIF's exposures by capital weight, but it has been one of the most consequential by external profile. Newcastle United, the four PIF-anchored Saudi Pro League clubs, and the broader sport-platform adjacencies have together produced the most legible sovereign-wealth football posture of the past decade. In April 2026 the fund announced a strategic-cycle reset for 2026–2030. Sport is no longer one of the six priority ecosystems on the new five-year plan. The reclassification has been read in much European football commentary as a retreat. The operating reading is more nuanced.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Capital type</div>
+        <div>
+          <div class="row-val">Sovereign wealth fund. Direct from balance sheet — no closed-end fund vintages or external LP base in the conventional sense. Allocations made to internal investment platforms aligned with Vision 2030 ecosystems.</div>
+          <div class="row-source">Source · Disclosed (PIF Annual Report)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Total AUM</div>
+        <div>
+          <div class="row-val">Approximately <em>$925 billion</em> at end-2025, on a stated trajectory to <strong>$2 trillion</strong> by 2030.</div>
+          <div class="row-source">Source · Disclosed (PIF Annual Report 2024)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Football-allocated capital</div>
+        <div>
+          <div class="row-val">Aggregate disclosed and reported football exposure runs into the low single-digit billions of dollars, dominated by Newcastle United (acquisition and subsequent capital injections), the four PIF-anchored SPL clubs, and SPL-related infrastructure financing. <em>Estimate flagged: aggregate figure is composite of disclosed transactions and trade-press reporting, not a single audited disclosure.</em></div>
+          <div class="row-source">Source · Disclosed · Reported (Estimate)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Fund structure</div>
+        <div>
+          <div class="row-val">Balance-sheet-funded with sub-platform allocation. Sport investments historically held under PIF directly and via Sport Holding Company; sport-tech adjacencies sit under Savvy Games Group and adjacent platforms.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Football portfolio</div>
+        <div>
+          <div class="row-val"><strong>Newcastle United (85%)</strong> — acquired October 2021, alongside RB Sports &amp; Media (10%) and Reuben Brothers (5%). <strong>Al-Hilal (25%, post-divestment)</strong> — 70% transferred to Kingdom Holding Company in April 2026. <strong>Al-Nassr (75%), Al-Ittihad (75%), Al-Ahli (75%)</strong> — privatisation programme staggered through 2026–2027. Sport-tech and esports adjacencies via <strong>Savvy Games Group</strong>.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Realised exits in sport</div>
+        <div>
+          <div class="row-val"><strong>April 2026:</strong> Al-Hilal 70% stake transferred to Kingdom Holding Company at a reported price of approximately <em>$224m</em>. <strong>2026:</strong> LIV Golf direct fund support to be wound down after the 2026 season per public guidance. Further SPL stake transactions expected in 2026–2027.</div>
+          <div class="row-source">Source · Reported (Reuters, Bloomberg, FT)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Co-investor relationships</div>
+        <div>
+          <div class="row-val">Newcastle: <strong>RB Sports &amp; Media</strong>, <strong>Reuben Brothers</strong>. SPL privatisation: <strong>Kingdom Holding Company</strong> (Al-Hilal). Adjacent sport-tech and esports co-invest relationships through <strong>Savvy Games Group</strong>. Strategic dialogue with <strong>Mubadala</strong>, <strong>QSI</strong>, and selected European institutional capital on football-adjacent infrastructure.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>Chair:</strong> Crown Prince Mohammed bin Salman. <strong>Governor (CEO):</strong> Yasir Al-Rumayyan (also Chair of Newcastle United, Aramco). Sport platform leadership is rotated across PIF's internal investment platforms; senior football decision-making sits between the Governor's office, the Sport Holding Company, and the Ministry of Sport.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Investment thesis</div>
+        <div>
+          <div class="row-val">Through 2025: sport as a Vision 2030 priority ecosystem — protected funding, fund-level tolerance for return profiles below ordinary investment hurdles, instrument of national-brand projection. <strong>From April 2026: sport reclassified to portfolio tier</strong> — managed against fund-level return discipline, evaluated as transactions rather than as expressions of strategic intent.</div>
+          <div class="row-source">Source · Disclosed (April 2026 strategy reset)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Strategic posture (2026)</div>
+        <div>
+          <div class="row-val"><em>Privatise.</em> Staggered transfer of PIF anchor stakes in SPL clubs to private and family-office capital. <em>Professionalise.</em> Co-investment in operating-capability build at SPL clubs and SAFF alongside the 2027 Asian Cup and 2034 World Cup. <em>Partner.</em> Selective minority co-investment in international football platforms; 2034 World Cup financing via the Ministry of Sport architecture.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the institution actually does, day to day</h2>
+    <p>PIF in 2026 is closer in shape to a state-aligned global investment platform than to a traditional sovereign wealth fund. Its decision-making is centralised through the Governor's office and the Public Investment Programme; its execution is decentralised across thematic platforms — domestic infrastructure, international diversification, listed equities, alternatives, and the various ecosystem-aligned platforms that include Savvy Games, Sport Holding, AlUla and NEOM developments, and Riyadh Air.</p>
+    <p>The April 2026 strategy reset removed sport from the priority ecosystem list but did not remove it from the portfolio. The operating consequence is a tighter return discipline on new sport allocations, a deliberate transfer of equity in PIF-anchored SPL clubs to private and family-office capital, and a continued allocation to sport-adjacent infrastructure where the project rationale is broader than sport. The 2034 World Cup capex pipeline — fifteen stadium projects, transport infrastructure, hospitality and broadcast build — runs through Ministry of Sport and Roshn-anchored programmes, with PIF's role primarily as financier of underlying national-development projects rather than direct event-delivery investor.</p>
+    <p>The Newcastle United investment is the most visible international football exposure and is operating on a different cadence to the SPL clubs. The 2024–2026 capital injections, the proposed stadium redevelopment programme, and the senior strategy and football-operations hires made over the past two years describe an asset being managed on an institutional hold-and-improve frame rather than as an instrument of nation-brand projection. The club's recent operating disclosure is closer in shape to FSG's Liverpool than to the trophy-asset playbook of an earlier era.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>PIF's stated direction is the consolidation of its sport portfolio onto a sustainable, return-disciplined, partner-supported footing. The Phase 2 architecture — privatise, professionalise, partner — reads as an explicit shift away from balance-sheet-led acquisition toward a model where private capital takes operating exposure in clubs PIF originally anchored, with the fund retaining minority strategic stakes. The Kingdom Holding–Al Hilal transaction is the template; further SPL transactions are expected through 2026 and 2027.</p>
+    <p>Beyond the SPL programme, the fund's posture toward international football remains live. Newcastle United continues as a strategic flagship. Selective minority co-investment in international football platforms remains on the table, particularly where the platform aligns with the Kingdom's broader tourism, broadcast, and commercial-aviation strategies. Direct LIV Golf funding is winding down after the 2026 season; the broader PIF golf platform continues through different funding lines. Sport-tech and esports allocations through Savvy Games Group continue to expand.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>PIF Annual Reports 2023, 2024; April 2026 strategy reset disclosures</li>
+      <li>Newcastle United transaction documents (October 2021); subsequent capital filings at Companies House</li>
+      <li>Saudi Pro League privatisation framework; Kingdom Holding–Al Hilal transaction (April 2026)</li>
+      <li>FIFA Council 2034 World Cup hosting award (December 2024)</li>
+      <li>Trade press: Reuters, Bloomberg, FT, The Athletic, Off the Pitch, SportBusiness (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

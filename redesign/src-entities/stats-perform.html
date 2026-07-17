@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Opta (Stats Perform) — Entity profile · The Football Ledger</title>
+<meta name="description" content="Opta / Stats Perform entity profile: the canonical football data brand and its Vista-owned parent, the 2026 FIFA betting-data coup, Opta Vision and OptaAI, and the hardening three-way contest with Genius Sports and Sportradar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-8">Layer 08 · Football-tech</a><span class="sep">/</span><span>Opta (Stats Perform)</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L8 · Football-tech · Data &amp; AI</span><span class="eyebrow-meta">·  London, UK</span></div>
+  <h1 class="entity-title">Opta <em>· Stats Perform</em></h1>
+  <p class="entity-deck">Opta is the canonical brand of professional football data; its parent, Stats Perform, is the Vista-owned data-and-AI company that turns that data into the betting feeds, broadcast graphics and “supercomputer” predictions the football world quotes by name.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sports data &amp; AI · private</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">Opta 1996 · Stats Perform 2019</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">London, UK</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Carl Mergele · CEO</div></div>
+    <div class="fact"><div class="fact-label">Owner</div><div class="fact-value">Vista Equity Partners</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Exclusive rights · AI productisation</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>The data everyone <em>quotes by name</em></h2>
+<p>Opta is the product-and-data brand; Stats Perform is the operating company behind it, owned by Vista Equity Partners (with DAZN Group retaining a minority stake from the 2019 merger). Opta Index was founded in 1996 and became the Premier League's official stats provider in 1997–98; Stats Perform itself was formed in 2019 from the merger of STATS LLC and Perform Group's data arm. The business covers more than 500,000 matches and 3,900 competitions a year.</p>
+<p>The company runs as two stacked layers: a low-glamour, high-moat pipe of official-data collection and betting feeds, and a brand-and-AI storytelling layer — Opta Analyst, the “supercomputer” predictions, Opta Vision, OptaAI — that does the marketing work but is not where most revenue sits. It is one of the big three of sports data, alongside Genius Sports and Sportradar, and the competition has hardened into a contract-by-contract rights auction.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Rights, products, and position</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">FIFA betting-data coup (2026)</div><div><div class="row-val">FIFA named Stats Perform its <strong>first-ever official worldwide betting-data and streaming-rights distributor</strong> — exclusive across all <strong>104 matches</strong> of the 2026 World Cup, plus the 2027 Women's World Cup and FIFA events to 2029.</div><div class="row-source">Source · Disclosed (FIFA + Stats Perform, Jan 2026)</div></div></div>
+      <div class="row"><div class="row-key">Opta Vision</div><div><div class="row-val">Launched 2022; fuses Opta event data with computer-vision player tracking, live from 2022–23 — the platform underpinning advanced metrics and AI features.</div><div class="row-source">Source · Reported / Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Opta “supercomputer”</div><div><div class="row-val">Predictive models producing title odds, win probabilities and tournament forecasts, widely cited by BBC, CNN and Marca; powered 2025 Club World Cup storytelling.</div><div class="row-source">Source · Reported (CNN, BBC)</div></div></div>
+      <div class="row"><div class="row-key">OptaAI Studio</div><div><div class="row-val">Generative-AI storytelling product; won Broadcast Technology of the Year at the 2025 Sports Technology Awards.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Competitive position</div><div><div class="row-val">Big-three with <strong>Genius Sports</strong> and <strong>Sportradar</strong>. In Aug 2025 Genius won exclusive betting-data rights for the European Leagues Association (8,000+ matches/season) — ground lost even as Stats Perform won FIFA.</div><div class="row-source">Source · Reported (InsiderSport, SportBusiness)</div></div></div>
+      <div class="row"><div class="row-key">Rights discipline</div><div><div class="row-val">In Oct 2024 Stats Perform sought to exit its Serie A betting-rights deal — a signal of selective, margin-led rights discipline over land-grab.</div><div class="row-source">Source · Reported (SportBusiness)</div></div></div>
+      <div class="row"><div class="row-key">Revenue</div><div><div class="row-val"><strong>Not disclosed</strong> (private, PE-owned). A third-party model of ~$590m circulates but is unverified — do not print as fact.</div><div class="row-source">Source · Estimate</div></div></div>
+      <div class="row"><div class="row-key">Legal exposure</div><div><div class="row-val">Sued by IMG (2023) over alleged collection of data to which IMG holds exclusive rights — a live question over official vs observed data sourcing.</div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the business actually functions</h2>
+<p>The moat is the unglamorous layer. Official-data collection, betting feeds and the RunningBall live-data arm are where the FIFA, La Liga and other rights sit, and where most revenue is generated; the supercomputer and OptaAI do the brand work. Under Vista, the strategy reads as classic software value creation — consolidate, attach AI features to defend pricing, and walk away from rights deals that don't clear a margin bar, even at reputational cost, as the abrupt Serie A exit showed.</p>
+<p>The competitive frame has hardened into a three-way auction rather than a structural monopoly. Winning FIFA while losing the European Leagues Association to Genius in the same cycle demonstrates that the official-data moat is now contestable contract by contract. The IMG litigation, and the broader question of observed versus officially licensed data, is a live risk to the cost basis of the firm's data collection.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The 2026 posture is to lock up exclusive official betting-data and streaming rights — capped by the landmark FIFA deal — while pushing generative-AI products such as OptaAI Studio and Opta Vision up the value chain to defend pricing. Whether those AI tools can be monetised as standalone products, or remain sales-enablement for the core feeds, is the open commercial question.</p>
+<p>The corporate overhang is ownership. At more than six years post-merger, a Vista sale or recapitalisation is plausible; who buys, and at what multiple given the cyclicality of betting rights, will shape the next chapter. The firm's actual revenue and EBITDA — and how much rides on betting feeds versus media and performance — remain undisclosed.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>FIFA and Stats Perform releases (betting-data distributor, Jan 2026)</li>
+      <li>Stats Perform leadership and product pages; Stats Perform Wikipedia</li>
+      <li>SportBusiness (Serie A exit); InsiderSport (Genius / European Leagues)</li>
+      <li>CNN, BBC (supercomputer coverage)</li>
+      <li>Caveat: revenue is not disclosed; the ~$590m figure is a third-party estimate</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

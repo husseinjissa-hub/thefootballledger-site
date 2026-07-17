@@ -546,6 +546,145 @@ my $dir_types = join("\n          ", map {
   '<option value="'.esc($_).'">'.esc($TYPLABEL{$_}//$_).'</option>'
 } sort { ($TYPLABEL{$a}//$a) cmp ($TYPLABEL{$b}//$b) } grep { $_ ne '' } keys %tyPresent);
 
+# ---------- entity detail (reskin legacy profiles) ----------
+my $EI_SHIRT = '<path d="M8 4l-4 2 1.2 4 1.8-.5V20h10V9.5l1.8.5L20 6l-4-2a2.6 2.6 0 01-2 1 2.6 2.6 0 01-2-1z"/>';
+my $EI_PIN   = '<path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>';
+my $EI_USER  = '<circle cx="12" cy="8" r="4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/>';
+my $EI_BARS  = '<path d="M5 20V11M12 20V5M19 20v-6"/><path d="M3 20h18"/>';
+sub fact_icon {
+  my ($lab)=@_; local $_=lc $lab;
+  return ($ICO_CAL) if /found/;
+  return ($EI_PIN)  if /headquart|based|location/;
+  return ($EI_USER) if /leader|ceo|chair/;
+  return ($EI_BARS) if /scale|revenue|aum|assets|value/;
+  return ($EI_SHIRT) if /type|categ/;
+  return $ICO_TAG;
+}
+sub esc_attr { my ($s)=@_; $s=esc($s); $s =~ s/"/&quot;/g; return $s; }
+
+sub build_entity {
+  my ($e)=@_; my $slug=$e->{slug};
+  my $src="redesign/src-entities/$slug.html";
+  return unless -e $src;
+  my $raw=slurp($src);
+
+  my $eyebrow = ($raw =~ /<div class="eyebrow">(.*?)<\/div>\s*<h1/s) ? $1 : '';
+  $eyebrow =~ s/<[^>]+>/ /g; $eyebrow =~ s/\s*·\s*/ · /g; $eyebrow =~ s/\s+/ /g; $eyebrow =~ s/^[\s·]+|[\s·]+$//g;
+  my @ep = split / · /, $eyebrow;
+  my $ov_first = @ep ? shift @ep : uc($e->{type}//'');
+  my $overline = '<b>'.esc(uc $ov_first).'</b>'.(@ep?' · '.esc(uc join(' · ',@ep)):'');
+
+  my $name = ($raw =~ /<h1 class="entity-title">(.*?)<\/h1>/s) ? $1 : esc($e->{name});
+  my $deck = ($raw =~ /<p class="entity-deck">(.*?)<\/p>/s) ? $1 : esc($e->{summary}//'');
+
+  # facts -> meta strip (first 5)
+  my @facts;
+  while ($raw =~ /<div class="fact"><div class="fact-label">(.*?)<\/div><div class="fact-value">(.*?)<\/div><\/div>/gs) {
+    push @facts, [$1,$2];
+  }
+  @facts = @facts[0..4] if @facts>5;
+  my $metastrip = join('', map {
+    my ($k,$v)=@$_;
+    '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.fact_icon($k).'</svg><span><span class="amc-k">'.esc($k).'</span><br><span class="amc-v">'.$v.'</span></span></div>'
+  } @facts);
+
+  # sections
+  my @sec;   # [label, contentHtml]
+  while ($raw =~ /<section class="section">(.*?)<\/section>/gs) {
+    my $inner=$1;
+    my $label = ($inner =~ /<div class="section-label">(.*?)<\/div>/s) ? $1 : '';
+    (my $content = $inner) =~ s/<div class="section-label">.*?<\/div>//s;
+    $content =~ s/<h2>(.*?)<\/h2>/<h3>$1<\/h3>/s;   # editorial headline -> serif subhead
+    $content =~ s/^\s+//; $content =~ s/\s+$//;
+    push @sec, [$label, $content];
+  }
+
+  my $n=0;
+  my $prose = join("\n", map {
+    my ($lab,$content)=@$_; $n++;
+    '<div class="ent-h2" id="esec'.$n.'"><span class="ent-h2-num">'.sprintf('%02d',$n).'</span> '.esc(uc $lab).'</div>'."\n".$content
+  } @sec);
+  my $ti=0;
+  my $toc = join("\n          ", map {
+    my ($lab)=@$_; $ti++;
+    '<li><a class="toc-link" href="#esec'.$ti.'"><span class="toc-num">'.sprintf('%02d',$ti).'</span><span>'.esc($lab).'</span></a></li>'
+  } @sec);
+
+  # logo
+  my $lp="assets/img/logos/$slug.png";
+  my $logo = (-e $lp) ? '<img src="/'.$lp.'" alt="'.esc_attr($e->{name}).'">'
+                      : '<span class="ent-logo-mono">'.mono($e->{name}).'</span>';
+
+  # breadcrumb
+  my ($dl) = grep { $_->{id} eq $e->{layer} } @DIRLAYERS;
+  my $lname = $dl ? $dl->{tag} : 'Layer '.$e->{layer};
+  my $crumbs = '<a href="/entities">Entities</a><span class="sep">/</span><a href="/entities#layer-'.$e->{layer}.'">Layer '.sprintf('%02d',$e->{layer}).' · '.$lname.'</a><span class="sep">/</span><span>'.esc($e->{name}).'</span>';
+
+  my $body = <<"HTML";
+<div class="art-wrap">
+  <nav class="ent-crumbs" aria-label="Breadcrumb">$crumbs</nav>
+  <header class="ent-header">
+    <div class="ent-logo-big">$logo</div>
+    <div>
+      <div class="ent-overline">$overline</div>
+      <h1 class="ent-name">$name</h1>
+      <p class="ent-deck">$deck</p>
+    </div>
+  </header>
+  <div class="art-metastrip art-metastrip--5">$metastrip</div>
+
+  <div class="art-grid">
+    <aside class="art-side">
+      <a class="art-back" href="/entities"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to Entities</a>
+      <div class="art-block art-block--toc">
+        <div class="art-side-label">On this profile</div>
+        <ul class="toc-list">
+          $toc
+        </ul>
+      </div>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
+    <article class="art-main">
+      <div class="article-prose">
+$prose
+      </div>
+    </article>
+  </div>
+</div>
+<section class="wrap section" style="padding-top:0">
+  <div class="cta-onesystem">
+    <div class="cta-onesystem-left">
+      <span class="cta-onesystem-ico"><svg width="72" height="72" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="6"/><circle cx="40" cy="12" r="3"/><circle cx="64" cy="30" r="3"/><circle cx="58" cy="62" r="3"/><circle cx="20" cy="60" r="3"/><circle cx="14" cy="28" r="3"/><path d="M40 18v16M46 40l15-8M44 44l12 16M36 44l-14 14M34 40l-14-10"/></svg></span>
+      <div>
+        <h3>One system. Infinite connections.</h3>
+        <p>Explore how @{[esc($e->{name})]} fits into the football business ecosystem — and how value flows between every layer.</p>
+      </div>
+    </div>
+    <a class="btn btn--primary" href="/ecosystem">Explore the ecosystem <span class="arw">→</span></a>
+  </div>
+</section>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-link'));
+  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
+  if(!secs.length) return;
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+id);});}});},{rootMargin:'-90px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){obs.observe(s);});
+})();
+</script>
+HTML
+
+  render_page(out=>"entities/$slug.html", active=>"entities",
+    title=>$e->{name}." — The Football Ledger",
+    desc=>$e->{summary}//$e->{name},
+    canonical=>"/entities/$slug", body=>$body);
+}
+build_entity($_) for @ents;
+
 my $ecount = scalar @ents;
 my $dir = slurp("redesign/pages/entities.html");
 $dir =~ s/\{\{ENTITY_COUNT\}\}/$ecount/g;

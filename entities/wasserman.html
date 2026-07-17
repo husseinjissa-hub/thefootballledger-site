@@ -1,127 +1,110 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wasserman — Entity profile · The Football Ledger</title>
+<title>Wasserman — The Football Ledger</title>
 <meta name="description" content="Wasserman entity profile: multi-sport agency anchored by football representation. Strong NWSL and WSL roster, growing men's-football presence, brand-first activation model.">
+<link rel="canonical" href="https://thefootballledger.co/entities/wasserman">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="Wasserman — The Football Ledger">
+<meta property="og:description" content="Wasserman entity profile: multi-sport agency anchored by football representation. Strong NWSL and WSL roster, growing men's-football presence, brand-first activation model.">
+<meta property="og:url" content="https://thefootballledger.co/entities/wasserman">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scrollbar-gutter: stable; }
-body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
-body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
-a { color: inherit; text-decoration: none; }
-.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
-.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
-.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
-.brand-mark svg { display: block; width: 100%; height: 100%; }
-.primary-nav { display: flex; align-items: center; gap: 4px; }
-.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
-.nav-item:hover { color: var(--bone); }
-.nav-item.active { color: var(--bone); }
-.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
-.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
-.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
-.crumbs a:hover { color: var(--gold); }
-.crumbs .sep { margin: 0 12px; color: var(--line); }
-.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
-.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
-.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
-.eyebrow-meta { color: var(--bone-mute); }
-.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
-.entity-title em { font-style: italic; color: var(--gold); }
-.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
-.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
-.fact { background: var(--ink-2); padding: 22px 24px; }
-.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
-.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
-.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
-.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
-.section { margin-bottom: 64px; }
-.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
-.section h2 em { font-style: italic; color: var(--gold); }
-.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
-.section p strong { color: var(--bone); font-weight: 600; }
-.section p em { font-style: italic; color: var(--bone); }
-.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
-.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
-.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
-.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
-.row-val strong { color: var(--bone); font-weight: 600; }
-.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
-.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
-.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
-.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
-.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
-.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
-.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
-.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
-footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
-@media (max-width: 900px) {
-  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
-  .primary-nav { width: 100%; }
-  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
-  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
-  .row { grid-template-columns: 1fr; gap: 8px; }
-  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
-}
-.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
-.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
-</style>
-<style></style><link rel="stylesheet" href="/assets/shell.css">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/redesign.css">
 </head>
 <body>
-<header class="site-head">
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="/" class="nav-item">Overview</a>
-    <a href="/ecosystem" class="nav-item">Ecosystem</a>
-    <a href="/ledger" class="nav-item">The Ledger</a>
-    <a href="/entities" class="nav-item">Entities</a>
-    <a href="/briefing" class="nav-item">Briefing</a>
-    <a href="/about" class="nav-item">About</a>
-    <a href="/join" class="nav-item">Join</a>
-  </nav>
-  <span class="nav-reserved" aria-hidden="true"></span>
-</header>
-<div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <button class="nav-close" aria-label="Close menu">&times;</button>
-  <nav class="overlay-nav" aria-label="Primary">
-    <a href="/" class="overlay-item">Overview</a>
-    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
-    <a href="/ledger" class="overlay-item">The Ledger</a>
-    <a href="/entities" class="overlay-item">Entities</a>
-    <a href="/briefing" class="overlay-item">Briefing</a>
-    <a href="/about" class="overlay-item">About</a>
-    <a href="/join" class="overlay-item">Join</a>
-  </nav>
-</div>
-
-<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-5">Layer 05 · Agencies</a><span class="sep">/</span><span>Wasserman</span></div>
-<header class="profile-header">
-  <div class="eyebrow"><span>L5 · Agencies · Player representation agency</span><span class="eyebrow-meta">·  Los Angeles</span></div>
-  <h1 class="entity-title"><em>Wasserman</em></h1>
-  <p class="entity-deck">Casey Wasserman's Los Angeles-headquartered multi-sport agency. Strong women's-football leadership (NWSL, WSL) and growing men's-football roster. Brand-first activation model with structural strength in commercial and athlete-marketing programmes.</p>
-  <div class="fact-strip">
-    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Multi-sport agency</div></div>
-    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1998 (Wasserman Media Group)</div></div>
-    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Los Angeles</div></div>
-    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Casey Wasserman (Founder, CEO)</div></div>
-    <div class="fact"><div class="fact-label">Scale headline</div><div class="fact-value"><em>~600+</em> represented athletes (multi-sport)</div></div>
-    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Women's football scaling · brand activation</div></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="The Football Ledger — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
+        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
+        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">The Football Ledger</span>
+        <span class="brand-tag">The Business of Football</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/" >Overview</a>
+      <a href="/ecosystem" >Ecosystem</a>
+      <a href="/ledger" >The Ledger</a>
+      <a href="/entities" class="active">Entities</a>
+      <a href="/briefing" >Briefing</a>
+      <a href="/about" >About</a>
+      <a href="/join" >Join</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
-<div class="body">
-  <section class="section"><div class="section-label">At a glance</div><h2>The brand-first agency</h2>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
+    </a>
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  </div>
+  <nav aria-label="Primary (mobile)">
+    <a href="/">Overview</a>
+    <a href="/ecosystem">Ecosystem</a>
+    <a href="/ledger">The Ledger</a>
+    <a href="/entities">Entities</a>
+    <a href="/briefing">Briefing</a>
+    <a href="/about">About</a>
+    <a href="/join">Join</a>
+  </nav>
+</div>
+<main id="main">
+<div class="art-wrap">
+  <nav class="ent-crumbs" aria-label="Breadcrumb"><a href="/entities">Entities</a><span class="sep">/</span><a href="/entities#layer-5">Layer 05 · Agencies</a><span class="sep">/</span><span>Wasserman</span></nav>
+  <header class="ent-header">
+    <div class="ent-logo-big"><img src="/assets/img/logos/wasserman.png" alt="Wasserman"></div>
+    <div>
+      <div class="ent-overline"><b>L5</b> · AGENCIES · PLAYER REPRESENTATION AGENCY · LOS ANGELES</div>
+      <h1 class="ent-name"><em>Wasserman</em></h1>
+      <p class="ent-deck">Casey Wasserman's Los Angeles-headquartered multi-sport agency. Strong women's-football leadership (NWSL, WSL) and growing men's-football roster. Brand-first activation model with structural strength in commercial and athlete-marketing programmes.</p>
+    </div>
+  </header>
+  <div class="art-metastrip art-metastrip--5"><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 4l-4 2 1.2 4 1.8-.5V20h10V9.5l1.8.5L20 6l-4-2a2.6 2.6 0 01-2 1 2.6 2.6 0 01-2-1z"/></svg><span><span class="amc-k">Type</span><br><span class="amc-v">Multi-sport agency</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span><span class="amc-k">Founded</span><br><span class="amc-v">1998 (Wasserman Media Group)</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><span class="amc-k">Headquarters</span><br><span class="amc-v">Los Angeles</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><span><span class="amc-k">Leadership</span><br><span class="amc-v">Casey Wasserman (Founder, CEO)</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 20V11M12 20V5M19 20v-6"/><path d="M3 20h18"/></svg><span><span class="amc-k">Scale headline</span><br><span class="amc-v"><em>~600+</em> represented athletes (multi-sport)</span></span></div></div>
+
+  <div class="art-grid">
+    <aside class="art-side">
+      <a class="art-back" href="/entities"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to Entities</a>
+      <div class="art-block art-block--toc">
+        <div class="art-side-label">On this profile</div>
+        <ul class="toc-list">
+          <li><a class="toc-link" href="#esec1"><span class="toc-num">01</span><span>At a glance</span></a></li>
+          <li><a class="toc-link" href="#esec2"><span class="toc-num">02</span><span>The numbers</span></a></li>
+          <li><a class="toc-link" href="#esec3"><span class="toc-num">03</span><span>Operating reality</span></a></li>
+          <li><a class="toc-link" href="#esec4"><span class="toc-num">04</span><span>Strategic posture</span></a></li>
+          <li><a class="toc-link" href="#esec5"><span class="toc-num">05</span><span>Sources</span></a></li>
+        </ul>
+      </div>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
+    <article class="art-main">
+      <div class="article-prose">
+<div class="ent-h2" id="esec1"><span class="ent-h2-num">01</span> AT A GLANCE</div>
+<h3>The brand-first agency</h3>
 <p>Wasserman is the multi-sport agency founded by Casey Wasserman in 1998 in Los Angeles. The agency anchors on multi-sport representation with a particularly strong women's-football and brand-activation footprint. The football-specific roster across men's and women's football runs into the high hundreds; the broader sport roster across all athletes is materially larger.</p><p>Wasserman's commercial differentiation is brand-first athlete representation — structured commercial-revenue packages that capture longer-term commercial earnings rather than transfer-fee commission alone. The model is well-suited to women's football where transfer fees are smaller relative to commercial activation potential.</p>
-  </section>
-  <section class="section"><div class="section-label">The numbers</div><h2>Scale and structure</h2>
+<div class="ent-h2" id="esec2"><span class="ent-h2-num">02</span> THE NUMBERS</div>
+<h3>Scale and structure</h3>
     <div class="numbers">
       <div class="row"><div class="row-key">Agency type</div><div><div class="row-val">Multi-sport agency. Football division covers men's, women's, coaching, and brand-activation. Strong adjacent practices in NBA, athletics, and Olympic sport.</div><div class="row-source">Source · Disclosed</div></div></div>
       <div class="row"><div class="row-key">Parent group</div><div><div class="row-val">Privately held. Casey Wasserman principal. Carlyle minority investment (2023).</div><div class="row-source">Source · Disclosed</div></div></div>
@@ -134,26 +117,96 @@ footer { padding: 32px 60px; display: flex; justify-content: space-between; alig
       <div class="row"><div class="row-key">Regulatory exposure</div><div><div class="row-val">Operating under FFAR framework. Less national-court exposure than CAA Stellar given smaller player-representation share.</div><div class="row-source">Source · Disclosed</div></div></div>
       <div class="row"><div class="row-key">Strategic posture (2026)</div><div><div class="row-val"><em>Women's football scaling.</em> NWSL and WSL roster continuing to expand. <em>Brand activation focus.</em> Multi-year commercial-revenue programmes for top-tier athletes.</div><div class="row-source">Source · Reported</div></div></div>
     </div>
-  </section>
-  <section class="section"><div class="section-label">Operating reality</div><h2>What the institution actually does</h2>
+<div class="ent-h2" id="esec3"><span class="ent-h2-num">03</span> OPERATING REALITY</div>
+<h3>What the institution actually does</h3>
 <p>Wasserman's operating model emphasises commercial activation alongside transfer representation. The agency's senior partners typically structure athlete representations to capture brand, sponsorship, content, and adjacent commercial revenue across multi-year periods, in addition to the transfer-fee commission that dominates legacy agency economics.</p><p>The women's-football specialisation is the platform's structural differentiator. Wasserman represents the largest share of senior NWSL and WSL talent of any global agency, and the brand-activation revenue per athlete in women's football has expanded materially as franchise multiples and sponsorship inventory have grown.</p><p>The Carlyle minority investment in 2023 provided institutional capital for further roster expansion and platform-build investment. The broader Wasserman Group expanded into selected acquisitions in adjacent talent-and-sport categories alongside the core agency operating model.</p>
-  </section>
-  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<div class="ent-h2" id="esec4"><span class="ent-h2-num">04</span> STRATEGIC POSTURE</div>
+<h3>Direction in 2026</h3>
 <p>Wasserman's stated direction in 2026 is women's-football scaling and brand-activation deepening. The NWSL franchise multiples crossing $100m and the broader women's football institutional-capital wave provides the addressable-market expansion. The men's-football roster continues to grow at slower pace.</p><p>The Carlyle minority structure provides patient capital for the next platform-build cycle. No public IPO timeline; no signalled secondary process at the agency level.</p>
-  </section>
-  <section class="section"><div class="section-label">Sources</div>
-    <ul class="sources">
+<div class="ent-h2" id="esec5"><span class="ent-h2-num">05</span> SOURCES</div>
+<ul class="sources">
       <li>Wasserman communications and press releases</li>
       <li>Trade press: FT, The Athletic, Sportico, Off the Pitch (2014-2026)</li>
       <li>Carlyle minority investment reporting (2023)</li>
       <li>FIFA Football Agent Regulations documents</li>
       <li>NWSL and WSL agency-representation disclosures</li>
     </ul>
-  </section>
+      </div>
+    </article>
+  </div>
 </div>
-<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed May 2026</div></footer>
-<script src="/content.js"></script>
-<script src="/assets/entity-backlinks.js"></script>
-<script src="/assets/site.js"></script>
+<section class="wrap section" style="padding-top:0">
+  <div class="cta-onesystem">
+    <div class="cta-onesystem-left">
+      <span class="cta-onesystem-ico"><svg width="72" height="72" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="6"/><circle cx="40" cy="12" r="3"/><circle cx="64" cy="30" r="3"/><circle cx="58" cy="62" r="3"/><circle cx="20" cy="60" r="3"/><circle cx="14" cy="28" r="3"/><path d="M40 18v16M46 40l15-8M44 44l12 16M36 44l-14 14M34 40l-14-10"/></svg></span>
+      <div>
+        <h3>One system. Infinite connections.</h3>
+        <p>Explore how Wasserman fits into the football business ecosystem — and how value flows between every layer.</p>
+      </div>
+    </div>
+    <a class="btn btn--primary" href="/ecosystem">Explore the ecosystem <span class="arw">→</span></a>
+  </div>
+</section>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-link'));
+  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
+  if(!secs.length) return;
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+id);});}});},{rootMargin:'-90px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){obs.observe(s);});
+})();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
+        </a>
+        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/">Overview</a>
+        <a href="/ecosystem">Ecosystem</a>
+        <a href="/ledger">The Ledger</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reference</h4>
+        <a href="/entities">Entities</a>
+        <a href="/briefing">Briefing</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="/join">Join</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Football Ledger. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.layer-more'); if(!b) return;
+  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.childNodes[0].nodeValue=open?'Less ':'More ';
+});
+</script>
 </body>
 </html>

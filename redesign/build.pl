@@ -275,6 +275,54 @@ my %TAKEAWAYS = (
     ['Two structural pressures define the market','Unit economics and distribution depth & piracy resistance prevent a single platform from owning it all.'],
     ['Three configurations are now competing','Traditional pay-TV, hybrid streamer partnerships, and multi-rights platform plays — each with advantages and constraints.'],
   ],
+  'macro-01-trophy-to-operating' => [
+    ['The trophy era of ownership is closing','Two decades of football capital bought soft power and brand. The next decade is deployed for measurable return.'],
+    ['Apollo–Atlético marks the arrival of the LBO','It is the first big-five control deal underwritten as a classic leveraged buyout by a generalist alternatives manager.'],
+    ['PIF is reclassifying sport, not exiting it','Its 2026 reset moves assets toward privatisation and operating discipline, shifting clubs onto commercial governance and reporting burdens.'],
+    ['The binding constraint is leadership, not capital','The scarce resource is executives who can hold financial discipline and football culture at once — not money or governance.'],
+  ],
+  'macro-02-mco-consolidation' => [
+    ['Multi-club ownership has become the default','Just under forty-eight per cent of Big Five clubs now sit inside groups. The acquisition phase is settled.'],
+    ['Only two groups have built real integration','City Football Group and Red Bull show audited cross-club synergies; the rest remain portfolios of clubs sharing an owner.'],
+    ['The regulator has hardened against the model','UEFA Article 5 tightened in 2025 — blind trusts and strict assessment dates raise the operating cost for every group.'],
+    ['Value comes from platforms, not assembly','The open question is whether assembled groups commit to integration capability — and whether the regulator lets them try.'],
+  ],
+  'macro-03-usa-mega-cycle' => [
+    ['The asset class caught up to the audience','US soccer\'s audience grew for two decades; what changed is that private capital now treats it as a primary deployment category.'],
+    ['The World Cup upside is already priced in','Valuations re-rated and broadcast deals were signed before the tournament — the post-2026 window rewards operators, not asset buyers.'],
+    ['Two Division One models will compete','USL Premier\'s 2028 open-pyramid launch pressure-tests MLS\'s closed-franchise system; the winner sets the decade\'s operating baseline.'],
+    ['The open question is a third capital pole','Whether the money entering US soccer builds a rival to Europe and the Gulf, or funds a still-secondary market.'],
+  ],
+  'l3-barcelona-crisis-recovery' => [
+    ['A structural crisis, not an accident','Wages compounded faster than revenue through the 2010s; COVID pushed the wage-to-revenue ratio above 100 per cent and debt near €1.35bn.'],
+    ['The Laporta levers registered the squad','Forward-selling broadcast rights, divesting Barça Studios, and structuring stadium debt cleared registration headroom by monetising future revenue.'],
+    ['The recovery is genuine but partial','By 2026 the sporting-cost ratio and debt have improved markedly, yet each lever pulled is a future revenue line the club no longer keeps.'],
+    ['The heritage tier now has a playbook','Member-owned clubs cannot summon sovereign cheques; rights monetisations and securitised debt let them absorb capital without ceding control.'],
+  ],
+  'l4-pif-phase-2' => [
+    ['Absence from the six ecosystems is not exit','Sport left PIF\'s named priority ecosystems, but the assets remain inside the portfolio, most likely within the Strategic Portfolio.'],
+    ['Al-Hilal is privatisation with retained influence','PIF divested seventy per cent to Kingdom Holding while keeping combined economic exposure near seventeen per cent and imposing listed-company discipline.'],
+    ['The Big Four are redistributed, not liquidated','Direct exposure falls and operating mandates sharpen as clubs move to commercially-minded or sector-aligned hosts; the architecture survives in disciplined form.'],
+    ['The redeployment reads as sophistication, not retreat','Capital is leaving sport near-term under war-period pressure, but the preserved 2034 pipeline suggests a re-architected, not emptied, structure.'],
+  ],
+  'l6-apple-mls-case-study' => [
+    ['The standalone paywall was the wrong bet','MLS Season Pass at $99 never reached the subscriber depth the revenue-share upside required; premium pricing demands premium content scale.'],
+    ['The restructure traded depth for reach','From 2026 MLS sits inside the Apple TV bundle at no incremental cost, shifting the deal\'s commercial geometry from subscriber depth to reach.'],
+    ['A smaller headline masks strategic logic','Facing Apple\'s 2027 opt-out, MLS preserved cash against the downside, removed paywall friction, and aligned the deal with its mass-market scale.'],
+    ['The 2029 renewal turns on optionality','The side with more options — a multi-broadcaster contest or an Apple content extension — will set the next cycle\'s price.'],
+  ],
+  'l6-bein-mena-fragmentation' => [
+    ['The structural-decline narrative outran its evidence','beIN\'s premium portfolio expanded, not contracted — Premier League, La Liga, UEFA and Formula One all renewed at or above prior-cycle terms.'],
+    ['The Saudi challenger dissolved against itself','SSC launched, lost the Saudi Pro League to Thmanyah, and closed within four years — turnover orthogonal to beIN\'s Western-rights position.'],
+    ['The genuine pressures are real but narrow','Portfolio gaps in Serie A and Bundesliga, plus MENA\'s young streaming-first audience, name honest weaknesses without proving retreat.'],
+    ['DAZN is the threat that matters, not SSC','A PIF-backed streaming-native operator is the serious forward risk, but its MENA expansion is unrealised and Ligue 1 deal collapsed.'],
+  ],
+  'l8-data-led-underdogs' => [
+    ['A shared data stack, not a shared budget','Hearts, Union SG, Como, Ipswich and Bodø/Glimt overperform their wage bills; five buy Jamestown Analytics, the sixth builds the model in-house.'],
+    ['The value compounds across three functions','Beyond targeted recruitment, the same data plumbing drives opposition analysis and, increasingly, head-coach search calibrated to each club.'],
+    ['The stack is the cheapest senior hire','Costing less than one mid-tier transfer, its edge concentrates in the under-25 market before global scouting consensus catches up.'],
+    ['The substrate is the first moat, not the last','Once universal, data access becomes table stakes; the durable edge shifts to coaching identity, academy pipeline, and executive bench.'],
+  ],
 );
 
 my $ICO_CLOCK = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>';
@@ -435,5 +483,78 @@ HTML
 }
 
 build_article($_) for @arts;
+
+# ============================================================
+#  ENTITIES — directory
+# ============================================================
+my @DIRLAYERS = (
+  {id=>1, name=>'Governance', tag=>'Governance', desc=>'The rules, regulators, and institutions that govern the game.'},
+  {id=>2, name=>'Leagues &amp; Competitions', tag=>'Leagues', desc=>'The leagues and competitions where the game is played.'},
+  {id=>3, name=>'Clubs &amp; Multi-Club Ownership', tag=>'Clubs/MCO', desc=>'Clubs at the heart of the system and the ownership groups behind them.'},
+  {id=>4, name=>'Capital', tag=>'Capital', desc=>'Investors and capital providers fuelling growth across football.'},
+  {id=>5, name=>'Agencies', tag=>'Agencies', desc=>'Agents and agencies representing players, managers, and clubs.'},
+  {id=>6, name=>'Media &amp; Broadcasting', tag=>'Media', desc=>'Broadcasters and streaming platforms distributing football worldwide.'},
+  {id=>7, name=>'Commercial', tag=>'Commercial', desc=>'Brands and platforms powering commercial revenue and fan engagement.'},
+  {id=>8, name=>'Football-Tech', tag=>'Football-Tech', desc=>'Technology and data companies driving performance and operations.'},
+  {id=>9, name=>'Stadium / Fan Experience', tag=>'Stadium/Fan', desc=>'Venues, operators, and platforms shaping the matchday experience.'},
+);
+my %TYPLABEL = (MCO=>'Multi-club ownership', PE=>'Private equity', agency=>'Agencies', broadcaster=>'Broadcasters', commercial=>'Commercial', confederation=>'Confederations', credit=>'Credit funds', 'fan-platform'=>'Fan platforms', federation=>'Federations', 'football-tech'=>'Football-tech', league=>'Leagues', regulator=>'Regulators', sovereign=>'Sovereign funds', stadium=>'Stadiums', structured=>'Structured capital');
+my %POP = (broadcaster=>'broadcasters', PE=>'pe', stadium=>'stadiums', 'football-tech'=>'technology', agency=>'agencies', regulator=>'regulators', federation=>'federations');
+my %featRank; for my $L (@LAYERS){ next if $L->{only}; my $r=0; $featRank{$_}=$r++ for @{$L->{feat}}; }
+
+sub ent_card_dir {
+  my ($e,$tag)=@_; my $s=$e->{slug}; my $p="assets/img/logos/$s.png";
+  my $logo = (-e $p) ? '<img src="/'.$p.'" alt="'.esc($e->{name}).'" loading="lazy">'
+                     : '<span class="ent-card-mono">'.mono($e->{name}).'</span>';
+  my @pop; push @pop, $POP{$e->{type}} if $POP{$e->{type}}; push @pop, 'clubs' if $e->{layer} eq '3';
+  return
+  '<a class="ent-card" href="/entities/'.$s.'.html" data-name="'.esc(lc $e->{name}).'" data-desc="'.esc(lc($e->{summary}//'')).'" data-layer="'.$e->{layer}.'" data-type="'.esc($e->{type}//'').'" data-pop="'.join(' ',@pop).'">'."\n".
+  '          <div class="ent-card-logo">'.$logo.'</div>'."\n".
+  '          <div class="ent-card-name">'.esc($e->{name}).'</div>'."\n".
+  '          <div class="ent-card-desc">'.esc(trunc($e->{summary},96)).'</div>'."\n".
+  '          <span class="ent-card-tag">L'.$e->{layer}.' · '.$tag.'</span>'."\n".
+  '        </a>';
+}
+
+my $dir_sections = '';
+for my $L (@DIRLAYERS) {
+  my @in = grep { $_->{layer} eq $L->{id} } @ents;
+  @in = sort { ($featRank{$a->{slug}}//999) <=> ($featRank{$b->{slug}}//999) || lc($a->{name}) cmp lc($b->{name}) } @in;
+  next unless @in;
+  my $cnt = scalar @in;
+  my $cards = join("\n        ", map { ent_card_dir($_,$L->{tag}) } @in);
+  my $viewall = ($cnt>5) ? '<button class="dir-viewall" type="button"><span class="dvl-txt">View all '.$cnt.'</span> <span class="arw">→</span></button>' : '<span></span>';
+  $dir_sections .=
+  '<section class="dir-layer" data-layer="'.$L->{id}.'" data-count="'.$cnt.'">'."\n".
+  '      <div class="dir-layer-head">'."\n".
+  '        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$L->{id}}.'</svg></span>'."\n".
+  '        <div><div class="dir-layer-h"><span class="dir-layer-num">'.sprintf('%02d',$L->{id}).'</span><span class="dir-layer-name">'.$L->{name}.'</span></div><div class="dir-layer-desc">'.$L->{desc}.'</div></div>'."\n".
+  '        '.$viewall."\n".
+  '      </div>'."\n".
+  '      <div class="dir-cards">'."\n        ".$cards."\n".
+  '      </div>'."\n".
+  '    </section>'."\n    ";
+}
+
+# rail layer buttons + type options
+my $dir_rail = join("\n          ", map {
+  my $L=$_;
+  '<button class="fr-layer" type="button" data-layer="'.$L->{id}.'" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$LICO{$L->{id}}.'</svg></span><span class="fr-layer-num">'.sprintf('%02d',$L->{id}).'</span> '.$L->{tag}.'</button>'
+} @DIRLAYERS);
+my %tyPresent; $tyPresent{$_->{type}}++ for @ents;
+my $dir_types = join("\n          ", map {
+  '<option value="'.esc($_).'">'.esc($TYPLABEL{$_}//$_).'</option>'
+} sort { ($TYPLABEL{$a}//$a) cmp ($TYPLABEL{$b}//$b) } grep { $_ ne '' } keys %tyPresent);
+
+my $ecount = scalar @ents;
+my $dir = slurp("redesign/pages/entities.html");
+$dir =~ s/\{\{ENTITY_COUNT\}\}/$ecount/g;
+$dir =~ s/\{\{DIR_RAIL_LAYERS\}\}/          $dir_rail/;
+$dir =~ s/\{\{DIR_TYPE_OPTIONS\}\}/          $dir_types/;
+$dir =~ s/\{\{DIR_SECTIONS\}\}/    $dir_sections/;
+render_page(out=>"entities/index.html", active=>"entities",
+  title=>"Entities — The Football Ledger",
+  desc=>"A searchable directory of every actor in football's business — governing bodies, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium operators.",
+  canonical=>"/entities", body=>$dir);
 
 print "done.\n";

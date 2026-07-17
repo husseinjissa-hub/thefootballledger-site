@@ -573,7 +573,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .dir-viewall:hover .arw { transform: translateX(3px); }
 
 .dir-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-.dir-cards .ent-card:nth-child(n+6) { display: none; }
+.dir-layer:not(.dir-layer--grouped) .dir-cards .ent-card:nth-child(n+6) { display: none; }
 .dir-layer.open .dir-cards .ent-card:nth-child(n+6) { display: flex; }
 .ent-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 2px; background: var(--card); padding: 22px 18px 18px; transition: border-color 0.18s ease, transform 0.18s ease; }
 .ent-card:hover { border-color: var(--green); transform: translateY(-2px); }
@@ -584,8 +584,10 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .ent-card-desc { font-size: 12.5px; line-height: 1.45; color: var(--ink-2); flex: 1; margin-bottom: 15px; }
 .ent-card-tag { font-family: var(--sans); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); border: 1px solid var(--line); border-radius: 2px; padding: 3px 8px; align-self: flex-start; }
 .dir-empty { padding: 60px 0; text-align: center; font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-3); }
+.dir-subgroup + .dir-subgroup { margin-top: 30px; }
+.dir-subhead { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--green); padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1px solid var(--line-soft); }
 
-@media (max-width: 1120px) { .dir-cards { grid-template-columns: repeat(3, 1fr); } .dir-cards .ent-card:nth-child(n+4){display:none;} .dir-layer.open .dir-cards .ent-card:nth-child(n+4){display:flex;} }
+@media (max-width: 1120px) { .dir-cards { grid-template-columns: repeat(3, 1fr); } .dir-layer:not(.dir-layer--grouped) .dir-cards .ent-card:nth-child(n+4){display:none;} .dir-layer.open .dir-cards .ent-card:nth-child(n+4){display:flex;} }
 @media (max-width: 900px) {
   .dir-grid { grid-template-columns: 1fr; gap: 30px; }
   .dir-rail { position: static; }

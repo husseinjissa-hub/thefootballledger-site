@@ -517,22 +517,46 @@ sub ent_card_dir {
 }
 
 my $dir_sections = '';
+# Layer 07 Commercial is grouped into commercial sub-categories (as on the legacy map)
+my %ebs; $ebs{$_->{slug}}=$_ for @ents;
+my @L7GROUPS = (
+  ['Kit Suppliers',        [qw(nike adidas puma new-balance)]],
+  ['Shirt Sponsors',       [qw(emirates etihad qatar-airways riyadh-air-alula-neom)]],
+  ['Merchandise & Licensing',[qw(fanatics ea-sports)]],
+  ['Marketing & Data',     [qw(two-circles)]],
+);
 for my $L (@DIRLAYERS) {
   my @in = grep { $_->{layer} eq $L->{id} } @ents;
   @in = sort { ($featRank{$a->{slug}}//999) <=> ($featRank{$b->{slug}}//999) || lc($a->{name}) cmp lc($b->{name}) } @in;
   next unless @in;
   my $cnt = scalar @in;
-  my $cards = join("\n        ", map { ent_card_dir($_,$L->{tag}) } @in);
-  my $viewall = ($cnt>5) ? '<button class="dir-viewall" type="button"><span class="dvl-txt">View all '.$cnt.'</span> <span class="arw">→</span></button>' : '<span></span>';
+  my ($grouped, $body, $viewall) = (0, '', '<span></span>');
+  if ($L->{id} eq '7') {
+    $grouped = 1;
+    my %used;
+    for my $g (@L7GROUPS) {
+      my @gc = grep { defined } map { $ebs{$_} } @{$g->[1]};
+      next unless @gc; $used{$_->{slug}}=1 for @gc;
+      $body .= '<div class="dir-subgroup"><div class="dir-subhead">'.$g->[0].'</div><div class="dir-cards">'."\n        ".
+               join("\n        ", map { ent_card_dir($_,$L->{tag}) } @gc)."\n      </div></div>\n      ";
+    }
+    my @rest = grep { !$used{$_->{slug}} } @in;
+    if (@rest) {
+      $body .= '<div class="dir-subgroup"><div class="dir-subhead">Other commercial</div><div class="dir-cards">'."\n        ".
+               join("\n        ", map { ent_card_dir($_,$L->{tag}) } @rest)."\n      </div></div>";
+    }
+  } else {
+    $body = '<div class="dir-cards">'."\n        ".join("\n        ", map { ent_card_dir($_,$L->{tag}) } @in)."\n      </div>";
+    $viewall = ($cnt>5) ? '<button class="dir-viewall" type="button"><span class="dvl-txt">View all '.$cnt.'</span> <span class="arw">→</span></button>' : '<span></span>';
+  }
   $dir_sections .=
-  '<section class="dir-layer" data-layer="'.$L->{id}.'" data-count="'.$cnt.'">'."\n".
+  '<section class="dir-layer'.($grouped?' dir-layer--grouped':'').'" data-layer="'.$L->{id}.'" data-count="'.$cnt.'">'."\n".
   '      <div class="dir-layer-head">'."\n".
   '        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$L->{id}}.'</svg></span>'."\n".
   '        <div><div class="dir-layer-h"><span class="dir-layer-num">'.sprintf('%02d',$L->{id}).'</span><span class="dir-layer-name">'.$L->{name}.'</span></div><div class="dir-layer-desc">'.$L->{desc}.'</div></div>'."\n".
   '        '.$viewall."\n".
   '      </div>'."\n".
-  '      <div class="dir-cards">'."\n        ".$cards."\n".
-  '      </div>'."\n".
+  '      '.$body."\n".
   '    </section>'."\n    ";
 }
 

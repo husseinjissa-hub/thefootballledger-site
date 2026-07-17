@@ -57,11 +57,15 @@ sub story_card {
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date});
   $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
+  my $imgp = "assets/img/articles/".$a->{slug}.".png";
+  my $media = (-e $imgp)
+    ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    : '<div class="acard-media img-ph"><span>Image</span></div>';
   return
   '<a class="acard" href="'.esc($a->{url}).'">'."\n".
   '      <div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>'."\n".
   '      <div class="acard-title">'.esc($a->{title}).'</div>'."\n".
-  '      <div class="acard-media img-ph"><span>Image</span></div>'."\n".
+  '      '.$media."\n".
   '      <div class="acard-meta">'.$meta.'</div>'."\n".
   '    </a>';
 }

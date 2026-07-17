@@ -1,0 +1,80 @@
+<div class="search-shell">
+  <div class="overline overline--rule overline--green" style="margin-bottom:16px">The Ledger · Archive</div>
+  <h1 class="h2">Search the archive.</h1>
+  <div class="search-box">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input id="q" type="search" placeholder="Search articles, entities, briefings…" autocomplete="off" autofocus aria-label="Search">
+  </div>
+  <div class="search-status" id="status">Loading index…</div>
+  <ul class="results" id="results"></ul>
+</div>
+
+<script src="/search-index.js"></script>
+<script>
+(function () {
+  var TYPE_LABEL = { article: 'Article', entity: 'Entity', briefing: 'Briefing' };
+  var TYPE_RANK = { article: 0, briefing: 1, entity: 2 };
+  var docs = [];
+  var qEl = document.getElementById('q');
+  var statusEl = document.getElementById('status');
+  var resultsEl = document.getElementById('results');
+
+  function fmtDate(d) {
+    if (!d) return '';
+    var parts = d.split('-'); if (parts.length !== 3) return d;
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return parts[2] + ' ' + months[parseInt(parts[1], 10) - 1] + ' ' + parts[0];
+  }
+  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+  function score(doc, terms) {
+    if (!terms.length) return 1;
+    var hay = (doc.title + ' ' + (doc.summary || '') + ' ' + (doc.tag || '')).toLowerCase();
+    var title = doc.title.toLowerCase(); var s = 0;
+    for (var i = 0; i < terms.length; i++) {
+      var t = terms[i];
+      if (hay.indexOf(t) === -1) return 0;
+      if (title.indexOf(t) !== -1) s += 2;
+      s += 1;
+    }
+    return s;
+  }
+  function render(query) {
+    var terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    var matched = [];
+    for (var i = 0; i < docs.length; i++) { var sc = score(docs[i], terms); if (sc > 0) matched.push({ d: docs[i], s: sc }); }
+    matched.sort(function (a, b) {
+      if (terms.length && b.s !== a.s) return b.s - a.s;
+      var ra = TYPE_RANK[a.d.type], rb = TYPE_RANK[b.d.type];
+      if (ra !== rb) return ra - rb;
+      if (a.d.date !== b.d.date) return (b.d.date || '').localeCompare(a.d.date || '');
+      return (a.d.order || 99) - (b.d.order || 99);
+    });
+    if (!matched.length) {
+      statusEl.textContent = 'No matches';
+      resultsEl.innerHTML = '<li class="empty">Nothing matched “' + esc(query) + '”. Try a club, owner, league, or theme.</li>';
+      return;
+    }
+    statusEl.textContent = terms.length ? matched.length + ' result' + (matched.length === 1 ? '' : 's') : 'All ' + matched.length + ' entries · most recent first';
+    var html = '';
+    for (var j = 0; j < matched.length; j++) {
+      var d = matched[j].d; var metaBits = [];
+      if (d.tag) metaBits.push(esc(d.tag));
+      if (d.date) metaBits.push(fmtDate(d.date));
+      html += '<li><a class="result" href="/' + esc(d.url) + '">'
+        + '<div class="result-top"><span class="badge ' + d.type + '">' + (TYPE_LABEL[d.type] || d.type) + '</span>'
+        + (metaBits.length ? '<span class="meta">' + metaBits.join(' · ') + '</span>' : '') + '</div>'
+        + '<div class="result-title">' + esc(d.title) + '</div>'
+        + (d.summary ? '<div class="result-summary">' + esc(d.summary) + '</div>' : '')
+        + '</a></li>';
+    }
+    resultsEl.innerHTML = html;
+  }
+  var data = window.FL_SEARCH || { docs: [] };
+  docs = data.docs || [];
+  if (!docs.length) { statusEl.textContent = 'Could not load the search index.'; }
+  var params = new URLSearchParams(location.search);
+  var initial = params.get('q') || '';
+  qEl.value = initial; render(initial);
+  qEl.addEventListener('input', function () { render(qEl.value); });
+})();
+</script>

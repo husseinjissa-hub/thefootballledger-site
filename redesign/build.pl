@@ -732,4 +732,70 @@ render_page(out=>"join.html", active=>"join",
   desc=>"Join The Football Ledger. We're looking for curious minds, clear thinkers, and structured writers — analysts, students, and industry insiders who understand football is a business.",
   canonical=>"/join", body=>slurp("redesign/pages/join.html"));
 
+# ============================================================
+#  BRIEFING (landing + issues), SEARCH, 404
+# ============================================================
+my @briefs;
+if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) {
+  my $b=$1;
+  while ($b =~ /\{([^{}]*)\}/g) { my $o=$1; my %r;
+    $r{title}=($o=~/"title":"([^"]*)"/)?$1:'';
+    $r{date}=($o=~/"date":"([^"]*)"/)?$1:'';
+    $r{url}=($o=~/"url":"([^"]*)"/)?$1:'';
+    $r{dek}=($o=~/"dek":"([^"]*)"/)?$1:'';
+    push @briefs,\%r if $r{url};
+  }
+}
+@briefs = sort { $b->{date} cmp $a->{date} } @briefs;
+
+# --- Briefing landing ---
+my $brief_rows = join("\n    ", map {
+  my $r=$_; (my $t=$r->{title}) =~ s/\s*—\s*The Briefing.*$//;
+  '<a class="brief-row" href="'.esc($r->{url}).'">'."\n".
+  '      <div class="brief-date">'.fmtdate($r->{date}).'</div>'."\n".
+  '      <div><div class="brief-title">'.esc($t).'</div>'.($r->{dek}?'<div class="brief-dek">'.esc($r->{dek}).'</div>':'').'</div>'."\n".
+  '      <span class="brief-arw">→</span>'."\n".
+  '    </a>'
+} @briefs);
+my $bl = slurp("redesign/pages/briefing.html");
+$bl =~ s/\{\{BRIEF_ROWS\}\}/    $brief_rows/;
+render_page(out=>"briefing/index.html", active=>"briefing",
+  title=>"The Briefing — The Football Ledger",
+  desc=>"The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.",
+  canonical=>"/briefing", body=>$bl);
+
+# --- Briefing issues (reskin from preserved source) ---
+sub build_briefing {
+  my ($r)=@_;
+  my $file = (split m{/}, $r->{url})[-1];
+  my $src = "redesign/src-briefing/$file";
+  return unless -e $src;
+  my $raw = slurp($src);
+  my $header = ($raw =~ /(<section class="issue-header">.*?<\/section>)/s) ? $1 : '';
+  my $toc    = ($raw =~ /(<aside class="toc">.*?<\/aside>)/s) ? $1 : '';
+  my $stories= ($raw =~ /(<section class="stories">.*?<\/section>)/s) ? $1 : '';
+  (my $t=$r->{title}) =~ s/\s*—\s*The Briefing.*$//;
+  my $body =
+    '<div class="issue-wrap">'."\n".
+    '  <a class="art-back" href="/briefing" style="margin-bottom:30px"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Briefing</a>'."\n".
+    $header."\n".$toc."\n".$stories."\n".
+    '</div>';
+  render_page(out=>"briefing/$file", active=>"briefing",
+    title=>$t." — The Briefing · The Football Ledger",
+    desc=>$r->{dek}//$t, canonical=>$r->{url}, body=>$body);
+}
+build_briefing($_) for @briefs;
+
+# --- Search ---
+render_page(out=>"search.html", active=>"",
+  title=>"Search — The Football Ledger",
+  desc=>"Search The Football Ledger archive — articles, entity profiles, and briefings across the business of football.",
+  canonical=>"/search", body=>slurp("redesign/pages/search.html"));
+
+# --- 404 ---
+render_page(out=>"404.html", active=>"",
+  title=>"Page not found — The Football Ledger",
+  desc=>"The page you're looking for isn't here.",
+  canonical=>"/404", body=>slurp("redesign/pages/404.html"));
+
 print "done.\n";

@@ -1,74 +1,289 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Issue 02 · Demand meets distress — The Briefing · The Football Ledger</title>
-<meta name="description" content="Tottenham's stake sale, Botafogo's bankruptcy, football's crowded private-equity field, PIF's stadium financing, FIFA's late World Cup rights, and the commercial money finding new doors.">
-<link rel="canonical" href="https://thefootballledger.co/briefing/2026-06-27.html">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="The Football Ledger">
-<meta property="og:title" content="Issue 02 · Demand meets distress — The Briefing · The Football Ledger">
-<meta property="og:description" content="Tottenham's stake sale, Botafogo's bankruptcy, football's crowded private-equity field, PIF's stadium financing, FIFA's late World Cup rights, and the commercial money finding new doors.">
-<meta property="og:url" content="https://thefootballledger.co/briefing/2026-06-27.html">
-<meta name="twitter:card" content="summary_large_image">
+<title>Issue 02 · Demand meets distress — The Briefing</title>
+<meta name="description" content="The Briefing, Issue 02: Tottenham's stake sale, Botafogo's bankruptcy, football's crowded private-equity field, PIF's stadium financing, FIFA's late World Cup rights, and the commercial money finding new doors.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/redesign.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6;
+  --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b;
+  --rust: #7a2233; --gold: #10402b;
+  --line: #dcd6c8; --line-soft: #ece7da;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink); color: var(--bone);
+  line-height: 1.6; font-weight: 400;
+  letter-spacing: -0.005em;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none;
+  z-index: 1000; opacity: 0.025; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500; font-size: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex; align-items: center; gap: 8px;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+.issue-header {
+  padding: 100px 60px 60px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1100px; margin: 0 auto;
+}
+.issue-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.issue-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.issue-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+.issue-title em { font-style: italic; color: var(--gold); }
+.issue-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+.issue-meta {
+  display: flex; gap: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.issue-meta strong { color: var(--bone); font-weight: 500; }
+
+/* TOC */
+.toc {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.toc-list {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 24px 32px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toc-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--line);
+  align-items: baseline;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-item-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold);
+  font-size: 11px;
+}
+.toc-item-text {
+  color: var(--bone-dim);
+  line-height: 1.4;
+}
+.toc-item-text strong {
+  color: var(--bone); font-weight: 500;
+  font-family: 'Fraunces', serif; font-size: 16px;
+}
+
+/* Stories */
+.stories {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+}
+.story {
+  padding-bottom: 64px;
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--line);
+}
+.story:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.story-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.story-num::before, .story-num::after {
+  content: ''; width: 24px; height: 1px; background: var(--gold);
+}
+.story-num::after { flex: 1; opacity: 0.4; }
+.story-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.story-headline em { font-style: italic; color: var(--gold); }
+.story-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  margin-bottom: 20px;
+}
+.story p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone);
+  margin-bottom: 20px;
+}
+.story strong { color: var(--bone); font-weight: 600; }
+.story em { font-style: italic; }
+.story-watch {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: rgba(16, 64, 43, 0.05);
+  border-left: 2px solid var(--gold);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+.story-watch strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 6px;
+}
+
+/* Closing */
+.closing {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 60px 60px 80px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+.closing-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone-dim);
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+.closing-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .issue-header { padding: 60px 24px 40px; }
+  .toc { padding: 0 24px; }
+  .stories { padding: 50px 24px 40px; font-size: 16px; }
+  .story-headline { font-size: 24px; }
+  .closing { padding: 40px 24px 60px; }
+  .issue-meta { flex-direction: column; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}.brand-word{line-height:1}.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute);font-weight:400;line-height:1;white-space:nowrap}</style>
+<link rel="stylesheet" href="/assets/shell.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/" aria-label="The Football Ledger — home">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
-        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
-        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
-        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
-      </svg>
-      <span class="brand-text">
-        <span class="brand-name">The Football Ledger</span>
-        <span class="brand-tag">The Business of Football</span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="/" >Overview</a>
-      <a href="/ecosystem" >Ecosystem</a>
-      <a href="/ledger" >The Ledger</a>
-      <a href="/entities" >Entities</a>
-      <a href="/briefing" class="active">Briefing</a>
-      <a href="/about" >About</a>
-      <a href="/join" >Join</a>
-    </nav>
-    <div class="header-cta">
-      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
-      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
-    </div>
-  </div>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item active">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu-top">
-    <a class="brand" href="/">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
-    </a>
-    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
-  </div>
-  <nav aria-label="Primary (mobile)">
-    <a href="/">Overview</a>
-    <a href="/ecosystem">Ecosystem</a>
-    <a href="/ledger">The Ledger</a>
-    <a href="/entities">Entities</a>
-    <a href="/briefing">Briefing</a>
-    <a href="/about">About</a>
-    <a href="/join">Join</a>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item active">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
   </nav>
 </div>
-<main id="main">
-<div class="issue-wrap">
-  <a class="art-back" href="/briefing" style="margin-bottom:30px"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Briefing</a>
+
 <section class="issue-header">
   <div class="issue-eyebrow">The Briefing · Issue 02 · 27 Jun 2026</div>
   <h1 class="issue-title">
@@ -83,6 +298,7 @@
     <span>Published · <strong>Sundays</strong></span>
   </div>
 </section>
+
 <aside class="toc">
   <div class="toc-label">In this issue</div>
   <div class="toc-list">
@@ -112,6 +328,7 @@
     </div>
   </div>
 </aside>
+
 <section class="stories">
 
   <article class="story">
@@ -253,57 +470,19 @@
   </article>
 
 </section>
-</div></main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <a class="brand" href="/">
-          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
-        </a>
-        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
-          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="/">Overview</a>
-        <a href="/ecosystem">Ecosystem</a>
-        <a href="/ledger">The Ledger</a>
-      </div>
-      <div class="footer-col">
-        <h4>Reference</h4>
-        <a href="/entities">Entities</a>
-        <a href="/briefing">Briefing</a>
-        <a href="/about">About</a>
-      </div>
-      <div class="footer-col">
-        <h4>Get involved</h4>
-        <a href="/join">Join</a>
-        <a href="#subscribe">Subscribe</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 The Football Ledger. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
-      </div>
-    </div>
-  </div>
+
+<section class="closing">
+  <p class="closing-text">
+    The Briefing returns next Sunday. As always, corrections, tips, and serious correspondence are welcome at the editor's address.
+  </p>
+  <div class="closing-meta">— The Football Ledger</div>
+</section>
+
+<footer>
+  <div>The Football Ledger · The Briefing · Issue 02</div>
+  <div>27 June 2026 · Built June 2026</div>
 </footer>
-<script>
-document.addEventListener('click',function(e){
-  var b=e.target.closest('.layer-more'); if(!b) return;
-  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
-  b.setAttribute('aria-expanded',open?'true':'false');
-  b.childNodes[0].nodeValue=open?'Less ':'More ';
-});
-</script>
+
+<script src="/assets/site.js"></script>
 </body>
 </html>

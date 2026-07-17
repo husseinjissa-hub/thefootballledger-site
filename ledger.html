@@ -1,209 +1,756 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Ledger — The Football Ledger</title>
-<meta name="description" content="The Ledger — analysis of the moves redrawing football's business map. Filter by type and layer.">
+<title>The Ledger — Analysis · The Football Ledger</title>
+<meta name="description" content="Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.">
 <link rel="canonical" href="https://thefootballledger.co/ledger">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="The Ledger — Analysis · The Football Ledger">
+<meta property="og:description" content="Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.">
+<meta property="og:url" content="https://thefootballledger.co/ledger">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
-<style>
-  .ledger-body { display: grid; grid-template-columns: 240px 1fr; gap: 56px; padding: 48px 0 100px; }
-  .filter-rail { position: sticky; top: 88px; align-self: start; }
-  .ed-sel-wrap { padding: 40px 0 8px; }
-  .ed-sel { display: grid; grid-template-columns: 1.45fr 1fr; border: 1px solid var(--line); margin-top: 20px; }
-  .ed-lead { padding: 36px; border-right: 1px solid var(--line); }
-  .ed-lead .feed-title { font-size: clamp(26px, 3vw, 34px); margin: 14px 0 10px; }
-  .ed-lead .feed-dek { font-size: 17px; }
-  .ed-secs { display: flex; flex-direction: column; }
-  .ed-sec { padding: 22px 28px; border-bottom: 1px solid var(--line-soft); }
-  .ed-sec:last-child { border-bottom: 0; }
-  .ed-sec .feed-title { font-size: 19px; margin: 8px 0 4px; }
-  .ed-sec-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--bone-mute); margin-top: 6px; }
-  .ed-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--bone-mute); }
-  .feed-layer-link { color: inherit; }
-  .feed-layer-link:hover .t-layer { border-color: var(--gold); color: var(--gold); }
-  @media (max-width: 900px) {
-    .ledger-body { grid-template-columns: 1fr; gap: 28px; padding: 28px 0 72px; }
-    .filter-rail { position: static; border: 1px solid var(--line); border-radius: 4px; padding: 20px; }
-    .ed-sel { grid-template-columns: 1fr; }
-    .ed-lead { border-right: 0; border-bottom: 1px solid var(--line); }
-  }
-.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
-.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/redesign.css">
 </head>
 <body>
-
-<header class="site-head">
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="/" class="nav-item">Overview</a>
-    <a href="/ecosystem" class="nav-item">Ecosystem</a>
-    <a href="/ledger" class="nav-item active">The Ledger</a>
-    <a href="/entities" class="nav-item">Entities</a>
-    <a href="/briefing" class="nav-item">Briefing</a>
-    <a href="/about" class="nav-item">About</a>
-    <a href="/join" class="nav-item">Join</a>
-  </nav>
-  <span class="nav-reserved" aria-hidden="true"></span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="The Football Ledger — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
+        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
+        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">The Football Ledger</span>
+        <span class="brand-tag">The Business of Football</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/" >Overview</a>
+      <a href="/ecosystem" >Ecosystem</a>
+      <a href="/ledger" class="active">The Ledger</a>
+      <a href="/entities" >Entities</a>
+      <a href="/briefing" >Briefing</a>
+      <a href="/about" >About</a>
+      <a href="/join" >Join</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
 </header>
-<div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <button class="nav-close" aria-label="Close menu">&times;</button>
-  <nav class="overlay-nav" aria-label="Primary (mobile)">
-    <a href="/" class="overlay-item">Overview</a>
-    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
-    <a href="/ledger" class="overlay-item active">The Ledger</a>
-    <a href="/entities" class="overlay-item">Entities</a>
-    <a href="/briefing" class="overlay-item">Briefing</a>
-    <a href="/about" class="overlay-item">About</a>
-    <a href="/join" class="overlay-item">Join</a>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
+    </a>
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  </div>
+  <nav aria-label="Primary (mobile)">
+    <a href="/">Overview</a>
+    <a href="/ecosystem">Ecosystem</a>
+    <a href="/ledger">The Ledger</a>
+    <a href="/entities">Entities</a>
+    <a href="/briefing">Briefing</a>
+    <a href="/about">About</a>
+    <a href="/join">Join</a>
   </nav>
 </div>
+<main id="main">
+<section class="wrap ledger-hero">
+  <div class="overline overline--rule overline--green">Section 8 · The Ledger</div>
+  <h1 class="h1">The moves that <span class="serif-em">redraw</span> the map.</h1>
+  <p class="deck">Analysis ordered by editorial judgement and recency — not by layer.<br>Layer is a lens you can filter by.</p>
+  <hr class="ledger-hero-rule">
+</section>
 
-<main class="wrap">
-  <header class="surface-head">
-    <div class="surface-eyebrow">Section B · The Ledger</div>
-    <h1 class="surface-title">The moves that <em>redraw the map.</em></h1>
-    <p class="surface-dek">Analysis ordered by editorial judgement and recency — not by layer. Layer is a lens you can filter by.</p>
-  </header>
-
-  <!-- Editor's Selection -->
-  <section class="ed-sel-wrap">
-    <div class="ed-eyebrow">Editor's Selection</div>
-    <div class="ed-sel" id="edSel"></div>
-  </section>
-
-  <!-- Filter + feed -->
-  <div class="ledger-body">
-    <aside class="filter-rail" id="filterRail"></aside>
-    <section>
-      <div class="feed-count" id="feedCount"></div>
-      <div id="feed"></div>
-    </section>
+<section class="wrap editors">
+  <div class="editors-head"><span class="overline overline--green">Editor's Selection</span></div>
+  <div class="es-grid">
+    <a class="es-lead" href="/posts/macro-01-trophy-to-operating.html">
+      <div class="es-lead-bg"><img src="/assets/img/articles/macro-01-lead.jpg" alt="" loading="lazy"></div>
+      <div class="overline">MACRO CAPITAL · GOVERNANCE</div>
+      <h3 class="es-lead-title">From trophy assets to operating businesses</h3>
+      <p class="es-lead-dek"></p>
+      <div class="es-lead-meta">02 Apr 2026 · 8 min read</div>
+      <span class="es-lead-cta">Read article <span class="arw">→</span></span>
+    </a>
+    <div class="es-stack">
+      <a class="es-item" href="/posts/macro-08-streaming-native-limits.html">
+        <div>
+          <div class="es-item-ol"><b>MACRO</b> MEDIA · RIGHTS</div>
+          <div class="es-item-title">Football’s Netflix never arrived. What did, hasn’t settled yet.</div>
+          <div class="es-item-meta">05 Jun 2026 · 8 min read</div>
+        </div>
+        <div class="es-item-thumb"><img src="/assets/img/articles/macro-08-streaming-native-limits.jpg" alt="" loading="lazy"></div>
+      </a>
+      <a class="es-item" href="/posts/l8-data-led-underdogs.html">
+        <div>
+          <div class="es-item-ol"><b>TREND</b> L8 · FOOTBALL-TECH</div>
+          <div class="es-item-title">The data-led underdog arrives in Europe</div>
+          <div class="es-item-meta">28 May 2026 · 4 min read</div>
+        </div>
+        <div class="es-item-thumb"><img src="/assets/img/articles/l8-data-led-underdogs.jpg" alt="" loading="lazy"></div>
+      </a>
+      <a class="es-item" href="/posts/l3-barcelona-crisis-recovery.html">
+        <div>
+          <div class="es-item-ol"><b>CASE STUDY</b> L3 · CLUBS/MCO</div>
+          <div class="es-item-title">Barcelona's crisis and recovery</div>
+          <div class="es-item-meta">20 May 2026 · 9 min read</div>
+        </div>
+        <div class="es-item-thumb"><img src="/assets/img/articles/l3-barcelona-crisis-recovery.jpg" alt="" loading="lazy"></div>
+      </a>
+    </div>
   </div>
-</main>
+</section>
 
-<footer class="site-foot">
-  <div>The Football Ledger · 2026</div>
-  <div>A continuing analysis of football's business architecture</div>
-  <div class="foot-utility"><a href="/about">About</a> &middot; <a href="/join">Join the Team</a> &middot; <a href="/search">Search</a></div>
-</footer>
+<section class="wrap section" style="padding-top:52px">
+  <div class="lb-grid">
+    <aside class="filter-rail" aria-label="Filter the Ledger">
+      <div class="fr-group">
+        <div class="fr-label">Type</div>
+        <div class="fr-pills" id="typePills">
+          <button class="fr-pill" type="button" data-type="macro">Macro (8)</button>
+          <button class="fr-pill" type="button" data-type="trend">Trend (25)</button>
+          <button class="fr-pill" type="button" data-type="case">Case Study (4)</button>
+        </div>
+      </div>
+      <div class="fr-group">
+        <div class="fr-label">Layer</div>
+        <div class="fr-layers" id="layerList">
+          <button class="fr-layer" type="button" data-layer="1" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l8-4 8 4M6 8v8M10 8v8M14 8v8M18 8v8M4 18h16"/></svg></span><span class="fr-layer-num">01</span> Governance</button>
+          <button class="fr-layer" type="button" data-layer="2" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 4h10v3a5 5 0 01-10 0zM7 5H4v1a3 3 0 003 3M17 5h3v1a3 3 0 01-3 3M10 13v3M14 13v3M8 18h8"/></svg></span><span class="fr-layer-num">02</span> Leagues</button>
+          <button class="fr-layer" type="button" data-layer="3" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9.5 12l1.7 1.7 3.3-3.4"/></svg></span><span class="fr-layer-num">03</span> Clubs/MCO</button>
+          <button class="fr-layer" type="button" data-layer="4" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="6" rx="7" ry="2.4"/><path d="M5 6v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V6M5 11v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4v-5"/></svg></span><span class="fr-layer-num">04</span> Capital</button>
+          <button class="fr-layer" type="button" data-layer="5" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9" r="2"/><path d="M4.5 18c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5M14.5 18c0-1.7.8-3.1 2.2-3.7"/></svg></span><span class="fr-layer-num">05</span> Agencies</button>
+          <button class="fr-layer" type="button" data-layer="6" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M9 20h6M12 17v3"/></svg></span><span class="fr-layer-num">06</span> Media</button>
+          <button class="fr-layer" type="button" data-layer="7" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/></svg></span><span class="fr-layer-num">07</span> Commercial</button>
+          <button class="fr-layer" type="button" data-layer="8" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg></span><span class="fr-layer-num">08</span> Football-tech</button>
+          <button class="fr-layer" type="button" data-layer="9" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span class="fr-layer-num">09</span> Stadium/Fan</button>
+        </div>
+      </div>
+      <button class="fr-toggle" id="hideProd" type="button" aria-pressed="false"><span class="fr-switch"></span>Hide in-production</button>
+      <button class="fr-clear" id="clearFilters" type="button">Clear all filters</button>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
 
-<script src="/content.js"></script>
-<script src="/assets/site.js"></script>
+    <div class="feed-wrap">
+      <div class="feed-head">
+        <div class="feed-count"><b id="feedCount">37</b> pieces · <span id="feedMatch">matching current filters</span></div>
+        <label class="feed-sort">Sort by:
+          <select id="feedSort"><option value="newest">Newest</option><option value="oldest">Oldest</option></select>
+        </label>
+      </div>
+      <div class="feed" id="feed">
+        <article class="feed-row" data-type="macro" data-layer="" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/macro-08-streaming-native-limits.html" aria-label="Football’s Netflix never arrived. What did, hasn’t settled yet." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-08-streaming-native-limits.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> MEDIA · RIGHTS</div>
+            <a class="feed-title" href="/posts/macro-08-streaming-native-limits.html">Football’s Netflix never arrived. What did, hasn’t settled yet.</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">05 Jun 2026 · 8 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="trend" data-layer="8" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/l8-data-led-underdogs.html" aria-label="The data-led underdog arrives in Europe" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l8-data-led-underdogs.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L8 · FOOTBALL-TECH</div>
+            <a class="feed-title" href="/posts/l8-data-led-underdogs.html">The data-led underdog arrives in Europe</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">28 May 2026 · 4 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="case" data-layer="3" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/l3-barcelona-crisis-recovery.html" aria-label="Barcelona's crisis and recovery" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l3-barcelona-crisis-recovery.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>CASE STUDY</b> L3 · CLUBS/MCO</div>
+            <a class="feed-title" href="/posts/l3-barcelona-crisis-recovery.html">Barcelona's crisis and recovery</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">20 May 2026 · 9 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="case" data-layer="4" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/l4-pif-phase-2.html" aria-label="PIF Phase 2 — sophistication, not retreat" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l4-pif-phase-2.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>CASE STUDY</b> L4 · CAPITAL</div>
+            <a class="feed-title" href="/posts/l4-pif-phase-2.html">PIF Phase 2 — sophistication, not retreat</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">12 May 2026 · 5 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="case" data-layer="6" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/l6-bein-mena-fragmentation.html" aria-label="beIN — the incumbency that didn't break" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l6-bein-mena-fragmentation.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>CASE STUDY</b> L6 · MEDIA</div>
+            <a class="feed-title" href="/posts/l6-bein-mena-fragmentation.html">beIN — the incumbency that didn't break</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">04 May 2026 · 7 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="case" data-layer="6" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/l6-apple-mls-case-study.html" aria-label="Apple × MLS — the experiment that closed itself" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l6-apple-mls-case-study.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>CASE STUDY</b> L6 · MEDIA</div>
+            <a class="feed-title" href="/posts/l6-apple-mls-case-study.html">Apple × MLS — the experiment that closed itself</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">26 Apr 2026 · 6 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="macro" data-layer="" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/macro-03-usa-mega-cycle.html" aria-label="USA — the next mega-cycle" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-03-usa-mega-cycle.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> GEOGRAPHY · CYCLES</div>
+            <a class="feed-title" href="/posts/macro-03-usa-mega-cycle.html">USA — the next mega-cycle</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">18 Apr 2026 · 5 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="macro" data-layer="" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/macro-02-mco-consolidation.html" aria-label="Multi-club ownership has won. The integration question is open." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-02-mco-consolidation.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> OWNERSHIP · MCO</div>
+            <a class="feed-title" href="/posts/macro-02-mco-consolidation.html">Multi-club ownership has won. The integration question is open.</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">10 Apr 2026 · 7 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row" data-type="macro" data-layer="" data-status="live">
+          <a class="feed-thumb-lnk" href="/posts/macro-01-trophy-to-operating.html" aria-label="From trophy assets to operating businesses" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-01-trophy-to-operating.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> CAPITAL · GOVERNANCE</div>
+            <a class="feed-title" href="/posts/macro-01-trophy-to-operating.html">From trophy assets to operating businesses</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">02 Apr 2026 · 8 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="1" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l1-afc-saff-professionalising.html" aria-label="AFC and SAFF, professionalising on the clock" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l1-afc-saff-professionalising.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L1 · GOVERNANCE<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l1-afc-saff-professionalising.html">AFC and SAFF, professionalising on the clock</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="1" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l1-fifa-mega-events.html" aria-label="FIFA's continuous calendar" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l1-fifa-mega-events.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L1 · GOVERNANCE<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l1-fifa-mega-events.html">FIFA's continuous calendar</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="1" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l1-national-regulators.html" aria-label="National regulators arrive" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l1-national-regulators.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L1 · GOVERNANCE<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l1-national-regulators.html">National regulators arrive</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="1" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l1-uefa-legal-pressure.html" aria-label="UEFA under legal pressure" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l1-uefa-legal-pressure.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L1 · GOVERNANCE<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l1-uefa-legal-pressure.html">UEFA under legal pressure</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="2" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l2-dtc-or-die.html" aria-label="DTC or die" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l2-dtc-or-die.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L2 · LEAGUES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l2-dtc-or-die.html">DTC or die</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="2" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l2-league-pe-infrastructure.html" aria-label="League-level PE infrastructure" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l2-league-pe-infrastructure.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L2 · LEAGUES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l2-league-pe-infrastructure.html">League-level PE infrastructure</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="2" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l2-pl-exports-model.html" aria-label="Premier League exports the model" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l2-pl-exports-model.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L2 · LEAGUES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l2-pl-exports-model.html">Premier League exports the model</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="2" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l2-spl-privatisation.html" aria-label="SPL privatisation" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l2-spl-privatisation.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L2 · LEAGUES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l2-spl-privatisation.html">SPL privatisation</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="2" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l10-format-convergence.html" aria-label="Sportainment, institutionalising" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l10-format-convergence.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L2 · LEAGUES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l10-format-convergence.html">Sportainment, institutionalising</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="3" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l3-group-hq-arms-race.html" aria-label="Group-HQ talent arms race" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L3 · CLUBS/MCO<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l3-group-hq-arms-race.html">Group-HQ talent arms race</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="3" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l3-mco-blowup-risk.html" aria-label="Mid-tier MCO blow-up risk" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L3 · CLUBS/MCO<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l3-mco-blowup-risk.html">Mid-tier MCO blow-up risk</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="3" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l3-womens-clubs-systematic.html" aria-label="Women's clubs added systematically" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L3 · CLUBS/MCO<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l3-womens-clubs-systematic.html">Women's clubs added systematically</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="4" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l4-control-deals-normal.html" aria-label="Control deals become normal" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L4 · CAPITAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l4-control-deals-normal.html">Control deals become normal</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="4" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l4-family-offices-organised.html" aria-label="Family offices get organised" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L4 · CAPITAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l4-family-offices-organised.html">Family offices get organised</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="4" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l4-permanent-capital.html" aria-label="Permanent capital structures" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L4 · CAPITAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l4-permanent-capital.html">Permanent capital structures</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="4" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l4-sports-tech-vc-matures.html" aria-label="Sports-tech VC matures" tabindex="-1"><div class="feed-thumb img-ph"><span>Image</span></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L4 · CAPITAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l4-sports-tech-vc-matures.html">Sports-tech VC matures</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="5" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l5-coach-staff-talent-ip.html" aria-label="Coach-and-staff talent IP" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l5-coach-staff-talent-ip.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L5 · AGENCIES<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l5-coach-staff-talent-ip.html">Coach-and-staff talent IP</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="6" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l6-2027-pl-cycle-reset.html" aria-label="2027 PL cycle reset" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l6-2027-pl-cycle-reset.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L6 · MEDIA<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l6-2027-pl-cycle-reset.html">2027 PL cycle reset</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="6" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l6-club-as-media-company.html" aria-label="Club-as-media-company matures" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l6-club-as-media-company.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L6 · MEDIA<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l6-club-as-media-company.html">Club-as-media-company matures</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="7" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l7-fanatics-vertical.html" aria-label="Category power-shifts" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l7-fanatics-vertical.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L7 · COMMERCIAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l7-fanatics-vertical.html">Category power-shifts</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="7" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l7-front-of-shirt-multitier.html" aria-label="Commercial architecture, re-priced" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l7-front-of-shirt-multitier.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L7 · COMMERCIAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l7-front-of-shirt-multitier.html">Commercial architecture, re-priced</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="8" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l8-llm-native-scouting.html" aria-label="The AI-native football-tech stack" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l8-llm-native-scouting.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L8 · FOOTBALL-TECH<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l8-llm-native-scouting.html">The AI-native football-tech stack</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="9" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l9-premium-hospitality-boom.html" aria-label="Stadium revenue engineering" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l9-premium-hospitality-boom.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L9 · STADIUM/FAN<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l9-premium-hospitality-boom.html">Stadium revenue engineering</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="trend" data-layer="9" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/l9-stadium-as-365-venue.html" aria-label="Stadium as 365-day venue" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l9-stadium-as-365-venue.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>TREND</b> L9 · STADIUM/FAN<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/l9-stadium-as-365-venue.html">Stadium as 365-day venue</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="macro" data-layer="" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/macro-04-mena-second-wave.html" aria-label="MENA's second wave" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-04-mena-second-wave.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> GEOGRAPHY · MENA<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/macro-04-mena-second-wave.html">MENA's second wave</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="macro" data-layer="" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/macro-05-sportainment-genz.html" aria-label="Sportainment and the Gen Z attention war" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-05-sportainment-genz.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> SPORTAINMENT · AUDIENCE<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/macro-05-sportainment-genz.html">Sportainment and the Gen Z attention war</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="macro" data-layer="" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/macro-06-womens-football.html" aria-label="The institutional decade for women's football" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-06-womens-football.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> WOMEN'S · CAPITAL<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/macro-06-womens-football.html">The institutional decade for women's football</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="macro" data-layer="" data-status="prod">
+          <a class="feed-thumb-lnk" href="/posts/macro-07-ai-native-ops.html" aria-label="AI-native football operations" tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/macro-07-ai-native-ops.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>MACRO</b> AI · OPERATIONS<span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/macro-07-ai-native-ops.html">AI-native football operations</a>
+            <p class="feed-excerpt"></p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">In production</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+      </div>
+      <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+    </div>
+  </div>
+</section>
+
 <script>
-(function () {
-  var LEAD_SLUG = 'macro-01-trophy-to-operating';
-  var TYPES = [ ['macro','Macro'], ['trend','Trend'], ['case-study','Case study'] ];
-  var typeKey = function (t) { return t.toLowerCase().replace(/\s+/g, '-'); };
-  var feedEl = document.getElementById('feed');
-  var countEl = document.getElementById('feedCount');
-  var railEl = document.getElementById('filterRail');
-  var edEl = document.getElementById('edSel');
-  var ARTICLES = [];
-  var state = { types: [], layers: [], hideProd: false };
+(function(){
+  var feed = document.getElementById('feed');
+  var rows = Array.prototype.slice.call(feed.querySelectorAll('.feed-row'));
+  var PER = 8;
+  var state = { types: [], layers: [], hideProd: false, sort: 'newest', page: 1 };
 
-  function readURL() {
-    var p = new URLSearchParams(location.search);
-    state.types = (p.get('type') || '').split(',').filter(Boolean);
-    state.layers = (p.get('layer') || '').split(',').filter(Boolean).map(Number);
-    state.hideProd = p.get('prod') === '0';
-  }
-  function writeURL() {
-    var p = new URLSearchParams();
-    if (state.types.length) p.set('type', state.types.join(','));
-    if (state.layers.length) p.set('layer', state.layers.join(','));
-    if (state.hideProd) p.set('prod', '0');
-    var q = p.toString();
-    history.replaceState(null, '', q ? ('?' + q) : location.pathname);
-  }
+  // bookmarks
+  feed.addEventListener('click', function(e){
+    var b = e.target.closest('.feed-bookmark'); if(!b) return;
+    e.preventDefault(); b.classList.toggle('on');
+    b.setAttribute('aria-pressed', b.classList.contains('on') ? 'true':'false');
+  });
 
-  function matches(a) {
-    if (state.hideProd && a.status === 'prod') return false;
-    if (state.types.length && state.types.indexOf(typeKey(a.type)) === -1) return false;
-    if (state.layers.length && (a.layer == null || state.layers.indexOf(a.layer) === -1)) return false;
+  function matches(r){
+    if (state.hideProd && r.dataset.status === 'prod') return false;
+    if (state.types.length && state.types.indexOf(r.dataset.type) === -1) return false;
+    if (state.layers.length && state.layers.indexOf(r.dataset.layer) === -1) return false;
     return true;
   }
-  function byDateDesc(a, b) { return (b.date || '').localeCompare(a.date || '') || a.slug.localeCompare(b.slug); }
 
-  function rowHTML(a) {
-    var prod = a.status === 'prod';
-    var meta = prod ? '<span class="prod-mark">In production</span>'
-      : (FL.fmtDate(a.date) + ' · ' + a.readMinutes + ' min');
-    var tag = FL.tagHTML(a);
-    if (a.layer != null) tag = tag.replace('<span class="t-layer">L' + a.layer + '</span>',
-      '<a class="feed-layer-link" href="/ecosystem#layer-' + a.layer + '"><span class="t-layer">L' + a.layer + '</span></a>');
-    var titleBlock = '<div class="feed-title">' + FL.esc(a.title) + '</div>';
-    var title = prod ? titleBlock : '<a href="' + FL.esc(a.url) + '">' + titleBlock + '</a>';
-    var inner = tag + title + '<div class="feed-dek">' + FL.esc(a.dek) + '</div>';
-    var right = '<div class="feed-meta">' + meta + '</div>';
-    return '<div class="feed-row' + (prod ? ' is-prod' : '') + '"><div>' + inner + '</div>' + right + '</div>';
+  function apply(){
+    var vis = rows.filter(matches);
+    if (state.sort === 'oldest') vis = vis.slice().reverse();
+    var pages = Math.max(1, Math.ceil(vis.length / PER));
+    if (state.page > pages) state.page = pages;
+    var start = (state.page - 1) * PER;
+    rows.forEach(function(r){ r.style.display = 'none'; });
+    vis.slice(start, start + PER).forEach(function(r){ r.style.display = ''; });
+    // reorder DOM for oldest so visible order is correct
+    if (state.sort === 'oldest') vis.forEach(function(r){ feed.appendChild(r); });
+    else rows.forEach(function(r){ feed.appendChild(r); });
+
+    document.getElementById('feedCount').textContent = vis.length;
+    document.getElementById('feedMatch').textContent = (state.types.length || state.layers.length || state.hideProd) ? 'matching current filters' : 'across every layer';
+
+    var empty = feed.querySelector('.feed-empty');
+    if (!vis.length) { if(!empty){ empty=document.createElement('div'); empty.className='feed-empty'; empty.textContent='No pieces match these filters.'; feed.appendChild(empty);} }
+    else if (empty) empty.remove();
+
+    renderPager(pages);
   }
 
-  function renderFeed() {
-    var list = ARTICLES.filter(matches).sort(byDateDesc);
-    countEl.textContent = list.length + (list.length === 1 ? ' piece' : ' pieces') + ' · matching current filters';
-    feedEl.innerHTML = list.length ? list.map(rowHTML).join('')
-      : '<div class="empty-state">No pieces match these filters. Clear a filter to see more.</div>';
+  function renderPager(pages){
+    var p = document.getElementById('pagination');
+    if (pages <= 1) { p.innerHTML=''; return; }
+    var h = '<button class="pg-btn" data-pg="prev"'+(state.page===1?' disabled':'')+' aria-label="Previous">←</button>';
+    var nums = [];
+    for (var i=1;i<=pages;i++){ if(i===1||i===pages||(i>=state.page-1&&i<=state.page+1)||(state.page<=3&&i<=3)||(state.page>=pages-2&&i>=pages-2)) nums.push(i); else if(nums[nums.length-1]!=='…') nums.push('…'); }
+    nums.forEach(function(n){
+      if(n==='…') h += '<span class="pg-gap">…</span>';
+      else h += '<button class="pg-btn'+(n===state.page?' on':'')+'" data-pg="'+n+'">'+n+'</button>';
+    });
+    h += '<button class="pg-btn" data-pg="next"'+(state.page===pages?' disabled':'')+' aria-label="Next">→</button>';
+    p.innerHTML = h;
+    p.querySelectorAll('.pg-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        var v=b.dataset.pg;
+        if(v==='prev') state.page=Math.max(1,state.page-1);
+        else if(v==='next') state.page=Math.min(pages,state.page+1);
+        else state.page=parseInt(v,10);
+        apply(); window.scrollTo({top: feed.getBoundingClientRect().top+window.scrollY-140, behavior:'smooth'});
+      });
+    });
   }
 
-  function renderRail() {
-    var counts = {}; TYPES.forEach(function (t) { counts[t[0]] = 0; });
-    ARTICLES.forEach(function (a) { var k = typeKey(a.type); if (k in counts) counts[k]++; });
-    var typeChips = TYPES.map(function (t) {
-      var on = state.types.indexOf(t[0]) !== -1;
-      return '<button class="chip' + (on ? ' active' : '') + '" data-type="' + t[0] + '">' + t[1] + ' (' + counts[t[0]] + ')</button>';
-    }).join('');
-    var layerChips = ''; for (var i = 1; i <= 9; i++) {
-      var on = state.layers.indexOf(i) !== -1;
-      var nn = (i < 10 ? '0' + i : '' + i);
-      layerChips += '<button class="chip chip-wide' + (on ? ' active' : '') + '" data-layer="' + i + '">' +
-        '<span class="chip-num">' + nn + '</span> ' + FL.esc(FL.LAYER_NAMES[i]) + '</button>';
-    }
-    railEl.innerHTML =
-      '<div class="filter-group"><div class="filter-label">Type</div><div class="chips">' + typeChips + '</div></div>' +
-      '<div class="filter-group"><div class="filter-label">Layer</div><div class="chip-list">' + layerChips + '</div></div>' +
-      '<div class="filter-group"><div class="toggle' + (state.hideProd ? ' on' : '') + '" id="prodToggle"><span class="toggle-track"></span>Hide in-production</div></div>' +
-      '<div class="clear-link" id="clearAll">Clear all filters</div>';
-
-    railEl.querySelectorAll('[data-type]').forEach(function (b) { b.onclick = function () { toggle(state.types, b.dataset.type); apply(); }; });
-    railEl.querySelectorAll('[data-layer]').forEach(function (b) { b.onclick = function () { toggle(state.layers, Number(b.dataset.layer)); apply(); }; });
-    document.getElementById('prodToggle').onclick = function () { state.hideProd = !state.hideProd; apply(); };
-    document.getElementById('clearAll').onclick = function () { state.types = []; state.layers = []; state.hideProd = false; apply(); };
-  }
-  function toggle(arr, v) { var i = arr.indexOf(v); if (i === -1) arr.push(v); else arr.splice(i, 1); }
-  function apply() { writeURL(); renderRail(); renderFeed(); }
-
-  function renderEditorsSelection() {
-    var featured = ARTICLES.filter(function (a) { return a.featured; });
-    var lead = featured.filter(function (a) { return a.slug === LEAD_SLUG; })[0] || featured.sort(byDateDesc)[0];
-    var secs = featured.filter(function (a) { return a !== lead; }).sort(byDateDesc).slice(0, 3);
-    if (!lead) { edEl.style.display = 'none'; return; }
-    edEl.innerHTML =
-      '<a class="ed-lead feed-row" href="' + FL.esc(lead.url) + '" style="border-top:0;display:block">' +
-        FL.tagHTML(lead) + '<div class="feed-title">' + FL.esc(lead.title) + '</div><div class="feed-dek">' + FL.esc(lead.dek) + '</div>' +
-        '<div class="ed-sec-meta">' + FL.fmtDate(lead.date) + ' · ' + lead.readMinutes + ' min</div></a>' +
-      '<div class="ed-secs">' + secs.map(function (a) {
-        return '<a class="ed-sec feed-row" href="' + FL.esc(a.url) + '" style="border-top:0;display:block">' +
-          FL.tagHTML(a) + '<div class="feed-title">' + FL.esc(a.title) + '</div>' +
-          '<div class="ed-sec-meta">' + FL.fmtDate(a.date) + ' · ' + a.readMinutes + ' min</div></a>';
-      }).join('') + '</div>';
-  }
-
-  FL.loadContent(function (data) {
-    ARTICLES = (data.articles || []).slice();
-    readURL();
-    renderEditorsSelection();
-    renderRail();
-    renderFeed();
+  document.getElementById('typePills').addEventListener('click', function(e){
+    var b=e.target.closest('.fr-pill'); if(!b) return;
+    var t=b.dataset.type, i=state.types.indexOf(t);
+    if(i===-1) state.types.push(t); else state.types.splice(i,1);
+    b.classList.toggle('on'); state.page=1; apply();
   });
+  document.getElementById('layerList').addEventListener('click', function(e){
+    var b=e.target.closest('.fr-layer'); if(!b) return;
+    var l=b.dataset.layer, i=state.layers.indexOf(l);
+    if(i===-1) state.layers.push(l); else state.layers.splice(i,1);
+    b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on')?'true':'false'); state.page=1; apply();
+  });
+  document.getElementById('hideProd').addEventListener('click', function(){
+    state.hideProd=!state.hideProd; this.classList.toggle('on');
+    this.setAttribute('aria-pressed', state.hideProd?'true':'false'); state.page=1; apply();
+  });
+  document.getElementById('feedSort').addEventListener('change', function(){ state.sort=this.value; state.page=1; apply(); });
+  document.getElementById('clearFilters').addEventListener('click', function(){
+    state.types=[]; state.layers=[]; state.hideProd=false; state.page=1;
+    document.querySelectorAll('#typePills .fr-pill.on,#layerList .fr-layer.on').forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-pressed','false'); });
+    document.getElementById('hideProd').classList.remove('on');
+    document.getElementById('feedSort').value='newest'; state.sort='newest';
+    apply();
+  });
+
+  apply();
 })();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
+        </a>
+        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/">Overview</a>
+        <a href="/ecosystem">Ecosystem</a>
+        <a href="/ledger">The Ledger</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reference</h4>
+        <a href="/entities">Entities</a>
+        <a href="/briefing">Briefing</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="/join">Join</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Football Ledger. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.layer-more'); if(!b) return;
+  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.childNodes[0].nodeValue=open?'Less ':'More ';
+});
 </script>
 </body>
 </html>

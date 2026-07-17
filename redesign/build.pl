@@ -57,7 +57,7 @@ sub story_card {
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date});
   $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
-  my $imgp = "assets/img/articles/".$a->{slug}.".png";
+  my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
   my $media = (-e $imgp)
     ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
@@ -161,5 +161,101 @@ render_page(out=>"ecosystem.html", active=>"ecosystem",
   title=>"Ecosystem — The Football Ledger",
   desc=>"The nine-layer map of football's business — governance, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium — with the key entities in each layer.",
   canonical=>"/ecosystem", body=>$eco);
+
+# ============================================================
+#  THE LEDGER — landing
+# ============================================================
+sub trunc { my ($s,$n)=@_; $s//=''; return $s if length($s)<=$n; my $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
+# type slug + display
+my %TYSLUG = ('Macro'=>'macro','Trend'=>'trend','Case study'=>'case');
+my %TYDISP = ('Macro'=>'Macro','Trend'=>'Trend','Case study'=>'Case Study');
+# overline: returns ($TYPE, $REST) — REST = "Ln · " (if layer) + THEME, uppercased
+sub ov_parts {
+  my ($a)=@_;
+  my $type = uc($a->{type});
+  my $rest = '';
+  $rest .= 'L'.$a->{layer}.' · ' if defined $a->{layer} && $a->{layer} ne '';
+  $rest .= uc($a->{theme}) if $a->{theme} ne '';
+  return ($type, $rest);
+}
+sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
+sub art_thumb {
+  my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
+  return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.'" alt="" loading="lazy"></div>'
+                 : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
+}
+my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
+
+# --- Editor's Selection ---
+my $lead = $bySlug{'macro-01-trophy-to-operating'} // $live[0];
+my @featured = grep { $_->{slug} ne $lead->{slug} }
+               grep { $bySlug{$_->{slug}} }
+               map  { $bySlug{$_} } qw(macro-08-streaming-native-limits l8-data-led-underdogs l3-barcelona-crisis-recovery);
+my ($ltype,$lrest) = ov_parts($lead);
+my $lead_html =
+  '<a class="es-lead" href="'.esc($lead->{url}).'">'."\n".
+  '      <div class="es-lead-bg"><img src="/assets/img/articles/macro-01-lead.jpg" alt="" loading="lazy"></div>'."\n".
+  '      <div class="overline">'.esc($ltype).($lrest?' '.esc($lrest):'').'</div>'."\n".
+  '      <h3 class="es-lead-title">'.esc($lead->{title}).'</h3>'."\n".
+  '      <p class="es-lead-dek">'.esc(trunc($lead->{dek},150)).'</p>'."\n".
+  '      <div class="es-lead-meta">'.art_meta($lead).'</div>'."\n".
+  '      <span class="es-lead-cta">Read article <span class="arw">→</span></span>'."\n".
+  '    </a>';
+my $stack_html = join("\n      ", map {
+  my $a=$_; my ($t,$r)=ov_parts($a);
+  '<a class="es-item" href="'.esc($a->{url}).'">'."\n".
+  '        <div>'."\n".
+  '          <div class="es-item-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').'</div>'."\n".
+  '          <div class="es-item-title">'.esc($a->{title}).'</div>'."\n".
+  '          <div class="es-item-meta">'.art_meta($a).'</div>'."\n".
+  '        </div>'."\n".
+  '        '.art_thumb($a,'es-item-thumb')."\n".
+  '      </a>'
+} @featured);
+my $editors = '    '.$lead_html."\n    ".'<div class="es-stack">'."\n      ".$stack_html."\n    ".'</div>';
+
+# --- Type pills (with counts) ---
+my %tycount; $tycount{$_->{type}}++ for @arts;
+my $type_pills = join("\n          ", map {
+  '<button class="fr-pill" type="button" data-type="'.$TYSLUG{$_}.'">'.$TYDISP{$_}.' ('.($tycount{$_}||0).')</button>'
+} ('Macro','Trend','Case study'));
+
+# --- Filter layers 01–09 ---
+my @FL = ([1,'Governance'],[2,'Leagues'],[3,'Clubs/MCO'],[4,'Capital'],[5,'Agencies'],[6,'Media'],[7,'Commercial'],[8,'Football-tech'],[9,'Stadium/Fan']);
+my $filter_layers = join("\n          ", map {
+  my ($n,$nm)=@$_;
+  '<button class="fr-layer" type="button" data-layer="'.$n.'" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$LICO{$n}.'</svg></span><span class="fr-layer-num">'.sprintf('%02d',$n).'</span> '.$nm.'</button>'
+} @FL);
+
+# --- Feed rows (all articles, dated desc then in-production) ---
+my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } @arts;
+my $bookmark_svg = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
+my $feed_rows = join("\n        ", map {
+  my $a=$_; my ($t,$r)=ov_parts($a);
+  my $prodtag = $a->{status} eq 'prod' ? '<span class="feed-prodtag">In production</span>' : '';
+  '<article class="feed-row'.($a->{status} eq 'prod' ? ' is-prod':'').'" data-type="'.($TYSLUG{$a->{type}}||'').'" data-layer="'.($a->{layer}//'').'" data-status="'.esc($a->{status}).'">'."\n".
+  '          <a class="feed-thumb-lnk" href="'.esc($a->{url}).'" aria-label="'.esc($a->{title}).'" tabindex="-1">'.art_thumb($a,'feed-thumb').'</a>'."\n".
+  '          <div class="feed-body">'."\n".
+  '            <div class="feed-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').$prodtag.'</div>'."\n".
+  '            <a class="feed-title" href="'.esc($a->{url}).'">'.esc($a->{title}).'</a>'."\n".
+  '            <p class="feed-excerpt">'.esc(trunc($a->{dek},180)).'</p>'."\n".
+  '          </div>'."\n".
+  '          <div class="feed-side">'."\n".
+  '            <div class="feed-meta">'.art_meta($a).'</div>'."\n".
+  '            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false">'.$bookmark_svg.'</button>'."\n".
+  '          </div>'."\n".
+  '        </article>'
+} @feed);
+
+my $lg = slurp("redesign/pages/ledger.html");
+$lg =~ s/\{\{EDITORS\}\}/$editors/;
+$lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
+$lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;
+$lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/e;
+$lg =~ s/\{\{FEED_ROWS\}\}/        $feed_rows/;
+render_page(out=>"ledger.html", active=>"ledger",
+  title=>"The Ledger — Analysis · The Football Ledger",
+  desc=>"Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.",
+  canonical=>"/ledger", body=>$lg);
 
 print "done.\n";

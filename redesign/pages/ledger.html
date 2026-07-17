@@ -1,0 +1,147 @@
+<section class="wrap ledger-hero">
+  <div class="overline overline--rule overline--green">Section 8 · The Ledger</div>
+  <h1 class="h1">The moves that <span class="serif-em">redraw</span> the map.</h1>
+  <p class="deck">Analysis ordered by editorial judgement and recency — not by layer.<br>Layer is a lens you can filter by.</p>
+  <hr class="ledger-hero-rule">
+</section>
+
+<section class="wrap editors">
+  <div class="editors-head"><span class="overline overline--green">Editor's Selection</span></div>
+  <div class="es-grid">
+{{EDITORS}}
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:52px">
+  <div class="lb-grid">
+    <aside class="filter-rail" aria-label="Filter the Ledger">
+      <div class="fr-group">
+        <div class="fr-label">Type</div>
+        <div class="fr-pills" id="typePills">
+{{TYPE_PILLS}}
+        </div>
+      </div>
+      <div class="fr-group">
+        <div class="fr-label">Layer</div>
+        <div class="fr-layers" id="layerList">
+{{FILTER_LAYERS}}
+        </div>
+      </div>
+      <button class="fr-toggle" id="hideProd" type="button" aria-pressed="false"><span class="fr-switch"></span>Hide in-production</button>
+      <button class="fr-clear" id="clearFilters" type="button">Clear all filters</button>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
+
+    <div class="feed-wrap">
+      <div class="feed-head">
+        <div class="feed-count"><b id="feedCount">{{FEED_TOTAL}}</b> pieces · <span id="feedMatch">matching current filters</span></div>
+        <label class="feed-sort">Sort by:
+          <select id="feedSort"><option value="newest">Newest</option><option value="oldest">Oldest</option></select>
+        </label>
+      </div>
+      <div class="feed" id="feed">
+{{FEED_ROWS}}
+      </div>
+      <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var feed = document.getElementById('feed');
+  var rows = Array.prototype.slice.call(feed.querySelectorAll('.feed-row'));
+  var PER = 8;
+  var state = { types: [], layers: [], hideProd: false, sort: 'newest', page: 1 };
+
+  // bookmarks
+  feed.addEventListener('click', function(e){
+    var b = e.target.closest('.feed-bookmark'); if(!b) return;
+    e.preventDefault(); b.classList.toggle('on');
+    b.setAttribute('aria-pressed', b.classList.contains('on') ? 'true':'false');
+  });
+
+  function matches(r){
+    if (state.hideProd && r.dataset.status === 'prod') return false;
+    if (state.types.length && state.types.indexOf(r.dataset.type) === -1) return false;
+    if (state.layers.length && state.layers.indexOf(r.dataset.layer) === -1) return false;
+    return true;
+  }
+
+  function apply(){
+    var vis = rows.filter(matches);
+    if (state.sort === 'oldest') vis = vis.slice().reverse();
+    var pages = Math.max(1, Math.ceil(vis.length / PER));
+    if (state.page > pages) state.page = pages;
+    var start = (state.page - 1) * PER;
+    rows.forEach(function(r){ r.style.display = 'none'; });
+    vis.slice(start, start + PER).forEach(function(r){ r.style.display = ''; });
+    // reorder DOM for oldest so visible order is correct
+    if (state.sort === 'oldest') vis.forEach(function(r){ feed.appendChild(r); });
+    else rows.forEach(function(r){ feed.appendChild(r); });
+
+    document.getElementById('feedCount').textContent = vis.length;
+    document.getElementById('feedMatch').textContent = (state.types.length || state.layers.length || state.hideProd) ? 'matching current filters' : 'across every layer';
+
+    var empty = feed.querySelector('.feed-empty');
+    if (!vis.length) { if(!empty){ empty=document.createElement('div'); empty.className='feed-empty'; empty.textContent='No pieces match these filters.'; feed.appendChild(empty);} }
+    else if (empty) empty.remove();
+
+    renderPager(pages);
+  }
+
+  function renderPager(pages){
+    var p = document.getElementById('pagination');
+    if (pages <= 1) { p.innerHTML=''; return; }
+    var h = '<button class="pg-btn" data-pg="prev"'+(state.page===1?' disabled':'')+' aria-label="Previous">←</button>';
+    var nums = [];
+    for (var i=1;i<=pages;i++){ if(i===1||i===pages||(i>=state.page-1&&i<=state.page+1)||(state.page<=3&&i<=3)||(state.page>=pages-2&&i>=pages-2)) nums.push(i); else if(nums[nums.length-1]!=='…') nums.push('…'); }
+    nums.forEach(function(n){
+      if(n==='…') h += '<span class="pg-gap">…</span>';
+      else h += '<button class="pg-btn'+(n===state.page?' on':'')+'" data-pg="'+n+'">'+n+'</button>';
+    });
+    h += '<button class="pg-btn" data-pg="next"'+(state.page===pages?' disabled':'')+' aria-label="Next">→</button>';
+    p.innerHTML = h;
+    p.querySelectorAll('.pg-btn').forEach(function(b){
+      b.addEventListener('click', function(){
+        var v=b.dataset.pg;
+        if(v==='prev') state.page=Math.max(1,state.page-1);
+        else if(v==='next') state.page=Math.min(pages,state.page+1);
+        else state.page=parseInt(v,10);
+        apply(); window.scrollTo({top: feed.getBoundingClientRect().top+window.scrollY-140, behavior:'smooth'});
+      });
+    });
+  }
+
+  document.getElementById('typePills').addEventListener('click', function(e){
+    var b=e.target.closest('.fr-pill'); if(!b) return;
+    var t=b.dataset.type, i=state.types.indexOf(t);
+    if(i===-1) state.types.push(t); else state.types.splice(i,1);
+    b.classList.toggle('on'); state.page=1; apply();
+  });
+  document.getElementById('layerList').addEventListener('click', function(e){
+    var b=e.target.closest('.fr-layer'); if(!b) return;
+    var l=b.dataset.layer, i=state.layers.indexOf(l);
+    if(i===-1) state.layers.push(l); else state.layers.splice(i,1);
+    b.classList.toggle('on'); b.setAttribute('aria-pressed', b.classList.contains('on')?'true':'false'); state.page=1; apply();
+  });
+  document.getElementById('hideProd').addEventListener('click', function(){
+    state.hideProd=!state.hideProd; this.classList.toggle('on');
+    this.setAttribute('aria-pressed', state.hideProd?'true':'false'); state.page=1; apply();
+  });
+  document.getElementById('feedSort').addEventListener('change', function(){ state.sort=this.value; state.page=1; apply(); });
+  document.getElementById('clearFilters').addEventListener('click', function(){
+    state.types=[]; state.layers=[]; state.hideProd=false; state.page=1;
+    document.querySelectorAll('#typePills .fr-pill.on,#layerList .fr-layer.on').forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-pressed','false'); });
+    document.getElementById('hideProd').classList.remove('on');
+    document.getElementById('feedSort').value='newest'; state.sort='newest';
+    apply();
+  });
+
+  apply();
+})();
+</script>

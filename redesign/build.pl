@@ -720,4 +720,16 @@ render_page(out=>"entities/index.html", active=>"entities",
   desc=>"A searchable directory of every actor in football's business — governing bodies, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium operators.",
   canonical=>"/entities", body=>$dir);
 
+# ---------- About ----------
+render_page(out=>"about.html", active=>"about",
+  title=>"About — The Football Ledger",
+  desc=>"The Football Ledger is a neutral analytical publication on the business, governance, and capital of football — evidence-led deep-dives for readers who build, decide, and lead.",
+  canonical=>"/about", body=>slurp("redesign/pages/about.html"));
+
+# ---------- Join ----------
+render_page(out=>"join.html", active=>"join",
+  title=>"Join the Ledger — The Football Ledger",
+  desc=>"Join The Football Ledger. We're looking for curious minds, clear thinkers, and structured writers — analysts, students, and industry insiders who understand football is a business.",
+  canonical=>"/join", body=>slurp("redesign/pages/join.html"));
+
 print "done.\n";

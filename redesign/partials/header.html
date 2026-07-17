@@ -1,0 +1,48 @@
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="The Football Ledger — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
+        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
+        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">The Football Ledger</span>
+        <span class="brand-tag">The Business of Football</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/" {{ACTIVE_OVERVIEW}}>Overview</a>
+      <a href="/ecosystem" {{ACTIVE_ECOSYSTEM}}>Ecosystem</a>
+      <a href="/ledger" {{ACTIVE_LEDGER}}>The Ledger</a>
+      <a href="/entities" {{ACTIVE_ENTITIES}}>Entities</a>
+      <a href="/briefing" {{ACTIVE_BRIEFING}}>Briefing</a>
+      <a href="/about" {{ACTIVE_ABOUT}}>About</a>
+      <a href="/join" {{ACTIVE_JOIN}}>Join</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
+    </a>
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  </div>
+  <nav aria-label="Primary (mobile)">
+    <a href="/">Overview</a>
+    <a href="/ecosystem">Ecosystem</a>
+    <a href="/ledger">The Ledger</a>
+    <a href="/entities">Entities</a>
+    <a href="/briefing">Briefing</a>
+    <a href="/about">About</a>
+    <a href="/join">Join</a>
+  </nav>
+</div>
+<main id="main">

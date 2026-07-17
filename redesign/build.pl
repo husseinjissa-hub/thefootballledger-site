@@ -258,4 +258,182 @@ render_page(out=>"ledger.html", active=>"ledger",
   desc=>"Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.",
   canonical=>"/ledger", body=>$lg);
 
+# ============================================================
+#  THE LEDGER — article detail (reskin live posts + stub prod)
+# ============================================================
+# Key takeaways are editorial. Seeded here per-slug; box renders only when present.
+# macro-08 takeaways are taken verbatim from the approved design mockup.
+my $TK_BINO = '<path d="M7 4.5h2.5l1 3.5M17 4.5h-2.5l-1 3.5"/><circle cx="6.5" cy="14" r="3.6"/><circle cx="17.5" cy="14" r="3.6"/><path d="M10 13.5h4"/>';
+my $TK_SCALE= '<path d="M12 4v16M7.5 20h9M5 8h14"/><path d="M5 8l-2.3 5.4a2.6 2.6 0 005.2 0zM19 8l-2.3 5.4a2.6 2.6 0 005.2 0z"/>';
+my $TK_BARS = '<path d="M5.5 19V11M12 19V5.5M18.5 19v-5.5"/>';
+my $TK_NODE = '<circle cx="6" cy="6.5" r="2"/><circle cx="18" cy="8.5" r="2"/><circle cx="10.5" cy="17.5" r="2"/><path d="M7.7 7.7l1.5 8M8 6.9l8 1.2M16.6 10.1l-4.6 6"/>';
+my @TK_ICONS = ($TK_BINO,$TK_SCALE,$TK_BARS,$TK_NODE);
+my %TAKEAWAYS = (
+  'macro-08-streaming-native-limits' => [
+    ['Streaming-native single-buyer experiments failed to scale','Apple and DAZN could not make standalone single-buyer models viable. Hybrid and tiered structures prevailed.'],
+    ['Tier-1 auctions chose hybrid, not streaming-native exclusive','Premier League, Serie A and Champions League retained traditional operators and layered in streamers.'],
+    ['Two structural pressures define the market','Unit economics and distribution depth & piracy resistance prevent a single platform from owning it all.'],
+    ['Three configurations are now competing','Traditional pay-TV, hybrid streamer partnerships, and multi-rights platform plays — each with advantages and constraints.'],
+  ],
+);
+
+my $ICO_CLOCK = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>';
+my $ICO_CAL   = '<rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/>';
+my $ICO_TAG   = '<path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.4"/>';
+
+sub art_breadcrumb {
+  my ($a,$raw)=@_;
+  if ($raw && $raw =~ /<div class="article-eyebrow">(.*?)<\/div>/s) {
+    my $e=$1; $e =~ s/<[^>]+>/ · /g; $e =~ s/\s*·\s*(·\s*)+/ · /g; $e =~ s/\s+/ /g; $e =~ s/^[\s·]+|[\s·]+$//g;
+    my @p = split / · /, uc($e);
+    my $first = shift @p;
+    return '<b>'.esc($first).'</b>'.(@p?' · '.esc(join(' · ',@p)):'');
+  }
+  my @p = (uc($a->{type}));
+  push @p, 'L'.$a->{layer} if $a->{layer} ne '';
+  push @p, uc($a->{theme}) if $a->{theme} ne '';
+  my $first = shift @p;
+  return '<b>'.esc($first).'</b>'.(@p?' · '.esc(join(' · ',@p)):'');
+}
+
+sub build_article {
+  my ($a)=@_;
+  my $slug=$a->{slug};
+  my $src="redesign/src-posts/$slug.html";
+  my ($raw,$title_html,$standfirst,$prose,$signals);
+  my $is_live = (-e $src);
+  if ($is_live) {
+    $raw = slurp($src);
+    $title_html = ($raw =~ /<h1 class="article-title">(.*?)<\/h1>/s) ? $1 : esc($a->{title});
+    $standfirst = ($raw =~ /<p class="article-deck">(.*?)<\/p>/s) ? $1 : esc($a->{dek});
+    $prose = ($raw =~ /<div class="article-body">(.*?)<\/div>\s*(?:<aside class="signals"|<\/article>)/s) ? $1 : '';
+    $signals = ($raw =~ /<aside class="signals">(.*?)<\/aside>/s) ? $1 : '';
+  } else {
+    $title_html = esc($a->{title});
+    $standfirst = esc($a->{dek});
+    $prose = '';
+  }
+
+  # sections + numbering
+  my @secs = ($prose =~ /<h2>(.*?)<\/h2>/gs);
+  my $n=0;
+  $prose =~ s{<h2>(.*?)</h2>}{ $n++; '<h2 id="sec'.$n.'" class="prose-h2"><span class="prose-h2-num">'.sprintf('%02d',$n).'</span> '.$1.'</h2>' }ge;
+  # anchor the footnotes for the TOC "sources" entry
+  my $has_notes = ($prose =~ /<aside class="footnotes"/);
+  $prose =~ s/<aside class="footnotes"/<aside id="sources" class="footnotes"/;
+
+  # TOC
+  my @toc;
+  my $i=0;
+  for my $s (@secs){ $i++; push @toc, ['sec'.$i, sprintf('%02d',$i), $s]; }
+  my $tk = $TAKEAWAYS{$slug};
+  push @toc, ['takeaways', sprintf('%02d',++$i), 'Key takeaways'] if $tk;
+  push @toc, ['sources', sprintf('%02d',++$i), 'Appendix &amp; sources'] if $has_notes;
+  my $toc_html = join("\n          ", map {
+    '<li><a class="toc-link" href="#'.$_->[0].'"><span class="toc-num">'.$_->[1].'</span><span>'.$_->[2].'</span></a></li>'
+  } @toc);
+
+  # meta strip
+  my $mread = $a->{read} ne '' ? $a->{read}.' min' : '—';
+  my $mpub  = $a->{date} ne '' ? fmtdate($a->{date}) : 'In production';
+  my $mtag  = uc($a->{type}).($a->{theme} ne '' ? ' · '.uc($a->{theme}) : '');
+  my $metastrip =
+    '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_CLOCK.'</svg><span><span class="amc-k">Read</span><br><span class="amc-v">'.$mread.'</span></span></div>'.
+    '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_CAL.'</svg><span><span class="amc-k">Published</span><br><span class="amc-v">'.$mpub.'</span></span></div>'.
+    '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_TAG.'</svg><span><span class="amc-k">Filed under</span><br><span class="amc-v">'.esc($mtag).'</span></span></div>';
+
+  # takeaways box
+  my $tk_html='';
+  if ($tk){
+    my $items = join('', map { my $j=$_; '<div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$TK_ICONS[$j % @TK_ICONS].'</svg></span><div><div class="tk-title">'.esc($tk->[$j][0]).'</div><div class="tk-desc">'.esc($tk->[$j][1]).'</div></div></div>' } 0..$#$tk);
+    $tk_html = '<div class="art-takeaways" id="takeaways"><div class="art-tk-head">Key takeaways</div>'.$items.'</div>';
+  }
+
+  # hero
+  my $hp="assets/img/articles/$slug.jpg";
+  my $hero = (-e $hp) ? '<div class="art-hero"><img src="/'.$hp.'" alt="" ></div>' : '';
+
+  # body content
+  my $body_main;
+  if ($is_live) {
+    $body_main = $tk_html."\n".'<div class="article-prose">'."\n".$prose."\n".'</div>';
+    $body_main .= "\n".'<aside class="art-signals">'.$signals.'</aside>' if $signals && $signals =~ /\S/;
+  } else {
+    $body_main = '<div class="art-prodnote"><span class="apn-tag">In production</span><h3>This analysis is in production</h3><p>The Ledger is actively researching this piece. The summary above outlines the thesis; the full analysis, data, and sources will publish here.</p></div>';
+  }
+
+  # related sidebar — 3 other live pieces
+  my @rel = grep { $_->{slug} ne $slug } @live;
+  @rel = @rel[0..2] if @rel>3;
+  my $rel_html = join("\n          ", map {
+    my $r=$_; my ($t)=ov_parts($r);
+    '<a class="art-rel-item" href="'.esc($r->{url}).'">'.art_thumb($r,'art-rel-thumb').
+    '<div><div class="art-rel-cat">'.esc($t).'</div><div class="art-rel-title">'.esc($r->{title}).'</div><div class="art-rel-date">'.(fmtdate($r->{date})||'In production').'</div></div></a>'
+  } @rel);
+
+  my $bc = art_breadcrumb($a,$raw);
+
+  my $body = <<"HTML";
+<div class="art-wrap">
+  <div class="art-grid">
+    <aside class="art-side">
+      <a class="art-back" href="/ledger"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Ledger</a>
+      <div class="art-block art-block--toc">
+        <div class="art-side-label">Overview</div>
+        <ul class="toc-list">
+          $toc_html
+        </ul>
+      </div>
+      <div class="art-block">
+        <div class="art-side-label">Article info</div>
+        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">$ICO_CLOCK</svg><b>$mread</b> read</div>
+        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">$ICO_CAL</svg>Published <b>$mpub</b></div>
+        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">$ICO_TAG</svg>@{[esc($mtag)]}</div>
+        <button class="art-save art-info-row" type="button" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>Save article</button>
+      </div>
+      <div class="art-block">
+        <div class="art-side-label">Related articles</div>
+        $rel_html
+      </div>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
+
+    <article class="art-main">
+      <div class="art-breadcrumb">$bc</div>
+      <h1 class="art-title">$title_html</h1>
+      <p class="art-standfirst">$standfirst</p>
+      $hero
+      <div class="art-metastrip">$metastrip</div>
+      $body_main
+    </article>
+  </div>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-link'));
+  var save=document.querySelector('.art-save');
+  if(save) save.addEventListener('click',function(){this.classList.toggle('on');this.setAttribute('aria-pressed',this.classList.contains('on')?'true':'false');});
+  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
+  if(!secs.length) return;
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ var id=e.target.id;
+      links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+id); }); } });
+  },{rootMargin:'-90px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){obs.observe(s);});
+})();
+</script>
+HTML
+
+  render_page(out=>"posts/$slug.html", active=>"ledger",
+    title=>$a->{title}." — The Football Ledger",
+    desc=>$a->{dek}//$a->{title},
+    canonical=>"/posts/$slug", body=>$body);
+}
+
+build_article($_) for @arts;
+
 print "done.\n";

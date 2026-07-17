@@ -1,123 +1,535 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Football’s Netflix never arrived. What did, hasn’t settled yet. — The Football Ledger</title>
-<meta name="description" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
 <link rel="canonical" href="https://thefootballledger.co/posts/macro-08-streaming-native-limits">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-05">
 <meta property="og:site_name" content="The Football Ledger">
-<meta property="og:title" content="Football’s Netflix never arrived. What did, hasn’t settled yet. — The Football Ledger">
-<meta property="og:description" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
+<meta property="og:title" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
+<meta property="og:description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
 <meta property="og:url" content="https://thefootballledger.co/posts/macro-08-streaming-native-limits">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
+<meta name="twitter:description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
+<title>Football’s Netflix never arrived. What did, hasn’t settled yet. — The Football Ledger</title>
+<meta name="description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/redesign.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee;
+  --ink-2: #f1ece0;
+  --ink-3: #eae4d6;
+  --ink-4: #e0d9c6;
+  --bone: #23201a;
+  --bone-dim: #55514a;
+  --bone-mute: #8a857b;
+  --rust: #7a2233;
+  --gold: #10402b;
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #dcd6c8;
+  --line-soft: #ece7da;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.3s ease;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+/* ============= ARTICLE HEADER ============= */
+.article-header {
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.article-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.article-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 980px;
+}
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.article-meta {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.article-meta strong { color: var(--bone); font-weight: 500; }
+
+/* ============= ARTICLE BODY ============= */
+.article-body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--bone);
+}
+.article-body p {
+  margin-bottom: 28px;
+}
+.article-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 40px;
+}
+.article-body p.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 76px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 8px 14px 0 0;
+  color: var(--gold);
+}
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: var(--bone);
+}
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body sup { font-size: 0.7em; vertical-align: super; line-height: 0; }
+.article-body a.footnote-ref { color: var(--gold); text-decoration: none; border-bottom: none; padding: 0 1px; }
+.article-body a.footnote-ref:hover { color: var(--bone); }
+.footnotes a.footnote-back { color: var(--gold); text-decoration: none; margin-left: 6px; }
+.footnotes a.footnote-back:hover { color: var(--bone); }
+.article-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(16, 64, 43, 0.4);
+  transition: border-color 0.2s ease;
+}
+.article-body a.in-link:hover { border-bottom-color: var(--gold); }
+
+.article-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone);
+}
+
+.callout {
+  background: rgba(16, 64, 43, 0.04);
+  border: 1px solid rgba(16, 64, 43, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.callout-text strong { color: var(--bone); }
+
+.kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin: 56px 0 -12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ============= SIGNALS BOX ============= */
+.signals {
+  max-width: 880px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.signals-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 32px 36px;
+}
+.signals-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signals-list li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  display: grid;
+  grid-template-columns: 8px 280px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.signals-list li::before {
+  content: ''; width: 8px; height: 1px; background: var(--gold);
+  flex-shrink: 0; margin-top: 10px;
+}
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) {
+  .signals-list li { grid-template-columns: 8px 1fr; }
+  .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; }
+}
+
+/* ============= RELATED ============= */
+.related {
+  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--ink-2);
+}
+.related-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.related-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.related-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.related-card {
+  background: var(--ink);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.related-card:hover { background: var(--ink-3); }
+.related-card::after {
+  content: '→';
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.related-card:hover::after {
+  opacity: 1; transform: translateX(0); color: var(--gold);
+}
+.related-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.related-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+
+/* ============= FOOTER ============= */
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .article-header { padding: 60px 24px 50px; }
+  .article-body { padding: 50px 24px 40px; font-size: 17px; }
+  .article-meta { flex-direction: column; gap: 12px; }
+  .signals { padding: 0 24px; }
+  .related { padding: 60px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .masthead { flex-wrap: wrap; gap: 12px; padding: 18px 24px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+}
+
+
+.chart {
+  margin: 60px -32px;
+  display: block;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.chart figcaption {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  font-style: normal;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.chart figcaption em {
+  font-style: italic;
+  color: var(--bone-dim);
+}
+.chart figcaption strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .chart { margin: 40px -24px; }
+}
+
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/" aria-label="The Football Ledger — home">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
-        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
-        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
-        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
-      </svg>
-      <span class="brand-text">
-        <span class="brand-name">The Football Ledger</span>
-        <span class="brand-tag">The Business of Football</span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="/" >Overview</a>
-      <a href="/ecosystem" >Ecosystem</a>
-      <a href="/ledger" class="active">The Ledger</a>
-      <a href="/entities" >Entities</a>
-      <a href="/briefing" >Briefing</a>
-      <a href="/about" >About</a>
-      <a href="/join" >Join</a>
-    </nav>
-    <div class="header-cta">
-      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
-      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
-    </div>
-  </div>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu-top">
-    <a class="brand" href="/">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
-    </a>
-    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
-  </div>
-  <nav aria-label="Primary (mobile)">
-    <a href="/">Overview</a>
-    <a href="/ecosystem">Ecosystem</a>
-    <a href="/ledger">The Ledger</a>
-    <a href="/entities">Entities</a>
-    <a href="/briefing">Briefing</a>
-    <a href="/about">About</a>
-    <a href="/join">Join</a>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
   </nav>
 </div>
-<main id="main">
-<div class="art-wrap">
-  <div class="art-grid">
-    <aside class="art-side">
-      <a class="art-back" href="/ledger"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Ledger</a>
-      <div class="art-block art-block--toc">
-        <div class="art-side-label">Overview</div>
-        <ul class="toc-list">
-          <li><a class="toc-link" href="#sec1"><span class="toc-num">01</span><span>The live-streaming market — promising, but architecture unsettled</span></a></li>
-          <li><a class="toc-link" href="#sec2"><span class="toc-num">02</span><span>The experiments — what was tested</span></a></li>
-          <li><a class="toc-link" href="#sec3"><span class="toc-num">03</span><span>Why the streaming-native single-buyer model didn’t scale</span></a></li>
-          <li><a class="toc-link" href="#sec4"><span class="toc-num">04</span><span>What the tier-1 auctions actually chose</span></a></li>
-          <li><a class="toc-link" href="#sec5"><span class="toc-num">05</span><span>Three configurations that actually work</span></a></li>
-          <li><a class="toc-link" href="#sec6"><span class="toc-num">06</span><span>The consensus read, and the Ledger’s</span></a></li>
-          <li><a class="toc-link" href="#sec7"><span class="toc-num">07</span><span>The strategic question</span></a></li>
-          <li><a class="toc-link" href="#takeaways"><span class="toc-num">08</span><span>Key takeaways</span></a></li>
-          <li><a class="toc-link" href="#sources"><span class="toc-num">09</span><span>Appendix &amp; sources</span></a></li>
-        </ul>
-      </div>
-      <div class="art-block">
-        <div class="art-side-label">Article info</div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>8 min</b> read</div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>Published <b>05 Jun 2026</b></div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>MACRO · MEDIA · RIGHTS</div>
-        <button class="art-save art-info-row" type="button" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>Save article</button>
-      </div>
-      <div class="art-block">
-        <div class="art-side-label">Related articles</div>
-        <a class="art-rel-item" href="/posts/l8-data-led-underdogs.html"><div class="art-rel-thumb"><img src="/assets/img/articles/l8-data-led-underdogs.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">TREND</div><div class="art-rel-title">The data-led underdog arrives in Europe</div><div class="art-rel-date">28 May 2026</div></div></a>
-          <a class="art-rel-item" href="/posts/l3-barcelona-crisis-recovery.html"><div class="art-rel-thumb"><img src="/assets/img/articles/l3-barcelona-crisis-recovery.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">CASE STUDY</div><div class="art-rel-title">Barcelona's crisis and recovery</div><div class="art-rel-date">20 May 2026</div></div></a>
-          <a class="art-rel-item" href="/posts/l4-pif-phase-2.html"><div class="art-rel-thumb"><img src="/assets/img/articles/l4-pif-phase-2.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">CASE STUDY</div><div class="art-rel-title">PIF Phase 2 — sophistication, not retreat</div><div class="art-rel-date">12 May 2026</div></div></a>
-      </div>
-      <div class="fr-news">
-        <h4>Stay ahead of the game.</h4>
-        <p>Join thousands of leaders shaping the business of football.</p>
-        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
-      </div>
-    </aside>
 
-    <article class="art-main">
-      <div class="art-breadcrumb"><b>MACRO</b> · TREND 08 · BROADCASTING · RIGHTS · STREAMING</div>
-      <h1 class="art-title">Football’s Netflix <em>never arrived.</em><br>What did, hasn’t settled yet.</h1>
-      <p class="art-standfirst">A decade of consensus held that streaming-native platforms — Apple, Amazon, Netflix, DAZN — would consolidate football broadcasting rights into the industry’s Netflix moment. Across major-market football, the experiments have now run long enough to know. None of them produced the Netflix-of-football outcome the consensus expected. What replaced it is three configurations competing for what comes next.</p>
-      <div class="art-hero"><img src="/assets/img/articles/macro-08-streaming-native-limits.jpg" alt="" ></div>
-      <div class="art-metastrip"><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><span class="amc-k">Read</span><br><span class="amc-v">8 min</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span><span class="amc-k">Published</span><br><span class="amc-v">05 Jun 2026</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg><span><span class="amc-k">Filed under</span><br><span class="amc-v">MACRO · MEDIA · RIGHTS</span></span></div></div>
-      <div class="art-takeaways" id="takeaways"><div class="art-tk-head">Key takeaways</div><div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 4.5h2.5l1 3.5M17 4.5h-2.5l-1 3.5"/><circle cx="6.5" cy="14" r="3.6"/><circle cx="17.5" cy="14" r="3.6"/><path d="M10 13.5h4"/></svg></span><div><div class="tk-title">Streaming-native single-buyer experiments failed to scale</div><div class="tk-desc">Apple and DAZN could not make standalone single-buyer models viable. Hybrid and tiered structures prevailed.</div></div></div><div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 4v16M7.5 20h9M5 8h14"/><path d="M5 8l-2.3 5.4a2.6 2.6 0 005.2 0zM19 8l-2.3 5.4a2.6 2.6 0 005.2 0z"/></svg></span><div><div class="tk-title">Tier-1 auctions chose hybrid, not streaming-native exclusive</div><div class="tk-desc">Premier League, Serie A and Champions League retained traditional operators and layered in streamers.</div></div></div><div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5.5 19V11M12 19V5.5M18.5 19v-5.5"/></svg></span><div><div class="tk-title">Two structural pressures define the market</div><div class="tk-desc">Unit economics and distribution depth &amp; piracy resistance prevent a single platform from owning it all.</div></div></div><div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="6" cy="6.5" r="2"/><circle cx="18" cy="8.5" r="2"/><circle cx="10.5" cy="17.5" r="2"/><path d="M7.7 7.7l1.5 8M8 6.9l8 1.2M16.6 10.1l-4.6 6"/></svg></span><div><div class="tk-title">Three configurations are now competing</div><div class="tk-desc">Traditional pay-TV, hybrid streamer partnerships, and multi-rights platform plays — each with advantages and constraints.</div></div></div></div>
-<div class="article-prose">
 
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>Macro · Trend 08</span>
+      <span class="article-eyebrow-meta">·  Broadcasting · Rights · Streaming</span>
+    </div>
+    <h1 class="article-title">Football’s Netflix <em>never arrived.</em><br>What did, hasn’t settled yet.</h1>
+    <p class="article-deck">A decade of consensus held that streaming-native platforms — Apple, Amazon, Netflix, DAZN — would consolidate football broadcasting rights into the industry’s Netflix moment. Across major-market football, the experiments have now run long enough to know. None of them produced the Netflix-of-football outcome the consensus expected. What replaced it is three configurations competing for what comes next.</p>
+    <div class="article-meta">
+      <span><strong>8 min</strong> read</span>
+      <span>Published <strong>May 2026</strong></span>
+      
+    </div>
+  </header>
+
+  <div class="article-body">
 
 <p class="lead">For most of the last decade, the consensus view across football broadcasting was that the industry was heading for a Netflix moment. DAZN was positioning as the global football streamer, raising capital around the thesis of a single-platform consolidation of premium football rights. Apple’s $2.5 billion all-in MLS deal in 2022 was read as the proof point for tier-1 streaming-native exclusivity. Netflix, Amazon, and Apple were all expected to enter sports rights aggressively, with the implicit assumption that one or more of them would eventually own a major European league’s domestic rights outright. Within our scope<sup><a href="#fn1" id="fnref1" class="footnote-ref">1</a></sup>, the experiments are done — or done enough to know.</p>
 
-<h2 id="sec1" class="prose-h2"><span class="prose-h2-num">01</span> The live-streaming market — promising, but architecture unsettled</h2>
+<h2>The live-streaming market — promising, but architecture unsettled</h2>
 
 <p>The live-streaming market for football is growing. Across the Big Five European football markets, SVOD household penetration has overtaken pay-TV in four out of five (UK 2020, Spain 2019, Italy 2020, Germany 2024), and consumer subscription stacks now routinely combine traditional pay-TV with one or more streaming services. The medium is established; the audience is migrating; the trajectory is unambiguous.</p>
 
@@ -202,7 +614,7 @@
 
 <p>The structural shape of football inside this market is being decided now, not in the data already in evidence. Two specific case studies over the past three years offer learnings that bound the possibilities.</p>
 
-<h2 id="sec2" class="prose-h2"><span class="prose-h2-num">02</span> The experiments — what was tested</h2>
+<h2>The experiments — what was tested</h2>
 
 <p>Two streaming-native experiments in major-market football have run their course over the past three years. Both are now visible in the public record, and both produced outcomes the consensus did not predict.</p>
 
@@ -210,7 +622,7 @@
 
 <p><strong>DAZN–Ligue 1</strong> launched in August 2024 as the most aggressive direct test of whether a streaming-native platform could anchor a tier-1 European league. DAZN paid €400 million per year for eight of the nine weekly Ligue 1 matches under a five-year deal, with a December 2025 exit clause tied to a 1.5 million subscriber threshold. By December 2024, the deal had attracted roughly 400,000 subscribers (some trade-press estimates as low as 150,000). In February 2025, DAZN withheld €35 million of its scheduled payment citing piracy and inadequate league marketing; mediation collapsed in April, and by May 2025 both parties agreed to terminate the deal after one season with DAZN paying a €100 million exit fee. The trade-press post-mortem identifies a more specific cause than the formal piracy complaint: France is a market where pay-TV penetration remains structurally higher than in the rest of the Big Five — the only major European market where SVOD adoption has not yet overtaken pay-TV — and Canal+ holds an entrenched incumbency that DAZN, as a streaming-native single-buyer, could not displace at the price point its rights cost required. <em>What this case specifically proves is that a streaming-native single-buyer cannot recover tier-1 rights cost from subscribers in a market with an entrenched pay-TV incumbent and high subscription fatigue.</em></p>
 
-<h2 id="sec3" class="prose-h2"><span class="prose-h2-num">03</span> Why the streaming-native single-buyer model didn’t scale</h2>
+<h2>Why the streaming-native single-buyer model didn’t scale</h2>
 
 <p>The failure is not that live streaming as a medium does not work — the same DAZN that lost Ligue 1 distributes Serie A successfully on comparable infrastructure, and Amazon’s 2019–22 Premier League experiment drew 2-3 million viewers per match. What failed is a specific configuration: <em>a single streaming platform attempting to recover tier-1 rights costs from subscribers paying specifically for one league as a standalone product.</em> Two structural pressures explain why.</p>
 
@@ -218,7 +630,7 @@
 
 <p>The second is <strong>distribution depth and piracy resistance</strong>. Established multi-distribution operators (Sky, beIN, Canal+) have decades of operational depth in anti-piracy infrastructure, broadcaster-level enforcement, retention mechanics, and integrated bundling with broadband and mobile. DAZN’s formal complaint against the LFP cited 55% illegal viewing rates for the October 2024 Marseille vs PSG match; beIN has cited similar pressures in MENA. A streaming-native entrant attempting to displace an entrenched operator faces these frictions while still having to build subscriber acquisition pipelines from scratch — a structural disadvantage even before the unit-economics problem above.</p>
 
-<h2 id="sec4" class="prose-h2"><span class="prose-h2-num">04</span> What the tier-1 auctions actually chose</h2>
+<h2>What the tier-1 auctions actually chose</h2>
 
 <p>The same structural pressures play out in the tier-1 auction record. If the streaming-native single-buyer model were viable at scale, the most valuable football rights in the world — Premier League, Serie A, Champions League — would have been the place to win. None of them did. The pattern is consistent across three major auctions.</p>
 
@@ -278,7 +690,7 @@
 <figcaption><strong>Tier-1 auction outcomes — the share streaming-native single-buyers actually won.</strong> Across the three most consequential football rights cycles of 2023–2025, the share awarded to a streaming-native single-buyer was zero. The Premier League went entirely to traditional pay-TV operators (Sky, TNT). Serie A split between DAZN (streaming) and Sky (pay-TV) as a hybrid. The Champions League UK ran as TNT-majority with Amazon as Tuesday overlay; the 2027–31 cycle replaces TNT with Paramount but retains the same hybrid structure. Where streaming platforms participated, they did so as partial-package partners alongside traditional operators — not as exclusive buyers. <strong>Source:</strong> Premier League press release (December 2023); Sportico, Bloomberg, FrontOfficeSports (Serie A); UEFA, Guardian, Pressreader (Champions League cycles); London Daily, Royal Television Society.</figcaption>
 </figure>
 
-<h2 id="sec5" class="prose-h2"><span class="prose-h2-num">05</span> Three configurations that actually work</h2>
+<h2>Three configurations that actually work</h2>
 
 <p>If the streaming-native single-buyer is the failed configuration, the question is what alternatives have emerged. Three are now visible across major-market football, and they explain who has retained tier-1 rights, who has taken partial overlay packages, and who has had to restructure.</p>
 
@@ -358,25 +770,25 @@
 
 <p>Across the three configurations that work, the lesson is consistent: a football subscription becomes justifiable to the consumer when it is part of a broader proposition along at least one of these two axes. Neither "single platform, single league as standalone product" survives. That is the structural finding the next cycle of consolidation will operate under.</p>
 
-<h2 id="sec6" class="prose-h2"><span class="prose-h2-num">06</span> The consensus read, and the Ledger’s</h2>
+<h2>The consensus read, and the Ledger’s</h2>
 
 <p>The trade-press consensus on this body of evidence has evolved across the same period. The 2018–2022 framing was the Netflix-of-football outcome: DAZN, Apple, or Amazon eventually owning a major league’s rights outright as a single global buyer. As the experiments ran and the auctions awarded, the framing softened to a weaker claim: streaming will be a major buyer of football rights. Neither framing fits what actually happened. The stronger version (a single streamer owns football) failed in the auction record: no streaming-native player took primary tier-1 rights at any of the three major auctions. The weaker version (streaming will be a major buyer) is technically accurate but misses the structural point: streaming only participates where football sits inside a broader proposition, never as a standalone destination product.</p>
 
 <p><strong>The Ledger’s contrarian read: streaming platforms participate in major-market football, but only in configurations where football is content inside a broader proposition — never as standalone destination products at tier-1. The streaming-native single-buyer model has proven challenging up to this point, and the unit economics that broke it are not temporary. What replaced it is three viable configurations: tech platforms bundling football alongside other content, established multi-distribution operators with broad sports portfolios, and partnership-shared rights structures where the streaming-native player co-broadcasts with an established operator. None of them is the Netflix-of-football outcome the consensus spent a decade expecting. The question now is which of the three dominates the next cycle, and what consolidation between them looks like.</strong></p>
 
-<h2 id="sec7" class="prose-h2"><span class="prose-h2-num">07</span> The strategic question</h2>
+<h2>The strategic question</h2>
 
 <blockquote>The three configurations will compress to two or fewer over the next cycle. Consumer subscription fatigue makes the current fragmentation across Sky, TNT, Amazon, and Apple unsustainable at full price, and the form of the next structure will be decided by M&A between the players rather than by which platform bids highest at auction. The question for boards and fund GPs is which two configurations survive the compression — whether tech-platform bundles absorb the streaming-native players, whether established multi-distribution operators acquire them, or whether partnership-shared rights structures scale enough to remain a third path.</blockquote>
 
-<aside id="sources" class="footnotes" style="margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--bone-mute);">
+<aside class="footnotes" style="margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--bone-mute);">
 <ol style="padding-left:24px;line-height:1.6;list-style:decimal;">
 <li id="fn1"><strong>Scope:</strong> The Ledger’s analysis here is limited to major-market football — Europe, North America, and MENA — where the streaming-native experiments have run long enough to evaluate. The argument does not extend to emerging-football geographies in Asia, Africa, and Latin America, where the broadcasting structure and audience economics remain different enough that separate analysis is required. <a href="#fnref1" class="footnote-back">↩</a></li>
 </ol>
 </aside>
 
-  
-</div>
-<aside class="art-signals">
+  </div>
+
+  <aside class="signals">
     <div class="signals-inner">
       <div class="signals-label">Signals to track</div>
       <ul class="signals-list">
@@ -388,74 +800,37 @@
       </ul>
     </div>
   </aside>
-    </article>
-  </div>
-</div>
-<script>
-(function(){
-  var links=[].slice.call(document.querySelectorAll('.toc-link'));
-  var save=document.querySelector('.art-save');
-  if(save) save.addEventListener('click',function(){this.classList.toggle('on');this.setAttribute('aria-pressed',this.classList.contains('on')?'true':'false');});
-  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
-  if(!secs.length) return;
-  var obs=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ var id=e.target.id;
-      links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+id); }); } });
-  },{rootMargin:'-90px 0px -70% 0px',threshold:0});
-  secs.forEach(function(s){obs.observe(s);});
-})();
-</script>
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <a class="brand" href="/">
-          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
-        </a>
-        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
-          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="/">Overview</a>
-        <a href="/ecosystem">Ecosystem</a>
-        <a href="/ledger">The Ledger</a>
-      </div>
-      <div class="footer-col">
-        <h4>Reference</h4>
-        <a href="/entities">Entities</a>
-        <a href="/briefing">Briefing</a>
-        <a href="/about">About</a>
-      </div>
-      <div class="footer-col">
-        <h4>Get involved</h4>
-        <a href="/join">Join</a>
-        <a href="#subscribe">Subscribe</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 The Football Ledger. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
-      </div>
+</article>
+
+<section class="related">
+  <div class="related-wrap">
+    <div class="related-eyebrow">Continue reading</div>
+    <h2 class="related-title">Related <em>deep-dives</em></h2>
+    <div class="related-grid">
+      <a href="l6-apple-mls-case-study.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Case study</div>
+        <h3 class="related-card-title">Apple × MLS — the experiment that <em>closed itself</em></h3>
+        <p class="related-card-desc">The most ambitious streaming-native football bet ever attempted, restructured before its halfway point. What the trade meant for both parties.</p>
+      </a>
+      <a href="l6-bein-mena-fragmentation.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Trend 6.2</div>
+        <h3 class="related-card-title">beIN holds, the model <em>under pressure</em></h3>
+        <p class="related-card-desc">The MENA pay-TV operator at the centre of regional football broadcasting. What the 2028 cycle and 2034 World Cup test.</p>
+      </a>
+      <a href="macro-01-trophy-to-operating.html" class="related-card">
+        <div class="related-card-tag">Macro · Trend 01</div>
+        <h3 class="related-card-title">From <em>trophy assets</em> to operating businesses</h3>
+        <p class="related-card-desc">Two decades of football capital was deployed for soft power. The next decade is deployed for return.</p>
+      </a>
     </div>
   </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Workstream 02</div>
+  <div>Built May 2026 · Living document</div>
 </footer>
-<script>
-document.addEventListener('click',function(e){
-  var b=e.target.closest('.layer-more'); if(!b) return;
-  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
-  b.setAttribute('aria-expanded',open?'true':'false');
-  b.childNodes[0].nodeValue=open?'Less ':'More ';
-});
-</script>
+
+<script src="/assets/site.js"></script>
 </body>
 </html>

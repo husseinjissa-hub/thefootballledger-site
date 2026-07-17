@@ -1,119 +1,545 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>USA — the next mega-cycle — The Football Ledger</title>
-<meta name="description" content="USA — the next mega-cycle">
 <link rel="canonical" href="https://thefootballledger.co/posts/macro-03-usa-mega-cycle">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-05">
 <meta property="og:site_name" content="The Football Ledger">
-<meta property="og:title" content="USA — the next mega-cycle — The Football Ledger">
-<meta property="og:description" content="USA — the next mega-cycle">
+<meta property="og:title" content="USA — the next mega-cycle">
+<meta property="og:description" content="The 2026 World Cup will reset US soccer economics. MLS, NWSL, USL Premier, Apple-MLS DTC.">
 <meta property="og:url" content="https://thefootballledger.co/posts/macro-03-usa-mega-cycle">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="USA — the next mega-cycle">
+<meta name="twitter:description" content="The 2026 World Cup will reset US soccer economics. MLS, NWSL, USL Premier, Apple-MLS DTC.">
+<title>USA — the next mega-cycle — The Football Ledger</title>
+<meta name="description" content="The 2026 World Cup will reset US soccer economics. MLS, NWSL, USL Premier, Apple-MLS DTC.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/redesign.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee;
+  --ink-2: #f1ece0;
+  --ink-3: #eae4d6;
+  --ink-4: #e0d9c6;
+  --bone: #23201a;
+  --bone-dim: #55514a;
+  --bone-mute: #8a857b;
+  --rust: #7a2233;
+  --gold: #10402b;
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #dcd6c8;
+  --line-soft: #ece7da;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.3s ease;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+/* ============= ARTICLE HEADER ============= */
+.article-header {
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.article-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.article-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 980px;
+}
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.article-meta {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.article-meta strong { color: var(--bone); font-weight: 500; }
+
+/* ============= ARTICLE BODY ============= */
+.article-body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--bone);
+}
+.article-body p {
+  margin-bottom: 28px;
+}
+.article-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 40px;
+}
+.article-body p.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 76px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 8px 14px 0 0;
+  color: var(--gold);
+}
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: var(--bone);
+}
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(16, 64, 43, 0.4);
+  transition: border-color 0.2s ease;
+}
+.article-body a.in-link:hover { border-bottom-color: var(--gold); }
+
+.article-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone);
+}
+
+.callout {
+  background: rgba(16, 64, 43, 0.04);
+  border: 1px solid rgba(16, 64, 43, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.callout-text strong { color: var(--bone); }
+
+.kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin: 56px 0 -12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ============= SIGNALS BOX ============= */
+.signals {
+  max-width: 880px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.signals-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 32px 36px;
+}
+.signals-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signals-list li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  display: grid;
+  grid-template-columns: 8px 260px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.signals-list li::before {
+  content: ''; width: 8px; height: 1px; background: var(--gold);
+  flex-shrink: 0; margin-top: 10px;
+}
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) {
+  .signals-list li { grid-template-columns: 8px 1fr; }
+  .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; }
+}
+
+/* ============= RELATED ============= */
+.related {
+  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--ink-2);
+}
+.related-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.related-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.related-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.related-card {
+  background: var(--ink);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.related-card:hover { background: var(--ink-3); }
+.related-card::after {
+  content: '→';
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.related-card:hover::after {
+  opacity: 1; transform: translateX(0); color: var(--gold);
+}
+.related-card--upcoming { opacity: 0.55; cursor: default; }
+.related-card--upcoming:hover { background: var(--ink); }
+.related-card--upcoming::after { content: none; }
+.related-card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 9px;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.related-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.related-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+
+/* ============= FOOTER ============= */
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .article-header { padding: 60px 24px 50px; }
+  .article-body { padding: 50px 24px 40px; font-size: 17px; }
+  .article-meta { flex-direction: column; gap: 12px; }
+  .signals { padding: 0 24px; }
+  .related { padding: 60px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .masthead { flex-wrap: wrap; gap: 12px; padding: 18px 24px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+}
+
+
+.chart {
+  margin: 60px -32px;
+  display: block;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.chart figcaption {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  font-style: normal;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.chart figcaption em {
+  font-style: italic;
+  color: var(--bone-dim);
+}
+.chart figcaption strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .chart { margin: 40px -24px; }
+}
+
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/" aria-label="The Football Ledger — home">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
-        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
-        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
-        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
-      </svg>
-      <span class="brand-text">
-        <span class="brand-name">The Football Ledger</span>
-        <span class="brand-tag">The Business of Football</span>
-      </span>
-    </a>
-    <nav class="nav" aria-label="Primary">
-      <a href="/" >Overview</a>
-      <a href="/ecosystem" >Ecosystem</a>
-      <a href="/ledger" class="active">The Ledger</a>
-      <a href="/entities" >Entities</a>
-      <a href="/briefing" >Briefing</a>
-      <a href="/about" >About</a>
-      <a href="/join" >Join</a>
-    </nav>
-    <div class="header-cta">
-      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
-      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
-    </div>
-  </div>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
 </header>
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <div class="mobile-menu-top">
-    <a class="brand" href="/">
-      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
-    </a>
-    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
-  </div>
-  <nav aria-label="Primary (mobile)">
-    <a href="/">Overview</a>
-    <a href="/ecosystem">Ecosystem</a>
-    <a href="/ledger">The Ledger</a>
-    <a href="/entities">Entities</a>
-    <a href="/briefing">Briefing</a>
-    <a href="/about">About</a>
-    <a href="/join">Join</a>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
   </nav>
 </div>
-<main id="main">
-<div class="art-wrap">
-  <div class="art-grid">
-    <aside class="art-side">
-      <a class="art-back" href="/ledger"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Ledger</a>
-      <div class="art-block art-block--toc">
-        <div class="art-side-label">Overview</div>
-        <ul class="toc-list">
-          <li><a class="toc-link" href="#sec1"><span class="toc-num">01</span><span>The asset class catches up to the audience</span></a></li>
-          <li><a class="toc-link" href="#sec2"><span class="toc-num">02</span><span>The Apple-MLS reference test</span></a></li>
-          <li><a class="toc-link" href="#sec3"><span class="toc-num">03</span><span>The women's professional inflection</span></a></li>
-          <li><a class="toc-link" href="#sec4"><span class="toc-num">04</span><span>The contrarian read</span></a></li>
-          <li><a class="toc-link" href="#sec5"><span class="toc-num">05</span><span>The open question</span></a></li>
-        </ul>
-      </div>
-      <div class="art-block">
-        <div class="art-side-label">Article info</div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>5 min</b> read</div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>Published <b>18 Apr 2026</b></div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>MACRO · GEOGRAPHY · CYCLES</div>
-        <button class="art-save art-info-row" type="button" aria-pressed="false"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>Save article</button>
-      </div>
-      <div class="art-block">
-        <div class="art-side-label">Related articles</div>
-        <a class="art-rel-item" href="/posts/macro-08-streaming-native-limits.html"><div class="art-rel-thumb"><img src="/assets/img/articles/macro-08-streaming-native-limits.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">MACRO</div><div class="art-rel-title">Football’s Netflix never arrived. What did, hasn’t settled yet.</div><div class="art-rel-date">05 Jun 2026</div></div></a>
-          <a class="art-rel-item" href="/posts/l8-data-led-underdogs.html"><div class="art-rel-thumb"><img src="/assets/img/articles/l8-data-led-underdogs.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">TREND</div><div class="art-rel-title">The data-led underdog arrives in Europe</div><div class="art-rel-date">28 May 2026</div></div></a>
-          <a class="art-rel-item" href="/posts/l3-barcelona-crisis-recovery.html"><div class="art-rel-thumb"><img src="/assets/img/articles/l3-barcelona-crisis-recovery.jpg" alt="" loading="lazy"></div><div><div class="art-rel-cat">CASE STUDY</div><div class="art-rel-title">Barcelona's crisis and recovery</div><div class="art-rel-date">20 May 2026</div></div></a>
-      </div>
-      <div class="fr-news">
-        <h4>Stay ahead of the game.</h4>
-        <p>Join thousands of leaders shaping the business of football.</p>
-        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
-      </div>
-    </aside>
 
-    <article class="art-main">
-      <div class="art-breadcrumb"><b>MACRO</b> · TREND 03 · GEOGRAPHY · CYCLES</div>
-      <h1 class="art-title">USA — the<br><em>next mega-cycle</em></h1>
-      <p class="art-standfirst">The 2026 World Cup is the inflection point in a longer transition: US soccer moving from a market that consumed the global product to one that generates meaningful capital flow, institutional infrastructure, and commercial experiments other markets now watch. The Apple–MLS deal, the NWSL institutionalising, the USL Premier launch — each is an instance of that broader pivot. The 2027–2030 chapter will determine whether the pivot produces a third pole of football capital, or a still-secondary market that absorbs the cycle’s capital without competing at the top of the global game.</p>
-      <div class="art-hero"><img src="/assets/img/articles/macro-03-usa-mega-cycle.jpg" alt="" ></div>
-      <div class="art-metastrip"><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><span class="amc-k">Read</span><br><span class="amc-v">5 min</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg><span><span class="amc-k">Published</span><br><span class="amc-v">18 Apr 2026</span></span></div><div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg><span><span class="amc-k">Filed under</span><br><span class="amc-v">MACRO · GEOGRAPHY · CYCLES</span></span></div></div>
+
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>Macro · Trend 03</span>
+      <span class="article-eyebrow-meta">·  Geography · Cycles</span>
+    </div>
+    <h1 class="article-title">USA — the<br><em>next mega-cycle</em></h1>
+    <p class="article-deck">The 2026 World Cup is the inflection point in a longer transition: US soccer moving from a market that consumed the global product to one that generates meaningful capital flow, institutional infrastructure, and commercial experiments other markets now watch. The Apple–MLS deal, the NWSL institutionalising, the USL Premier launch — each is an instance of that broader pivot. The 2027–2030 chapter will determine whether the pivot produces a third pole of football capital, or a still-secondary market that absorbs the cycle’s capital without competing at the top of the global game.</p>
+    <div class="article-meta">
+      <span><strong>5 min</strong> read</span>
+      <span>Published <strong>May 2026</strong></span>
       
-<div class="article-prose">
+    </div>
+  </header>
 
+  <div class="article-body">
 
 <p class="lead">In June 2026, the FIFA World Cup arrives in the United States, Canada, and Mexico. Forty-eight teams. Sixteen host cities. An estimated five million in-stadium attendees and a global broadcast audience that will, in industry projections, exceed any previous edition. By the time the final is played in mid-July at MetLife Stadium in New Jersey, every credible commercial analysis suggests that the economic baseline of football in the United States will have been reset.</p>
 
-<h2 id="sec1" class="prose-h2"><span class="prose-h2-num">01</span> The asset class catches up to the audience</h2>
+<h2>The asset class catches up to the audience</h2>
 
 <p>Soccer in the United States has been a genuinely interesting market for at least a decade. Major League Soccer's club valuations crossed $1 billion in 2023; expansion-franchise prices reached $500 million by 2024; San Diego FC entered as the league's thirtieth franchise at a reported $500 million entry fee. The National Women's Soccer League, until 2020 a structurally undervalued asset, has now produced several franchises with valuations above $100 million. Bay FC's $53 million expansion fee — paid by an investor group including the Sixth Street Partners platform — was, at the time of its announcement, the highest expansion fee in women's professional sports history.</p>
 
@@ -200,15 +626,15 @@
 <figcaption><strong>The two Division One models.</strong> The structural distinction matters because it determines who can participate, how players move, and how the league's economics behave. MLS is the American closed-franchise system applied to soccer; USL Premier brings the global open-pyramid model to the US for the first time on the men’s side. The question for the next decade is whether two parallel top-tier leagues can both sustain themselves, and which model proves more durable. <strong>Source:</strong> Major League Soccer, United Soccer League, US Soccer Federation Professional League Standards.</figcaption>
 </figure>
 
-<h2 id="sec2" class="prose-h2"><span class="prose-h2-num">02</span> The Apple-MLS reference test</h2>
+<h2>The Apple-MLS reference test</h2>
 
 <p>The single most-watched experiment in US football media is the Apple–MLS deal, and the data is now in. The original 2022 agreement — a ten-year, $2.5 billion bet that put every MLS match behind a standalone $99-per-season paywall — was restructured in November 2025 after the subscriber threshold went unmet: the standalone product was discontinued and MLS folded into the standard Apple TV bundle. The directional finding for the US cycle is that the standalone-paywall configuration did not work, while football-as-content-inside-a-broader-bundle remains in test. The Premier League's 2027 tender, the Bundesliga renewal, and La Liga's posture are now being designed with that finding in evidence. <em>The Ledger examines the deal mechanics and the restructure in detail in its Apple–MLS case study; what matters here is the signal it sends about which broadcast-economics bets the US cycle will reward.</em></p>
 
-<h2 id="sec3" class="prose-h2"><span class="prose-h2-num">03</span> The women's professional inflection</h2>
+<h2>The women's professional inflection</h2>
 
 <p>The National Women's Soccer League is the cleanest expression of the asset-class thesis. Five years ago, NWSL franchise economics were structurally broken — under-capitalised teams, low broadcast revenue, fragile sponsorship relationships. Today, several factors have inverted simultaneously. The league signed a four-network broadcast package in 2023 worth $240 million over four years, multiplying its previous deal by roughly 40x. Bay FC and Boston Unity SC (the latter owned by Fenway Sports Group) entered at expansion fees previously associated with mid-tier MLS franchises. Apollo's Avenue Sports Fund and other generalist sports-PE platforms have built NWSL exposure as core portfolio positions.</p>
 
-<h2 id="sec4" class="prose-h2"><span class="prose-h2-num">04</span> The contrarian read</h2>
+<h2>The contrarian read</h2>
 
 <p>The consensus framing is that the 2026 World Cup will create a boom in US soccer economics from 2026 to 2030. <strong>The sharper read is that the post-tournament period is a buyer's market for operators rather than for assets</strong>. Most of the World Cup’s value to US soccer was priced in before the tournament arrived: asset valuations re-rated through 2023–26, sponsorship deals were locked in 18–36 months ahead, and the broadcast deals that monetise the audience boom were signed before the first ball was kicked. By July 2026, most of the discoverable upside will have been captured by the assets best positioned to capture it.</p>
 
@@ -216,7 +642,7 @@
 
 <p>The hiring is producing an unusual cohort. Senior US-soccer roles are filled, in increasing proportion, by operators arriving from technology, entertainment, professional services, and adjacent leagues — operators whose intuitions about what good looks like are calibrated against industries where US soccer's current operating practices would be considered immature. Whether the cohort accelerates the institutionalisation, or whether the imported intuitions struggle to translate into football-specific outcomes, is the operating question that the next four years of US soccer will answer.</p>
 
-<h2 id="sec5" class="prose-h2"><span class="prose-h2-num">05</span> The open question</h2>
+<h2>The open question</h2>
 
 <p>The public conversation around US soccer has so far framed the next four years as a tournament cycle: the World Cup arrives, the audience uplift follows, valuations re-rate, and 2030 looks straightforwardly larger than 2026. The harder question is what the capital now flowing in actually builds. Football has two established poles of capital — the European Big Five and the Gulf wave — and the institutional money entering US soccer is large enough to ask whether a third is forming.</p>
 
@@ -224,9 +650,9 @@
 
 
 
-  
-</div>
-<aside class="art-signals">
+  </div>
+
+  <aside class="signals">
     <div class="signals-inner">
       <div class="signals-label">Signals to track</div>
       <ul class="signals-list">
@@ -239,74 +665,39 @@
       </ul>
     </div>
   </aside>
-    </article>
-  </div>
-</div>
-<script>
-(function(){
-  var links=[].slice.call(document.querySelectorAll('.toc-link'));
-  var save=document.querySelector('.art-save');
-  if(save) save.addEventListener('click',function(){this.classList.toggle('on');this.setAttribute('aria-pressed',this.classList.contains('on')?'true':'false');});
-  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
-  if(!secs.length) return;
-  var obs=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ var id=e.target.id;
-      links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')==='#'+id); }); } });
-  },{rootMargin:'-90px 0px -70% 0px',threshold:0});
-  secs.forEach(function(s){obs.observe(s);});
-})();
-</script>
-</main>
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <a class="brand" href="/">
-          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
-          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
-        </a>
-        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
-          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
-        </div>
+</article>
+
+<section class="related">
+  <div class="related-wrap">
+    <div class="related-eyebrow">Continue reading</div>
+    <h2 class="related-title">Related <em>deep-dives</em></h2>
+    <div class="related-grid">
+      <div class="related-card related-card--upcoming">
+        <div class="related-card-tag">Macro · Trend 04</div>
+        <h3 class="related-card-title">MENA's <em>second wave</em></h3>
+        <p class="related-card-desc">The 2026 World Cup arrives in the US; the 2034 World Cup arrives in Saudi. The two events share more operating DNA than commonly appreciated.</p>
+        <span class="related-card-status">In production</span>
       </div>
-      <div class="footer-col">
-        <h4>Explore</h4>
-        <a href="/">Overview</a>
-        <a href="/ecosystem">Ecosystem</a>
-        <a href="/ledger">The Ledger</a>
-      </div>
-      <div class="footer-col">
-        <h4>Reference</h4>
-        <a href="/entities">Entities</a>
-        <a href="/briefing">Briefing</a>
-        <a href="/about">About</a>
-      </div>
-      <div class="footer-col">
-        <h4>Get involved</h4>
-        <a href="/join">Join</a>
-        <a href="#subscribe">Subscribe</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 The Football Ledger. All rights reserved.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      <a href="l6-apple-mls-case-study.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Trend 6.2</div>
+        <h3 class="related-card-title">Apple-MLS <em>case study</em></h3>
+        <p class="related-card-desc">First global football DTC at scale. Reference test for whether DTC economics replace pay-TV.</p>
+      </a>
+      <div class="related-card related-card--upcoming">
+        <div class="related-card-tag">Layer 2 · Trend 2.4</div>
+        <h3 class="related-card-title">SPL <em>privatisation</em></h3>
+        <p class="related-card-desc">After Kingdom Holding's Al Hilal acquisition, the SPL is on a clear privatisation trajectory.</p>
+        <span class="related-card-status">In production</span>
       </div>
     </div>
   </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Workstream 02</div>
+  <div>Built May 2026 · Living document</div>
 </footer>
-<script>
-document.addEventListener('click',function(e){
-  var b=e.target.closest('.layer-more'); if(!b) return;
-  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
-  b.setAttribute('aria-expanded',open?'true':'false');
-  b.childNodes[0].nodeValue=open?'Less ':'More ';
-});
-</script>
+
+<script src="/assets/site.js"></script>
 </body>
 </html>

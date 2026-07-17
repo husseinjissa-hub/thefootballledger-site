@@ -82,4 +82,63 @@ render_page(
   body=>$ov,
 );
 
+# ---------- entities ----------
+my @ents;
+if ($cj =~ /"entities":\s*\[(.*?)\],\s*"briefings"/s) {
+  my $b=$1;
+  while ($b =~ /\{([^{}]*)\}/g) { my $o=$1; my %e;
+    $e{slug}=$1 if $o=~/"slug":"([^"]*)"/;
+    $e{name}=($o=~/"name":"([^"]*)"/)?$1:'';
+    $e{layer}=($o=~/"layer":(\d+)/)?$1:'';
+    $e{type}=($o=~/"entityType":"([^"]*)"/)?$1:'';
+    $e{region}=($o=~/"region":"([^"]*)"/)?$1:'';
+    $e{summary}=($o=~/"summary":"([^"]*)"/)?$1:'';
+    push @ents,\%e if $e{slug};
+  }
+}
+my %layerCount; $layerCount{$_->{layer}}++ for @ents;
+
+my %LICO = (
+  1=>'<path d="M4 8l8-4 8 4M6 8v8M10 8v8M14 8v8M18 8v8M4 18h16"/>',
+  2=>'<path d="M7 4h10v3a5 5 0 01-10 0zM7 5H4v1a3 3 0 003 3M17 5h3v1a3 3 0 01-3 3M10 13v3M14 13v3M8 18h8"/>',
+  3=>'<path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9.5 12l1.7 1.7 3.3-3.4"/>',
+  4=>'<ellipse cx="12" cy="6" rx="7" ry="2.4"/><path d="M5 6v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V6M5 11v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4v-5"/>',
+  5=>'<circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9" r="2"/><path d="M4.5 18c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5M14.5 18c0-1.7.8-3.1 2.2-3.7"/>',
+  6=>'<rect x="3" y="5" width="18" height="12" rx="1"/><path d="M9 20h6M12 17v3"/>',
+  7=>'<path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/>',
+  8=>'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/>',
+  9=>'<ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/>',
+);
+my @LAYERS = (
+  [1,'Governing bodies','The regulators and federations that set the rules of competition, governance, and national-team football.',[qw(fifa uefa afc fa saff)]],
+  [2,'Traditional leagues &amp; competitions','The leagues and competitions where the game is played, fans are built, and rights are won.',[qw(premier-league la-liga serie-a bundesliga mls)]],
+  [3,'Clubs &amp; multi-club ownership','The clubs at the center of the system and the ownership groups building portfolios.',[qw(city-football-group fsg blueco ineos-sport red-bull)]],
+  [4,'Capital — sovereign, PE, family, debt','The capital providers funding growth, acquisitions, infrastructure, and innovation.',[qw(pif apollo cvc silver-lake oaktree)]],
+  [5,'Agencies &amp; representation','Agents and agencies representing players, managers, and clubs in the global market.',[qw(caa-stellar img wasserman gestifute roc-nation-sports)]],
+  [6,'Media &amp; broadcasting','Broadcasters and streaming platforms distributing football to billions of fans.',[qw(amazon dazn bein-sports tnt-sports netflix)]],
+  [7,'Commercial — kit, sponsor, retail','Brands and platforms powering commercial revenues and fan engagement.',[qw(nike adidas emirates puma qatar-airways)]],
+  [8,'Football-tech, data &amp; performance','Technology and data companies driving performance, operations, and insights.',[qw(catapult stats-perform statsbomb hudl genius-sports)]],
+  [9,'Stadium, matchday &amp; fan experience','Stadium operators, venues, and platforms enhancing the fan and matchday experience.',[qw(aeg asm-global populous legends oak-view-group)]],
+);
+sub layer_row {
+  my ($L)=@_; my ($num,$title,$desc,$feat)=@$L;
+  my $cnt = $layerCount{$num} // 0;
+  my $logos = join('', map { my $p="assets/img/logos/$_.png"; (-e $p)?'<img class="layer-logo" src="/'.$p.'" alt="" loading="lazy">':'' } @$feat);
+  return
+  '<a class="layer-row" href="/ledger?layer='.$num.'">'."\n".
+  '      <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$num}.'</svg></span><b>'.sprintf("%02d",$num).'</b></span>'."\n".
+  '      <div class="layer-info"><div class="layer-title">'.$title.'</div><div class="layer-desc">'.$desc.'</div></div>'."\n".
+  '      <span class="layer-count">'.$cnt.'</span>'."\n".
+  '      <div class="layer-logos">'.$logos.'</div>'."\n".
+  '      <span class="layer-dd">Deep dive <span class="arw">→</span></span>'."\n".
+  '    </a>';
+}
+my $rows = join("\n    ", map { layer_row($_) } @LAYERS);
+my $eco = slurp("redesign/pages/ecosystem.html");
+$eco =~ s/\{\{LAYER_ROWS\}\}/    $rows/;
+render_page(out=>"ecosystem.html", active=>"ecosystem",
+  title=>"Ecosystem — The Football Ledger",
+  desc=>"The nine-layer map of football's business — governance, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium — with the key entities in each layer.",
+  canonical=>"/ecosystem", body=>$eco);
+
 print "done.\n";

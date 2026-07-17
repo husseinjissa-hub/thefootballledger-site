@@ -120,18 +120,33 @@ my @LAYERS = (
   [8,'Football-tech, data &amp; performance','Technology and data companies driving performance, operations, and insights.',[qw(catapult stats-perform statsbomb hudl genius-sports)]],
   [9,'Stadium, matchday &amp; fan experience','Stadium operators, venues, and platforms enhancing the fan and matchday experience.',[qw(aeg asm-global populous legends oak-view-group)]],
 );
+my %entName; $entName{$_->{slug}}=$_->{name} for @ents;
+my %entByLayer; push @{$entByLayer{$_->{layer}}}, $_ for @ents;
+sub mono { my ($n)=@_; my @w = grep {length} split /[^A-Za-z0-9]+/, ($n//''); return @w>=2 ? uc(substr($w[0],0,1).substr($w[1],0,1)) : uc(substr(($w[0]//'?'),0,2)); }
+sub ent_chip {
+  my ($e)=@_; my $s=$e->{slug}; my $p="assets/img/logos/$s.png";
+  my $vis = (-e $p) ? '<span class="ent-chip-logo"><img src="/'.$p.'" alt="" loading="lazy"></span>'
+                    : '<span class="ent-chip-mono">'.mono($e->{name}).'</span>';
+  return '<a class="ent-chip" href="/entities/'.$s.'.html">'.$vis.'<span class="ent-chip-name">'.esc($e->{name}).'</span></a>';
+}
 sub layer_row {
   my ($L)=@_; my ($num,$title,$desc,$feat)=@$L;
-  my $cnt = $layerCount{$num} // 0;
-  my $logos = join('', map { my $p="assets/img/logos/$_.png"; (-e $p)?'<img class="layer-logo" src="/'.$p.'" alt="" loading="lazy">':'' } @$feat);
+  my $flog = join('', map { my $s=$_; my $p="assets/img/logos/$s.png"; my $nm=esc($entName{$s}//$s);
+    (-e $p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @$feat);
+  my @all = sort { lc($a->{name}//'') cmp lc($b->{name}//'') } @{$entByLayer{$num}||[]};
+  my $chips = join("\n        ", map { ent_chip($_) } @all);
   return
-  '<a class="layer-row" href="/ledger?layer='.$num.'">'."\n".
-  '      <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$num}.'</svg></span><b>'.sprintf("%02d",$num).'</b></span>'."\n".
-  '      <div class="layer-info"><div class="layer-title">'.$title.'</div><div class="layer-desc">'.$desc.'</div></div>'."\n".
-  '      <span class="layer-count">'.$cnt.'</span>'."\n".
-  '      <div class="layer-logos">'.$logos.'</div>'."\n".
-  '      <span class="layer-dd">Deep dive <span class="arw">→</span></span>'."\n".
-  '    </a>';
+  '<div class="layer-row" data-layer="'.$num.'">'."\n".
+  '      <div class="layer-main">'."\n".
+  '        <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$num}.'</svg></span><b>'.sprintf("%02d",$num).'</b></span>'."\n".
+  '        <div class="layer-info"><div class="layer-title">'.$title.'</div><div class="layer-desc">'.$desc.'</div></div>'."\n".
+  '        <div class="layer-logos">'.$flog.'</div>'."\n".
+  '        <button class="layer-more" type="button" aria-expanded="false">More <span class="arw">→</span></button>'."\n".
+  '      </div>'."\n".
+  '      <div class="layer-expand">'."\n".
+  '        '.$chips."\n".
+  '      </div>'."\n".
+  '    </div>';
 }
 my $rows = join("\n    ", map { layer_row($_) } @LAYERS);
 my $eco = slurp("redesign/pages/ecosystem.html");

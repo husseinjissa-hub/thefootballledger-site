@@ -42,5 +42,13 @@
     </div>
   </div>
 </footer>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.layer-more'); if(!b) return;
+  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.childNodes[0].nodeValue=open?'Less ':'More ';
+});
+</script>
 </body>
 </html>

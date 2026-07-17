@@ -114,7 +114,7 @@ my @SPORT = qw(kings-league baller-league icon-league the-soccer-tournament worl
 my @LAYERS = (
   {disp=>'01',ico=>1,id=>1,title=>'Governing bodies',desc=>'The regulators and federations that set the rules of competition, governance, and national-team football.',feat=>[qw(fifa uefa afc fa saff)]},
   {disp=>'02',ico=>2,id=>2,title=>'Traditional leagues &amp; competitions',desc=>'The leagues and competitions where the game is played, fans are built, and rights are won.',feat=>[qw(premier-league la-liga serie-a bundesliga mls)],exclude=>[@SPORT]},
-  {disp=>'02B',ico=>'S',id=>2,title=>'Sportainment leagues',desc=>'A parallel league tier built around non-traditional competition formats — typically 6- or 7-a-side, social-platform-native distribution, and creator- or celebrity-anchored team ownership. Operates alongside, rather than inside, the traditional federation pyramid.',feat=>[@SPORT],only=>[@SPORT]},
+  {disp=>'02B',ico=>'S',id=>2,title=>'Sportainment leagues',desc=>'A parallel league tier built around non-traditional competition formats — typically 6- or 7-a-side.',feat=>[@SPORT],only=>[@SPORT]},
   {disp=>'03',ico=>3,id=>3,title=>'Clubs &amp; multi-club ownership',desc=>'The clubs at the center of the system and the ownership groups building portfolios.',feat=>[qw(city-football-group fsg blueco ineos-sport red-bull)]},
   {disp=>'04',ico=>4,id=>4,title=>'Capital — sovereign, PE, family, debt',desc=>'The capital providers funding growth, acquisitions, infrastructure, and innovation.',feat=>[qw(pif apollo cvc silver-lake oaktree)]},
   {disp=>'05',ico=>5,id=>5,title=>'Agencies &amp; representation',desc=>'Agents and agencies representing players, managers, and clubs in the global market.',feat=>[qw(caa-stellar img wasserman gestifute roc-nation-sports)]},
@@ -134,24 +134,24 @@ sub ent_chip {
 }
 sub layer_row {
   my ($L)=@_;
+  my %featSet = map {$_=>1} @{$L->{feat}};
   my $flog = join('', map { my $s=$_; my $p="assets/img/logos/$s.png"; my $nm=esc($entName{$s}//$s);
     (-e $p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @{$L->{feat}});
   my @all;
   if ($L->{only}) { my %o=map{$_=>1}@{$L->{only}}; @all = grep { $o{$_->{slug}} } @ents; }
   else { my %x = $L->{exclude} ? (map{$_=>1}@{$L->{exclude}}) : (); @all = grep { $_->{layer} eq $L->{id} && !$x{$_->{slug}} } @ents; }
+  @all = grep { !$featSet{$_->{slug}} } @all;   # expand shows only entities NOT already on the front
   @all = sort { lc($a->{name}//'') cmp lc($b->{name}//'') } @all;
-  my $chips = join("\n        ", map { ent_chip($_) } @all);
+  my $more = @all ? '<button class="layer-more" type="button" aria-expanded="false">More <span class="arw">→</span></button>' : '';
+  my $expand = @all ? "\n".'      <div class="layer-expand">'."\n".'        '.join("\n        ", map { ent_chip($_) } @all)."\n".'      </div>' : '';
   return
   '<div class="layer-row" data-layer="'.$L->{disp}.'">'."\n".
   '      <div class="layer-main">'."\n".
   '        <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$L->{ico}}.'</svg></span><b>'.$L->{disp}.'</b></span>'."\n".
   '        <div class="layer-info"><div class="layer-title">'.$L->{title}.'</div><div class="layer-desc">'.$L->{desc}.'</div></div>'."\n".
   '        <div class="layer-logos">'.$flog.'</div>'."\n".
-  '        <button class="layer-more" type="button" aria-expanded="false">More <span class="arw">→</span></button>'."\n".
-  '      </div>'."\n".
-  '      <div class="layer-expand">'."\n".
-  '        '.$chips."\n".
-  '      </div>'."\n".
+  '        '.$more."\n".
+  '      </div>'.$expand."\n".
   '    </div>';
 }
 my $rows = join("\n    ", map { layer_row($_) } @LAYERS);

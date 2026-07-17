@@ -268,14 +268,14 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .layer-more .arw { transition: transform 0.25s ease; }
 .layer-row.open .layer-more .arw { transform: rotate(90deg); }
 /* expand panel */
-.layer-expand { display: none; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; padding: 4px 4px 26px 112px; }
+.layer-expand { display: none; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 6px 28px; padding: 6px 4px 28px 112px; }
 .layer-row.open .layer-expand { display: grid; }
-.ent-chip { display: flex; align-items: center; gap: 13px; padding: 10px 13px; border: 1px solid var(--line); background: var(--card); transition: border-color 0.2s ease; }
-.ent-chip:hover { border-color: var(--green); }
-.ent-chip-logo { width: 42px; height: 30px; flex: 0 0 42px; display: flex; align-items: center; justify-content: center; }
+.ent-chip { display: flex; align-items: center; gap: 14px; padding: 9px 2px; transition: color 0.2s ease; }
+.ent-chip-logo { width: 44px; height: 30px; flex: 0 0 44px; display: flex; align-items: center; justify-content: center; }
 .ent-chip-logo img { max-width: 100%; max-height: 100%; object-fit: contain; }
-.ent-chip-mono { width: 42px; height: 30px; flex: 0 0 42px; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--ink-2); }
-.ent-chip-name { font-family: var(--serif); font-size: 15px; line-height: 1.15; color: var(--ink); }
+.ent-chip-mono { width: 44px; height: 30px; flex: 0 0 44px; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink-3); }
+.ent-chip-name { font-family: var(--serif); font-size: 15px; line-height: 1.2; color: var(--ink); text-transform: none; }
+.ent-chip:hover .ent-chip-name { color: var(--green); }
 @media (max-width: 1180px) { .layer-logos { display: none; } }
 @media (max-width: 720px) {
   .layer-main { flex-wrap: wrap; gap: 14px 16px; }

@@ -108,17 +108,20 @@ my %LICO = (
   7=>'<path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/>',
   8=>'<path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/>',
   9=>'<ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/>',
+  'S'=>'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M10.5 10l3.5 2-3.5 2z"/><path d="M8 21h8"/>',
 );
+my @SPORT = qw(kings-league baller-league icon-league the-soccer-tournament world-sevens-football);
 my @LAYERS = (
-  [1,'Governing bodies','The regulators and federations that set the rules of competition, governance, and national-team football.',[qw(fifa uefa afc fa saff)]],
-  [2,'Traditional leagues &amp; competitions','The leagues and competitions where the game is played, fans are built, and rights are won.',[qw(premier-league la-liga serie-a bundesliga mls)]],
-  [3,'Clubs &amp; multi-club ownership','The clubs at the center of the system and the ownership groups building portfolios.',[qw(city-football-group fsg blueco ineos-sport red-bull)]],
-  [4,'Capital — sovereign, PE, family, debt','The capital providers funding growth, acquisitions, infrastructure, and innovation.',[qw(pif apollo cvc silver-lake oaktree)]],
-  [5,'Agencies &amp; representation','Agents and agencies representing players, managers, and clubs in the global market.',[qw(caa-stellar img wasserman gestifute roc-nation-sports)]],
-  [6,'Media &amp; broadcasting','Broadcasters and streaming platforms distributing football to billions of fans.',[qw(amazon dazn bein-sports tnt-sports netflix)]],
-  [7,'Commercial — kit, sponsor, retail','Brands and platforms powering commercial revenues and fan engagement.',[qw(nike adidas emirates puma qatar-airways)]],
-  [8,'Football-tech, data &amp; performance','Technology and data companies driving performance, operations, and insights.',[qw(catapult stats-perform statsbomb hudl genius-sports)]],
-  [9,'Stadium, matchday &amp; fan experience','Stadium operators, venues, and platforms enhancing the fan and matchday experience.',[qw(aeg asm-global populous legends oak-view-group)]],
+  {disp=>'01',ico=>1,id=>1,title=>'Governing bodies',desc=>'The regulators and federations that set the rules of competition, governance, and national-team football.',feat=>[qw(fifa uefa afc fa saff)]},
+  {disp=>'02',ico=>2,id=>2,title=>'Traditional leagues &amp; competitions',desc=>'The leagues and competitions where the game is played, fans are built, and rights are won.',feat=>[qw(premier-league la-liga serie-a bundesliga mls)],exclude=>[@SPORT]},
+  {disp=>'02B',ico=>'S',id=>2,title=>'Sportainment leagues',desc=>'A parallel league tier built around non-traditional competition formats — typically 6- or 7-a-side, social-platform-native distribution, and creator- or celebrity-anchored team ownership. Operates alongside, rather than inside, the traditional federation pyramid.',feat=>[@SPORT],only=>[@SPORT]},
+  {disp=>'03',ico=>3,id=>3,title=>'Clubs &amp; multi-club ownership',desc=>'The clubs at the center of the system and the ownership groups building portfolios.',feat=>[qw(city-football-group fsg blueco ineos-sport red-bull)]},
+  {disp=>'04',ico=>4,id=>4,title=>'Capital — sovereign, PE, family, debt',desc=>'The capital providers funding growth, acquisitions, infrastructure, and innovation.',feat=>[qw(pif apollo cvc silver-lake oaktree)]},
+  {disp=>'05',ico=>5,id=>5,title=>'Agencies &amp; representation',desc=>'Agents and agencies representing players, managers, and clubs in the global market.',feat=>[qw(caa-stellar img wasserman gestifute roc-nation-sports)]},
+  {disp=>'06',ico=>6,id=>6,title=>'Media &amp; broadcasting',desc=>'Broadcasters and streaming platforms distributing football to billions of fans.',feat=>[qw(amazon dazn bein-sports tnt-sports netflix)]},
+  {disp=>'07',ico=>7,id=>7,title=>'Commercial — kit, sponsor, retail',desc=>'Brands and platforms powering commercial revenues and fan engagement.',feat=>[qw(nike adidas emirates puma qatar-airways)]},
+  {disp=>'08',ico=>8,id=>8,title=>'Football-tech, data &amp; performance',desc=>'Technology and data companies driving performance, operations, and insights.',feat=>[qw(catapult stats-perform statsbomb hudl genius-sports)]},
+  {disp=>'09',ico=>9,id=>9,title=>'Stadium, matchday &amp; fan experience',desc=>'Stadium operators, venues, and platforms enhancing the fan and matchday experience.',feat=>[qw(aeg asm-global populous legends oak-view-group)]},
 );
 my %entName; $entName{$_->{slug}}=$_->{name} for @ents;
 my %entByLayer; push @{$entByLayer{$_->{layer}}}, $_ for @ents;
@@ -130,16 +133,19 @@ sub ent_chip {
   return '<a class="ent-chip" href="/entities/'.$s.'.html">'.$vis.'<span class="ent-chip-name">'.esc($e->{name}).'</span></a>';
 }
 sub layer_row {
-  my ($L)=@_; my ($num,$title,$desc,$feat)=@$L;
+  my ($L)=@_;
   my $flog = join('', map { my $s=$_; my $p="assets/img/logos/$s.png"; my $nm=esc($entName{$s}//$s);
-    (-e $p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @$feat);
-  my @all = sort { lc($a->{name}//'') cmp lc($b->{name}//'') } @{$entByLayer{$num}||[]};
+    (-e $p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @{$L->{feat}});
+  my @all;
+  if ($L->{only}) { my %o=map{$_=>1}@{$L->{only}}; @all = grep { $o{$_->{slug}} } @ents; }
+  else { my %x = $L->{exclude} ? (map{$_=>1}@{$L->{exclude}}) : (); @all = grep { $_->{layer} eq $L->{id} && !$x{$_->{slug}} } @ents; }
+  @all = sort { lc($a->{name}//'') cmp lc($b->{name}//'') } @all;
   my $chips = join("\n        ", map { ent_chip($_) } @all);
   return
-  '<div class="layer-row" data-layer="'.$num.'">'."\n".
+  '<div class="layer-row" data-layer="'.$L->{disp}.'">'."\n".
   '      <div class="layer-main">'."\n".
-  '        <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$num}.'</svg></span><b>'.sprintf("%02d",$num).'</b></span>'."\n".
-  '        <div class="layer-info"><div class="layer-title">'.$title.'</div><div class="layer-desc">'.$desc.'</div></div>'."\n".
+  '        <span class="layer-badge"><span class="layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">'.$LICO{$L->{ico}}.'</svg></span><b>'.$L->{disp}.'</b></span>'."\n".
+  '        <div class="layer-info"><div class="layer-title">'.$L->{title}.'</div><div class="layer-desc">'.$L->{desc}.'</div></div>'."\n".
   '        <div class="layer-logos">'.$flog.'</div>'."\n".
   '        <button class="layer-more" type="button" aria-expanded="false">More <span class="arw">→</span></button>'."\n".
   '      </div>'."\n".

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issue 04 · The great repricing — The Briefing</title>
+<meta name="description" content="The Briefing, Issue 04: FIFA weighs a bigger World Cup as the money is counted, owners sell slices of their clubs, streamers line up for World Cup rights, the gambling ban reprices the shirt, England's regulator switches on, and a multi-club empire comes apart.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6;
+  --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b;
+  --rust: #7a2233; --gold: #10402b;
+  --line: #dcd6c8; --line-soft: #ece7da;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink); color: var(--bone);
+  line-height: 1.6; font-weight: 400;
+  letter-spacing: -0.005em;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none;
+  z-index: 1000; opacity: 0.025; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500; font-size: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex; align-items: center; gap: 8px;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+.issue-header {
+  padding: 100px 60px 60px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1100px; margin: 0 auto;
+}
+.issue-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.issue-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.issue-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+.issue-title em { font-style: italic; color: var(--gold); }
+.issue-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+.issue-meta {
+  display: flex; gap: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.issue-meta strong { color: var(--bone); font-weight: 500; }
+
+/* TOC */
+.toc {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.toc-list {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 24px 32px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toc-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--line);
+  align-items: baseline;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-item-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold);
+  font-size: 11px;
+}
+.toc-item-text {
+  color: var(--bone-dim);
+  line-height: 1.4;
+}
+.toc-item-text strong {
+  color: var(--bone); font-weight: 500;
+  font-family: 'Fraunces', serif; font-size: 16px;
+}
+
+/* Stories */
+.stories {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+}
+.story {
+  padding-bottom: 64px;
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--line);
+}
+.story:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.story-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.story-num::before, .story-num::after {
+  content: ''; width: 24px; height: 1px; background: var(--gold);
+}
+.story-num::after { flex: 1; opacity: 0.4; }
+.story-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.story-headline em { font-style: italic; color: var(--gold); }
+.story-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  margin-bottom: 20px;
+}
+.story p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone);
+  margin-bottom: 20px;
+}
+.story strong { color: var(--bone); font-weight: 600; }
+.story em { font-style: italic; }
+.story-watch {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: rgba(16, 64, 43, 0.05);
+  border-left: 2px solid var(--gold);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+.story-watch strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 6px;
+}
+
+/* Closing */
+.closing {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 60px 60px 80px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+.closing-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone-dim);
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+.closing-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .issue-header { padding: 60px 24px 40px; }
+  .toc { padding: 0 24px; }
+  .stories { padding: 50px 24px 40px; font-size: 16px; }
+  .story-headline { font-size: 24px; }
+  .closing { padding: 40px 24px 60px; }
+  .issue-meta { flex-direction: column; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}.brand-word{line-height:1}.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute);font-weight:400;line-height:1;white-space:nowrap}</style>
+<link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item active">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item active">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+<section class="issue-header">
+  <div class="issue-eyebrow">The Briefing · Issue 03 · 14 Jul 2026</div>
+  <h1 class="issue-title">
+    The great <em>repricing.</em>
+  </h1>
+  <p class="issue-deck">
+    Six stories from a week when football put a fresh price on almost everything it sells — World Cup rights, shirt fronts, and slices of its biggest clubs — even as the tournament itself broke every commercial record it had.
+  </p>
+  <div class="issue-meta">
+    <span>Read time · <strong>5 min</strong></span>
+    <span>Stories · <strong>6</strong></span>
+    <span>Published · <strong>Sundays</strong></span>
+  </div>
+</section>
+
+<aside class="toc">
+  <div class="toc-label">In this issue</div>
+  <div class="toc-list">
+    <div class="toc-item">
+      <div class="toc-item-num">01</div>
+      <div class="toc-item-text"><strong>FIFA weighs a bigger World Cup — as the money is counted.</strong> Talk of a 64-team tournament lands just as 2026 breaks every commercial record.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">02</div>
+      <div class="toc-item-text"><strong>Owners sell slices — and keep the keys.</strong> Newcastle, Manchester United, Brentford and Crystal Palace all put a piece of the club on the market.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">03</div>
+      <div class="toc-item-text"><strong>Streamers line up for the World Cup.</strong> Netflix, Disney and YouTube ready billion-dollar bids for US rights.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">04</div>
+      <div class="toc-item-text"><strong>The gambling ban reprices the shirt.</strong> Betting money isn't leaving — it's moving to the sleeve and the training kit.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">05</div>
+      <div class="toc-item-text"><strong>England's regulator switches on.</strong> A licence to operate is now a condition of owning an English club.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">06</div>
+      <div class="toc-item-text"><strong>A multi-club empire comes apart.</strong> John Textor's Eagle Football unwinds in courts on three continents.</div>
+    </div>
+  </div>
+</aside>
+
+<section class="stories">
+
+  <article class="story">
+    <div class="story-num">Story 01</div>
+    <h2 class="story-headline">FIFA weighs a bigger World Cup — <em>as the money is counted.</em></h2>
+    <div class="story-source">Source · Al Jazeera / SportsPro · July 2026</div>
+
+    <p>
+      FIFA president Gianni Infantino said this week that the governing body will look at expanding the World Cup to 64 teams for the 2030 edition. The current 2026 tournament already grew to 48 teams. UEFA's president, Aleksander Ceferin, called the idea "a bad idea."
+    </p>
+
+    <p>
+      Here is why it matters. Every time the tournament adds teams, it adds matches — and every extra match is more television and sponsorship to sell. The 2026 World Cup has just set records: around $2.8 billion in sponsorship, up from $1.8 billion in 2022, and roughly $10.9 billion in total revenue. That record haul is the evidence FIFA points to when it argues for going bigger. Sold as giving more countries a place, the logic is really about creating more to sell.
+    </p>
+
+    <p>
+      The final is on July 19. A bigger tournament means more revenue, but also more cost — more host cities, more travel, more strain on players and referees. The open question is whether each new block of matches keeps adding money, or eventually stretches the tournament so thin it stops being special.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      FIFA is treating a bigger World Cup as a way to sell more. Does adding another block of teams keep minting new revenue — or does the tournament eventually spread so thin that broadcasters and sponsors stop paying more for it?
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 02</div>
+    <h2 class="story-headline">Owners sell slices — and <em>keep the keys.</em></h2>
+    <div class="story-source">Source · Bloomberg / Front Office Sports · July 2026</div>
+
+    <p>
+      Several big clubs are doing the same thing at once. Saudi Arabia's sovereign fund, PIF, is weighing the sale of a minority stake in Newcastle to help fund a new stadium costing more than £1 billion. Members of the Glazer family are studying a sale of part of their Manchester United holding. Brentford's owner is considering offers for a stake at around a $600 million valuation. And Crystal Palace has hired bankers at the Raine Group to run a sale-or-investment process.
+    </p>
+
+    <p>
+      The common thread is that these are partial sales, not full ones. An owner sells a slice, takes some cash, brings in a partner — and, in most cases, keeps control. It is becoming football's default way to raise money: set a price for the club, bank some gains, and carry on running things. A recent study by data firm PitchBook found more than a third of the biggest European clubs now carry private-equity, venture or private-debt money.
+    </p>
+
+    <p>
+      There is a reason so many are doing this now. The pool of buyers willing to purchase a whole trophy club is thin, while funds looking to buy in are plentiful. Selling a minority stake matches a crowd of would-be investors with owners who don't actually want to leave.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      Selling a minority stake lets owners cash in without letting go. Is this the new normal — owners banking gains while keeping control indefinitely — or is each slice sold just the first step toward selling the whole club later?
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 03</div>
+    <h2 class="story-headline">Streamers line up for <em>the World Cup.</em></h2>
+    <div class="story-source">Source · CNBC / Forbes · July 2026</div>
+
+    <p>
+      Netflix, Disney and YouTube are all preparing bids for the US broadcast rights to the 2030 and 2034 World Cups, with packages reported at $1.5 billion to $2 billion per tournament. For comparison, Fox paid about $485 million for the English-language US rights to 2026. FIFA is expected to open talks within months and, for the first time, may bundle the English- and Spanish-language rights together.
+    </p>
+
+    <p>
+      This is the streaming giants coming for football's single most valuable property. For years the World Cup in the US went to traditional broadcasters like Fox and Telemundo. Putting Netflix and YouTube in the room, and selling one big bundle instead of separate pieces, is designed to spark a bidding war and push the price far higher.
+    </p>
+
+    <p>
+      Television and streaming money is football's biggest single source of income, and the World Cup sets the benchmark for the whole sport. If the streamers pay up here, it signals where the money is heading across football.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      FIFA wants a streamer bidding war to lift its rights fees. Do Netflix and YouTube pay a premium to win the World Cup and reset the whole market — or do the traditional broadcasters hold on, and the giant numbers stay just talk?
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 04</div>
+    <h2 class="story-headline">The gambling ban <em>reprices the shirt.</em></h2>
+    <div class="story-source">Source · Yahoo Sports / Footy Headlines · July 2026</div>
+
+    <p>
+      From the 2026/27 season, Premier League clubs can no longer carry gambling brands on the front of their shirts. That has set off a reshuffle. Newcastle replaced betting firm Sela with KNOX Hydration in a deal worth about £80 million over three years, including the training ground. Everton brought in the finance firm CMC Markets and moved its betting partner Stake to the sleeve. Manchester United pushed Betway to a training-kit-only deal worth around £20 million a year.
+    </p>
+
+    <p>
+      The point is that the betting money is not leaving football — it is moving. The front of the shirt, the most valuable advertising space, now goes to finance and consumer brands, while gambling firms shift to the sleeve and the training kit. Clubs are effectively repricing three different pieces of shirt real estate and trying to recover the lost front-of-shirt income elsewhere.
+    </p>
+
+    <p>
+      When the ban landed, only 15 of the 20 clubs had front-of-shirt deals in place, with US and Middle East sponsors moving in to fill the gaps. It is a live test of whether other kinds of brand can pay what gambling did.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      Betting money is migrating from shirt fronts to sleeves and training kit. Do finance and consumer brands fully replace the lost front-of-shirt income — or do clubs quietly end up worse off, with gambling cash simply repackaged into cheaper corners of the kit?
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 05</div>
+    <h2 class="story-headline">England's regulator <em>switches on.</em></h2>
+    <div class="story-source">Source · Regulation Tomorrow · July 2026</div>
+
+    <p>
+      On July 1 the Independent Football Regulator — England's new statutory watchdog for the game — published its final licensing rules, a governance code and a business-plan template, and opened a trial period running to October. All 116 clubs across the top five divisions must hold a provisional licence before the 2027/28 season.
+    </p>
+
+    <p>
+      This turns the Football Governance Act from a law on paper into a running cost for every club. Owners will have to meet financial and governance tests to keep their licence to operate. That changes who can credibly own an English club, and adds a compliance bill that will quietly feed into what clubs are worth.
+    </p>
+
+    <p>
+      The reminders of why the regulator exists keep coming. Southampton, for example, started this season on minus four points after admitting rule breaches. Policing exactly that kind of financial risk is what the new regime is meant to formalise.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      A licence to operate is now a condition of owning an English club. Does tighter regulation make the Premier League a safer, more stable place to invest — or does the extra cost and scrutiny push some owners and buyers to look elsewhere?
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 06</div>
+    <h2 class="story-headline">A multi-club empire <em>comes apart.</em></h2>
+    <div class="story-source">Source · Front Office Sports / Goal · July 2026</div>
+
+    <p>
+      The unwinding of John Textor's Eagle Football group kept playing out in public this week. Michele Kang completed a €101 million takeover of Lyon, ending Textor's ownership there, while Lyon faced a July 15 deadline to inject €60 million or risk being thrown out of European competition. In a London court, Textor was said to lack the funds to buy back shares in his own holding company, days after being removed from the board of Brazil's Botafogo.
+    </p>
+
+    <p>
+      A multi-club group is one company that owns several clubs across different countries, usually funded by heavy borrowing. The promise is shared costs and players; the danger is that debt at the top can drag every club down together. Eagle Football is now the clearest real-world example of that danger — unwinding in courts on three continents at once.
+    </p>
+
+    <p>
+      Multi-club ownership has boomed over the past decade. The Ledger has followed the Eagle break-up before; this is the fullest picture yet of what happens when a debt-funded network runs out of road.
+    </p>
+
+    <div class="story-watch">
+      <strong>The question</strong>
+      Eagle's collapse shows a debt-heavy multi-club group can fail as one. Does this make investors wary of leveraged multi-club deals — or is it filed away as one badly-run group while the model keeps spreading?
+    </div>
+  </article>
+
+</section>
+
+<section class="closing">
+  <p class="closing-text">
+    The Briefing returns next Sunday. As always, corrections, tips, and serious correspondence are welcome at the editor's address.
+  </p>
+  <div class="closing-meta">— The Football Ledger</div>
+</section>
+
+<footer>
+  <div>The Football Ledger · The Briefing · Issue 04</div>
+  <div>14 July 2026 · Built July 2026</div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

@@ -1,29 +1,31 @@
-<div class="art-wrap">
-  <div class="art-grid">
-    <aside class="art-side">
-      <div class="art-block">
-        <div class="art-side-label">About The Briefing</div>
-        <p style="font-size:14px;line-height:1.6;color:var(--ink-2)">The weekly companion to our long-form analysis — dated short notes on what is moving in the business of football, each explained simply and ending on the question that matters next.</p>
-      </div>
-      <div class="art-block">
-        <div class="art-side-label">Cadence</div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="5" width="16" height="16" rx="1.5"/><path d="M4 9h16M8 3v4M16 3v4"/></svg>Published <b>Sundays</b></div>
-        <div class="art-info-row"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>5 min</b> read</div>
-      </div>
-      <div class="fr-news">
-        <h4>Stay ahead of the game.</h4>
-        <p>Join thousands of leaders shaping the business of football.</p>
-        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
-      </div>
-    </aside>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="overline overline--rule overline--green" style="margin-bottom:24px">Section D · Briefing</div>
+    <h1 class="h1">The <span class="serif-em">newswire.</span></h1>
+    <p class="deck hero-sub" style="margin-top:26px">What moved football's business this week.<br>Five stories. One structural read.</p>
+  </div>
+  <div class="hero-media"><img src="/assets/img/briefing-hero.jpg" alt="A desk with the Financial Times, a laptop showing football-economy dashboards, and a Football Ledger mug" width="1100" height="733"></div>
+</section>
 
-    <div class="art-main">
-      <div class="art-breadcrumb"><b>Section D</b> · The Briefing</div>
-      <h1 class="art-title">The <em>Briefing.</em></h1>
-      <p class="art-standfirst">Dated short notes — what is moving in the business of football, week to week.</p>
-      <div class="brief-list">
-{{BRIEF_ROWS}}
-      </div>
+<section class="wrap section" style="padding-bottom:0">
+{{CURRENT_ISSUE}}
+
+  <div class="bf-prev">
+    <div class="overline overline--green" style="margin-bottom:14px">Previous issues</div>
+    <div class="bf-prev-list">
+{{PREVIOUS_ISSUES}}
     </div>
   </div>
-</div>
+</section>
+
+<section class="wrap section" style="padding-top:44px">
+  <div class="bf-news">
+    <div class="bf-news-media"><img src="/assets/img/briefing-news.jpg" alt="A Football Ledger mug beside a notebook and newspapers" loading="lazy"></div>
+    <div class="bf-news-body">
+      <div class="bf-news-eyebrow">The Briefing. Every Monday.</div>
+      <h2>Monday morning.<br>Before everyone else.</h2>
+      <p>Receive The Briefing every week in your inbox.</p>
+      <form class="bf-news-form" onsubmit="return false"><input type="email" placeholder="Enter your email" aria-label="Enter your email"><button type="submit">Subscribe →</button></form>
+    </div>
+  </div>
+</section>

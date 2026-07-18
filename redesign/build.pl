@@ -751,17 +751,46 @@ if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) {
 }
 @briefs = sort { $b->{date} cmp $a->{date} } @briefs;
 
-# --- Briefing landing ---
-my $brief_rows = join("\n    ", map {
-  my $r=$_; (my $t=$r->{title}) =~ s/\s*—\s*The Briefing.*$//;
-  '<a class="brief-row" href="'.esc($r->{url}).'">'."\n".
-  '      <div class="brief-date">'.fmtdate($r->{date}).'</div>'."\n".
-  '      <div><div class="brief-title">'.esc($t).'</div>'.($r->{dek}?'<div class="brief-dek">'.esc($r->{dek}).'</div>':'').'</div>'."\n".
-  '      <span class="brief-arw">→</span>'."\n".
-  '    </a>'
-} @briefs);
+# --- Briefing landing (current issue card + previous issues) ---
+# Split "Issue 0N · Title — The Briefing" into ($issue_label, $title, $title_html_with_em).
+sub brief_parts {
+  my ($r)=@_;
+  my $full=$r->{title};
+  my ($issue,$name);
+  if ($full =~ /^(Issue\s+\d+)\s*·\s*(.*?)\s*—\s*The Briefing/) { $issue=$1; $name=$2; }
+  else { ($name=$full) =~ s/\s*—\s*The Briefing.*$//; $issue=''; }
+  # italic-accent the last word of the title (matches the issue-title styling)
+  (my $html=esc($name)); $html =~ s/(\s)(\S+)$/$1<em>$2<\/em>/;
+  return ($issue,$name,$html);
+}
+my $cur = $briefs[0];
+my ($cissue,$cname,$chtml) = brief_parts($cur);
+my $current_issue = $cur ?
+  '<div class="bf-current">'."\n".
+  '    <div class="bf-current-body">'."\n".
+  '      <div class="bf-current-label">Current issue</div>'."\n".
+  '      <div class="bf-current-issue"><b>'.esc($cissue).'</b> &nbsp;·&nbsp; '.fmtdate($cur->{date}).'</div>'."\n".
+  '      <h2 class="bf-current-title">'.$chtml.'</h2>'."\n".
+  '      <p class="bf-current-dek">'.esc($cur->{dek}).'</p>'."\n".
+  '      <div class="bf-current-foot">'."\n".
+  '        <span class="bf-current-read"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 8 min read</span>'."\n".
+  '        <a class="btn btn--primary" href="'.esc($cur->{url}).'">Read the issue <span class="arw">→</span></a>'."\n".
+  '      </div>'."\n".
+  '    </div>'."\n".
+  '    <div class="bf-current-media"><img src="/assets/img/briefing-skyline.jpg" alt="The City of London skyline at dusk"></div>'."\n".
+  '  </div>' : '';
+my @prev = @briefs>1 ? @briefs[1..$#briefs] : ();
+my $prev_rows = join("\n      ", map {
+  my $r=$_; my ($iss,$nm,$h)=brief_parts($r);
+  '<a class="bf-prev-row" href="'.esc($r->{url}).'">'."\n".
+  '        <div class="bf-prev-date">'.fmtdate($r->{date}).'</div>'."\n".
+  '        <div><div class="bf-prev-title">'.($iss?'<b>'.esc($iss).' ·</b> ':'').esc($nm).'</div>'.($r->{dek}?'<div class="bf-prev-dek">'.esc($r->{dek}).'</div>':'').'</div>'."\n".
+  '        <span class="bf-prev-read">Read <span class="arw">→</span></span>'."\n".
+  '      </a>'
+} @prev);
 my $bl = slurp("redesign/pages/briefing.html");
-$bl =~ s/\{\{BRIEF_ROWS\}\}/    $brief_rows/;
+$bl =~ s/\{\{CURRENT_ISSUE\}\}/$current_issue/;
+$bl =~ s/\{\{PREVIOUS_ISSUES\}\}/      $prev_rows/;
 render_page(out=>"briefing/index.html", active=>"briefing",
   title=>"The Briefing — The Football Ledger",
   desc=>"The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.",

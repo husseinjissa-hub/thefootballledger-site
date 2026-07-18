@@ -686,7 +686,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .panel { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .apply-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: 48px; align-items: center; }
 .apply-diagram { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
-.apply-diagram img { width: 100%; display: block; }
+.apply-diagram img { width: 100%; height: auto; display: block; }
 
 @media (max-width: 900px) {
   .about-stats { grid-template-columns: 1fr 1fr; }
@@ -737,7 +737,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .toc-item-text { font-size: 14.5px; line-height: 1.5; color: var(--ink-2); }
 .toc-item-text strong { color: var(--ink); font-weight: 600; }
 .stories { margin-top: 20px; }
-.story { padding: 40px 0; border-top: 1px solid var(--line); }
+.story { padding: 40px 0; border-top: 1px solid var(--line); scroll-margin-top: 100px; }
 .story-num { font-family: var(--sans); font-size: 11px; letter-spacing: 0.13em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
 .story-headline { font-family: var(--serif); font-size: clamp(24px, 3vw, 31px); line-height: 1.12; margin-bottom: 12px; }
 .story-headline em { font-style: italic; color: var(--green); }

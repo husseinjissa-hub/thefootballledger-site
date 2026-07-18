@@ -771,15 +771,78 @@ sub build_briefing {
   my $src = "redesign/src-briefing/$file";
   return unless -e $src;
   my $raw = slurp($src);
-  my $header = ($raw =~ /(<section class="issue-header">.*?<\/section>)/s) ? $1 : '';
-  my $toc    = ($raw =~ /(<aside class="toc">.*?<\/aside>)/s) ? $1 : '';
-  my $stories= ($raw =~ /(<section class="stories">.*?<\/section>)/s) ? $1 : '';
+  # breadcrumb from eyebrow
+  my $eye = ($raw =~ /<div class="issue-eyebrow">(.*?)<\/div>/s) ? $1 : 'The Briefing';
+  $eye =~ s/\s+/ /g; $eye =~ s/^\s+|\s+$//g;
+  my @ep = split /\s*·\s*/, $eye;
+  my $bc = '<b>'.esc(shift @ep).'</b>'.(@ep?' · '.esc(join(' · ',@ep)):'');
+  # title / deck
+  my $title = ($raw =~ /<h1 class="issue-title">(.*?)<\/h1>/s) ? $1 : esc($r->{title});
+  $title =~ s/^\s+|\s+$//g;
+  my $deck = ($raw =~ /<p class="issue-deck">(.*?)<\/p>/s) ? $1 : esc($r->{dek});
+  $deck =~ s/^\s+|\s+$//g;
+  # meta pairs
+  my @meta;
+  if ($raw =~ /<div class="issue-meta">(.*?)<\/div>/s) { my $m=$1;
+    while ($m =~ /<span>(.*?)<\/span>/gs) { my $s=$1;
+      if ($s =~ /^(.*?)·\s*<strong>(.*?)<\/strong>/s) { my ($k,$v)=($1,$2); $k=~s/\s+$//; push @meta,[$k,$v]; }
+    }
+  }
+  my @micons = ($ICO_CLOCK, '<path d="M4 6h16M4 12h16M4 18h10"/>', $ICO_CAL);
+  my $metastrip = '';
+  for my $i (0..$#meta) { my ($k,$v)=@{$meta[$i]};
+    $metastrip .= '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.($micons[$i]||$ICO_TAG).'</svg><span><span class="amc-k">'.esc($k).'</span><br><span class="amc-v">'.esc($v).'</span></span></div>';
+  }
+  my $info_rows = join('', map { '<div class="art-info-row">'.esc($_->[0]).' <b>'.esc($_->[1]).'</b></div>' } @meta);
+  # TOC from toc-item strong labels
+  my @toc; while ($raw =~ /<div class="toc-item">.*?<div class="toc-item-text"><strong>(.*?)<\/strong>/gs) { push @toc,$1; }
+  my $ti=0;
+  my $toc_html = join("\n          ", map { $ti++; '<li><a class="toc-link" href="#story'.$ti.'"><span class="toc-num">'.sprintf('%02d',$ti).'</span><span>'.$_.'</span></a></li>' } @toc);
+  # stories, with ids for anchors
+  my $stories = ($raw =~ /(<section class="stories">.*?<\/section>)/s) ? $1 : '';
+  my $si=0; $stories =~ s/<article class="story">/'<article id="story'.(++$si).'" class="story">'/ge;
   (my $t=$r->{title}) =~ s/\s*—\s*The Briefing.*$//;
-  my $body =
-    '<div class="issue-wrap">'."\n".
-    '  <a class="art-back" href="/briefing" style="margin-bottom:30px"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Briefing</a>'."\n".
-    $header."\n".$toc."\n".$stories."\n".
-    '</div>';
+
+  my $body = <<"HTML";
+<div class="art-wrap">
+  <div class="art-grid">
+    <aside class="art-side">
+      <a class="art-back" href="/briefing"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Briefing</a>
+      <div class="art-block art-block--toc">
+        <div class="art-side-label">In this issue</div>
+        <ul class="toc-list">
+          $toc_html
+        </ul>
+      </div>
+      <div class="art-block">
+        <div class="art-side-label">Issue info</div>
+        $info_rows
+      </div>
+      <div class="fr-news">
+        <h4>Stay ahead of the game.</h4>
+        <p>Join thousands of leaders shaping the business of football.</p>
+        <form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button type="submit">Subscribe to newsletter</button></form>
+      </div>
+    </aside>
+    <article class="art-main">
+      <div class="art-breadcrumb">$bc</div>
+      <h1 class="art-title">$title</h1>
+      <p class="art-standfirst">$deck</p>
+      <div class="art-metastrip">$metastrip</div>
+      $stories
+    </article>
+  </div>
+</div>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc-link'));
+  var secs=links.map(function(l){return document.getElementById(l.getAttribute('href').slice(1));}).filter(Boolean);
+  if(!secs.length) return;
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;links.forEach(function(l){l.classList.toggle('active',l.getAttribute('href')==='#'+id);});}});},{rootMargin:'-90px 0px -70% 0px',threshold:0});
+  secs.forEach(function(s){obs.observe(s);});
+})();
+</script>
+HTML
   render_page(out=>"briefing/$file", active=>"briefing",
     title=>$t." — The Briefing · The Football Ledger",
     desc=>$r->{dek}//$t, canonical=>$r->{url}, body=>$body);

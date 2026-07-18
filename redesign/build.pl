@@ -41,6 +41,7 @@ if ($cj =~ /"articles":\s*\[(.*?)\],\s*"entities"/s) {
     $a{status}= ($o =~ /"status":"([^"]*)"/) ? $1 : '';
     $a{url}   = $1 if $o =~ /"url":"([^"]*)"/;
     $a{read}  = ($o =~ /"readMinutes":(\d+)/) ? $1 : '';
+    $a{dek}   = ($o =~ /"dek":"((?:\\.|[^"\\])*)"/) ? $1 : '';
     push @arts, \%a;
   }
 }
@@ -185,6 +186,8 @@ sub art_thumb {
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
 my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
+# Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
+sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
 # --- Editor's Selection ---
 my $lead = $bySlug{'macro-01-trophy-to-operating'} // $live[0];
@@ -197,7 +200,7 @@ my $lead_html =
   '      <div class="es-lead-bg"><img src="/assets/img/articles/macro-01-lead.jpg" alt="" loading="lazy"></div>'."\n".
   '      <div class="overline">'.esc($ltype).($lrest?' '.esc($lrest):'').'</div>'."\n".
   '      <h3 class="es-lead-title">'.esc($lead->{title}).'</h3>'."\n".
-  '      <p class="es-lead-dek">'.esc(trunc($lead->{dek},150)).'</p>'."\n".
+  '      <p class="es-lead-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'."\n".
   '      <div class="es-lead-meta">'.art_meta($lead).'</div>'."\n".
   '      <span class="es-lead-cta">Read article <span class="arw">→</span></span>'."\n".
   '    </a>';

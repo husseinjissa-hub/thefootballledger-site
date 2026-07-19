@@ -347,6 +347,11 @@ sub art_breadcrumb {
   return '<b>'.esc($first).'</b>'.(@p?' · '.esc(join(' · ',@p)):'');
 }
 
+# Supplementary images inserted within an article body (slug => image path)
+my %INLINE = (
+  'macro-01-trophy-to-operating' => 'assets/img/articles/macro-01-inline.jpg',
+  'macro-02-mco-consolidation'   => 'assets/img/articles/macro-02-inline.jpg',
+);
 sub build_article {
   my ($a)=@_;
   my $slug=$a->{slug};
@@ -357,7 +362,11 @@ sub build_article {
     $raw = slurp($src);
     $title_html = ($raw =~ /<h1 class="article-title">(.*?)<\/h1>/s) ? $1 : esc($a->{title});
     $standfirst = ($raw =~ /<p class="article-deck">(.*?)<\/p>/s) ? $1 : esc($a->{dek});
-    $prose = ($raw =~ /<div class="article-body">(.*?)<\/div>\s*(?:<aside class="signals"|<\/article>)/s) ? $1 : '';
+    # Prose = article-body up to the Signals aside (whether it's a sibling after
+    # the body's </div> or nested inside it) or the article close. Strip a trailing
+    # body-closing </div> when present (sibling case).
+    if ($raw =~ /<div class="article-body">(.*?)(?:<aside class="signals"|<\/article>)/s) { $prose=$1; $prose =~ s/\s*<\/div>\s*$//; }
+    else { $prose=''; }
     $signals = ($raw =~ /<aside class="signals">(.*?)<\/aside>/s) ? $1 : '';
   } else {
     $title_html = esc($a->{title});
@@ -369,6 +378,11 @@ sub build_article {
   my @secs = ($prose =~ /<h2>(.*?)<\/h2>/gs);
   my $n=0;
   $prose =~ s{<h2>(.*?)</h2>}{ $n++; '<h2 id="sec'.$n.'" class="prose-h2"><span class="prose-h2-num">'.sprintf('%02d',$n).'</span> '.$1.'</h2>' }ge;
+  # optional supplementary image inserted mid-article (before section 03, else appended)
+  if (my $inl = $INLINE{$slug}) {
+    my $fig = '<figure class="prose-fig"><img src="/'.$inl.'" alt="" loading="lazy"></figure>';
+    if ($prose =~ /<h2 id="sec3"/) { $prose =~ s/(<h2 id="sec3")/$fig\n$1/; } else { $prose .= "\n".$fig; }
+  }
   # anchor the footnotes for the TOC "sources" entry
   my $has_notes = ($prose =~ /<aside class="footnotes"/);
   $prose =~ s/<aside class="footnotes"/<aside id="sources" class="footnotes"/;

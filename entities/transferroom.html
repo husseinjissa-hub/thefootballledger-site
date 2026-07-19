@@ -207,6 +207,24 @@ document.addEventListener('click',function(e){
   b.setAttribute('aria-expanded',open?'true':'false');
   b.childNodes[0].nodeValue=open?'Less ':'More ';
 });
+// Newsletter subscribe — POSTs to the /api/subscribe serverless function
+document.addEventListener('submit',function(e){
+  var form=e.target.closest('.fr-news form, .bf-news-form'); if(!form) return;
+  e.preventDefault();
+  var input=form.querySelector('input[type=email]'); var email=(input&&input.value||'').trim();
+  var btn=form.querySelector('button');
+  function err(msg){ var p=form.querySelector('.subscribe-err'); if(!p){p=document.createElement('p');p.className='subscribe-err';p.setAttribute('role','alert');form.appendChild(p);} p.textContent=msg; }
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err('Please enter a valid email address.'); if(input){input.focus();} return; }
+  var orig=btn?btn.innerHTML:'';
+  if(btn){ btn.disabled=true; btn.textContent='Subscribing…'; }
+  fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+    .then(function(r){ return r.json().catch(function(){return {};}); })
+    .then(function(d){
+      if(d&&d.ok){ form.innerHTML='<p class="subscribe-done">Thanks — you&rsquo;re on the list. Check your inbox for a welcome note.</p>'; }
+      else { if(btn){btn.disabled=false;btn.innerHTML=orig;} err(d&&d.error==='not_configured'?'Subscriptions aren&rsquo;t live yet — please check back soon.':'Something went wrong. Please try again.'); }
+    })
+    .catch(function(){ if(btn){btn.disabled=false;btn.innerHTML=orig;} err('Network error. Please try again.'); });
+});
 </script>
 </body>
 </html>

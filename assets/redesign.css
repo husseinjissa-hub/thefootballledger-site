@@ -364,6 +364,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .fr-news input:focus { outline: none; border-color: var(--green); }
 .fr-news button { width: 100%; font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.03em; color: var(--paper); background: var(--green); border: 0; border-radius: 2px; padding: 11px; cursor: pointer; transition: background 0.2s ease; }
 .fr-news button:hover { background: #163a2e; }
+.subscribe-done { font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--green); font-weight: 500; }
+.subscribe-err { font-family: var(--sans); font-size: 12.5px; line-height: 1.4; color: #9a3b3b; margin-top: 10px; }
 
 .feed-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
 .feed-count { font-family: var(--sans); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }

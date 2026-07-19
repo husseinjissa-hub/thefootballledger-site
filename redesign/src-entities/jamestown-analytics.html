@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jamestown Analytics — Entity profile · The Football Ledger</title>
+<meta name="description" content="Jamestown Analytics entity profile: founding, ownership, model, client roster, outcomes, and the Tony Bloom / Starlizard origin story.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.chart { margin: 40px 0 0; display: block; }
+.chart svg { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+.chart figcaption { font-size: 13px; line-height: 1.55; color: var(--bone-mute); margin-top: 14px; padding: 0 4px; font-family: 'Inter Tight', sans-serif; }
+.chart figcaption em { font-style: italic; color: var(--bone-dim); }
+.chart figcaption strong { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-8">Layer 08 · Football-tech</a><span class="sep">/</span><span>Jamestown Analytics</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L8 · Football-tech · Bespoke analytics</span>
+    <span class="eyebrow-meta">·  Camden, London</span>
+  </div>
+  <h1 class="entity-title">Jamestown <em>Analytics</em></h1>
+  <p class="entity-deck">A Camden-based, owner-funded analytics consultancy. Founded out of Tony Bloom's Starlizard betting infrastructure and built on a single proposition: tailored data services that produce a top-quartile recruiting and opposition-analysis function for clubs that cannot otherwise afford one.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Bespoke analytics consultancy</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">2017</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Camden, London</div></div>
+    <div class="fact"><div class="fact-label">Principal</div><div class="fact-value">Tony Bloom</div></div>
+    <div class="fact"><div class="fact-label">Confirmed clients</div><div class="fact-value"><em>~6</em> top-flight</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Selective European expansion</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The vendor that thinks like an owner</h2>
+    <p>Jamestown Analytics sits in the football-tech layer but does not look like the rest of it. There is no shrink-wrapped product, no per-seat licence, no industry conference booth. The firm operates from a small office in Camden, north London, with a headcount kept deliberately low. Each engagement is a long-form, exclusive partnership: a client club retains Jamestown on a multi-year basis; the algorithms are tailored to that club's tactical, financial, and league-specific constraints; and the same model is then refused to direct competitors. Hearts of Midlothian, for instance, hold the exclusive Jamestown partnership in Scotland.</p>
+    <p>The firm's reach is narrow by design. Public partnerships span Brighton & Hove Albion (the founder's own club), Royale Union Saint-Gilloise (Belgium), Como (Italy), Ipswich Town (England), Hearts (Scotland), and Castellón (Spain). Each is an underdog or upwardly mobile club in its market. Each is overperforming the table position its wage bill would predict. Each piece of public commentary by the firm or its principal frames the work in the same terms: small, calibrated, and concentrated where the information advantage is largest.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Product category</div>
+        <div>
+          <div class="row-val">Bespoke player and coach recruitment analytics; opposition-analysis dossiers; head-coach search and management evaluation; squad appraisal. Output is a tailored decision-support service rather than a software platform.</div>
+          <div class="row-source">Source · Reported (Hearts Standard, Sky Sports, Edinburgh News)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Founded</div>
+        <div>
+          <div class="row-val"><strong>2017</strong>, as a football-focused offshoot of Tony Bloom's Starlizard sports-betting syndicate. Repurposed Starlizard's data-collection infrastructure for player-and-coach evaluation rather than match-outcome modelling.</div>
+          <div class="row-source">Source · Reported (Wikipedia, Jobs in Football, Hearts Standard)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Ownership and capital</div>
+        <div>
+          <div class="row-val">Privately held; <strong>owner-funded</strong>, no disclosed external venture capital or PE rounds. Operates from a single Camden office. Staffing is kept deliberately small relative to the scale of revenue and influence the firm carries.</div>
+          <div class="row-source">Source · Reported · Estimate</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Customer base</div>
+        <div>
+          <div class="row-val">Approximately <em>six</em> publicly confirmed top-flight football clients across England, Belgium, Italy, Scotland, and Spain (lower division). Engagements are exclusive within a market — Jamestown will not work for two competing clubs in the same league.</div>
+          <div class="row-source">Source · Reported (Sky Sports, STV, Heart of Midlothian FC)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Marquee customers</div>
+        <div>
+          <div class="row-val"><strong>Brighton & Hove Albion</strong> (Premier League, founding client, owner-affiliated). <strong>Royale Union Saint-Gilloise</strong> (Belgian Pro League, defending champions). <strong>Como 1907</strong> (Serie A). <strong>Ipswich Town</strong> (Premier League, recently promoted). <strong>Heart of Midlothian</strong> (Scottish Premiership, exclusive Scottish partner). <strong>CD Castellón</strong> (Spain, lower division).</div>
+          <div class="row-source">Source · Reported · Disclosed (club announcements)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Pricing model</div>
+        <div>
+          <div class="row-val">Annual <strong>flat retainer</strong> per client, paid yearly, on a renewing contract. <strong>No percentage of transfer fees</strong> — Tony Bloom has confirmed publicly that selling-clubs retain 100% of resale profit; nothing flows back to Jamestown or to Bloom on transactions. The headline economic exposure for the client is fixed and predictable.</div>
+          <div class="row-source">Source · Reported (Edinburgh News, Hearts Standard, Sky Sports — Bloom interviews 2024–2026)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Fee level</div>
+        <div>
+          <div class="row-val">The exact fee per client is <strong>confidential</strong> in every disclosed engagement. Industry context suggests a <em>mid-six- to low-seven-figure</em> sterling annual retainer is the operating range for a top-flight club, scaling with the depth of the engagement and the size of the client's playing budget. Aggregate Jamestown revenue is plausibly in the <em>low-to-mid eight figures</em> sterling, given six confirmed clients and the firm's small Camden headcount.</div>
+          <div class="row-source">Source · Estimate (industry-implied; not disclosed)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Value arithmetic</div>
+        <div>
+          <div class="row-val">The value case is structurally favourable for the client. Brighton's resale profit on Caicedo, Mac Allister, Mitoma, and Estupiñán — collectively <strong>£200m+</strong> — exceeds any plausible cumulative Jamestown fee by two orders of magnitude. For a Scottish Premiership or Belgian Pro League client, a single correctly-bought £3m signing or one avoided £2m mistake covers a multi-year retainer. The retainer model also insulates the client from the kind of percentage-fee structure that distorts an agency relationship.</div>
+          <div class="row-source">Source · Editorial assessment · Reported transfer values (Transfermarkt, club accounts)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>Principal:</strong> Tony Bloom, owner of Brighton & Hove Albion and founder of Starlizard. <strong>Owner of record:</strong> reported as Johan Sten Mahmoud Moazed (a Bloom associate). The firm intentionally does not foreground its operational leadership in trade press.</div>
+          <div class="row-source">Source · Reported (iGaming Express, Wikipedia)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Model and method</div>
+        <div>
+          <div class="row-val">Proprietary algorithms <strong>refined per client</strong> using criteria supplied by the club: tactical role, coaching style, budget band, league context. Squad appraisal ranks every existing player against positional comparators; recruitment search produces tailored shortlists; opposition analysis produces matchday and season-long dossiers. Coverage spans every league for which structured event data exists.</div>
+          <div class="row-source">Source · Reported (Edinburgh News, Hearts Standard)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Track record (selected)</div>
+        <div>
+          <div class="row-val"><strong>Brighton:</strong> identification and acquisition pipeline behind Caicedo, Mac Allister, Mitoma, Estupiñán — collectively yielding £200m+ in resale profit. <strong>Union SG:</strong> rose from second-tier bottom to Belgian champions, ending a 90-year drought. <strong>Como:</strong> promoted to Serie A; highest league finish since 1988. <strong>Ipswich:</strong> back-to-back promotions to the Premier League. <strong>Hearts:</strong> top of the Scottish Premiership in 2025–26, including the data-led Derek McInnes head-coach appointment.</div>
+          <div class="row-source">Source · Reported (Sky Sports, The Athletic, beIN Sports, Hearts Standard, club statements)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">AI / model maturity</div>
+        <div>
+          <div class="row-val">Architecture is data-and-statistics-led; reported public commentary points to <em>club-specific tailoring</em> as the core IP rather than model frontier. The firm has not publicly committed to a foundation-model substrate of the kind the largest in-house clubs are building. The competitive question for 2026–2028 is whether tailored bespoke modelling continues to outpace generalist large-model approaches.</div>
+          <div class="row-source">Source · Reported · Editorial assessment</div>
+        </div>
+      </div>
+
+    </div>
+
+    <figure class="chart">
+<svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Jamestown client partnership timeline and notable outcomes">
+  <rect x="0" y="0" width="720" height="360" fill="#f1ece0"/>
+  <text x="40" y="28" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="40" y="48" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">Jamestown client partnerships and notable outcomes</text>
+
+  <!-- timeline -->
+  <line x1="80" y1="300" x2="660" y2="300" stroke="#d8d2c4" stroke-width="1"/>
+  <g font-family="'JetBrains Mono', monospace" font-size="9" fill="#7a7770">
+    <text x="80" y="320">2017</text>
+    <text x="180" y="320">2019</text>
+    <text x="280" y="320">2021</text>
+    <text x="380" y="320">2023</text>
+    <text x="480" y="320">2025</text>
+    <text x="580" y="320">2026</text>
+  </g>
+
+  <!-- Lanes per client -->
+  <!-- Brighton: 2017 onward -->
+  <text x="40" y="86" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Brighton</text>
+  <line x1="80" y1="80" x2="660" y2="80" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="80" cy="80" r="5" fill="#10402b"/>
+  <text x="120" y="76" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="380" cy="80" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="396" y="76" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">£200m+ RESALE PROFIT</text>
+
+  <!-- Union SG: 2018+ -->
+  <text x="40" y="126" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Union SG</text>
+  <line x1="120" y1="120" x2="660" y2="120" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="120" cy="120" r="5" fill="#10402b"/>
+  <text x="135" y="116" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="500" cy="120" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="515" y="116" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">BELGIAN CHAMPIONS · 90-YR DROUGHT ENDS</text>
+
+  <!-- Como: 2023+ -->
+  <text x="40" y="166" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Como</text>
+  <line x1="380" y1="160" x2="660" y2="160" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="380" cy="160" r="5" fill="#10402b"/>
+  <text x="395" y="156" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="480" cy="160" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="495" y="156" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PROMOTED · TOP-HALF SERIE A</text>
+
+  <!-- Ipswich: 2023+ -->
+  <text x="40" y="206" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Ipswich</text>
+  <line x1="380" y1="200" x2="660" y2="200" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="380" cy="200" r="5" fill="#10402b"/>
+  <text x="395" y="196" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="480" cy="200" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="495" y="196" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PROMOTED · PREMIER LEAGUE</text>
+
+  <!-- Hearts: 2024+ -->
+  <text x="40" y="246" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Hearts</text>
+  <line x1="430" y1="240" x2="660" y2="240" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="430" cy="240" r="5" fill="#10402b"/>
+  <text x="445" y="236" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="580" cy="240" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="595" y="236" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">SPL TOP · McINNES PICK</text>
+
+  <!-- Castellón: 2023+ (lower div Spain) -->
+  <text x="40" y="286" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11">Castellón</text>
+  <line x1="380" y1="280" x2="660" y2="280" stroke="#10402b" stroke-width="1.5" opacity="0.85"/>
+  <circle cx="380" cy="280" r="5" fill="#10402b"/>
+  <text x="395" y="276" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PARTNER</text>
+  <circle cx="480" cy="280" r="5" fill="#10402b" opacity="0.7"/>
+  <text x="495" y="276" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="8">PROMOTED · LA LIGA 2</text>
+
+  <text x="40" y="346" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="9">Partnership start dates are reported, not all formally disclosed; outcome markers reflect the most-cited public reference points.</text>
+</svg>
+<figcaption>Confirmed Jamestown client partnerships and the most-referenced outcome event for each. <em>Estimate of partnership-start years for some clubs (Como, Ipswich, Castellón) — public confirmation lags actual engagement; the firm does not maintain a public client list.</em> <strong>Source:</strong> Sky Sports, STV, Edinburgh News, Hearts Standard, The Athletic, Wikipedia, club press releases.</figcaption>
+</figure>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the firm actually does, and how</h2>
+    <p>The operating model has three integrated functions. The first is <strong>squad appraisal</strong>: at the start of an engagement Jamestown ranks every player on the client's roster against positional comparators across the global database, producing a calibrated baseline of where the squad sits today. The second is <strong>tailored recruitment search</strong>: the client supplies criteria — tactical role, age band, budget, contract horizon, league preference — and Jamestown produces ranked shortlists derived from a model trained against that client's specific profile. The third is <strong>head-coach and management search</strong>: the same data plumbing applied to coaches' tactical fingerprints and historical performance signatures. Hearts' two-step appointment of Derek McInnes is the most-publicised example.</p>
+    <p>The firm's commercial structure is its under-appreciated competitive moat. Jamestown does not sell to direct league competitors. The exclusivity is enforced contractually rather than informally: Hearts holds the exclusive Scottish partnership; Union SG holds it in Belgium; Castellón in the Spanish lower divisions. The economic effect is a deliberate scarcity model — the firm could plausibly take on five or ten times the current client base on capacity grounds, but does not, because the value proposition collapses if the same algorithm is informing both sides of a transfer market.</p>
+    <p>The financial economics are not public, but the structural picture is straightforward. Annual retainers in the low-to-mid eight figures sterling, a small Camden headcount with most cost in senior data and football-domain talent, no marketing spend, no platform infrastructure of the kind StatsBomb or Hudl carry. Reported margins are high. The firm's principal beneficiary is Tony Bloom personally; the model is not capital-constrained.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The Bloom origin</div>
+    <h2>From <em>Starlizard</em> to the football-tech layer</h2>
+    <p>The firm's origin runs through Tony Bloom's professional gambling career and Starlizard, the Mayfair-based syndicate Bloom built around a proprietary statistical model of football match outcomes. Starlizard's edge — and the source of the personal wealth Bloom subsequently used to acquire Brighton in 2009 — sat in the same data infrastructure that, repurposed, became Jamestown. The same event-data feeds, the same modelling discipline, the same iterative refinement against outcome data — turned from match prediction to player and coach evaluation.</p>
+    <p>The Starlizard heritage is the part of the story that explains why Jamestown is structurally different from a sport-tech startup. The firm did not need to raise capital, did not need to build distribution, did not need to engineer a SaaS product. It started from a position of fully-funded data infrastructure and a principal who already understood, from the betting side, how small a calibrated information edge has to be before it compounds.</p>
+    <p>Bloom's most consequential 2024 move — the £9.86 million convertible-loan investment in Hearts of Midlothian — formalised what had been an arms-length consulting relationship into an owner-aligned one. The investment was paired with the exclusive Jamestown partnership in Scotland and an explicit framing, in trade-press interviews, of the Hearts engagement as a sister-club model in the Brighton / Union SG mould. That framing matters: Jamestown's most engaged clients are now also its founder's owner-aligned clubs, with all the alignment-and-conflict implications that comes with it.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The stated direction in 2026 is selective European expansion under the existing exclusivity model. Public commentary by Bloom and by client-club executives suggests an active pipeline in the lower divisions of Spain and Italy, in the secondary Scandinavian leagues, and possibly in MLS. The firm is unlikely to expand into the major-five top flights aggressively because the exclusivity rule binds — Brighton holds the Premier League slot, Como holds Serie A, no further engagement is possible in those leagues without disturbing existing clients.</p>
+    <p>The model-architecture posture is unresolved. Jamestown's IP is tailored bespoke modelling; the broader sport-tech direction is toward foundation-model substrates that the largest in-house teams are building. The competitive question for 2027–2028 is whether bespoke calibration continues to outperform generalist large-model approaches in the specific use-cases Jamestown serves — tier-two recruitment, tactical-fit coach search, opposition analysis at sub-Premier-League budget — or whether the in-house substrate path overtakes the vendor model. The honest read is that nobody, including Jamestown, knows.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>Sky Sports — Hearts confirm partnership with Brighton owner Tony Bloom's Jamestown Analytics firm (2024)</li>
+      <li>Sky Sports — Hearts: Brighton owner Tony Bloom makes £9.86m investment offer (2024)</li>
+      <li>Hearts Standard — Tony Bloom reveals Hearts transfer model and Jamestown arrangement (2025)</li>
+      <li>Edinburgh News / Scotsman — Inside Hearts and Jamestown: the McInnes appointment (2025); Tony Bloom outlines how Jamestown is helping Hearts (2026)</li>
+      <li>STV News — Hearts confirm partnership with Brighton owner Tony Bloom's company Jamestown Analytics (2024)</li>
+      <li>Jobs in Football — The Impact Of Jamestown Analytics On World Football</li>
+      <li>iGaming Express — How Did Tony Bloom Make His Money? · Who is Tony Bloom?</li>
+      <li>Wikipedia — Tony Bloom; Starlizard; Brighton & Hove Albion FC</li>
+      <li>The Esk — Anthony Grant Bloom: Analysis of Starlizard, the Brighton Model (2026)</li>
+      <li>LinkedIn / Multi-Club Ownership Insights — Jamestown / Starlizard impact on multiple football clubs</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

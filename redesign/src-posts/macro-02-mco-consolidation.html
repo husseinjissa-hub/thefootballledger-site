@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://thefootballledger.co/posts/macro-02-mco-consolidation">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-05">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="Multi-club ownership has won. The integration question is open.">
+<meta property="og:description" content="Multi-club ownership now covers nearly half of Big Five clubs. The acquisition phase is over. Two groups have built integration capability; the rest are still portfolios of clubs that happen to share an owner. The 2025-26 cycle is marking the difference.">
+<meta property="og:url" content="https://thefootballledger.co/posts/macro-02-mco-consolidation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Multi-club ownership has won. The integration question is open.">
+<meta name="twitter:description" content="Multi-club ownership now covers nearly half of Big Five clubs. The acquisition phase is over. Two groups have built integration capability; the rest are still portfolios of clubs that happen to share an owner. The 2025-26 cycle is marking the difference.">
+<title>Multi-club ownership has won. The integration question is open. — The Football Ledger</title>
+<meta name="description" content="Multi-club ownership now covers nearly half of Big Five clubs. The acquisition phase is over. Two groups have built integration capability; the rest are still portfolios of clubs that happen to share an owner. The 2025-26 cycle is marking the difference.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee;
+  --ink-2: #f1ece0;
+  --ink-3: #eae4d6;
+  --ink-4: #e0d9c6;
+  --bone: #23201a;
+  --bone-dim: #55514a;
+  --bone-mute: #8a857b;
+  --rust: #7a2233;
+  --gold: #10402b;
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #dcd6c8;
+  --line-soft: #ece7da;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.3s ease;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+/* ============= ARTICLE HEADER ============= */
+.article-header {
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.article-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.article-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 980px;
+}
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.article-meta {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.article-meta strong { color: var(--bone); font-weight: 500; }
+
+/* ============= ARTICLE BODY ============= */
+.article-body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--bone);
+}
+.article-body p {
+  margin-bottom: 28px;
+}
+.article-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 40px;
+}
+.article-body p.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 76px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 8px 14px 0 0;
+  color: var(--gold);
+}
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: var(--bone);
+}
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(16, 64, 43, 0.4);
+  transition: border-color 0.2s ease;
+}
+.article-body a.in-link:hover { border-bottom-color: var(--gold); }
+
+.article-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone);
+}
+
+.callout {
+  background: rgba(16, 64, 43, 0.04);
+  border: 1px solid rgba(16, 64, 43, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.callout-text strong { color: var(--bone); }
+
+.kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin: 56px 0 -12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ============= SIGNALS BOX ============= */
+.signals {
+  max-width: 880px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.signals-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 32px 36px;
+}
+.signals-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signals-list li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  display: grid;
+  grid-template-columns: 8px 280px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.signals-list li::before {
+  content: ''; width: 8px; height: 1px; background: var(--gold);
+  flex-shrink: 0; margin-top: 10px;
+}
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) {
+  .signals-list li { grid-template-columns: 8px 1fr; }
+  .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; }
+}
+
+/* ============= RELATED ============= */
+.related {
+  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--ink-2);
+}
+.related-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.related-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.related-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.related-card {
+  background: var(--ink);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.related-card:hover { background: var(--ink-3); }
+.related-card::after {
+  content: '→';
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.related-card:hover::after {
+  opacity: 1; transform: translateX(0); color: var(--gold);
+}
+.related-card--upcoming { opacity: 0.55; cursor: default; }
+.related-card--upcoming:hover { background: var(--ink); }
+.related-card--upcoming::after { content: none; }
+.related-card-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 3px 9px;
+  align-self: flex-start;
+  margin-top: auto;
+}
+.related-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.related-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+
+/* ============= FOOTER ============= */
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .article-header { padding: 60px 24px 50px; }
+  .article-body { padding: 50px 24px 40px; font-size: 17px; }
+  .article-meta { flex-direction: column; gap: 12px; }
+  .signals { padding: 0 24px; }
+  .related { padding: 60px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .masthead { flex-wrap: wrap; gap: 12px; padding: 18px 24px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+}
+
+
+.chart {
+  margin: 60px -32px;
+  display: block;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.chart figcaption {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  font-style: normal;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.chart figcaption em {
+  font-style: italic;
+  color: var(--bone-dim);
+}
+.chart figcaption strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .chart { margin: 40px -24px; }
+}
+
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>Macro · Trend 02</span>
+      <span class="article-eyebrow-meta">·  Ownership · Strategy · MCO</span>
+    </div>
+    <h1 class="article-title">Multi-club ownership has won.<br><em>The integration question is open.</em></h1>
+    <p class="article-deck">Multi-club ownership has become the default architecture for ambitious football capital. Nearly half of Big Five clubs sit inside groups, and the deal pipeline shows no sign of softening. The question that defines the next decade is no longer whether the model spreads. It is whether the groups that have spread can run their portfolios as platforms — and whether the regulator lets them try.</p>
+    <div class="article-meta">
+      <span><strong>7 min</strong> read</span>
+      <span>Published <strong>May 2026</strong></span>
+      
+    </div>
+  </header>
+
+  <div class="article-body">
+
+<p class="lead">In the 2025–26 season, just under forty-eight per cent of clubs in Europe's top five leagues were part of a multi-club ownership group. A year earlier, the figure was forty-two per cent. A decade earlier, it was a curiosity. The most consequential structural change in modern football is not happening on the pitch. It is happening in the cap table.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Multi-club ownership share of Big Five clubs, 2015–2025">
+  <rect x="0" y="0" width="720" height="400" fill="#f1ece0"/>
+  <line x1="70" y1="280.0" x2="680" y2="280.0" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="280.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">10%</text><line x1="70" y1="220.0" x2="680" y2="220.0" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="220.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">20%</text><line x1="70" y1="160.0" x2="680" y2="160.0" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="160.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">30%</text><line x1="70" y1="100.0" x2="680" y2="100.0" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="100.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">40%</text><line x1="70" y1="40.0" x2="680" y2="40.0" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="2,4"/><text x="58" y="40.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" dominant-baseline="middle">50%</text>
+  <polyline points="120.8,286.0 273.3,208.0 375.0,172.0 476.7,142.0 527.5,119.8 578.3,89.8 629.2,53.8" fill="none" stroke="#10402b" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="120.8" cy="286.0" r="4" fill="#7a7770" stroke="#23201a" stroke-width="2"/><circle cx="273.3" cy="208.0" r="4" fill="#7a7770" stroke="#23201a" stroke-width="2"/><circle cx="375.0" cy="172.0" r="4" fill="#7a7770" stroke="#23201a" stroke-width="2"/><circle cx="476.7" cy="142.0" r="4" fill="#7a7770" stroke="#23201a" stroke-width="2"/><circle cx="527.5" cy="119.8" r="4" fill="#10402b" stroke="#23201a" stroke-width="2"/><circle cx="578.3" cy="89.8" r="4" fill="#10402b" stroke="#23201a" stroke-width="2"/><circle cx="629.2" cy="53.8" r="4" fill="#10402b" stroke="#23201a" stroke-width="2"/>
+  <text x="120.8" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2015</text><text x="222.5" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2017</text><text x="324.2" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2019</text><text x="425.8" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2021</text><text x="527.5" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2023</text><text x="629.2" y="362" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle">2025</text>
+  <text x="621.2" y="39.8" fill="#10402b" font-family="'Fraunces', Georgia, serif" font-size="22" font-weight="500" text-anchor="end" font-style="italic">47.7%</text>
+<text x="621.2" y="57.8" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">2025–26</text>
+  <text x="132.8" y="282.0" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~9% est. 2015</text>
+  <line x1="70" y1="340" x2="680" y2="340" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="70" y="22" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="70" y="38" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">Big Five clubs in MCO groups, 2015–2025</text>
+</svg>
+<figcaption>Share of clubs in the English, Spanish, German, Italian, and French top divisions affiliated with a multi-club ownership group. <em>Verified data points (gold) from PitchBook, UEFA Club Investment Report, and trade press. Earlier years (grey) estimated from documented growth trajectory.</em> <strong>Source:</strong> PitchBook (2024–2026), UEFA Club Investment Report (2024–2025), The Football Week.</figcaption>
+</figure>
+
+<p>The growth is settled. The question is what comes next. Two groups, on the public record so far, have built operating platforms that begin to justify the original thesis. The rest have acquired the clubs and have not yet, in their public disclosures, shown the operating capability that makes the portfolio worth more than its parts.</p>
+
+<h2>Why anyone builds a multi-club group in the first place</h2>
+
+<p>The MCO thesis, in its strongest form, rests on four sources of value that a single club cannot replicate.</p>
+
+<p>The first is a <strong>talent ladder</strong>: develop players at smaller clubs in the group, promote them to the flagship as they mature, capture appreciation that a single-club competitor would have to buy from the market. The second is <strong>commercial scale</strong>: a global portfolio of clubs offers a sponsor reach that no individual club can match, and a unified commercial platform can sell that reach at a premium. The third is <strong>geographic and regulatory diversification</strong>: revenue across multiple leagues, jurisdictions, and broadcast cycles smooths exposure to any single market. The fourth is <strong>brand network effects</strong>: a single visual language, shared content, and integrated fan-data architecture lets a group market each club to the others' supporters and capture cross-club commercial value.</p>
+
+<p>Each of these is real in theory and demanding in practice. None is mechanical — every one of them requires the group to build central operating capability that does not exist by default. Owning the clubs is the easy part. Running them as one platform is the work.</p>
+
+<h2>What integration would have to look like</h2>
+
+<p>The first decade of the multi-club era was the acquisition phase. Capital deployed quickly, portfolios assembled at speed, and the assumption was that operating value would follow ownership. City Football Group reached thirteen clubs across five continents; Red Bull built five clubs around a tightly engineered talent ladder; RedBird, BlueCo, FSG, INEOS, Eagle, and a long list of smaller groups acquired aggressively through the early 2020s. The market spoke as one: the future of ambitious football capital is multi-club. By 2025–26, the assumption that MCO is the structural answer is the consensus position.</p>
+
+<p>What integration looks like in practice — when it works — is visible at two groups. CFG runs shared analytics, group-wide commercial functions, and a recruitment infrastructure that demonstrably moves players inside the portfolio. Red Bull has an integrated talent ladder visible in audited transfer flows and competitive outcomes across Salzburg, Leipzig, and the satellite operations. These are not abstract synergies. They are operating capabilities that show up in audited accounts and in the visible movement of players, staff, and revenue between the group's clubs. They took roughly a decade to build at each group. They are the reference standard for what integration means.</p>
+
+<p>For the remaining MCO groups — RedBird, BlueCo, FSG, INEOS, Eagle, and the long tail beyond them — the public record does not yet show comparable operating capability. Most disclose limited shared infrastructure beyond scouting databases. Operating accounts at the group level — where consolidated synergies would show up — are typically not published, because the mid-tier groups are private. What the disclosure gap means — whether the operating capability is being built behind closed doors and will reveal itself, or whether it is not being built — is the question the next operating cycle will answer.</p>
+
+<p>Where integration has been pushed visibly and at pace, the operational tension has surfaced quickly. BlueCo has moved at least twelve players between Chelsea and Strasbourg since acquiring Strasbourg in 2023 — most on loan, several on permanent transfers, alongside the appointment of Chelsea's Liam Rosenior as Strasbourg head coach and the broader integration of coaching and recruitment functions. Strasbourg's president has publicly denied that the club is a feeder for Chelsea; the trajectory of player movement, coaching appointments, and squad-building under BlueCo has nevertheless drawn pushback from Strasbourg supporters, who read the pattern as a loss of sporting independence — the club's recruitment and team-building serving the group's broader portfolio rather than Strasbourg's own ambition. The case is a live demonstration of the integration challenge: the operational moves the integration thesis requires are exactly the moves that surface fan and stakeholder resistance when one club's identity as an independent institution appears to be in question. The integrators of the next decade will be defined as much by how they navigate that tension as by whether they build the operating capability in the first place.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 780 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MCO groups grouped by integration capability, 2026">
+  <rect x="0" y="0" width="780" height="460" fill="#f1ece0"/>
+  <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2 · SCHEMATIC</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="16" font-weight="500">Where the major MCO groups sit in 2026</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Editorial composite of disclosed group-HQ infrastructure, audited cross-club flows, and published synergies.</text>
+
+  <!-- Three column dividers -->
+  <line x1="280" y1="110" x2="280" y2="400" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="3,5"/>
+  <line x1="520" y1="110" x2="520" y2="400" stroke="#d8d2c4" stroke-width="1" stroke-dasharray="3,5"/>
+
+  <!-- Column headers -->
+  <text x="160" y="130" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">ASSEMBLERS</text>
+  <text x="400" y="130" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">BUILDING CAPABILITY</text>
+  <text x="640" y="130" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" letter-spacing="1.5">INTEGRATORS</text>
+
+  <!-- Sub-headers describing each column -->
+  <text x="160" y="152" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">Portfolios of independently</text>
+  <text x="160" y="166" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">run clubs that share an owner</text>
+
+  <text x="400" y="152" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">Investing in central operating</text>
+  <text x="400" y="166" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">capability; not yet at scale</text>
+
+  <text x="640" y="152" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">Cross-club synergies in</text>
+  <text x="640" y="166" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" text-anchor="middle">audited operating record</text>
+
+  <!-- Assemblers (left column) -->
+  <circle cx="160" cy="220" r="7" fill="#c8102e"/>
+  <text x="160" y="244" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">Eagle Football</text>
+  <text x="160" y="262" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">3 clubs</text>
+
+  <circle cx="160" cy="300" r="7" fill="#c8102e"/>
+  <text x="160" y="324" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">Pacific Media</text>
+  <text x="160" y="342" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Multi-club portfolio</text>
+
+  <!-- Middle (building capability) -->
+  <circle cx="400" cy="220" r="7" fill="#55514a"/>
+  <text x="400" y="244" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">BlueCo</text>
+  <text x="400" y="262" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Chelsea, Strasbourg</text>
+
+  <circle cx="400" cy="300" r="7" fill="#55514a"/>
+  <text x="400" y="324" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">RedBird</text>
+  <text x="400" y="342" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Milan, Toulouse</text>
+
+  <circle cx="400" cy="380" r="7" fill="#55514a"/>
+  <text x="400" y="404" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">INEOS</text>
+  <text x="400" y="422" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Nice, Lausanne, 28.9% MUFC</text>
+
+  <!-- Integrators (right column) -->
+  <circle cx="640" cy="220" r="9" fill="#10402b"/>
+  <text x="640" y="246" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">City Football Group</text>
+  <text x="640" y="264" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">13 clubs · 5 continents</text>
+
+  <circle cx="640" cy="320" r="8" fill="#10402b"/>
+  <text x="640" y="346" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="14" text-anchor="middle" font-weight="500">Red Bull</text>
+  <text x="640" y="364" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">5 clubs · integrated ladder</text>
+</svg>
+<figcaption><strong>Editorially constructed schematic.</strong> Placement reflects each group's disclosed operating infrastructure, audited cross-club flows, and published synergies at the time of writing. <em>Not a ranking of investor returns or a forecast.</em> <strong>Source:</strong> CFG, Red Bull, BlueCo, RedBird, INEOS, Eagle Football Holdings disclosures; UEFA Club Investment Reports 2024–25.</figcaption>
+</figure>
+
+<h2>The regulator narrows the path</h2>
+
+
+<p>Compounding the operating challenge, the regulator is making the model harder to run. Despite the trend toward MCO assembly, UEFA has not accommodated it; if anything, it has hardened against it. Article 5 prohibits any owner from holding decisive influence over more than one club in the same European competition in the same season. For most of the past decade, the rule was a soft constraint — workable through blind trusts, governance carve-outs, and structured separations. In 2025 it hardened. The Court of Arbitration for Sport upheld every UEFA challenge brought against multi-club groups in the cycle; the 1 March assessment date became strict and absolute; and the December 2025 CFCB Circular confirmed no future loosening.</p>
+
+<p>The Manchester City–Girona case is the clearest test. When both clubs qualified for the 2024–25 Champions League, City Football Group was forced to place Girona under an independent blind-trust structure to satisfy UEFA's ownership-separation requirements — preventing the cross-club coordination on personnel, sporting decisions, and transactions that the integration thesis relies on. The model has not been outlawed. It has been made more expensive to run — and the cost falls on every MCO group, including the two that have built integration capability and the many that have not yet shown they are building it.</p>
+
+<h2>The contrarian read</h2>
+
+<p>The consensus on multi-club ownership is straightforward: it is the future of football, the model that generates the synergies a single club cannot, and the structure that justifies the valuations capital is now paying for it.</p>
+
+<p>The counter to that consensus is two-fold. First, the argument that MCO is the future of football is — as of today — premature. With the exception of two groups, most assemblers have not yet shown the value that integration is supposed to extract; and integration, when it works, typically takes a decade or longer to compound into something audited results will reveal. Judging the model on three-to-five-year-old portfolios is the equivalent of pricing a venture portfolio in year three of a fifteen-year fund. Second, the assemblers are not yet heading in the direction that would close the gap. Group-HQ headcount, cross-club data infrastructure, central commercial teams, unified scouting — these are choices made at year one, not outcomes earned at year ten. On those observable measures, most assemblers are not investing at the rate that would produce integration outcomes, and the regulator's hardening posture raises the operating cost of building toward those outcomes at all.</p>
+
+<p><strong>The sharper read is that the central question is no longer about consolidation and buying more clubs. It is whether the groups already assembled will commit to building integration capability — and whether the regulator's posture lets them.</strong> Value in MCO does not come from assembly. It comes from running multiple clubs as one platform, which is a different operational discipline. Whether MCO ultimately delivers the platform premium that the capital tier is paying for, or whether the next operating cycle reveals two real platforms and a long tail of holding companies, is the question the decade will settle.</p>
+
+<h2>The strategic question</h2>
+
+<blockquote>European football's regulator currently treats multi-club ownership as an integrity risk to be policed. Other sports — Formula 1 the clearest example — have shown that integration and multi-team ownership can coexist with the integrity guard, under audited operational separation. The strategic question for the next decade is whether football's governance and regulator change stance, and produce an updated framework that allows MCO integration to deliver value for all parties: the owners, the operators, and the fans.</blockquote>
+
+  </div>
+
+  <aside class="signals">
+    <div class="signals-inner">
+      <div class="signals-label">Signals to track</div>
+      <ul class="signals-list">
+        <li><strong>CFG group operating disclosure:</strong><span class="signal-desc">Any further public detail on integration ROI across the 13-club portfolio</span></li>
+        <li><strong>Group-HQ headcount disclosures:</strong><span class="signal-desc">Whether RedBird, BlueCo, INEOS materially scale central operating functions over the next 24 months</span></li>
+        <li><strong>BlueCo blind trust outcome:</strong><span class="signal-desc">CFCB review of the Chelsea–Strasbourg structure ahead of 2026–27 European admission</span></li>
+        <li><strong>Friedkin Group Article 5 exposure:</strong><span class="signal-desc">Roma–Everton qualification overlap for 2026–27 and any forced structural separation</span></li>
+        <li><strong>UEFA Article 5 evolution:</strong><span class="signal-desc">Any shift in CFCB stance toward operational-separation in place of ownership-separation</span></li>
+        <li><strong>Audited group synergies:</strong><span class="signal-desc">First mid-tier group to publish consolidated operating accounts showing platform premium</span></li>
+      </ul>
+    </div>
+  </aside>
+</article>
+
+<section class="related">
+  <div class="related-wrap">
+    <div class="related-eyebrow">Continue reading</div>
+    <h2 class="related-title">Related <em>deep-dives</em></h2>
+    <div class="related-grid">
+      <a href="macro-01-trophy-to-operating.html" class="related-card">
+        <div class="related-card-tag">Macro · Trend 01</div>
+        <h3 class="related-card-title">From <em>trophy assets</em> to operating businesses</h3>
+        <p class="related-card-desc">Two decades of football capital was deployed for soft power. The next decade is deployed for return.</p>
+      </a>
+      <div class="related-card related-card--upcoming">
+        <div class="related-card-tag">Layer 3 · Trend 3.1</div>
+        <h3 class="related-card-title">Group-HQ talent <em>arms race</em></h3>
+        <p class="related-card-desc">30-to-80-person group functions at CFG, FSG, RedBird, BlueCo. The most leveraged seats in football operations.</p>
+        <span class="related-card-status">In production</span>
+      </div>
+      <div class="related-card related-card--upcoming">
+        <div class="related-card-tag">Layer 3 · Trend 3.2</div>
+        <h3 class="related-card-title">Synergy claims <em>under audit</em></h3>
+        <p class="related-card-desc">Investors are starting to ask harder questions about whether the MCO synergy thesis actually works.</p>
+        <span class="related-card-status">In production</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Workstream 02</div>
+  <div>Built May 2026 · Living document</div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

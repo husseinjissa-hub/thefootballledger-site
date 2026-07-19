@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The FA — Entity profile · The Football Ledger</title>
+<meta name="description" content="The Football Association entity profile: leadership, scale, commercial cycle, regulatory perimeter post-2025 Football Governance Act, mega-event pipeline.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-1">Layer 01 · Governance</a><span class="sep">/</span><span>The FA</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L1 · Governance · National association</span>
+    <span class="eyebrow-meta">·  Wembley, London</span>
+  </div>
+  <h1 class="entity-title">The <em>FA</em></h1>
+  <p class="entity-deck">The world's oldest national football association. Owns the FA Cup and the England men's and women's senior teams. Operating in 2026 alongside a newly empowered statutory regulator that owns the financial-prudential perimeter the FA used to share.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">National association</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1863</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Wembley, London</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Debbie Hewitt (Chair) · Mark Bullingham (CEO)</div></div>
+    <div class="fact"><div class="fact-label">Annual revenue</div><div class="fact-value"><em>£463m</em> · FY24</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Stewarding the post-Governance Act regime</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The federation, <em>narrowed and clarified</em></h2>
+    <p>The Football Association is the governing body of the English game, the oldest national football association in the world, and the owner of two of the sport's most valuable cultural properties: the FA Cup and the England national teams. Its operating perimeter in 2026 is markedly different from what it was twenty-four months earlier. The Football Governance Act, passed in June 2025, created an Independent Football Regulator with statutory authority over the financial sustainability and ownership-suitability regimes for clubs in the top five tiers of the English men's pyramid. Functions the FA used to share with the Premier League and the EFL — owners' tests, financial-distress oversight, parachute and solidarity flows — now sit, in part, with a regulator the federation does not control.</p>
+    <p>What the FA retains is football governance in its narrower sense: the rules of the game, refereeing, discipline, anti-doping in concert with UKAD, agent licensing under the FFAR, and the operations of Wembley as the national stadium. The cultural authority remains substantial. The financial and prudential authority is now shared.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Geographic perimeter</div>
+        <div>
+          <div class="row-val">National. <strong>50</strong> County FAs and approximately <strong>1.4 million</strong> registered grassroots participants under jurisdiction. Member of UEFA (one of 55) and of FIFA.</div>
+          <div class="row-source">Source · Disclosed (FA Articles)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>Chair:</strong> Debbie Hewitt MBE (since January 2022). <strong>CEO:</strong> Mark Bullingham (since January 2020). <strong>Director of Football:</strong> John McDermott (since 2021). <strong>Chair of the National Game Board:</strong> Lord Hall.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Annual revenue</div>
+        <div>
+          <div class="row-val">FY24: <em>£463 million</em>. Composition dominated by Wembley and broadcast (FA Cup, England national teams) with sponsorship and licensing the second-largest line. Operating surplus reinvested in the grassroots and women's game per the FA's reinvestment policy.</div>
+          <div class="row-source">Source · Disclosed (FA Annual Report 2023/24)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Marquee competitions owned</div>
+        <div>
+          <div class="row-val"><strong>FA Cup</strong> (annual, since 1872 — the world's oldest cup). <strong>FA Community Shield.</strong> <strong>FA Trophy</strong> and <strong>FA Vase.</strong> <strong>Women's FA Cup.</strong> <strong>England men's senior team.</strong> <strong>England women's senior team</strong> (Lionesses, UEFA Women's Euro 2022 winners). Youth international teams.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Commercial cycle</div>
+        <div>
+          <div class="row-val">FA Cup UK broadcast: <strong>BBC + ITV</strong> through to 2029 — reported aggregate value approximately <em>£90m per season</em>. England national-team kit: <strong>Nike</strong>, current cycle to 2030 (reported as a 12-year, ~£400m extension signed 2023). Lead England senior shirt sponsor: <strong>BT</strong> (men's), <strong>Subway</strong> (women's pathway).</div>
+          <div class="row-source">Source · Reported (Sportico, The Athletic)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Regulatory perimeter</div>
+        <div>
+          <div class="row-val">Football governance: rules of the game, discipline, refereeing, anti-doping, intermediary and agent licensing under FFAR. <strong>Prudential authority over Premier League / EFL clubs is now shared with the Independent Football Regulator</strong> (operational from 2026 under the Football Governance Act 2025).</div>
+          <div class="row-source">Source · Disclosed (Football Governance Act 2025)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Recent rule changes</div>
+        <div>
+          <div class="row-val"><em>2024:</em> Women's professional game licensing transitioned to the Women's Professional Leagues Limited (NewCo) governance model. <em>2025:</em> Football Governance Act royal assent; IFR establishment. <em>2024–25:</em> Concussion protocols updated alongside PFA and Premier League. <em>2024:</em> FA-issued FFAR licensing — <strong>partially overturned</strong> by national-court ruling on aspects of the cap regime.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Mega-event pipeline</div>
+        <div>
+          <div class="row-val"><strong>2025</strong> UEFA Women's Euro (delivered as host). <strong>2028</strong> UEFA Men's Euro — joint host with Republic of Ireland, Wales, Scotland, Northern Ireland; Wembley confirmed as final venue. <strong>2027</strong> UEFA Champions League Final (Wembley). Standing candidate for further UEFA finals on the Wembley rotation.</div>
+          <div class="row-source">Source · Disclosed (UEFA hosting awards)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Operating org build</div>
+        <div>
+          <div class="row-val">Material expansion in regulatory liaison (with IFR), women's professional game support (NewCo transition), Wembley commercial and broadcast, legal-and-compliance. Growth area headcount has shifted away from the National Game Board functions toward elite-game governance and stadium operations.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Legal posture</div>
+        <div>
+          <div class="row-val">Active workstreams: <strong>IFR transition</strong> (statutory authority handover); <strong>Diarra reform programme</strong> (joint FIFA / UEFA); <strong>FFAR national-court rulings</strong> (English judgments on caps and exclusivity, 2024); <strong>industry-wide concussion litigation</strong> brought by former professional players.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the institution actually does, day to day</h2>
+    <p>The FA's operating organisation in 2026 sits at three centres. Wembley is the commercial and event-delivery hub: national-team home matches, FA Cup semi-finals and final, the 2027 Champions League final, the 2028 Euro final. St George's Park, in Burton-upon-Trent, runs the technical and coaching pathway from grassroots through to the senior national teams. Wembley headquarters, behind the stadium itself, runs the governance, regulatory, legal, and commercial layer.</p>
+    <p>The most consequential change to the operating model in the past twenty-four months has been the regulatory liaison function. The Independent Football Regulator is establishing itself as a statutory body with its own staff, board, and enforcement powers; the FA's relationship with that body is closer in shape to a sports federation working alongside an industry regulator than to a self-regulating governing body. The FA's senior team has been actively shaping the IFR's operational design while losing ultimate authority over the parts of the regime the IFR now owns.</p>
+    <p>The women's professional game transition has been the second growth area. The Women's Super League and Championship sit, from 2024, under the Women's Professional Leagues Limited (NewCo) — operationally distinct from the FA but established with FA support and ongoing co-investment. The federation's role with NewCo is closer to that of a founding member than to that of a governing parent.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>The institution's stated direction is a narrower, sharper governance role inside a more crowded English regulatory environment. The IFR transition has been described publicly by the FA as a structural improvement: a credible, statutory enforcement body is more durable than a governance regime asserting authority it cannot ultimately enforce. The federation's commercial focus has tightened around Wembley, the FA Cup, and the England national teams as the three properties it owns outright.</p>
+    <p>The 2028 Euro is the immediate operating priority. The Wembley final, the joint-host coordination across four other associations, and the broadcast and hospitality programmes for an 18-day tournament across the home nations sit at the top of the planning calendar. The grassroots strategy, refreshed in late 2025, targets a meaningful expansion of female-game participation and a continued reduction of the gap between English and Continental coaching pathways at the academy level.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>The FA Annual Report 2023/24; FA Articles of Association</li>
+      <li>Football Governance Act 2025; DCMS implementation papers</li>
+      <li>UEFA hosting awards (2024–2026); FA Cup broadcast cycle disclosures</li>
+      <li>National court rulings on FIFA Football Agent Regulations (England, 2024)</li>
+      <li>Trade press: SportBusiness, The Athletic, Off the Pitch, Reuters, FT (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issue 01 · The Phase 2 reset — The Briefing</title>
+<meta name="description" content="The Briefing, Issue 01: PIF's strategy reset, Apollo's Atlético operating reset, Gamma Waves Partners, Two Circles' footprint, and the Independent Football Regulator's first year.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6;
+  --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b;
+  --rust: #7a2233; --gold: #10402b;
+  --line: #dcd6c8; --line-soft: #ece7da;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink); color: var(--bone);
+  line-height: 1.6; font-weight: 400;
+  letter-spacing: -0.005em;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; pointer-events: none;
+  z-index: 1000; opacity: 0.025; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+a { color: inherit; text-decoration: none; }
+
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500; font-size: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex; align-items: center; gap: 8px;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+.issue-header {
+  padding: 100px 60px 60px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1100px; margin: 0 auto;
+}
+.issue-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.issue-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.issue-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 76px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+}
+.issue-title em { font-style: italic; color: var(--gold); }
+.issue-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 32px;
+}
+.issue-meta {
+  display: flex; gap: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.issue-meta strong { color: var(--bone); font-weight: 500; }
+
+/* TOC */
+.toc {
+  max-width: 1100px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.toc-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 16px;
+}
+.toc-list {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 24px 32px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.toc-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 8px 0;
+  font-size: 14px;
+  border-bottom: 1px dashed var(--line);
+  align-items: baseline;
+}
+.toc-item:last-child { border-bottom: none; }
+.toc-item-num {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--gold);
+  font-size: 11px;
+}
+.toc-item-text {
+  color: var(--bone-dim);
+  line-height: 1.4;
+}
+.toc-item-text strong {
+  color: var(--bone); font-weight: 500;
+  font-family: 'Fraunces', serif; font-size: 16px;
+}
+
+/* Stories */
+.stories {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+}
+.story {
+  padding-bottom: 64px;
+  margin-bottom: 64px;
+  border-bottom: 1px solid var(--line);
+}
+.story:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+.story-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.story-num::before, .story-num::after {
+  content: ''; width: 24px; height: 1px; background: var(--gold);
+}
+.story-num::after { flex: 1; opacity: 0.4; }
+.story-headline {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.story-headline em { font-style: italic; color: var(--gold); }
+.story-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+  margin-bottom: 20px;
+}
+.story p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--bone);
+  margin-bottom: 20px;
+}
+.story strong { color: var(--bone); font-weight: 600; }
+.story em { font-style: italic; }
+.story-watch {
+  margin-top: 24px;
+  padding: 16px 20px;
+  background: rgba(16, 64, 43, 0.05);
+  border-left: 2px solid var(--gold);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+}
+.story-watch strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); display: block; margin-bottom: 6px;
+}
+
+/* Closing */
+.closing {
+  max-width: 760px;
+  margin: 40px auto 0;
+  padding: 60px 60px 80px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+.closing-text {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone-dim);
+  max-width: 560px;
+  margin: 0 auto 24px;
+}
+.closing-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+footer {
+  padding: 32px 60px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .issue-header { padding: 60px 24px 40px; }
+  .toc { padding: 0 24px; }
+  .stories { padding: 50px 24px 40px; font-size: 16px; }
+  .story-headline { font-size: 24px; }
+  .closing { padding: 40px 24px 60px; }
+  .issue-meta { flex-direction: column; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+</style>
+<style>.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}.brand-word{line-height:1}.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute);font-weight:400;line-height:1;white-space:nowrap}</style>
+<link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item active">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary (mobile)">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item active">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+<section class="issue-header">
+  <div class="issue-eyebrow">The Briefing · Issue 01 · 04 May 2026</div>
+  <h1 class="issue-title">
+    The Phase 2 <em>reset.</em>
+  </h1>
+  <p class="issue-deck">
+    The five stories from the past week that materially moved football's business architecture, and the readings the trade press is missing on each.
+  </p>
+  <div class="issue-meta">
+    <span>Read time · <strong>8 min</strong></span>
+    <span>Stories · <strong>5</strong></span>
+    <span>Published · <strong>Mondays</strong></span>
+  </div>
+</section>
+
+<aside class="toc">
+  <div class="toc-label">In this issue</div>
+  <div class="toc-list">
+    <div class="toc-item">
+      <div class="toc-item-num">01</div>
+      <div class="toc-item-text"><strong>PIF's strategy reset and what it does not say.</strong> The official narrative is "discipline." The unsaid implication is that the Saudi football operating model is being rewritten in real time.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">02</div>
+      <div class="toc-item-text"><strong>Apollo's Atlético operating reset.</strong> Six months in, the early staffing decisions reveal an operating thesis the trade press has not yet articulated.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">03</div>
+      <div class="toc-item-text"><strong>Gamma Waves Partners and the permanent-capital wave.</strong> Why a quietly announced fund matters more than its headline number suggests.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">04</div>
+      <div class="toc-item-text"><strong>Two Circles' growing footprint at the league level.</strong> The strategy-and-data shop nobody calls a strategy consultancy is now embedded inside three of football's largest commercial conversations.</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-item-num">05</div>
+      <div class="toc-item-text"><strong>The Independent Football Regulator's first year.</strong> Less dramatic than feared. More consequential than reported.</div>
+    </div>
+  </div>
+</aside>
+
+<section class="stories">
+
+  <article class="story">
+    <div class="story-num">Story 01</div>
+    <h2 class="story-headline">PIF's strategy reset and <em>what it does not say.</em></h2>
+    <div class="story-source">Source · PIF official communications, April 2026</div>
+
+    <p>
+      The Public Investment Fund's 2026–2030 strategy, announced last month, removed sport from its list of priority ecosystems. The trade press read this as a partial retreat, framed by the simultaneous sale of seventy per cent of Al-Hilal to Kingdom Holding for approximately $224 million and the announcement that LIV Golf would lose PIF funding after the 2026 season. The framing is technically accurate but misses the more interesting reading.
+    </p>
+
+    <p>
+      The strategy reset is not a withdrawal from football. It is a transition from <em>acquisition</em> as the operating mode to <em>portfolio management</em> as the operating mode. PIF retains Newcastle United. It retains a quarter of Al-Hilal. It will deliver the 2027 Asian Cup co-host and the 2034 World Cup. What it has stopped doing is treating football as one of the six categories that drives Vision 2030's national-brand objectives. That phase is over, having largely succeeded on its own terms.
+    </p>
+
+    <p>
+      What replaces it is harder to read but more consequential. PIF appears to be moving toward a regime in which Saudi football assets are expected to produce returns measurable against an investment-committee benchmark, where Saudi sport institutions are expected to operate to an international professional standard, and where the next five years of capital allocation goes to building operating capability rather than to acquiring more trophy assets.
+    </p>
+
+    <div class="story-watch">
+      <strong>Watch</strong>
+      The first six months of the privatised Al-Hilal under Kingdom Holding will reveal more about Saudi football's Phase 2 operating model than any official communication. The early hires, the accounting treatment, and the relationship between Kingdom Holding's listed-company reporting requirements and the club's commercial strategy are all worth tracking carefully.
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 02</div>
+    <h2 class="story-headline">Apollo's Atlético operating <em>reset.</em></h2>
+    <div class="story-source">Source · Atlético de Madrid, multiple disclosures, April–May 2026</div>
+
+    <p>
+      Six months after Apollo Global Management took fifty-five per cent of Atlético de Madrid at a €2.9 billion valuation, the early staffing decisions are beginning to reveal the operating thesis behind the deal. The hires that have surfaced — across financial planning, commercial strategy, and integrated football operations — share a profile. They come from outside traditional football. They have private-equity-backed operating experience. They report into a structure that did not exist at Atlético eighteen months ago.
+    </p>
+
+    <p>
+      The trade press has read the early Apollo period as a typical sports-PE adjustment. The sharper read is that Apollo is running the same operating playbook it would run at any portfolio company in any sector — only in this case, the asset has a centenary of cultural identity, a stadium with sixty-five thousand emotional shareholders, and a manager whose contract terms outweigh the formal authority of the new chief operating officer. <strong>Whether Apollo's operating playbook can survive contact with European top-flight football is the largest open empirical question in sports private equity in 2026.</strong>
+    </p>
+
+    <div class="story-watch">
+      <strong>Watch</strong>
+      The 2026–27 La Liga season will be the first full season in which the Apollo operating thesis is run, observed, and judged. The metrics that matter are not points or table position; they are the financial performance of the commercial function, the consistency of recruitment decisions with the formal investment thesis, and whether the operating layer holds together when the on-pitch product underperforms.
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 03</div>
+    <h2 class="story-headline">Gamma Waves Partners and the <em>permanent-capital wave.</em></h2>
+    <div class="story-source">Source · Gamma Waves Partners launch announcement, 24 April 2026</div>
+
+    <p>
+      Andrea Agnelli, Giorgio Chiellini, and Rocco Benetton announced the launch of Gamma Waves Partners on 24 April. Amsterdam-based. €100 million target, of which €55 million is already committed. Permanent capital structure, targeting a twenty-five per cent gross IRR, with a public mandate covering basketball, hockey, cricket, rugby, and tennis. Football is conspicuously not on the list.
+    </p>
+
+    <p>
+      The headline numbers are modest by sports-PE standards. The strategic significance is not in the numbers. It is in the structure. <strong>Gamma Waves is among a handful of football-adjacent vehicles built as permanent capital rather than as fixed-life private equity</strong> — joining the more ambitious end of the family-office market that includes Eldridge, Kingdom Holding, and the Reuben Brothers' sports interests. Permanent capital matches football's long-cycle ownership reality more honestly than seven-to-ten-year fund life ever did. As the structural mismatch between fixed-life PE and football operating cycles becomes more visible — and the Apollo Atlético deal will help make it visible — permanent capital structures will increasingly be the format ambitious football capital prefers.
+    </p>
+
+    <p>
+      Football's omission from the public mandate is a reputational management decision, not a strategic one. Agnelli's network, Chiellini's playing-side credibility, and the Benetton-family reach into Italian and continental football are most valuable when applied to football. The first deal is reportedly under due diligence now.
+    </p>
+
+    <div class="story-watch">
+      <strong>Watch</strong>
+      Gamma Waves' first announced deal will say more about the fund's actual thesis than the launch communication did. If the deal is football-adjacent — sports IP, broadcast tech, fan engagement infrastructure — it confirms the read that football is the centre of mass. If the deal is genuinely in another sport, the mandate is more honest than the cynical reading suggested.
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 04</div>
+    <h2 class="story-headline">Two Circles' growing footprint at the <em>league level.</em></h2>
+    <div class="story-source">Source · Trade press coverage, multiple, late April 2026</div>
+
+    <p>
+      Two Circles — the London-based strategy-and-data firm founded by ex-McKinsey consultants and now owned by Bruin Capital — is now confirmed to be working with three of the five top-flight European leagues on commercial-strategy mandates of varying depth. The roster is not officially disclosed but is recognisable to anyone in the industry. The firm's revenue from league-level work has approximately doubled over the last three years.
+    </p>
+
+    <p>
+      Two Circles is best understood as the role that strategy consulting has not yet been willing to take on inside football. McKinsey, BCG, and Bain do periodic work for football institutions, but rarely build the long-term embedded relationships that the strategy-and-data approach requires. Two Circles fills that gap with a structure that combines consulting hours, proprietary sponsorship-valuation data, and a London-based bench heavy on MBA-trained strategy operators. The model is profitable, defensible, and increasingly the default option for any league or major club that wants institutional commercial-strategy support.
+    </p>
+
+    <p>
+      <strong>The trade press treats Two Circles as a sponsorship-data vendor. The sharper read is that it is the closest thing modern football has to a true strategy consultancy with sector specialism</strong> — and the firm's continued growth is one of the cleaner indicators of how much commercial-strategy work the industry is now willing to outsource professionally rather than do in-house.
+    </p>
+
+    <div class="story-watch">
+      <strong>Watch</strong>
+      Whether Two Circles' next funding round, expected within the next twelve months, brings in a strategic investor from outside Bruin Capital — and which entity it is. Several US-based sports holding platforms have reportedly been in conversation. The chosen partner will tell the industry whether Two Circles' next chapter is consolidation or expansion.
+    </div>
+  </article>
+
+  <article class="story">
+    <div class="story-num">Story 05</div>
+    <h2 class="story-headline">The Independent Football Regulator's <em>first year.</em></h2>
+    <div class="story-source">Source · IFR annual statement, late April 2026</div>
+
+    <p>
+      The Independent Football Regulator, established by the UK's Football Governance Act 2025, completed its first year of operation last month. The trade press coverage has split into two camps: one that argues the IFR has been less interventionist than feared, the other that argues it has been less effective than promised. Both readings are fair. Both miss the more important point.
+    </p>
+
+    <p>
+      The IFR's first-year output has been deliberately procedural. It has produced licensing-regime drafts, financial-discipline frameworks, and ownership-fitness criteria that have not yet been tested against a contested case. None of this is dramatic. Some of it, including the financial-discipline framework, contains language that — in the right test case — could materially constrain how Premier League clubs are run.
+    </p>
+
+    <p>
+      <strong>The interesting question is not what the IFR has done in year one but what its existence is already changing in private.</strong> Several Premier League clubs are now structuring acquisition processes, ownership-stake transfers, and financial-restructuring conversations with explicit reference to anticipated IFR positions. Two private-equity firms have reportedly modified deal structures during diligence in response to IFR-related concerns raised by counsel. The regulator's pre-emptive influence is more consequential than its formal output.
+    </p>
+
+    <div class="story-watch">
+      <strong>Watch</strong>
+      The first contested IFR ruling. It has not happened yet. When it does, the appellate posture, the political response, and the precedent it sets will define the practical scope of the regulator for the rest of the decade.
+    </div>
+  </article>
+
+</section>
+
+<section class="closing">
+  <p class="closing-text">
+    The Briefing returns next Monday. As always, corrections, tips, and serious correspondence are welcome at the editor's address.
+  </p>
+  <div class="closing-meta">— The Football Ledger</div>
+</section>
+
+<footer>
+  <div>The Football Ledger · The Briefing · Issue 01</div>
+  <div>04 May 2026 · Built May 2026</div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

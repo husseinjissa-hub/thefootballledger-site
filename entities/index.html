@@ -1,132 +1,907 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Entities — The Football Ledger</title>
-<meta name="description" content="The Football Ledger entity directory — clubs, owners, leagues, capital, media, and football-tech actors, searchable and filterable by layer and type.">
+<meta name="description" content="A searchable directory of every actor in football's business — governing bodies, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium operators.">
 <link rel="canonical" href="https://thefootballledger.co/entities">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="Entities — The Football Ledger">
+<meta property="og:description" content="A searchable directory of every actor in football's business — governing bodies, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium operators.">
+<meta property="og:url" content="https://thefootballledger.co/entities">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
-<style>
-  .ent-controls { padding: 36px 0 28px; display: flex; flex-direction: column; gap: 20px; }
-  .ent-search { display: flex; align-items: center; gap: 12px; border: 1px solid var(--line); border-radius: 6px; padding: 2px 18px; background: var(--ink-2); max-width: 520px; }
-  .ent-search:focus-within { border-color: var(--gold); }
-  .ent-search svg { width: 16px; height: 16px; opacity: 0.6; flex: 0 0 16px; }
-  .ent-search input { flex: 1; background: none; border: 0; outline: 0; color: var(--bone); font-family: 'Inter Tight', sans-serif; font-size: 16px; padding: 13px 0; }
-  .ent-search input::placeholder { color: var(--bone-mute); }
-  .ent-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--bone-mute); padding-bottom: 16px; }
-  #entGrid { margin-bottom: 100px; }
-.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
-.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
-</style>
-<style></style><link rel="stylesheet" href="/assets/shell.css">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/redesign.css">
 </head>
 <body>
-
-<header class="site-head">
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="/" class="nav-item">Overview</a>
-    <a href="/ecosystem" class="nav-item">Ecosystem</a>
-    <a href="/ledger" class="nav-item">The Ledger</a>
-    <a href="/entities" class="nav-item active">Entities</a>
-    <a href="/briefing" class="nav-item">Briefing</a>
-    <a href="/about" class="nav-item">About</a>
-    <a href="/join" class="nav-item">Join</a>
-  </nav>
-  <span class="nav-reserved" aria-hidden="true"></span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="The Football Ledger — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
+        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
+        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">The Football Ledger</span>
+        <span class="brand-tag">The Business of Football</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/" >Overview</a>
+      <a href="/ecosystem" >Ecosystem</a>
+      <a href="/ledger" >The Ledger</a>
+      <a href="/entities" class="active">Entities</a>
+      <a href="/briefing" >Briefing</a>
+      <a href="/about" >About</a>
+      <a href="/join" >Join</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
 </header>
-<div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <button class="nav-close" aria-label="Close menu">&times;</button>
-  <nav class="overlay-nav" aria-label="Primary (mobile)">
-    <a href="/" class="overlay-item">Overview</a>
-    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
-    <a href="/ledger" class="overlay-item">The Ledger</a>
-    <a href="/entities" class="overlay-item active">Entities</a>
-    <a href="/briefing" class="overlay-item">Briefing</a>
-    <a href="/about" class="overlay-item">About</a>
-    <a href="/join" class="overlay-item">Join</a>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
+    </a>
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  </div>
+  <nav aria-label="Primary (mobile)">
+    <a href="/">Overview</a>
+    <a href="/ecosystem">Ecosystem</a>
+    <a href="/ledger">The Ledger</a>
+    <a href="/entities">Entities</a>
+    <a href="/briefing">Briefing</a>
+    <a href="/about">About</a>
+    <a href="/join">Join</a>
   </nav>
 </div>
-
-<main class="wrap">
-  <header class="surface-head">
-    <div class="surface-eyebrow">Section C · Entities</div>
-    <h1 class="surface-title">The <em>directory.</em></h1>
-    <p class="surface-dek">Every actor in the system — searchable, and filterable by layer and type.</p>
-  </header>
-
-  <div class="ent-controls">
-    <div class="ent-search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input id="entSearch" type="search" placeholder="Search entities…" autocomplete="off">
-    </div>
-    <div class="filter-group" style="margin:0"><div class="filter-label">Layer</div><div class="chip-list" id="layerChips" style="max-width:300px"></div></div>
-    <div class="filter-group" style="margin:0"><div class="filter-label">Type</div><div class="chips" id="typeChips"></div></div>
+<main id="main">
+<section class="wrap dir-hero">
+  <div class="dir-hero-media"><img src="/assets/img/entities-hero.jpg" alt="A modern football headquarters with club crests on its facade, overlooking training pitches at dusk"></div>
+  <div class="dir-hero-inner">
+    <div class="overline overline--rule overline--green">Section C · Entities</div>
+    <h1 class="h1">The <span class="serif-em">directory.</span></h1>
+    <p class="deck">Every actor in the system — searchable, and filterable by layer and type.</p>
   </div>
-  <div class="ent-count" id="entCount"></div>
-  <section class="ent-grid" id="entGrid"></section>
-</main>
+</section>
 
-<footer class="site-foot">
-  <div>The Football Ledger · 2026</div>
-  <div>A continuing analysis of football's business architecture</div>
-  <div class="foot-utility"><a href="/about">About</a> &middot; <a href="/join">Join the Team</a> &middot; <a href="/search">Search</a></div>
-</footer>
+<section class="wrap" style="padding-bottom:80px">
+  <div class="dir-searchbar">
+    <div class="dir-search">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="dirSearch" placeholder="Search entities, e.g., FIFA, Premier League, DAZN…" aria-label="Search entities">
+    </div>
+    <div class="dir-count"><b id="dirCount">89</b> of 89 entities</div>
+  </div>
 
-<script src="/content.js"></script>
-<script src="/assets/site.js"></script>
+  <div class="dir-grid">
+    <aside class="dir-rail" aria-label="Filter entities">
+      <div class="fr-group">
+        <div class="fr-label">Filter by layer</div>
+        <div class="fr-layers" id="dirLayers">
+          <button class="fr-layer" type="button" data-layer="1" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 8l8-4 8 4M6 8v8M10 8v8M14 8v8M18 8v8M4 18h16"/></svg></span><span class="fr-layer-num">01</span> Governance</button>
+          <button class="fr-layer" type="button" data-layer="2" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M7 4h10v3a5 5 0 01-10 0zM7 5H4v1a3 3 0 003 3M17 5h3v1a3 3 0 01-3 3M10 13v3M14 13v3M8 18h8"/></svg></span><span class="fr-layer-num">02</span> Leagues</button>
+          <button class="fr-layer" type="button" data-layer="3" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9.5 12l1.7 1.7 3.3-3.4"/></svg></span><span class="fr-layer-num">03</span> Clubs/MCO</button>
+          <button class="fr-layer" type="button" data-layer="4" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="6" rx="7" ry="2.4"/><path d="M5 6v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V6M5 11v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4v-5"/></svg></span><span class="fr-layer-num">04</span> Capital</button>
+          <button class="fr-layer" type="button" data-layer="5" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9" r="2"/><path d="M4.5 18c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5M14.5 18c0-1.7.8-3.1 2.2-3.7"/></svg></span><span class="fr-layer-num">05</span> Agencies</button>
+          <button class="fr-layer" type="button" data-layer="6" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M9 20h6M12 17v3"/></svg></span><span class="fr-layer-num">06</span> Media</button>
+          <button class="fr-layer" type="button" data-layer="7" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/></svg></span><span class="fr-layer-num">07</span> Commercial</button>
+          <button class="fr-layer" type="button" data-layer="8" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg></span><span class="fr-layer-num">08</span> Football-Tech</button>
+          <button class="fr-layer" type="button" data-layer="9" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span class="fr-layer-num">09</span> Stadium/Fan</button>
+        </div>
+      </div>
+      <div class="fr-group">
+        <div class="fr-label">Filter by type</div>
+        <select class="dir-select" id="dirType" aria-label="Filter by type">
+          <option value="">All types</option>
+          <option value="agency">Agencies</option>
+          <option value="broadcaster">Broadcasters</option>
+          <option value="commercial">Commercial</option>
+          <option value="confederation">Confederations</option>
+          <option value="credit">Credit funds</option>
+          <option value="fan-platform">Fan platforms</option>
+          <option value="federation">Federations</option>
+          <option value="football-tech">Football-tech</option>
+          <option value="league">Leagues</option>
+          <option value="MCO">Multi-club ownership</option>
+          <option value="PE">Private equity</option>
+          <option value="regulator">Regulators</option>
+          <option value="sovereign">Sovereign funds</option>
+          <option value="stadium">Stadiums</option>
+          <option value="structured">Structured capital</option>
+        </select>
+      </div>
+      <div class="fr-group">
+        <div class="fr-label">Popular filters</div>
+        <div class="dir-checks" id="dirPop">
+          <label class="dir-check"><input type="checkbox" value="broadcasters">Broadcasters</label>
+          <label class="dir-check"><input type="checkbox" value="pe">Private Equity</label>
+          <label class="dir-check"><input type="checkbox" value="stadiums">Stadiums</label>
+          <label class="dir-check"><input type="checkbox" value="technology">Technology</label>
+          <label class="dir-check"><input type="checkbox" value="agencies">Agencies</label>
+          <label class="dir-check"><input type="checkbox" value="regulators">Regulators</label>
+          <label class="dir-check"><input type="checkbox" value="federations">Federations</label>
+          <label class="dir-check"><input type="checkbox" value="clubs">Clubs</label>
+        </div>
+      </div>
+      <button class="fr-clear" id="dirClear" type="button">✕ Clear all filters</button>
+      <div class="dir-help">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16v12H8l-4 3z"/></svg>
+        <span>Need help?<br><a href="/ecosystem">See how this map works</a></span>
+      </div>
+    </aside>
+
+    <div class="dir-main" id="dirMain">
+    <section class="dir-layer" data-layer="1" data-count="8">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 8l8-4 8 4M6 8v8M10 8v8M14 8v8M18 8v8M4 18h16"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">01</span><span class="dir-layer-name">Governance</span></div><div class="dir-layer-desc">The rules, regulators, and institutions that govern the game.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 8</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/fifa.html" data-name="fifa" data-desc="fifa entity profile: leadership, scale, commercial cycle, regulatory perimeter, mega-event pipeline." data-layer="1" data-type="federation" data-pop="federations">
+          <div class="ent-card-logo"><img src="/assets/img/logos/fifa.png" alt="FIFA" loading="lazy"></div>
+          <div class="ent-card-name">FIFA</div>
+          <div class="ent-card-desc">FIFA entity profile: leadership, scale, commercial cycle, regulatory perimeter, mega-event…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/uefa.html" data-name="uefa" data-desc="uefa entity profile: leadership, scale, champions league cycle, squad-cost rules, mco regulations, legal posture." data-layer="1" data-type="federation" data-pop="federations">
+          <div class="ent-card-logo"><img src="/assets/img/logos/uefa.png" alt="UEFA" loading="lazy"></div>
+          <div class="ent-card-name">UEFA</div>
+          <div class="ent-card-desc">UEFA entity profile: leadership, scale, Champions League cycle, squad-cost rules, MCO…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/afc.html" data-name="afc" data-desc="afc entity profile: leadership, scale, asian cup cycle, acl elite, 2027 host preparations, mena operating cell." data-layer="1" data-type="federation" data-pop="federations">
+          <div class="ent-card-logo"><img src="/assets/img/logos/afc.png" alt="AFC" loading="lazy"></div>
+          <div class="ent-card-name">AFC</div>
+          <div class="ent-card-desc">AFC entity profile: leadership, scale, Asian Cup cycle, ACL Elite, 2027 host preparations, MENA…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/fa.html" data-name="the fa" data-desc="the football association entity profile: leadership, scale, commercial cycle, regulatory perimeter post-2025 football governance act, mega-event pipeline." data-layer="1" data-type="federation" data-pop="federations">
+          <div class="ent-card-logo"><img src="/assets/img/logos/fa.png" alt="The FA" loading="lazy"></div>
+          <div class="ent-card-name">The FA</div>
+          <div class="ent-card-desc">The Football Association entity profile: leadership, scale, commercial cycle, regulatory…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/saff.html" data-name="saff" data-desc="saudi arabian football federation entity profile: leadership, scale, commercial cycle, regulatory perimeter, 2027 asian cup and 2034 world cup operating build." data-layer="1" data-type="federation" data-pop="federations">
+          <div class="ent-card-logo"><img src="/assets/img/logos/saff.png" alt="SAFF" loading="lazy"></div>
+          <div class="ent-card-name">SAFF</div>
+          <div class="ent-card-desc">Saudi Arabian Football Federation entity profile: leadership, scale, commercial cycle,…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/concacaf.html" data-name="concacaf" data-desc="concacaf profile: the north/central american and caribbean confederation — gold cup, champions cup, nations league, the us/mexico commercial base, and its central role hosting the 2026 world cup." data-layer="1" data-type="confederation" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/concacaf.png" alt="CONCACAF" loading="lazy"></div>
+          <div class="ent-card-name">CONCACAF</div>
+          <div class="ent-card-desc">CONCACAF profile: the North/Central American and Caribbean confederation — Gold Cup,…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/conmebol.html" data-name="conmebol" data-desc="conmebol profile: south america's confederation — copa américa, copa libertadores and sudamericana, record 2024 income, the 2027–30 rights cycle, and the 2030 world cup centenary matches." data-layer="1" data-type="confederation" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/conmebol.png" alt="CONMEBOL" loading="lazy"></div>
+          <div class="ent-card-name">CONMEBOL</div>
+          <div class="ent-card-desc">CONMEBOL profile: South America's confederation — Copa América, Copa Libertadores and…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+        <a class="ent-card" href="/entities/ifr.html" data-name="independent football regulator" data-desc="independent football regulator profile: england's statutory football regulator under the football governance act 2025 — licensing, owners' tests, and the backstop power over premier league/efl revenue distribution." data-layer="1" data-type="regulator" data-pop="regulators">
+          <div class="ent-card-logo"><img src="/assets/img/logos/ifr.png" alt="Independent Football Regulator" loading="lazy"></div>
+          <div class="ent-card-name">Independent Football Regulator</div>
+          <div class="ent-card-desc">Independent Football Regulator profile: England's statutory football regulator under the…</div>
+          <span class="ent-card-tag">L1 · Governance</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="2" data-count="15">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 4h10v3a5 5 0 01-10 0zM7 5H4v1a3 3 0 003 3M17 5h3v1a3 3 0 01-3 3M10 13v3M14 13v3M8 18h8"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">02</span><span class="dir-layer-name">Leagues &amp; Competitions</span></div><div class="dir-layer-desc">The leagues and competitions where the game is played.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 15</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/premier-league.html" data-name="premier league" data-desc="premier league entity profile: rights cycle, distribution model, regulatory perimeter, strategic posture under the ifr." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/premier-league.png" alt="Premier League" loading="lazy"></div>
+          <div class="ent-card-name">Premier League</div>
+          <div class="ent-card-desc">Premier League entity profile: rights cycle, distribution model, regulatory perimeter,…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/la-liga.html" data-name="la liga" data-desc="la liga entity profile: cycle, distribution model, cvc laliga boost partnership, salary-cap regime, strategic posture under tebas." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/la-liga.png" alt="La Liga" loading="lazy"></div>
+          <div class="ent-card-name">La Liga</div>
+          <div class="ent-card-desc">La Liga entity profile: cycle, distribution model, CVC LaLiga Boost partnership, salary-cap…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/serie-a.html" data-name="serie a" data-desc="serie a (lega serie a) profile: 20-club top flight, broadcast cycle pressures, media-co spin-out under evaluation, governance reset after juventus ffp case." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/serie-a.png" alt="Serie A" loading="lazy"></div>
+          <div class="ent-card-name">Serie A</div>
+          <div class="ent-card-desc">Serie A (Lega Serie A) profile: 20-club top flight, broadcast cycle pressures, media-co…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/bundesliga.html" data-name="bundesliga" data-desc="bundesliga (deutsche fußball liga) profile: 18-club top flight, ~€4bn aggregate club revenue, 50+1 fan-ownership rule, dfl central commercial reform paused." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/bundesliga.png" alt="Bundesliga" loading="lazy"></div>
+          <div class="ent-card-name">Bundesliga</div>
+          <div class="ent-card-desc">Bundesliga (Deutsche Fußball Liga) profile: 18-club top flight, ~€4bn aggregate club…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/mls.html" data-name="mls" data-desc="major league soccer entity profile: single-entity structure, apple deal, 2026 world cup uplift, salary cap, usl premier emergence." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/mls.png" alt="MLS" loading="lazy"></div>
+          <div class="ent-card-name">MLS</div>
+          <div class="ent-card-desc">Major League Soccer entity profile: single-entity structure, Apple deal, 2026 World Cup uplift,…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/baller-league.html" data-name="baller league" data-desc="baller league entity profile: hybrid 6-a-side indoor football format launched in germany and uk in 2024. streamer-and-celebrity architecture, follow-up to kings league template." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/baller-league.png" alt="Baller League" loading="lazy"></div>
+          <div class="ent-card-name">Baller League</div>
+          <div class="ent-card-desc">Baller League entity profile: hybrid 6-a-side indoor football format launched in Germany and UK…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/efl-championship.html" data-name="efl championship" data-desc="efl championship profile: the world's richest second tier — promotion economics worth ~£200m, parachute payments, psr loss limits, and the independent football regulator's backstop over revenue distribution." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/efl-championship.png" alt="EFL Championship" loading="lazy"></div>
+          <div class="ent-card-name">EFL Championship</div>
+          <div class="ent-card-desc">EFL Championship profile: the world's richest second tier — promotion economics worth…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/eredivisie.html" data-name="eredivisie" data-desc="eredivisie profile: dutch top flight as europe's player-trading exchange — the espn broadcast deal to 2030, selling-club economics, knvb licensing, and a thin central media pool." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/eredivisie.png" alt="Eredivisie" loading="lazy"></div>
+          <div class="ent-card-name">Eredivisie</div>
+          <div class="ent-card-desc">Eredivisie profile: Dutch top flight as Europe's player-trading exchange — the ESPN broadcast…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/icon-league.html" data-name="icon league" data-desc="icon league entity profile: the toni kroos and elias nerlich creator-led 5-a-side sportainment league, its €15m series a, audience dependency on streamer reach, and its push for pan-european scale." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/icon-league.png" alt="Icon League" loading="lazy"></div>
+          <div class="ent-card-name">Icon League</div>
+          <div class="ent-card-desc">Icon League entity profile: the Toni Kroos and Elias Nerlich creator-led 5-a-side sportainment…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/kings-league.html" data-name="kings league" data-desc="kings league entity profile: hybrid 7-a-side football format launched by gerard piqué's kosmos. streamer-owner architecture. global expansion across americas and europe." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/kings-league.png" alt="Kings League" loading="lazy"></div>
+          <div class="ent-card-name">Kings League</div>
+          <div class="ent-card-desc">Kings League entity profile: hybrid 7-a-side football format launched by Gerard Piqué's…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/liga-mx.html" data-name="liga mx" data-desc="liga mx profile: north america's best-attended league — the 2026/27 return of relegation, the forced multi-club ownership unwind, us capital inflows, and mls integration via leagues cup on apple." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/liga-mx.png" alt="Liga MX" loading="lazy"></div>
+          <div class="ent-card-name">Liga MX</div>
+          <div class="ent-card-desc">Liga MX profile: North America's best-attended league — the 2026/27 return of relegation, the…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/ligue-1.html" data-name="ligue 1" data-desc="ligue 1 entity profile: the 2024 broadcast collapse, the ligue 1+ direct-to-consumer platform, cvc's 13% lfp media stake, psg hegemony, and the weakest broadcast economics in the big five." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/ligue-1.png" alt="Ligue 1" loading="lazy"></div>
+          <div class="ent-card-name">Ligue 1</div>
+          <div class="ent-card-desc">Ligue 1 entity profile: the 2024 broadcast collapse, the Ligue 1+ direct-to-consumer platform,…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/spl.html" data-name="saudi pro league" data-desc="saudi pro league (spl) profile: 18-club top flight, 2023 marquee signings era, pif-led privatisation programme, 2027 asian cup integration." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/spl.png" alt="Saudi Pro League" loading="lazy"></div>
+          <div class="ent-card-name">Saudi Pro League</div>
+          <div class="ent-card-desc">Saudi Pro League (SPL) profile: 18-club top flight, 2023 marquee signings era, PIF-led…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/the-soccer-tournament.html" data-name="the soccer tournament (tst)" data-desc="the soccer tournament (tst) entity profile: the us 7v7 winner-take-all summer event, three $1m prizes, nbc broadcast, and the made-for-tv format ported from basketball's tbt." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/the-soccer-tournament.png" alt="The Soccer Tournament (TST)" loading="lazy"></div>
+          <div class="ent-card-name">The Soccer Tournament (TST)</div>
+          <div class="ent-card-desc">The Soccer Tournament (TST) entity profile: the US 7v7 winner-take-all summer event, three $1m…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+        <a class="ent-card" href="/entities/world-sevens-football.html" data-name="world sevens football (w7f)" data-desc="world sevens football entity profile: the women's 7v7 grand-slam series with a $5m-per-event prize pool, dazn distribution, mackesy-fishkin backing, and a fast multi-city scale-up." data-layer="2" data-type="league" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/world-sevens-football.png" alt="World Sevens Football (W7F)" loading="lazy"></div>
+          <div class="ent-card-name">World Sevens Football (W7F)</div>
+          <div class="ent-card-desc">World Sevens Football entity profile: the women's 7v7 grand-slam series with a $5m-per-event…</div>
+          <span class="ent-card-tag">L2 · Leagues</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="3" data-count="8">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/><path d="M9.5 12l1.7 1.7 3.3-3.4"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">03</span><span class="dir-layer-name">Clubs &amp; Multi-Club Ownership</span></div><div class="dir-layer-desc">Clubs at the heart of the system and the ownership groups behind them.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 8</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/city-football-group.html" data-name="city football group" data-desc="city football group entity profile: 13-club global mco platform anchored by manchester city, owned by adug with silver lake minority. the most-developed multi-club operating template in football." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/city-football-group.png" alt="City Football Group" loading="lazy"></div>
+          <div class="ent-card-name">City Football Group</div>
+          <div class="ent-card-desc">City Football Group entity profile: 13-club global MCO platform anchored by Manchester City,…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/fsg.html" data-name="fenway sports group" data-desc="fenway sports group entity profile: liverpool fc, boston red sox, pittsburgh penguins, boston unity sc. operating-led mco platform built on disciplined finance and academy compounding." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/fsg.png" alt="Fenway Sports Group" loading="lazy"></div>
+          <div class="ent-card-name">Fenway Sports Group</div>
+          <div class="ent-card-desc">Fenway Sports Group entity profile: Liverpool FC, Boston Red Sox, Pittsburgh Penguins, Boston…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/blueco.html" data-name="blueco (chelsea / strasbourg)" data-desc="blueco entity profile: todd boehly + clearlake capital consortium. chelsea fc and racing club de strasbourg. the post-abramovich chelsea reset and the strasbourg integration test." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/blueco.png" alt="BlueCo (Chelsea / Strasbourg)" loading="lazy"></div>
+          <div class="ent-card-name">BlueCo (Chelsea / Strasbourg)</div>
+          <div class="ent-card-desc">BlueCo entity profile: Todd Boehly + Clearlake Capital consortium. Chelsea FC and Racing Club…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/ineos-sport.html" data-name="ineos sport" data-desc="ineos sport entity profile: manchester united minority control (~25%), ogc nice, fc lausanne-sport, plus cycling, sailing, and motorsport adjacencies. the ratcliffe-led sport platform." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/ineos-sport.png" alt="INEOS Sport" loading="lazy"></div>
+          <div class="ent-card-name">INEOS Sport</div>
+          <div class="ent-card-desc">INEOS Sport entity profile: Manchester United minority control (~25%), OGC Nice, FC…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/red-bull.html" data-name="red bull football" data-desc="red bull football entity profile: the industrialised multi-club model — rb leipzig, salzburg, new york, bragantino, omiya, plus minority plays at leeds and paris fc, run as a talent factory and brand channel." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/red-bull.png" alt="Red Bull Football" loading="lazy"></div>
+          <div class="ent-card-name">Red Bull Football</div>
+          <div class="ent-card-desc">Red Bull Football entity profile: the industrialised multi-club model — RB Leipzig, Salzburg,…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/777-partners.html" data-name="777 partners" data-desc="777 partners profile: the collapsed miami multi-club group — the fraud indictments, a-cap's insurer money, the failed everton takeover, and the piecemeal sale of genoa, standard liège and the rest." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/777-partners.png" alt="777 Partners" loading="lazy"></div>
+          <div class="ent-card-name">777 Partners</div>
+          <div class="ent-card-desc">777 Partners profile: the collapsed Miami multi-club group — the fraud indictments, A-CAP's…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/eagle-football.html" data-name="eagle football" data-desc="eagle football profile: john textor's collapsed multi-club group — the march 2026 administration under ares' ~$547m debt, lyon sold to michele kang for $30m, botafogo to gda luma, and the crystal palace exit." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/eagle-football.png" alt="Eagle Football" loading="lazy"></div>
+          <div class="ent-card-name">Eagle Football</div>
+          <div class="ent-card-desc">Eagle Football profile: John Textor's collapsed multi-club group — the March 2026…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+        <a class="ent-card" href="/entities/v-sports.html" data-name="v sports" data-desc="v sports profile: aston villa's multi-club group under sawiris and edens — record £378m revenue, the champions league windfall, psr-driven intra-group asset sales, and minority stakes in vitória, real unión and fc annecy." data-layer="3" data-type="MCO" data-pop="clubs">
+          <div class="ent-card-logo"><img src="/assets/img/logos/v-sports.png" alt="V Sports" loading="lazy"></div>
+          <div class="ent-card-name">V Sports</div>
+          <div class="ent-card-desc">V Sports profile: Aston Villa's multi-club group under Sawiris and Edens — record £378m…</div>
+          <span class="ent-card-tag">L3 · Clubs/MCO</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="4" data-count="15">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="12" cy="6" rx="7" ry="2.4"/><path d="M5 6v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4V6M5 11v5c0 1.3 3.1 2.4 7 2.4s7-1.1 7-2.4v-5"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">04</span><span class="dir-layer-name">Capital</span></div><div class="dir-layer-desc">Investors and capital providers fuelling growth across football.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 15</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/pif.html" data-name="pif" data-desc="public investment fund of saudi arabia entity profile: aum, football-allocated capital, portfolio, the april 2026 strategy reset, and the privatisation programme." data-layer="4" data-type="sovereign" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/pif.png" alt="PIF" loading="lazy"></div>
+          <div class="ent-card-name">PIF</div>
+          <div class="ent-card-desc">Public Investment Fund of Saudi Arabia entity profile: AUM, football-allocated capital,…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/apollo.html" data-name="apollo global management" data-desc="apollo global management entity profile: ~$700bn aum, the first major pe-control deal in big-five europe (55% atlético at €2.9bn), credit-fund football platform." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/apollo.png" alt="Apollo Global Management" loading="lazy"></div>
+          <div class="ent-card-name">Apollo Global Management</div>
+          <div class="ent-card-desc">Apollo Global Management entity profile: ~$700bn AUM, the first major PE-control deal in…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/cvc.html" data-name="cvc capital partners" data-desc="cvc capital partners entity profile: ~€200bn aum generalist pe, the league-level commercial-vehicle template (8.2% la liga, 13% ligue 1), the global sports pe pioneer." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/cvc.png" alt="CVC Capital Partners" loading="lazy"></div>
+          <div class="ent-card-name">CVC Capital Partners</div>
+          <div class="ent-card-desc">CVC Capital Partners entity profile: ~€200bn AUM generalist PE, the league-level…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/silver-lake.html" data-name="silver lake" data-desc="silver lake entity profile: the tech-specialist pe giant whose football exposure is a single long-held city football group minority, now dwarfed by its 2025 take-private of endeavor and control of live-sports ip via tko." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/silver-lake.png" alt="Silver Lake" loading="lazy"></div>
+          <div class="ent-card-name">Silver Lake</div>
+          <div class="ent-card-desc">Silver Lake entity profile: the tech-specialist PE giant whose football exposure is a single…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/oaktree.html" data-name="oaktree capital" data-desc="oaktree capital profile: the distressed-debt giant that took control of inter milan after suning's default — the ~€395m loan, the club's first profit, the 2025 bond refinancing, and the stabilise-then-sell posture." data-layer="4" data-type="credit" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/oaktree.png" alt="Oaktree Capital" loading="lazy"></div>
+          <div class="ent-card-name">Oaktree Capital</div>
+          <div class="ent-card-desc">Oaktree Capital profile: the distressed-debt giant that took control of Inter Milan after…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/arctos.html" data-name="arctos partners" data-desc="arctos partners entity profile: ~$10bn aum sport-only pe platform, psg (12.5% at €4.3bn val), atalanta, liverpool's parent fsg, multiple us teams. the institutional-scale minority-sport template." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/arctos.png" alt="Arctos Partners" loading="lazy"></div>
+          <div class="ent-card-name">Arctos Partners</div>
+          <div class="ent-card-desc">Arctos Partners entity profile: ~$10bn AUM sport-only PE platform, PSG (12.5% at €4.3bn val),…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/ares.html" data-name="ares management" data-desc="ares management profile: the credit giant lending into football — the ~$644bn platform, atlético and inter miami positions, the mclaren exit, and the near-total write-off on the eagle football/lyon loan." data-layer="4" data-type="credit" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/ares.png" alt="Ares Management" loading="lazy"></div>
+          <div class="ent-card-name">Ares Management</div>
+          <div class="ent-card-desc">Ares Management profile: the credit giant lending into football — the ~$644bn platform,…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/clearlake.html" data-name="clearlake capital" data-desc="clearlake capital profile: the private-equity firm controlling chelsea via blueco — 61.5% ownership, the player-trading and amortisation model, and the eghbali-boehly ownership question." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/clearlake.png" alt="Clearlake Capital" loading="lazy"></div>
+          <div class="ent-card-name">Clearlake Capital</div>
+          <div class="ent-card-desc">Clearlake Capital profile: the private-equity firm controlling Chelsea via BlueCo — 61.5%…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/gamma-waves.html" data-name="gamma waves partners" data-desc="gamma waves partners entity profile: andrea agnelli's april 2026 permanent-capital sports fund with chiellini and benetton — €100m target, sports-ip-plus-tech mandate, and a deliberate refusal to invest in football." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/gamma-waves.png" alt="Gamma Waves Partners" loading="lazy"></div>
+          <div class="ent-card-name">Gamma Waves Partners</div>
+          <div class="ent-card-desc">Gamma Waves Partners entity profile: Andrea Agnelli's April 2026 permanent-capital sports fund…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/kingdom-holding.html" data-name="kingdom holding" data-desc="kingdom holding company entity profile: alwaleed bin talal's listed vehicle, 70% al-hilal acquisition, the new private saudi football owner archetype." data-layer="4" data-type="sovereign" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/kingdom-holding.png" alt="Kingdom Holding" loading="lazy"></div>
+          <div class="ent-card-name">Kingdom Holding</div>
+          <div class="ent-card-desc">Kingdom Holding Company entity profile: Alwaleed Bin Talal's listed vehicle, 70% Al-Hilal…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/mubadala.html" data-name="mubadala" data-desc="mubadala investment company entity profile: abu dhabi sovereign vehicle, aum, indirect sport exposure, cfg-adjacent posture, sports-tech holdings." data-layer="4" data-type="sovereign" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/mubadala.png" alt="Mubadala" loading="lazy"></div>
+          <div class="ent-card-name">Mubadala</div>
+          <div class="ent-card-desc">Mubadala Investment Company entity profile: Abu Dhabi sovereign vehicle, AUM, indirect sport…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/qsi.html" data-name="qatar sports investments" data-desc="qatar sports investments (qsi) entity profile: psg ownership, arctos minority transaction, permanent-capital sport-platform thesis, mena media architecture." data-layer="4" data-type="sovereign" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/qsi.png" alt="Qatar Sports Investments" loading="lazy"></div>
+          <div class="ent-card-name">Qatar Sports Investments</div>
+          <div class="ent-card-desc">Qatar Sports Investments (QSI) entity profile: PSG ownership, Arctos minority transaction,…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/redbird.html" data-name="redbird capital partners (sport platform)" data-desc="redbird capital partners sport platform: ac milan (full control 2022), toulouse, fsg minority, indian super league holdings. sport-specialist pe platform with ~$10bn+ aum." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/redbird.png" alt="RedBird Capital Partners (Sport platform)" loading="lazy"></div>
+          <div class="ent-card-name">RedBird Capital Partners (Sport platform)</div>
+          <div class="ent-card-desc">RedBird Capital Partners sport platform: AC Milan (full control 2022), Toulouse, FSG minority,…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/sixth-street.html" data-name="sixth street" data-desc="sixth street profile: the structured-capital pioneer in football — 25% of barcelona's tv rights for 25 years, the bernabéu deal with legends, bay fc ownership, and a women's-football roll-up via bay collective." data-layer="4" data-type="structured" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/sixth-street.png" alt="Sixth Street" loading="lazy"></div>
+          <div class="ent-card-name">Sixth Street</div>
+          <div class="ent-card-desc">Sixth Street profile: the structured-capital pioneer in football — 25% of Barcelona's TV…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+        <a class="ent-card" href="/entities/verance-capital.html" data-name="verance capital" data-desc="verance capital entity profile: a new york sports/media/live-entertainment growth-equity boutique built around lyle ayes, with athlete-ip, talent and ticketing bets — and essentially no football-club exposure by design." data-layer="4" data-type="PE" data-pop="pe">
+          <div class="ent-card-logo"><img src="/assets/img/logos/verance-capital.png" alt="Verance Capital" loading="lazy"></div>
+          <div class="ent-card-name">Verance Capital</div>
+          <div class="ent-card-desc">Verance Capital entity profile: a New York sports/media/live-entertainment growth-equity…</div>
+          <span class="ent-card-tag">L4 · Capital</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="5" data-count="8">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="9" cy="8" r="2.6"/><circle cx="16" cy="9" r="2"/><path d="M4.5 18c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5M14.5 18c0-1.7.8-3.1 2.2-3.7"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">05</span><span class="dir-layer-name">Agencies</span></div><div class="dir-layer-desc">Agents and agencies representing players, managers, and clubs.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 8</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/caa-stellar.html" data-name="caa stellar" data-desc="caa stellar entity profile: largest player-representation agency in football. combined post-2020 caa acquisition of stellar group. ~750+ player roster across men's, women's, coaches." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/caa-stellar.png" alt="CAA Stellar" loading="lazy"></div>
+          <div class="ent-card-name">CAA Stellar</div>
+          <div class="ent-card-desc">CAA Stellar entity profile: largest player-representation agency in football. Combined…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/img.html" data-name="img" data-desc="img entity profile: endeavor-owned multi-sport agency-and-events company. tennis, golf, fashion, college sports, plus selective football representation. the legacy events-and-rights platform." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/img.png" alt="IMG" loading="lazy"></div>
+          <div class="ent-card-name">IMG</div>
+          <div class="ent-card-desc">IMG entity profile: Endeavor-owned multi-sport agency-and-events company. Tennis, golf,…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/wasserman.html" data-name="wasserman" data-desc="wasserman entity profile: multi-sport agency anchored by football representation. strong nwsl and wsl roster, growing men's-football presence, brand-first activation model." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/wasserman.png" alt="Wasserman" loading="lazy"></div>
+          <div class="ent-card-name">Wasserman</div>
+          <div class="ent-card-desc">Wasserman entity profile: multi-sport agency anchored by football representation. Strong NWSL…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/gestifute.html" data-name="gestifute" data-desc="gestifute entity profile: jorge mendes's porto-headquartered agency. cristiano ronaldo, josé mourinho, and a dense iberian and south american roster. founder-controlled boutique with disproportionate market influence." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/gestifute.png" alt="Gestifute" loading="lazy"></div>
+          <div class="ent-card-name">Gestifute</div>
+          <div class="ent-card-desc">Gestifute entity profile: Jorge Mendes's Porto-headquartered agency. Cristiano Ronaldo, José…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/roc-nation-sports.html" data-name="roc nation sports" data-desc="roc nation sports entity profile: jay-z's brand-first sport agency. smaller transfer-fee commission than legacy agencies but richer commercial activation, structured around top-tier athlete brand-building." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/roc-nation-sports.png" alt="Roc Nation Sports" loading="lazy"></div>
+          <div class="ent-card-name">Roc Nation Sports</div>
+          <div class="ent-card-desc">Roc Nation Sports entity profile: JAY-Z's brand-first sport agency. Smaller transfer-fee…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/caa-base.html" data-name="caa base" data-desc="caa base profile: caa's london football agency (formerly base soccer) under leon angel — a roster of english attacking talent including cole palmer and eberechi eze, the caa/artémis parent, and the suspended fifa agent-cap regime." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/caa-base.png" alt="CAA Base" loading="lazy"></div>
+          <div class="ent-card-name">CAA Base</div>
+          <div class="ent-card-desc">CAA Base profile: CAA's London football agency (formerly Base Soccer) under Leon Angel — a…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/pimenta.html" data-name="rafaela pimenta" data-desc="rafaela pimenta profile: the monaco boutique that inherited mino raiola's roster — erling haaland and his 2034 city extension, an ultra-concentrated elite book, and the woman-led, single-principal structure." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/pimenta.png" alt="Rafaela Pimenta" loading="lazy"></div>
+          <div class="ent-card-name">Rafaela Pimenta</div>
+          <div class="ent-card-desc">Rafaela Pimenta profile: the Monaco boutique that inherited Mino Raiola's roster — Erling…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+        <a class="ent-card" href="/entities/you-first.html" data-name="you first" data-desc="you first profile: the madrid multi-sport agency owned by gersh — a ~400-player football roster, the women's-game strength via beplayer and alexia putellas, and a multi-continent footprint." data-layer="5" data-type="agency" data-pop="agencies">
+          <div class="ent-card-logo"><img src="/assets/img/logos/you-first.png" alt="You First" loading="lazy"></div>
+          <div class="ent-card-name">You First</div>
+          <div class="ent-card-desc">You First profile: the Madrid multi-sport agency owned by Gersh — a ~400-player football…</div>
+          <span class="ent-card-tag">L5 · Agencies</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="6" data-count="9">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="5" width="18" height="12" rx="1"/><path d="M9 20h6M12 17v3"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">06</span><span class="dir-layer-name">Media &amp; Broadcasting</span></div><div class="dir-layer-desc">Broadcasters and streaming platforms distributing football worldwide.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 9</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/amazon.html" data-name="amazon" data-desc="amazon prime video sport-rights position. premier league friday-night package, nfl thursday night football, selective european rights." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/amazon.png" alt="Amazon" loading="lazy"></div>
+          <div class="ent-card-name">Amazon</div>
+          <div class="ent-card-desc">Amazon Prime Video sport-rights position. Premier League Friday-night package, NFL Thursday…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/dazn.html" data-name="dazn" data-desc="dazn entity profile: streaming-led sport broadcaster, serie a primary position 2024-29, italian and continental european footprint, len blavatnik-funded." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/dazn.png" alt="DAZN" loading="lazy"></div>
+          <div class="ent-card-name">DAZN</div>
+          <div class="ent-card-desc">DAZN entity profile: streaming-led sport broadcaster, Serie A primary position 2024-29, Italian…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/bein-sports.html" data-name="bein sports" data-desc="bein sports entity profile: qatari-anchored regional broadcaster. mena dominance under structural pressure from ssc, shahid, and the saudi-led 2034 architecture." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/bein-sports.png" alt="beIN Sports" loading="lazy"></div>
+          <div class="ent-card-name">beIN Sports</div>
+          <div class="ent-card-desc">beIN Sports entity profile: Qatari-anchored regional broadcaster. MENA dominance under…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/tnt-sports.html" data-name="tnt sports" data-desc="tnt sports profile: wbd's uk sports brand — the premier league package to 2029, the champions league rights lost to paramount from 2027, the discovery+/hbo max strategy, and the paramount skydance takeover of its parent." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/tnt-sports.png" alt="TNT Sports" loading="lazy"></div>
+          <div class="ent-card-name">TNT Sports</div>
+          <div class="ent-card-desc">TNT Sports profile: WBD's UK sports brand — the Premier League package to 2029, the Champions…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/netflix.html" data-name="netflix" data-desc="netflix profile: the streaming giant's selective sport strategy — the fifa women's world cup 2027/2031 us rights, the event-not-season doctrine across nfl and wwe, and the deliberate absence from men's football." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/netflix.png" alt="Netflix" loading="lazy"></div>
+          <div class="ent-card-name">Netflix</div>
+          <div class="ent-card-desc">Netflix profile: the streaming giant's selective sport strategy — the FIFA Women's World Cup…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/apple.html" data-name="apple" data-desc="apple entity profile: tech-platform sport-rights bidder. $2.5bn 10-year exclusive global mls deal (2022). plausible 2027 pl bidder. apple tv as the integration layer." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/apple.png" alt="Apple" loading="lazy"></div>
+          <div class="ent-card-name">Apple</div>
+          <div class="ent-card-desc">Apple entity profile: tech-platform sport-rights bidder. $2.5bn 10-year exclusive global MLS…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/canal-plus.html" data-name="canal+" data-desc="canal+ profile: the london-listed french pay-tv group — the multichoice acquisition and 42m-subscriber base, supersport's african football rights, champions league france to 2031, and the ligue 1 rights litigation." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/canal-plus.png" alt="Canal+" loading="lazy"></div>
+          <div class="ent-card-name">Canal+</div>
+          <div class="ent-card-desc">Canal+ profile: the London-listed French pay-TV group — the MultiChoice acquisition and…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/sky.html" data-name="sky group" data-desc="sky group entity profile: 30-year premier league incumbent, comcast-owned, defending pay-tv position against apple, amazon, netflix in the 2027 cycle reset." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/sky.png" alt="Sky Group" loading="lazy"></div>
+          <div class="ent-card-name">Sky Group</div>
+          <div class="ent-card-desc">Sky Group entity profile: 30-year Premier League incumbent, Comcast-owned, defending pay-TV…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+        <a class="ent-card" href="/entities/ssc-shahid.html" data-name="ssc and shahid" data-desc="ssc and shahid: combined profile of the two principal saudi sport broadcasters. ssc as state-aligned anchor; shahid (mbc group) as streaming sports tier." data-layer="6" data-type="broadcaster" data-pop="broadcasters">
+          <div class="ent-card-logo"><img src="/assets/img/logos/ssc-shahid.png" alt="SSC and Shahid" loading="lazy"></div>
+          <div class="ent-card-name">SSC and Shahid</div>
+          <div class="ent-card-desc">SSC and Shahid: combined profile of the two principal Saudi sport broadcasters. SSC as…</div>
+          <span class="ent-card-tag">L6 · Media</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer dir-layer--grouped" data-layer="7" data-count="11">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">07</span><span class="dir-layer-name">Commercial</span></div><div class="dir-layer-desc">Brands and platforms powering commercial revenue and fan engagement.</div></div>
+        <span></span>
+      </div>
+      <div class="dir-subgroup"><div class="dir-subhead">Kit Suppliers</div><div class="dir-cards">
+        <a class="ent-card" href="/entities/nike.html" data-name="nike" data-desc="nike entity profile: dominant football kit supplier. marquee club partnerships at barcelona, psg, liverpool, tottenham. athlete endorsement portfolio anchored by mbappé, vinícius, and the broader stable." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/nike.png" alt="Nike" loading="lazy"></div>
+          <div class="ent-card-name">Nike</div>
+          <div class="ent-card-desc">Nike entity profile: dominant football kit supplier. Marquee club partnerships at Barcelona,…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/adidas.html" data-name="adidas" data-desc="adidas entity profile: structural football category co-leader. real madrid, bayern munich, manchester united, arsenal kit deals plus athlete stable." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/adidas.png" alt="Adidas" loading="lazy"></div>
+          <div class="ent-card-name">Adidas</div>
+          <div class="ent-card-desc">Adidas entity profile: structural football category co-leader. Real Madrid, Bayern Munich,…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/puma.html" data-name="puma" data-desc="puma profile: the third sportswear brand — the 2025 crisis and restructuring, new ceo arthur hoeld, the manchester city/milan/dortmund kit portfolio, and football protected as a core category into the world cup year." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/puma.png" alt="Puma" loading="lazy"></div>
+          <div class="ent-card-name">Puma</div>
+          <div class="ent-card-desc">Puma profile: the third sportswear brand — the 2025 crisis and restructuring, new CEO Arthur…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/new-balance.html" data-name="new balance" data-desc="new balance profile: the privately held boston challenger in football — a player-led roster headlined by bukayo saka, mid-tier club kits, the west ham deal from 2026, and a world cup-timed push." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/new-balance.png" alt="New Balance" loading="lazy"></div>
+          <div class="ent-card-name">New Balance</div>
+          <div class="ent-card-desc">New Balance profile: the privately held Boston challenger in football — a player-led roster…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+      </div></div>
+      <div class="dir-subgroup"><div class="dir-subhead">Shirt Sponsors</div><div class="dir-cards">
+        <a class="ent-card" href="/entities/emirates.html" data-name="emirates airline" data-desc="emirates entity profile: anchor front-of-shirt football sponsor. real madrid, arsenal, ac milan, benfica partnerships across cycles." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/emirates.png" alt="Emirates Airline" loading="lazy"></div>
+          <div class="ent-card-name">Emirates Airline</div>
+          <div class="ent-card-desc">Emirates entity profile: anchor front-of-shirt football sponsor. Real Madrid, Arsenal, AC…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/etihad.html" data-name="etihad airways" data-desc="etihad entity profile: anchor manchester city sponsor. front-of-shirt and stadium naming rights since 2009. abu dhabi sovereign-aligned commercial posture." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/etihad.png" alt="Etihad Airways" loading="lazy"></div>
+          <div class="ent-card-name">Etihad Airways</div>
+          <div class="ent-card-desc">Etihad entity profile: anchor Manchester City sponsor. Front-of-shirt and stadium naming rights…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/qatar-airways.html" data-name="qatar airways" data-desc="qatar airways profile: the qatari state airline as football soft-power vehicle — fifa partner to 2030, psg shirt sponsor to 2028, the inter hedge, and the state-ownership questions around the psg deal." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/qatar-airways.png" alt="Qatar Airways" loading="lazy"></div>
+          <div class="ent-card-name">Qatar Airways</div>
+          <div class="ent-card-desc">Qatar Airways profile: the Qatari state airline as football soft-power vehicle — FIFA partner…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/riyadh-air-alula-neom.html" data-name="riyadh air / alula / neom" data-desc="riyadh air, alula and neom entity profile: three pif-linked vision 2030 nation-brand vehicles using football sponsorship as soft-power inventory ahead of the 2034 world cup — with precise attribution of which sponsors which." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/riyadh-air-alula-neom.png" alt="Riyadh Air / AlUla / NEOM" loading="lazy"></div>
+          <div class="ent-card-name">Riyadh Air / AlUla / NEOM</div>
+          <div class="ent-card-desc">Riyadh Air, AlUla and NEOM entity profile: three PIF-linked Vision 2030 nation-brand vehicles…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+      </div></div>
+      <div class="dir-subgroup"><div class="dir-subhead">Merchandise & Licensing</div><div class="dir-cards">
+        <a class="ent-card" href="/entities/fanatics.html" data-name="fanatics" data-desc="fanatics entity profile: dominant sports merchandise platform with selective football positioning. manchester united, psg, real madrid retail partnerships." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/fanatics.png" alt="Fanatics" loading="lazy"></div>
+          <div class="ent-card-name">Fanatics</div>
+          <div class="ent-card-desc">Fanatics entity profile: dominant sports merchandise platform with selective football…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+        <a class="ent-card" href="/entities/ea-sports.html" data-name="ea sports" data-desc="ea sports profile: the publisher of football's dominant game — ea sports fc post-fifa split, lead-partner and laliga title-sponsor deals, and the ~$55bn pif/silver lake/affinity take-private." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><span class="ent-card-mono">ES</span></div>
+          <div class="ent-card-name">EA Sports</div>
+          <div class="ent-card-desc">EA Sports profile: the publisher of football's dominant game — EA Sports FC post-FIFA split,…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+      </div></div>
+      <div class="dir-subgroup"><div class="dir-subhead">Marketing & Data</div><div class="dir-cards">
+        <a class="ent-card" href="/entities/two-circles.html" data-name="two circles" data-desc="two circles entity profile: data-led commercial agency advising leagues, federations, and clubs on partnership, ticketing, and broadcast architecture." data-layer="7" data-type="commercial" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/two-circles.png" alt="Two Circles" loading="lazy"></div>
+          <div class="ent-card-name">Two Circles</div>
+          <div class="ent-card-desc">Two Circles entity profile: data-led commercial agency advising leagues, federations, and clubs…</div>
+          <span class="ent-card-tag">L7 · Commercial</span>
+        </a>
+      </div></div>
+      
+    </section>
+    <section class="dir-layer" data-layer="8" data-count="9">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">08</span><span class="dir-layer-name">Football-Tech</span></div><div class="dir-layer-desc">Technology and data companies driving performance and operations.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 9</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/catapult.html" data-name="catapult group international" data-desc="catapult entity profile: leading sports wearable-analytics platform. gps-tracking hardware plus performance analytics across elite football and adjacent codes." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/catapult.png" alt="Catapult Group International" loading="lazy"></div>
+          <div class="ent-card-name">Catapult Group International</div>
+          <div class="ent-card-desc">Catapult entity profile: leading sports wearable-analytics platform. GPS-tracking hardware plus…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/stats-perform.html" data-name="opta (stats perform)" data-desc="opta / stats perform entity profile: the canonical football data brand and its vista-owned parent, the 2026 fifa betting-data coup, opta vision and optaai, and the hardening three-way contest with genius sports and sportradar." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/stats-perform.png" alt="Opta (Stats Perform)" loading="lazy"></div>
+          <div class="ent-card-name">Opta (Stats Perform)</div>
+          <div class="ent-card-desc">Opta / Stats Perform entity profile: the canonical football data brand and its Vista-owned…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/statsbomb.html" data-name="statsbomb" data-desc="statsbomb entity profile: leading football data analytics platform serving recruitment, opposition analysis, and academy development across european top-flight clubs." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/statsbomb.png" alt="StatsBomb" loading="lazy"></div>
+          <div class="ent-card-name">StatsBomb</div>
+          <div class="ent-card-desc">StatsBomb entity profile: leading football data analytics platform serving recruitment,…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/hudl.html" data-name="hudl (agile sports technologies)" data-desc="hudl entity profile: dominant sports-performance video and analytics platform across football, american football, and adjacent codes. wyscout and statsports integrated." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/hudl.png" alt="Hudl (Agile Sports Technologies)" loading="lazy"></div>
+          <div class="ent-card-name">Hudl (Agile Sports Technologies)</div>
+          <div class="ent-card-desc">Hudl entity profile: dominant sports-performance video and analytics platform across football,…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/genius-sports.html" data-name="genius sports" data-desc="genius sports profile: the official-data and media-tech company — exclusive nfl and premier league data, the european leagues deal and geniusiq, second spectrum tracking, and the $1.2bn legend igaming-media acquisition." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/genius-sports.png" alt="Genius Sports" loading="lazy"></div>
+          <div class="ent-card-name">Genius Sports</div>
+          <div class="ent-card-desc">Genius Sports profile: the official-data and media-tech company — exclusive NFL and Premier…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/jamestown-analytics.html" data-name="jamestown analytics" data-desc="jamestown analytics entity profile: founding, ownership, model, client roster, outcomes, and the tony bloom / starlizard origin story." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/jamestown-analytics.png" alt="Jamestown Analytics" loading="lazy"></div>
+          <div class="ent-card-name">Jamestown Analytics</div>
+          <div class="ent-card-desc">Jamestown Analytics entity profile: founding, ownership, model, client roster, outcomes, and…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/skillcorner.html" data-name="skillcorner" data-desc="skillcorner profile: the french ai broadcast-tracking company — recruitment-grade data from single-camera video, the $60m silversmith round, nba backing, and a north american multi-sport expansion." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/skillcorner.png" alt="SkillCorner" loading="lazy"></div>
+          <div class="ent-card-name">SkillCorner</div>
+          <div class="ent-card-desc">SkillCorner profile: the French AI broadcast-tracking company — recruitment-grade data from…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/sportradar.html" data-name="sportradar" data-desc="sportradar profile: the listed sports-data and integrity giant — €1.29bn fy2025 revenue, the img arena acquisition, the nba partnership, uefa/fifa integrity ties, and the contract-by-contract rights contest with genius sports." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><span class="ent-card-mono">SP</span></div>
+          <div class="ent-card-name">Sportradar</div>
+          <div class="ent-card-desc">Sportradar profile: the listed sports-data and integrity giant — €1.29bn FY2025 revenue,…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+        <a class="ent-card" href="/entities/transferroom.html" data-name="transferroom" data-desc="transferroom entity profile: the b2b marketplace that disintermediated the transfer market — 10,000 verified deals, 800+ clubs across 130 leagues, deal-day summits, and a push from marketplace to football decision-intelligence." data-layer="8" data-type="football-tech" data-pop="technology">
+          <div class="ent-card-logo"><img src="/assets/img/logos/transferroom.png" alt="TransferRoom" loading="lazy"></div>
+          <div class="ent-card-name">TransferRoom</div>
+          <div class="ent-card-desc">TransferRoom entity profile: the B2B marketplace that disintermediated the transfer market —…</div>
+          <span class="ent-card-tag">L8 · Football-Tech</span>
+        </a>
+      </div>
+    </section>
+    <section class="dir-layer" data-layer="9" data-count="6">
+      <div class="dir-layer-head">
+        <span class="dir-layer-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span>
+        <div><div class="dir-layer-h"><span class="dir-layer-num">09</span><span class="dir-layer-name">Stadium / Fan Experience</span></div><div class="dir-layer-desc">Venues, operators, and platforms shaping the matchday experience.</div></div>
+        <button class="dir-viewall" type="button"><span class="dvl-txt">View all 6</span> <span class="arw">→</span></button>
+      </div>
+      <div class="dir-cards">
+        <a class="ent-card" href="/entities/aeg.html" data-name="aeg" data-desc="aeg profile: philip anschutz's venue and live-entertainment empire — the o2 and crypto.com arena, its legacy role saving mls, ownership now of only the la galaxy, and the asm global sale to legends." data-layer="9" data-type="stadium" data-pop="stadiums">
+          <div class="ent-card-logo"><img src="/assets/img/logos/aeg.png" alt="AEG" loading="lazy"></div>
+          <div class="ent-card-name">AEG</div>
+          <div class="ent-card-desc">AEG profile: Philip Anschutz's venue and live-entertainment empire — the O2 and Crypto.com…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+        <a class="ent-card" href="/entities/asm-global.html" data-name="asm global" data-desc="asm global entity profile: leading venue management and operations platform. 350+ venues across stadiums, arenas, convention centres globally." data-layer="9" data-type="stadium" data-pop="stadiums">
+          <div class="ent-card-logo"><img src="/assets/img/logos/asm-global.png" alt="ASM Global" loading="lazy"></div>
+          <div class="ent-card-name">ASM Global</div>
+          <div class="ent-card-desc">ASM Global entity profile: leading venue management and operations platform. 350+ venues across…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+        <a class="ent-card" href="/entities/populous.html" data-name="populous" data-desc="populous entity profile: dominant sports venue architect. tottenham hotspur stadium, wembley, yankee stadium, wimbledon, plus broader stadium portfolio." data-layer="9" data-type="stadium" data-pop="stadiums">
+          <div class="ent-card-logo"><img src="/assets/img/logos/populous.png" alt="Populous" loading="lazy"></div>
+          <div class="ent-card-name">Populous</div>
+          <div class="ent-card-desc">Populous entity profile: dominant sports venue architect. Tottenham Hotspur Stadium, Wembley,…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+        <a class="ent-card" href="/entities/legends.html" data-name="legends hospitality" data-desc="legends entity profile: dominant venue services and hospitality platform. premium experiences at major football and global sports venues." data-layer="9" data-type="stadium" data-pop="stadiums">
+          <div class="ent-card-logo"><img src="/assets/img/logos/legends.png" alt="Legends Hospitality" loading="lazy"></div>
+          <div class="ent-card-name">Legends Hospitality</div>
+          <div class="ent-card-desc">Legends entity profile: dominant venue services and hospitality platform. Premium experiences…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+        <a class="ent-card" href="/entities/oak-view-group.html" data-name="oak view group" data-desc="oak view group profile: the venue developer behind climate pledge arena and co-op live — the leiweke bid-rigging indictment, the ceo transition, the atlético madrid arena complex, and a gulf hospitality jv." data-layer="9" data-type="stadium" data-pop="stadiums">
+          <div class="ent-card-logo"><img src="/assets/img/logos/oak-view-group.png" alt="Oak View Group" loading="lazy"></div>
+          <div class="ent-card-name">Oak View Group</div>
+          <div class="ent-card-desc">Oak View Group profile: the venue developer behind Climate Pledge Arena and Co-op Live — the…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+        <a class="ent-card" href="/entities/socios-chiliz.html" data-name="socios / chiliz" data-desc="socios / chiliz profile: the fan-token platform — the chz token's ~96% collapse, 70+ club partnerships, the supporters'-trust backlash, the world cup-timed national-team push, and the us re-entry after a favourable regulatory ruling." data-layer="9" data-type="fan-platform" data-pop="">
+          <div class="ent-card-logo"><img src="/assets/img/logos/socios-chiliz.png" alt="Socios / Chiliz" loading="lazy"></div>
+          <div class="ent-card-name">Socios / Chiliz</div>
+          <div class="ent-card-desc">Socios / Chiliz profile: the fan-token platform — the CHZ token's ~96% collapse, 70+ club…</div>
+          <span class="ent-card-tag">L9 · Stadium/Fan</span>
+        </a>
+      </div>
+    </section>
+    
+      <div class="dir-empty" id="dirEmpty" style="display:none">No entities match your filters.</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:0">
+  <div class="cta-onesystem">
+    <div class="cta-onesystem-left">
+      <span class="cta-onesystem-ico"><svg width="72" height="72" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="6"/><circle cx="40" cy="12" r="3"/><circle cx="64" cy="30" r="3"/><circle cx="58" cy="62" r="3"/><circle cx="20" cy="60" r="3"/><circle cx="14" cy="28" r="3"/><path d="M40 18v16M46 40l15-8M44 44l12 16M36 44l-14 14M34 40l-14-10"/></svg></span>
+      <div>
+        <h3>One system. Infinite connections.</h3>
+        <p>Explore how every entity fits into the football business ecosystem — and how value flows between layers.</p>
+      </div>
+    </div>
+    <a class="btn btn--primary" href="/ecosystem">Explore the full map <span class="arw">→</span></a>
+  </div>
+</section>
+
 <script>
-(function () {
-  var ENTS = [], state = { q: '', layers: [], types: [] };
-  var grid = document.getElementById('entGrid'), countEl = document.getElementById('entCount');
-  var searchEl = document.getElementById('entSearch');
+(function(){
+  var main=document.getElementById('dirMain');
+  var cards=[].slice.call(main.querySelectorAll('.ent-card'));
+  var sections=[].slice.call(main.querySelectorAll('.dir-layer'));
+  var total=cards.length;
+  var state={q:'',layers:[],type:'',pop:[]};
 
-  function matches(e) {
-    if (state.layers.length && state.layers.indexOf(e.layer) === -1) return false;
-    if (state.types.length && state.types.indexOf(e.entityType) === -1) return false;
-    if (state.q) { var h = (e.name + ' ' + (e.summary || '') + ' ' + e.entityType).toLowerCase(); if (h.indexOf(state.q) === -1) return false; }
+  function norm(s){return (s||'').toLowerCase();}
+  function matches(c){
+    if(state.q){ var q=norm(state.q); if(norm(c.dataset.name).indexOf(q)===-1 && norm(c.dataset.desc).indexOf(q)===-1) return false; }
+    if(state.layers.length && state.layers.indexOf(c.dataset.layer)===-1) return false;
+    if(state.type && c.dataset.type!==state.type) return false;
+    if(state.pop.length){ var cp=(c.dataset.pop||'').split(' '); if(!state.pop.some(function(p){return cp.indexOf(p)!==-1;})) return false; }
     return true;
   }
-  function cardHTML(e) {
-    return '<a class="ent-card" href="/entities/' + e.slug + '.html">' +
-      '<span class="ent-mono">' + FL.esc(e.mono) + '</span>' +
-      '<div><div class="ent-tagline">' + FL.esc(e.region) + ' · ' + FL.esc(e.entityType) + '</div>' +
-      '<div class="ent-name">' + FL.esc(e.name) + '</div>' +
-      '<div class="ent-sum">' + FL.esc((e.summary || '').slice(0, 130)) + ((e.summary || '').length > 130 ? '…' : '') + '</div>' +
-      '<span class="ent-layerbadge">L' + e.layer + ' · ' + FL.LAYER_NAMES[e.layer] + '</span></div></a>';
-  }
-  function render() {
-    var list = ENTS.filter(matches).sort(function (a, b) { return a.name.localeCompare(b.name); });
-    countEl.textContent = list.length + ' of ' + ENTS.length + ' entities';
-    grid.innerHTML = list.length ? list.map(cardHTML).join('') : '<div class="empty-state" style="padding:48px">No entities match.</div>';
-  }
-  function toggle(arr, v) { var i = arr.indexOf(v); if (i === -1) arr.push(v); else arr.splice(i, 1); render(); }
+  var active=function(){return state.q||state.layers.length||state.type||state.pop.length;};
 
-  FL.loadContent(function (data) {
-    ENTS = (data.entities || []).slice();
-    var lc = document.getElementById('layerChips');
-    for (var i = 1; i <= 9; i++) (function (n) {
-      var b = document.createElement('button'); b.className = 'chip chip-wide'; b.title = FL.LAYER_NAMES[n];
-      var nn = (n < 10 ? '0' + n : '' + n);
-      b.innerHTML = '<span class="chip-num">' + nn + '</span> ' + FL.esc(FL.LAYER_NAMES[n]);
-      b.onclick = function () { b.classList.toggle('active'); toggle(state.layers, n); }; lc.appendChild(b);
-    })(i);
-    var types = ENTS.map(function (e) { return e.entityType; }).filter(function (v, i, a) { return a.indexOf(v) === i; }).sort();
-    var tc = document.getElementById('typeChips');
-    types.forEach(function (t) {
-      var b = document.createElement('button'); b.className = 'chip'; b.textContent = t;
-      b.onclick = function () { b.classList.toggle('active'); toggle(state.types, t); }; tc.appendChild(b);
+  function apply(){
+    var shown=0;
+    sections.forEach(function(sec){
+      var secCards=[].slice.call(sec.querySelectorAll('.ent-card'));
+      var vis=0;
+      secCards.forEach(function(c){ var m=matches(c); c.style.display=m?'':'none'; if(m) vis++; });
+      shown+=vis;
+      sec.style.display=vis?'':'none';
+      // when filtering, expand to show all matches (bypass the cap)
+      sec.classList.toggle('open', !!active());
+      var va=sec.querySelector('.dir-viewall');
+      if(va){ va.style.display=(active()||secCards.length<=5)?'none':''; }
+      var txt=sec.querySelector('.dvl-txt');
+      if(txt) txt.textContent = sec.classList.contains('open') ? 'Show less' : ('View all '+sec.dataset.count);
     });
-    searchEl.addEventListener('input', function () { state.q = searchEl.value.toLowerCase().trim(); render(); });
-    render();
+    document.getElementById('dirCount').textContent=shown;
+    document.getElementById('dirEmpty').style.display=shown?'none':'';
+  }
+
+  document.getElementById('dirSearch').addEventListener('input',function(){state.q=this.value;apply();});
+  document.getElementById('dirType').addEventListener('change',function(){state.type=this.value;apply();});
+  document.getElementById('dirLayers').addEventListener('click',function(e){
+    var b=e.target.closest('.fr-layer'); if(!b)return;
+    var l=b.dataset.layer,i=state.layers.indexOf(l);
+    if(i===-1)state.layers.push(l); else state.layers.splice(i,1);
+    b.classList.toggle('on'); b.setAttribute('aria-pressed',b.classList.contains('on')?'true':'false'); apply();
   });
+  document.getElementById('dirPop').addEventListener('change',function(e){
+    var cb=e.target; if(cb.type!=='checkbox')return;
+    var i=state.pop.indexOf(cb.value);
+    if(cb.checked && i===-1)state.pop.push(cb.value); else if(!cb.checked && i!==-1)state.pop.splice(i,1);
+    apply();
+  });
+  main.addEventListener('click',function(e){
+    var va=e.target.closest('.dir-viewall'); if(!va)return;
+    var sec=va.closest('.dir-layer'); var open=sec.classList.toggle('open');
+    va.querySelector('.dvl-txt').textContent=open?'Show less':('View all '+sec.dataset.count);
+  });
+  document.getElementById('dirClear').addEventListener('click',function(){
+    state={q:'',layers:[],type:'',pop:[]};
+    document.getElementById('dirSearch').value='';
+    document.getElementById('dirType').value='';
+    document.querySelectorAll('#dirLayers .fr-layer.on').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-pressed','false');});
+    document.querySelectorAll('#dirPop input:checked').forEach(function(c){c.checked=false;});
+    apply();
+  });
+  apply();
 })();
+</script>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
+        </a>
+        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/">Overview</a>
+        <a href="/ecosystem">Ecosystem</a>
+        <a href="/ledger">The Ledger</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reference</h4>
+        <a href="/entities">Entities</a>
+        <a href="/briefing">Briefing</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="/join">Join</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Football Ledger. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.layer-more'); if(!b) return;
+  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.childNodes[0].nodeValue=open?'Less ':'More ';
+});
 </script>
 </body>
 </html>

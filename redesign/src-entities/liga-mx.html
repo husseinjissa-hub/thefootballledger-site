@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liga MX — Entity profile · The Football Ledger</title>
+<meta name="description" content="Liga MX profile: North America's best-attended league — the 2026/27 return of relegation, the forced multi-club ownership unwind, US capital inflows, and MLS integration via Leagues Cup on Apple.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02 · Leagues &amp; competitions</a><span class="sep">/</span><span>Liga MX</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L2 · Leagues · Top flight</span><span class="eyebrow-meta">·  Mexico City, Mexico</span></div>
+  <h1 class="entity-title">Liga <em>MX</em></h1>
+  <p class="entity-deck">North America's best-attended, most-valuable football league — a media-house-owned system now forced to dismantle multi-club ownership, restore relegation, and integrate with MLS, all on the eve of a home World Cup.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Top flight · 18 clubs</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1943</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Mexico City, MX</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Liga MX (clubs' association)</div></div>
+    <div class="fact"><div class="fact-label">Valuation</div><div class="fact-value"><em>~$13bn</em> league</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">MCO unwind · relegation returns</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>A closed system <em>forced open</em></h2>
+<p>Liga MX is the Mexican top flight — the best-attended and most-valuable football league in the Americas, historically run as a closed system of broadcaster-owners with no relegation and significant multi-club ownership. It plays two short tournaments a season, Apertura and Clausura, each ending in a Liguilla play-off, producing two champions a year.</p>
+<p>That model is now being dismantled under external pressure. A 2025 Court of Arbitration for Sport ruling restores relegation from 2026/27; the league is unwinding multi-club ownership, with Atlas and Mazatlán approved for sale; and US capital is flooding in ahead of a home World Cup. The strategic crown jewel is the MLS relationship — Leagues Cup, distributed globally on Apple, effectively bundles Liga MX into a North American super-product.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Format, ownership, and integration</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Format</div><div><div class="row-val">Single table of <strong>18 clubs</strong>; Apertura and Clausura tournaments, each with a Liguilla play-off — two champions per year.</div><div class="row-source">Source · Disclosed</div></div></div>
+      <div class="row"><div class="row-key">Relegation</div><div><div class="row-val">Suspended since 2020; CAS ruled (Sep 2025) it <strong>returns from 2026/27</strong>.</div><div class="row-source">Source · Reported (ESPN, Inside World Football)</div></div></div>
+      <div class="row"><div class="row-key">MCO unwind</div><div><div class="row-val">April 2026: all 18 owners approved sales of <strong>Atlas</strong> and <strong>Mazatlán</strong>; Grupo Pachuca (Pachuca + León) the last group, with a 2027 divestment deadline.</div><div class="row-source">Source · Reported (Washington Post, FOX, AP)</div></div></div>
+      <div class="row"><div class="row-key">US capital</div><div><div class="row-val">League valued <em>~$13bn</em>. General Atlantic took 49% of Club América (EV ~$490m); Apollo, MountainStar also entered.</div><div class="row-source">Source · Reported (ESPN, Front Office Sports)</div></div></div>
+      <div class="row"><div class="row-key">Leagues Cup</div><div><div class="row-val">2026 features all 18 Liga MX + 18 MLS clubs on <strong>Apple TV</strong> globally — the cross-border integration anchor.</div><div class="row-source">Source · Disclosed (LeaguesCup.com)</div></div></div>
+      <div class="row"><div class="row-key">Centralisation</div><div><div class="row-val">Owners declined Apollo's ~$1.25bn bid (late 2024) to centralise commercial and broadcast rights, fearing undervaluation.</div><div class="row-source">Source · Reported (ESPN)</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the league actually functions</h2>
+<p>Liga MX is mid-transition from a closed broadcaster-owned cartel toward a more conventional, investable league — driven by CAS rulings, multi-club bans and the gravitational pull of US capital before a home World Cup. The MLS relationship is the strategic asset: Leagues Cup plus Apple's global distribution monetises the US Hispanic market that already gives Liga MX higher US TV ratings than the Premier League.</p>
+<p>Centralisation is the unresolved fault line. The league is worth roughly $13bn but cannot agree to pool its rights — owners rejected Apollo's bid — because broadcaster-owners such as Televisa and incoming private-equity entrants have conflicting incentives. Whoever eventually controls centralised rights controls the league's next valuation leg.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The pivot year combines World Cup hosting, MLS integration, a forced unwind of multi-club ownership, and a court-ordered return of relegation in 2026/27. The open questions are whether relegation actually takes effect on schedule, whether Pachuca divests León by the 2027 deadline, and whether the league can finally agree a centralised-rights structure that US capital is effectively underwriting.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>ESPN, Inside World Football (CAS relegation ruling)</li>
+      <li>Washington Post, FOX Sports, AP (MCO unwind, April 2026)</li>
+      <li>Front Office Sports, ESPN (valuation, US investment); LeaguesCup.com</li>
+      <li>Note: current Liga MX president/title and TelevisaUnivision deal value not independently verified</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

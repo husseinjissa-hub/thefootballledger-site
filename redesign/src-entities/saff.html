@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAFF — Entity profile · The Football Ledger</title>
+<meta name="description" content="Saudi Arabian Football Federation entity profile: leadership, scale, commercial cycle, regulatory perimeter, 2027 Asian Cup and 2034 World Cup operating build.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<div class="crumbs">
+  <a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-1">Layer 01 · Governance</a><span class="sep">/</span><span>SAFF</span>
+</div>
+
+<header class="profile-header">
+  <div class="eyebrow">
+    <span>L1 · Governance · National association</span>
+    <span class="eyebrow-meta">·  Riyadh, Saudi Arabia</span>
+  </div>
+  <h1 class="entity-title"><em>SAFF</em></h1>
+  <p class="entity-deck">The Saudi Arabian Football Federation. A national association rebuilding itself in real time around the largest mega-event pipeline any single country has carried this century — the 2027 Asian Cup and the 2034 FIFA World Cup, eighteen months apart at the front and seven years apart at the back.</p>
+
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">National association</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">1956</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Riyadh, KSA</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Yasser Al Misehal (President)</div></div>
+    <div class="fact"><div class="fact-label">Pipeline</div><div class="fact-value"><em>2027 Asian Cup · 2034 World Cup</em></div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Wholesale operational rebuild</div></div>
+  </div>
+</header>
+
+<div class="body">
+
+  <section class="section">
+    <div class="section-label">At a glance</div>
+    <h2>The federation, <em>scaling</em></h2>
+    <p>The Saudi Arabian Football Federation governs football across the Kingdom and serves as the country's representative at AFC and FIFA. Through most of its modern history, it has been a mid-sized regional federation: developed senior national-team programme, strong local club competitions, regular continental presence. By 2026 it is something different. The 2027 AFC Asian Cup, jointly hosted with the United Arab Emirates, and the 2034 FIFA Men's World Cup, awarded to Saudi Arabia as sole host in December 2024, are the two most consequential mega-events on any single national federation's plate this decade. SAFF is operating at a scale and tempo unprecedented in its history.</p>
+    <p>The federation does not run the Saudi Pro League directly — that sits with the Saudi Pro League entity, established as a separate body in 2008 and now central to the privatisation programme initiated by the Ministry of Sport and PIF. SAFF coordinates with both. The federation also coordinates with the Ministry of Sport, the General Entertainment Authority, and PIF on stadium and infrastructure delivery, broadcast policy, and the broader Vision 2030 sport strategy.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">The numbers</div>
+    <h2>Scale and structure</h2>
+    <div class="numbers">
+
+      <div class="row">
+        <div class="row-key">Geographic perimeter</div>
+        <div>
+          <div class="row-val">National. Member of <strong>AFC</strong> (one of 47) and of <strong>FIFA</strong>. Federation governance covers the Roshn Saudi League (Pro League), First Division (Yelo League), Second Division, regional competitions, and the Saudi women's professional league.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Leadership</div>
+        <div>
+          <div class="row-val"><strong>President:</strong> Yasser Al Misehal (since 2019; re-elected 2023). <strong>Coordination:</strong> Ministry of Sport (Prince Abdulaziz bin Turki Al-Faisal). <strong>Saudi Pro League CEO:</strong> Carlo Nohra (operational lead on club privatisation).</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Annual revenue</div>
+        <div>
+          <div class="row-val">Federation-level revenue not publicly disclosed at the segment level. Saudi Pro League central commercial reported at approximately <em>$300m / year</em> in the current cycle, expanding into a privatised structure from 2026.</div>
+          <div class="row-source">Source · Reported (Sportico, SportBusiness)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Marquee competitions owned</div>
+        <div>
+          <div class="row-val"><strong>King's Cup</strong> (annual, since 1957 — Saudi Arabia's senior knockout). <strong>Saudi Super Cup.</strong> <strong>Crown Prince Cup.</strong> <strong>Saudi Arabian men's senior team</strong> (Green Falcons; AFC Asian Cup winners three times). <strong>Saudi Arabian women's senior team</strong> (programme launched 2021). Youth international teams.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Commercial cycle</div>
+        <div>
+          <div class="row-val">National-team kit: <strong>adidas</strong>, multi-year cycle. National-team broadcast: through <strong>Saudi Sports Company (SSC)</strong>, the PIF-owned domestic sports broadcaster. SPL central commercial restructuring under way in coordination with PIF and the Pro League entity.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Regulatory perimeter</div>
+        <div>
+          <div class="row-val">Football governance domestically — competition sanctioning at federation tournaments, eligibility, agent licensing under FFAR, discipline. <strong>SPL competition operations sit with the Saudi Pro League entity.</strong> Coordination with the Ministry of Sport on club privatisation, foreign-player allowances, and salary-cap design.</div>
+          <div class="row-source">Source · Disclosed</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Recent rule changes</div>
+        <div>
+          <div class="row-val"><em>2023:</em> Foreign-player allowance expanded — currently <strong>10 foreign outfield + 1 GK</strong> registered, with squad-cost regime under design. <em>2024:</em> Privatisation framework launched for the four PIF-anchored Big Four clubs. <em>2026:</em> Al-Hilal 70% stake transferred from PIF to Kingdom Holding Company in April — first major privatisation transaction.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Mega-event pipeline</div>
+        <div>
+          <div class="row-val"><strong>2027</strong> AFC Asian Cup (joint host with UAE — 24 teams, eight host cities across the two countries). <strong>2027</strong> AFC Champions League Elite final hosting rotation. <strong>2034</strong> FIFA Men's World Cup (sole host — confirmed at FIFA Congress, December 2024). Bid-stage interest in Women's Asian Cup hosting cycles. Joint AFCON / Asian Cup hosting consortium discussions ongoing.</div>
+          <div class="row-source">Source · Disclosed (AFC, FIFA)</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Operating org build</div>
+        <div>
+          <div class="row-val">Substantial expansion across senior commercial, infrastructure, broadcast, hospitality, and women's-game functions. Recruiting from European federations (UEFA, FIFA, the FA), Premier League club commercial teams, and Olympic-organising-committee veterans. Riyadh-based 2034 LOC build-out runs in parallel with SAFF's own headcount expansion. The 2027 LOC team is jointly staffed across Riyadh and Abu Dhabi.</div>
+          <div class="row-source">Source · Reported</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="row-key">Legal posture</div>
+        <div>
+          <div class="row-val">Coordinated transition of Saudi Pro League clubs from PIF anchor ownership to mixed ownership (Kingdom Holding for Al-Hilal; further transactions expected). Active engagement on FIFA's reform programme post-Diarra. National implementation of FFAR licensing in coordination with intermediary registration in the Kingdom.</div>
+          <div class="row-source">Source · Disclosed · Reported</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Operating reality</div>
+    <h2>What the institution actually does, day to day</h2>
+    <p>SAFF in 2026 operates as the football-governance partner inside a broader operating consortium that includes the Ministry of Sport, the Saudi Pro League entity, the Roshn-anchored stadium and infrastructure delivery programmes, and PIF as a strategic financier. The federation's day-to-day work splits across three centres: senior national-team operations, federation-level governance and discipline, and the planning interface with the 2027 and 2034 LOCs.</p>
+    <p>The hiring profile, over the past eighteen months, has been dominated by senior commercial, broadcast technical, hospitality programme management, women's-game development, and infrastructure liaison. A material proportion of senior hires have been lateral moves from European federations and Premier League club commercial functions. The federation has also seeded a meaningful indigenous senior-talent pipeline — middle-management Saudi nationals being accelerated into senior roles ahead of the 2027 and 2034 cycles, in concert with Misk Foundation and Vision 2030 talent-development programmes.</p>
+    <p>The privatisation of the Big Four SPL clubs is the single largest external coordination workstream. Al-Hilal's 70% transfer to Kingdom Holding Company in April 2026 was the first transaction; Al-Nassr, Al-Ittihad, and Al-Ahli are expected to follow on staggered timelines. SAFF's role is regulatory and competition-integrity rather than transaction-running, but the federation's licensing, registration, and disciplinary frameworks are being redesigned in real time to match the new ownership architecture.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-label">Strategic posture</div>
+    <h2>Direction in 2026</h2>
+    <p>SAFF's stated direction is the consolidation of Saudi Arabia as a continuous host of senior football mega-events through 2034 and beyond, alongside the deliberate professionalisation of the Saudi Pro League and the senior national-team programme. The 2027 AFC Asian Cup is positioned as both an operational stress test and a regional commercial proof point for the joint Saudi–UAE delivery model. The 2034 World Cup is the institutional anchor: every senior hire, every infrastructure decision, and every commercial cycle through 2034 is calibrated against the tournament's delivery requirements.</p>
+    <p>The Vision 2030 framework, which positions football as a central pillar of national engagement and tourism, sets the strategic context. SAFF's recent investment in the women's professional game, the youth development pathway, and refereeing infrastructure should be read inside that frame rather than in isolation. The federation's posture relative to other AFC members is increasingly that of a benchmark federation — operating with resources and ambition that put pressure on the AFC's broader governance frame.</p>
+  </section>
+
+
+  <section class="section">
+    <div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>SAFF disclosures and Saudi Ministry of Sport announcements (2023–2026)</li>
+      <li>FIFA Council hosting awards (2024) — 2034 World Cup confirmation</li>
+      <li>AFC Council hosting awards — 2027 Asian Cup joint Saudi–UAE confirmation</li>
+      <li>Saudi Pro League privatisation framework and Kingdom Holding–Al Hilal transaction documents</li>
+      <li>Trade press: SportBusiness, The Athletic, Off the Pitch, Reuters, FT, Bloomberg (2024–2026)</li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Reference</div>
+  <div>Profile last reviewed May 2026</div>
+</footer>
+
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

@@ -1,91 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briefing — The Football Ledger</title>
-<meta name="description" content="The Briefing — dated short notes tracking the moves in football's business architecture, week to week.">
+<title>The Briefing — The Football Ledger</title>
+<meta name="description" content="The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
 <link rel="canonical" href="https://thefootballledger.co/briefing">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="The Briefing — The Football Ledger">
+<meta property="og:description" content="The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
+<meta property="og:url" content="https://thefootballledger.co/briefing">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/site.css">
-<style>
-  .brief-list { padding: 40px 0 100px; }
-  .brief-row { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 28px 0; border-top: 1px solid var(--line-soft); align-items: baseline; }
-  .brief-row:hover .brief-title { color: var(--gold); }
-  .brief-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--bone-mute); }
-  .brief-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 500; line-height: 1.25; transition: color 0.3s ease; }
-  .brief-dek { font-family: 'Fraunces', serif; font-size: 15px; line-height: 1.5; color: var(--bone-dim); margin-top: 8px; max-width: 660px; }
-  @media (max-width: 700px) { .brief-row { grid-template-columns: 1fr; gap: 6px; } }
-.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
-.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/redesign.css">
 </head>
 <body>
-
-<header class="site-head">
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
-  <a class="brand-lockup" href="/" aria-label="The Football Ledger — Overview"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="/" class="nav-item">Overview</a>
-    <a href="/ecosystem" class="nav-item">Ecosystem</a>
-    <a href="/ledger" class="nav-item">The Ledger</a>
-    <a href="/entities" class="nav-item">Entities</a>
-    <a href="/briefing" class="nav-item active">Briefing</a>
-    <a href="/about" class="nav-item">About</a>
-    <a href="/join" class="nav-item">Join</a>
-  </nav>
-  <span class="nav-reserved" aria-hidden="true"></span>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="The Football Ledger — home">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/>
+        <line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/>
+        <text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text>
+        <text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text>
+      </svg>
+      <span class="brand-text">
+        <span class="brand-name">The Football Ledger</span>
+        <span class="brand-tag">The Business of Football</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/" >Overview</a>
+      <a href="/ecosystem" >Ecosystem</a>
+      <a href="/ledger" >The Ledger</a>
+      <a href="/entities" >Entities</a>
+      <a href="/briefing" class="active">Briefing</a>
+      <a href="/about" >About</a>
+      <a href="/join" >Join</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
 </header>
-<div class="nav-overlay" id="navOverlay" aria-hidden="true">
-  <button class="nav-close" aria-label="Close menu">&times;</button>
-  <nav class="overlay-nav" aria-label="Primary (mobile)">
-    <a href="/" class="overlay-item">Overview</a>
-    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
-    <a href="/ledger" class="overlay-item">The Ledger</a>
-    <a href="/entities" class="overlay-item">Entities</a>
-    <a href="/briefing" class="overlay-item active">Briefing</a>
-    <a href="/about" class="overlay-item">About</a>
-    <a href="/join" class="overlay-item">Join</a>
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-top">
+    <a class="brand" href="/">
+      <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+      <span class="brand-text"><span class="brand-name">The Football Ledger</span></span>
+    </a>
+    <button class="mobile-menu-close" aria-label="Close menu" onclick="document.getElementById('mobileMenu').classList.remove('open')">&times;</button>
+  </div>
+  <nav aria-label="Primary (mobile)">
+    <a href="/">Overview</a>
+    <a href="/ecosystem">Ecosystem</a>
+    <a href="/ledger">The Ledger</a>
+    <a href="/entities">Entities</a>
+    <a href="/briefing">Briefing</a>
+    <a href="/about">About</a>
+    <a href="/join">Join</a>
   </nav>
 </div>
+<main id="main">
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="overline overline--rule overline--green" style="margin-bottom:24px">Section D · Briefing</div>
+    <h1 class="h1">The <span class="serif-em">newswire.</span></h1>
+    <p class="deck hero-sub" style="margin-top:26px">What moved football's business this week.<br>Five stories. One structural read.</p>
+  </div>
+  <div class="hero-media"><img src="/assets/img/briefing-hero.jpg" alt="A desk with the Financial Times, a laptop showing football-economy dashboards, and a Football Ledger mug" width="1100" height="733"></div>
+</section>
 
-<main class="wrap">
-  <header class="surface-head">
-    <div class="surface-eyebrow">Section D · Briefing</div>
-    <h1 class="surface-title">The <em>newswire.</em></h1>
-    <p class="surface-dek">Dated short notes — what is moving in the business of football, week to week.</p>
-  </header>
-  <section class="brief-list" id="briefList"></section>
+<section class="wrap section" style="padding-bottom:0">
+<div class="bf-current">
+    <div class="bf-current-body">
+      <div class="bf-current-label">Current issue</div>
+      <div class="bf-current-issue"><b>Issue 03</b> &nbsp;·&nbsp; 14 Jul 2026</div>
+      <h2 class="bf-current-title">The great <em>repricing</em></h2>
+      <p class="bf-current-dek">World Cup rights, shirt fronts, and slices of its biggest clubs — even as the tournament itself broke every commercial record it had.</p>
+      <div class="bf-current-foot">
+        <span class="bf-current-read"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 8 min read</span>
+        <a class="btn btn--primary" href="/briefing/2026-07-14.html">Read the issue <span class="arw">→</span></a>
+      </div>
+    </div>
+    <div class="bf-current-media"><img src="/assets/img/briefing-skyline.jpg" alt="The City of London skyline at dusk"></div>
+  </div>
+
+  <div class="bf-prev">
+    <div class="overline overline--green" style="margin-bottom:14px">Previous issues</div>
+    <div class="bf-prev-list">
+      <a class="bf-prev-row" href="/briefing/2026-06-27.html">
+        <div class="bf-prev-date">27 Jun 2026</div>
+        <div><div class="bf-prev-title"><b>Issue 02 ·</b> Demand meets distress</div><div class="bf-prev-dek">Tottenham's stake sale, Botafogo's bankruptcy, football's crowded private-equity field, PIF's stadium financing, FIFA's late World Cup rights, and the commercial money finding new doors.</div></div>
+        <span class="bf-prev-read">Read <span class="arw">→</span></span>
+      </a>
+      <a class="bf-prev-row" href="/briefing/2026-05-04.html">
+        <div class="bf-prev-date">04 May 2026</div>
+        <div><div class="bf-prev-title"><b>Issue 01 ·</b> The Phase 2 reset</div><div class="bf-prev-dek">PIF's strategy reset, Apollo's Atlético operating reset, Gamma Waves Partners, Two Circles' footprint, and the Independent Football Regulator's first year.</div></div>
+        <span class="bf-prev-read">Read <span class="arw">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:44px">
+  <div class="bf-news">
+    <div class="bf-news-media"><img src="/assets/img/briefing-news.jpg" alt="A Football Ledger mug beside a notebook and newspapers" loading="lazy"></div>
+    <div class="bf-news-body">
+      <div class="bf-news-eyebrow">The Briefing. Every Monday.</div>
+      <h2>Monday morning.<br>Before everyone else.</h2>
+      <p>Receive The Briefing every week in your inbox.</p>
+      <form class="bf-news-form" onsubmit="return false"><input type="email" placeholder="Enter your email" aria-label="Enter your email"><button type="submit">Subscribe →</button></form>
+    </div>
+  </div>
+</section>
 </main>
-
-<footer class="site-foot">
-  <div>The Football Ledger · 2026</div>
-  <div>A continuing analysis of football's business architecture</div>
-  <div class="foot-utility"><a href="/about">About</a> &middot; <a href="/join">Join the Team</a> &middot; <a href="/search">Search</a></div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="brand" href="/">
+          <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><circle cx="24" cy="24" r="21" stroke="#1A1A1A" stroke-width="1.1"/><line x1="24" y1="8" x2="24" y2="40" stroke="#1A1A1A" stroke-width="0.9"/><text x="15.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">F</text><text x="32.5" y="29.5" font-family="Newsreader, Georgia, serif" font-size="16" fill="#1A1A1A" text-anchor="middle">L</text></svg>
+          <span class="brand-text"><span class="brand-name">The Football Ledger</span><span class="brand-tag">The Business of Football</span></span>
+        </a>
+        <p>A continuing analysis of football's business architecture — ownership, capital, governance, media, and the operators shaping the game.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.5 8.65 21 11 21 14.3V21h-4v-6c0-1.43-.03-3.27-2-3.27-2 0-2.3 1.56-2.3 3.17V21H9z"/></svg></a>
+          <a href="#" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.3 8.4L23 22h-6.9l-5.4-7-6.2 7H1.4l7.8-9L1 2h7l4.9 6.4zM16.7 20h1.9L7.4 4H5.4z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="/">Overview</a>
+        <a href="/ecosystem">Ecosystem</a>
+        <a href="/ledger">The Ledger</a>
+      </div>
+      <div class="footer-col">
+        <h4>Reference</h4>
+        <a href="/entities">Entities</a>
+        <a href="/briefing">Briefing</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get involved</h4>
+        <a href="/join">Join</a>
+        <a href="#subscribe">Subscribe</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 The Football Ledger. All rights reserved.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="mailto:editor@thefootballledger.co">Contact</a>
+      </div>
+    </div>
+  </div>
 </footer>
-
-<script src="/content.js"></script>
-<script src="/assets/site.js"></script>
 <script>
-(function () {
-  var el = document.getElementById('briefList');
-  FL.loadContent(function (data) {
-    var briefs = (data.briefings || []).slice().sort(function (a, b) { return (b.date || '').localeCompare(a.date || ''); });
-    if (!briefs.length) { el.innerHTML = '<div class="empty-state">No briefings yet.</div>'; return; }
-    el.innerHTML = briefs.map(function (b) {
-      var file = (b.url || '').split('/').pop();
-      var title = b.title.replace(/\s*—\s*The Briefing.*$/, '');
-      return '<a class="brief-row" href="/briefing/' + file + '">' +
-        '<div class="brief-date">' + FL.fmtDate(b.date) + '</div>' +
-        '<div><div class="brief-title">' + FL.esc(title) + '</div>' +
-        (b.dek ? '<div class="brief-dek">' + FL.esc(b.dek) + '</div>' : '') +
-        '</div></a>';
-    }).join('');
-  });
-})();
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.layer-more'); if(!b) return;
+  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+  b.setAttribute('aria-expanded',open?'true':'false');
+  b.childNodes[0].nodeValue=open?'Less ':'More ';
+});
 </script>
 </body>
 </html>

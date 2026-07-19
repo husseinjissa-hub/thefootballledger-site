@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Soccer Tournament (TST) — Entity profile · The Football Ledger</title>
+<meta name="description" content="The Soccer Tournament (TST) entity profile: the US 7v7 winner-take-all summer event, three $1m prizes, NBC broadcast, and the made-for-TV format ported from basketball's TBT.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --ink: #f8f5ee; --ink-2: #f1ece0; --ink-3: #eae4d6; --bone: #23201a; --bone-dim: #55514a; --bone-mute: #8a857b; --rust: #7a2233; --gold: #10402b; --jade: #4a6b5a; --line: #dcd6c8; --line-soft: #ece7da; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body { font-family: 'Inter Tight', sans-serif; background: var(--ink); color: var(--bone); line-height: 1.6; font-weight: 400; letter-spacing: -0.005em; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 1000; opacity: 0.025; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+a { color: inherit; text-decoration: none; }
+.masthead { border-bottom: 1px solid var(--line); padding: 24px 60px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: rgba(238,231,218,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 100; }
+.brand { font-family: 'Fraunces', serif; font-weight: 500; font-size: 22px; letter-spacing: 0.02em; display: flex; align-items: center; gap: 14px; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); padding: 10px 18px; transition: color 0.3s ease; position: relative; display: inline-flex; align-items: center; }
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after { content: ''; position: absolute; left: 18px; right: 18px; bottom: 4px; height: 1px; background: var(--gold); }
+.crumbs { padding: 24px 60px 0; max-width: 1200px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); }
+.crumbs a { color: var(--bone-mute); transition: color 0.3s ease; }
+.crumbs a:hover { color: var(--gold); }
+.crumbs .sep { margin: 0 12px; color: var(--line); }
+.profile-header { padding: 40px 60px 60px; border-bottom: 1px solid var(--line); max-width: 1200px; margin: 0 auto; }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: flex; align-items: center; gap: 16px; }
+.eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+.eyebrow-meta { color: var(--bone-mute); }
+.entity-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 6.5vw, 88px); line-height: 0.98; letter-spacing: -0.025em; margin-bottom: 24px; }
+.entity-title em { font-style: italic; color: var(--gold); }
+.entity-deck { font-family: 'Fraunces', serif; font-style: italic; font-weight: 300; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: var(--bone-dim); max-width: 800px; }
+.fact-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1px; margin-top: 48px; background: var(--line-soft); border: 1px solid var(--line); }
+.fact { background: var(--ink-2); padding: 22px 24px; }
+.fact-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); margin-bottom: 8px; }
+.fact-value { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; line-height: 1.3; color: var(--bone); }
+.fact-value em { font-style: italic; color: var(--gold); font-weight: 400; }
+.body { max-width: 920px; margin: 0 auto; padding: 80px 60px 60px; }
+.section { margin-bottom: 64px; }
+.section-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.section h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: 30px; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 24px; }
+.section h2 em { font-style: italic; color: var(--gold); }
+.section p { font-size: 17px; line-height: 1.75; color: var(--bone); margin-bottom: 22px; }
+.section p strong { color: var(--bone); font-weight: 600; }
+.section p em { font-style: italic; color: var(--bone); }
+.numbers { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line-soft); border: 1px solid var(--line); }
+.row { background: var(--ink-2); padding: 20px 24px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: baseline; }
+.row-key { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone-mute); }
+.row-val { font-size: 15.5px; line-height: 1.55; color: var(--bone); }
+.row-val strong { color: var(--bone); font-weight: 600; }
+.row-val em { font-style: italic; color: var(--gold); font-weight: 400; }
+.row-source { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); margin-top: 6px; }
+.questions { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+.questions li { font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; line-height: 1.45; color: var(--bone); padding-left: 22px; position: relative; }
+.questions li::before { content: '?'; position: absolute; left: 0; top: 0; color: var(--gold); font-style: normal; font-weight: 500; }
+.sources { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: var(--bone-dim); }
+.sources li { list-style: none; padding-left: 18px; position: relative; margin-bottom: 6px; }
+.sources li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 1px; background: var(--bone-mute); }
+footer { padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--bone-mute); border-top: 1px solid var(--line); }
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; flex-wrap: wrap; gap: 12px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+  .crumbs, .profile-header, .body { padding-left: 24px; padding-right: 24px; }
+  .row { grid-template-columns: 1fr; gap: 8px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+<div class="crumbs"><a href="index.html">Entities</a><span class="sep">/</span><a href="index.html#layer-2">Layer 02B · Sportainment leagues</a><span class="sep">/</span><span>The Soccer Tournament</span></div>
+<header class="profile-header">
+  <div class="eyebrow"><span>L2B · Sportainment · Winner-take-all tournament</span><span class="eyebrow-meta">·  Cary, North Carolina</span></div>
+  <h1 class="entity-title">The Soccer <em>Tournament</em></h1>
+  <p class="entity-deck">The US summer 7v7 spectacle — an open-application, winner-take-all cash competition modelled on basketball's TBT, now with three $1m prizes and a network broadcast home on NBC.</p>
+  <div class="fact-strip">
+    <div class="fact"><div class="fact-label">Type</div><div class="fact-value">Sportainment · 7v7 knockout</div></div>
+    <div class="fact"><div class="fact-label">Founded</div><div class="fact-value">2023 · TBT Enterprises</div></div>
+    <div class="fact"><div class="fact-label">Headquarters</div><div class="fact-value">Cary, NC (event)</div></div>
+    <div class="fact"><div class="fact-label">Leadership</div><div class="fact-value">Jon Mugar · CEO</div></div>
+    <div class="fact"><div class="fact-label">Prize pool</div><div class="fact-value"><em>3 × $1m</em> winner-take-all</div></div>
+    <div class="fact"><div class="fact-label">Posture (2026)</div><div class="fact-value">Network TV · third bracket</div></div>
+  </div>
+</header>
+<div class="body">
+  <section class="section"><div class="section-label">At a glance</div><h2>A format, not a <em>league</em></h2>
+<p>The Soccer Tournament is an annual seven-a-side, single-elimination, winner-take-all competition staged over one week at WakeMed Soccer Park in Cary, North Carolina. It is operated by TBT Enterprises, the company behind basketball's The Basketball Tournament, and ports the same made-for-broadcast model into football: open application, a single venue, a one-week calendar, and a signature “Target Score Time” finish that guarantees a game-winning goal rather than a shoot-out.</p>
+<p>TST's intellectual property is the format and the distribution, not any club or roster. Low fixed cost and borrowed brand equity — club-affiliated and ex-pro sides supply the names — let it manufacture a high-stakes TV event without owning any club's running costs. For 2026 it added a third bracket and graduated from cable and streaming to the NBC broadcast network.</p>
+  </section>
+  <section class="section"><div class="section-label">The numbers</div><h2>Format, prizes, and distribution</h2>
+    <div class="numbers">
+      <div class="row"><div class="row-key">Format</div><div><div class="row-val">7v7, group stage into single-elimination knockout, winner-take-all, finished with “Target Score Time” (first to a target score wins).</div><div class="row-source">Source · Reported (ESPN, thetournament.com)</div></div></div>
+      <div class="row"><div class="row-key">2025 edition</div><div><div class="row-val">June 2025 in Cary, NC; <strong>64 teams across 134 matches</strong>, two $1m prizes. Winners: US Women; Bumpy Pitch FC (men).</div><div class="row-source">Source · Reported (ABC11, CBS17)</div></div></div>
+      <div class="row"><div class="row-key">2026 edition</div><div><div class="row-val">May 27 – June 1, 2026. Expanded to <strong>three $1m championships</strong> — men's (48 teams), women's (16), and a new TST Mixed (12) — <strong>76 teams</strong> total.</div><div class="row-source">Source · Reported (US Soccer, Town of Cary, NBC Sports)</div></div></div>
+      <div class="row"><div class="row-key">Founders</div><div><div class="row-val"><strong>Jon Mugar</strong>, CEO and co-founder; TST is the soccer property of TBT Enterprises, creators of The Basketball Tournament.</div><div class="row-source">Source · Reported</div></div></div>
+      <div class="row"><div class="row-key">Distribution (2026)</div><div><div class="row-val"><strong>NBC Sports</strong> — matches across NBC, Peacock and NBCSN (May 30 – June 1); non-NBC matches live on YouTube.</div><div class="row-source">Source · Disclosed (NBC Sports release)</div></div></div>
+      <div class="row"><div class="row-key">Teams &amp; talent</div><div><div class="row-val">Club-affiliated and ex-pro sides. 2026 entrants include <strong>Wrexham, Villarreal, Club América, North Carolina Courage</strong>; prior years featured Bournemouth and Atlético de Madrid alumni sides. Mixed bracket headlined by Hope Solo.</div><div class="row-source">Source · Reported (ABC11, Goal)</div></div></div>
+      <div class="row"><div class="row-key">Prize structure</div><div><div class="row-val"><em>$1m winner-take-all per bracket</em> — now <strong>$3m total</strong> across three competitions.</div><div class="row-source">Source · Reported</div></div></div>
+    </div>
+  </section>
+  <section class="section"><div class="section-label">Operating reality</div><h2>How the event actually works</h2>
+<p>TST is a distribution-and-format play with deliberately low fixed cost. One venue, one week, open application, and a cash hook do the work that a league would need a full season and franchise infrastructure to achieve. Club-affiliated entries — Wrexham, Villarreal, América — lend borrowed brand equity and a marketing flywheel without TST carrying any club expense, and the Wrexham/Ryan Reynolds halo in particular supplies outsized attention for a single roster.</p>
+<p>The NBC network upgrade, from cable and streaming to broadcast, plus the addition of a third bracket, signals a property graduating from novelty to a repeatable summer TV event. The risk on the other side of that growth is dilution: three brackets spread the talent thinner, and the mixed-gender format is as likely to be read as a stunt as a durable competition until its viewership proves otherwise.</p>
+  </section>
+  <section class="section"><div class="section-label">Strategic posture</div><h2>Direction in 2026</h2>
+<p>The 2026 strategy is scale through broadcast reach and bracket expansion, betting that the winner-take-all hook produces durable, repeatable viewership rather than a one-week curiosity. The structural question is whether a single-venue, single-week US event can build year-round brand value, or whether it remains a low-margin seasonal spike dependent on celebrity-club cameos for its audience.</p>
+  </section>
+  <section class="section"><div class="section-label">Sources</div>
+    <ul class="sources">
+      <li>NBC Sports press release (2026 broadcast)</li>
+      <li>US Soccer; Town of Cary announcements (2026 Mixed bracket)</li>
+      <li>ABC11; CBS17; ESPN (2025 results and format)</li>
+      <li>thetournament.com (format and history)</li>
+    </ul>
+  </section>
+</div>
+<footer><div>The Football Ledger · Volume 01 · Reference</div><div>Profile last reviewed June 2026</div></footer>
+<script src="/content.js"></script>
+<script src="/assets/entity-backlinks.js"></script>
+<script src="/assets/site.js"></script>
+</body>
+</html>

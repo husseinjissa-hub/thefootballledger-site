@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://thefootballledger.co/posts/macro-08-streaming-native-limits">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-06-05">
+<meta property="og:site_name" content="The Football Ledger">
+<meta property="og:title" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
+<meta property="og:description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
+<meta property="og:url" content="https://thefootballledger.co/posts/macro-08-streaming-native-limits">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Football’s Netflix never arrived. What did, hasn’t settled yet.">
+<meta name="twitter:description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
+<title>Football’s Netflix never arrived. What did, hasn’t settled yet. — The Football Ledger</title>
+<meta name="description" content="A decade of consensus held that streaming-native platforms would consolidate major-market football rights into the industry’s Netflix moment. Across Europe, North America, and MENA, the experiments have now run long enough to know. The Netflix-of-football has not arrived. What replaced it is three configurations competing for what comes next.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #f8f5ee;
+  --ink-2: #f1ece0;
+  --ink-3: #eae4d6;
+  --ink-4: #e0d9c6;
+  --bone: #23201a;
+  --bone-dim: #55514a;
+  --bone-mute: #8a857b;
+  --rust: #7a2233;
+  --gold: #10402b;
+  --sand: #e8dcc4;
+  --jade: #4a6b5a;
+  --line: #dcd6c8;
+  --line-soft: #ece7da;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scrollbar-gutter: stable; }
+body {
+  font-family: 'Inter Tight', sans-serif;
+  background: var(--ink);
+  color: var(--bone);
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  border-bottom: 1px solid var(--line);
+  padding: 24px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(238,231,218,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+}
+.brand {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: opacity 0.3s ease;
+}
+.brand:hover { opacity: 0.7; }
+.brand-mark { width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+.brand-mark svg { display: block; width: 100%; height: 100%; }
+.back-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+.back-link:hover { color: var(--gold); }
+.back-link::before { content: '←'; font-family: 'Fraunces', serif; font-size: 16px; }
+
+/* ============= ARTICLE HEADER ============= */
+.article-header {
+  padding: 100px 60px 80px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.article-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.article-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--gold);
+}
+.article-eyebrow-meta { color: var(--bone-mute); }
+.article-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  margin-bottom: 32px;
+  max-width: 980px;
+}
+.article-title em { font-style: italic; color: var(--gold); }
+.article-deck {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.4;
+  color: var(--bone-dim);
+  max-width: 800px;
+  margin-bottom: 40px;
+}
+.article-meta {
+  display: flex;
+  gap: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+.article-meta strong { color: var(--bone); font-weight: 500; }
+
+/* ============= ARTICLE BODY ============= */
+.article-body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 80px 60px 60px;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--bone);
+}
+.article-body p {
+  margin-bottom: 28px;
+}
+.article-body p.lead {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--bone);
+  margin-bottom: 40px;
+}
+.article-body p.lead::first-letter {
+  font-family: 'Fraunces', serif;
+  font-size: 76px;
+  font-weight: 400;
+  float: left;
+  line-height: 0.9;
+  margin: 8px 14px 0 0;
+  color: var(--gold);
+}
+.article-body h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin-top: 64px;
+  margin-bottom: 24px;
+  color: var(--bone);
+}
+.article-body h2 em { font-style: italic; color: var(--gold); }
+.article-body h3 {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: 22px;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.article-body strong { color: var(--bone); font-weight: 600; }
+.article-body em { color: var(--bone); font-style: italic; }
+.article-body sup { font-size: 0.7em; vertical-align: super; line-height: 0; }
+.article-body a.footnote-ref { color: var(--gold); text-decoration: none; border-bottom: none; padding: 0 1px; }
+.article-body a.footnote-ref:hover { color: var(--bone); }
+.footnotes a.footnote-back { color: var(--gold); text-decoration: none; margin-left: 6px; }
+.footnotes a.footnote-back:hover { color: var(--bone); }
+.article-body a.in-link {
+  color: var(--gold);
+  border-bottom: 1px solid rgba(16, 64, 43, 0.4);
+  transition: border-color 0.2s ease;
+}
+.article-body a.in-link:hover { border-bottom-color: var(--gold); }
+
+.article-body blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 4px 0 4px 28px;
+  margin: 40px 0;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.45;
+  color: var(--bone);
+}
+
+.callout {
+  background: rgba(16, 64, 43, 0.04);
+  border: 1px solid rgba(16, 64, 43, 0.3);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.callout-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.callout-text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--bone-dim);
+}
+.callout-text strong { color: var(--bone); }
+
+.kicker {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+  margin: 56px 0 -12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ============= SIGNALS BOX ============= */
+.signals {
+  max-width: 880px;
+  margin: 60px auto 0;
+  padding: 0 60px;
+}
+.signals-inner {
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  padding: 32px 36px;
+}
+.signals-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.signals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.signals-list li {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  display: grid;
+  grid-template-columns: 8px 280px 1fr;
+  gap: 24px;
+  align-items: baseline;
+}
+.signals-list li::before {
+  content: ''; width: 8px; height: 1px; background: var(--gold);
+  flex-shrink: 0; margin-top: 10px;
+}
+.signals-list strong { color: var(--bone); font-weight: 500; display: block; }
+.signals-list .signal-desc { color: var(--bone-dim); display: block; }
+@media (max-width: 720px) {
+  .signals-list li { grid-template-columns: 8px 1fr; }
+  .signals-list li strong, .signals-list li .signal-desc { grid-column: 2; }
+}
+
+/* ============= RELATED ============= */
+.related {
+  border-top: 1px solid var(--line);
+  margin-top: 100px;
+  padding: 80px 60px;
+  background: var(--ink-2);
+}
+.related-wrap {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.related-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.related-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 48px;
+}
+.related-title em { font-style: italic; color: var(--gold); }
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1px;
+  background: var(--line-soft);
+  border: 1px solid var(--line);
+}
+.related-card {
+  background: var(--ink);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 200px;
+  position: relative;
+  transition: background 0.4s ease;
+}
+.related-card:hover { background: var(--ink-3); }
+.related-card::after {
+  content: '→';
+  position: absolute;
+  top: 28px; right: 28px;
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  color: var(--bone-mute);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.related-card:hover::after {
+  opacity: 1; transform: translateX(0); color: var(--gold);
+}
+.related-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.related-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.related-card-title em { font-style: italic; color: var(--bone-dim); }
+.related-card-desc {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  flex-grow: 1;
+}
+
+/* ============= FOOTER ============= */
+footer {
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bone-mute);
+}
+
+/* ============= RESPONSIVE ============= */
+@media (max-width: 900px) {
+  .masthead { padding: 18px 24px; }
+  .article-header { padding: 60px 24px 50px; }
+  .article-body { padding: 50px 24px 40px; font-size: 17px; }
+  .article-meta { flex-direction: column; gap: 12px; }
+  .signals { padding: 0 24px; }
+  .related { padding: 60px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+.primary-nav { display: flex; align-items: center; gap: 4px; }
+.nav-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--bone-mute);
+  background: transparent; border: none;
+  padding: 10px 18px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative; text-decoration: none;
+  display: inline-flex; align-items: center;
+  white-space: nowrap;
+}
+.nav-item:hover { color: var(--bone); }
+.nav-item.active { color: var(--bone); }
+.nav-item.active::after {
+  content: ''; position: absolute;
+  left: 18px; right: 18px; bottom: 4px;
+  height: 1px; background: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .masthead { flex-wrap: wrap; gap: 12px; padding: 18px 24px; }
+  .primary-nav { width: 100%; }
+  .nav-item { flex: 1; justify-content: center; padding: 8px 6px; font-size: 9px; letter-spacing: 0.1em; }
+}
+
+
+.chart {
+  margin: 60px -32px;
+  display: block;
+}
+.chart svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+.chart figcaption {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--bone-mute);
+  font-style: normal;
+  margin-top: 16px;
+  padding: 0 4px;
+  font-family: 'Inter Tight', sans-serif;
+}
+.chart figcaption em {
+  font-style: italic;
+  color: var(--bone-dim);
+}
+.chart figcaption strong {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 500;
+}
+@media (max-width: 760px) {
+  .chart { margin: 40px -24px; }
+}
+
+.brand-stack{display:inline-flex;flex-direction:column;justify-content:center;gap:2px}.brand-stack .wordmark{line-height:1}
+.brand-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--bone-mute,#8a857b);font-weight:400;line-height:1;white-space:nowrap}
+</style>
+<style></style><link rel="stylesheet" href="/assets/shell.css">
+</head>
+<body>
+
+<header class="site-head">
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  <a class="brand-lockup" href="/"><svg class="fl-mark" width="34" height="34" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><circle cx="20" cy="20" r="16" fill="none" stroke="var(--bone)" stroke-width="1.6"/><line x1="20" y1="4" x2="20" y2="36" stroke="var(--bone)" stroke-width="0.9"/><text x="13" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">F</text><text x="27" y="25" font-family="Fraunces, Georgia, serif" font-size="14" font-weight="600" fill="var(--bone)" text-anchor="middle">L</text><circle cx="20" cy="20" r="2" fill="var(--gold)"/></svg><span class="brand-stack"><span class="wordmark">The Football Ledger</span><span class="brand-tag">The business of football</span></span></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/" class="nav-item">Overview</a>
+    <a href="/ecosystem" class="nav-item">Ecosystem</a>
+    <a href="/ledger" class="nav-item">The Ledger</a>
+    <a href="/entities" class="nav-item">Entities</a>
+    <a href="/briefing" class="nav-item">Briefing</a>
+    <a href="/about" class="nav-item">About</a>
+    <a href="/join" class="nav-item">Join</a>
+  </nav>
+  <span class="nav-reserved" aria-hidden="true"></span>
+</header>
+<div class="nav-overlay" id="navOverlay" aria-hidden="true">
+  <button class="nav-close" aria-label="Close menu">&times;</button>
+  <nav class="overlay-nav" aria-label="Primary">
+    <a href="/" class="overlay-item">Overview</a>
+    <a href="/ecosystem" class="overlay-item">Ecosystem</a>
+    <a href="/ledger" class="overlay-item">The Ledger</a>
+    <a href="/entities" class="overlay-item">Entities</a>
+    <a href="/briefing" class="overlay-item">Briefing</a>
+    <a href="/about" class="overlay-item">About</a>
+    <a href="/join" class="overlay-item">Join</a>
+  </nav>
+</div>
+
+
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow">
+      <span>Macro · Trend 08</span>
+      <span class="article-eyebrow-meta">·  Broadcasting · Rights · Streaming</span>
+    </div>
+    <h1 class="article-title">Football’s Netflix <em>never arrived.</em><br>What did, hasn’t settled yet.</h1>
+    <p class="article-deck">A decade of consensus held that streaming-native platforms — Apple, Amazon, Netflix, DAZN — would consolidate football broadcasting rights into the industry’s Netflix moment. Across major-market football, the experiments have now run long enough to know. None of them produced the Netflix-of-football outcome the consensus expected. What replaced it is three configurations competing for what comes next.</p>
+    <div class="article-meta">
+      <span><strong>8 min</strong> read</span>
+      <span>Published <strong>May 2026</strong></span>
+      
+    </div>
+  </header>
+
+  <div class="article-body">
+
+<p class="lead">For most of the last decade, the consensus view across football broadcasting was that the industry was heading for a Netflix moment. DAZN was positioning as the global football streamer, raising capital around the thesis of a single-platform consolidation of premium football rights. Apple’s $2.5 billion all-in MLS deal in 2022 was read as the proof point for tier-1 streaming-native exclusivity. Netflix, Amazon, and Apple were all expected to enter sports rights aggressively, with the implicit assumption that one or more of them would eventually own a major European league’s domestic rights outright. Within our scope<sup><a href="#fn1" id="fnref1" class="footnote-ref">1</a></sup>, the experiments are done — or done enough to know.</p>
+
+<h2>The live-streaming market — promising, but architecture unsettled</h2>
+
+<p>The live-streaming market for football is growing. Across the Big Five European football markets, SVOD household penetration has overtaken pay-TV in four out of five (UK 2020, Spain 2019, Italy 2020, Germany 2024), and consumer subscription stacks now routinely combine traditional pay-TV with one or more streaming services. The medium is established; the audience is migrating; the trajectory is unambiguous.</p>
+
+<p>What the data does <em>not</em> say is anything about the commercial architecture football should adopt inside this market. The crossover from pay-TV to SVOD says the consumer is willing to pay for streaming. France remains the outlier where SVOD has not yet overtaken pay-TV, and it is also the market where the most aggressive streaming-native football experiment collapsed within a single season. The two facts are not coincidental.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 780 510" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pay-TV and SVOD household penetration across Europe's Big Five, 2024">
+  <rect x="0" y="0" width="780" height="510" fill="#f1ece0"/>
+  <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">Pay-TV and SVOD coexist — the markets behave differently</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Household penetration % across Europe's Big Five, 2024. Crossover year = when SVOD subscriptions overtook pay-TV households.</text>
+
+  <!-- Y-axis: scale 0% to 80% -->
+  <line x1="120" y1="130" x2="120" y2="400" stroke="#d8d2c4" stroke-width="1"/>
+  <line x1="120" y1="400" x2="720" y2="400" stroke="#d8d2c4" stroke-width="1"/>
+
+  <!-- Y-axis tick labels -->
+  <text x="110" y="404" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">0%</text>
+  <text x="110" y="337" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">20%</text>
+  <text x="110" y="270" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">40%</text>
+  <text x="110" y="202" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">60%</text>
+  <text x="110" y="135" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="end">80%</text>
+
+  <line x1="120" y1="337" x2="720" y2="337" stroke="#d8d2c4" stroke-width="0.5" stroke-dasharray="2,4"/>
+  <line x1="120" y1="270" x2="720" y2="270" stroke="#d8d2c4" stroke-width="0.5" stroke-dasharray="2,4"/>
+  <line x1="120" y1="202" x2="720" y2="202" stroke="#d8d2c4" stroke-width="0.5" stroke-dasharray="2,4"/>
+  <line x1="120" y1="135" x2="720" y2="135" stroke="#d8d2c4" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- France -->
+  <rect x="150" y="160" width="30" height="240" fill="#10402b" opacity="0.95"/>
+  <text x="165" y="152" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">71%</text>
+  <rect x="185" y="211" width="30" height="189" fill="#4a6b5a" opacity="0.95"/>
+  <text x="200" y="203" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">56%</text>
+  <text x="183" y="420" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="500">France</text>
+  <text x="183" y="436" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">No crossover</text>
+
+  <!-- Germany -->
+  <rect x="270" y="221" width="30" height="179" fill="#10402b" opacity="0.95"/>
+  <text x="285" y="213" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">53%</text>
+  <rect x="305" y="214" width="30" height="186" fill="#4a6b5a" opacity="0.95"/>
+  <text x="320" y="206" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">55%</text>
+  <text x="302" y="420" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="500">Germany</text>
+  <text x="302" y="436" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Crossed 2024</text>
+
+  <!-- UK -->
+  <rect x="390" y="275" width="30" height="125" fill="#10402b" opacity="0.95"/>
+  <text x="405" y="267" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">37%</text>
+  <rect x="425" y="170" width="30" height="230" fill="#4a6b5a" opacity="0.95"/>
+  <text x="440" y="162" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">68%</text>
+  <text x="422" y="420" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="500">UK</text>
+  <text x="422" y="436" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Crossed 2020</text>
+
+  <!-- Italy -->
+  <rect x="510" y="174" width="30" height="226" fill="#10402b" opacity="0.95"/>
+  <text x="525" y="166" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">67%</text>
+  <rect x="545" y="164" width="30" height="236" fill="#4a6b5a" opacity="0.95"/>
+  <text x="560" y="156" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">70%</text>
+  <text x="542" y="420" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="500">Italy</text>
+  <text x="542" y="436" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Both high*</text>
+
+  <!-- Spain -->
+  <rect x="630" y="255" width="30" height="145" fill="#10402b" opacity="0.95"/>
+  <text x="645" y="247" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">43%</text>
+  <rect x="665" y="187" width="30" height="213" fill="#4a6b5a" opacity="0.95"/>
+  <text x="680" y="179" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600">63%</text>
+  <text x="662" y="420" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="500">Spain</text>
+  <text x="662" y="436" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">Crossed 2019</text>
+
+  <!-- Legend -->
+  <rect x="120" y="100" width="14" height="14" fill="#10402b" opacity="0.95"/>
+  <text x="140" y="111" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Pay-TV household penetration</text>
+  <rect x="340" y="100" width="14" height="14" fill="#4a6b5a" opacity="0.95"/>
+  <text x="360" y="111" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">SVOD household penetration</text>
+
+  <!-- Annotation -->
+  <line x1="60" y1="460" x2="720" y2="460" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="390" y="482" fill="#8a857b" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">France is the only Big Five market where SVOD has not yet overtaken pay-TV — the same market where DAZN’s Ligue 1 deal collapsed.</text>
+  <text x="390" y="500" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10.5" text-anchor="middle" font-style="italic">Italy is the inverse case: both pay-TV and SVOD are now high (* households often subscribe to both).</text>
+</svg>
+<figcaption><strong>Pay-TV and SVOD household penetration across the Big Five, 2024.</strong> Every bar value is directly cited from primary or near-primary sources: France pay-TV (Canal+ CEO Maxime Saada, November 2024 / Hollywood Reporter); France SVOD (NPA Conseil, July 2024); Germany pay-TV and SVOD (Ampere Analysis via Cineuropa, December 2025); UK pay-TV (Ofcom 2024 via House of Lords Library, December 2025); UK SVOD (Ofcom Media Nations 2025); Italy pay-TV (ITMedia Consulting, December 2025); Italy SVOD (Mediobanca Research, July 2024 / ITMedia 2025 subscriber forecasts); Spain pay-TV (Telefónica / CNMC, end-2024); Spain SVOD (CNMC Panel de Hogares, June 2025). Crossover years all from Ampere via Cineuropa. Two analytical signals: first, France is the only Big Five market where SVOD has not yet overtaken pay-TV — the same market where DAZN’s Ligue 1 deal collapsed. Second, in every market, the streaming and pay-TV bases coexist rather than substitute — the consumer adds streaming alongside traditional service rather than replacing it.</figcaption>
+</figure>
+
+<p>The structural shape of football inside this market is being decided now, not in the data already in evidence. Two specific case studies over the past three years offer learnings that bound the possibilities.</p>
+
+<h2>The experiments — what was tested</h2>
+
+<p>Two streaming-native experiments in major-market football have run their course over the past three years. Both are now visible in the public record, and both produced outcomes the consensus did not predict.</p>
+
+<p><strong>Apple–MLS</strong> launched in February 2023 as the most ambitious streaming-native football experiment ever attempted: a $2.5 billion ten-year deal that put every MLS match worldwide behind a standalone $99-per-season paywall. Within three years, multiple independent reports (SportBusiness, ESPN, Sportico, Sports Business Journal) had MLS Season Pass tracking below the undisclosed subscriber threshold needed to unlock the deal’s revenue-share upside — a position MLS commissioner Don Garber confirmed publicly in October 2024. In November 2025, both parties announced a restructure: the standalone Season Pass was discontinued and MLS folded into the standard Apple TV bundle, with the term pulled forward from 2032 to summer 2029. The first attempt failed to attract sufficient subscribers; whether the new bundled structure delivers different commercial outcomes remains to be seen. <em>What this case specifically proves is that the streaming-native single-buyer configuration did not generate the subscriber base it required. Apple’s hypothesis underneath the restructure is that a football subscription is justifiable to the consumer not as a standalone product, but as part of a broader bundle — whether that bundle is sports-related or not. That hypothesis is now in test.</em></p>
+
+<p><strong>DAZN–Ligue 1</strong> launched in August 2024 as the most aggressive direct test of whether a streaming-native platform could anchor a tier-1 European league. DAZN paid €400 million per year for eight of the nine weekly Ligue 1 matches under a five-year deal, with a December 2025 exit clause tied to a 1.5 million subscriber threshold. By December 2024, the deal had attracted roughly 400,000 subscribers (some trade-press estimates as low as 150,000). In February 2025, DAZN withheld €35 million of its scheduled payment citing piracy and inadequate league marketing; mediation collapsed in April, and by May 2025 both parties agreed to terminate the deal after one season with DAZN paying a €100 million exit fee. The trade-press post-mortem identifies a more specific cause than the formal piracy complaint: France is a market where pay-TV penetration remains structurally higher than in the rest of the Big Five — the only major European market where SVOD adoption has not yet overtaken pay-TV — and Canal+ holds an entrenched incumbency that DAZN, as a streaming-native single-buyer, could not displace at the price point its rights cost required. <em>What this case specifically proves is that a streaming-native single-buyer cannot recover tier-1 rights cost from subscribers in a market with an entrenched pay-TV incumbent and high subscription fatigue.</em></p>
+
+<h2>Why the streaming-native single-buyer model didn’t scale</h2>
+
+<p>The failure is not that live streaming as a medium does not work — the same DAZN that lost Ligue 1 distributes Serie A successfully on comparable infrastructure, and Amazon’s 2019–22 Premier League experiment drew 2-3 million viewers per match. What failed is a specific configuration: <em>a single streaming platform attempting to recover tier-1 rights costs from subscribers paying specifically for one league as a standalone product.</em> Two structural pressures explain why.</p>
+
+<p>The first is <strong>the unit economics of single-product subscribers</strong>. The streaming-native single-buyer model requires one platform to recover the full rights cost from subscriber revenue, with no co-broadcaster sharing the load. The subscriber base willing to pay for one league as its own destination is smaller than the math requires. At Ligue 1 prices (€400 million per year), DAZN calculated it needed 1.5 million subscribers to break even and reached 400,000. At Premier League prices (£6.7 billion over four years), no streamer even attempted the standalone single-buyer configuration; the addressable willing-to-pay-for-one-league population is structurally too small. What the cases show consistently is that consumers do not want to assemble their football consumption from multiple standalone single-product subscriptions — one for each league. They want their football alongside the other sports and other content they already pay for, in a smaller number of subscription relationships, not a larger one.</p>
+
+<p>The second is <strong>distribution depth and piracy resistance</strong>. Established multi-distribution operators (Sky, beIN, Canal+) have decades of operational depth in anti-piracy infrastructure, broadcaster-level enforcement, retention mechanics, and integrated bundling with broadband and mobile. DAZN’s formal complaint against the LFP cited 55% illegal viewing rates for the October 2024 Marseille vs PSG match; beIN has cited similar pressures in MENA. A streaming-native entrant attempting to displace an entrenched operator faces these frictions while still having to build subscriber acquisition pipelines from scratch — a structural disadvantage even before the unit-economics problem above.</p>
+
+<h2>What the tier-1 auctions actually chose</h2>
+
+<p>The same structural pressures play out in the tier-1 auction record. If the streaming-native single-buyer model were viable at scale, the most valuable football rights in the world — Premier League, Serie A, Champions League — would have been the place to win. None of them did. The pattern is consistent across three major auctions.</p>
+
+<p>The <strong>Premier League UK 2025–29 cycle</strong> (£6.7 billion over four years, awarded December 2023) went almost entirely to traditional operators: Sky Sports took four of five packages (215+ matches per season, a 70% increase on the previous cycle) and TNT Sports took the fifth (52 exclusive matches). Amazon, which had run a successful 20-match overlay package since 2019, declined to bid for the new cycle. The streaming-native share fell to zero.</p>
+
+<p>The <strong>Serie A 2024–29 cycle</strong> (€4.5 billion over five years) produced a hybrid: DAZN as primary broadcaster (seven of ten matches per matchday, €700m/year) with Sky Italia co-broadcasting the remaining three (€200m/year). The combined value sat slightly below the previous cycle. Not streaming-native exclusive; hybrid was the choice.</p>
+
+<p>The <strong>Champions League UK</strong> through 2026–27 runs as TNT Sports (187 of 204 matches) with Amazon Prime taking the Tuesday-night first-pick package (17 matches). The 2027–2031 cycle, awarded November 2025, sees Paramount replacing TNT for the majority package with Amazon retaining Tuesdays through 2030–31. Two consecutive cycles, same hybrid structure — primary multi-distribution broadcaster plus streaming overlay partner. No streaming-native player has taken exclusive control of any tier-1 football property in any major market.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 780 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tier-1 auction outcomes - traditional pay-TV versus streaming-native share">
+  <rect x="0" y="0" width="780" height="480" fill="#f1ece0"/>
+  <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">What the tier-1 auctions actually awarded</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">Share of awarded rights by buyer type — traditional pay-TV vs streaming-native single-buyer vs hybrid/overlay.</text>
+
+  <!-- Three rows for: Premier League UK, Serie A, Champions League UK -->
+  
+  <!-- Premier League UK 2025-29 -->
+  <text x="60" y="135" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="500">Premier League UK 2025–29</text>
+  <text x="60" y="152" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">£6.7bn four-year deal — most valuable football auction in history</text>
+  <!-- Bar: 100% pay-TV (Sky + TNT). Width = 660 (from x=60 to x=720). 96% Sky 215 matches + 4% TNT package distribution but in $ terms: £6.4bn / £6.7bn = 96% Sky -->
+  <rect x="60" y="165" width="630" height="32" fill="#8a857b"/>
+  <rect x="690" y="165" width="30" height="32" fill="#7a7770"/>
+  <text x="370" y="186" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">Sky Sports · £6.4bn · 215+ matches/season</text>
+  <text x="705" y="186" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" font-weight="600">TNT</text>
+  <text x="60" y="216" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="10">Streaming-native single-buyer share: 0% · Amazon did not bid for a meaningful package</text>
+
+  <!-- Serie A 2024-29 -->
+  <text x="60" y="255" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="500">Serie A 2024–29</text>
+  <text x="60" y="272" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">€4.5bn five-year deal — hybrid DAZN + Sky</text>
+  <!-- DAZN (streaming) 700m/yr = 77.8% of 900m. Width: 660*0.778 = 514 -->
+  <rect x="60" y="285" width="514" height="32" fill="#10402b"/>
+  <rect x="574" y="285" width="146" height="32" fill="#8a857b"/>
+  <text x="317" y="306" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">DAZN · €700m/yr · 7 of 10 matches</text>
+  <text x="647" y="306" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">Sky · €200m/yr</text>
+  <text x="60" y="336" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="10">Streaming-native single-buyer share: 0% · Hybrid model with pay-TV co-broadcaster</text>
+
+  <!-- Champions League UK 2024-27 -->
+  <text x="60" y="375" fill="#55514a" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="500">Champions League UK 2024–27</text>
+  <text x="60" y="392" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~£917m three-year deal — TNT majority, Amazon Tuesday overlay</text>
+  <!-- TNT 187/204 = 91.7% of matches. Width: 660*0.917 = 605 -->
+  <rect x="60" y="405" width="605" height="32" fill="#8a857b"/>
+  <rect x="665" y="405" width="55" height="32" fill="#10402b"/>
+  <text x="362" y="426" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">TNT Sports · 187 of 204 matches</text>
+  <text x="693" y="426" fill="#23201a" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" font-weight="600">Amazon</text>
+  <text x="60" y="456" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="10">Streaming-native single-buyer share: 0% · Hybrid model with streaming as Tuesday overlay</text>
+
+  <!-- Legend -->
+  <rect x="60" y="100" width="12" height="12" fill="#8a857b"/>
+  <text x="76" y="111" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Sky / Paramount</text>
+  <rect x="200" y="100" width="12" height="12" fill="#7a7770"/>
+  <text x="216" y="111" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">TNT Sports</text>
+  <rect x="320" y="100" width="12" height="12" fill="#10402b"/>
+  <text x="336" y="111" fill="#55514a" font-family="'JetBrains Mono', monospace" font-size="10">Streaming (DAZN / Amazon)</text>
+</svg>
+<figcaption><strong>Tier-1 auction outcomes — the share streaming-native single-buyers actually won.</strong> Across the three most consequential football rights cycles of 2023–2025, the share awarded to a streaming-native single-buyer was zero. The Premier League went entirely to traditional pay-TV operators (Sky, TNT). Serie A split between DAZN (streaming) and Sky (pay-TV) as a hybrid. The Champions League UK ran as TNT-majority with Amazon as Tuesday overlay; the 2027–31 cycle replaces TNT with Paramount but retains the same hybrid structure. Where streaming platforms participated, they did so as partial-package partners alongside traditional operators — not as exclusive buyers. <strong>Source:</strong> Premier League press release (December 2023); Sportico, Bloomberg, FrontOfficeSports (Serie A); UEFA, Guardian, Pressreader (Champions League cycles); London Daily, Royal Television Society.</figcaption>
+</figure>
+
+<h2>Three configurations that actually work</h2>
+
+<p>If the streaming-native single-buyer is the failed configuration, the question is what alternatives have emerged. Three are now visible across major-market football, and they explain who has retained tier-1 rights, who has taken partial overlay packages, and who has had to restructure.</p>
+
+<p><strong>Configuration one: tech platforms with football as content inside a broader bundle.</strong> Apple TV, Amazon Prime Video, and increasingly Netflix operate platforms where football sits alongside scripted entertainment, films, and other content the subscriber would consume anyway. The justification for the consumer subscription is the platform as a whole, not the football specifically. Apple–MLS post-November 2025 is the cleanest example: MLS now sits inside Apple TV’s £12.99/month subscription at no incremental cost, distributed across the platform’s 45-million-plus subscriber base. Amazon’s Champions League Tuesday package follows the same logic at smaller scale — the football is a reason to stay on Prime, not a reason to subscribe to it. Working precondition: the platform has substantial non-football audience underwriting the proposition.</p>
+
+<p><strong>Configuration two: established multi-distribution sports operators.</strong> Sky and beIN are no longer pure pay-TV businesses. Sky distributes Sky Sports via traditional satellite (Sky Q), via internet-delivered TV channels (Sky Stream, Sky Glass), and via standalone streaming (NOW TV, Sky Go) — with subscribers able to access Sky Sports streaming-only without a satellite dish. These are multi-distribution operators with broad sports portfolios (Premier League + Champions League + F1 + cricket + tennis + boxing) and the option for the consumer to choose how they receive it. Working precondition: breadth across sports content and breadth across distribution channels, with established subscriber acquisition pipelines.</p>
+
+<p><strong>Configuration three: partnership-shared rights structures.</strong> DAZN demonstrates the limit case in both directions. Its standalone Ligue 1 deal collapsed (the failed configuration); its Serie A position continues because the rights cost is shared with Sky Italia (DAZN seven of ten matches, Sky three). What works is the partnership architecture, not the pure-play streaming aggregation thesis. Working precondition: rights-cost sharing with an established co-broadcaster that absorbs incumbency risk the streaming-native player cannot underwrite alone.</p>
+
+<p>The structural lesson across these three configurations is two-dimensional, not one. A football subscription becomes justifiable to the consumer when it sits inside a broader proposition along <em>either</em> of two axes: distribution breadth (streaming combined with traditional TV) or content breadth (football combined with other leagues or non-football content). The configurations that work in major-market football today combine at least one of these. The configuration that failed (DAZN–Ligue 1, Apple–MLS standalone) combined neither.</p>
+
+<figure class="chart">
+<svg viewBox="0 0 780 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The broader-proposition matrix - what works and what fails along distribution and content axes">
+  <rect x="0" y="0" width="780" height="540" fill="#f1ece0"/>
+  <text x="60" y="32" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 2</text>
+  <text x="60" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" font-weight="500">The broader-proposition matrix — what works and what fails</text>
+  <text x="60" y="74" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="11">A football subscription becomes justifiable when the proposition is broader on at least one axis.</text>
+
+  <!-- Matrix layout: 2x2 grid -->
+  <!-- Origin at (220, 130); each cell ~230 wide x 170 tall -->
+  
+  <!-- Top-left quadrant: Single league + streaming only — FAILED -->
+  <rect x="220" y="130" width="245" height="170" fill="#c8102e" opacity="0.20" stroke="#c8102e" stroke-width="1.5"/>
+  <text x="342" y="158" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600" letter-spacing="1">FAILED CONFIGURATION</text>
+  <text x="342" y="195" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">DAZN–Ligue 1</text>
+  <text x="342" y="218" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">Apple–MLS (pre-restructure)</text>
+  <text x="342" y="252" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Single league, streaming-only.</text>
+  <text x="342" y="269" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Neither axis broadens.</text>
+  <text x="342" y="286" fill="#c8102e" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-weight="600">Failed in both observed cases.</text>
+
+  <!-- Top-right quadrant: Multi-content + streaming only — Configuration 1 / 3 -->
+  <rect x="465" y="130" width="245" height="170" fill="#10402b" opacity="0.15" stroke="#10402b" stroke-width="1.5"/>
+  <text x="587" y="158" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600" letter-spacing="1">CONTENT-BREADTH ONLY</text>
+  <text x="587" y="195" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">Apple TV (post-MLS restructure)</text>
+  <text x="587" y="218" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">Amazon Prime (CL Tuesdays)</text>
+  <text x="587" y="252" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Football inside broader content bundle.</text>
+  <text x="587" y="269" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Streaming-only distribution.</text>
+  <text x="587" y="286" fill="#10402b" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-weight="600">Configuration 1.</text>
+
+  <!-- Bottom-left quadrant: Single league + multi-distribution — partnership cases -->
+  <rect x="220" y="300" width="245" height="170" fill="#10402b" opacity="0.15" stroke="#10402b" stroke-width="1.5"/>
+  <text x="342" y="328" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600" letter-spacing="1">DISTRIBUTION-BREADTH ONLY</text>
+  <text x="342" y="365" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">DAZN–Serie A + Sky Italia</text>
+  <text x="342" y="388" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">(partnership-shared)</text>
+  <text x="342" y="422" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Single league, but distributed</text>
+  <text x="342" y="439" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">across streaming + pay-TV partner.</text>
+  <text x="342" y="456" fill="#10402b" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-weight="600">Configuration 3.</text>
+
+  <!-- Bottom-right quadrant: Multi-content + multi-distribution — Configuration 2 (Sky, beIN) -->
+  <rect x="465" y="300" width="245" height="170" fill="#4a6b5a" opacity="0.30" stroke="#4a6b5a" stroke-width="1.5"/>
+  <text x="587" y="328" fill="#4a6b5a" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" font-weight="600" letter-spacing="1">BOTH AXES BROADEN</text>
+  <text x="587" y="365" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">Sky Sports</text>
+  <text x="587" y="388" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="15" text-anchor="middle" font-weight="500">beIN Sports · TNT Sports</text>
+  <text x="587" y="422" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">Multi-sport content portfolio</text>
+  <text x="587" y="439" fill="#55514a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-style="italic">across satellite, IPTV, and streaming.</text>
+  <text x="587" y="456" fill="#4a6b5a" font-family="'Inter Tight', sans-serif" font-size="11" text-anchor="middle" font-weight="600">Configuration 2.</text>
+
+  <!-- Axis labels -->
+  <!-- Horizontal axis (top): single-league → multi-content -->
+  <text x="342" y="108" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">Single league only</text>
+  <text x="587" y="108" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" font-weight="600">Football inside broader content</text>
+  <text x="465" y="92" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="1.5">CONTENT BREADTH →</text>
+
+  <!-- Vertical axis (left): streaming-only → multi-distribution -->
+  <text x="200" y="215" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" font-weight="600">Streaming only</text>
+  <text x="200" y="385" fill="#8a857b" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end" font-weight="600">Multi-distribution</text>
+  <text x="100" y="100" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="1.5">DISTRIBUTION</text>
+  <text x="100" y="115" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" letter-spacing="1.5">BREADTH</text>
+  <text x="100" y="128" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="14" text-anchor="middle">↓</text>
+
+  <!-- Bottom annotation -->
+  <line x1="60" y1="495" x2="720" y2="495" stroke="#d8d2c4" stroke-width="1"/>
+  <text x="390" y="517" fill="#8a857b" font-family="'Inter Tight', sans-serif" font-size="11.5" text-anchor="middle" font-style="italic">The configurations that work broaden the proposition on at least one axis. The failed configuration broadens neither.</text>
+</svg>
+<figcaption><strong>The broader-proposition matrix.</strong> Two axes determine whether a football subscription proposition becomes justifiable to the consumer: content breadth (whether the subscription carries football alongside other leagues or non-football content) and distribution breadth (whether the subscription is available across streaming and traditional TV channels). The configurations that work in major-market football broaden the proposition on at least one axis. The failed configuration — DAZN–Ligue 1 and the original Apple–MLS Season Pass standalone — broadened neither. The matrix is not symmetric: Configuration 2 (broadening both axes) carries multi-decade incumbency; Configurations 1 and 3 are more recent and still in test. <strong>Source:</strong> Ledger framing of cases and configurations discussed above.</figcaption>
+</figure>
+
+<p>Across the three configurations that work, the lesson is consistent: a football subscription becomes justifiable to the consumer when it is part of a broader proposition along at least one of these two axes. Neither "single platform, single league as standalone product" survives. That is the structural finding the next cycle of consolidation will operate under.</p>
+
+<h2>The consensus read, and the Ledger’s</h2>
+
+<p>The trade-press consensus on this body of evidence has evolved across the same period. The 2018–2022 framing was the Netflix-of-football outcome: DAZN, Apple, or Amazon eventually owning a major league’s rights outright as a single global buyer. As the experiments ran and the auctions awarded, the framing softened to a weaker claim: streaming will be a major buyer of football rights. Neither framing fits what actually happened. The stronger version (a single streamer owns football) failed in the auction record: no streaming-native player took primary tier-1 rights at any of the three major auctions. The weaker version (streaming will be a major buyer) is technically accurate but misses the structural point: streaming only participates where football sits inside a broader proposition, never as a standalone destination product.</p>
+
+<p><strong>The Ledger’s contrarian read: streaming platforms participate in major-market football, but only in configurations where football is content inside a broader proposition — never as standalone destination products at tier-1. The streaming-native single-buyer model has proven challenging up to this point, and the unit economics that broke it are not temporary. What replaced it is three viable configurations: tech platforms bundling football alongside other content, established multi-distribution operators with broad sports portfolios, and partnership-shared rights structures where the streaming-native player co-broadcasts with an established operator. None of them is the Netflix-of-football outcome the consensus spent a decade expecting. The question now is which of the three dominates the next cycle, and what consolidation between them looks like.</strong></p>
+
+<h2>The strategic question</h2>
+
+<blockquote>The three configurations will compress to two or fewer over the next cycle. Consumer subscription fatigue makes the current fragmentation across Sky, TNT, Amazon, and Apple unsustainable at full price, and the form of the next structure will be decided by M&A between the players rather than by which platform bids highest at auction. The question for boards and fund GPs is which two configurations survive the compression — whether tech-platform bundles absorb the streaming-native players, whether established multi-distribution operators acquire them, or whether partnership-shared rights structures scale enough to remain a third path.</blockquote>
+
+<aside class="footnotes" style="margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--bone-mute);">
+<ol style="padding-left:24px;line-height:1.6;list-style:decimal;">
+<li id="fn1"><strong>Scope:</strong> The Ledger’s analysis here is limited to major-market football — Europe, North America, and MENA — where the streaming-native experiments have run long enough to evaluate. The argument does not extend to emerging-football geographies in Asia, Africa, and Latin America, where the broadcasting structure and audience economics remain different enough that separate analysis is required. <a href="#fnref1" class="footnote-back">↩</a></li>
+</ol>
+</aside>
+
+  </div>
+
+  <aside class="signals">
+    <div class="signals-inner">
+      <div class="signals-label">Signals to track</div>
+      <ul class="signals-list">
+        <li><strong>Premier League 2027 tender:</strong><span class="signal-desc">Whether a streaming-native player takes a meaningful tier-1 package, or Sky retains incumbency for a fourth cycle</span></li>
+        <li><strong>Apple–MLS 2029 renewal:</strong><span class="signal-desc">Whether the bundled-content structure renews on improved terms or unwinds</span></li>
+        <li><strong>Streaming / pay-TV M&A:</strong><span class="signal-desc">Acquisitions or mergers between streaming and traditional operators — the precedent is WBD–BT (2022)</span></li>
+        <li><strong>DAZN capital structure:</strong><span class="signal-desc">Whether strategic investment (PIF, others) brings forced consolidation at the streaming-native end</span></li>
+        <li><strong>Ligue 1+ first cycle:</strong><span class="signal-desc">Whether the LFP’s in-house service delivers viable subscriber economics post-DAZN</span></li>
+      </ul>
+    </div>
+  </aside>
+</article>
+
+<section class="related">
+  <div class="related-wrap">
+    <div class="related-eyebrow">Continue reading</div>
+    <h2 class="related-title">Related <em>deep-dives</em></h2>
+    <div class="related-grid">
+      <a href="l6-apple-mls-case-study.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Case study</div>
+        <h3 class="related-card-title">Apple × MLS — the experiment that <em>closed itself</em></h3>
+        <p class="related-card-desc">The most ambitious streaming-native football bet ever attempted, restructured before its halfway point. What the trade meant for both parties.</p>
+      </a>
+      <a href="l6-bein-mena-fragmentation.html" class="related-card">
+        <div class="related-card-tag">Layer 6 · Trend 6.2</div>
+        <h3 class="related-card-title">beIN holds, the model <em>under pressure</em></h3>
+        <p class="related-card-desc">The MENA pay-TV operator at the centre of regional football broadcasting. What the 2028 cycle and 2034 World Cup test.</p>
+      </a>
+      <a href="macro-01-trophy-to-operating.html" class="related-card">
+        <div class="related-card-tag">Macro · Trend 01</div>
+        <h3 class="related-card-title">From <em>trophy assets</em> to operating businesses</h3>
+        <p class="related-card-desc">Two decades of football capital was deployed for soft power. The next decade is deployed for return.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>The Football Ledger · Volume 01 · Workstream 02</div>
+  <div>Built May 2026 · Living document</div>
+</footer>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>

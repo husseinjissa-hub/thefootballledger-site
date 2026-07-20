@@ -62,11 +62,12 @@ sub story_card {
   my $media = (-e $imgp)
     ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
+  my $dek = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(trunc($a->{dek},140)).'</p>'."\n      " : '';
   return
   '<a class="acard" href="'.esc($a->{url}).'">'."\n".
   '      <div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>'."\n".
   '      <div class="acard-title">'.esc($a->{title}).'</div>'."\n".
-  '      '.$media."\n".
+  '      '.$dek.$media."\n".
   '      <div class="acard-meta">'.$meta.'</div>'."\n".
   '    </a>';
 }
@@ -349,7 +350,6 @@ sub art_breadcrumb {
 
 # Supplementary images inserted within an article body (slug => image path)
 my %INLINE = (
-  'macro-01-trophy-to-operating' => 'assets/img/articles/macro-01-inline.jpg',
   'macro-02-mco-consolidation'   => 'assets/img/articles/macro-02-inline.jpg',
 );
 sub build_article {
@@ -391,8 +391,6 @@ sub build_article {
   my @toc;
   my $i=0;
   for my $s (@secs){ $i++; push @toc, ['sec'.$i, sprintf('%02d',$i), $s]; }
-  my $tk = $TAKEAWAYS{$slug};
-  push @toc, ['takeaways', sprintf('%02d',++$i), 'Key takeaways'] if $tk;
   push @toc, ['sources', sprintf('%02d',++$i), 'Appendix &amp; sources'] if $has_notes;
   my $toc_html = join("\n          ", map {
     '<li><a class="toc-link" href="#'.$_->[0].'"><span class="toc-num">'.$_->[1].'</span><span>'.$_->[2].'</span></a></li>'
@@ -407,13 +405,6 @@ sub build_article {
     '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_CAL.'</svg><span><span class="amc-k">Published</span><br><span class="amc-v">'.$mpub.'</span></span></div>'.
     '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_TAG.'</svg><span><span class="amc-k">Filed under</span><br><span class="amc-v">'.esc($mtag).'</span></span></div>';
 
-  # takeaways box
-  my $tk_html='';
-  if ($tk){
-    my $items = join('', map { my $j=$_; '<div class="tk-item"><span class="tk-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$TK_ICONS[$j % @TK_ICONS].'</svg></span><div><div class="tk-title">'.esc($tk->[$j][0]).'</div><div class="tk-desc">'.esc($tk->[$j][1]).'</div></div></div>' } 0..$#$tk);
-    $tk_html = '<div class="art-takeaways" id="takeaways"><div class="art-tk-head">Key takeaways</div>'.$items.'</div>';
-  }
-
   # hero
   my $hp="assets/img/articles/$slug.jpg";
   my $hero = (-e $hp) ? '<div class="art-hero"><img src="/'.$hp.'" alt="" ></div>' : '';
@@ -421,7 +412,7 @@ sub build_article {
   # body content
   my $body_main;
   if ($is_live) {
-    $body_main = $tk_html."\n".'<div class="article-prose">'."\n".$prose."\n".'</div>';
+    $body_main = '<div class="article-prose">'."\n".$prose."\n".'</div>';
     $body_main .= "\n".'<aside class="art-signals">'.$signals.'</aside>' if $signals && $signals =~ /\S/;
   } else {
     $body_main = '<div class="art-prodnote"><span class="apn-tag">In production</span><h3>This analysis is in production</h3><p>The Ledger is actively researching this piece. The summary above outlines the thesis; the full analysis, data, and sources will publish here.</p></div>';

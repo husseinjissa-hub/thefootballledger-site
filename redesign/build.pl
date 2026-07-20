@@ -128,17 +128,19 @@ my @LAYERS = (
 my %entName; $entName{$_->{slug}}=$_->{name} for @ents;
 my %entByLayer; push @{$entByLayer{$_->{layer}}}, $_ for @ents;
 sub mono { my ($n)=@_; my @w = grep {length} split /[^A-Za-z0-9]+/, ($n//''); return @w>=2 ? uc(substr($w[0],0,1).substr($w[1],0,1)) : uc(substr(($w[0]//'?'),0,2)); }
+# Logo file for a slug — prefers PNG, falls back to SVG (browsers render SVG in <img>). '' if none.
+sub logo_path { my ($s)=@_; for my $x ("assets/img/logos/$s.png","assets/img/logos/$s.svg") { return $x if -e $x; } return ''; }
 sub ent_chip {
-  my ($e)=@_; my $s=$e->{slug}; my $p="assets/img/logos/$s.png";
-  my $vis = (-e $p) ? '<span class="ent-chip-logo"><img src="/'.$p.'" alt="" loading="lazy"></span>'
+  my ($e)=@_; my $s=$e->{slug}; my $p=logo_path($s);
+  my $vis = ($p) ? '<span class="ent-chip-logo"><img src="/'.$p.'" alt="" loading="lazy"></span>'
                     : '<span class="ent-chip-mono">'.mono($e->{name}).'</span>';
   return '<a class="ent-chip" href="/entities/'.$s.'.html">'.$vis.'<span class="ent-chip-name">'.esc($e->{name}).'</span></a>';
 }
 sub layer_row {
   my ($L)=@_;
   my %featSet = map {$_=>1} @{$L->{feat}};
-  my $flog = join('', map { my $s=$_; my $p="assets/img/logos/$s.png"; my $nm=esc($entName{$s}//$s);
-    (-e $p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @{$L->{feat}});
+  my $flog = join('', map { my $s=$_; my $p=logo_path($s); my $nm=esc($entName{$s}//$s);
+    ($p)?'<a class="layer-logo-lnk" href="/entities/'.$s.'.html" aria-label="'.$nm.'"><img class="layer-logo" src="/'.$p.'" alt="'.$nm.'" loading="lazy"></a>':'' } @{$L->{feat}});
   my @all;
   if ($L->{only}) { my %o=map{$_=>1}@{$L->{only}}; @all = grep { $o{$_->{slug}} } @ents; }
   else { my %x = $L->{exclude} ? (map{$_=>1}@{$L->{exclude}}) : (); @all = grep { $_->{layer} eq $L->{id} && !$x{$_->{slug}} } @ents; }
@@ -511,8 +513,8 @@ my %POP = (broadcaster=>'broadcasters', PE=>'pe', stadium=>'stadiums', 'football
 my %featRank; for my $L (@LAYERS){ next if $L->{only}; my $r=0; $featRank{$_}=$r++ for @{$L->{feat}}; }
 
 sub ent_card_dir {
-  my ($e,$tag)=@_; my $s=$e->{slug}; my $p="assets/img/logos/$s.png";
-  my $logo = (-e $p) ? '<img src="/'.$p.'" alt="'.esc($e->{name}).'" loading="lazy">'
+  my ($e,$tag)=@_; my $s=$e->{slug}; my $p=logo_path($s);
+  my $logo = ($p) ? '<img src="/'.$p.'" alt="'.esc($e->{name}).'" loading="lazy">'
                      : '<span class="ent-card-mono">'.mono($e->{name}).'</span>';
   my @pop; push @pop, $POP{$e->{type}} if $POP{$e->{type}}; push @pop, 'clubs' if $e->{layer} eq '3';
   return
@@ -643,8 +645,8 @@ sub build_entity {
   } @sec);
 
   # logo
-  my $lp="assets/img/logos/$slug.png";
-  my $logo = (-e $lp) ? '<img src="/'.$lp.'" alt="'.esc_attr($e->{name}).'">'
+  my $lp=logo_path($slug);
+  my $logo = ($lp) ? '<img src="/'.$lp.'" alt="'.esc_attr($e->{name}).'">'
                       : '<span class="ent-logo-mono">'.mono($e->{name}).'</span>';
 
   # breadcrumb

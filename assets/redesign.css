@@ -51,7 +51,7 @@ a { color: inherit; text-decoration: none; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: 84px 0; }
 .section--tight { padding: 56px 0; }
-@media (max-width: 900px) { :root { --gutter: 26px; } .section { padding: 56px 0; } }
+@media (max-width: 900px) { :root { --gutter: 26px; } .section { padding: 56px var(--gutter); } }
 
 /* ===== Typography ===== */
 h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); line-height: 1.08; letter-spacing: -0.01em; }

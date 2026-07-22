@@ -56,14 +56,25 @@ module.exports = async function handler(req, res) {
       '<p style="font-size:13px;color:#8A8578;margin:0">Add them to the mailing list.</p>' +
     '</div>';
 
+  // Optional: add the subscriber to a Resend Audience (mailing list) if configured.
+  const AUDIENCE = process.env.RESEND_AUDIENCE_ID;
+  const addToAudience = AUDIENCE
+    ? fetch('https://api.resend.com/audiences/' + AUDIENCE + '/contacts', {
+        method: 'POST',
+        headers: { Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, unsubscribed: false }),
+      }).catch(function () { return null; })   // best-effort — never blocks the subscribe
+    : Promise.resolve(null);
+
   try {
-    const results = await Promise.all([
+    const [welcome, notify] = await Promise.all([
       send(email, 'Welcome to The Football Ledger', welcomeHtml),
       send(OWNER, 'New subscriber: ' + email, notifyHtml, email),
     ]);
-    const okAll = results.every(function (r) { return r && r.ok; });
+    await addToAudience;   // best-effort; already catches its own errors
+    const okAll = [welcome, notify].every(function (r) { return r && r.ok; });
     if (!okAll) {
-      const detail = await results[0].text().catch(function () { return ''; });
+      const detail = await welcome.text().catch(function () { return ''; });
       return res.status(502).json({ ok: false, error: 'send_failed', detail: detail.slice(0, 300) });
     }
     return res.status(200).json({ ok: true });

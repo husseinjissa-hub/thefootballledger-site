@@ -43,7 +43,7 @@
       <a href="/join" >Join</a>
     </nav>
     <div class="header-cta">
-      <a class="btn btn--primary" href="#subscribe">Subscribe</a>
+      <button type="button" class="btn btn--primary" data-subscribe>Subscribe</button>
       <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -186,7 +186,7 @@
       <div class="footer-col">
         <h4>Get involved</h4>
         <a href="/join">Join</a>
-        <a href="#subscribe">Subscribe</a>
+        <a href="#" data-subscribe>Subscribe</a>
         <a href="mailto:editor@thefootballledger.co">Contact</a>
       </div>
     </div>
@@ -200,31 +200,77 @@
     </div>
   </div>
 </footer>
+
+<!-- Subscribe modal -->
+<div class="sub-modal" id="subModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Subscribe to The Briefing">
+  <div class="sub-modal-backdrop" data-sub-close></div>
+  <div class="sub-modal-card" role="document">
+    <button class="sub-modal-close" type="button" aria-label="Close" data-sub-close>&times;</button>
+    <div class="sub-modal-eyebrow">The Briefing · Every Monday</div>
+    <h2 class="sub-modal-title">Stay ahead of the game.</h2>
+    <p class="sub-modal-p">Join thousands of leaders shaping the business of football — one sharp read on the money moving the game, in your inbox every Monday.</p>
+    <form class="sub-form sub-modal-form" novalidate>
+      <input type="email" required placeholder="Your email address" aria-label="Your email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="sub-modal-fine">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- Slide-in newsletter prompt -->
+<aside class="sub-popup" id="subPopup" aria-hidden="true" aria-label="Newsletter">
+  <button class="sub-popup-close" type="button" aria-label="Dismiss" data-pop-close>&times;</button>
+  <div class="sub-popup-eyebrow">The Briefing</div>
+  <div class="sub-popup-title">Subscribe to our newsletter</div>
+  <p class="sub-popup-p">The business of football — every Monday morning, before everyone else.</p>
+  <button class="sub-popup-btn" type="button" data-subscribe>Subscribe <span class="arw">&rarr;</span></button>
+</aside>
+
 <script>
-document.addEventListener('click',function(e){
-  var b=e.target.closest('.layer-more'); if(!b) return;
-  var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
-  b.setAttribute('aria-expanded',open?'true':'false');
-  b.childNodes[0].nodeValue=open?'Less ':'More ';
-});
-// Newsletter subscribe — POSTs to the /api/subscribe serverless function
-document.addEventListener('submit',function(e){
-  var form=e.target.closest('.fr-news form, .bf-news-form'); if(!form) return;
-  e.preventDefault();
-  var input=form.querySelector('input[type=email]'); var email=(input&&input.value||'').trim();
-  var btn=form.querySelector('button');
-  function err(msg){ var p=form.querySelector('.subscribe-err'); if(!p){p=document.createElement('p');p.className='subscribe-err';p.setAttribute('role','alert');form.appendChild(p);} p.textContent=msg; }
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err('Please enter a valid email address.'); if(input){input.focus();} return; }
-  var orig=btn?btn.innerHTML:'';
-  if(btn){ btn.disabled=true; btn.textContent='Subscribing…'; }
-  fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
-    .then(function(r){ return r.json().catch(function(){return {};}); })
-    .then(function(d){
-      if(d&&d.ok){ form.innerHTML='<p class="subscribe-done">Thanks — you&rsquo;re on the list. Check your inbox for a welcome note.</p>'; }
-      else { if(btn){btn.disabled=false;btn.innerHTML=orig;} err(d&&d.error==='not_configured'?'Subscriptions aren&rsquo;t live yet — please check back soon.':'Something went wrong. Please try again.'); }
-    })
-    .catch(function(){ if(btn){btn.disabled=false;btn.innerHTML=orig;} err('Network error. Please try again.'); });
-});
+(function(){
+  // Layer expand/collapse (ecosystem)
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.layer-more'); if(!b) return;
+    var r=b.closest('.layer-row'); var open=r.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+    b.childNodes[0].nodeValue=open?'Less ':'More ';
+  });
+
+  var modal=document.getElementById('subModal');
+  var popup=document.getElementById('subPopup');
+  function openModal(){ if(!modal)return; modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); var i=modal.querySelector('input[type=email]'); setTimeout(function(){ if(i) i.focus(); },60); }
+  function closeModal(){ if(!modal)return; modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+  function popupDone(){ try{ return localStorage.getItem('fl_sub')==='1'; }catch(e){ return false; } }
+  function hidePopup(remember){ if(popup) popup.classList.remove('show'); if(remember){ try{ localStorage.setItem('fl_sub','1'); }catch(e){} } }
+
+  document.addEventListener('click',function(e){
+    if(e.target.closest('[data-subscribe]')){ e.preventDefault(); openModal(); hidePopup(true); return; }
+    if(e.target.closest('[data-sub-close]')){ closeModal(); return; }
+    if(e.target.closest('[data-pop-close]')){ hidePopup(true); return; }
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+  // Subscribe submit — modal form + inline sidebar/briefing forms
+  document.addEventListener('submit',function(e){
+    var form=e.target.closest('.sub-modal-form, .fr-news form, .bf-news-form'); if(!form) return;
+    e.preventDefault();
+    var input=form.querySelector('input[type=email]'); var email=(input&&input.value||'').trim();
+    var btn=form.querySelector('button');
+    function err(msg){ var p=form.querySelector('.subscribe-err'); if(!p){ p=document.createElement('p'); p.className='subscribe-err'; p.setAttribute('role','alert'); form.appendChild(p); } p.innerHTML=msg; }
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ err('Please enter a valid email address.'); if(input) input.focus(); return; }
+    var orig=btn?btn.innerHTML:''; if(btn){ btn.disabled=true; btn.textContent='Subscribing…'; }
+    fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:email})})
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){
+        if(d&&d.ok){ hidePopup(true); form.outerHTML='<p class="subscribe-done">Thanks &mdash; you&rsquo;re on the list. Check your inbox for a welcome note.</p>'; }
+        else { if(btn){ btn.disabled=false; btn.innerHTML=orig; } err(d&&d.error==='not_configured'?'Subscriptions aren&rsquo;t live yet &mdash; please check back soon.':'Something went wrong. Please try again.'); }
+      })
+      .catch(function(){ if(btn){ btn.disabled=false; btn.innerHTML=orig; } err('Network error. Please try again.'); });
+  });
+
+  // Slide in the prompt once, after a short delay
+  if(popup && !popupDone()){ setTimeout(function(){ if(!popupDone()){ popup.classList.add('show'); popup.setAttribute('aria-hidden','false'); } }, 8000); }
+})();
 </script>
 </body>
 </html>

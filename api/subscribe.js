@@ -1,10 +1,12 @@
 // Newsletter subscribe — Vercel serverless function (CommonJS, zero-dependency).
-// Sends a branded welcome email to the subscriber AND notifies the owner so they
-// can add the address to the mailing list. Uses Resend (https://resend.com).
+// Sends a branded welcome email to the subscriber, notifies the owner, and adds
+// the subscriber to a Resend Audience. Reads all secrets from process.env.
 //
-// Required env var:  RESEND_API_KEY
-// Optional env vars: SUBSCRIBE_FROM   (verified sender, e.g. "The Football Ledger <briefing@thefootballledger.co>")
-//                    SUBSCRIBE_OWNER  (defaults to husseinjissa@gmail.com)
+// Env vars (set in Vercel):
+//   RESEND_API_KEY      required — Resend API key (Full access, to write contacts)
+//   RESEND_AUDIENCE_ID  optional — audience the subscriber is added to
+//   SUBSCRIBE_FROM      optional — verified sender (default briefing@thefootballledger.co)
+//   SUBSCRIBE_OWNER     optional — notification recipient (default husseinjissa@gmail.com)
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -22,19 +24,32 @@ module.exports = async function handler(req, res) {
   const KEY = process.env.RESEND_API_KEY;
   const FROM = process.env.SUBSCRIBE_FROM || 'The Football Ledger <briefing@thefootballledger.co>';
   const OWNER = process.env.SUBSCRIBE_OWNER || 'husseinjissa@gmail.com';
-  if (!KEY) {
-    // Not configured yet — accept the address so the UI still works, but flag it.
-    return res.status(503).json({ ok: false, error: 'not_configured' });
-  }
+  const AUDIENCE = process.env.RESEND_AUDIENCE_ID;
+  if (!KEY) return res.status(503).json({ ok: false, error: 'not_configured' });
 
-  const send = (to, subject, html, replyTo) => fetch('https://api.resend.com/emails', {
+  const api = (path, opts) => fetch('https://api.resend.com' + path, Object.assign(
+    { headers: { Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' } }, opts));
+  const send = (to, subject, html, replyTo) => api('/emails', {
     method: 'POST',
-    headers: { Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify(Object.assign(
-      { from: FROM, to: [to], subject: subject, html: html },
-      replyTo ? { reply_to: replyTo } : {}
-    )),
+    body: JSON.stringify(Object.assign({ from: FROM, to: [to], subject: subject, html: html }, replyTo ? { reply_to: replyTo } : {})),
   });
+
+  // 1) Add to the Resend Audience (best-effort; duplicates count as success).
+  let audienceStatus = 'skipped';
+  if (AUDIENCE) {
+    try {
+      const r = await api('/audiences/' + AUDIENCE + '/contacts', {
+        method: 'POST',
+        body: JSON.stringify({ email: email, unsubscribed: false }),
+      });
+      if (r.ok) {
+        audienceStatus = 'added';
+      } else {
+        const t = await r.text().catch(function () { return ''; });
+        audienceStatus = (r.status === 409 || /already|exists|duplicate/i.test(t)) ? 'exists' : 'failed';
+      }
+    } catch (e) { audienceStatus = 'failed'; }
+  }
 
   const welcomeHtml =
     '<div style="background:#F5F2EA;padding:40px 0;font-family:Arial,Helvetica,sans-serif;color:#1A1A1A">' +
@@ -49,35 +64,28 @@ module.exports = async function handler(req, res) {
       '</div>' +
     '</div>';
 
+  const audienceNote = audienceStatus === 'failed'
+    ? '<p style="font-size:13px;color:#9a3b3b;margin:0 0 12px">&#9888; Could not add this contact to the Resend audience automatically — please add them manually.</p>'
+    : '';
   const notifyHtml =
     '<div style="font-family:Arial,Helvetica,sans-serif;color:#1A1A1A">' +
+      audienceNote +
       '<p style="font-size:14px;color:#57524A;margin:0 0 8px">New Briefing subscriber:</p>' +
       '<p style="font-size:20px;margin:0 0 16px"><strong>' + email + '</strong></p>' +
-      '<p style="font-size:13px;color:#8A8578;margin:0">Add them to the mailing list.</p>' +
+      '<p style="font-size:13px;color:#8A8578;margin:0">Audience: ' + audienceStatus + '.</p>' +
     '</div>';
-
-  // Optional: add the subscriber to a Resend Audience (mailing list) if configured.
-  const AUDIENCE = process.env.RESEND_AUDIENCE_ID;
-  const addToAudience = AUDIENCE
-    ? fetch('https://api.resend.com/audiences/' + AUDIENCE + '/contacts', {
-        method: 'POST',
-        headers: { Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, unsubscribed: false }),
-      }).catch(function () { return null; })   // best-effort — never blocks the subscribe
-    : Promise.resolve(null);
 
   try {
     const [welcome, notify] = await Promise.all([
       send(email, 'Welcome to The Football Ledger', welcomeHtml),
       send(OWNER, 'New subscriber: ' + email, notifyHtml, email),
     ]);
-    await addToAudience;   // best-effort; already catches its own errors
-    const okAll = [welcome, notify].every(function (r) { return r && r.ok; });
-    if (!okAll) {
+    if (!(welcome && welcome.ok)) {
       const detail = await welcome.text().catch(function () { return ''; });
       return res.status(502).json({ ok: false, error: 'send_failed', detail: detail.slice(0, 300) });
     }
-    return res.status(200).json({ ok: true });
+    // Subscriber experience must not break on owner/audience issues.
+    return res.status(200).json({ ok: true, audience: audienceStatus });
   } catch (e) {
     return res.status(500).json({ ok: false, error: 'exception' });
   }

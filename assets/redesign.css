@@ -49,8 +49,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== Layout ===== */
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-.section { padding: 84px 0; }
-.section--tight { padding: 56px 0; }
+.section { padding: 84px var(--gutter); }
+.section--tight { padding: 56px var(--gutter); }
 @media (max-width: 900px) { :root { --gutter: 26px; } .section { padding: 56px var(--gutter); } }
 
 /* ===== Typography ===== */
@@ -184,7 +184,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* ===== Hero (Overview / shared) ===== */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 520px); align-content: center; min-height: 580px; padding: 76px 0; }
+.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 520px); align-content: center; min-height: 580px; padding: 76px var(--gutter); }
 .hero-title { margin: 0 0 24px; }
 .hero-sub { max-width: 42ch; margin-bottom: 34px; }
 .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; }
@@ -338,7 +338,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    THE LEDGER — landing (hero, editor's selection, filter feed)
    ============================================================ */
-.ledger-hero { padding: 64px 0 40px; }
+.ledger-hero { padding: 64px var(--gutter) 40px; }
 .ledger-hero h1 { max-width: 15ch; margin: 18px 0 24px; }
 .ledger-hero .deck { max-width: 52ch; }
 .ledger-hero-rule { border: 0; border-top: 1px solid var(--line); margin-top: 40px; }
@@ -574,7 +574,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    ENTITIES — directory
    ============================================================ */
-.dir-hero { position: relative; padding: 60px 0 30px; overflow: hidden; }
+.dir-hero { position: relative; padding: 60px var(--gutter) 30px; overflow: hidden; }
 .dir-hero-inner { position: relative; z-index: 2; max-width: 60ch; }
 .dir-hero h1 { margin: 16px 0 20px; }
 .dir-hero .deck { max-width: 42ch; }
@@ -748,7 +748,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    UTILITY — Briefing, Search, 404
    ============================================================ */
-.util-head { padding: 60px 0 30px; }
+.util-head { padding: 60px var(--gutter) 30px; }
 .util-head h1 { margin: 16px 0 18px; }
 .util-head .deck { max-width: 56ch; }
 

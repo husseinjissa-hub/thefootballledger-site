@@ -49,8 +49,8 @@ a { color: inherit; text-decoration: none; }
 
 /* ===== Layout ===== */
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
-.section { padding: 84px 0; }
-.section--tight { padding: 56px 0; }
+.section { padding: 84px var(--gutter); }
+.section--tight { padding: 56px var(--gutter); }
 @media (max-width: 900px) { :root { --gutter: 26px; } .section { padding: 56px var(--gutter); } }
 
 /* ===== Typography ===== */
@@ -110,8 +110,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .brand { display: inline-flex; align-items: center; gap: 14px; }
 .brand-mark { width: 46px; height: 46px; flex: 0 0 46px; }
 .brand-text { display: flex; flex-direction: column; gap: 2px; }
-.brand-name { font-family: var(--serif); font-size: 22px; line-height: 1; color: var(--ink); }
-.brand-tag { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
+.brand-name { font-family: var(--serif); font-size: 22px; line-height: 1; color: var(--ink); white-space: nowrap; }
+.brand-tag { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
 .nav { display: flex; align-items: center; gap: 30px; }
 .nav a { font-family: var(--sans); font-size: 14px; color: var(--ink-2); position: relative; padding: 4px 0; transition: color 0.2s ease; }
 .nav a:hover { color: var(--ink); }
@@ -134,10 +134,36 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
   .nav-toggle { display: flex; }
   .site-header .wrap { height: 70px; }
   .header-cta .btn { padding: 9px 16px; font-size: 13px; }
+  .site-header .brand-mark { width: 38px; height: 38px; flex-basis: 38px; }
+  .site-header .brand { gap: 11px; }
+  .site-header .brand-name { font-size: 18px; }
 }
-@media (max-width: 420px) {
-  .header-cta .btn { padding: 8px 13px; font-size: 12px; letter-spacing: 0.02em; }
+@media (max-width: 600px) {
   .site-header .brand-tag { display: none; }
+  .site-header .brand-name { font-size: 16px; }
+}
+@media (max-width: 380px) {
+  .header-cta .btn { padding: 8px 12px; font-size: 12px; letter-spacing: 0.02em; }
+  .site-header .brand-name { font-size: 15px; }
+  .site-header .brand-mark { width: 34px; height: 34px; flex-basis: 34px; }
+}
+
+/* Slightly smaller type on phones */
+@media (max-width: 600px) {
+  body { font-size: 16.5px; }
+  .h1 { font-size: 33px; }
+  .h2 { font-size: 26px; }
+  .h3 { font-size: 21px; }
+  .deck { font-size: 17px; }
+  .lead { font-size: 16.5px; }
+  .art-title { font-size: 30px; }
+  .art-standfirst { font-size: 17px; }
+  .article-prose { font-size: 16px; }
+  .article-prose .lead { font-size: 17px; }
+  .story-headline { font-size: 24px; }
+  .issue-title { font-size: 32px; }
+  .ent-name { font-size: 34px; }
+  .feed-title { font-size: 20px; }
 }
 
 /* ===== Footer ===== */
@@ -158,7 +184,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* ===== Hero (Overview / shared) ===== */
 .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
-.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 520px); align-content: center; min-height: 580px; padding: 76px 0; }
+.hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 520px); align-content: center; min-height: 580px; padding: 76px var(--gutter); }
 .hero-title { margin: 0 0 24px; }
 .hero-sub { max-width: 42ch; margin-bottom: 34px; }
 .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; }
@@ -282,12 +308,18 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .ent-chip-mono { width: 44px; height: 30px; flex: 0 0 44px; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--ink-3); }
 .ent-chip-name { font-family: var(--serif); font-size: 15px; line-height: 1.2; color: var(--ink); text-transform: none; }
 .ent-chip:hover .ent-chip-name { color: var(--green); }
-@media (max-width: 1180px) { .layer-logos { display: none; } }
+/* Below desktop, keep the logos visible — wrap them onto their own full-width row */
+@media (max-width: 1180px) {
+  .layer-main { flex-wrap: wrap; align-items: center; gap: 16px 22px; }
+  .layer-logos { order: 3; flex-basis: 100%; flex-wrap: wrap; gap: 16px 24px; margin-top: 2px; }
+  .layer-more { order: 4; }
+}
 @media (max-width: 720px) {
-  .layer-main { flex-wrap: wrap; gap: 14px 16px; }
   .layer-badge { width: 58px; height: 58px; flex-basis: 58px; }
   .layer-badge b { font-size: 18px; }
-  .layer-info { flex-basis: 100%; order: 3; }
+  .layer-info { flex: 1 1 0; min-width: 0; }
+  .layer-logo { height: 28px; width: 50px; }
+  .layer-logos { gap: 14px 20px; }
   .layer-expand { padding-left: 4px; }
 }
 
@@ -306,7 +338,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    THE LEDGER — landing (hero, editor's selection, filter feed)
    ============================================================ */
-.ledger-hero { padding: 64px 0 40px; }
+.ledger-hero { padding: 64px var(--gutter) 40px; }
 .ledger-hero h1 { max-width: 15ch; margin: 18px 0 24px; }
 .ledger-hero .deck { max-width: 52ch; }
 .ledger-hero-rule { border: 0; border-top: 1px solid var(--line); margin-top: 40px; }
@@ -542,7 +574,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    ENTITIES — directory
    ============================================================ */
-.dir-hero { position: relative; padding: 60px 0 30px; overflow: hidden; }
+.dir-hero { position: relative; padding: 60px var(--gutter) 30px; overflow: hidden; }
 .dir-hero-inner { position: relative; z-index: 2; max-width: 60ch; }
 .dir-hero h1 { margin: 16px 0 20px; }
 .dir-hero .deck { max-width: 42ch; }
@@ -716,7 +748,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ============================================================
    UTILITY — Briefing, Search, 404
    ============================================================ */
-.util-head { padding: 60px 0 30px; }
+.util-head { padding: 60px var(--gutter) 30px; }
 .util-head h1 { margin: 16px 0 18px; }
 .util-head .deck { max-width: 56ch; }
 

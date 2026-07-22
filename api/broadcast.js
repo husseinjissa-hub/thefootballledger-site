@@ -64,8 +64,9 @@ module.exports = async function handler(req, res) {
     } catch (e) { return res.status(500).json({ ok: false, error: 'exception' }); }
   }
 
-  // Ensure a compliant unsubscribe footer (Resend replaces the token for broadcasts).
-  if (html.indexOf('RESEND_UNSUBSCRIBE_URL') === -1 && !/unsubscribe/i.test(html)) {
+  // Ensure the Resend unsubscribe token is present (required for broadcasts;
+  // Resend replaces it with the real per-recipient unsubscribe URL).
+  if (html.indexOf('RESEND_UNSUBSCRIBE_URL') === -1) {
     html += '<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#8A8578;margin-top:28px;text-align:center">' +
             'You are receiving this because you subscribed to The Football Ledger. ' +
             '<a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#8A8578">Unsubscribe</a>.</p>';

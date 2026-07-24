@@ -1,8 +1,7 @@
-# API — newsletter (Resend)
+# API — newsletter (Resend) + image upload (Vercel Blob)
 
-Two serverless functions power the newsletter. All secrets are read from
-`process.env` (set in Vercel → Project → Settings → Environment Variables) —
-nothing is hard-coded.
+Three serverless functions. All secrets are read from `process.env` (set in
+Vercel → Project → Settings → Environment Variables) — nothing is hard-coded.
 
 ## Environment variables
 
@@ -13,6 +12,7 @@ nothing is hard-coded.
 | `BROADCAST_SECRET` | yes (for broadcast) | Shared secret guarding `/api/broadcast`; sent as the `x-broadcast-secret` header. |
 | `SUBSCRIBE_FROM` | optional | Verified sender. Default `The Football Ledger <briefing@thefootballledger.co>`. |
 | `SUBSCRIBE_OWNER` | optional | Subscriber-notification recipient. Default `husseinjissa@gmail.com`. |
+| `BLOB_READ_WRITE_TOKEN` | yes (for upload) | Set automatically when **Vercel Blob** is connected (Storage → Blob). Lets `/api/upload` write public images. |
 
 If `RESEND_API_KEY` is missing, `/api/subscribe` returns `503 not_configured`
 and the site's forms show a friendly "not live yet" message instead of erroring.
@@ -44,4 +44,27 @@ curl -X POST https://thefootballledger.co/api/broadcast \
   -H "content-type: application/json" \
   -H "x-broadcast-secret: $BROADCAST_SECRET" \
   -d '{"subject":"Test","html":"<p>Hello</p>","test":true,"testEmail":"you@example.com"}'
+```
+
+## `POST /api/upload`
+Hosts a briefing image on **Vercel Blob** so the broadcast can embed it (email
+needs a public URL). Same `x-broadcast-secret` auth as `/api/broadcast` (401 on
+mismatch or if the secret is unset). Requires **Vercel Blob connected** (sets
+`BLOB_READ_WRITE_TOKEN`) and `@vercel/blob` (see `package.json`). Body:
+
+```json
+{ "filename": "spurs-stake.jpg", "contentBase64": "…", "contentType": "image/jpeg" }
+```
+
+- `contentType` optional — inferred from the filename extension if omitted; must be `image/*`.
+- Rejects non-images and files larger than ~8MB.
+- Stores at `briefing/<yyyy-mm>/<sanitized-filename>` (public, random suffix to avoid overwrites).
+
+Returns `{ ok, url }` — the public Blob URL.
+
+```bash
+curl -X POST https://thefootballledger.co/api/upload \
+  -H "content-type: application/json" \
+  -H "x-broadcast-secret: $BROADCAST_SECRET" \
+  -d "{\"filename\":\"test.png\",\"contentBase64\":\"$(base64 -w0 test.png)\"}"
 ```

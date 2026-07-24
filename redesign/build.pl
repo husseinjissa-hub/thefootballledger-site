@@ -51,6 +51,20 @@ my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
 sub fmtdate { my ($d)=@_; return '' unless $d =~ /^(\d{4})-(\d{2})-(\d{2})/; return "$3 $mon[$2-1] $1"; }
 sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&gt;/g; return $s; }
 
+# Curiosity-driven one-line hooks for cards + feed summaries (fall back to the dek).
+# macro-01 deliberately keeps its full dek (used as the Editor's Selection lead).
+my %HOOK = (
+  'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
+  'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. The edge is a data stack, not cash.',
+  'l3-barcelona-crisis-recovery'     => 'Barcelona sold its future to survive. Real recovery — or borrowed time?',
+  'l4-pif-phase-2'                    => 'PIF dropped sport from its priorities. A retreat — or a longer game?',
+  'macro-02-mco-consolidation'        => 'Half of Europe\'s top clubs now sit inside groups. But can any actually run one?',
+  'macro-03-usa-mega-cycle'           => 'US soccer built its audience over 20 years. Why is capital only arriving now?',
+  'l6-apple-mls-case-study'           => 'Apple\'s $2.5bn all-in MLS paywall lasted three years. What broke it?',
+  'l6-bein-mena-fragmentation'        => 'Everyone wrote beIN off as declining. The renewals say otherwise. Why?',
+);
+sub hook_or_dek { my ($a,$n)=@_; return defined $HOOK{$a->{slug}} ? $HOOK{$a->{slug}} : trunc($a->{dek}, $n||140); }
+
 # ---------- Top Stories cards ----------
 sub story_card {
   my ($a) = @_;
@@ -62,7 +76,7 @@ sub story_card {
   my $media = (-e $imgp)
     ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
-  my $dek = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(trunc($a->{dek},140)).'</p>'."\n      " : '';
+  my $dek = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,140)).'</p>'."\n      " : '';
   return
   '<a class="acard" href="'.esc($a->{url}).'">'."\n".
   '      <div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>'."\n".
@@ -244,7 +258,7 @@ my $feed_rows = join("\n        ", map {
   '          <div class="feed-body">'."\n".
   '            <div class="feed-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').$prodtag.'</div>'."\n".
   '            <a class="feed-title" href="'.esc($a->{url}).'">'.esc($a->{title}).'</a>'."\n".
-  '            <p class="feed-excerpt">'.esc(trunc($a->{dek},180)).'</p>'."\n".
+  '            <p class="feed-excerpt">'.esc(hook_or_dek($a,180)).'</p>'."\n".
   '          </div>'."\n".
   '          <div class="feed-side">'."\n".
   '            <div class="feed-meta">'.art_meta($a).'</div>'."\n".

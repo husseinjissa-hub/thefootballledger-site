@@ -1,8 +1,7 @@
-# API — newsletter (Resend)
+# API — newsletter (Resend) + image upload (Vercel Blob)
 
-Two serverless functions power the newsletter. All secrets are read from
-`process.env` (set in Vercel → Project → Settings → Environment Variables) —
-nothing is hard-coded.
+Three serverless functions. All secrets are read from `process.env` (set in
+Vercel → Project → Settings → Environment Variables) — nothing is hard-coded.
 
 ## Environment variables
 
@@ -13,6 +12,10 @@ nothing is hard-coded.
 | `BROADCAST_SECRET` | yes (for broadcast) | Shared secret guarding `/api/broadcast`; sent as the `x-broadcast-secret` header. |
 | `SUBSCRIBE_FROM` | optional | Verified sender. Default `The Football Ledger <briefing@thefootballledger.co>`. |
 | `SUBSCRIBE_OWNER` | optional | Subscriber-notification recipient. Default `husseinjissa@gmail.com`. |
+| `BLOB_READ_WRITE_TOKEN` | yes (for upload) | Set automatically when **Vercel Blob** is connected (Storage → Blob). Lets `/api/upload` write public images. |
+| `GITHUB_TOKEN` | yes (for publish) | Fine-grained PAT — **Contents: read & write** on the site repo only. Lets `/api/publish` commit briefing pages. |
+| `GITHUB_REPO` | yes (for publish) | `owner/repo`, e.g. `husseinjissa/thefootballledger-site`. |
+| `GITHUB_BRANCH` | optional | Branch to commit to. Default `main`. |
 
 If `RESEND_API_KEY` is missing, `/api/subscribe` returns `503 not_configured`
 and the site's forms show a friendly "not live yet" message instead of erroring.
@@ -45,3 +48,45 @@ curl -X POST https://thefootballledger.co/api/broadcast \
   -H "x-broadcast-secret: $BROADCAST_SECRET" \
   -d '{"subject":"Test","html":"<p>Hello</p>","test":true,"testEmail":"you@example.com"}'
 ```
+
+## `POST /api/upload`
+Hosts a briefing image on **Vercel Blob** so the broadcast can embed it (email
+needs a public URL). Same `x-broadcast-secret` auth as `/api/broadcast` (401 on
+mismatch or if the secret is unset). Requires **Vercel Blob connected** (sets
+`BLOB_READ_WRITE_TOKEN`) and `@vercel/blob` (see `package.json`). Body:
+
+```json
+{ "filename": "spurs-stake.jpg", "contentBase64": "…", "contentType": "image/jpeg" }
+```
+
+- `contentType` optional — inferred from the filename extension if omitted; must be `image/*`.
+- Rejects non-images and files larger than ~8MB.
+- Stores at `briefing/<yyyy-mm>/<sanitized-filename>` (public, random suffix to avoid overwrites).
+
+Returns `{ ok, url }` — the public Blob URL.
+
+```bash
+curl -X POST https://thefootballledger.co/api/upload \
+  -H "content-type: application/json" \
+  -H "x-broadcast-secret: $BROADCAST_SECRET" \
+  -d "{\"filename\":\"test.png\",\"contentBase64\":\"$(base64 -w0 test.png)\"}"
+```
+
+## `POST /api/publish`
+Publishes a Briefing to the website by committing it to the repo (→ Vercel
+redeploys). Same `x-broadcast-secret` auth. Requires `GITHUB_TOKEN` (+ `GITHUB_REPO`,
+optional `GITHUB_BRANCH`). Body:
+
+```json
+{ "issue": "Issue 14", "date": "2026-07-21", "title": "…", "slug": "2026-07-21", "deck": "…", "html": "<!doctype html>…" }
+```
+
+- `html` is the full, already-styled briefing page.
+- Commits `briefing/<slug>.html`, then prepends `{issue,date,title,slug,deck}` to
+  `content/briefings.json` (the manifest the briefing index renders from).
+- **Idempotent:** if `slug` is already in the manifest, returns
+  `{ ok:true, alreadyPublished:true, url }` and changes nothing.
+
+Returns `{ ok, url, alreadyPublished? }`. The briefing index (`/briefing`) reads
+`content/briefings.json` client-side, so the new issue appears after the deploy —
+no rebuild of the prebuilt index needed.

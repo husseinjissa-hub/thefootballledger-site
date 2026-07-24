@@ -8,13 +8,10 @@
 </section>
 
 <section class="wrap section" style="padding-bottom:0">
-{{CURRENT_ISSUE}}
-
+  <div id="bfCurrent"></div>
   <div class="bf-prev">
     <div class="overline overline--green" style="margin-bottom:14px">Previous issues</div>
-    <div class="bf-prev-list">
-{{PREVIOUS_ISSUES}}
-    </div>
+    <div class="bf-prev-list" id="bfPrevList"><p class="bf-loading">Loading issues…</p></div>
   </div>
 </section>
 
@@ -29,3 +26,49 @@
     </div>
   </div>
 </section>
+
+<script>
+// The Briefing index is data-driven: it renders the issue list from the
+// content/briefings.json manifest so a newly published issue appears without
+// rebuilding this page (the /api/publish endpoint just prepends a manifest entry).
+(function(){
+  var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
+  function fmtDate(d){ var p=(d||'').split('-'); if(p.length!==3) return esc(d); return p[2]+' '+MONTHS[parseInt(p[1],10)-1]+' '+p[0]; }
+  function titleHtml(t){ return esc(t).replace(/(\s)(\S+)$/, '$1<em>$2</em>'); }
+  function href(b){ return '/briefing/'+encodeURIComponent(b.slug)+'.html'; }
+
+  function renderCurrent(b){
+    if(!b) return '';
+    return '<div class="bf-current">'
+      + '<div class="bf-current-body">'
+        + '<div class="bf-current-label">Current issue</div>'
+        + '<div class="bf-current-issue"><b>'+esc(b.issue)+'</b> &nbsp;·&nbsp; '+fmtDate(b.date)+'</div>'
+        + '<h2 class="bf-current-title">'+titleHtml(b.title)+'</h2>'
+        + '<p class="bf-current-dek">'+esc(b.deck)+'</p>'
+        + '<div class="bf-current-foot"><a class="btn btn--primary" href="'+href(b)+'">Read the issue <span class="arw">→</span></a></div>'
+      + '</div>'
+      + '<div class="bf-current-media"><img src="/assets/img/briefing-skyline.jpg" alt="The City of London skyline at dusk"></div>'
+    + '</div>';
+  }
+  function renderPrev(b){
+    return '<a class="bf-prev-row" href="'+href(b)+'">'
+      + '<div class="bf-prev-date">'+fmtDate(b.date)+'</div>'
+      + '<div><div class="bf-prev-title"><b>'+esc(b.issue)+' ·</b> '+esc(b.title)+'</div>'
+        + (b.deck?'<div class="bf-prev-dek">'+esc(b.deck)+'</div>':'') + '</div>'
+      + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
+    + '</a>';
+  }
+  function render(list){
+    var cur=document.getElementById('bfCurrent'), prev=document.getElementById('bfPrevList');
+    if(!list || !list.length){ prev.innerHTML='<p class="bf-loading">Issues are on their way.</p>'; return; }
+    cur.innerHTML=renderCurrent(list[0]);
+    prev.innerHTML = list.length>1 ? list.slice(1).map(renderPrev).join('') : '<p class="bf-loading">This is the first issue.</p>';
+  }
+
+  fetch('/content/briefings.json',{cache:'no-cache'})
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(list){ list.sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); }); render(list); })
+    .catch(function(){ document.getElementById('bfPrevList').innerHTML='<p class="bf-loading">Unable to load issues right now.</p>'; });
+})();
+</script>

@@ -54,6 +54,7 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 # Curiosity-driven one-line hooks for cards + feed summaries (fall back to the dek).
 # macro-01 deliberately keeps its full dek (used as the Editor's Selection lead).
 my %HOOK = (
+  # live
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. The edge is a data stack, not cash.',
   'l3-barcelona-crisis-recovery'     => 'Barcelona sold its future to survive. Real recovery — or borrowed time?',
@@ -62,6 +63,35 @@ my %HOOK = (
   'macro-03-usa-mega-cycle'           => 'US soccer built its audience over 20 years. Why is capital only arriving now?',
   'l6-apple-mls-case-study'           => 'Apple\'s $2.5bn all-in MLS paywall lasted three years. What broke it?',
   'l6-bein-mena-fragmentation'        => 'Everyone wrote beIN off as declining. The renewals say otherwise. Why?',
+  # in-production
+  'l1-afc-saff-professionalising'     => 'Asia\'s federations have 24 months to build what took others decades. Can they?',
+  'l1-fifa-mega-events'               => 'FIFA now runs a mega-event nearly every year. Sanctioning body — or rights machine?',
+  'l1-national-regulators'            => 'The UK just put football under a state regulator. Who\'s next — and why now?',
+  'l1-uefa-legal-pressure'            => 'Three legal fronts are closing in on UEFA at once. How much control is left?',
+  'l2-dtc-or-die'                     => 'No broadcaster bid, so Ligue 1 built its own platform. Does DTC actually pay?',
+  'l2-league-pe-infrastructure'       => 'CVC turned league revenue into a PE asset. Now everyone wants the structure.',
+  'l2-pl-exports-model'               => 'Leagues from Riyadh to MLS are copying the Premier League. Does the model travel?',
+  'l2-spl-privatisation'              => 'PIF is selling down its Saudi clubs. Privatisation — or just repackaged control?',
+  'l10-format-convergence'            => 'Serious money is pouring into 6-a-side spectacle. Which formats survive to 2028?',
+  'l3-group-hq-arms-race'             => 'Multi-club groups are hiring 80-person HQ teams from outside football. Why?',
+  'l3-mco-blowup-risk'                => '777 collapsed, Eagle is stressed. How many multi-club groups blow up next?',
+  'l3-womens-clubs-systematic'        => 'Every big group now adds women\'s clubs by default. Do the economics stand alone?',
+  'l4-control-deals-normal'           => 'Apollo just took control of Atlético for €2.9bn. Is the minority era over?',
+  'l4-family-offices-organised'       => 'Family-office money is turning institutional on football. What changes?',
+  'l4-permanent-capital'              => 'Club ownership is a 20-year game. Why the money is moving to evergreen funds.',
+  'l4-sports-tech-vc-matures'         => 'Sports-tech VC just crossed €1bn. Why specialists win and generalists overpay.',
+  'l5-coach-staff-talent-ip'          => 'Hiring a manager now means buying a whole backroom. When did coaching become M&A?',
+  'l6-2027-pl-cycle-reset'            => 'The 2027 rights cycle resets Premier League economics. Which way does it break?',
+  'l6-club-as-media-company'          => 'Every top club now runs its own channel. Can they become real media businesses?',
+  'l7-fanatics-vertical'              => 'Fanatics quietly owns football merch end-to-end. Who else is moving upstream?',
+  'l7-front-of-shirt-multitier'       => 'Shirt sponsorship is being priced like digital ads. What breaks — and who wins?',
+  'l8-llm-native-scouting'            => 'AI is rebuilding scouting, tagging and injury prediction at once. Who owns it?',
+  'l9-premium-hospitality-boom'       => 'Premium seats now drive a fifth of matchday revenue. How far can clubs push it?',
+  'l9-stadium-as-365-venue'           => 'Top clubs now run their stadiums 365 days a year. Is football the anchor tenant?',
+  'macro-04-mena-second-wave'         => 'MENA moves from buying stars to building operations. Second wave — or overreach?',
+  'macro-05-sportainment-genz'        => 'Kings League is winning Gen Z\'s attention. Is that a threat to real football?',
+  'macro-06-womens-football'          => 'Women\'s football is drawing institutional capital. Asset class — or still a bet?',
+  'macro-07-ai-native-ops'            => 'A few clubs are rebuilding operations around AI. Does the org chart change shape?',
 );
 sub hook_or_dek { my ($a,$n)=@_; return defined $HOOK{$a->{slug}} ? $HOOK{$a->{slug}} : trunc($a->{dek}, $n||140); }
 

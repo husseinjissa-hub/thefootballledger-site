@@ -91,6 +91,16 @@ a { color: inherit; text-decoration: none; }
 /* Article chart figures are light-baked SVGs; flip them dark to match the page. */
 :root[data-theme="dark"] .article-prose figure.chart { background: var(--card); }
 :root[data-theme="dark"] .article-prose figure.chart svg { filter: invert(1) hue-rotate(180deg); }
+/* Ledger "Editor's Selection" featured card — black with white words in dark mode
+   (was a sage-green block with dark text after the token flip). */
+:root[data-theme="dark"] .es-lead { background: #100E0A; color: var(--ink); }
+:root[data-theme="dark"] .es-lead::after { background: linear-gradient(180deg, rgba(8,7,4,0.42) 0%, rgba(8,7,4,0.8) 62%, rgba(8,7,4,0.94) 100%); }
+:root[data-theme="dark"] .es-lead-bg img { opacity: 0.26; }
+:root[data-theme="dark"] .es-lead .overline { color: rgba(236,231,218,0.6); }
+:root[data-theme="dark"] .es-lead-title { color: var(--ink); }
+:root[data-theme="dark"] .es-lead-dek { color: rgba(236,231,218,0.82); }
+:root[data-theme="dark"] .es-lead-meta { color: rgba(236,231,218,0.58); }
+:root[data-theme="dark"] .es-lead-cta { color: var(--ink); }
 
 /* Theme toggle button (header) — moon in light mode, sun in dark */
 .theme-toggle { background: transparent; border: 0; padding: 8px; margin-right: 2px; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 0; border-radius: var(--radius); transition: color 0.15s ease; }
@@ -752,7 +762,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .info-label { font-family: var(--sans); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
 .info-title { font-family: var(--serif); font-size: clamp(26px, 3vw, 34px); line-height: 1.08; letter-spacing: -0.01em; }
 .info-title em { font-style: italic; color: var(--green); }
-.info-lead { font-size: 16px; line-height: 1.7; color: var(--ink-2); max-width: 66ch; margin-bottom: 34px; }
+.info-lead { font-size: 16px; line-height: 1.7; color: var(--ink-2); max-width: 92ch; margin-bottom: 34px; }
 .info-body p { font-size: 16px; line-height: 1.7; color: var(--ink-2); margin-bottom: 16px; max-width: 60ch; }
 .info-body p:last-child { margin-bottom: 0; }
 .info-media { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }

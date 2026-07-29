@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>(function(){var d=document.documentElement;try{if(localStorage.getItem('fl-theme')==='dark')d.setAttribute('data-theme','dark');}catch(e){}window.__flToggleTheme=function(){var dark=d.getAttribute('data-theme')==='dark';if(dark){d.removeAttribute('data-theme');}else{d.setAttribute('data-theme','dark');}try{localStorage.setItem('fl-theme',dark?'light':'dark');}catch(e){}};})();</script>
 <title>Ecosystem — The Football Ledger</title>
 <meta name="description" content="The nine-layer map of football's business — governance, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium — with the key entities in each layer.">
 <link rel="canonical" href="https://thefootballledger.co/ecosystem">
@@ -43,6 +44,10 @@
       <a href="/join" >Join</a>
     </nav>
     <div class="header-cta">
+      <button type="button" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode" onclick="window.__flToggleTheme&&window.__flToggleTheme()">
+        <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+        <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+      </button>
       <button type="button" class="btn btn--primary" data-subscribe>Subscribe</button>
       <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.add('open')"><span></span><span></span><span></span></button>
     </div>

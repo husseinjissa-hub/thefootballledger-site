@@ -53,6 +53,39 @@ a { color: inherit; text-decoration: none; }
 .section--tight { padding: 56px var(--gutter); }
 @media (max-width: 900px) { :root { --gutter: 26px; } .section { padding: 56px var(--gutter); } }
 
+/* ===== Dark theme (opt-in via [data-theme="dark"] on <html>) ===== */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --green: #84B090;        /* accent, links, em, primary-button surface */
+  --green-mid: #A2C0A9;
+  --sage: #8FA08F;
+  --paper: #14120D;        /* page background (warm near-black) */
+  --cream: #221E17;        /* elevated panel / stat band */
+  --card: #1C1913;         /* card surface */
+  --ink: #ECE7DA;          /* primary text */
+  --ink-2: #B4AEA0;        /* secondary text */
+  --ink-3: #8C8778;        /* muted / metadata */
+  --line: #33302A;         /* hairline */
+  --line-soft: #292620;
+  --green-tint: rgba(132,176,144,0.12);
+}
+/* Chrome with hard-coded light values → dark equivalents */
+:root[data-theme="dark"] .site-header { background: rgba(20,18,13,0.9); }
+:root[data-theme="dark"] .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(20,18,13,0.55) 14%, rgba(20,18,13,0) 30%); }
+:root[data-theme="dark"] .eco-hero .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(20,18,13,0.5) 12%, rgba(20,18,13,0) 28%); }
+:root[data-theme="dark"] .btn--primary:hover { background: #97C0A2; }
+/* The F|L monogram is drawn with hard-coded ink; retint it for dark */
+:root[data-theme="dark"] .brand-mark circle,
+:root[data-theme="dark"] .brand-mark line { stroke: var(--ink); }
+:root[data-theme="dark"] .brand-mark text { fill: var(--ink); }
+
+/* Theme toggle button (header) — moon in light mode, sun in dark */
+.theme-toggle { background: transparent; border: 0; padding: 8px; margin-right: 2px; color: var(--ink-2); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; line-height: 0; border-radius: var(--radius); transition: color 0.15s ease; }
+.theme-toggle:hover { color: var(--green); }
+.theme-toggle .ico-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .ico-sun { display: inline; }
+:root[data-theme="dark"] .theme-toggle .ico-moon { display: none; }
+
 /* ===== Typography ===== */
 h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); line-height: 1.08; letter-spacing: -0.01em; }
 .h1 { font-size: clamp(40px, 5.4vw, 64px); line-height: 1.04; }
@@ -700,6 +733,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 .info-row { display: grid; grid-template-columns: 268px 1fr; gap: 56px; padding: 60px 0; border-top: 1px solid var(--line); align-items: start; }
 .info-row:first-of-type { border-top: 0; }
+/* Rows whose right side is a single text/media block read best with the title
+   vertically centred against it (rather than top-aligned). */
+.info-row:has(> .info-split) { align-items: center; }
 .info-label { font-family: var(--sans); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
 .info-title { font-family: var(--serif); font-size: clamp(26px, 3vw, 34px); line-height: 1.08; letter-spacing: -0.01em; }
 .info-title em { font-style: italic; color: var(--green); }

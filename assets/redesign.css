@@ -432,6 +432,12 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* Filter + feed */
 .lb-grid { display: grid; grid-template-columns: 232px 1fr; gap: 48px; align-items: start; margin-top: 8px; }
 .filter-rail { position: sticky; top: 96px; font-family: var(--sans); }
+.fr-search { position: relative; margin-bottom: 26px; }
+.fr-search svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+.fr-search input { width: 100%; font-family: var(--sans); font-size: 13px; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 12px 10px 34px; -webkit-appearance: none; appearance: none; }
+.fr-search input::placeholder { color: var(--ink-3); }
+.fr-search input:focus { outline: none; border-color: var(--green); }
+.fr-search input::-webkit-search-cancel-button { cursor: pointer; }
 .fr-group { margin-bottom: 26px; }
 .fr-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
 .fr-pills { display: flex; flex-wrap: wrap; gap: 8px; }

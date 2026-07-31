@@ -59,7 +59,7 @@
 (function(){
   var feed = document.getElementById('feed');
   var rows = Array.prototype.slice.call(feed.querySelectorAll('.feed-row'));
-  rows.forEach(function(r){ r._s = (r.textContent||'').toLowerCase(); });
+  rows.forEach(function(r){ r._s = ((r.getAttribute('data-search')||'') + ' ' + (r.textContent||'')).toLowerCase(); });
   var PER = 8;
   var state = { types: [], layers: [], hideProd: false, sort: 'newest', page: 1, search: '' };
 

@@ -116,7 +116,10 @@ sub story_card {
   '      <div class="acard-meta">'.$meta.'</div>'."\n".
   '    </a>';
 }
-my $top = join("\n    ", map { story_card($_) } @live[0..3]);
+# Top Stories — curated editorial pick (Barcelona in place of the 2027 PL piece).
+my %liveBySlug = map { $_->{slug} => $_ } @live;
+my @topSlugs = qw(l1-fifa-ffe-world-cup-sale l3-barcelona-crisis-recovery l5-coach-staff-talent-ip macro-08-streaming-native-limits);
+my $top = join("\n    ", map { story_card($_) } grep { defined } map { $liveBySlug{$_} } @topSlugs);
 
 # ---------- Overview ----------
 my $ov = slurp("redesign/pages/overview.html");
@@ -281,10 +284,28 @@ my $filter_layers = join("\n          ", map {
 # --- Feed rows (all articles, dated desc then in-production) ---
 my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } @arts;
 my $bookmark_svg = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
+# Full-text search string for a feed row: title + dek + stripped article body,
+# so the Ledger search matches keywords anywhere in the piece (e.g. "Brighton").
+sub search_text {
+  my ($a) = @_;
+  my $txt = ($a->{title}//'').' '.($a->{dek}//'');
+  my $src = "redesign/src-posts/".$a->{slug}.".html";
+  if (-e $src) {
+    my $raw = slurp($src);
+    if ($raw =~ /<div class="article-body">(.*?)(?:<aside class="signals"|<\/article>)/s) {
+      my $body = $1;
+      $body =~ s/<[^>]+>/ /g;      # strip tags
+      $body =~ s/&[a-z#0-9]+;/ /g; # strip entities
+      $txt .= ' '.$body;
+    }
+  }
+  $txt = lc $txt; $txt =~ s/\s+/ /g; $txt =~ s/^\s+|\s+$//g;
+  return $txt;
+}
 my $feed_rows = join("\n        ", map {
   my $a=$_; my ($t,$r)=ov_parts($a);
   my $prodtag = $a->{status} eq 'prod' ? '<span class="feed-prodtag">In production</span>' : '';
-  '<article class="feed-row'.($a->{status} eq 'prod' ? ' is-prod':'').'" data-type="'.($TYSLUG{$a->{type}}||'').'" data-layer="'.($a->{layer}//'').'" data-status="'.esc($a->{status}).'">'."\n".
+  '<article class="feed-row'.($a->{status} eq 'prod' ? ' is-prod':'').'" data-type="'.($TYSLUG{$a->{type}}||'').'" data-layer="'.($a->{layer}//'').'" data-status="'.esc($a->{status}).'" data-search="'.esc(search_text($a)).'">'."\n".
   '          <a class="feed-thumb-lnk" href="'.esc($a->{url}).'" aria-label="'.esc($a->{title}).'" tabindex="-1">'.art_thumb($a,'feed-thumb').'</a>'."\n".
   '          <div class="feed-body">'."\n".
   '            <div class="feed-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').$prodtag.'</div>'."\n".

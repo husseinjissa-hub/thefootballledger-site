@@ -66,6 +66,7 @@ my %HOOK = (
   # in-production
   'l1-afc-saff-professionalising'     => 'Asia\'s federations have 24 months to build what took others decades. Can they?',
   'l1-fifa-mega-events'               => 'FIFA now runs a mega-event nearly every year. Sanctioning body — or rights machine?',
+  'l1-fifa-ffe-world-cup-sale'        => 'FIFA just had its richest year ever. So why is it selling a slice of the World Cup?',
   'l1-national-regulators'            => 'The UK just put football under a state regulator. Who\'s next — and why now?',
   'l1-uefa-legal-pressure'            => 'Three legal fronts are closing in on UEFA at once. How much control is left?',
   'l2-dtc-or-die'                     => 'No broadcaster bid, so Ligue 1 built its own platform. Does DTC actually pay?',

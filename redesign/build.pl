@@ -241,14 +241,15 @@ my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
 # --- Editor's Selection ---
-my $lead = $bySlug{'macro-01-trophy-to-operating'} // $live[0];
+my $lead = $bySlug{'l1-fifa-ffe-world-cup-sale'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
                map  { $bySlug{$_} } qw(macro-08-streaming-native-limits l8-data-led-underdogs l3-barcelona-crisis-recovery);
 my ($ltype,$lrest) = ov_parts($lead);
+my $lead_bg = (-e "assets/img/articles/".$lead->{slug}.".jpg") ? "/assets/img/articles/".$lead->{slug}.".jpg" : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
   '<a class="es-lead" href="'.esc($lead->{url}).'">'."\n".
-  '      <div class="es-lead-bg"><img src="/assets/img/articles/macro-01-lead.jpg" alt="" loading="lazy"></div>'."\n".
+  '      <div class="es-lead-bg"><img src="'.$lead_bg.'" alt="" loading="lazy"></div>'."\n".
   '      <div class="overline">'.esc($ltype).($lrest?' '.esc($lrest):'').'</div>'."\n".
   '      <h3 class="es-lead-title">'.esc($lead->{title}).'</h3>'."\n".
   '      <p class="es-lead-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'."\n".

@@ -15,6 +15,10 @@
 <section class="wrap section" style="padding-top:52px">
   <div class="lb-grid">
     <aside class="filter-rail" aria-label="Filter the Ledger">
+      <div class="fr-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="ledgerSearch" placeholder="Search articles…" aria-label="Search the Ledger" autocomplete="off">
+      </div>
       <div class="fr-group">
         <div class="fr-label">Type</div>
         <div class="fr-pills" id="typePills">
@@ -55,8 +59,9 @@
 (function(){
   var feed = document.getElementById('feed');
   var rows = Array.prototype.slice.call(feed.querySelectorAll('.feed-row'));
+  rows.forEach(function(r){ r._s = (r.textContent||'').toLowerCase(); });
   var PER = 8;
-  var state = { types: [], layers: [], hideProd: false, sort: 'newest', page: 1 };
+  var state = { types: [], layers: [], hideProd: false, sort: 'newest', page: 1, search: '' };
 
   // bookmarks
   feed.addEventListener('click', function(e){
@@ -69,6 +74,7 @@
     if (state.hideProd && r.dataset.status === 'prod') return false;
     if (state.types.length && state.types.indexOf(r.dataset.type) === -1) return false;
     if (state.layers.length && state.layers.indexOf(r.dataset.layer) === -1) return false;
+    if (state.search && r._s.indexOf(state.search) === -1) return false;
     return true;
   }
 
@@ -85,7 +91,7 @@
     else rows.forEach(function(r){ feed.appendChild(r); });
 
     document.getElementById('feedCount').textContent = vis.length;
-    document.getElementById('feedMatch').textContent = (state.types.length || state.layers.length || state.hideProd) ? 'matching current filters' : 'across every layer';
+    document.getElementById('feedMatch').textContent = (state.types.length || state.layers.length || state.hideProd || state.search) ? 'matching current filters' : 'across every layer';
 
     var empty = feed.querySelector('.feed-empty');
     if (!vis.length) { if(!empty){ empty=document.createElement('div'); empty.className='feed-empty'; empty.textContent='No pieces match these filters.'; feed.appendChild(empty);} }
@@ -134,8 +140,10 @@
     this.setAttribute('aria-pressed', state.hideProd?'true':'false'); state.page=1; apply();
   });
   document.getElementById('feedSort').addEventListener('change', function(){ state.sort=this.value; state.page=1; apply(); });
+  var searchBox = document.getElementById('ledgerSearch');
+  searchBox.addEventListener('input', function(){ state.search=this.value.trim().toLowerCase(); state.page=1; apply(); });
   document.getElementById('clearFilters').addEventListener('click', function(){
-    state.types=[]; state.layers=[]; state.hideProd=false; state.page=1;
+    state.types=[]; state.layers=[]; state.hideProd=false; state.search=''; searchBox.value=''; state.page=1;
     document.querySelectorAll('#typePills .fr-pill.on,#layerList .fr-layer.on').forEach(function(x){ x.classList.remove('on'); x.setAttribute('aria-pressed','false'); });
     document.getElementById('hideProd').classList.remove('on');
     document.getElementById('feedSort').value='newest'; state.sort='newest';

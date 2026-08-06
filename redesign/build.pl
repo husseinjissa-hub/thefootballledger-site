@@ -90,7 +90,6 @@ my %HOOK = (
   'l9-premium-hospitality-boom'       => 'Premium seats now drive a fifth of matchday revenue. How far can clubs push it?',
   'l9-stadium-as-365-venue'           => 'Top clubs now run their stadiums 365 days a year. Is football the anchor tenant?',
   'macro-04-mena-second-wave'         => 'MENA moves from buying stars to building operations. Second wave — or overreach?',
-  'macro-05-sportainment-genz'        => 'Kings League is winning Gen Z\'s attention. Is that a threat to real football?',
   'macro-06-womens-football'          => 'Women\'s football is drawing institutional capital. Asset class — or still a bet?',
   'macro-07-ai-native-ops'            => 'A few clubs are rebuilding operations around AI. Does the org chart change shape?',
 );
@@ -830,11 +829,13 @@ if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) {
 #     manifest entry (no rebuild of this prebuilt index needed). ---
 my $bl = slurp("redesign/pages/briefing.html");
 render_page(out=>"briefing/index.html", active=>"briefing",
-  title=>"The Briefing — The Football Ledger",
-  desc=>"The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.",
+  title=>"The Record — The Football Ledger",
+  desc=>"The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.",
   canonical=>"/briefing", body=>$bl);
 
 # --- Briefing issues (reskin from preserved source) ---
+my %BRIEF_SEARCH;
+sub jsstr { my ($s)=@_; $s//=''; $s =~ s/\\/\\\\/g; $s =~ s/"/\\"/g; $s =~ s/[\x00-\x1f]/ /g; return '"'.$s.'"'; }
 sub build_briefing {
   my ($r)=@_;
   my $file = (split m{/}, $r->{url})[-1];
@@ -842,7 +843,7 @@ sub build_briefing {
   return unless -e $src;
   my $raw = slurp($src);
   # breadcrumb from eyebrow
-  my $eye = ($raw =~ /<div class="issue-eyebrow">(.*?)<\/div>/s) ? $1 : 'The Briefing';
+  my $eye = ($raw =~ /<div class="issue-eyebrow">(.*?)<\/div>/s) ? $1 : 'The Record';
   $eye =~ s/\s+/ /g; $eye =~ s/^\s+|\s+$//g;
   my @ep = split /\s*·\s*/, $eye;
   my $bc = '<b>'.esc(shift @ep).'</b>'.(@ep?' · '.esc(join(' · ',@ep)):'');
@@ -871,13 +872,13 @@ sub build_briefing {
   # stories, with ids for anchors
   my $stories = ($raw =~ /(<section class="stories">.*?<\/section>)/s) ? $1 : '';
   my $si=0; $stories =~ s/<article class="story">/'<article id="story'.(++$si).'" class="story">'/ge;
-  (my $t=$r->{title}) =~ s/\s*—\s*The Briefing.*$//;
+  (my $t=$r->{title}) =~ s/\s*—\s*The (?:Briefing|Record).*$//;
 
   my $body = <<"HTML";
 <div class="art-wrap">
   <div class="art-grid">
     <aside class="art-side">
-      <a class="art-back" href="/briefing"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Briefing</a>
+      <a class="art-back" href="/briefing"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Record</a>
       <div class="art-block art-block--toc">
         <div class="art-side-label">In this issue</div>
         <ul class="toc-list">
@@ -913,11 +914,15 @@ sub build_briefing {
 })();
 </script>
 HTML
+  (my $slug = $file) =~ s/\.html$//;
+  my $stext = "$title $deck $stories"; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext = lc $stext; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
+  $BRIEF_SEARCH{$slug} = $stext;
   render_page(out=>"briefing/$file", active=>"briefing",
-    title=>$t." — The Briefing · The Football Ledger",
+    title=>$t." — The Record · The Football Ledger",
     desc=>$r->{dek}//$t, canonical=>$r->{url}, body=>$body);
 }
 build_briefing($_) for @briefs;
+spit("content/briefing-search.js", "window.FL_BRIEFING_SEARCH={".join(",", map { jsstr($_).":".jsstr($BRIEF_SEARCH{$_}) } sort keys %BRIEF_SEARCH)."};\n");
 
 # --- Search ---
 render_page(out=>"search.html", active=>"",

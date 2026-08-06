@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script>(function(){var d=document.documentElement;try{if(localStorage.getItem('fl-theme')==='dark')d.setAttribute('data-theme','dark');}catch(e){}window.__flToggleTheme=function(){var dark=d.getAttribute('data-theme')==='dark';if(dark){d.removeAttribute('data-theme');}else{d.setAttribute('data-theme','dark');}try{localStorage.setItem('fl-theme',dark?'light':'dark');}catch(e){}};})();</script>
-<title>The Briefing — The Football Ledger</title>
-<meta name="description" content="The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
+<title>The Record — The Football Ledger</title>
+<meta name="description" content="The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
 <link rel="canonical" href="https://thefootballledger.co/briefing">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Football Ledger">
-<meta property="og:title" content="The Briefing — The Football Ledger">
-<meta property="og:description" content="The Briefing — dated short notes on what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
+<meta property="og:title" content="The Record — The Football Ledger">
+<meta property="og:description" content="The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
 <meta property="og:url" content="https://thefootballledger.co/briefing">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +39,7 @@
       <a href="/ecosystem" >Ecosystem</a>
       <a href="/ledger" >The Ledger</a>
       <a href="/entities" >Entities</a>
-      <a href="/briefing" class="active">Briefing</a>
+      <a href="/briefing" class="active">The Record</a>
       <a href="/about" >About</a>
       <a href="/join" >Join</a>
     </nav>
@@ -66,7 +66,7 @@
     <a href="/ecosystem">Ecosystem</a>
     <a href="/ledger">The Ledger</a>
     <a href="/entities">Entities</a>
-    <a href="/briefing">Briefing</a>
+    <a href="/briefing">The Record</a>
     <a href="/about">About</a>
     <a href="/join">Join</a>
   </nav>
@@ -74,14 +74,24 @@
 <main id="main">
 <section class="hero">
   <div class="wrap hero-inner">
-    <div class="overline overline--rule overline--green" style="margin-bottom:24px">Section D · Briefing</div>
-    <h1 class="h1">The <span class="serif-em">newswire.</span></h1>
-    <p class="deck hero-sub" style="margin-top:26px">What moved football's business this week.<br>Five stories. One structural read.</p>
+    <div class="overline overline--rule overline--green" style="margin-bottom:24px">Section D · The Record</div>
+    <h1 class="h1">The <span class="serif-em">record.</span></h1>
+    <p class="deck hero-sub" style="margin-top:26px">The continuing record of football's business — a new read every Monday, every story searchable.</p>
   </div>
   <div class="hero-media"><img src="/assets/img/briefing-hero.jpg" alt="A desk with the Financial Times, a laptop showing football-economy dashboards, and a Football Ledger mug" width="1100" height="733"></div>
 </section>
 
 <section class="wrap section" style="padding-bottom:0">
+  <div class="bf-searchbar">
+    <div class="fr-search bf-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="bfSearch" placeholder="Search every briefing — try &ldquo;Liverpool&rdquo;…" aria-label="Search briefings">
+    </div>
+    <p class="bf-repo">A repository of all football business news — every story, every week, searchable.</p>
+  </div>
+</section>
+
+<section class="wrap section" id="bfBrowse" style="padding-bottom:0">
   <div id="bfCurrent"></div>
   <div class="bf-prev">
     <div class="overline overline--green" style="margin-bottom:14px">Previous issues</div>
@@ -89,28 +99,40 @@
   </div>
 </section>
 
+<section class="wrap section" id="bfResults" hidden style="padding-bottom:0">
+  <div class="overline overline--green" style="margin-bottom:14px" id="bfResultsLabel">Results</div>
+  <div class="bf-prev-list" id="bfResultsList"></div>
+</section>
+
 <section class="wrap section" style="padding-top:44px">
   <div class="bf-news">
     <div class="bf-news-media"><img src="/assets/img/briefing-news.jpg" alt="A Football Ledger mug beside a notebook and newspapers" loading="lazy"></div>
     <div class="bf-news-body">
-      <div class="bf-news-eyebrow">The Briefing. Every Monday.</div>
+      <div class="bf-news-eyebrow">The Record. Every Monday.</div>
       <h2>Monday morning.<br>Before everyone else.</h2>
-      <p>Receive The Briefing every week in your inbox.</p>
+      <p>Receive The Record every week in your inbox.</p>
       <form class="bf-news-form" onsubmit="return false"><input type="email" placeholder="Enter your email" aria-label="Enter your email"><button type="submit">Subscribe →</button></form>
     </div>
   </div>
 </section>
 
+<script src="/content/briefing-search.js"></script>
 <script>
 // The Briefing index is data-driven: it renders the issue list from the
 // content/briefings.json manifest so a newly published issue appears without
 // rebuilding this page (the /api/publish endpoint just prepends a manifest entry).
+// Full-text search matches against window.FL_BRIEFING_SEARCH (built at build time
+// from each issue's title, deck and story bodies) so a query like "Liverpool"
+// surfaces every issue that mentions it, not just those with it in the title.
 (function(){
   var MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var INDEX=(typeof window!=='undefined' && window.FL_BRIEFING_SEARCH) || {};
+  var DATA=[];
   function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
   function fmtDate(d){ var p=(d||'').split('-'); if(p.length!==3) return esc(d); return p[2]+' '+MONTHS[parseInt(p[1],10)-1]+' '+p[0]; }
   function titleHtml(t){ return esc(t).replace(/(\s)(\S+)$/, '$1<em>$2</em>'); }
   function href(b){ return '/briefing/'+encodeURIComponent(b.slug)+'.html'; }
+  function haystack(b){ return ((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')+' '+(INDEX[b.slug]||'')).toLowerCase(); }
 
   function renderCurrent(b){
     if(!b) return '';
@@ -133,16 +155,34 @@
       + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
     + '</a>';
   }
-  function render(list){
+  function renderBrowse(list){
     var cur=document.getElementById('bfCurrent'), prev=document.getElementById('bfPrevList');
     if(!list || !list.length){ prev.innerHTML='<p class="bf-loading">Issues are on their way.</p>'; return; }
     cur.innerHTML=renderCurrent(list[0]);
     prev.innerHTML = list.length>1 ? list.slice(1).map(renderPrev).join('') : '<p class="bf-loading">This is the first issue.</p>';
   }
+  function runSearch(q){
+    var browse=document.getElementById('bfBrowse'), results=document.getElementById('bfResults');
+    var list=document.getElementById('bfResultsList'), label=document.getElementById('bfResultsLabel');
+    q=(q||'').trim().toLowerCase();
+    if(!q){ browse.hidden=false; results.hidden=true; return; }
+    var terms=q.split(/\s+/);
+    var hits=DATA.filter(function(b){ var h=haystack(b); return terms.every(function(t){ return h.indexOf(t)!==-1; }); });
+    browse.hidden=true; results.hidden=false;
+    label.textContent = hits.length ? (hits.length+' '+(hits.length===1?'issue':'issues')+' mentioning “'+q+'”') : 'No issues mention that yet';
+    list.innerHTML = hits.length ? hits.map(renderPrev).join('') : '<p class="bf-loading">Try a club, competition, investor or deal — e.g. Liverpool, PIF, World Cup.</p>';
+  }
+
+  function start(list){
+    DATA=list;
+    renderBrowse(list);
+    var input=document.getElementById('bfSearch');
+    if(input){ input.addEventListener('input', function(){ runSearch(input.value); }); }
+  }
 
   fetch('/content/briefings.json',{cache:'no-cache'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(list){ list.sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); }); render(list); })
+    .then(function(list){ list.sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); }); start(list); })
     .catch(function(){ document.getElementById('bfPrevList').innerHTML='<p class="bf-loading">Unable to load issues right now.</p>'; });
 })();
 </script>
@@ -170,7 +210,7 @@
       <div class="footer-col">
         <h4>Reference</h4>
         <a href="/entities">Entities</a>
-        <a href="/briefing">Briefing</a>
+        <a href="/briefing">The Record</a>
         <a href="/about">About</a>
       </div>
       <div class="footer-col">
@@ -192,11 +232,11 @@
 </footer>
 
 <!-- Subscribe modal -->
-<div class="sub-modal" id="subModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Subscribe to The Briefing">
+<div class="sub-modal" id="subModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Subscribe to The Record">
   <div class="sub-modal-backdrop" data-sub-close></div>
   <div class="sub-modal-card" role="document">
     <button class="sub-modal-close" type="button" aria-label="Close" data-sub-close>&times;</button>
-    <div class="sub-modal-eyebrow">The Briefing · Every Monday</div>
+    <div class="sub-modal-eyebrow">The Record · Every Monday</div>
     <h2 class="sub-modal-title">Stay ahead of the game.</h2>
     <p class="sub-modal-p">Join thousands of leaders shaping the business of football — one sharp read on the money moving the game, in your inbox every Monday.</p>
     <form class="sub-form sub-modal-form" novalidate>
@@ -210,7 +250,7 @@
 <!-- Slide-in newsletter prompt -->
 <aside class="sub-popup" id="subPopup" aria-hidden="true" aria-label="Newsletter">
   <button class="sub-popup-close" type="button" aria-label="Dismiss" data-pop-close>&times;</button>
-  <div class="sub-popup-eyebrow">The Briefing</div>
+  <div class="sub-popup-eyebrow">The Record</div>
   <div class="sub-popup-title">Subscribe to our newsletter</div>
   <p class="sub-popup-p">The business of football — every Monday morning, before everyone else.</p>
   <button class="sub-popup-btn" type="button" data-subscribe>Subscribe <span class="arw">&rarr;</span></button>

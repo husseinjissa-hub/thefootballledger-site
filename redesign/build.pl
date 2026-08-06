@@ -117,7 +117,7 @@ sub story_card {
 }
 # Top Stories — curated editorial pick (Barcelona in place of the 2027 PL piece).
 my %liveBySlug = map { $_->{slug} => $_ } @live;
-my @topSlugs = qw(l1-fifa-ffe-world-cup-sale l3-barcelona-crisis-recovery l5-coach-staff-talent-ip macro-08-streaming-native-limits);
+my @topSlugs = qw(l1-fifa-ffe-world-cup-sale macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery macro-08-streaming-native-limits l5-coach-staff-talent-ip l8-data-led-underdogs l4-pif-phase-2 macro-01-trophy-to-operating);
 my $top = join("\n    ", map { story_card($_) } grep { defined } map { $liveBySlug{$_} } @topSlugs);
 
 # ---------- Overview ----------
@@ -244,7 +244,7 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 my $lead = $bySlug{'l1-fifa-ffe-world-cup-sale'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(macro-08-streaming-native-limits l8-data-led-underdogs l3-barcelona-crisis-recovery);
+               map  { $bySlug{$_} } qw(macro-08-streaming-native-limits macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery);
 my ($ltype,$lrest) = ov_parts($lead);
 my $lead_bg = (-e "assets/img/articles/".$lead->{slug}.".jpg") ? "/assets/img/articles/".$lead->{slug}.".jpg" : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
@@ -336,8 +336,9 @@ HTML
 # "People" chip appended to the layer filter list (no number — it is not a numbered layer)
 $filter_layers .= "\n          ".'<button class="fr-layer fr-layer--people" type="button" data-layer="people" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5M15 19c0-1.9.9-3.4 2.4-4"/></svg></span><span class="fr-layer-num"></span> People</button>';
 
-# --- Feed rows (all articles + people profiles, dated desc then in-production) ---
-my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } (@arts, @PEOPLE);
+# --- Feed rows: articles first (dated desc), then the in-production people profiles at the end ---
+my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } @arts;
+push @feed, sort { ($b->{date}||'') cmp ($a->{date}||'') } @PEOPLE;
 my $bookmark_svg = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
 # Full-text search string for a feed row: title + dek + stripped article body,
 # so the Ledger search matches keywords anywhere in the piece (e.g. "Brighton").

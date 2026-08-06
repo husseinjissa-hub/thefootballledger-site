@@ -119,6 +119,23 @@
   </div>
 </section>
 
+<section class="wrap people-sec">
+  <div class="sec-head people-head">
+    <div>
+      <span class="overline overline--green">The People Shaping the Game</span>
+      <p class="people-sub">Deep dives into the individuals building football's business.</p>
+    </div>
+    <a class="link-arw people-viewall" href="#feed" id="peopleViewAll">View all profiles <span class="arw">→</span></a>
+  </div>
+  <div class="people-viewport">
+    <div class="people-track" id="peopleTrack">
+      <a class="person-card" href="/posts/profile-cristiano-ronaldo.html"><div class="person-bg"><img src="/assets/img/articles/profile-cristiano-ronaldo.jpg" alt="Cristiano Ronaldo" loading="lazy"></div><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">Cristiano Ronaldo</h3><p class="person-desc">The footballer who became a distribution platform.</p><div class="person-meta">24 Jul 2026 · 10 min read</div></div></a><a class="person-card" href="/posts/profile-david-beckham.html"><div class="person-bg"><img src="/assets/img/articles/profile-david-beckham.jpg" alt="David Beckham" loading="lazy"></div><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">David Beckham</h3><p class="person-desc">From global icon to club owner: the business of influence.</p><div class="person-meta">18 Jul 2026 · 9 min read</div></div></a><a class="person-card" href="/posts/profile-fabrizio-romano.html"><div class="person-bg"><img src="/assets/img/articles/profile-fabrizio-romano.jpg" alt="Fabrizio Romano" loading="lazy"></div><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">Fabrizio Romano</h3><p class="person-desc">How one voice became football's most powerful newsroom.</p><div class="person-meta">11 Jul 2026 · 7 min read</div></div></a><div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">In production</h3><p class="person-desc">The next set of people profiles is being researched.</p></div></div><div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">In production</h3><p class="person-desc">New profiles will publish here as they are completed.</p></div></div><div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">In production</h3><p class="person-desc">More of football's key operators, coming soon.</p></div></div>
+    </div>
+    <button class="people-nav" id="peopleNav" type="button" aria-label="See more profiles"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+
+
 <section class="wrap section" style="padding-top:52px">
   <div class="lb-grid">
     <aside class="filter-rail" aria-label="Filter the Ledger">
@@ -146,6 +163,7 @@
           <button class="fr-layer" type="button" data-layer="7" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 9l8-5 8 5v9a1 1 0 01-1 1H5a1 1 0 01-1-1z"/><path d="M9 19v-6h6v6"/></svg></span><span class="fr-layer-num">07</span> Commercial</button>
           <button class="fr-layer" type="button" data-layer="8" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13 6l-2 12"/></svg></span><span class="fr-layer-num">08</span> Football-tech</button>
           <button class="fr-layer" type="button" data-layer="9" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><ellipse cx="12" cy="9" rx="9" ry="4"/><path d="M3 9v5c0 2.2 4 4 9 4s9-1.8 9-4V9"/></svg></span><span class="fr-layer-num">09</span> Stadium/Fan</button>
+          <button class="fr-layer fr-layer--people" type="button" data-layer="people" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5M15 19c0-1.9.9-3.4 2.4-4"/></svg></span><span class="fr-layer-num"></span> People</button>
         </div>
       </div>
       <button class="fr-toggle" id="hideProd" type="button" aria-pressed="false"><span class="fr-switch"></span>Hide in-production</button>
@@ -159,7 +177,7 @@
 
     <div class="feed-wrap">
       <div class="feed-head">
-        <div class="feed-count"><b id="feedCount">38</b> pieces · <span id="feedMatch">matching current filters</span></div>
+        <div class="feed-count"><b id="feedCount">41</b> pieces · <span id="feedMatch">matching current filters</span></div>
         <label class="feed-sort">Sort by:
           <select id="feedSort"><option value="newest">Newest</option><option value="oldest">Oldest</option></select>
         </label>
@@ -201,6 +219,18 @@
             <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
           </div>
         </article>
+        <article class="feed-row is-prod" data-type="profile" data-layer="people" data-status="prod" data-search="the footballer who became a distribution platform. the footballer who became a distribution platform.">
+          <a class="feed-thumb-lnk" href="/posts/profile-cristiano-ronaldo.html" aria-label="The footballer who became a distribution platform." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/profile-cristiano-ronaldo.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>PROFILE</b><span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/profile-cristiano-ronaldo.html">The footballer who became a distribution platform.</a>
+            <p class="feed-excerpt">The footballer who became a distribution platform.</p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">24 Jul 2026 · 10 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
         <article class="feed-row" data-type="trend" data-layer="5" data-status="live" data-search="the manager isn't the unit anymore. the cluster is. top managers now move with their backroom staff as a unit. manager hires increasingly look like m&amp;a. in july 2021, arsenal paid to extract nicolas jover from manchester city's coaching staff — a set-piece specialist mikel arteta himself had recommended to pep guardiola two years earlier while he was still city's assistant manager. the trade press covered it as a single, tidy hire, a manager topping up his backroom with a proven specialist. the deeper mechanism ran further back: arteta was reassembling a working unit he had helped build at a previous club, one part at a time, because the unit itself — not any single member of it — had already been proven to produce results. the two-year gap between the men's paths splitting and rejoining is the tell: long enough that jover built an independent track record at city (a premier league title, a champions league final) before arsenal paid to bring him back into arteta's orbit. that gap shows a manager waiting for the market to validate someone he already trusted, then paying to reunify the system once it had. two career paths, one reassembled cluster mikel arteta and nicolas jover, 2009–2026 arteta recommends jover to guardiola · 2019 arteta rehires jover at arsenal · 2021 mikel arteta nicolas jover arsenal (player) man city arsenal (manager) montpellier brentford city arsenal (set-piece) 2010 2014 2018 2022 2026 the paths cross once at manchester city (2019–2021) and reconverge at arsenal, where arteta paid to reunify the system. figure 1 · two career paths, one reassembled cluster. the tracks cross once at manchester city — where arteta recommended jover for a set-piece role under guardiola in july 2019 — and reconverge at arsenal in july 2021, two years after arteta left city for the arsenal job. source: wikipedia (mikel arteta; nicolas jover), citing evening standard and bbc sport. why the cluster moves together the mechanical explanation is trust under time pressure. a head coach gets roughly one season, sometimes less, to prove a philosophy works before a board loses patience. nobody rebuilds a recruitment model, a load-management protocol and a set-piece program from scratch in that window with strangers. arteta didn't spend the summer of 2021 auditioning set-piece coaches; jover had already executed a version of arteta's ideas at city, where arsenal's own analysts could watch the receipts for two seasons before making the call. enzo maresca's move to manchester city this summer follows the same logic, and the underlying numbers make the pattern legible rather than anecdotal. composition of maresca's man city backroom, july 2026 number of staff, by prior working relationship with maresca 2 4 6 8 0 2 7 0 retained from prior city staff followed maresca from parma / leicester / chelsea new hires, no prior tie all seven new arrivals had worked with maresca before; only the two retained city staff had not. zero came in cold. figure 2 · composition of enzo maresca's manchester city backroom team, july 2026. of nine confirmed staff, all seven new arrivals had worked with maresca before the appointment; only the two retained from city's existing staff had no prior tie to him. source: manchester city official site, espn and sports mole, july 2026. roberto vitiello has worked at maresca's side since their playing days at parma and followed him through leicester and chelsea into the assistant manager's chair at city. danny walker made the same journey from city's own academy to leicester and chelsea and back again. willy caballero, michele de bernardin, marcos alvarez, denis silva and javier molina all arrive with the same lineage, several of them already part of maresca's staff at chelsea before the move. city's own language treats the appointment as importing a functioning system rather than filling seven vacancies. what this specifically proves is that clubs are no longer hiring for credentials on a role-by-role basis. they are hiring for a rehearsed operating system, and treating the people who run it as inseparable from it. the second driver is representation, and it's newer than the loyalty pattern itself. coaching-and-staff representation is consolidating on the same path player representation took, with a visible lag. caa folded the coaching-focused kauffman sports management group into its basketball operation in february 2020 — roughly eight months after acquiring the player-focused base soccer agency. excel sports management launched a dedicated coaching and executives division in october 2022 by acquiring harlan sports management, giving it more than twenty nfl and ncaa head coaches and front-office executives as clients — a similar pattern to the player-side acquisitions the larger agencies had already made years earlier. coaching representation follows the player-agency path the same firms consolidate coaching a year or two behind their player-side deals player-agency coaching staff caa · base soccer icm · stellar wasserman · ko sports caa · kauffman coaches execs excel · harlan coaching execs division 2019 2021 2023 2025 figure 3 · coaching representation is consolidating on the same path player representation took — roughly a year behind. each coaching-and-staff acquisition follows a comparable player-agency acquisition by 8 months to 2 years, the same firms doing both. source: sports agent blog (feb 2020, oct 2022); forbes (nov 2022, jul 2025); wasserman. coaching agencies used to be a fragmented, relationship-driven cottage industry — an agent handling one manager's contract and maybe a second client on the side. that structure is consolidating fast, and the entities doing the consolidating are the same mega-agencies that professionalised player representation: caa, excel, wasserman. wasserman has completed more than twenty acquisitions since 2020 across its sports, music and talent businesses, and runs a standing sport coaches executive office practice that markets direct relationships with search firms across the ncaa and major leagues. none of this is happening because agencies suddenly discovered goodwill toward coaches. it is happening because the same firms that learned how to price a player's value now have a template for pricing a coaching staff's value, and they are applying it on a lag of roughly one to three years behind the player-side deal that preceded it. the sharper signal here is that representation is moving up the org chart faster than the org chart itself is changing. clubs still hire a head coach and let him build a staff informally, deal by deal. agencies are already positioned to sell that staff as a bundle, with a single negotiation covering four or five contracts at once. what changes for clubs the practical consequence is that recruiting a manager now means underwriting a supply chain a club doesn't fully control. a head coach's release clause used to be the headline number in a managerial appointment. increasingly, the real cost sits underneath it: buying out three or four staff contracts simultaneously, absorbing whatever internal restructuring displaces the incumbents, and accepting that the new manager's honeymoon period runs shorter if the cluster arrives incomplete — because the systems that made him effective elsewhere depended on people, not just a philosophy on a whiteboard. it also concentrates risk in a way boards have been slow to price. when a manager leaves a club, the departures that typically follow among his closest staff represent the other half of the operating model leaving with him, piece by piece, over the following seasons. a club that hires a manager without asking who else needs to come, and on what terms, is buying half a system and hoping the rest holds together on its own. there is a talent-development cost layered underneath that. if elite recruitment leads, sports-science heads and analysts move as a fixed unit tied to one manager's career, fewer of them get tested independently against different philosophies, and fewer emerging staff get a genuine shot at running a department solo before they are 40. the cluster model rewards continuity for the people already inside a proven unit and narrows the door for everyone circling the outside of it. the trade press's read, and the ledger's the conventional framing treats these hires as loyalty stories: a manager rewarding people who have earned his trust, nothing more structurally interesting than that. there is truth in it. loyalty is real, and it is part of why these relationships survive the pressure of a bad run of results when a purely transactional hire would not. the ledger's read is that loyalty is the surface description of something closer to a licensing arrangement. what is actually being transacted — whether or not anyone in the room calls it this — is a proven operating system: a recruitment methodology, a load-management protocol, a set-piece program, bundled with the specific people who know how to run it and calibrated to work together. the premium a club pays covers the time it would otherwise take to build those systems from scratch with strangers, compressed into three or four linked signatures instead of one. the agencies now representing these clusters understand that the value sits in the bundle, not in the individual line items — which is exactly why consolidation among coaching agencies is accelerating on the same track player-agency consolidation already ran. within three transfer windows, at least one club in england's top two divisions or one of europe's other top-five leagues will make public a contract structure that names a defined backroom cluster explicitly — not just a release fee for the head coach, but a linked buyout schedule for two or three named staff, with break clauses tied to the manager's own departure date. that single disclosed clause, whenever it surfaces, will be the moment the market stops pricing these clusters as loyalty and starts pricing them the way it already prices image rights and data. sources wikipedia — mikel arteta ; nicolas jover . manchester city f.c., "coaching team to work with new city boss maresca confirmed," july 2026. espn, "man city confirm appointment of enzo maresca's coaching staff," july 2026; and "how premier league clubs turned into corporations and replaced 'managers' with 'head coaches,'" january 2026. sports mole, "man city confirm seven new members of enzo maresca's backroom team," july 2026. sports agent blog, "caa sports acquires kauffman sports management," february 2020; "excel sports expands into coach and executives representation," october 2022. forbes, "the most valuable sports agencies" — brett knight, november 2022 and july 2025. music business worldwide, "wasserman doubles down on m a," july 2024; wasserman (the·team), "sport coaches executive office."">
           <a class="feed-thumb-lnk" href="/posts/l5-coach-staff-talent-ip.html" aria-label="The manager isn't the unit anymore. The cluster is." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/l5-coach-staff-talent-ip.jpg" alt="" loading="lazy"></div></a>
           <div class="feed-body">
@@ -210,6 +240,30 @@
           </div>
           <div class="feed-side">
             <div class="feed-meta">21 Jul 2026 · 8 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="profile" data-layer="people" data-status="prod" data-search="from global icon to club owner: the business of influence. from global icon to club owner: the business of influence.">
+          <a class="feed-thumb-lnk" href="/posts/profile-david-beckham.html" aria-label="From global icon to club owner: the business of influence." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/profile-david-beckham.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>PROFILE</b><span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/profile-david-beckham.html">From global icon to club owner: the business of influence.</a>
+            <p class="feed-excerpt">From global icon to club owner: the business of influence.</p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">18 Jul 2026 · 9 min read</div>
+            <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
+          </div>
+        </article>
+        <article class="feed-row is-prod" data-type="profile" data-layer="people" data-status="prod" data-search="how one voice became football's most powerful newsroom. how one voice became football's most powerful newsroom.">
+          <a class="feed-thumb-lnk" href="/posts/profile-fabrizio-romano.html" aria-label="How one voice became football's most powerful newsroom." tabindex="-1"><div class="feed-thumb"><img src="/assets/img/articles/profile-fabrizio-romano.jpg" alt="" loading="lazy"></div></a>
+          <div class="feed-body">
+            <div class="feed-ol"><b>PROFILE</b><span class="feed-prodtag">In production</span></div>
+            <a class="feed-title" href="/posts/profile-fabrizio-romano.html">How one voice became football's most powerful newsroom.</a>
+            <p class="feed-excerpt">How one voice became football's most powerful newsroom.</p>
+          </div>
+          <div class="feed-side">
+            <div class="feed-meta">11 Jul 2026 · 7 min read</div>
             <button class="feed-bookmark" type="button" aria-label="Save article" aria-pressed="false"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></button>
           </div>
         </article>
@@ -723,6 +777,31 @@
   });
 
   apply();
+})();
+
+// --- The People Shaping the Game: carousel arrow + "View all profiles" ---
+(function(){
+  var track = document.getElementById('peopleTrack');
+  var nav   = document.getElementById('peopleNav');
+  if (track && nav) {
+    function atEnd(){ return track.scrollLeft + track.clientWidth >= track.scrollWidth - 8; }
+    function syncDir(){ nav.classList.toggle('is-back', atEnd()); }
+    nav.addEventListener('click', function(){
+      if (atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else track.scrollBy({ left: Math.round(track.clientWidth * 0.9), behavior: 'smooth' });
+    });
+    track.addEventListener('scroll', syncDir, { passive: true });
+    window.addEventListener('resize', syncDir);
+    syncDir();
+  }
+  var viewAll = document.getElementById('peopleViewAll');
+  if (viewAll) viewAll.addEventListener('click', function(e){
+    e.preventDefault();
+    var btn = document.querySelector('.fr-layer[data-layer="people"]');
+    if (btn && !btn.classList.contains('on')) btn.click();   // activate the People filter
+    var feed = document.getElementById('feed');
+    if (feed) window.scrollTo({ top: feed.getBoundingClientRect().top + window.scrollY - 140, behavior: 'smooth' });
+  });
 })();
 </script>
 </main>

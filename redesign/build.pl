@@ -223,6 +223,7 @@ my %TYDISP = ('Macro'=>'Macro','Trend'=>'Trend','Case study'=>'Case Study');
 # overline: returns ($TYPE, $REST) — REST = "Ln · " (if layer) + THEME, uppercased
 sub ov_parts {
   my ($a)=@_;
+  return ('PROFILE','') if $a->{is_person};   # people cards show just "PROFILE", no layer suffix
   my $type = uc($a->{type});
   my $rest = '';
   $rest .= 'L'.$a->{layer}.' · ' if defined $a->{layer} && $a->{layer} ne '';
@@ -281,8 +282,62 @@ my $filter_layers = join("\n          ", map {
   '<button class="fr-layer" type="button" data-layer="'.$n.'" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$LICO{$n}.'</svg></span><span class="fr-layer-num">'.sprintf('%02d',$n).'</span> '.$nm.'</button>'
 } @FL);
 
-# --- Feed rows (all articles, dated desc then in-production) ---
-my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } @arts;
+# --- The People Shaping the Game (WIP profiles) ---
+# Rendered as a carousel above the feed, injected into the feed as type=Profile /
+# layer=people rows, and filterable via the new "People" layer chip. All three are
+# in-production, so each carries the "In production" tag and links to a stub page.
+my @PEOPLE = (
+  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
+  {slug=>'profile-david-beckham', name=>'David Beckham', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
+  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+);
+sub person_card {
+  my ($p)=@_;
+  my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
+  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
+  my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
+  return
+  '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
+    '<div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div>'.
+    '<div class="person-body">'.
+      '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
+      '<p class="person-desc">'.esc($p->{title}).'</p>'.
+      '<div class="person-meta">'.$meta.'</div>'.
+    '</div></a>';
+}
+# WIP placeholder cards revealed when the carousel arrow advances past the named three
+my @PEOPLE_WIP = (
+  ['In production','The next set of people profiles is being researched.'],
+  ['In production','New profiles will publish here as they are completed.'],
+  ["In production","More of football's key operators, coming soon."],
+);
+my $people_cards = join('', map { person_card($_) } @PEOPLE);
+my $people_wip = join('', map {
+  '<div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">'.esc($_->[0]).'</h3><p class="person-desc">'.esc($_->[1]).'</p></div></div>'
+} @PEOPLE_WIP);
+my $people_section = <<"HTML";
+<section class="wrap people-sec">
+  <div class="sec-head people-head">
+    <div>
+      <span class="overline overline--green">The People Shaping the Game</span>
+      <p class="people-sub">Deep dives into the individuals building football's business.</p>
+    </div>
+    <a class="link-arw people-viewall" href="#feed" id="peopleViewAll">View all profiles <span class="arw">→</span></a>
+  </div>
+  <div class="people-viewport">
+    <div class="people-track" id="peopleTrack">
+      $people_cards$people_wip
+    </div>
+    <button class="people-nav" id="peopleNav" type="button" aria-label="See more profiles"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</section>
+HTML
+
+# "People" chip appended to the layer filter list (no number — it is not a numbered layer)
+$filter_layers .= "\n          ".'<button class="fr-layer fr-layer--people" type="button" data-layer="people" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5M15 19c0-1.9.9-3.4 2.4-4"/></svg></span><span class="fr-layer-num"></span> People</button>';
+
+# --- Feed rows (all articles + people profiles, dated desc then in-production) ---
+my @feed = sort { ($b->{date}||'') cmp ($a->{date}||'') } (@arts, @PEOPLE);
 my $bookmark_svg = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg>';
 # Full-text search string for a feed row: title + dek + stripped article body,
 # so the Ledger search matches keywords anywhere in the piece (e.g. "Brighton").
@@ -305,7 +360,7 @@ sub search_text {
 my $feed_rows = join("\n        ", map {
   my $a=$_; my ($t,$r)=ov_parts($a);
   my $prodtag = $a->{status} eq 'prod' ? '<span class="feed-prodtag">In production</span>' : '';
-  '<article class="feed-row'.($a->{status} eq 'prod' ? ' is-prod':'').'" data-type="'.($TYSLUG{$a->{type}}||'').'" data-layer="'.($a->{layer}//'').'" data-status="'.esc($a->{status}).'" data-search="'.esc(search_text($a)).'">'."\n".
+  '<article class="feed-row'.($a->{status} eq 'prod' ? ' is-prod':'').'" data-type="'.($a->{is_person} ? 'profile' : ($TYSLUG{$a->{type}}||'')).'" data-layer="'.($a->{is_person} ? 'people' : ($a->{layer}//'')).'" data-status="'.esc($a->{status}).'" data-search="'.esc(search_text($a)).'">'."\n".
   '          <a class="feed-thumb-lnk" href="'.esc($a->{url}).'" aria-label="'.esc($a->{title}).'" tabindex="-1">'.art_thumb($a,'feed-thumb').'</a>'."\n".
   '          <div class="feed-body">'."\n".
   '            <div class="feed-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').$prodtag.'</div>'."\n".
@@ -321,6 +376,7 @@ my $feed_rows = join("\n        ", map {
 
 my $lg = slurp("redesign/pages/ledger.html");
 $lg =~ s/\{\{EDITORS\}\}/$editors/;
+$lg =~ s/\{\{PEOPLE\}\}/$people_section/;
 $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;
 $lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/e;
@@ -559,6 +615,7 @@ HTML
 }
 
 build_article($_) for @arts;
+build_article($_) for @PEOPLE;   # in-production stub pages for the people profiles
 
 # ============================================================
 #  ENTITIES — directory

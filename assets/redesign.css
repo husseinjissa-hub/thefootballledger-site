@@ -314,7 +314,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .cta-onesystem p { font-size: 14px; color: var(--ink-2); max-width: 52ch; }
 
 /* ===== Ecosystem hero stat stack ===== */
-.eco-hero .hero-media { width: 57%; }
+.eco-hero .hero-media { width: 50%; }
 .eco-hero .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(245,242,234,0.5) 12%, rgba(245,242,234,0) 28%); }
 .eco-stats { position: absolute; top: 0; right: 0; height: 100%; z-index: 3; display: flex; flex-direction: column; justify-content: center; gap: 30px; padding: 0 clamp(24px, 3vw, 48px); }
 .eco-stat { display: flex; align-items: center; gap: 14px; color: var(--paper); }
@@ -329,7 +329,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 }
 
 /* ===== "How to use this map" ===== */
-.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 44px var(--gutter); }
+.how-band { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; padding-top: 44px; padding-bottom: 44px; }
 .how-item { display: flex; flex-direction: column; gap: 14px; }
 .how-ico { color: var(--green); }
 .how-item h4 { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); }

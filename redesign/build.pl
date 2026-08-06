@@ -90,7 +90,6 @@ my %HOOK = (
   'l9-premium-hospitality-boom'       => 'Premium seats now drive a fifth of matchday revenue. How far can clubs push it?',
   'l9-stadium-as-365-venue'           => 'Top clubs now run their stadiums 365 days a year. Is football the anchor tenant?',
   'macro-04-mena-second-wave'         => 'MENA moves from buying stars to building operations. Second wave — or overreach?',
-  'macro-05-sportainment-genz'        => 'Kings League is winning Gen Z\'s attention. Is that a threat to real football?',
   'macro-06-womens-football'          => 'Women\'s football is drawing institutional capital. Asset class — or still a bet?',
   'macro-07-ai-native-ops'            => 'A few clubs are rebuilding operations around AI. Does the org chart change shape?',
 );

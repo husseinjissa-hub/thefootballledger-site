@@ -15,10 +15,29 @@
     <div class="overline overline--rule">Top Stories</div>
     <a class="link-arw" href="/ledger">View all articles <span class="arw">→</span></a>
   </div>
-  <div class="card-row">
+  <div class="story-carousel">
+    <div class="story-track" id="topTrack">
 {{TOP_STORIES}}
+    </div>
+    <button class="story-nav" id="topNav" type="button" aria-label="See more stories"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
 </section>
+
+<script>
+(function(){
+  var track=document.getElementById('topTrack'), nav=document.getElementById('topNav');
+  if(!track||!nav) return;
+  function atEnd(){ return track.scrollLeft + track.clientWidth >= track.scrollWidth - 8; }
+  function syncDir(){ nav.classList.toggle('is-back', atEnd()); }
+  nav.addEventListener('click', function(){
+    if(atEnd()) track.scrollTo({left:0,behavior:'smooth'});
+    else track.scrollBy({left: Math.round(track.clientWidth*0.9), behavior:'smooth'});
+  });
+  track.addEventListener('scroll', syncDir, {passive:true});
+  window.addEventListener('resize', syncDir);
+  syncDir();
+})();
+</script>
 
 <section class="section wrap" style="padding-top:0">
   <div class="sec-head" style="display:block;margin-bottom:28px">

@@ -835,6 +835,8 @@ render_page(out=>"briefing/index.html", active=>"briefing",
   canonical=>"/briefing", body=>$bl);
 
 # --- Briefing issues (reskin from preserved source) ---
+my %BRIEF_SEARCH;
+sub jsstr { my ($s)=@_; $s//=''; $s =~ s/\\/\\\\/g; $s =~ s/"/\\"/g; $s =~ s/[\x00-\x1f]/ /g; return '"'.$s.'"'; }
 sub build_briefing {
   my ($r)=@_;
   my $file = (split m{/}, $r->{url})[-1];
@@ -913,11 +915,15 @@ sub build_briefing {
 })();
 </script>
 HTML
+  (my $slug = $file) =~ s/\.html$//;
+  my $stext = "$title $deck $stories"; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext = lc $stext; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
+  $BRIEF_SEARCH{$slug} = $stext;
   render_page(out=>"briefing/$file", active=>"briefing",
     title=>$t." — The Briefing · The Football Ledger",
     desc=>$r->{dek}//$t, canonical=>$r->{url}, body=>$body);
 }
 build_briefing($_) for @briefs;
+spit("content/briefing-search.js", "window.FL_BRIEFING_SEARCH={".join(",", map { jsstr($_).":".jsstr($BRIEF_SEARCH{$_}) } sort keys %BRIEF_SEARCH)."};\n");
 
 # --- Search ---
 render_page(out=>"search.html", active=>"",

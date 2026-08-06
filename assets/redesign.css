@@ -439,6 +439,16 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .fr-search input::placeholder { color: var(--ink-3); }
 .fr-search input:focus { outline: none; border-color: var(--green); }
 .fr-search input::-webkit-search-cancel-button { cursor: pointer; }
+
+/* Briefing search bar */
+.bf-searchbar { display: flex; align-items: center; gap: 24px; }
+.bf-searchbar .bf-search { flex: 1 1 auto; max-width: 440px; margin-bottom: 0; }
+.bf-repo { flex: 1 1 auto; margin: 0; font-family: var(--sans); font-size: 13px; line-height: 1.5; color: var(--ink-3); }
+@media (max-width: 720px){
+  .bf-searchbar { flex-direction: column; align-items: stretch; gap: 12px; }
+  .bf-searchbar .bf-search { max-width: none; }
+  .bf-repo { font-size: 12px; }
+}
 .fr-group { margin-bottom: 26px; }
 .fr-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
 .fr-pills { display: flex; flex-wrap: wrap; gap: 8px; }

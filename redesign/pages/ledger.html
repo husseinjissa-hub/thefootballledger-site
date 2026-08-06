@@ -12,6 +12,8 @@
   </div>
 </section>
 
+{{PEOPLE}}
+
 <section class="wrap section" style="padding-top:52px">
   <div class="lb-grid">
     <aside class="filter-rail" aria-label="Filter the Ledger">
@@ -151,5 +153,30 @@
   });
 
   apply();
+})();
+
+// --- The People Shaping the Game: carousel arrow + "View all profiles" ---
+(function(){
+  var track = document.getElementById('peopleTrack');
+  var nav   = document.getElementById('peopleNav');
+  if (track && nav) {
+    function atEnd(){ return track.scrollLeft + track.clientWidth >= track.scrollWidth - 8; }
+    function syncDir(){ nav.classList.toggle('is-back', atEnd()); }
+    nav.addEventListener('click', function(){
+      if (atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else track.scrollBy({ left: Math.round(track.clientWidth * 0.9), behavior: 'smooth' });
+    });
+    track.addEventListener('scroll', syncDir, { passive: true });
+    window.addEventListener('resize', syncDir);
+    syncDir();
+  }
+  var viewAll = document.getElementById('peopleViewAll');
+  if (viewAll) viewAll.addEventListener('click', function(e){
+    e.preventDefault();
+    var btn = document.querySelector('.fr-layer[data-layer="people"]');
+    if (btn && !btn.classList.contains('on')) btn.click();   // activate the People filter
+    var feed = document.getElementById('feed');
+    if (feed) window.scrollTo({ top: feed.getBoundingClientRect().top + window.scrollY - 140, behavior: 'smooth' });
+  });
 })();
 </script>

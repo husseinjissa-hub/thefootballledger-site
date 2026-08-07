@@ -233,7 +233,8 @@ sub ov_parts {
 sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
 sub art_thumb {
   my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
-  return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.'" alt="" loading="lazy"></div>'
+  my $v = $a->{is_person} ? '?v=3' : '';   # profile images were re-cropped; bust stale caches
+  return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.$v.'" alt="" loading="lazy"></div>'
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
 my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
@@ -294,7 +295,7 @@ my @PEOPLE = (
 sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
+  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=3" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
   return
   '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.

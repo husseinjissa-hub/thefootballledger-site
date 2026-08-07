@@ -297,10 +297,12 @@ my @PEOPLE = (
   {slug=>'profile-david-beckham', name=>'David Beckham', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
 );
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%');
 sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
+  my $op = $OBJPOS{$p->{slug}} // '50% 18%';   # upward-biased focal point so the full head stays in frame
+  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
   return
   '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.

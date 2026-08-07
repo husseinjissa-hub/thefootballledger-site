@@ -78,7 +78,6 @@ my %HOOK = (
   'l2-league-pe-infrastructure'       => 'CVC turned league revenue into a PE asset. Now everyone wants the structure.',
   'l2-pl-exports-model'               => 'Leagues from Riyadh to MLS are copying the Premier League. Does the model travel?',
   'l2-spl-privatisation'              => 'PIF is selling down its Saudi clubs. Privatisation — or just repackaged control?',
-  'l10-format-convergence'            => 'Serious money is pouring into 6-a-side spectacle. Which formats survive to 2028?',
   'l3-group-hq-arms-race'             => 'Multi-club groups are hiring 80-person HQ teams from outside football. Why?',
   'l3-mco-blowup-risk'                => '777 collapsed, Eagle is stressed. How many multi-club groups blow up next?',
   'l3-womens-clubs-systematic'        => 'Every big group now adds women\'s clubs by default. Do the economics stand alone?',

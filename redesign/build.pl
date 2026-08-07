@@ -894,10 +894,10 @@ if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) {
 #     content/briefings.json so /api/publish can add an issue by prepending one
 #     manifest entry (no rebuild of this prebuilt index needed). ---
 my $bl = slurp("redesign/pages/briefing.html");
-render_page(out=>"briefing/index.html", active=>"briefing",
+render_page(out=>"record/index.html", active=>"briefing",
   title=>"The Record — The Football Ledger",
   desc=>"The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.",
-  canonical=>"/briefing", body=>$bl);
+  canonical=>"/record", body=>$bl);
 
 # --- Briefing issues (reskin from preserved source) ---
 my %BRIEF_SEARCH;
@@ -944,7 +944,7 @@ sub build_briefing {
 <div class="art-wrap">
   <div class="art-grid">
     <aside class="art-side">
-      <a class="art-back" href="/briefing"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Record</a>
+      <a class="art-back" href="/record"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to The Record</a>
       <div class="art-block art-block--toc">
         <div class="art-side-label">In this issue</div>
         <ul class="toc-list">
@@ -981,9 +981,11 @@ sub build_briefing {
 </script>
 HTML
   (my $slug = $file) =~ s/\.html$//;
-  my $stext = "$title $deck $stories"; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
+  # Index the STORY BODIES only (not the title/deck opening) so search results
+  # surface and snippet the actual content where a term appears.
+  my $stext = $stories; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
   $BRIEF_SEARCH{$slug} = $stext;
-  render_page(out=>"briefing/$file", active=>"briefing",
+  render_page(out=>"record/$file", active=>"briefing",
     title=>$t." — The Record · The Football Ledger",
     desc=>$r->{dek}//$t, canonical=>$r->{url}, body=>$body);
 }

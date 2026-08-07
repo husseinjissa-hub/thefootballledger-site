@@ -6,13 +6,13 @@
 <script>(function(){var d=document.documentElement;try{if(localStorage.getItem('fl-theme')==='dark')d.setAttribute('data-theme','dark');}catch(e){}window.__flToggleTheme=function(){var dark=d.getAttribute('data-theme')==='dark';if(dark){d.removeAttribute('data-theme');}else{d.setAttribute('data-theme','dark');}try{localStorage.setItem('fl-theme',dark?'light':'dark');}catch(e){}};})();</script>
 <title>The Record — The Football Ledger</title>
 <meta name="description" content="The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
-<link rel="canonical" href="https://thefootballledger.co/briefing">
+<link rel="canonical" href="https://thefootballledger.co/record">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Football Ledger">
 <meta property="og:title" content="The Record — The Football Ledger">
 <meta property="og:description" content="The Record — the searchable weekly record of what is moving in the business of football, week to week. Each issue explains the week's money stories and ends on the question that matters next.">
-<meta property="og:url" content="https://thefootballledger.co/briefing">
+<meta property="og:url" content="https://thefootballledger.co/record">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,7 +39,7 @@
       <a href="/ecosystem" >Ecosystem</a>
       <a href="/ledger" >The Ledger</a>
       <a href="/entities" >Entities</a>
-      <a href="/briefing" class="active">The Record</a>
+      <a href="/record" class="active">The Record</a>
       <a href="/about" >About</a>
       <a href="/join" >Join</a>
     </nav>
@@ -66,7 +66,7 @@
     <a href="/ecosystem">Ecosystem</a>
     <a href="/ledger">The Ledger</a>
     <a href="/entities">Entities</a>
-    <a href="/briefing">The Record</a>
+    <a href="/record">The Record</a>
     <a href="/about">About</a>
     <a href="/join">Join</a>
   </nav>
@@ -134,7 +134,7 @@
   function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
   function fmtDate(d){ var p=(d||'').split('-'); if(p.length!==3) return esc(d); return p[2]+' '+MONTHS[parseInt(p[1],10)-1]+' '+p[0]; }
   function titleHtml(t){ return esc(t).replace(/(\s)(\S+)$/, '$1<em>$2</em>'); }
-  function href(b){ return '/briefing/'+encodeURIComponent(b.slug)+'.html'; }
+  function href(b){ return '/record/'+encodeURIComponent(b.slug)+'.html'; }
   function haystack(b){ return ((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')+' '+(INDEX[b.slug]||'')).toLowerCase(); }
 
   function renderCurrent(b){
@@ -177,14 +177,16 @@
     return (start>0?'… ':'')+frag.trim()+(end<text.length?' …':'');
   }
   function renderResult(b, terms){
-    var headLc=((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')).toLowerCase();
-    var inHead=terms.some(function(t){ return headLc.indexOf(t)!==-1; });
-    var snip=inHead?'':snippet(b, terms);
+    // Show where the term appears in the STORY CONTENT (not the opening deck).
+    // Fall back to the deck only when the match is title/deck-only.
+    var snip=snippet(b, terms);
+    var body = snip
+      ? '<div class="bf-prev-snip">'+highlight(snip, terms)+'</div>'
+      : (b.deck?'<div class="bf-prev-dek">'+highlight(b.deck, terms)+'</div>':'');
     return '<a class="bf-prev-row" href="'+href(b)+'">'
       + '<div class="bf-prev-date">'+fmtDate(b.date)+'</div>'
       + '<div><div class="bf-prev-title"><b>'+esc(b.issue)+' ·</b> '+highlight(b.title, terms)+'</div>'
-        + (b.deck?'<div class="bf-prev-dek">'+highlight(b.deck, terms)+'</div>':'')
-        + (snip?'<div class="bf-prev-snip">'+highlight(snip, terms)+'</div>':'') + '</div>'
+        + body + '</div>'
       + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
     + '</a>';
   }
@@ -243,7 +245,7 @@
       <div class="footer-col">
         <h4>Reference</h4>
         <a href="/entities">Entities</a>
-        <a href="/briefing">The Record</a>
+        <a href="/record">The Record</a>
         <a href="/about">About</a>
       </div>
       <div class="footer-col">

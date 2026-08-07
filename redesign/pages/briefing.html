@@ -60,7 +60,7 @@
   function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
   function fmtDate(d){ var p=(d||'').split('-'); if(p.length!==3) return esc(d); return p[2]+' '+MONTHS[parseInt(p[1],10)-1]+' '+p[0]; }
   function titleHtml(t){ return esc(t).replace(/(\s)(\S+)$/, '$1<em>$2</em>'); }
-  function href(b){ return '/briefing/'+encodeURIComponent(b.slug)+'.html'; }
+  function href(b){ return '/record/'+encodeURIComponent(b.slug)+'.html'; }
   function haystack(b){ return ((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')+' '+(INDEX[b.slug]||'')).toLowerCase(); }
 
   function renderCurrent(b){
@@ -103,14 +103,16 @@
     return (start>0?'… ':'')+frag.trim()+(end<text.length?' …':'');
   }
   function renderResult(b, terms){
-    var headLc=((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')).toLowerCase();
-    var inHead=terms.some(function(t){ return headLc.indexOf(t)!==-1; });
-    var snip=inHead?'':snippet(b, terms);
+    // Show where the term appears in the STORY CONTENT (not the opening deck).
+    // Fall back to the deck only when the match is title/deck-only.
+    var snip=snippet(b, terms);
+    var body = snip
+      ? '<div class="bf-prev-snip">'+highlight(snip, terms)+'</div>'
+      : (b.deck?'<div class="bf-prev-dek">'+highlight(b.deck, terms)+'</div>':'');
     return '<a class="bf-prev-row" href="'+href(b)+'">'
       + '<div class="bf-prev-date">'+fmtDate(b.date)+'</div>'
       + '<div><div class="bf-prev-title"><b>'+esc(b.issue)+' ·</b> '+highlight(b.title, terms)+'</div>'
-        + (b.deck?'<div class="bf-prev-dek">'+highlight(b.deck, terms)+'</div>':'')
-        + (snip?'<div class="bf-prev-snip">'+highlight(snip, terms)+'</div>':'') + '</div>'
+        + body + '</div>'
       + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
     + '</a>';
   }

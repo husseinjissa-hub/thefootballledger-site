@@ -449,10 +449,10 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 :root[data-theme="dark"] .people-nav, :root[data-theme="dark"] .story-nav { background: var(--card); color: var(--ink); }
 
 /* Person card — photo-forward, black & white, compact (no green wash) */
-.person-card { position: relative; flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; aspect-ratio: 5 / 4; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #171717; color: var(--paper); }
+.person-card { position: relative; flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; aspect-ratio: 4 / 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #1d1d1d; color: var(--paper); }
 .person-bg { position: absolute; inset: 0; z-index: 0; }
-.person-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.03); }
-.person-card::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.62) 74%, rgba(0,0,0,0.9) 100%); }
+.person-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.03); }
+.person-card::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.14) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.48) 80%, rgba(0,0,0,0.76) 100%); }
 .person-card > * { position: relative; z-index: 2; }
 .person-tags { position: absolute; top: 16px; left: 16px; right: 16px; display: flex; gap: 8px; }
 .person-pill, .person-wip { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; padding: 3px 9px; }
@@ -497,6 +497,10 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
   .bf-searchbar .bf-search { max-width: none; }
   .bf-repo { font-size: 12px; }
 }
+/* Search-result highlighting + body snippet */
+mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; padding: 0 1px; }
+:root[data-theme="dark"] mark { background: rgba(184,162,110,0.34); color: var(--ink); }
+.bf-prev-snip { font-size: 13px; line-height: 1.55; color: var(--ink-3); margin-top: 7px; }
 .fr-group { margin-bottom: 26px; }
 .fr-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 12px; }
 .fr-pills { display: flex; flex-wrap: wrap; gap: 8px; }

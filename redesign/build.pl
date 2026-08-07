@@ -973,7 +973,7 @@ sub build_briefing {
 </script>
 HTML
   (my $slug = $file) =~ s/\.html$//;
-  my $stext = "$title $deck $stories"; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext = lc $stext; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
+  my $stext = "$title $deck $stories"; $stext =~ s/<[^>]+>/ /g; $stext =~ s/&[a-z#0-9]+;/ /g; $stext =~ s/\s+/ /g; $stext =~ s/^\s+|\s+$//g;
   $BRIEF_SEARCH{$slug} = $stext;
   render_page(out=>"briefing/$file", active=>"briefing",
     title=>$t." — The Record · The Football Ledger",

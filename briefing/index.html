@@ -81,25 +81,28 @@
   <div class="hero-media"><img src="/assets/img/briefing-hero.jpg" alt="A desk with the Financial Times, a laptop showing football-economy dashboards, and a Football Ledger mug" width="1100" height="733"></div>
 </section>
 
-<section class="wrap section" style="padding-bottom:0">
+<section class="wrap section" id="bfCurrentSec" style="padding-bottom:0">
+  <div id="bfCurrent"></div>
+</section>
+
+<section class="wrap section" style="padding-top:40px;padding-bottom:0">
   <div class="bf-searchbar">
     <div class="fr-search bf-search">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input type="search" id="bfSearch" placeholder="Search every briefing — try &ldquo;Liverpool&rdquo;…" aria-label="Search briefings">
+      <input type="search" id="bfSearch" placeholder="Search every issue — try &ldquo;Liverpool&rdquo;…" aria-label="Search The Record">
     </div>
     <p class="bf-repo">A repository of all football business news — every story, every week, searchable.</p>
   </div>
 </section>
 
-<section class="wrap section" id="bfBrowse" style="padding-bottom:0">
-  <div id="bfCurrent"></div>
+<section class="wrap section" id="bfBrowse" style="padding-top:36px;padding-bottom:0">
   <div class="bf-prev">
     <div class="overline overline--green" style="margin-bottom:14px">Previous issues</div>
     <div class="bf-prev-list" id="bfPrevList"><p class="bf-loading">Loading issues…</p></div>
   </div>
 </section>
 
-<section class="wrap section" id="bfResults" hidden style="padding-bottom:0">
+<section class="wrap section" id="bfResults" hidden style="padding-top:36px;padding-bottom:0">
   <div class="overline overline--green" style="margin-bottom:14px" id="bfResultsLabel">Results</div>
   <div class="bf-prev-list" id="bfResultsList"></div>
 </section>
@@ -155,6 +158,36 @@
       + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
     + '</a>';
   }
+  // --- search highlighting: wrap matched terms in <mark>, and pull a snippet
+  //     of surrounding body text when the match is only in the story body ---
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function highlight(text, terms){
+    var out=esc(text);
+    terms.forEach(function(t){ if(!t) return; try { out=out.replace(new RegExp('('+escRe(esc(t))+')','ig'),'<mark>$1</mark>'); } catch(e){} });
+    return out;
+  }
+  function snippet(b, terms){
+    var text=INDEX[b.slug]||''; if(!text) return '';
+    var lc=text.toLowerCase(), pos=-1, tl=0;
+    terms.forEach(function(t){ var i=lc.indexOf(t); if(i!==-1 && (pos===-1||i<pos)){ pos=i; tl=t.length; } });
+    if(pos===-1) return '';
+    var start=Math.max(0,pos-70), end=Math.min(text.length,pos+tl+90), frag=text.slice(start,end);
+    if(start>0) frag=frag.replace(/^\S*\s+/,'');
+    if(end<text.length) frag=frag.replace(/\s+\S*$/,'');
+    return (start>0?'… ':'')+frag.trim()+(end<text.length?' …':'');
+  }
+  function renderResult(b, terms){
+    var headLc=((b.issue||'')+' '+(b.title||'')+' '+(b.deck||'')).toLowerCase();
+    var inHead=terms.some(function(t){ return headLc.indexOf(t)!==-1; });
+    var snip=inHead?'':snippet(b, terms);
+    return '<a class="bf-prev-row" href="'+href(b)+'">'
+      + '<div class="bf-prev-date">'+fmtDate(b.date)+'</div>'
+      + '<div><div class="bf-prev-title"><b>'+esc(b.issue)+' ·</b> '+highlight(b.title, terms)+'</div>'
+        + (b.deck?'<div class="bf-prev-dek">'+highlight(b.deck, terms)+'</div>':'')
+        + (snip?'<div class="bf-prev-snip">'+highlight(snip, terms)+'</div>':'') + '</div>'
+      + '<span class="bf-prev-read">Read <span class="arw">→</span></span>'
+    + '</a>';
+  }
   function renderBrowse(list){
     var cur=document.getElementById('bfCurrent'), prev=document.getElementById('bfPrevList');
     if(!list || !list.length){ prev.innerHTML='<p class="bf-loading">Issues are on their way.</p>'; return; }
@@ -162,15 +195,15 @@
     prev.innerHTML = list.length>1 ? list.slice(1).map(renderPrev).join('') : '<p class="bf-loading">This is the first issue.</p>';
   }
   function runSearch(q){
-    var browse=document.getElementById('bfBrowse'), results=document.getElementById('bfResults');
+    var curSec=document.getElementById('bfCurrentSec'), browse=document.getElementById('bfBrowse'), results=document.getElementById('bfResults');
     var list=document.getElementById('bfResultsList'), label=document.getElementById('bfResultsLabel');
-    q=(q||'').trim().toLowerCase();
-    if(!q){ browse.hidden=false; results.hidden=true; return; }
-    var terms=q.split(/\s+/);
+    var raw=(q||'').trim();
+    if(!raw){ curSec.hidden=false; browse.hidden=false; results.hidden=true; return; }
+    var terms=raw.toLowerCase().split(/\s+/);
     var hits=DATA.filter(function(b){ var h=haystack(b); return terms.every(function(t){ return h.indexOf(t)!==-1; }); });
-    browse.hidden=true; results.hidden=false;
-    label.textContent = hits.length ? (hits.length+' '+(hits.length===1?'issue':'issues')+' mentioning “'+q+'”') : 'No issues mention that yet';
-    list.innerHTML = hits.length ? hits.map(renderPrev).join('') : '<p class="bf-loading">Try a club, competition, investor or deal — e.g. Liverpool, PIF, World Cup.</p>';
+    curSec.hidden=true; browse.hidden=true; results.hidden=false;
+    label.textContent = hits.length ? (hits.length+' '+(hits.length===1?'issue':'issues')+' mentioning “'+raw+'”') : ('No issues mention “'+raw+'” yet');
+    list.innerHTML = hits.length ? hits.map(function(b){ return renderResult(b, terms); }).join('') : '<p class="bf-loading">Try a club, competition, investor or deal — e.g. Liverpool, PIF, World Cup.</p>';
   }
 
   function start(list){

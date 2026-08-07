@@ -438,7 +438,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* Shared horizontal carousel + circular nav (People + Top Stories) */
 .people-viewport, .story-carousel { position: relative; }
-.people-track, .story-track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: none; }
+.people-track, .story-track { display: flex; align-items: flex-start; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; padding-bottom: 4px; scrollbar-width: none; }
 .people-track { gap: 24px; }
 .story-track { gap: 28px; }
 .people-track::-webkit-scrollbar, .story-track::-webkit-scrollbar { display: none; }

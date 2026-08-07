@@ -56,7 +56,9 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 my %HOOK = (
   # live
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
-  'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. The edge is a data stack, not cash.',
+  'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming Europe\'s giants. Is the edge just a better data stack?',
+  'macro-05b-sportainment-survive-2028' => 'Record money is pouring into small-sided football. So which format survives to 2028?',
+  'macro-01-trophy-to-operating'     => 'Owners once bought football clubs for prestige. Now they buy them for returns — what changes?',
   'l3-barcelona-crisis-recovery'     => 'Barcelona sold its future to survive. Real recovery — or borrowed time?',
   'l4-pif-phase-2'                    => 'PIF dropped sport from its priorities. A retreat — or a longer game?',
   'macro-02-mco-consolidation'        => 'Half of Europe\'s top clubs now sit inside groups. But can any actually run one?',
@@ -233,7 +235,7 @@ sub ov_parts {
 sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
 sub art_thumb {
   my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
-  my $v = $a->{is_person} ? '?v=3' : '';   # profile images were re-cropped; bust stale caches
+  my $v = $a->{is_person} ? '?v=4' : '';   # profile images were re-cropped; bust stale caches
   return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.$v.'" alt="" loading="lazy"></div>'
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
@@ -295,7 +297,7 @@ my @PEOPLE = (
 sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=3" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
+  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
   return
   '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.

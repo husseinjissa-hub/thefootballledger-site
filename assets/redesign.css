@@ -449,10 +449,11 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 :root[data-theme="dark"] .people-nav, :root[data-theme="dark"] .story-nav { background: var(--card); color: var(--ink); }
 
 /* Person card — photo-forward, black & white, compact (no green wash) */
-.person-card { position: relative; flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; aspect-ratio: 4 / 3; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #1d1d1d; color: var(--paper); }
+.person-card { position: relative; flex: 0 0 calc((100% - 48px) / 3); scroll-snap-align: start; aspect-ratio: 1 / 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #1d1d1d; color: var(--paper); }
 .person-bg { position: absolute; inset: 0; z-index: 0; }
-.person-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(1) contrast(1.03); }
-.person-card::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0) 54%, rgba(0,0,0,0.36) 80%, rgba(0,0,0,0.62) 100%); }
+.person-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center top; filter: grayscale(1) contrast(1.03); }
+.person-card::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0) 34%, rgba(0,0,0,0) 58%, rgba(0,0,0,0.34) 82%, rgba(0,0,0,0.6) 100%); }
+.person-body { padding: 20px; }
 .person-card > * { position: relative; z-index: 2; }
 .person-tags { position: absolute; top: 16px; left: 16px; right: 16px; display: flex; gap: 8px; }
 .person-pill, .person-wip { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 2px; padding: 3px 9px; }
@@ -462,7 +463,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .person-desc { font-size: 13px; line-height: 1.45; color: rgba(245,242,234,0.86); }
 .person-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,242,234,0.62); margin-top: 12px; }
 .person-card:hover .person-name { text-decoration: underline; text-underline-offset: 3px; }
-.person-card--wip { background: var(--cream); color: var(--ink-3); border-style: dashed; justify-content: flex-start; }
+.person-card--wip { background: var(--cream); color: var(--ink-3); border-style: dashed; justify-content: flex-start; padding: 20px; }
+.person-card--wip .person-body { padding: 0; }
 .person-card--wip::after { display: none; }
 .person-card--wip .person-tags { position: static; margin-bottom: 16px; }
 .person-card--wip .person-pill { color: var(--ink-3); border-color: var(--line); }

@@ -9,6 +9,8 @@ sub spit  { my ($f,$c)=@_; open(my $fh,'>:raw',$f) or die "write $f: $!"; print 
 my $head   = slurp("redesign/partials/head.html");
 my $header = slurp("redesign/partials/header.html");
 my $footer = slurp("redesign/partials/footer.html");
+# Cache-bust the stylesheet by its mtime so CSS edits always reach browsers.
+my $CSSVER = (stat("assets/redesign.css"))[9] || 1;
 
 sub render_page {
   my (%o) = @_;   # out,title,desc,canonical,active,body
@@ -16,6 +18,7 @@ sub render_page {
   $h =~ s/\{\{TITLE\}\}/$o{title}/g;
   $h =~ s/\{\{DESC\}\}/$o{desc}/g;
   $h =~ s/\{\{CANONICAL\}\}/$o{canonical}/g;
+  $h =~ s/\{\{CSSV\}\}/$CSSVER/g;
   my $hdr = $header;
   for my $k (qw(OVERVIEW ECOSYSTEM LEDGER ENTITIES BRIEFING ABOUT JOIN)) {
     my $val = (lc($k) eq ($o{active}//'')) ? 'class="active"' : '';
@@ -56,9 +59,9 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 my %HOOK = (
   # live
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
-  'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming Europe\'s giants. Is the edge just a better data stack?',
-  'macro-05b-sportainment-survive-2028' => 'Record money is pouring into small-sided football. So which format survives to 2028?',
-  'macro-01-trophy-to-operating'     => 'Owners once bought football clubs for prestige. Now they buy them for returns — what changes?',
+  'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
+  'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
+  'macro-01-trophy-to-operating'     => 'Owners once bought clubs for prestige. Now for returns — what changes?',
   'l3-barcelona-crisis-recovery'     => 'Barcelona sold its future to survive. Real recovery — or borrowed time?',
   'l4-pif-phase-2'                    => 'PIF dropped sport from its priorities. A retreat — or a longer game?',
   'macro-02-mco-consolidation'        => 'Half of Europe\'s top clubs now sit inside groups. But can any actually run one?',
@@ -83,7 +86,7 @@ my %HOOK = (
   'l4-family-offices-organised'       => 'Family-office money is turning institutional on football. What changes?',
   'l4-permanent-capital'              => 'Club ownership is a 20-year game. Why the money is moving to evergreen funds.',
   'l4-sports-tech-vc-matures'         => 'Sports-tech VC just crossed €1bn. Why specialists win and generalists overpay.',
-  'l5-coach-staff-talent-ip'          => 'Hiring a manager now means buying a whole backroom. When did coaching become M&A?',
+  'l5-coach-staff-talent-ip'          => 'Hiring a manager now buys the whole backroom. Is coaching now M&A?',
   'l6-2027-pl-cycle-reset'            => 'Paramount lost the Premier League auction. So why might it still end up holding the rights?',
   'l6-club-as-media-company'          => 'Every top club now runs its own channel. Can they become real media businesses?',
   'l7-fanatics-vertical'              => 'Fanatics quietly owns football merch end-to-end. Who else is moving upstream?',

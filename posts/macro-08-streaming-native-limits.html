@@ -522,5 +522,14 @@
   if(popup && !popupDone()){ setTimeout(function(){ if(!popupDone()){ popup.classList.add('show'); popup.setAttribute('aria-hidden','false'); } }, 8000); }
 })();
 </script>
+
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { 
+    (window.vaq = window.vaq || []).push(arguments); 
+  };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+
 </body>
 </html>

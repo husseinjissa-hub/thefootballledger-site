@@ -457,9 +457,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* deep-green gradient — transparent over the face, deepening toward the text */
 .person-card::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(14,43,34,0) 38%, rgba(14,43,34,0.25) 52%, rgba(14,43,34,0.82) 72%, rgba(14,43,34,0.97) 100%); }
 .person-tags { position: absolute; z-index: 3; top: 14px; left: 14px; right: 14px; display: flex; gap: 7px; }
-.person-pill, .person-wip { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(245,242,234,0.55); border-radius: 999px; padding: 3px 9px; color: var(--paper); background: rgba(14,43,34,0.18); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.person-pill, .person-wip { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid rgba(245,242,234,0.55); border-radius: 999px; padding: 3px 9px; color: #F5F2EA; background: rgba(14,43,34,0.18); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
 .person-body { position: absolute; z-index: 3; left: 16px; right: 16px; bottom: 15px; }
-.person-name { font-family: var(--serif); font-size: 22px; line-height: 1.12; color: var(--paper); margin-bottom: 6px; }
+.person-name { font-family: var(--serif); font-size: 22px; line-height: 1.12; color: #F5F2EA; margin-bottom: 6px; }
 .person-desc { font-size: 13px; line-height: 1.45; color: rgba(245,242,234,0.9); }
 .person-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,242,234,0.72); margin-top: 12px; }
 .person-card:hover .person-name { text-decoration: underline; text-underline-offset: 3px; }

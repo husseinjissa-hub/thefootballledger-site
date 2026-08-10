@@ -539,7 +539,7 @@ sub build_article {
 
   # hero
   my $hp="assets/img/articles/$slug.jpg";
-  my $hero = (-e $hp) ? '<div class="art-hero"><img src="/'.$hp.'" alt="" ></div>' : '';
+  my $hero = (-e $hp) ? '<div class="art-hero"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
 
   # body content
   my $body_main;

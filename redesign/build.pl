@@ -124,16 +124,8 @@ my %liveBySlug = map { $_->{slug} => $_ } @live;
 my @topSlugs = qw(l1-fifa-ffe-world-cup-sale macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery macro-08-streaming-native-limits l5-coach-staff-talent-ip l8-data-led-underdogs l4-pif-phase-2 macro-01-trophy-to-operating);
 my $top = join("\n    ", map { story_card($_) } grep { defined } map { $liveBySlug{$_} } @topSlugs);
 
-# ---------- Overview ----------
-my $ov = slurp("redesign/pages/overview.html");
-$ov =~ s/\{\{TOP_STORIES\}\}/    $top/;
-render_page(
-  out=>"index.html", active=>"overview",
-  title=>"The Football Ledger — The Business of Football",
-  desc=>"Independent editorial analysis of football's business, governance, and capital — ownership, multi-club groups, media rights, and the operators shaping the game's next decade.",
-  canonical=>"/",
-  body=>$ov,
-);
+# ---------- Overview removed — The Ledger is now the homepage (/) ----------
+# (overview.html is retained in redesign/pages/ but no longer rendered)
 
 # ---------- entities ----------
 my @ents;
@@ -245,34 +237,82 @@ my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
-# --- Editor's Selection ---
-my $lead = $bySlug{'l1-fifa-ffe-world-cup-sale'} // $live[0];
+# --- Editor's Selection (This Week lead + two cards) ---
+sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
+my $lead = $bySlug{'l9-stadium-365-day-venue'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(macro-08-streaming-native-limits macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery);
-my ($ltype,$lrest) = ov_parts($lead);
-my $lead_bg = (-e "assets/img/articles/".$lead->{slug}.".jpg") ? "/assets/img/articles/".$lead->{slug}.".jpg" : "/assets/img/articles/macro-01-lead.jpg";
+               map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale l5-coach-staff-talent-ip);
+my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
+$lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
+my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
-  '<a class="es-lead" href="'.esc($lead->{url}).'">'."\n".
-  '      <div class="es-lead-bg"><img src="'.$lead_bg.'" alt="" loading="lazy"></div>'."\n".
-  '      <div class="overline">'.esc($ltype).($lrest?' '.esc($lrest):'').'</div>'."\n".
-  '      <h3 class="es-lead-title">'.esc($lead->{title}).'</h3>'."\n".
-  '      <p class="es-lead-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'."\n".
-  '      <div class="es-lead-meta">'.art_meta($lead).'</div>'."\n".
-  '      <span class="es-lead-cta">Read article <span class="arw">→</span></span>'."\n".
-  '    </a>';
-my $stack_html = join("\n      ", map {
-  my $a=$_; my ($t,$r)=ov_parts($a);
-  '<a class="es-item" href="'.esc($a->{url}).'">'."\n".
-  '        <div>'."\n".
-  '          <div class="es-item-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').'</div>'."\n".
-  '          <div class="es-item-title">'.esc($a->{title}).'</div>'."\n".
-  '          <div class="es-item-meta">'.art_meta($a).'</div>'."\n".
-  '        </div>'."\n".
-  '        '.art_thumb($a,'es-item-thumb')."\n".
-  '      </a>'
+  '<a class="es-lead2" href="'.esc($lead->{url}).'">'.
+    '<div class="es-lead2-media"><span class="es-lead2-badge">Editor\'s Selection</span><img src="'.$lead_img.'" alt="" loading="lazy"></div>'.
+    '<div class="es-lead2-body">'.
+      '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
+      '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
+      '<p class="es-lead2-dek">'.esc("How clubs are engineering \xC2\xA3600m\xE2\x80\x93\xC2\xA31.3bn venues to host football, concerts, NFL games and more \xE2\x80\x94 every single day.").'</p>'.
+      '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
+    '</div>'.
+  '</a>';
+my $cards_html = join('', map {
+  my $a=$_;
+  '<a class="es-card" href="'.esc($a->{url}).'">'.
+    art_thumb($a,'es-card-thumb').
+    '<div class="es-card-body">'.
+      '<div class="es-card-tag">'.esc(es_tag($a)).'</div>'.
+      '<div class="es-card-title">'.esc($a->{title}).'</div>'.
+      '<p class="es-card-dek">'.esc(hook_or_dek($a,160)).'</p>'.
+      '<div class="es-card-meta">'.art_meta($a).'</div>'.
+    '</div>'.
+  '</a>'
 } @featured);
-my $editors = '    '.$lead_html."\n    ".'<div class="es-stack">'."\n      ".$stack_html."\n    ".'</div>';
+my $editors = $lead_html.'<div class="es-cards">'.$cards_html.'</div>';
+
+# --- From the Record (newest issue's stories, for the This Week sidebar) ---
+my @MON3 = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+my ($rec_range,$rec_items,$rec_url) = ('','','/record');
+{
+  my @rb;
+  if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) { my $blk=$1;
+    while ($blk =~ /\{([^{}]*)\}/g) { my $o=$1; my %r;
+      $r{date}=($o=~/"date":"([^"]*)"/)?$1:''; $r{url}=($o=~/"url":"([^"]*)"/)?$1:'';
+      push @rb,\%r if $r{url};
+    }
+  }
+  my ($newest) = sort { ($b->{date}||'') cmp ($a->{date}||'') } @rb;
+  if ($newest) {
+    $rec_url = $newest->{url};
+    my $file = (split m{/}, $newest->{url})[-1]; (my $slug=$file)=~s/\.html$//;
+    # week range ending on the issue date
+    if ($newest->{date} =~ /^(\d+)-(\d+)-(\d+)$/) {
+      my ($Y,$M,$D)=($1,$2,$3);
+      require Time::Local;
+      my @s = localtime(Time::Local::timelocal(0,0,12,$D,$M-1,$Y) - 6*86400);
+      $rec_range = ($s[4]==$M-1) ? sprintf('%d–%d %s',$s[3],$D,$MON3[$M-1])
+                                 : sprintf('%d %s – %d %s',$s[3],$MON3[$s[4]],$D,$MON3[$M-1]);
+    }
+    my $src = "redesign/src-briefing/$file";
+    if (-e $src) { my $raw=slurp($src); my $n=0;
+      # Iterate story articles: headline + a one-sentence summary (first sentence
+      # of the story body) so the sidebar explains what each item is about.
+      while ($raw =~ /<article[^>]*class="story"[^>]*>(.*?)<\/article>/gs) {
+        my $sbody = $1; $n++;
+        my ($h) = $sbody =~ /<h2 class="story-headline">(.*?)<\/h2>/s;
+        $h //= ''; $h=~s/<[^>]+>//g; $h=~s/\s+/ /g; $h=~s/^\s+|\s+$//g;
+        my ($p) = $sbody =~ /<p>(.*?)<\/p>/s;
+        my $sum = $p // ''; $sum=~s/<[^>]+>//g; $sum=~s/&[a-z#0-9]+;/ /gi; $sum=~s/\s+/ /g; $sum=~s/^\s+|\s+$//g;
+        $sum = $1 if $sum =~ /^(.*?[.!?])(?:\s|$)/;   # trim to the first sentence
+        my $timg = "assets/img/briefing/$slug/story-$n.jpg";
+        my $thumb = (-e $timg) ? '<span class="rec-thumb"><img src="/'.$timg.'" alt="" loading="lazy"></span>' : '<span class="rec-thumb rec-thumb--ph"></span>';
+        my $dek = $sum ne '' ? '<span class="rec-dek">'.esc($sum).'</span>' : '';
+        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'#story'.$n.'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-mid"><span class="rec-headline">'.esc($h).'</span>'.$dek.'</span>'.$thumb.'</a></li>';
+        last if $n>=6;
+      }
+    }
+  }
+}
 
 # --- Type pills (with counts) ---
 my %tycount; $tycount{$_->{type}}++ for @arts;
@@ -287,55 +327,132 @@ my $filter_layers = join("\n          ", map {
   '<button class="fr-layer" type="button" data-layer="'.$n.'" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$LICO{$n}.'</svg></span><span class="fr-layer-num">'.sprintf('%02d',$n).'</span> '.$nm.'</button>'
 } @FL);
 
+# --- Explore the Nine Layers (homepage carousel: tabs + per-layer panel) ---
+my %LAYER_TAG = (
+  1=>'Who makes the rules — and who holds the power.',
+  2=>'Where the game is played and the rights are won.',
+  3=>'The clubs, and the groups that own them.',
+  4=>'The capital funding the modern game.',
+  5=>'The agents and agencies moving the market.',
+  6=>'Who broadcasts football — and on what terms.',
+  7=>'Kit, sponsorship, retail and the fan economy.',
+  8=>'Data, performance and the football-tech stack.',
+  9=>'Stadiums, matchday and the fan experience.',
+);
+# Nine-layer article card in one of three editorial forms (standard / stacked /
+# split) so each row reads as editorial rhythm, not a uniform grid (PDF §10).
+sub nl_card {
+  my ($a,$v,$wide) = @_; $v ||= 'standard';
+  my $pill = $a->{layer} ne '' ? '<span class="tag-pill">L'.$a->{layer}.'</span>' : '';
+  my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
+  my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
+  my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
+  my $mcls = $wide ? 'acard-media acard-media--wide' : 'acard-media';
+  my $media = (-e $imgp)
+    ? '<div class="'.$mcls.'"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    : '<div class="'.$mcls.' img-ph"><span>Image</span></div>';
+  my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,150)).'</p>' : '';
+  my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>';
+  my $title = '<div class="acard-title">'.esc($a->{title}).'</div>';
+  my $read  = ($a->{read}//'') ne '' ? $a->{read}.' min read' : fmtdate($a->{date});
+  my $foot  = '<div class="acard-foot"><span class="acard-meta">'.esc($read).'</span>'.
+              '<span class="acard-bm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></span></div>';
+  if ($v eq 'split') {
+    return '<a class="acard acard--split" href="'.esc($a->{url}).'">'.$media.
+           '<div class="acard-splitbody">'.$tags.$title.$dek.$foot.'</div></a>';
+  }
+  return '<a class="acard acard--stacked" href="'.esc($a->{url}).'">'.$media.$tags.$title.$dek.$foot.'</a>';
+}
+my @VARSEQ = ('split','stacked','split');
+# Per-slug card-form overrides — for images whose important content (a wordmark,
+# a logo, centred text) the cropping "split" (portrait) form would cut. Value is
+# the forced form; %NL_WIDE additionally shows the image in a wide 16:9 box so a
+# full-width logo is never side-cropped (e.g. the "PIF … INVESTMENT FUND" lockup).
+my %NL_FORM = (
+  'l4-pif-phase-2'               => 'stacked',   # wide wordmark (see %NL_WIDE)
+  'l1-fifa-mega-events'          => 'stacked',   # landscape photo — image-top, not portrait split
+  'l2-league-pe-infrastructure'  => 'stacked',
+  'l3-barcelona-crisis-recovery' => 'stacked',
+  'l6-bein-mena-fragmentation'   => 'stacked',
+);
+my %NL_WIDE = ('l4-pif-phase-2' => 1);
+my (@nl_tabs, @nl_panels);
+for my $L (@FL) {
+  my ($n,$nm) = @$L; my $on = ($n==1) ? ' on' : '';
+  push @nl_tabs, '<button class="nl-tab'.$on.'" type="button" data-layer="'.$n.'"><span class="nl-tab-num">'.sprintf('%02d',$n).'</span> '.esc(uc($nm)).'</button>';
+  my @la = sort { ($b->{date}||'') cmp ($a->{date}||'') } grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
+  @la = @la[0..2] if @la>3;
+  my $cards = @la
+    ? join('', map { my $s=$la[$_]{slug}; nl_card($la[$_], $NL_FORM{$s} || $VARSEQ[($_ + $n - 1) % 3], $NL_WIDE{$s}) } 0..$#la)
+    : '<div class="nl-empty">Analysis for this layer is in production.</div>';
+  my $intro = '<div class="nl-intro">'.
+    '<div class="nl-intro-num">'.sprintf('%02d',$n).'</div>'.
+    '<div class="nl-intro-name">'.esc(uc($nm)).'</div>'.
+    '<p class="nl-intro-tag">'.esc($LAYER_TAG{$n}//'').'</p>'.
+    '<button class="nl-explore" type="button" data-layer="'.$n.'">Explore this layer <span class="arw">&#8594;</span></button>'.
+    '</div>';
+  # clipped "peek" of the next layer at the right edge (PDF §11)
+  my ($nn,$nnm) = @{ $FL[ $n % scalar(@FL) ] };
+  my $peek = '<button class="nl-peek" type="button" aria-label="Next layer: '.esc($nnm).'">'.
+    '<div class="nl-intro-num">'.sprintf('%02d',$nn).'</div>'.
+    '<div class="nl-intro-name">'.esc(uc($nnm)).'</div>'.
+    '<p class="nl-intro-tag">'.esc($LAYER_TAG{$nn}//'').'</p></button>';
+  push @nl_panels, '<div class="nl-panel'.$on.'" data-layer="'.$n.'"><div class="nl-row">'.$intro.$cards.$peek.'</div></div>';
+}
+my $nl_tabs_html = join("\n          ", @nl_tabs);
+my $nl_panels_html = join("\n        ", @nl_panels);
+my $nl_dots_html = join('', map {
+  '<button class="nl-dot'.($_==0?' on':'').'" type="button" data-i="'.$_.'" aria-label="'.esc($FL[$_][1]).'"></button>'
+} 0..$#FL);
+
 # --- The People Shaping the Game (WIP profiles) ---
 # Rendered as a carousel above the feed, injected into the feed as type=Profile /
 # layer=people rows, and filterable via the new "People" layer chip. All three are
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
-  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
-  {slug=>'profile-david-beckham', name=>'David Beckham', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
-  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
+  {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'Building brand beyond retirement.', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
+  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+  {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%');
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
+# Full-image profile card (one continuous photograph, deep-green gradient, text
+# over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $op = $OBJPOS{$p->{slug}} // '50% 18%';   # upward-biased focal point so the full head stays in frame
+  my $op = $OBJPOS{$p->{slug}} // '50% 18%';
   my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
   return
   '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
-    '<div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div>'.
+    '<div class="person-tags"><span class="person-pill">Profile</span></div>'.
     '<div class="person-body">'.
       '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
-      '<p class="person-desc">'.esc($p->{title}).'</p>'.
+      '<p class="person-desc">'.esc($p->{blurb}//$p->{title}).'</p>'.
       '<div class="person-meta">'.$meta.'</div>'.
     '</div></a>';
 }
-# WIP placeholder cards revealed when the carousel arrow advances past the named three
-my @PEOPLE_WIP = (
-  ['In production','The next set of people profiles is being researched.'],
-  ['In production','New profiles will publish here as they are completed.'],
-  ["In production","More of football's key operators, coming soon."],
-);
 my $people_cards = join('', map { person_card($_) } @PEOPLE);
-my $people_wip = join('', map {
-  '<div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">'.esc($_->[0]).'</h3><p class="person-desc">'.esc($_->[1]).'</p></div></div>'
-} @PEOPLE_WIP);
 my $people_section = <<"HTML";
-<section class="wrap people-sec">
+<section class="wrap people-sec hpframe">
   <div class="sec-head people-head">
     <div>
-      <span class="overline overline--green">The People Shaping the Game</span>
-      <p class="people-sub">Deep dives into the individuals building football's business.</p>
+      <span class="overline overline--rule overline--green">People Shaping the Game</span>
+      <p class="people-sub">The operators, investors and influencers redefining football.</p>
     </div>
-    <a class="link-arw people-viewall" href="#feed" id="peopleViewAll">View all profiles <span class="arw">→</span></a>
+    <div class="people-headnav">
+      <a class="link-arw people-viewall" href="#feedSection" id="peopleViewAll">View all profiles <span class="arw">&#8594;</span></a>
+      <div class="nl-nav">
+        <button class="nl-arrow" id="peoplePrev" type="button" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="nl-arrow" id="peopleNext" type="button" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
   </div>
   <div class="people-viewport">
     <div class="people-track" id="peopleTrack">
-      $people_cards$people_wip
+      $people_cards
     </div>
-    <button class="people-nav" id="peopleNav" type="button" aria-label="See more profiles"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
 </section>
 HTML
@@ -384,15 +501,21 @@ my $feed_rows = join("\n        ", map {
 
 my $lg = slurp("redesign/pages/ledger.html");
 $lg =~ s/\{\{EDITORS\}\}/$editors/;
+$lg =~ s/\{\{RECORD_RANGE\}\}/$rec_range/;
+$lg =~ s/\{\{RECORD_ITEMS\}\}/$rec_items/;
+$lg =~ s/\{\{RECORD_URL\}\}/$rec_url/;
+$lg =~ s/\{\{NINE_TABS\}\}/          $nl_tabs_html/;
+$lg =~ s/\{\{NINE_PANELS\}\}/        $nl_panels_html/;
+$lg =~ s/\{\{NINE_DOTS\}\}/$nl_dots_html/;
 $lg =~ s/\{\{PEOPLE\}\}/$people_section/;
 $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;
-$lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/e;
+$lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/ge;
 $lg =~ s/\{\{FEED_ROWS\}\}/        $feed_rows/;
-render_page(out=>"ledger.html", active=>"ledger",
-  title=>"The Ledger — Analysis · The Football Ledger",
-  desc=>"Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.",
-  canonical=>"/ledger", body=>$lg);
+render_page(out=>"index.html", active=>"ledger",
+  title=>"The Football Ledger — The Business of Football",
+  desc=>"The Football Ledger — editorial analysis of the moves redrawing football's business: ownership, capital, media rights, and operating shifts. This week's picks, the nine-layer map, and the full searchable archive.",
+  canonical=>"/", body=>$lg);
 
 # ============================================================
 #  THE LEDGER — article detail (reskin live posts + stub prod)

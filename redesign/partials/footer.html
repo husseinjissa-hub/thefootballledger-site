@@ -15,9 +15,9 @@
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
-        <a href="/">Overview</a>
+        <a href="/">The Ledger</a>
         <a href="/ecosystem">Ecosystem</a>
-        <a href="/ledger">The Ledger</a>
+        <a href="/record">The Record</a>
       </div>
       <div class="footer-col">
         <h4>Reference</h4>
@@ -112,6 +112,22 @@
 
   // Slide in the prompt once, after a short delay
   if(popup && !popupDone()){ setTimeout(function(){ if(!popupDone()){ popup.classList.add('show'); popup.setAttribute('aria-hidden','false'); } }, 8000); }
+
+  // Jump to a #story/#hash target on load, offset for the sticky header. (html has
+  // scroll-behavior:smooth, which can otherwise suppress the initial anchor scroll.)
+  if (location.hash && location.hash.length > 1) {
+    window.addEventListener('load', function(){
+      var el; try { el = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch(e){ el = null; }
+      if (!el) return;
+      setTimeout(function(){
+        var root = document.documentElement, prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        var y = el.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo(0, y > 0 ? y : 0);
+        root.style.scrollBehavior = prev;
+      }, 60);
+    });
+  }
 })();
 </script>
 

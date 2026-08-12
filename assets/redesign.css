@@ -33,6 +33,8 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* anchor targets (e.g. Record #story1) clear the sticky header when linked to */
+[id^="story"] { scroll-margin-top: 92px; }
 body {
   font-family: var(--sans);
   background: var(--paper);
@@ -71,7 +73,7 @@ a { color: inherit; text-decoration: none; }
 }
 /* Chrome with hard-coded light values → dark equivalents */
 :root[data-theme="dark"] .site-header { background: rgba(20,18,13,0.9); }
-:root[data-theme="dark"] .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(20,18,13,0.55) 14%, rgba(20,18,13,0) 30%); }
+:root[data-theme="dark"] .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(20,18,13,0.72) 16%, rgba(20,18,13,0.32) 34%, rgba(20,18,13,0) 56%); }
 :root[data-theme="dark"] .eco-hero .hero-media::after { background: linear-gradient(90deg, var(--paper) 0%, rgba(20,18,13,0.5) 12%, rgba(20,18,13,0) 28%); }
 :root[data-theme="dark"] .btn--primary:hover { background: #97C0A2; }
 /* The F|L monogram is drawn with hard-coded ink; retint it for dark */
@@ -173,6 +175,11 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nav a:hover { color: var(--ink); }
 .nav a.active { color: var(--ink); }
 .nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1.5px; background: var(--green); }
+/* "The Record" nav item — the link stays vertically centred like the others; the
+   descriptor hangs just below it (absolute) so it doesn't shift the nav alignment. */
+.nav a.nav-record { position: relative; }
+.nav-hint { position: absolute; top: calc(100% + 3px); left: 50%; transform: translateX(-50%); white-space: nowrap; font-family: var(--sans); font-size: 8.5px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3); }
+.mobile-menu nav a .nav-hint { position: static; transform: none; display: block; font-size: 12px; letter-spacing: 0.1em; margin-top: 4px; color: var(--ink-3); }
 .header-cta { display: flex; align-items: center; gap: 16px; }
 .nav-toggle { display: none; width: 30px; height: 30px; background: none; border: 0; cursor: pointer; flex-direction: column; justify-content: center; gap: 6px; }
 .nav-toggle span { display: block; height: 1.5px; width: 24px; background: var(--ink); }
@@ -246,7 +253,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .hero-sub { max-width: 42ch; margin-bottom: 34px; }
 .hero-media { position: absolute; top: 0; right: 0; bottom: 0; width: 54%; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--paper) 0%, rgba(245,242,234,0.55) 14%, rgba(245,242,234,0) 30%); }
+.hero-media::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--paper) 0%, rgba(245,242,234,0.72) 16%, rgba(245,242,234,0.32) 34%, rgba(245,242,234,0) 56%); }
 @media (max-width: 1100px) {
   .hero-inner { grid-template-columns: 1fr; min-height: 0; padding: 44px var(--gutter) 0; }
   .hero-media, .eco-hero .hero-media { position: static; width: 100%; height: 320px; margin-top: 34px; }
@@ -295,6 +302,10 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .navcard-arw { margin-top: auto; padding-top: 20px; color: var(--green); }
 @media (max-width: 1000px) { .navcards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .navcards { grid-template-columns: 1fr; } }
+/* "How to navigate" — moved from Overview into About (About Page brief §7–§9) */
+.navigate-sec { border-top: 1px solid var(--line); padding: 60px 0; }
+.navigate-head { margin-bottom: 32px; }
+@media (max-width: 900px) { .navigate-sec { padding: 44px 0; } }
 
 /* ===== CTA bands ===== */
 .cta-dark { position: relative; background: var(--green); color: var(--paper); overflow: hidden; border-radius: var(--radius); }
@@ -401,6 +412,135 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .ledger-hero h1 { max-width: 15ch; margin: 18px 0 24px; }
 .ledger-hero .deck { max-width: 52ch; }
 .ledger-hero-rule { border: 0; border-top: 1px solid var(--line); margin-top: 40px; }
+
+/* ===== This Week at the Ledger (homepage hero) ===== */
+.thisweek { padding-top: 40px; padding-bottom: 8px; }
+.tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; }
+.tw-main { display: flex; flex-direction: column; }
+/* the lead grows to fill the left column so it reaches the bottom of the From-the-Record
+   list on the right (and the image gets more height) */
+.tw-main .es-lead2 { flex: 1 1 auto; }
+.tw-main .sec-head { margin-bottom: 22px; }
+/* editor's selection — horizontal lead */
+.es-lead2 { display: grid; grid-template-columns: 50% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
+.es-lead2-media { position: relative; background: var(--cream); }
+.es-lead2-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 260px; }
+.es-lead2-badge { position: absolute; top: 16px; left: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); background: rgba(14,43,34,0.72); border-radius: 2px; padding: 5px 10px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.es-lead2-body { padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; }
+.es-lead2-tag { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
+.es-lead2-title { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 32px); line-height: 1.12; color: var(--ink); margin-bottom: 14px; }
+.es-lead2:hover .es-lead2-title { color: var(--green); }
+.es-lead2-dek { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 22px; }
+.es-lead2-cta { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.es-lead2-meta { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.es-lead2-cta .link-arw { font-size: 13px; }
+/* two secondary cards */
+.es-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+.es-card { display: grid; grid-template-columns: 158px 1fr; gap: 18px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; background: var(--card); }
+.es-card-thumb { aspect-ratio: 1/1; width: 100%; border-radius: 2px; overflow: hidden; background: var(--cream); border: 1px solid var(--line); }
+.es-card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.es-card-body { min-width: 0; display: flex; flex-direction: column; height: 100%; }
+.es-card-tag { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 7px; }
+.es-card-title { font-family: var(--serif); font-size: 17px; line-height: 1.22; color: var(--ink); margin-bottom: 8px; }
+.es-card:hover .es-card-title { color: var(--green); }
+.es-card-dek { font-family: var(--sans); font-size: 12.5px; line-height: 1.45; color: var(--ink-2); display: block; overflow: hidden; max-height: 6em; margin-bottom: 12px; }
+.es-card-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); margin-top: auto; }
+/* From the Record sidebar */
+.tw-record { border-left: 1px solid var(--line); padding-left: 40px; display: flex; flex-direction: column; }
+.tw-record-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+.tw-record-range { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+.tw-record-sub { display: block; font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-3); margin-top: 4px; }
+.tw-record-list { list-style: none; margin: 0; padding: 0; }
+.rec-item { border-top: 1px solid var(--line); }
+.rec-item:first-child { border-top: 0; }
+.rec-item a { display: grid; grid-template-columns: 26px 1fr 48px; gap: 12px; align-items: start; padding: 10px 0; }
+.rec-num { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.rec-mid { min-width: 0; }
+.rec-headline { display: block; font-family: var(--serif); font-size: 15.5px; line-height: 1.28; color: var(--ink); }
+.rec-dek { display: block; overflow: hidden; max-height: 2.76em; font-family: var(--sans); font-size: 12px; line-height: 1.38; color: var(--ink-3); margin-top: 4px; }
+.rec-item a:hover .rec-headline { color: var(--green); }
+.rec-thumb { width: 48px; height: 48px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
+.rec-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.tw-record-more { margin-top: auto; padding-top: 22px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+@media (max-width: 1000px) {
+  .tw-grid { grid-template-columns: 1fr; gap: 40px; }
+  .tw-record { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
+}
+@media (max-width: 620px) {
+  .es-lead2 { grid-template-columns: 1fr; }
+  .es-cards { grid-template-columns: 1fr; }
+}
+
+/* ===== Explore the Nine Layers ===== */
+.nine-layers { padding-top: 44px; padding-bottom: 8px; }
+.nl-head { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 24px; align-items: center; margin-bottom: 24px; }
+.nl-title .nl-sub { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+.nl-tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.nl-tabs::-webkit-scrollbar { display: none; }
+.nl-tab { flex: 0 0 auto; font-family: var(--sans); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--ink-3); background: transparent; border: 0; border-bottom: 1.5px solid transparent; padding: 8px 9px; cursor: pointer; white-space: nowrap; transition: color 0.15s ease, border-color 0.15s ease; }
+.nl-tab:hover { color: var(--ink); }
+.nl-tab.on { color: var(--ink); border-bottom-color: var(--green); }
+.nl-tab-num { color: var(--ink-3); font-variant-numeric: tabular-nums; margin-right: 3px; font-weight: 600; }
+.nl-tab.on .nl-tab-num { color: var(--green); }
+.nl-nav { display: flex; gap: 8px; }
+.nl-arrow { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease; }
+.nl-arrow:hover { border-color: var(--green); color: var(--green); }
+.nl-panel { display: none; }
+.nl-panel.on { display: block; }
+.nl-row { display: flex; align-items: stretch; gap: 26px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; scrollbar-width: none; }
+/* full standfirst (no clamp cutting wording); cards align via the bottom-pinned footer */
+.nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; margin-bottom: 0; }
+.nl-row::-webkit-scrollbar { display: none; }
+/* intro: white "layer title" box (per request), fills the row height */
+.nl-intro { flex: 0 0 224px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+.nl-intro-num { font-family: var(--serif); font-size: 54px; line-height: 1; color: var(--green); }
+.nl-intro-name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
+.nl-intro-tag { font-family: var(--serif); font-size: 17px; line-height: 1.36; color: var(--ink-2); margin-top: 12px; }
+/* filled deep-green button (matches approved mockup) */
+.nl-explore { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 11px 17px; border-radius: var(--radius); background: var(--green); color: var(--paper); font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid var(--green); cursor: pointer; transition: background 0.2s ease; }
+.nl-explore:hover { background: #0a2019; }
+.nl-explore .arw { transition: transform 0.2s ease; }
+.nl-explore:hover .arw { transform: translateX(3px); }
+
+/* Article cards — split (image-left) + stacked (image-top); uniform height via a
+   read-time + bookmark footer pinned to the bottom of every card. */
+/* each card is outlined (border only, no fill); images have softly rounded corners */
+.nl-row .acard { flex: 0 0 320px; scroll-snap-align: start; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.nl-row .acard-media { border-radius: 5px; }
+.nl-row .acard-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+.nl-row .acard-foot .acard-meta { margin: 0; letter-spacing: 0.08em; text-transform: uppercase; }
+.acard-bm { background: transparent; border: 0; color: var(--green); cursor: pointer; padding: 2px; display: inline-flex; opacity: 0.7; transition: opacity 0.2s ease; }
+.acard-bm:hover { opacity: 1; }
+.nl-row .acard--stacked .acard-media { order: 0; margin: 0 0 14px; aspect-ratio: 16 / 10; }
+/* wide-lockup images (e.g. the PIF wordmark): show the full 16:9 frame, uncropped */
+.nl-row .acard--stacked .acard-media--wide { aspect-ratio: 16 / 9; background: #0d0d0d; }
+.nl-row .acard-media--wide img { object-fit: contain; }
+.nl-row .acard--split { flex: 0 0 494px; display: grid; grid-template-columns: 46% 1fr; gap: 20px; align-items: stretch; }
+.nl-row .acard--split .acard-media { order: 0; margin: 0; aspect-ratio: auto; min-height: 210px; height: 100%; }
+.nl-row .acard--split .acard-splitbody { display: flex; flex-direction: column; min-width: 0; }
+.nl-row .acard--split .acard-title { min-height: 0; font-size: 22px; }
+/* clipped peek of the next layer at the right edge (PDF §11) */
+.nl-peek { flex: 0 0 188px; scroll-snap-align: start; align-self: stretch; text-align: left; padding: 4px 0 4px 22px; border-left: 3px solid var(--green); opacity: 0.5; cursor: pointer; transition: opacity 0.2s ease; }
+.nl-peek:hover { opacity: 1; }
+.nl-empty { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 200px; font-family: var(--serif); font-style: italic; color: var(--ink-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 30px; }
+/* carousel progress dots */
+.nl-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.nl-dot { width: 22px; height: 3px; border-radius: 2px; background: var(--line); border: 0; padding: 0; cursor: pointer; transition: background 0.2s ease; }
+.nl-dot.on { background: var(--green); }
+@media (max-width: 900px) { .nl-head { grid-template-columns: 1fr; gap: 14px; } .nl-nav { display: none; } .nl-row .acard--split { flex-basis: 340px; grid-template-columns: 1fr; } .nl-row .acard--split .acard-media { min-height: 160px; } }
+
+/* ===== Framed editorial section containers (approved homepage mockup §3/§20/§24) ===== */
+.hpframe { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 34px var(--gutter); margin: 30px auto; }
+.hpframe + .hpframe { margin-top: 0; }
+@media (max-width: 900px) { .hpframe { padding: 26px var(--gutter); margin: 22px auto; } }
+
+/* People header: "View all profiles" + carousel arrows */
+.people-headnav { display: flex; align-items: center; gap: 20px; }
+@media (max-width: 620px) { .people-headnav .nl-nav { display: none; } }
+
+/* Explore the Full Ledger — section header above the archive */
+.ef-head { margin-bottom: 26px; }
+.ef-sub { font-family: var(--serif); font-size: clamp(16px,1.6vw,19px); line-height: 1.4; color: var(--ink-2); margin-top: 12px; }
 
 /* Editor's Selection */
 .editors { padding-top: 8px; }

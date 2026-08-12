@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/redesign.css?v=1786549529">
+<link rel="stylesheet" href="/assets/redesign.css?v=1786550687">
 </head>
 <body>
 <header class="site-header">
@@ -344,6 +344,22 @@
 
   // Slide in the prompt once, after a short delay
   if(popup && !popupDone()){ setTimeout(function(){ if(!popupDone()){ popup.classList.add('show'); popup.setAttribute('aria-hidden','false'); } }, 8000); }
+
+  // Jump to a #story/#hash target on load, offset for the sticky header. (html has
+  // scroll-behavior:smooth, which can otherwise suppress the initial anchor scroll.)
+  if (location.hash && location.hash.length > 1) {
+    window.addEventListener('load', function(){
+      var el; try { el = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch(e){ el = null; }
+      if (!el) return;
+      setTimeout(function(){
+        var root = document.documentElement, prev = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        var y = el.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo(0, y > 0 ? y : 0);
+        root.style.scrollBehavior = prev;
+      }, 60);
+    });
+  }
 })();
 </script>
 

@@ -48,6 +48,16 @@ if ($cj =~ /"articles":\s*\[(.*?)\],\s*"entities"/s) {
     push @arts, \%a;
   }
 }
+# Link Macro theses into the nine layers so they show in the layer explorer (and
+# under the matching layer filter) rather than leaving those layers thin on live work.
+my %MACRO_LAYER = (
+  'macro-01-trophy-to-operating'        => 4,   # Capital
+  'macro-02-mco-consolidation'          => 3,   # Clubs / MCO
+  'macro-03-usa-mega-cycle'             => 1,   # Governance
+  'macro-05b-sportainment-survive-2028' => 2,   # Leagues
+  'macro-08-streaming-native-limits'    => 6,   # Media
+);
+$_->{layer} = $MACRO_LAYER{$_->{slug}} for grep { exists $MACRO_LAYER{$_->{slug}} } @arts;
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -352,7 +362,8 @@ sub nl_card {
     ? '<div class="'.$mcls.'"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="'.$mcls.' img-ph"><span>Image</span></div>';
   my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,150)).'</p>' : '';
-  my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>';
+  my $prodt = ($a->{status}//'') eq 'prod' ? '<span class="acard-prodtag">In production</span>' : '';
+  my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.$prodt.'</div>';
   my $title = '<div class="acard-title">'.esc($a->{title}).'</div>';
   my $read  = ($a->{read}//'') ne '' ? $a->{read}.' min read' : fmtdate($a->{date});
   my $foot  = '<div class="acard-foot"><span class="acard-meta">'.esc($read).'</span>'.
@@ -380,7 +391,9 @@ my (@nl_tabs, @nl_panels);
 for my $L (@FL) {
   my ($n,$nm) = @$L; my $on = ($n==1) ? ' on' : '';
   push @nl_tabs, '<button class="nl-tab'.$on.'" type="button" data-layer="'.$n.'"><span class="nl-tab-num">'.sprintf('%02d',$n).'</span> '.esc(uc($nm)).'</button>';
-  my @la = sort { ($b->{date}||'') cmp ($a->{date}||'') } grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
+  my @la = grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
+  # live pieces first (so the linked macros displace in-production stubs), then newest
+  @la = sort { (($b->{status} eq 'live') <=> ($a->{status} eq 'live')) || (($b->{date}||'') cmp ($a->{date}||'')) } @la;
   @la = @la[0..2] if @la>3;
   my $cards = @la
     ? join('', map { my $s=$la[$_]{slug}; nl_card($la[$_], $NL_FORM{$s} || $VARSEQ[($_ + $n - 1) % 3], $NL_WIDE{$s}) } 0..$#la)

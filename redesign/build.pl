@@ -325,8 +325,9 @@ my @PEOPLE = (
   {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
   {slug=>'profile-david-beckham', name=>'David Beckham', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+  {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%');
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
 sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";

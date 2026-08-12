@@ -92,7 +92,7 @@ my %HOOK = (
   'l7-front-of-shirt-multitier'       => 'Shirt sponsorship is being priced like digital ads. What breaks — and who wins?',
   'l8-llm-native-scouting'            => 'AI is rebuilding scouting, tagging and injury prediction at once. Who owns it?',
   'l9-premium-hospitality-boom'       => 'Premium seats now drive a fifth of matchday revenue. How far can clubs push it?',
-  'l9-stadium-as-365-venue'           => 'Top clubs now run their stadiums 365 days a year. Is football the anchor tenant?',
+  'l9-stadium-365-day-venue'          => 'Football’s top clubs are turning stadiums into 365-day venues. Does the model spread — or just widen the gap?',
   'macro-04-mena-second-wave'         => 'MENA moves from buying stars to building operations. Second wave — or overreach?',
   'macro-06-womens-football'          => 'Women\'s football is drawing institutional capital. Asset class — or still a bet?',
   'macro-07-ai-native-ops'            => 'A few clubs are rebuilding operations around AI. Does the org chart change shape?',
@@ -539,7 +539,9 @@ sub build_article {
 
   # hero
   my $hp="assets/img/articles/$slug.jpg";
-  my $hero = (-e $hp) ? '<div class="art-hero"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
+  my %HERO_FULL = ('l9-stadium-365-day-venue'=>1);   # composite/infographic heroes shown uncropped (natural aspect)
+  my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
+  my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
 
   # body content
   my $body_main;

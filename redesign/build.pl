@@ -243,7 +243,8 @@ my $lead = $bySlug{'l9-stadium-365-day-venue'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
                map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale l5-coach-staff-talent-ip);
-my $lp = "assets/img/articles/".$lead->{slug}.".jpg";
+my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
+$lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
   '<a class="es-lead2" href="'.esc($lead->{url}).'">'.
@@ -251,7 +252,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc(dek_sentence($lead->{dek},400)).'</p>'.
+      '<p class="es-lead2-dek">'.esc("How clubs are engineering \xC2\xA3600m\xE2\x80\x93\xC2\xA31.3bn venues to host football, concerts, NFL games and more \xE2\x80\x94 every single day.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

@@ -175,7 +175,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nav a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 1.5px; background: var(--green); }
 /* "The Record" nav item with a small descriptor */
 .nav a.nav-record { display: inline-flex; flex-direction: column; align-items: center; line-height: 1.05; gap: 1px; }
-.nav-hint { font-family: var(--sans); font-size: 8.5px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3); }
+.nav-hint { display: block; text-align: center; font-family: var(--sans); font-size: 8.5px; font-weight: 500; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-3); }
 .mobile-menu nav a .nav-hint { display: block; font-size: 12px; letter-spacing: 0.1em; margin-top: 4px; color: var(--ink-3); }
 .header-cta { display: flex; align-items: center; gap: 16px; }
 .nav-toggle { display: none; width: 30px; height: 30px; background: none; border: 0; cursor: pointer; flex-direction: column; justify-content: center; gap: 6px; }
@@ -413,6 +413,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* ===== This Week at the Ledger (homepage hero) ===== */
 .thisweek { padding-top: 40px; padding-bottom: 8px; }
 .tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; }
+.tw-main { display: flex; flex-direction: column; }
+.tw-main .es-cards { margin-top: auto; }
 .tw-main .sec-head { margin-bottom: 22px; }
 /* editor's selection — horizontal lead */
 .es-lead2 { display: grid; grid-template-columns: 46% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
@@ -448,8 +450,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .rec-num { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; padding-top: 2px; }
 .rec-mid { min-width: 0; }
 .rec-headline { display: block; font-family: var(--serif); font-size: 15.5px; line-height: 1.28; color: var(--ink); }
-.rec-dek { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--sans); font-size: 12px; line-height: 1.38; color: var(--ink-3); margin-top: 4px; }
-@media (min-width: 1001px) { .rec-dek { -webkit-line-clamp: 1; } }
+.rec-dek { display: block; overflow: hidden; max-height: 2.76em; font-family: var(--sans); font-size: 12px; line-height: 1.38; color: var(--ink-3); margin-top: 4px; }
 .rec-item a:hover .rec-headline { color: var(--green); }
 .rec-thumb { width: 48px; height: 48px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
 .rec-thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -479,36 +480,44 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nl-arrow:hover { border-color: var(--green); color: var(--green); }
 .nl-panel { display: none; }
 .nl-panel.on { display: block; }
-.nl-row { display: flex; align-items: flex-start; gap: 24px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; scrollbar-width: none; }
-/* nine-layer cards show their full standfirst (no 2-line clamp) so no wording is cut */
-.nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; }
+.nl-row { display: flex; align-items: stretch; gap: 26px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; scrollbar-width: none; }
+/* full standfirst (no clamp cutting wording); cards align via the bottom-pinned footer */
+.nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; margin-bottom: 0; }
 .nl-row::-webkit-scrollbar { display: none; }
-.nl-intro { flex: 0 0 240px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--cream); }
-.nl-intro-num { font-family: var(--serif); font-size: 46px; line-height: 1; color: var(--green); }
-.nl-intro-name { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
-.nl-intro-tag { font-family: var(--serif); font-size: 16px; line-height: 1.35; color: var(--ink-2); margin-top: 12px; }
+/* intro: open text on the paper (no boxed panel), fills the row height */
+.nl-intro { flex: 0 0 214px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 2px 26px 2px 0; }
+.nl-intro-num { font-family: var(--serif); font-size: 54px; line-height: 1; color: var(--green); }
+.nl-intro-name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
+.nl-intro-tag { font-family: var(--serif); font-size: 17px; line-height: 1.36; color: var(--ink-2); margin-top: 12px; }
 /* filled deep-green button (matches approved mockup) */
 .nl-explore { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 11px 17px; border-radius: var(--radius); background: var(--green); color: var(--paper); font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid var(--green); cursor: pointer; transition: background 0.2s ease; }
 .nl-explore:hover { background: #0a2019; }
 .nl-explore .arw { transition: transform 0.2s ease; }
 .nl-explore:hover .arw { transform: translateX(3px); }
 
-/* Article cards — three editorial forms for rhythm (PDF §10) */
-.nl-row .acard { flex: 0 0 280px; scroll-snap-align: start; }
-.nl-row .acard--stacked { flex: 0 0 300px; }
-.nl-row .acard--stacked .acard-media { order: 0; margin-top: 0; margin-bottom: 14px; aspect-ratio: 16 / 10; }
+/* Article cards — split (image-left) + stacked (image-top); uniform height via a
+   read-time + bookmark footer pinned to the bottom of every card. */
+.nl-row .acard { flex: 0 0 300px; scroll-snap-align: start; display: flex; flex-direction: column; }
+.nl-row .acard-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
+.nl-row .acard-foot .acard-meta { margin: 0; letter-spacing: 0.08em; text-transform: uppercase; }
+.acard-bm { background: transparent; border: 0; color: var(--green); cursor: pointer; padding: 2px; display: inline-flex; opacity: 0.7; transition: opacity 0.2s ease; }
+.acard-bm:hover { opacity: 1; }
+.nl-row .acard--stacked .acard-media { order: 0; margin: 0 0 14px; aspect-ratio: 16 / 10; }
 /* wide-lockup images (e.g. the PIF wordmark): show the full 16:9 frame, uncropped */
 .nl-row .acard--stacked .acard-media--wide { aspect-ratio: 16 / 9; background: #0d0d0d; }
 .nl-row .acard-media--wide img { object-fit: contain; }
-.nl-row .acard--split { flex: 0 0 468px; display: grid; grid-template-columns: 45% 1fr; gap: 20px; align-items: stretch; }
+.nl-row .acard--split { flex: 0 0 464px; display: grid; grid-template-columns: 46% 1fr; gap: 20px; align-items: stretch; }
 .nl-row .acard--split .acard-media { order: 0; margin: 0; aspect-ratio: auto; min-height: 210px; height: 100%; }
 .nl-row .acard--split .acard-splitbody { display: flex; flex-direction: column; min-width: 0; }
-.nl-row .acard--split .acard-title { min-height: 0; }
-.nl-row .acard--split .acard-meta { margin-top: auto; }
+.nl-row .acard--split .acard-title { min-height: 0; font-size: 22px; }
 /* clipped peek of the next layer at the right edge (PDF §11) */
-.nl-peek { flex: 0 0 190px; scroll-snap-align: start; text-align: left; padding: 26px 22px; border: 1px solid var(--line); border-left: 3px solid var(--green); border-radius: var(--radius); background: var(--cream); opacity: 0.62; cursor: pointer; transition: opacity 0.2s ease; }
+.nl-peek { flex: 0 0 188px; scroll-snap-align: start; align-self: stretch; text-align: left; padding: 4px 0 4px 22px; border-left: 3px solid var(--green); opacity: 0.5; cursor: pointer; transition: opacity 0.2s ease; }
 .nl-peek:hover { opacity: 1; }
 .nl-empty { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 200px; font-family: var(--serif); font-style: italic; color: var(--ink-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 30px; }
+/* carousel progress dots */
+.nl-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.nl-dot { width: 22px; height: 3px; border-radius: 2px; background: var(--line); border: 0; padding: 0; cursor: pointer; transition: background 0.2s ease; }
+.nl-dot.on { background: var(--green); }
 @media (max-width: 900px) { .nl-head { grid-template-columns: 1fr; gap: 14px; } .nl-nav { display: none; } .nl-row .acard--split { flex-basis: 340px; grid-template-columns: 1fr; } .nl-row .acard--split .acard-media { min-height: 160px; } }
 
 /* ===== Framed editorial section containers (approved homepage mockup §3/§20/§24) ===== */

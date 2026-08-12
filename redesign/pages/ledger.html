@@ -34,6 +34,7 @@
   <div class="nl-panels" id="nlPanels">
 {{NINE_PANELS}}
   </div>
+  <div class="nl-dots" id="nlDots">{{NINE_DOTS}}</div>
 </section>
 
 {{PEOPLE}}
@@ -208,15 +209,19 @@
   var tabs = [].slice.call(document.querySelectorAll('.nl-tab'));
   var panels = [].slice.call(document.querySelectorAll('.nl-panel'));
   if (!tabs.length) return;
+  var dots = [].slice.call(document.querySelectorAll('.nl-dot'));
   var cur = 0;
   function activeRow(){ var p = panels[cur]; return p ? p.querySelector('.nl-row') : null; }
   function show(i){
     cur = Math.max(0, Math.min(tabs.length - 1, i));
     tabs.forEach(function(t, j){ t.classList.toggle('on', j === cur); });
     panels.forEach(function(p, j){ p.classList.toggle('on', j === cur); });
+    dots.forEach(function(d, j){ d.classList.toggle('on', j === cur); });
     var r = activeRow(); if (r) r.scrollLeft = 0;   // each layer starts from the left
     try { tabs[cur].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); } catch(e){}
   }
+  var dotsWrap = document.getElementById('nlDots');
+  if (dotsWrap) dotsWrap.addEventListener('click', function(e){ var d = e.target.closest('.nl-dot'); if (d) show(parseInt(d.getAttribute('data-i'),10)); });
   // Arrows scroll the current layer's row to reveal cut-off cards first; once the
   // row is fully scrolled, the next press advances to the adjacent layer.
   function rowStep(dir){

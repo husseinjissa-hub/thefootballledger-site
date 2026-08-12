@@ -349,19 +349,19 @@ sub nl_card {
   my $media = (-e $imgp)
     ? '<div class="'.$mcls.'"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="'.$mcls.' img-ph"><span>Image</span></div>';
-  my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,140)).'</p>' : '';
+  my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,150)).'</p>' : '';
   my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>';
   my $title = '<div class="acard-title">'.esc($a->{title}).'</div>';
-  my $metah = '<div class="acard-meta">'.$meta.'</div>';
+  my $read  = ($a->{read}//'') ne '' ? $a->{read}.' min read' : fmtdate($a->{date});
+  my $foot  = '<div class="acard-foot"><span class="acard-meta">'.esc($read).'</span>'.
+              '<span class="acard-bm"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4h12v16l-6-4-6 4z"/></svg></span></div>';
   if ($v eq 'split') {
     return '<a class="acard acard--split" href="'.esc($a->{url}).'">'.$media.
-           '<div class="acard-splitbody">'.$tags.$title.$dek.$metah.'</div></a>';
-  } elsif ($v eq 'stacked') {
-    return '<a class="acard acard--stacked" href="'.esc($a->{url}).'">'.$media.$tags.$title.$dek.$metah.'</a>';
+           '<div class="acard-splitbody">'.$tags.$title.$dek.$foot.'</div></a>';
   }
-  return '<a class="acard" href="'.esc($a->{url}).'">'.$tags.$title.$dek.$media.$metah.'</a>';
+  return '<a class="acard acard--stacked" href="'.esc($a->{url}).'">'.$media.$tags.$title.$dek.$foot.'</a>';
 }
-my @VARSEQ = ('split','stacked','standard');
+my @VARSEQ = ('split','stacked','split');
 # Per-slug card-form overrides — for images whose important content (a wordmark,
 # a logo, centred text) the cropping "split" (portrait) form would cut. Value is
 # the forced form; %NL_WIDE additionally shows the image in a wide 16:9 box so a
@@ -393,6 +393,9 @@ for my $L (@FL) {
 }
 my $nl_tabs_html = join("\n          ", @nl_tabs);
 my $nl_panels_html = join("\n        ", @nl_panels);
+my $nl_dots_html = join('', map {
+  '<button class="nl-dot'.($_==0?' on':'').'" type="button" data-i="'.$_.'" aria-label="'.esc($FL[$_][1]).'"></button>'
+} 0..$#FL);
 
 # --- The People Shaping the Game (WIP profiles) ---
 # Rendered as a carousel above the feed, injected into the feed as type=Profile /
@@ -495,6 +498,7 @@ $lg =~ s/\{\{RECORD_ITEMS\}\}/$rec_items/;
 $lg =~ s/\{\{RECORD_URL\}\}/$rec_url/;
 $lg =~ s/\{\{NINE_TABS\}\}/          $nl_tabs_html/;
 $lg =~ s/\{\{NINE_PANELS\}\}/        $nl_panels_html/;
+$lg =~ s/\{\{NINE_DOTS\}\}/$nl_dots_html/;
 $lg =~ s/\{\{PEOPLE\}\}/$people_section/;
 $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;

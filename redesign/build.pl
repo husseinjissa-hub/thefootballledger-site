@@ -251,7 +251,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'.
+      '<p class="es-lead2-dek">'.esc(dek_sentence($lead->{dek},400)).'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';
@@ -262,6 +262,7 @@ my $cards_html = join('', map {
     '<div class="es-card-body">'.
       '<div class="es-card-tag">'.esc(es_tag($a)).'</div>'.
       '<div class="es-card-title">'.esc($a->{title}).'</div>'.
+      '<p class="es-card-dek">'.esc(hook_or_dek($a,160)).'</p>'.
       '<div class="es-card-meta">'.art_meta($a).'</div>'.
     '</div>'.
   '</a>'
@@ -366,7 +367,13 @@ my @VARSEQ = ('split','stacked','split');
 # a logo, centred text) the cropping "split" (portrait) form would cut. Value is
 # the forced form; %NL_WIDE additionally shows the image in a wide 16:9 box so a
 # full-width logo is never side-cropped (e.g. the "PIF … INVESTMENT FUND" lockup).
-my %NL_FORM = ('l4-pif-phase-2' => 'stacked');
+my %NL_FORM = (
+  'l4-pif-phase-2'               => 'stacked',   # wide wordmark (see %NL_WIDE)
+  'l1-fifa-mega-events'          => 'stacked',   # landscape photo — image-top, not portrait split
+  'l2-league-pe-infrastructure'  => 'stacked',
+  'l3-barcelona-crisis-recovery' => 'stacked',
+  'l6-bein-mena-fragmentation'   => 'stacked',
+);
 my %NL_WIDE = ('l4-pif-phase-2' => 1);
 my (@nl_tabs, @nl_panels);
 for my $L (@FL) {

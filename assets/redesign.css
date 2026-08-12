@@ -440,7 +440,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .es-card-tag { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 7px; }
 .es-card-title { font-family: var(--serif); font-size: 17px; line-height: 1.22; color: var(--ink); margin-bottom: 8px; }
 .es-card:hover .es-card-title { color: var(--green); }
-.es-card-dek { font-family: var(--sans); font-size: 12.5px; line-height: 1.45; color: var(--ink-2); display: block; overflow: hidden; max-height: 2.9em; margin-bottom: 10px; }
+.es-card-dek { font-family: var(--sans); font-size: 12.5px; line-height: 1.45; color: var(--ink-2); display: block; overflow: hidden; max-height: 6em; margin-bottom: 12px; }
 .es-card-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); margin-top: auto; }
 /* From the Record sidebar */
 .tw-record { border-left: 1px solid var(--line); padding-left: 40px; display: flex; flex-direction: column; }
@@ -488,8 +488,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* full standfirst (no clamp cutting wording); cards align via the bottom-pinned footer */
 .nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; margin-bottom: 0; }
 .nl-row::-webkit-scrollbar { display: none; }
-/* intro: outlined box (border only, no fill), fills the row height */
-.nl-intro { flex: 0 0 224px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); }
+/* intro: white "layer title" box (per request), fills the row height */
+.nl-intro { flex: 0 0 224px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
 .nl-intro-num { font-family: var(--serif); font-size: 54px; line-height: 1; color: var(--green); }
 .nl-intro-name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
 .nl-intro-tag { font-family: var(--serif); font-size: 17px; line-height: 1.36; color: var(--ink-2); margin-top: 12px; }

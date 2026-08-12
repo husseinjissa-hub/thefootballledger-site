@@ -306,7 +306,7 @@ my ($rec_range,$rec_items,$rec_url) = ('','','/record');
         my $timg = "assets/img/briefing/$slug/story-$n.jpg";
         my $thumb = (-e $timg) ? '<span class="rec-thumb"><img src="/'.$timg.'" alt="" loading="lazy"></span>' : '<span class="rec-thumb rec-thumb--ph"></span>';
         my $dek = $sum ne '' ? '<span class="rec-dek">'.esc($sum).'</span>' : '';
-        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-mid"><span class="rec-headline">'.esc($h).'</span>'.$dek.'</span>'.$thumb.'</a></li>';
+        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'#story'.$n.'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-mid"><span class="rec-headline">'.esc($h).'</span>'.$dek.'</span>'.$thumb.'</a></li>';
         last if $n>=5;
       }
     }

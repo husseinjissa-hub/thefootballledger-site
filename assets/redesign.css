@@ -485,8 +485,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* full standfirst (no clamp cutting wording); cards align via the bottom-pinned footer */
 .nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; margin-bottom: 0; }
 .nl-row::-webkit-scrollbar { display: none; }
-/* intro: white card box, fills the row height */
-.nl-intro { flex: 0 0 224px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); }
+/* intro: outlined box (border only, no fill), fills the row height */
+.nl-intro { flex: 0 0 224px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); }
 .nl-intro-num { font-family: var(--serif); font-size: 54px; line-height: 1; color: var(--green); }
 .nl-intro-name { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
 .nl-intro-tag { font-family: var(--serif); font-size: 17px; line-height: 1.36; color: var(--ink-2); margin-top: 12px; }
@@ -498,8 +498,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* Article cards — split (image-left) + stacked (image-top); uniform height via a
    read-time + bookmark footer pinned to the bottom of every card. */
-/* each card is a bordered white box; images have softly rounded corners (per mockup) */
-.nl-row .acard { flex: 0 0 320px; scroll-snap-align: start; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 16px; }
+/* each card is outlined (border only, no fill); images have softly rounded corners */
+.nl-row .acard { flex: 0 0 320px; scroll-snap-align: start; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
 .nl-row .acard-media { border-radius: 5px; }
 .nl-row .acard-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
 .nl-row .acard-foot .acard-meta { margin: 0; letter-spacing: 0.08em; text-transform: uppercase; }

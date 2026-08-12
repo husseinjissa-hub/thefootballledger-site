@@ -340,14 +340,15 @@ my %LAYER_TAG = (
 # Nine-layer article card in one of three editorial forms (standard / stacked /
 # split) so each row reads as editorial rhythm, not a uniform grid (PDF §10).
 sub nl_card {
-  my ($a,$v) = @_; $v ||= 'standard';
+  my ($a,$v,$wide) = @_; $v ||= 'standard';
   my $pill = $a->{layer} ne '' ? '<span class="tag-pill">L'.$a->{layer}.'</span>' : '';
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
+  my $mcls = $wide ? 'acard-media acard-media--wide' : 'acard-media';
   my $media = (-e $imgp)
-    ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
-    : '<div class="acard-media img-ph"><span>Image</span></div>';
+    ? '<div class="'.$mcls.'"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    : '<div class="'.$mcls.' img-ph"><span>Image</span></div>';
   my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,140)).'</p>' : '';
   my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>';
   my $title = '<div class="acard-title">'.esc($a->{title}).'</div>';
@@ -361,6 +362,12 @@ sub nl_card {
   return '<a class="acard" href="'.esc($a->{url}).'">'.$tags.$title.$dek.$media.$metah.'</a>';
 }
 my @VARSEQ = ('split','stacked','standard');
+# Per-slug card-form overrides — for images whose important content (a wordmark,
+# a logo, centred text) the cropping "split" (portrait) form would cut. Value is
+# the forced form; %NL_WIDE additionally shows the image in a wide 16:9 box so a
+# full-width logo is never side-cropped (e.g. the "PIF … INVESTMENT FUND" lockup).
+my %NL_FORM = ('l4-pif-phase-2' => 'stacked');
+my %NL_WIDE = ('l4-pif-phase-2' => 1);
 my (@nl_tabs, @nl_panels);
 for my $L (@FL) {
   my ($n,$nm) = @$L; my $on = ($n==1) ? ' on' : '';
@@ -368,7 +375,7 @@ for my $L (@FL) {
   my @la = sort { ($b->{date}||'') cmp ($a->{date}||'') } grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
   @la = @la[0..2] if @la>3;
   my $cards = @la
-    ? join('', map { nl_card($la[$_], $VARSEQ[($_ + $n - 1) % 3]) } 0..$#la)
+    ? join('', map { my $s=$la[$_]{slug}; nl_card($la[$_], $NL_FORM{$s} || $VARSEQ[($_ + $n - 1) % 3], $NL_WIDE{$s}) } 0..$#la)
     : '<div class="nl-empty">Analysis for this layer is in production.</div>';
   my $intro = '<div class="nl-intro">'.
     '<div class="nl-intro-num">'.sprintf('%02d',$n).'</div>'.

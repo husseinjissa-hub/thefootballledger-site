@@ -412,7 +412,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* ===== This Week at the Ledger (homepage hero) ===== */
 .thisweek { padding-top: 40px; padding-bottom: 8px; }
-.tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: start; }
+.tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; }
 .tw-main .sec-head { margin-bottom: 22px; }
 /* editor's selection — horizontal lead */
 .es-lead2 { display: grid; grid-template-columns: 46% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
@@ -437,22 +437,23 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .es-card:hover .es-card-title { color: var(--green); }
 .es-card-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-3); }
 /* From the Record sidebar */
-.tw-record { border-left: 1px solid var(--line); padding-left: 40px; }
+.tw-record { border-left: 1px solid var(--line); padding-left: 40px; display: flex; flex-direction: column; }
 .tw-record-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
 .tw-record-range { font-family: var(--sans); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 .tw-record-sub { display: block; font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--ink-3); margin-top: 4px; }
 .tw-record-list { list-style: none; margin: 0; padding: 0; }
 .rec-item { border-top: 1px solid var(--line); }
 .rec-item:first-child { border-top: 0; }
-.rec-item a { display: grid; grid-template-columns: 26px 1fr 48px; gap: 12px; align-items: start; padding: 15px 0; }
+.rec-item a { display: grid; grid-template-columns: 26px 1fr 48px; gap: 12px; align-items: start; padding: 10px 0; }
 .rec-num { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; padding-top: 2px; }
 .rec-mid { min-width: 0; }
 .rec-headline { display: block; font-family: var(--serif); font-size: 15.5px; line-height: 1.28; color: var(--ink); }
-.rec-dek { display: block; font-family: var(--sans); font-size: 12px; line-height: 1.4; color: var(--ink-3); margin-top: 5px; }
+.rec-dek { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-family: var(--sans); font-size: 12px; line-height: 1.38; color: var(--ink-3); margin-top: 4px; }
+@media (min-width: 1001px) { .rec-dek { -webkit-line-clamp: 1; } }
 .rec-item a:hover .rec-headline { color: var(--green); }
 .rec-thumb { width: 48px; height: 48px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
 .rec-thumb img { width: 100%; height: 100%; object-fit: cover; }
-.tw-record-more { margin-top: 22px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+.tw-record-more { margin-top: auto; padding-top: 22px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
 @media (max-width: 1000px) {
   .tw-grid { grid-template-columns: 1fr; gap: 40px; }
   .tw-record { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
@@ -478,7 +479,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nl-arrow:hover { border-color: var(--green); color: var(--green); }
 .nl-panel { display: none; }
 .nl-panel.on { display: block; }
-.nl-row { display: flex; gap: 24px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+.nl-row { display: flex; align-items: flex-start; gap: 24px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x proximity; scrollbar-width: none; }
+/* nine-layer cards show their full standfirst (no 2-line clamp) so no wording is cut */
+.nl-row .acard-dek { display: block; -webkit-line-clamp: unset; overflow: visible; }
 .nl-row::-webkit-scrollbar { display: none; }
 .nl-intro { flex: 0 0 240px; scroll-snap-align: start; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--cream); }
 .nl-intro-num { font-family: var(--serif); font-size: 46px; line-height: 1; color: var(--green); }
@@ -494,6 +497,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nl-row .acard { flex: 0 0 280px; scroll-snap-align: start; }
 .nl-row .acard--stacked { flex: 0 0 300px; }
 .nl-row .acard--stacked .acard-media { order: 0; margin-top: 0; margin-bottom: 14px; aspect-ratio: 16 / 10; }
+/* wide-lockup images (e.g. the PIF wordmark): show the full 16:9 frame, uncropped */
+.nl-row .acard--stacked .acard-media--wide { aspect-ratio: 16 / 9; background: #0d0d0d; }
+.nl-row .acard-media--wide img { object-fit: contain; }
 .nl-row .acard--split { flex: 0 0 468px; display: grid; grid-template-columns: 45% 1fr; gap: 20px; align-items: stretch; }
 .nl-row .acard--split .acard-media { order: 0; margin: 0; aspect-ratio: auto; min-height: 210px; height: 100%; }
 .nl-row .acard--split .acard-splitbody { display: flex; flex-direction: column; min-width: 0; }

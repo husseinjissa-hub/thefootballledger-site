@@ -17,9 +17,41 @@
   </div>
 </section>
 
-{{PEOPLE}}
+<section class="wrap nine-layers">
+  <div class="nl-head">
+    <div class="nl-title">
+      <span class="overline overline--rule overline--green">Explore the Nine Layers</span>
+      <p class="nl-sub">The framework behind every move in football.</p>
+    </div>
+    <div class="nl-tabs" id="nlTabs">
+{{NINE_TABS}}
+    </div>
+    <div class="nl-nav">
+      <button class="nl-arrow" id="nlPrev" type="button" aria-label="Previous layer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="nl-arrow" id="nlNext" type="button" aria-label="Next layer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="nl-panels" id="nlPanels">
+{{NINE_PANELS}}
+  </div>
+</section>
 
-<section class="wrap section" style="padding-top:52px">
+<section class="wrap homefoot">
+  <div class="hf-grid">
+{{PEOPLE}}
+    <aside class="hf-explore">
+      <span class="overline overline--rule overline--green">Explore the Full Ledger</span>
+      <p class="hf-explore-sub">Search and browse all {{FEED_TOTAL}} pieces across every layer.</p>
+      <div class="fr-search ef-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="search" id="exploreSearch" placeholder="Search articles…" aria-label="Search the Ledger">
+      </div>
+      <button class="btn btn--primary" id="browseAll" type="button">Browse all articles <span class="arw">→</span></button>
+    </aside>
+  </div>
+</section>
+
+<section class="wrap section" style="padding-top:44px" id="feedSection">
   <div class="lb-grid">
     <aside class="filter-rail" aria-label="Filter the Ledger">
       <div class="fr-search">
@@ -160,28 +192,55 @@
   apply();
 })();
 
-// --- The People Shaping the Game: carousel arrow + "View all profiles" ---
+// --- People Shaping the Game: row arrows ---
 (function(){
-  var track = document.getElementById('peopleTrack');
-  var nav   = document.getElementById('peopleNav');
-  if (track && nav) {
-    function atEnd(){ return track.scrollLeft + track.clientWidth >= track.scrollWidth - 8; }
-    function syncDir(){ nav.classList.toggle('is-back', atEnd()); }
-    nav.addEventListener('click', function(){
-      if (atEnd()) track.scrollTo({ left: 0, behavior: 'smooth' });
-      else track.scrollBy({ left: Math.round(track.clientWidth * 0.9), behavior: 'smooth' });
-    });
-    track.addEventListener('scroll', syncDir, { passive: true });
-    window.addEventListener('resize', syncDir);
-    syncDir();
+  var track = document.getElementById('peopleTrack'); if (!track) return;
+  var prev = document.getElementById('peoplePrev'), next = document.getElementById('peopleNext');
+  function step(dir){ track.scrollBy({ left: dir * Math.round(track.clientWidth * 0.7), behavior: 'smooth' }); }
+  if (prev) prev.addEventListener('click', function(){ step(-1); });
+  if (next) next.addEventListener('click', function(){ step(1); });
+})();
+
+// --- Explore the Nine Layers: tabs, arrows, "Explore this layer" ---
+(function(){
+  var tabs = [].slice.call(document.querySelectorAll('.nl-tab'));
+  var panels = [].slice.call(document.querySelectorAll('.nl-panel'));
+  if (!tabs.length) return;
+  var cur = 0;
+  function show(i){
+    cur = Math.max(0, Math.min(tabs.length - 1, i));
+    tabs.forEach(function(t, j){ t.classList.toggle('on', j === cur); });
+    panels.forEach(function(p, j){ p.classList.toggle('on', j === cur); });
+    try { tabs[cur].scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' }); } catch(e){}
   }
-  var viewAll = document.getElementById('peopleViewAll');
-  if (viewAll) viewAll.addEventListener('click', function(e){
-    e.preventDefault();
-    var btn = document.querySelector('.fr-layer[data-layer="people"]');
-    if (btn && !btn.classList.contains('on')) btn.click();   // activate the People filter
+  var tabsWrap = document.getElementById('nlTabs');
+  if (tabsWrap) tabsWrap.addEventListener('click', function(e){ var t = e.target.closest('.nl-tab'); if (t) show(tabs.indexOf(t)); });
+  var prev = document.getElementById('nlPrev'), next = document.getElementById('nlNext');
+  if (prev) prev.addEventListener('click', function(){ show(cur - 1); });
+  if (next) next.addEventListener('click', function(){ show(cur + 1); });
+  var panelsWrap = document.getElementById('nlPanels');
+  if (panelsWrap) panelsWrap.addEventListener('click', function(e){
+    var b = e.target.closest('.nl-explore'); if (!b) return;
+    var layer = b.getAttribute('data-layer');
+    var target = document.querySelector('.fr-layer[data-layer="' + layer + '"]');
+    document.querySelectorAll('#layerList .fr-layer.on').forEach(function(x){ if (x !== target) x.click(); });  // single-layer filter
+    if (target && !target.classList.contains('on')) target.click();
     var feed = document.getElementById('feed');
     if (feed) window.scrollTo({ top: feed.getBoundingClientRect().top + window.scrollY - 140, behavior: 'smooth' });
   });
+})();
+
+// --- Explore the Full Ledger: search + browse all → the feed below ---
+(function(){
+  var feedSec = document.getElementById('feedSection');
+  function toFeed(){ if (feedSec) window.scrollTo({ top: feedSec.getBoundingClientRect().top + window.scrollY - 110, behavior: 'smooth' }); }
+  var browse = document.getElementById('browseAll');
+  if (browse) browse.addEventListener('click', function(){ var c = document.getElementById('clearFilters'); if (c) c.click(); toFeed(); });
+  var es = document.getElementById('exploreSearch'), scrolled = false;
+  var fs = document.getElementById('ledgerSearch');
+  if (es && fs) {
+    es.addEventListener('input', function(){ fs.value = es.value; fs.dispatchEvent(new Event('input')); if (!scrolled) { scrolled = true; toFeed(); } });
+    es.addEventListener('keydown', function(ev){ if (ev.key === 'Enter') toFeed(); });
+  }
 })();
 </script>

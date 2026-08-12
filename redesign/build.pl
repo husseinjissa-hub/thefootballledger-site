@@ -317,59 +317,66 @@ my $filter_layers = join("\n          ", map {
   '<button class="fr-layer" type="button" data-layer="'.$n.'" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$LICO{$n}.'</svg></span><span class="fr-layer-num">'.sprintf('%02d',$n).'</span> '.$nm.'</button>'
 } @FL);
 
+# --- Explore the Nine Layers (homepage carousel: tabs + per-layer panel) ---
+my %LAYER_TAG = (
+  1=>'Who makes the rules — and who holds the power.',
+  2=>'Where the game is played and the rights are won.',
+  3=>'The clubs, and the groups that own them.',
+  4=>'The capital funding the modern game.',
+  5=>'The agents and agencies moving the market.',
+  6=>'Who broadcasts football — and on what terms.',
+  7=>'Kit, sponsorship, retail and the fan economy.',
+  8=>'Data, performance and the football-tech stack.',
+  9=>'Stadiums, matchday and the fan experience.',
+);
+my (@nl_tabs, @nl_panels);
+for my $L (@FL) {
+  my ($n,$nm) = @$L; my $on = ($n==1) ? ' on' : '';
+  push @nl_tabs, '<button class="nl-tab'.$on.'" type="button" data-layer="'.$n.'"><span class="nl-tab-num">'.sprintf('%02d',$n).'</span> '.esc(uc($nm)).'</button>';
+  my @la = sort { ($b->{date}||'') cmp ($a->{date}||'') } grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
+  @la = @la[0..2] if @la>3;
+  my $cards = @la ? join('', map { story_card($_) } @la)
+                  : '<div class="nl-empty">Analysis for this layer is in production.</div>';
+  my $intro = '<div class="nl-intro">'.
+    '<div class="nl-intro-num">'.sprintf('%02d',$n).'</div>'.
+    '<div class="nl-intro-name">'.esc(uc($nm)).'</div>'.
+    '<p class="nl-intro-tag">'.esc($LAYER_TAG{$n}//'').'</p>'.
+    '<button class="nl-explore link-arw" type="button" data-layer="'.$n.'">Explore this layer <span class="arw">→</span></button>'.
+    '</div>';
+  push @nl_panels, '<div class="nl-panel'.$on.'" data-layer="'.$n.'"><div class="nl-row">'.$intro.$cards.'</div></div>';
+}
+my $nl_tabs_html = join("\n          ", @nl_tabs);
+my $nl_panels_html = join("\n        ", @nl_panels);
+
 # --- The People Shaping the Game (WIP profiles) ---
 # Rendered as a carousel above the feed, injected into the feed as type=Profile /
 # layer=people rows, and filterable via the new "People" layer chip. All three are
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
-  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
-  {slug=>'profile-david-beckham', name=>'David Beckham', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
-  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
-  {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
+  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
+  {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'Building brand beyond retirement.', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
+  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+  {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
 );
 my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
-sub person_card {
+# compact person card for the homepage People row (portrait + name + one-liner)
+sub pp_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $op = $OBJPOS{$p->{slug}} // '50% 18%';   # upward-biased focal point so the full head stays in frame
-  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
-  my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
-  return
-  '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
-    '<div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div>'.
-    '<div class="person-body">'.
-      '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
-      '<p class="person-desc">'.esc($p->{title}).'</p>'.
-      '<div class="person-meta">'.$meta.'</div>'.
-    '</div></a>';
+  my $op = $OBJPOS{$p->{slug}} // '50% 20%';
+  my $img = (-e $imgp) ? '<img class="pp-img" src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy">' : '<span class="pp-img pp-img--ph"></span>';
+  return '<a class="pp-card" href="'.esc($p->{url}).'">'.
+    '<div class="pp-head">'.$img.'<div class="pp-txt"><div class="pp-name">'.esc($p->{name}).'</div><div class="pp-blurb">'.esc($p->{blurb}//$p->{title}).'</div></div></div>'.
+    '<span class="pp-arw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>'.
+    '</a>';
 }
-# WIP placeholder cards revealed when the carousel arrow advances past the named three
-my @PEOPLE_WIP = (
-  ['In production','The next set of people profiles is being researched.'],
-  ['In production','New profiles will publish here as they are completed.'],
-  ["In production","More of football's key operators, coming soon."],
-);
-my $people_cards = join('', map { person_card($_) } @PEOPLE);
-my $people_wip = join('', map {
-  '<div class="person-card person-card--wip"><div class="person-tags"><span class="person-pill">Profile</span><span class="person-wip">In production</span></div><div class="person-body"><h3 class="person-name">'.esc($_->[0]).'</h3><p class="person-desc">'.esc($_->[1]).'</p></div></div>'
-} @PEOPLE_WIP);
-my $people_section = <<"HTML";
-<section class="wrap people-sec">
-  <div class="sec-head people-head">
-    <div>
-      <span class="overline overline--green">The People Shaping the Game</span>
-      <p class="people-sub">Deep dives into the individuals building football's business.</p>
-    </div>
-    <a class="link-arw people-viewall" href="#feed" id="peopleViewAll">View all profiles <span class="arw">→</span></a>
-  </div>
-  <div class="people-viewport">
-    <div class="people-track" id="peopleTrack">
-      $people_cards$people_wip
-    </div>
-    <button class="people-nav" id="peopleNav" type="button" aria-label="See more profiles"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg></button>
-  </div>
-</section>
-HTML
+my $people_section = '<div class="hf-people">'.
+  '<div class="hf-head">'.
+    '<span class="overline overline--green">People Shaping the Game</span>'.
+    '<div class="hf-arrows"><button class="pp-nav" id="peoplePrev" type="button" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button><button class="pp-nav" id="peopleNext" type="button" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button></div>'.
+  '</div>'.
+  '<div class="pp-row" id="peopleTrack">'.join('', map { pp_card($_) } @PEOPLE).'</div>'.
+  '</div>';
 
 # "People" chip appended to the layer filter list (no number — it is not a numbered layer)
 $filter_layers .= "\n          ".'<button class="fr-layer fr-layer--people" type="button" data-layer="people" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5M15 19c0-1.9.9-3.4 2.4-4"/></svg></span><span class="fr-layer-num"></span> People</button>';
@@ -418,10 +425,12 @@ $lg =~ s/\{\{EDITORS\}\}/$editors/;
 $lg =~ s/\{\{RECORD_RANGE\}\}/$rec_range/;
 $lg =~ s/\{\{RECORD_ITEMS\}\}/$rec_items/;
 $lg =~ s/\{\{RECORD_URL\}\}/$rec_url/;
+$lg =~ s/\{\{NINE_TABS\}\}/          $nl_tabs_html/;
+$lg =~ s/\{\{NINE_PANELS\}\}/        $nl_panels_html/;
 $lg =~ s/\{\{PEOPLE\}\}/$people_section/;
 $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;
-$lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/e;
+$lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/ge;
 $lg =~ s/\{\{FEED_ROWS\}\}/        $feed_rows/;
 render_page(out=>"index.html", active=>"ledger",
   title=>"The Football Ledger — The Business of Football",

@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/redesign.css?v=1786547530">
+<link rel="stylesheet" href="/assets/redesign.css?v=1786548084">
 </head>
 <body>
 <header class="site-header">
@@ -129,51 +129,74 @@
 <p>The three programmes share a threshold: capex outlay in the hundreds of millions to low billions before a single non-matchday pound arrives. That threshold is the point. Arsenal at the Emirates and Manchester United at Old Trafford share balance sheets and ownership structures that could in principle finance similar builds; neither has attempted anything of comparable ambition. No mid-table Premier League club, and no Bundesliga side operating under member-ownership rules, has come close.</p>
 
 <figure class="chart">
-<svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stadium utilisation days per year across major European venues, with 365-day pursuers and control-group traditional venues">
-<rect x="0" y="0" width="760" height="420" fill="#f1ece0"/>
+<svg viewBox="0 0 760 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Major event days per year across major European venues, comparing current 2024-25 range to target for 365-day pursuers, alongside single-value control-group traditional venues">
+<rect x="0" y="0" width="760" height="500" fill="#f1ece0"/>
 <text x="40" y="34" fill="#10402b" font-family="'JetBrains Mono', monospace" font-size="10" letter-spacing="1.5">FIGURE 1</text>
-<text x="40" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">Days per year with a revenue-generating event</text>
-<text x="40" y="72" fill="#7a7770" font-family="'Fraunces', Georgia, serif" font-size="12" font-style="italic">Nobody is at 365. The gap is between clubs pursuing the model and clubs of similar scale that have not.</text>
+<text x="40" y="54" fill="#23201a" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="500">Major event days per year — current vs target</text>
+<text x="40" y="72" fill="#7a7770" font-family="'Fraunces', Georgia, serif" font-size="12" font-style="italic">Even the most aggressive 365-day pursuers target ~100-130 event days at the top end. Nobody is approaching 365.</text>
 <line x1="40" y1="86" x2="720" y2="86" stroke="#d8d2c4" stroke-width="1"/>
 
-<text x="40" y="115" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2">365-DAY PURSUERS</text>
+<!-- Legend -->
+<rect x="440" y="98" width="14" height="10" fill="#9c8859"/>
+<text x="460" y="108" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">CURRENT (LOW-END)</text>
+<rect x="580" y="98" width="14" height="10" fill="none" stroke="#9c8859" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="600" y="108" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">TARGET (HIGH-END)</text>
 
-<text x="40" y="140" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Tottenham Hotspur Stadium</text>
-<rect x="260" y="128" width="270" height="16" fill="#9c8859"/>
-<text x="540" y="140" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">~150-180</text>
+<!-- 365-DAY PURSUERS -->
+<text x="40" y="140" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2">365-DAY PURSUERS</text>
 
-<text x="40" y="170" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Santiago Bernabéu (target)</text>
-<rect x="260" y="158" width="300" height="16" fill="#9c8859" opacity="0.65"/>
-<text x="570" y="170" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">~200 target</text>
+<!-- Scale: x=260 is 0, x=720 is 140. 3.29 px per event day. -->
 
-<text x="40" y="200" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Etihad Stadium + Co-op Live campus</text>
-<rect x="260" y="188" width="150" height="16" fill="#9c8859"/>
-<text x="420" y="200" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">~80-100</text>
+<!-- 1. Etihad + Co-op Live: 100 current, 130 target -->
+<text x="40" y="168" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Etihad Stadium + Co-op Live campus</text>
+<rect x="260" y="156" width="329" height="14" fill="#9c8859"/>
+<rect x="260" y="176" width="428" height="14" fill="none" stroke="#9c8859" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="594" y="167" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">~100-130</text>
+<text x="260" y="205" fill="#7a7770" font-family="'Inter Tight', sans-serif" font-size="10" font-style="italic">Co-op Live arena (23,500 cap) drives most of the campus event calendar.</text>
 
-<line x1="40" y1="225" x2="720" y2="225" stroke="#d8d2c4" stroke-width="1"/>
-<text x="40" y="245" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2">COMPARABLE-TIER VENUES · NO 365-DAY PROGRAMME</text>
+<!-- 2. Santiago Bernabéu: 50 low, 65 target -->
+<text x="40" y="238" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Santiago Bernabéu</text>
+<rect x="260" y="226" width="165" height="14" fill="#9c8859"/>
+<rect x="260" y="246" width="214" height="14" fill="none" stroke="#9c8859" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="479" y="257" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">~50-65 target</text>
+<text x="260" y="275" fill="#c8102e" font-family="'JetBrains Mono', monospace" font-size="9" font-style="italic">gap = concert programme currently suspended (Chamartín litigation)</text>
 
-<text x="40" y="270" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Emirates Stadium (Arsenal)</text>
-<rect x="260" y="258" width="60" height="16" fill="#b2ac9e"/>
-<text x="330" y="270" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11">~35-45</text>
+<!-- 3. Tottenham: 55 low, 60 target -->
+<text x="40" y="308" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Tottenham Hotspur Stadium</text>
+<rect x="260" y="296" width="181" height="14" fill="#9c8859"/>
+<rect x="260" y="316" width="197" height="14" fill="none" stroke="#9c8859" stroke-width="1.4" stroke-dasharray="3 2"/>
+<text x="462" y="327" fill="#9c8859" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">~55-60 (Haringey cap)</text>
 
-<text x="40" y="300" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Old Trafford (Manchester United)</text>
-<rect x="260" y="288" width="60" height="16" fill="#b2ac9e"/>
-<text x="330" y="300" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11">~35-45</text>
+<!-- Divider -->
+<line x1="40" y1="355" x2="720" y2="355" stroke="#d8d2c4" stroke-width="1"/>
 
-<text x="40" y="330" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">San Siro (Milan / Inter)</text>
-<rect x="260" y="318" width="90" height="16" fill="#b2ac9e"/>
-<text x="360" y="330" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="11">~55-70</text>
+<!-- COMPARABLE-TIER -->
+<text x="40" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1.2">COMPARABLE-TIER VENUES · NO 365-DAY PROGRAMME</text>
 
-<line x1="260" y1="360" x2="720" y2="360" stroke="#7a7770" stroke-width="0.6"/>
-<text x="260" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">0</text>
-<text x="380" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">100</text>
-<text x="500" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">200</text>
-<text x="620" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">300</text>
-<text x="720" y="378" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="end">365</text>
-<text x="490" y="398" text-anchor="middle" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9" letter-spacing="1">DAYS PER YEAR IN COMMERCIAL USE</text>
+<text x="40" y="404" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Emirates Stadium (Arsenal)</text>
+<rect x="260" y="392" width="95" height="14" fill="#b2ac9e"/>
+<text x="360" y="403" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~29</text>
+
+<text x="40" y="430" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Old Trafford (Manchester United)</text>
+<rect x="260" y="418" width="92" height="14" fill="#b2ac9e"/>
+<text x="357" y="429" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~28</text>
+
+<text x="40" y="456" fill="#23201a" font-family="'Inter Tight', sans-serif" font-size="12">Anfield (Liverpool)</text>
+<rect x="260" y="444" width="92" height="14" fill="#b2ac9e"/>
+<text x="357" y="455" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="10">~28</text>
+
+<!-- Scale -->
+<line x1="260" y1="475" x2="720" y2="475" stroke="#7a7770" stroke-width="0.6"/>
+<text x="260" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">0</text>
+<text x="326" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">20</text>
+<text x="392" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">40</text>
+<text x="458" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">60</text>
+<text x="524" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">80</text>
+<text x="590" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">100</text>
+<text x="656" y="490" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">120</text>
+<text x="720" y="490" text-anchor="end" fill="#7a7770" font-family="'JetBrains Mono', monospace" font-size="9">140</text>
 </svg>
-<figcaption><strong>Figure 1</strong> · Even the most aggressive 365-day programmes run at roughly half the calendar. The gap that matters is not between 200 and 365 — it is between clubs that have restructured their venues for non-football use (gold) and comparable-tier clubs that have not (grey). <em>Estimate · Ledger analysis of venue event calendars, club disclosures, and reported concert / NFL schedules through 2025-26.</em></figcaption>
+<figcaption><strong>Figure 1</strong> · Major event days per year across the three 365-day pursuers and comparable-tier controls. Etihad + Co-op Live campus leads at ~100-130 (the adjacent Co-op Live arena drives most of that). Bernabéu targets ~50-65 event days when the concert programme is fully operational — currently suppressed by the Chamartín noise litigation. Tottenham operates within the Haringey Council planning cap of 30 non-football events plus ~25 match-days, giving ~55-60. Even the top of that range sits far below 365. <em>Estimate · Ledger analysis of Haringey Council planning permission (Aug 2024), reported concert calendars 2024-25, and published fixture schedules.</em></figcaption>
 </figure>
 
 <h2 id="sec2" class="prose-h2"><span class="prose-h2-num">02</span> The forces behind the build</h2>

@@ -498,7 +498,9 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* Article cards — split (image-left) + stacked (image-top); uniform height via a
    read-time + bookmark footer pinned to the bottom of every card. */
-.nl-row .acard { flex: 0 0 300px; scroll-snap-align: start; display: flex; flex-direction: column; }
+/* each card is a bordered white box; images have softly rounded corners (per mockup) */
+.nl-row .acard { flex: 0 0 320px; scroll-snap-align: start; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 16px; }
+.nl-row .acard-media { border-radius: 5px; }
 .nl-row .acard-foot { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; }
 .nl-row .acard-foot .acard-meta { margin: 0; letter-spacing: 0.08em; text-transform: uppercase; }
 .acard-bm { background: transparent; border: 0; color: var(--green); cursor: pointer; padding: 2px; display: inline-flex; opacity: 0.7; transition: opacity 0.2s ease; }
@@ -507,7 +509,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 /* wide-lockup images (e.g. the PIF wordmark): show the full 16:9 frame, uncropped */
 .nl-row .acard--stacked .acard-media--wide { aspect-ratio: 16 / 9; background: #0d0d0d; }
 .nl-row .acard-media--wide img { object-fit: contain; }
-.nl-row .acard--split { flex: 0 0 464px; display: grid; grid-template-columns: 46% 1fr; gap: 20px; align-items: stretch; }
+.nl-row .acard--split { flex: 0 0 494px; display: grid; grid-template-columns: 46% 1fr; gap: 20px; align-items: stretch; }
 .nl-row .acard--split .acard-media { order: 0; margin: 0; aspect-ratio: auto; min-height: 210px; height: 100%; }
 .nl-row .acard--split .acard-splitbody { display: flex; flex-direction: column; min-width: 0; }
 .nl-row .acard--split .acard-title { min-height: 0; font-size: 22px; }

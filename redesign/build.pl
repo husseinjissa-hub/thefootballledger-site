@@ -237,34 +237,72 @@ my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
-# --- Editor's Selection ---
-my $lead = $bySlug{'l1-fifa-ffe-world-cup-sale'} // $live[0];
+# --- Editor's Selection (This Week lead + two cards) ---
+sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
+my $lead = $bySlug{'l9-stadium-365-day-venue'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(macro-08-streaming-native-limits macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery);
-my ($ltype,$lrest) = ov_parts($lead);
-my $lead_bg = (-e "assets/img/articles/".$lead->{slug}.".jpg") ? "/assets/img/articles/".$lead->{slug}.".jpg" : "/assets/img/articles/macro-01-lead.jpg";
+               map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale l5-coach-staff-talent-ip);
+my $lp = "assets/img/articles/".$lead->{slug}.".jpg";
+my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
-  '<a class="es-lead" href="'.esc($lead->{url}).'">'."\n".
-  '      <div class="es-lead-bg"><img src="'.$lead_bg.'" alt="" loading="lazy"></div>'."\n".
-  '      <div class="overline">'.esc($ltype).($lrest?' '.esc($lrest):'').'</div>'."\n".
-  '      <h3 class="es-lead-title">'.esc($lead->{title}).'</h3>'."\n".
-  '      <p class="es-lead-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'."\n".
-  '      <div class="es-lead-meta">'.art_meta($lead).'</div>'."\n".
-  '      <span class="es-lead-cta">Read article <span class="arw">→</span></span>'."\n".
-  '    </a>';
-my $stack_html = join("\n      ", map {
-  my $a=$_; my ($t,$r)=ov_parts($a);
-  '<a class="es-item" href="'.esc($a->{url}).'">'."\n".
-  '        <div>'."\n".
-  '          <div class="es-item-ol"><b>'.esc($t).'</b>'.($r?' '.esc($r):'').'</div>'."\n".
-  '          <div class="es-item-title">'.esc($a->{title}).'</div>'."\n".
-  '          <div class="es-item-meta">'.art_meta($a).'</div>'."\n".
-  '        </div>'."\n".
-  '        '.art_thumb($a,'es-item-thumb')."\n".
-  '      </a>'
+  '<a class="es-lead2" href="'.esc($lead->{url}).'">'.
+    '<div class="es-lead2-media"><span class="es-lead2-badge">Editor\'s Selection</span><img src="'.$lead_img.'" alt="" loading="lazy"></div>'.
+    '<div class="es-lead2-body">'.
+      '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
+      '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
+      '<p class="es-lead2-dek">'.esc(dek_sentence($lead->{dek},150)).'</p>'.
+      '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
+    '</div>'.
+  '</a>';
+my $cards_html = join('', map {
+  my $a=$_;
+  '<a class="es-card" href="'.esc($a->{url}).'">'.
+    art_thumb($a,'es-card-thumb').
+    '<div class="es-card-body">'.
+      '<div class="es-card-tag">'.esc(es_tag($a)).'</div>'.
+      '<div class="es-card-title">'.esc($a->{title}).'</div>'.
+      '<div class="es-card-meta">'.art_meta($a).'</div>'.
+    '</div>'.
+  '</a>'
 } @featured);
-my $editors = '    '.$lead_html."\n    ".'<div class="es-stack">'."\n      ".$stack_html."\n    ".'</div>';
+my $editors = $lead_html.'<div class="es-cards">'.$cards_html.'</div>';
+
+# --- From the Record (newest issue's stories, for the This Week sidebar) ---
+my @MON3 = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
+my ($rec_range,$rec_items,$rec_url) = ('','','/record');
+{
+  my @rb;
+  if ($cj =~ /"briefings":\s*\[(.*?)\]\s*\}/s) { my $blk=$1;
+    while ($blk =~ /\{([^{}]*)\}/g) { my $o=$1; my %r;
+      $r{date}=($o=~/"date":"([^"]*)"/)?$1:''; $r{url}=($o=~/"url":"([^"]*)"/)?$1:'';
+      push @rb,\%r if $r{url};
+    }
+  }
+  my ($newest) = sort { ($b->{date}||'') cmp ($a->{date}||'') } @rb;
+  if ($newest) {
+    $rec_url = $newest->{url};
+    my $file = (split m{/}, $newest->{url})[-1]; (my $slug=$file)=~s/\.html$//;
+    # week range ending on the issue date
+    if ($newest->{date} =~ /^(\d+)-(\d+)-(\d+)$/) {
+      my ($Y,$M,$D)=($1,$2,$3);
+      require Time::Local;
+      my @s = localtime(Time::Local::timelocal(0,0,12,$D,$M-1,$Y) - 6*86400);
+      $rec_range = ($s[4]==$M-1) ? sprintf('%d–%d %s',$s[3],$D,$MON3[$M-1])
+                                 : sprintf('%d %s – %d %s',$s[3],$MON3[$s[4]],$D,$MON3[$M-1]);
+    }
+    my $src = "redesign/src-briefing/$file";
+    if (-e $src) { my $raw=slurp($src); my $n=0;
+      while ($raw =~ /<h2 class="story-headline">(.*?)<\/h2>/gs) { $n++;
+        (my $h=$1)=~s/<[^>]+>//g; $h=~s/\s+/ /g; $h=~s/^\s+|\s+$//g;
+        my $timg = "assets/img/briefing/$slug/story-$n.jpg";
+        my $thumb = (-e $timg) ? '<span class="rec-thumb"><img src="/'.$timg.'" alt="" loading="lazy"></span>' : '<span class="rec-thumb rec-thumb--ph"></span>';
+        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-headline">'.esc($h).'</span>'.$thumb.'</a></li>';
+        last if $n>=5;
+      }
+    }
+  }
+}
 
 # --- Type pills (with counts) ---
 my %tycount; $tycount{$_->{type}}++ for @arts;
@@ -376,6 +414,9 @@ my $feed_rows = join("\n        ", map {
 
 my $lg = slurp("redesign/pages/ledger.html");
 $lg =~ s/\{\{EDITORS\}\}/$editors/;
+$lg =~ s/\{\{RECORD_RANGE\}\}/$rec_range/;
+$lg =~ s/\{\{RECORD_ITEMS\}\}/$rec_items/;
+$lg =~ s/\{\{RECORD_URL\}\}/$rec_url/;
 $lg =~ s/\{\{PEOPLE\}\}/$people_section/;
 $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;

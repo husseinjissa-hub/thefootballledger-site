@@ -1,14 +1,19 @@
-<section class="wrap ledger-hero">
-  <div class="overline overline--rule overline--green">Section 8 · The Ledger</div>
-  <h1 class="h1">The moves that <span class="serif-em">redraw</span> the map.</h1>
-  <p class="deck">Analysis ordered by editorial judgement and recency — not by layer.<br>Layer is a lens you can filter by.</p>
-  <hr class="ledger-hero-rule">
-</section>
-
-<section class="wrap editors">
-  <div class="editors-head"><span class="overline overline--green">Editor's Selection</span></div>
-  <div class="es-grid">
+<section class="wrap thisweek">
+  <div class="tw-grid">
+    <div class="tw-main">
+      <div class="sec-head"><span class="overline overline--rule overline--green">This Week at the Ledger</span></div>
 {{EDITORS}}
+    </div>
+    <aside class="tw-record">
+      <div class="tw-record-head">
+        <span class="overline overline--green">From the Record</span>
+        <span class="tw-record-range">{{RECORD_RANGE}}</span>
+      </div>
+      <ol class="tw-record-list">
+{{RECORD_ITEMS}}
+      </ol>
+      <a class="tw-record-more link-arw" href="{{RECORD_URL}}">View the full Record <span class="arw">→</span></a>
+    </aside>
   </div>
 </section>
 

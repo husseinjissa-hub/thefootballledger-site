@@ -583,8 +583,8 @@ mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; pa
 /* ============================================================
    THE LEDGER — article detail
    ============================================================ */
-.art-wrap { max-width: 1200px; margin: 0 auto; padding: 40px var(--gutter) 90px; }
-.art-grid { display: grid; grid-template-columns: 268px minmax(0,1fr); gap: 64px; align-items: start; }
+.art-wrap { max-width: 1240px; margin: 0 auto; padding: 40px var(--gutter) 90px; }
+.art-grid { display: grid; grid-template-columns: 250px minmax(0,1fr); gap: 52px; align-items: start; }
 
 /* Sidebar */
 .art-side { position: sticky; top: 90px; font-family: var(--sans); }
@@ -625,6 +625,9 @@ mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; pa
 .art-standfirst { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2vw, 21px); line-height: 1.55; color: var(--ink-2); max-width: 62ch; margin-bottom: 40px; }
 .art-hero { aspect-ratio: 16/9; border: 1px solid var(--line); overflow: hidden; background: var(--cream); margin-bottom: 26px; }
 .art-hero img { width: 100%; height: 100%; object-fit: cover; }
+/* full-composite hero (infographics): show the whole image, uncropped */
+.art-hero--full { aspect-ratio: auto; }
+.art-hero--full img { height: auto; object-fit: contain; }
 
 .art-metastrip { display: grid; grid-template-columns: repeat(3,1fr); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 44px; }
 .art-meta-cell { display: flex; align-items: center; gap: 12px; padding: 18px 22px; border-left: 1px solid var(--line); }
@@ -644,7 +647,10 @@ mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; pa
 .tk-desc { font-size: 14px; line-height: 1.5; color: var(--ink-2); }
 
 /* Prose */
-.article-prose { font-size: 17px; line-height: 1.72; color: var(--ink); max-width: 66ch; }
+.article-prose { font-size: 17px; line-height: 1.72; color: var(--ink); }
+/* text sits at a readable measure; figures & charts span the full column */
+.article-prose > * { max-width: 74ch; }
+.article-prose > figure { max-width: none; }
 .article-prose > p { margin: 0 0 22px; }
 .article-prose .lead { font-size: 19px; line-height: 1.68; color: var(--ink); }
 .article-prose .lead::first-letter, .prose-dropcap::first-letter { }

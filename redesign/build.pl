@@ -124,16 +124,8 @@ my %liveBySlug = map { $_->{slug} => $_ } @live;
 my @topSlugs = qw(l1-fifa-ffe-world-cup-sale macro-05b-sportainment-survive-2028 l3-barcelona-crisis-recovery macro-08-streaming-native-limits l5-coach-staff-talent-ip l8-data-led-underdogs l4-pif-phase-2 macro-01-trophy-to-operating);
 my $top = join("\n    ", map { story_card($_) } grep { defined } map { $liveBySlug{$_} } @topSlugs);
 
-# ---------- Overview ----------
-my $ov = slurp("redesign/pages/overview.html");
-$ov =~ s/\{\{TOP_STORIES\}\}/    $top/;
-render_page(
-  out=>"index.html", active=>"overview",
-  title=>"The Football Ledger — The Business of Football",
-  desc=>"Independent editorial analysis of football's business, governance, and capital — ownership, multi-club groups, media rights, and the operators shaping the game's next decade.",
-  canonical=>"/",
-  body=>$ov,
-);
+# ---------- Overview removed — The Ledger is now the homepage (/) ----------
+# (overview.html is retained in redesign/pages/ but no longer rendered)
 
 # ---------- entities ----------
 my @ents;
@@ -389,10 +381,10 @@ $lg =~ s/\{\{TYPE_PILLS\}\}/          $type_pills/;
 $lg =~ s/\{\{FILTER_LAYERS\}\}/          $filter_layers/;
 $lg =~ s/\{\{FEED_TOTAL\}\}/scalar(@feed)/e;
 $lg =~ s/\{\{FEED_ROWS\}\}/        $feed_rows/;
-render_page(out=>"ledger.html", active=>"ledger",
-  title=>"The Ledger — Analysis · The Football Ledger",
-  desc=>"Editorial analysis of the moves redrawing football's business — ownership, capital, media rights, and operating shifts. Filter by type and ecosystem layer.",
-  canonical=>"/ledger", body=>$lg);
+render_page(out=>"index.html", active=>"ledger",
+  title=>"The Football Ledger — The Business of Football",
+  desc=>"The Football Ledger — editorial analysis of the moves redrawing football's business: ownership, capital, media rights, and operating shifts. This week's picks, the nine-layer map, and the full searchable archive.",
+  canonical=>"/", body=>$lg);
 
 # ============================================================
 #  THE LEDGER — article detail (reskin live posts + stub prod)

@@ -293,11 +293,19 @@ my ($rec_range,$rec_items,$rec_url) = ('','','/record');
     }
     my $src = "redesign/src-briefing/$file";
     if (-e $src) { my $raw=slurp($src); my $n=0;
-      while ($raw =~ /<h2 class="story-headline">(.*?)<\/h2>/gs) { $n++;
-        (my $h=$1)=~s/<[^>]+>//g; $h=~s/\s+/ /g; $h=~s/^\s+|\s+$//g;
+      # Iterate story articles: headline + a one-sentence summary (first sentence
+      # of the story body) so the sidebar explains what each item is about.
+      while ($raw =~ /<article[^>]*class="story"[^>]*>(.*?)<\/article>/gs) {
+        my $sbody = $1; $n++;
+        my ($h) = $sbody =~ /<h2 class="story-headline">(.*?)<\/h2>/s;
+        $h //= ''; $h=~s/<[^>]+>//g; $h=~s/\s+/ /g; $h=~s/^\s+|\s+$//g;
+        my ($p) = $sbody =~ /<p>(.*?)<\/p>/s;
+        my $sum = $p // ''; $sum=~s/<[^>]+>//g; $sum=~s/&[a-z#0-9]+;/ /gi; $sum=~s/\s+/ /g; $sum=~s/^\s+|\s+$//g;
+        $sum = $1 if $sum =~ /^(.*?[.!?])(?:\s|$)/;   # trim to the first sentence
         my $timg = "assets/img/briefing/$slug/story-$n.jpg";
         my $thumb = (-e $timg) ? '<span class="rec-thumb"><img src="/'.$timg.'" alt="" loading="lazy"></span>' : '<span class="rec-thumb rec-thumb--ph"></span>';
-        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-headline">'.esc($h).'</span>'.$thumb.'</a></li>';
+        my $dek = $sum ne '' ? '<span class="rec-dek">'.esc($sum).'</span>' : '';
+        $rec_items .= '<li class="rec-item"><a href="'.esc($newest->{url}).'"><span class="rec-num">'.sprintf('%02d',$n).'</span><span class="rec-mid"><span class="rec-headline">'.esc($h).'</span>'.$dek.'</span>'.$thumb.'</a></li>';
         last if $n>=5;
       }
     }
@@ -329,21 +337,52 @@ my %LAYER_TAG = (
   8=>'Data, performance and the football-tech stack.',
   9=>'Stadiums, matchday and the fan experience.',
 );
+# Nine-layer article card in one of three editorial forms (standard / stacked /
+# split) so each row reads as editorial rhythm, not a uniform grid (PDF §10).
+sub nl_card {
+  my ($a,$v) = @_; $v ||= 'standard';
+  my $pill = $a->{layer} ne '' ? '<span class="tag-pill">L'.$a->{layer}.'</span>' : '';
+  my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
+  my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
+  my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
+  my $media = (-e $imgp)
+    ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    : '<div class="acard-media img-ph"><span>Image</span></div>';
+  my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,140)).'</p>' : '';
+  my $tags  = '<div class="acard-tags"><span class="acard-cat">'.esc(uc $a->{type}).'</span>'.$pill.$theme.'</div>';
+  my $title = '<div class="acard-title">'.esc($a->{title}).'</div>';
+  my $metah = '<div class="acard-meta">'.$meta.'</div>';
+  if ($v eq 'split') {
+    return '<a class="acard acard--split" href="'.esc($a->{url}).'">'.$media.
+           '<div class="acard-splitbody">'.$tags.$title.$dek.$metah.'</div></a>';
+  } elsif ($v eq 'stacked') {
+    return '<a class="acard acard--stacked" href="'.esc($a->{url}).'">'.$media.$tags.$title.$dek.$metah.'</a>';
+  }
+  return '<a class="acard" href="'.esc($a->{url}).'">'.$tags.$title.$dek.$media.$metah.'</a>';
+}
+my @VARSEQ = ('split','stacked','standard');
 my (@nl_tabs, @nl_panels);
 for my $L (@FL) {
   my ($n,$nm) = @$L; my $on = ($n==1) ? ' on' : '';
   push @nl_tabs, '<button class="nl-tab'.$on.'" type="button" data-layer="'.$n.'"><span class="nl-tab-num">'.sprintf('%02d',$n).'</span> '.esc(uc($nm)).'</button>';
   my @la = sort { ($b->{date}||'') cmp ($a->{date}||'') } grep { ($_->{layer}//'') eq $n && !$_->{is_person} } @arts;
   @la = @la[0..2] if @la>3;
-  my $cards = @la ? join('', map { story_card($_) } @la)
-                  : '<div class="nl-empty">Analysis for this layer is in production.</div>';
+  my $cards = @la
+    ? join('', map { nl_card($la[$_], $VARSEQ[($_ + $n - 1) % 3]) } 0..$#la)
+    : '<div class="nl-empty">Analysis for this layer is in production.</div>';
   my $intro = '<div class="nl-intro">'.
     '<div class="nl-intro-num">'.sprintf('%02d',$n).'</div>'.
     '<div class="nl-intro-name">'.esc(uc($nm)).'</div>'.
     '<p class="nl-intro-tag">'.esc($LAYER_TAG{$n}//'').'</p>'.
-    '<button class="nl-explore link-arw" type="button" data-layer="'.$n.'">Explore this layer <span class="arw">→</span></button>'.
+    '<button class="nl-explore" type="button" data-layer="'.$n.'">Explore this layer <span class="arw">&#8594;</span></button>'.
     '</div>';
-  push @nl_panels, '<div class="nl-panel'.$on.'" data-layer="'.$n.'"><div class="nl-row">'.$intro.$cards.'</div></div>';
+  # clipped "peek" of the next layer at the right edge (PDF §11)
+  my ($nn,$nnm) = @{ $FL[ $n % scalar(@FL) ] };
+  my $peek = '<button class="nl-peek" type="button" aria-label="Next layer: '.esc($nnm).'">'.
+    '<div class="nl-intro-num">'.sprintf('%02d',$nn).'</div>'.
+    '<div class="nl-intro-name">'.esc(uc($nnm)).'</div>'.
+    '<p class="nl-intro-tag">'.esc($LAYER_TAG{$nn}//'').'</p></button>';
+  push @nl_panels, '<div class="nl-panel'.$on.'" data-layer="'.$n.'"><div class="nl-row">'.$intro.$cards.$peek.'</div></div>';
 }
 my $nl_tabs_html = join("\n          ", @nl_tabs);
 my $nl_panels_html = join("\n        ", @nl_panels);
@@ -359,24 +398,46 @@ my @PEOPLE = (
   {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
 );
 my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
-# compact person card for the homepage People row (portrait + name + one-liner)
-sub pp_card {
+# Full-image profile card (one continuous photograph, deep-green gradient, text
+# over the photo) — the approved profile-card treatment, per PDF §15.
+sub person_card {
   my ($p)=@_;
   my $imgp = "assets/img/articles/".$p->{slug}.".jpg";
-  my $op = $OBJPOS{$p->{slug}} // '50% 20%';
-  my $img = (-e $imgp) ? '<img class="pp-img" src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy">' : '<span class="pp-img pp-img--ph"></span>';
-  return '<a class="pp-card" href="'.esc($p->{url}).'">'.
-    '<div class="pp-head">'.$img.'<div class="pp-txt"><div class="pp-name">'.esc($p->{name}).'</div><div class="pp-blurb">'.esc($p->{blurb}//$p->{title}).'</div></div></div>'.
-    '<span class="pp-arw"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>'.
-    '</a>';
+  my $op = $OBJPOS{$p->{slug}} // '50% 18%';
+  my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
+  my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
+  return
+  '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
+    '<div class="person-tags"><span class="person-pill">Profile</span></div>'.
+    '<div class="person-body">'.
+      '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
+      '<p class="person-desc">'.esc($p->{blurb}//$p->{title}).'</p>'.
+      '<div class="person-meta">'.$meta.'</div>'.
+    '</div></a>';
 }
-my $people_section = '<div class="hf-people">'.
-  '<div class="hf-head">'.
-    '<span class="overline overline--green">People Shaping the Game</span>'.
-    '<div class="hf-arrows"><button class="pp-nav" id="peoplePrev" type="button" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button><button class="pp-nav" id="peopleNext" type="button" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button></div>'.
-  '</div>'.
-  '<div class="pp-row" id="peopleTrack">'.join('', map { pp_card($_) } @PEOPLE).'</div>'.
-  '</div>';
+my $people_cards = join('', map { person_card($_) } @PEOPLE);
+my $people_section = <<"HTML";
+<section class="wrap people-sec hpframe">
+  <div class="sec-head people-head">
+    <div>
+      <span class="overline overline--rule overline--green">People Shaping the Game</span>
+      <p class="people-sub">The operators, investors and influencers redefining football.</p>
+    </div>
+    <div class="people-headnav">
+      <a class="link-arw people-viewall" href="#feedSection" id="peopleViewAll">View all profiles <span class="arw">&#8594;</span></a>
+      <div class="nl-nav">
+        <button class="nl-arrow" id="peoplePrev" type="button" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 6l-6 6 6 6"/></svg></button>
+        <button class="nl-arrow" id="peopleNext" type="button" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="people-viewport">
+    <div class="people-track" id="peopleTrack">
+      $people_cards
+    </div>
+  </div>
+</section>
+HTML
 
 # "People" chip appended to the layer filter list (no number — it is not a numbered layer)
 $filter_layers .= "\n          ".'<button class="fr-layer fr-layer--people" type="button" data-layer="people" aria-pressed="false"><span class="fr-layer-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M4 19c0-2.8 2.2-5 5-5s5 2.2 5 5M15 19c0-1.9.9-3.4 2.4-4"/></svg></span><span class="fr-layer-num"></span> People</button>';

@@ -299,6 +299,10 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .navcard-arw { margin-top: auto; padding-top: 20px; color: var(--green); }
 @media (max-width: 1000px) { .navcards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .navcards { grid-template-columns: 1fr; } }
+/* "How to navigate" — moved from Overview into About (About Page brief §7–§9) */
+.navigate-sec { border-top: 1px solid var(--line); padding: 60px 0; }
+.navigate-head { margin-bottom: 32px; }
+@media (max-width: 900px) { .navigate-sec { padding: 44px 0; } }
 
 /* ===== CTA bands ===== */
 .cta-dark { position: relative; background: var(--green); color: var(--paper); overflow: hidden; border-radius: var(--radius); }
@@ -440,9 +444,11 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .tw-record-list { list-style: none; margin: 0; padding: 0; }
 .rec-item { border-top: 1px solid var(--line); }
 .rec-item:first-child { border-top: 0; }
-.rec-item a { display: grid; grid-template-columns: 26px 1fr 48px; gap: 12px; align-items: center; padding: 16px 0; }
-.rec-num { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; }
-.rec-headline { font-family: var(--serif); font-size: 15.5px; line-height: 1.3; color: var(--ink); }
+.rec-item a { display: grid; grid-template-columns: 26px 1fr 48px; gap: 12px; align-items: start; padding: 15px 0; }
+.rec-num { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--green); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.rec-mid { min-width: 0; }
+.rec-headline { display: block; font-family: var(--serif); font-size: 15.5px; line-height: 1.28; color: var(--ink); }
+.rec-dek { display: block; font-family: var(--sans); font-size: 12px; line-height: 1.4; color: var(--ink-3); margin-top: 5px; }
 .rec-item a:hover .rec-headline { color: var(--green); }
 .rec-thumb { width: 48px; height: 48px; border-radius: 3px; overflow: hidden; border: 1px solid var(--line); background: var(--cream); }
 .rec-thumb img { width: 100%; height: 100%; object-fit: cover; }
@@ -478,39 +484,39 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nl-intro-num { font-family: var(--serif); font-size: 46px; line-height: 1; color: var(--green); }
 .nl-intro-name { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-top: 12px; }
 .nl-intro-tag { font-family: var(--serif); font-size: 16px; line-height: 1.35; color: var(--ink-2); margin-top: 12px; }
-.nl-explore { margin-top: auto; padding: 20px 0 0; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; border: 0; cursor: pointer; align-self: flex-start; color: var(--green); }
-.nl-row .acard { flex: 0 0 280px; scroll-snap-align: start; }
-.nl-empty { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 200px; font-family: var(--serif); font-style: italic; color: var(--ink-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 30px; }
-@media (max-width: 900px) { .nl-head { grid-template-columns: 1fr; gap: 14px; } .nl-nav { display: none; } }
+/* filled deep-green button (matches approved mockup) */
+.nl-explore { margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 11px 17px; border-radius: var(--radius); background: var(--green); color: var(--paper); font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.03em; border: 1px solid var(--green); cursor: pointer; transition: background 0.2s ease; }
+.nl-explore:hover { background: #0a2019; }
+.nl-explore .arw { transition: transform 0.2s ease; }
+.nl-explore:hover .arw { transform: translateX(3px); }
 
-/* ===== Homepage footer: People Shaping the Game + Explore the Full Ledger ===== */
-.homefoot { padding-top: 48px; padding-bottom: 8px; }
-.hf-grid { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 48px; align-items: start; }
-.hf-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
-.hf-arrows { display: flex; gap: 8px; }
-.pp-nav { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s ease, color 0.2s ease; }
-.pp-nav:hover { border-color: var(--green); color: var(--green); }
-.pp-row { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
-.pp-row::-webkit-scrollbar { display: none; }
-.pp-card { flex: 0 0 calc((100% - 66px) / 4); display: flex; flex-direction: column; }
-.pp-head { display: grid; grid-template-columns: 50px 1fr; gap: 12px; align-items: start; }
-.pp-img { width: 50px; height: 50px; border-radius: 4px; object-fit: cover; filter: grayscale(1); border: 1px solid var(--line); }
-.pp-img--ph { background: var(--cream); display: block; }
-.pp-name { font-family: var(--serif); font-size: 15px; line-height: 1.15; color: var(--ink); margin-bottom: 4px; }
-.pp-card:hover .pp-name { color: var(--green); }
-.pp-blurb { font-family: var(--sans); font-size: 12px; line-height: 1.4; color: var(--ink-3); }
-.pp-arw { margin-top: 12px; color: var(--green); display: inline-flex; transition: transform 0.2s ease; }
-.pp-card:hover .pp-arw { transform: translateX(3px); }
-.hf-explore { border-left: 1px solid var(--line); padding-left: 40px; }
-.hf-explore-sub { font-family: var(--serif); font-size: clamp(16px,1.6vw,19px); line-height: 1.4; color: var(--ink-2); margin: 12px 0 20px; }
-.ef-search { margin-bottom: 16px; }
-.ef-search input { background: var(--paper); }
-.hf-explore .btn { width: 100%; justify-content: center; }
-@media (max-width: 1000px) {
-  .hf-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hf-explore { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 28px; }
-}
-@media (max-width: 620px) { .pp-card { flex-basis: 70%; } }
+/* Article cards — three editorial forms for rhythm (PDF §10) */
+.nl-row .acard { flex: 0 0 280px; scroll-snap-align: start; }
+.nl-row .acard--stacked { flex: 0 0 300px; }
+.nl-row .acard--stacked .acard-media { order: 0; margin-top: 0; margin-bottom: 14px; aspect-ratio: 16 / 10; }
+.nl-row .acard--split { flex: 0 0 468px; display: grid; grid-template-columns: 45% 1fr; gap: 20px; align-items: stretch; }
+.nl-row .acard--split .acard-media { order: 0; margin: 0; aspect-ratio: auto; min-height: 210px; height: 100%; }
+.nl-row .acard--split .acard-splitbody { display: flex; flex-direction: column; min-width: 0; }
+.nl-row .acard--split .acard-title { min-height: 0; }
+.nl-row .acard--split .acard-meta { margin-top: auto; }
+/* clipped peek of the next layer at the right edge (PDF §11) */
+.nl-peek { flex: 0 0 190px; scroll-snap-align: start; text-align: left; padding: 26px 22px; border: 1px solid var(--line); border-left: 3px solid var(--green); border-radius: var(--radius); background: var(--cream); opacity: 0.62; cursor: pointer; transition: opacity 0.2s ease; }
+.nl-peek:hover { opacity: 1; }
+.nl-empty { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 200px; font-family: var(--serif); font-style: italic; color: var(--ink-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 30px; }
+@media (max-width: 900px) { .nl-head { grid-template-columns: 1fr; gap: 14px; } .nl-nav { display: none; } .nl-row .acard--split { flex-basis: 340px; grid-template-columns: 1fr; } .nl-row .acard--split .acard-media { min-height: 160px; } }
+
+/* ===== Framed editorial section containers (approved homepage mockup §3/§20/§24) ===== */
+.hpframe { border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); padding: 34px var(--gutter); margin: 30px auto; }
+.hpframe + .hpframe { margin-top: 0; }
+@media (max-width: 900px) { .hpframe { padding: 26px var(--gutter); margin: 22px auto; } }
+
+/* People header: "View all profiles" + carousel arrows */
+.people-headnav { display: flex; align-items: center; gap: 20px; }
+@media (max-width: 620px) { .people-headnav .nl-nav { display: none; } }
+
+/* Explore the Full Ledger — section header above the archive */
+.ef-head { margin-bottom: 26px; }
+.ef-sub { font-family: var(--serif); font-size: clamp(16px,1.6vw,19px); line-height: 1.4; color: var(--ink-2); margin-top: 12px; }
 
 /* Editor's Selection */
 .editors { padding-top: 8px; }

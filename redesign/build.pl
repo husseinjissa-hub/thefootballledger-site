@@ -244,6 +244,10 @@ sub art_thumb {
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
 my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
+# David Beckham — a People profile now promoted to a live article; defined here so it
+# can be an Editor's Selection feature (the same record is reused in @PEOPLE below).
+my $beckham = {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'From No. 7 to a company.', title=>'From No. 7 to a company — how David Beckham became a business.', type=>'Profile', theme=>'', layer=>'', date=>'2026-08-14', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'The headline says a former footballer became a billionaire. The more useful story is how.'};
+$bySlug{'profile-david-beckham'} = $beckham;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -252,7 +256,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l9-stadium-365-day-venue'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale l5-coach-staff-talent-ip);
+               map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale profile-david-beckham);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -424,7 +428,7 @@ my $nl_dots_html = join('', map {
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
   {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
-  {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'Building brand beyond retirement.', title=>'From global icon to club owner: the business of influence.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-18', read=>9, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'From global icon to club owner: the business of influence.'},
+  $beckham,
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
   {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
 );
@@ -674,8 +678,8 @@ sub build_article {
     '<div class="art-meta-cell"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">'.$ICO_TAG.'</svg><span><span class="amc-k">Filed under</span><br><span class="amc-v">'.esc($mtag).'</span></span></div>';
 
   # hero
-  my $hp="assets/img/articles/$slug.jpg";
-  my %HERO_FULL = ('l9-stadium-365-day-venue'=>1);   # composite/infographic heroes shown uncropped (natural aspect)
+  my $hp = (-e "assets/img/articles/$slug-hero.jpg") ? "assets/img/articles/$slug-hero.jpg" : "assets/img/articles/$slug.jpg";
+  my %HERO_FULL = ('l9-stadium-365-day-venue'=>1, 'profile-david-beckham'=>1);   # composite/montage heroes shown uncropped (natural aspect)
   my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
   my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
 

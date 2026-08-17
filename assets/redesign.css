@@ -418,21 +418,18 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .thisweek { padding-top: 40px; padding-bottom: 8px; }
 .tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; }
 .tw-main { display: flex; flex-direction: column; }
-/* the lead grows to fill the left column so it reaches the bottom of the From-the-Record
-   list on the right (and the image gets more height) */
-.tw-main .es-lead2 { flex: 1 1 auto; }
 .tw-main .sec-head { margin-bottom: 22px; }
 /* editor's selection — horizontal lead */
-.es-lead2 { display: grid; grid-template-columns: 50% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
+.es-lead2 { display: grid; grid-template-columns: 52% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
 .es-lead2-media { position: relative; background: var(--cream); }
-.es-lead2-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 260px; }
+.es-lead2-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 250px; }
 .es-lead2-badge { position: absolute; top: 16px; left: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); background: rgba(14,43,34,0.72); border-radius: 2px; padding: 5px 10px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
-.es-lead2-body { padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; }
+.es-lead2-body { padding: 24px 30px; display: flex; flex-direction: column; }
 .es-lead2-tag { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
-.es-lead2-title { font-family: var(--serif); font-size: clamp(24px, 2.5vw, 32px); line-height: 1.12; color: var(--ink); margin-bottom: 14px; }
+.es-lead2-title { font-family: var(--serif); font-size: clamp(23px, 2.1vw, 29px); line-height: 1.12; color: var(--ink); margin-bottom: 12px; }
 .es-lead2:hover .es-lead2-title { color: var(--green); }
 .es-lead2-dek { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin-bottom: 22px; }
-.es-lead2-cta { margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.es-lead2-cta { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .es-lead2-meta { font-family: var(--sans); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
 .es-lead2-cta .link-arw { font-size: 13px; }
 /* two secondary cards */

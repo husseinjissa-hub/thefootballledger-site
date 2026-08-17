@@ -58,6 +58,10 @@ my %MACRO_LAYER = (
   'macro-08-streaming-native-limits'    => 6,   # Media
 );
 $_->{layer} = $MACRO_LAYER{$_->{slug}} for grep { exists $MACRO_LAYER{$_->{slug}} } @arts;
+# The athlete economy — filed under People (the player as owner), a full live article.
+# Not a single-person portrait, so it stays out of the "People Shaping the Game" row,
+# but is_person files it under the People category in the feed/record and This Week.
+push @arts, {slug=>'l4-athletes-cap-table', title=>"The player is no longer the face. He's on the cap table.", type=>'Profile', theme=>'', layer=>'', date=>'2026-08-17', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/l4-athletes-cap-table.html', dek=>"Footballers used to retire into coaching or punditry. Now they found chemicals firms, cognac houses and wearables, and take equity in AI \xE2\x80\x94 a structured map of how players became businesspeople, and why ownership is not the same as operating."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -253,10 +257,10 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'l9-stadium-365-day-venue'} // $live[0];
+my $lead = $bySlug{'l4-athletes-cap-table'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l1-fifa-ffe-world-cup-sale profile-david-beckham);
+               map  { $bySlug{$_} } qw(l9-stadium-365-day-venue profile-david-beckham);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -266,7 +270,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("How clubs are engineering \xC2\xA3600m\xE2\x80\x93\xC2\xA31.3bn venues to host football, concerts, NFL games and more \xE2\x80\x94 every single day.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Footballers used to retire into coaching or punditry. Now they found chemicals firms, cognac houses and wearables \xE2\x80\x94 and take equity in AI.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

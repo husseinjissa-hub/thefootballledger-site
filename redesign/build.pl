@@ -246,7 +246,7 @@ sub art_thumb {
 my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
 # David Beckham — a People profile now promoted to a live article; defined here so it
 # can be an Editor's Selection feature (the same record is reused in @PEOPLE below).
-my $beckham = {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'From No. 7 to a company.', title=>'From No. 7 to a company — how David Beckham became a business.', type=>'Profile', theme=>'', layer=>'', date=>'2026-08-14', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'The headline says a former footballer became a billionaire. The more useful story is how.'};
+my $beckham = {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'From No. 7 to a company.', title=>'How David Beckham became a business, not just a brand.', type=>'Profile', theme=>'', layer=>'', date=>'2026-08-14', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'The headline says a former footballer became a billionaire. The more useful story is how.'};
 $bySlug{'profile-david-beckham'} = $beckham;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }

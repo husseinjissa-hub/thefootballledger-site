@@ -74,7 +74,7 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 # macro-01 deliberately keeps its full dek (used as the Editor's Selection lead).
 my %HOOK = (
   # live
-  'l3-como-1907'                     => 'Como rose from bankruptcy to the Champions League in six years. Does the tourism-funded model actually pay for itself?',
+  'l3-como-1907'                     => 'Como rose to the Champions League in six years. But does it pay for itself?',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',

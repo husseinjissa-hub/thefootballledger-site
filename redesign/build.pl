@@ -62,6 +62,8 @@ $_->{layer} = $MACRO_LAYER{$_->{slug}} for grep { exists $MACRO_LAYER{$_->{slug}
 # Not a single-person portrait, so it stays out of the "People Shaping the Game" row,
 # but is_person files it under the People category in the feed/record and This Week.
 push @arts, {slug=>'l4-athletes-cap-table', title=>"The player is no longer the face. He's on the cap table.", type=>'Profile', theme=>'', layer=>'', date=>'2026-08-17', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/l4-athletes-cap-table.html', dek=>"Footballers used to retire into coaching or punditry. Now they found chemicals firms, cognac houses and wearables, and take equity in AI \xE2\x80\x94 a structured map of how players became businesspeople, and why ownership is not the same as operating."};
+# Como 1907 — Layer 3 club case study (tourism-funded model). Full live article.
+push @arts, {slug=>'l3-como-1907', title=>"The club that sells a lake.", type=>'Case study', theme=>'', layer=>3, date=>'2026-08-20', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l3-como-1907.html', dek=>"Como 1907 rose from bankruptcy to the Champions League in six years, and it is the smartest brand-building operation in football \xE2\x80\x94 but does the business actually pay for itself?"};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -72,6 +74,7 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 # macro-01 deliberately keeps its full dek (used as the Editor's Selection lead).
 my %HOOK = (
   # live
+  'l3-como-1907'                     => 'Como rose from bankruptcy to the Champions League in six years. Does the tourism-funded model actually pay for itself?',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
@@ -260,7 +263,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l4-athletes-cap-table'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l9-stadium-365-day-venue profile-david-beckham);
+               map  { $bySlug{$_} } qw(l3-como-1907 profile-david-beckham);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";

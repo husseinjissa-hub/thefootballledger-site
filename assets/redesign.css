@@ -981,6 +981,10 @@ mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; pa
 .article-prose ul.sources { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
 .article-prose ul.sources li { font-size: 14px; line-height: 1.5; color: var(--ink-2); padding-left: 18px; position: relative; }
 .article-prose ul.sources li::before { content: ''; position: absolute; left: 0; top: 9px; width: 5px; height: 5px; border-radius: 50%; background: var(--sage); }
+/* General prose lists (not the sources list) — consistent spacing + marker */
+.article-prose ul:not(.sources) { margin: 20px 0 24px; padding-left: 22px; line-height: 1.7; }
+.article-prose ul:not(.sources) li { margin-bottom: 10px; color: var(--ink); }
+.article-prose ul:not(.sources) li::marker { color: var(--sage); }
 @media (max-width: 560px) { .article-prose .row { grid-template-columns: 1fr; gap: 4px; } }
 
 /* ============================================================

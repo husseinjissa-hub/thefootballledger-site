@@ -64,6 +64,10 @@ $_->{layer} = $MACRO_LAYER{$_->{slug}} for grep { exists $MACRO_LAYER{$_->{slug}
 push @arts, {slug=>'l4-athletes-cap-table', title=>"The player is no longer the face. He's on the cap table.", type=>'Profile', theme=>'', layer=>'', date=>'2026-08-17', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/l4-athletes-cap-table.html', dek=>"Footballers used to retire into coaching or punditry. Now they found chemicals firms, cognac houses and wearables, and take equity in AI \xE2\x80\x94 a structured map of how players became businesspeople, and why ownership is not the same as operating."};
 # Como 1907 — Layer 3 club case study (tourism-funded model). Full live article.
 push @arts, {slug=>'l3-como-1907', title=>"The club that sells a lake.", type=>'Case study', theme=>'', layer=>3, date=>'2026-08-20', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l3-como-1907.html', dek=>"Como 1907 rose from bankruptcy to the Champions League in six years, and it is the smartest brand-building operation in football \xE2\x80\x94 but does the business actually pay for itself?"};
+# FSG / Liverpool staged-control sale — Layer 4 (Capital). Full live article.
+push @arts, {slug=>'l4-fsg-liverpool', title=>"Football stopped selling clubs. It started selling claims on them.", type=>'Case study', theme=>'', layer=>4, date=>'2026-08-29', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-fsg-liverpool.html', dek=>"FSG's sale of a Liverpool stake was reported everywhere as a minority investment. Read the terms and it is a two-stage sale, with the second stage already priced."};
+# Streamers renting football's podcasts — Layer 6 (Media). Full live article.
+push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -75,6 +79,8 @@ sub esc { my ($s)=@_; $s//=''; $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&g
 my %HOOK = (
   # live
   'l3-como-1907'                     => 'Como rose to the Champions League in six years. But does it pay for itself?',
+  'l4-fsg-liverpool'                 => 'FSG’s Liverpool deal reads as a minority stake. It prices a takeover.',
+  'l6-streamers-rent-podcasts'       => 'Disney+ and Netflix rent the shows. The builders own them.',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
@@ -263,7 +269,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l4-athletes-cap-table'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l3-como-1907 profile-david-beckham);
+               map  { $bySlug{$_} } qw(l4-fsg-liverpool l6-streamers-rent-podcasts);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -685,7 +691,7 @@ sub build_article {
 
   # hero
   my $hp = (-e "assets/img/articles/$slug-hero.jpg") ? "assets/img/articles/$slug-hero.jpg" : "assets/img/articles/$slug.jpg";
-  my %HERO_FULL = ('l9-stadium-365-day-venue'=>1, 'profile-david-beckham'=>1);   # composite/montage heroes shown uncropped (natural aspect)
+  my %HERO_FULL = ('l9-stadium-365-day-venue'=>1, 'profile-david-beckham'=>1, 'l4-fsg-liverpool'=>1);   # composite/montage/illustration heroes shown uncropped (natural aspect)
   my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
   my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
 

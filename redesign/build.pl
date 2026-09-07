@@ -261,12 +261,15 @@ my %bySlug; $bySlug{$_->{slug}}=$_ for @arts;
 # can be an Editor's Selection feature (the same record is reused in @PEOPLE below).
 my $beckham = {slug=>'profile-david-beckham', name=>'David Beckham', blurb=>'From No. 7 to a company.', title=>'How David Beckham became a business, not just a brand.', type=>'Profile', theme=>'', layer=>'', date=>'2026-08-14', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-david-beckham.html', dek=>'The headline says a former footballer became a billionaire. The more useful story is how.'};
 $bySlug{'profile-david-beckham'} = $beckham;
+# Nasser Al-Khelaïfi — a People profile promoted to a live article and This Week lead.
+my $nasser = {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The Chairman of Everything.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-05', read=>8, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>"He owns none of it — a manager who turned a brief to run a state's clubs and broadcaster into seats inside the institutions that govern the game."};
+$bySlug{'profile-nasser-al-khelaifi'} = $nasser;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'l4-athletes-cap-table'} // $live[0];
+my $lead = $bySlug{'profile-nasser-al-khelaifi'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
                map  { $bySlug{$_} } qw(l4-fsg-liverpool l6-streamers-rent-podcasts);
@@ -279,7 +282,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Footballers used to retire into coaching or punditry. Now they found chemicals firms, cognac houses and wearables \xE2\x80\x94 and take equity in AI.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("He owns none of it \xE2\x80\x94 yet he chairs PSG, beIN and Europe's clubs, and now sits on the FIFA Council. Influence, not equity.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';
@@ -442,7 +445,7 @@ my @PEOPLE = (
   {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
   $beckham,
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
-  {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The operator at the centre of the modern game.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-04', read=>8, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>'The operator at the centre of the modern game.'},
+  $nasser,
 );
 my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text

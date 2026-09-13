@@ -81,6 +81,7 @@ my %HOOK = (
   'l3-como-1907'                     => 'Como rose to the Champions League in six years. But does it pay for itself?',
   'l4-fsg-liverpool'                 => 'FSG’s Liverpool deal reads as a minority stake. It prices a takeover.',
   'l6-streamers-rent-podcasts'       => 'Disney+ and Netflix rent the shows. The builders own them.',
+  'profile-gary-neville'             => 'His club and hotels lose money. The one asset the market keeps buying is his voice.',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
@@ -264,6 +265,9 @@ $bySlug{'profile-david-beckham'} = $beckham;
 # Nasser Al-Khelaïfi — a People profile promoted to a live article and This Week lead.
 my $nasser = {slug=>'profile-nasser-al-khelaifi', name=>'Nasser Al-Khelaïfi', blurb=>'The operator at the centre.', title=>'The Chairman of Everything.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-05', read=>8, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-nasser-al-khelaifi.html', dek=>"He owns none of it — a manager who turned a brief to run a state's clubs and broadcaster into seats inside the institutions that govern the game."};
 $bySlug{'profile-nasser-al-khelaifi'} = $nasser;
+# Gary Neville — a People profile promoted to a live article and This Week card.
+my $neville = {slug=>'profile-gary-neville', name=>'Gary Neville', blurb=>'The analyst the market keeps buying.', title=>'Five buyers for one voice.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-12', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-gary-neville.html', dek=>"His club, hotels and university all lose money. The one asset the market keeps buying is his voice \xE2\x80\x94 priced five times over by five different buyers."};
+$bySlug{'profile-gary-neville'} = $neville;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -272,7 +276,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'profile-nasser-al-khelaifi'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l4-fsg-liverpool l6-streamers-rent-podcasts);
+               map  { $bySlug{$_} } qw(l4-fsg-liverpool profile-gary-neville);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -446,6 +450,7 @@ my @PEOPLE = (
   $beckham,
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
   $nasser,
+  $neville,
 );
 my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text

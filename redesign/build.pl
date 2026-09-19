@@ -66,6 +66,8 @@ push @arts, {slug=>'l4-athletes-cap-table', title=>"The player is no longer the 
 push @arts, {slug=>'l3-como-1907', title=>"The club that sells a lake.", type=>'Case study', theme=>'', layer=>3, date=>'2026-08-20', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l3-como-1907.html', dek=>"Como 1907 rose from bankruptcy to the Champions League in six years, and it is the smartest brand-building operation in football \xE2\x80\x94 but does the business actually pay for itself?"};
 # FSG / Liverpool staged-control sale — Layer 4 (Capital). Full live article.
 push @arts, {slug=>'l4-fsg-liverpool', title=>"Football stopped selling clubs. It started selling claims on them.", type=>'Case study', theme=>'', layer=>4, date=>'2026-08-29', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-fsg-liverpool.html', dek=>"FSG's sale of a Liverpool stake was reported everywhere as a minority investment. Read the terms and it is a two-stage sale, with the second stage already priced."};
+# Football inflation — Macro thesis on whether spending controls actually work. This Week lead.
+push @arts, {slug=>'macro-football-inflation', title=>"Can football inflation be controlled?", type=>'Macro', theme=>'', layer=>'', date=>'2026-09-18', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/macro-football-inflation.html', dek=>"Twenty years of financial rules have made football's spending safer \xE2\x80\x94 not smaller. The regimes that measure after the fact keep hosting record windows; the ones that gate a transfer before it happens are the only controls that have ever stopped one."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
@@ -82,6 +84,7 @@ my %HOOK = (
   'l4-fsg-liverpool'                 => 'FSG’s Liverpool deal reads as a minority stake. It prices a takeover.',
   'l6-streamers-rent-podcasts'       => 'Disney+ and Netflix rent the shows. The builders own them.',
   'profile-gary-neville'             => 'His club and hotels lose money. The one asset the market keeps buying is his voice.',
+  'profile-nasser-al-khelaifi'       => 'He owns none of it — yet he chairs PSG, beIN and Europe’s clubs, and sits on the FIFA Council.',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
@@ -273,10 +276,10 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'profile-nasser-al-khelaifi'} // $live[0];
+my $lead = $bySlug{'macro-football-inflation'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l4-fsg-liverpool profile-gary-neville);
+               map  { $bySlug{$_} } qw(profile-nasser-al-khelaifi profile-gary-neville);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -286,7 +289,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("He owns none of it \xE2\x80\x94 yet he chairs PSG, beIN and Europe's clubs, and now sits on the FIFA Council. Influence, not equity.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Twenty years of financial rules made football's spending safer \xE2\x80\x94 not smaller. England just booked a record \xC2\xA33.56bn summer.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

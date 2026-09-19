@@ -457,8 +457,9 @@ my @PEOPLE = (
   {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
   $nasser,
   $neville,
+  {slug=>'profile-florentino-perez', name=>'Florentino Pérez', blurb=>'The blueprint for running a club as a business.', title=>'How Florentino Pérez laid the blueprint for the modern football club.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-19', read=>10, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-florentino-perez.html', dek=>"Real Madrid was over \xE2\x82\xAC250m in debt when Florentino P\xC3\xA9rez first won the presidency. Today it is football's richest club, and its financial model has become the template."},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%');
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text
 # over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {

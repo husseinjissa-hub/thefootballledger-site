@@ -464,16 +464,19 @@ sub person_card {
   my $op = $OBJPOS{$p->{slug}} // '50% 18%';
   my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
+  my $wip = ($p->{status}//'') eq 'prod';   # profile without a published article yet
   return
-  '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
-    '<div class="person-tags"><span class="person-pill">Profile</span></div>'.
+  '<a class="person-card'.($wip?' person-card--wip':'').'" href="'.esc($p->{url}).'">'.$bg.
+    '<div class="person-tags"><span class="person-pill">Profile</span>'.($wip?'<span class="person-wip">In production</span>':'').'</div>'.
     '<div class="person-body">'.
       '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
       '<p class="person-desc">'.esc($p->{blurb}//$p->{title}).'</p>'.
       '<div class="person-meta">'.$meta.'</div>'.
     '</div></a>';
 }
-my $people_cards = join('', map { person_card($_) } @PEOPLE);
+# Live profiles first, in-production ones last (stable — keeps each group's order).
+my $people_cards = join('', map { person_card($_) }
+  sort { (($b->{status} eq 'live') <=> ($a->{status} eq 'live')) } @PEOPLE);
 my $people_section = <<"HTML";
 <section class="wrap people-sec hpframe">
   <div class="sec-head people-head">

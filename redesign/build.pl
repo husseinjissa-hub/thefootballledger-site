@@ -68,6 +68,8 @@ push @arts, {slug=>'l3-como-1907', title=>"The club that sells a lake.", type=>'
 push @arts, {slug=>'l4-fsg-liverpool', title=>"Football stopped selling clubs. It started selling claims on them.", type=>'Case study', theme=>'', layer=>4, date=>'2026-08-29', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-fsg-liverpool.html', dek=>"FSG's sale of a Liverpool stake was reported everywhere as a minority investment. Read the terms and it is a two-stage sale, with the second stage already priced."};
 # Football inflation — Macro thesis on whether spending controls actually work. This Week lead.
 push @arts, {slug=>'macro-football-inflation', title=>"Can football inflation be controlled?", type=>'Macro', theme=>'', layer=>'', date=>'2026-09-18', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/macro-football-inflation.html', dek=>"Twenty years of financial rules have made football's spending safer \xE2\x80\x94 not smaller. The regimes that measure after the fact keep hosting record windows; the ones that gate a transfer before it happens are the only controls that have ever stopped one."};
+# On / Mbappé — Layer 7 commercial case study on the challenger-brand athlete bet. This Week card.
+push @arts, {slug=>'l7-on-mbappe', title=>"On is running the Jordan play. At full price.", type=>'Case study', theme=>'', layer=>7, date=>'2026-09-18', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l7-on-mbappe.html', dek=>"A challenger running brand has bet on one athlete to open football the way Nike once bet on Michael Jordan to open basketball. On has run a version of this play before, with Roger Federer. The two deals share a structure. They do not share a risk."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
@@ -85,6 +87,7 @@ my %HOOK = (
   'l6-streamers-rent-podcasts'       => 'Disney+ and Netflix rent the shows. The builders own them.',
   'profile-gary-neville'             => 'His club and hotels lose money. The one asset the market keeps buying is his voice.',
   'profile-nasser-al-khelaifi'       => 'He owns none of it — yet he chairs PSG, beIN and Europe’s clubs, and sits on the FIFA Council.',
+  'l7-on-mbappe'                     => 'On bet on Mbappé to open football — the way Nike once bet on Jordan.',
   'macro-08-streaming-native-limits' => 'Everyone expected one streamer to own football. None did — so who\'s next?',
   'l8-data-led-underdogs'            => 'Mid-budget clubs keep overperforming. Is the edge just a data stack?',
   'macro-05b-sportainment-survive-2028' => 'The money has arrived. Which small-sided format survives to 2028?',
@@ -279,7 +282,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'macro-football-inflation'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(profile-nasser-al-khelaifi profile-gary-neville);
+               map  { $bySlug{$_} } qw(l7-on-mbappe profile-gary-neville);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -464,16 +467,19 @@ sub person_card {
   my $op = $OBJPOS{$p->{slug}} // '50% 18%';
   my $bg = (-e $imgp) ? '<div class="person-bg"><img src="/'.$imgp.'?v=4" alt="'.esc($p->{name}).'" style="object-position:'.$op.'" loading="lazy"></div>' : '';
   my $meta = fmtdate($p->{date}); $meta .= ' · '.$p->{read}.' min read' if ($p->{read}//'') ne '';
+  my $wip = ($p->{status}//'') eq 'prod';   # profile without a published article yet
   return
-  '<a class="person-card" href="'.esc($p->{url}).'">'.$bg.
-    '<div class="person-tags"><span class="person-pill">Profile</span></div>'.
+  '<a class="person-card'.($wip?' person-card--wip':'').'" href="'.esc($p->{url}).'">'.$bg.
+    '<div class="person-tags"><span class="person-pill">Profile</span>'.($wip?'<span class="person-wip">In production</span>':'').'</div>'.
     '<div class="person-body">'.
       '<h3 class="person-name">'.esc($p->{name}).'</h3>'.
       '<p class="person-desc">'.esc($p->{blurb}//$p->{title}).'</p>'.
       '<div class="person-meta">'.$meta.'</div>'.
     '</div></a>';
 }
-my $people_cards = join('', map { person_card($_) } @PEOPLE);
+# Live profiles first, in-production ones last (stable — keeps each group's order).
+my $people_cards = join('', map { person_card($_) }
+  sort { (($b->{status} eq 'live') <=> ($a->{status} eq 'live')) } @PEOPLE);
 my $people_section = <<"HTML";
 <section class="wrap people-sec hpframe">
   <div class="sec-head people-head">

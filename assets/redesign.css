@@ -423,7 +423,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .es-lead2 { display: grid; grid-template-columns: 52% 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--card); }
 .es-lead2-media { position: relative; background: var(--cream); }
 .es-lead2-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 250px; }
-.es-lead2-badge { position: absolute; top: 16px; left: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--paper); background: rgba(14,43,34,0.72); border-radius: 2px; padding: 5px 10px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.es-lead2-badge { position: absolute; top: 16px; left: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #F5F2EA; background: rgba(14,43,34,0.72); border-radius: 2px; padding: 5px 10px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
 .es-lead2-body { padding: 24px 30px; display: flex; flex-direction: column; }
 .es-lead2-tag { font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px; }
 .es-lead2-title { font-family: var(--serif); font-size: clamp(23px, 2.1vw, 29px); line-height: 1.12; color: var(--ink); margin-bottom: 12px; }
@@ -602,12 +602,8 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .person-meta { font-family: var(--sans); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(245,242,234,0.72); margin-top: 12px; }
 .person-card:hover .person-name { text-decoration: underline; text-underline-offset: 3px; }
 /* WIP placeholders: same card shape, cream surface instead of a photograph */
-.person-card--wip { background: var(--cream); }
-.person-card--wip::after { display: none; }
-.person-card--wip .person-pill, .person-card--wip .person-wip { color: var(--ink-3); border-color: var(--line); background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
-.person-card--wip .person-name { color: var(--ink-2); }
-.person-card--wip .person-desc { color: var(--ink-3); }
-:root[data-theme="dark"] .person-card--wip { background: var(--cream); }
+/* In-production profiles keep the photo, gradient and white text of a normal card;
+   the "In production" pill is the only distinction. */
 
 /* Top Stories carousel — reuse .acard, 4-up. Reserve equal title/dek height so
    the images align across cards regardless of how many lines the title wraps. */

@@ -137,8 +137,9 @@ sub story_card {
   my $meta = fmtdate($a->{date});
   $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
+  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
   my $media = (-e $imgp)
-    ? '<div class="acard-media"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    ? '<div class="acard-media"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
   my $dek = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,140)).'</p>'."\n      " : '';
   return
@@ -386,9 +387,10 @@ sub nl_card {
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
+  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
   my $mcls = $wide ? 'acard-media acard-media--wide' : 'acard-media';
   my $media = (-e $imgp)
-    ? '<div class="'.$mcls.'"><img src="/'.$imgp.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
+    ? '<div class="'.$mcls.'"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="'.$mcls.' img-ph"><span>Image</span></div>';
   my $dek   = ($a->{dek}//'') ne '' ? '<p class="acard-dek">'.esc(hook_or_dek($a,150)).'</p>' : '';
   my $prodt = ($a->{status}//'') eq 'prod' ? '<span class="acard-prodtag">In production</span>' : '';

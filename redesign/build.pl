@@ -70,6 +70,8 @@ push @arts, {slug=>'l4-fsg-liverpool', title=>"Football stopped selling clubs. I
 push @arts, {slug=>'macro-football-inflation', title=>"Can football inflation be controlled?", type=>'Macro', theme=>'', layer=>'', date=>'2026-09-18', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/macro-football-inflation.html', dek=>"Twenty years of financial rules have made football's spending safer \xE2\x80\x94 not smaller. The regimes that measure after the fact keep hosting record windows; the ones that gate a transfer before it happens are the only controls that have ever stopped one."};
 # On / Mbappé — Layer 7 commercial case study on the challenger-brand athlete bet. This Week card.
 push @arts, {slug=>'l7-on-mbappe', title=>"On is running the Jordan play. At full price.", type=>'Case study', theme=>'', layer=>7, date=>'2026-09-18', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l7-on-mbappe.html', dek=>"A challenger running brand has bet on one athlete to open football the way Nike once bet on Michael Jordan to open basketball. On has run a version of this play before, with Roger Federer. The two deals share a structure. They do not share a risk."};
+# Manchester City recount — Layer 1 (Governance). Financial impact of the charges; This Week lead.
+push @arts, {slug=>'l1-city-recount', title=>"City\xE2\x80\x99s title premium was \xC2\xA33.9m. The larger sums lie elsewhere.", type=>'Case study', theme=>'', layer=>1, date=>'2026-09-27', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-recount.html', dek=>"An independent commission has reportedly found Manchester City guilty on 114 of 115 Premier League charges. The debate is about titles; the money is in Champions League places \xE2\x80\x94 and the largest claim is not the one most often named."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
@@ -280,10 +282,10 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'macro-football-inflation'} // $live[0];
+my $lead = $bySlug{'l1-city-recount'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l7-on-mbappe profile-gary-neville);
+               map  { $bySlug{$_} } qw(l7-on-mbappe macro-football-inflation);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -293,7 +295,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Twenty years of financial rules made football's spending safer \xE2\x80\x94 not smaller. England just booked a record \xC2\xA33.56bn summer.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("An independent commission has reportedly found Manchester City guilty on 114 of 115 charges. The title premium was \xC2\xA33.9m \xE2\x80\x94 the larger sums lie in the Champions League places beneath it.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

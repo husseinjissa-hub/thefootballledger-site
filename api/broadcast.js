@@ -21,6 +21,41 @@ function safeEqual(a, b) {
   try { return crypto.timingSafeEqual(A, B); } catch (e) { return false; }
 }
 
+// HMAC-SHA256 of the lowercased email, hex — same scheme as /api/unsubscribe.
+function sign(email, secret) {
+  return crypto.createHmac('sha256', String(secret || ''))
+    .update(String(email || '').trim().toLowerCase())
+    .digest('hex');
+}
+
+// House-styled unsubscribe footer. unsubHref is either the Resend broadcast
+// token ({{{RESEND_UNSUBSCRIBE_URL}}}, replaced per recipient) or a signed
+// /api/unsubscribe URL for a one-off test send.
+function footerHtml(unsubHref) {
+  return '<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#8A8578;margin-top:28px;text-align:center">' +
+    'You are receiving this because you subscribed to The Football Ledger. ' +
+    '<a href="' + unsubHref + '" style="color:#8A8578">Unsubscribe</a>.</p>';
+}
+function withFooter(html, unsubHref) {
+  // Skip if the issue template already carries an unsubscribe link.
+  if (html.indexOf('RESEND_UNSUBSCRIBE_URL') !== -1 || html.indexOf('/api/unsubscribe') !== -1) return html;
+  return html + footerHtml(unsubHref);
+}
+
+// Minimal HTML -> plain-text for the text/plain alternative (deliverability).
+function htmlToText(html) {
+  return String(html || '')
+    .replace(/<\s*(br|\/p|\/div|\/h[1-6]|\/li|\/tr)\s*>/gi, '\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ').replace(/&mdash;/g, '—').replace(/&ndash;/g, '–')
+    .replace(/&rsquo;/g, '’').replace(/&lsquo;/g, '‘')
+    .replace(/&rdquo;/g, '”').replace(/&ldquo;/g, '“')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n')
+    .replace(/[ \t]{2,}/g, ' ')
+    .trim();
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -57,7 +92,19 @@ module.exports = async function handler(req, res) {
   if (isTest) {
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(testEmail)) return res.status(400).json({ ok: false, error: 'missing_testEmail' });
     try {
-      const r = await api('/emails', { method: 'POST', body: JSON.stringify({ from: FROM, to: [testEmail], subject: '[TEST] ' + subject, html: html, reply_to: REPLY }) });
+      // A plain /emails send does not get Resend's broadcast unsubscribe token
+      // or headers, so sign a real one-click link for the test address instead.
+      const tEmail = testEmail.toLowerCase();
+      const tUnsub = 'https://thefootballledger.co/api/unsubscribe?e=' + encodeURIComponent(tEmail) + '&k=' + sign(tEmail, SECRET);
+      const tHtml = withFooter(html.split('{{{RESEND_UNSUBSCRIBE_URL}}}').join(tUnsub), tUnsub);
+      const r = await api('/emails', { method: 'POST', body: JSON.stringify({
+        from: FROM, to: [testEmail], subject: '[TEST] ' + subject, html: tHtml,
+        text: htmlToText(tHtml), reply_to: REPLY,
+        headers: {
+          'List-Unsubscribe': '<' + tUnsub + '>, <mailto:unsubscribe@thefootballledger.co?subject=unsubscribe>',
+          'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+        },
+      }) });
       if (!r.ok) { const t = await r.text().catch(function () { return ''; }); return res.status(502).json({ ok: false, error: 'test_send_failed', detail: t.slice(0, 300) }); }
       const d = await r.json().catch(function () { return {}; });
       return res.status(200).json({ ok: true, broadcastId: d.id || null, recipientCount: 1, test: true });
@@ -65,12 +112,12 @@ module.exports = async function handler(req, res) {
   }
 
   // Ensure the Resend unsubscribe token is present (required for broadcasts;
-  // Resend replaces it with the real per-recipient unsubscribe URL).
-  if (html.indexOf('RESEND_UNSUBSCRIBE_URL') === -1) {
-    html += '<p style="font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:1.5;color:#8A8578;margin-top:28px;text-align:center">' +
-            'You are receiving this because you subscribed to The Football Ledger. ' +
-            '<a href="{{{RESEND_UNSUBSCRIBE_URL}}}" style="color:#8A8578">Unsubscribe</a>.</p>';
-  }
+  // Resend replaces it per recipient and adds the List-Unsubscribe one-click
+  // headers automatically). withFooter is a no-op if the issue already has one.
+  html = withFooter(html, '{{{RESEND_UNSUBSCRIBE_URL}}}');
+
+  // text/plain alternative (caller may supply one; otherwise derive it).
+  const text = (body.text || '').toString().trim() || htmlToText(html);
 
   const name = dedupeKey ? ('Briefing ' + dedupeKey) : ('Briefing ' + subject).slice(0, 190);
 
@@ -86,7 +133,7 @@ module.exports = async function handler(req, res) {
     }
 
     // Create the broadcast against the audience.
-    const cr = await api('/broadcasts', { method: 'POST', body: JSON.stringify({ audience_id: AUDIENCE, from: FROM, subject: subject, html: html, reply_to: REPLY, name: name }) });
+    const cr = await api('/broadcasts', { method: 'POST', body: JSON.stringify({ audience_id: AUDIENCE, from: FROM, subject: subject, html: html, text: text, reply_to: REPLY, name: name }) });
     if (!cr.ok) { const t = await cr.text().catch(function () { return ''; }); return res.status(502).json({ ok: false, error: 'create_failed', detail: t.slice(0, 300) }); }
     const cd = await cr.json();
     const broadcastId = cd.id || (cd.data && cd.data.id);

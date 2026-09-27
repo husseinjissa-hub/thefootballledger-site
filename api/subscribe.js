@@ -7,6 +7,16 @@
 //   RESEND_AUDIENCE_ID  optional — audience the subscriber is added to
 //   SUBSCRIBE_FROM      optional — verified sender (default briefing@thefootballledger.co)
 //   SUBSCRIBE_OWNER     optional — notification recipient (default husseinjissa@gmail.com)
+//   BROADCAST_SECRET    optional — HMAC key for signed one-click unsubscribe links
+
+const crypto = require('crypto');
+
+// HMAC-SHA256 of the lowercased email, hex — same scheme as /api/unsubscribe.
+function sign(email, secret) {
+  return crypto.createHmac('sha256', String(secret || ''))
+    .update(String(email || '').trim().toLowerCase())
+    .digest('hex');
+}
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -25,14 +35,32 @@ module.exports = async function handler(req, res) {
   const FROM = process.env.SUBSCRIBE_FROM || 'The Football Ledger <briefing@thefootballledger.co>';
   const OWNER = process.env.SUBSCRIBE_OWNER || 'husseinjissa@gmail.com';
   const AUDIENCE = process.env.RESEND_AUDIENCE_ID;
+  const SECRET = process.env.BROADCAST_SECRET;
   if (!KEY) return res.status(503).json({ ok: false, error: 'not_configured' });
+
+  // Signed one-click unsubscribe URL + List-Unsubscribe headers (RFC 8058) for
+  // the welcome email. Only emitted when BROADCAST_SECRET is set; the welcome
+  // still sends without it.
+  const sig = SECRET ? sign(email, SECRET) : '';
+  const unsubUrl = sig
+    ? 'https://thefootballledger.co/api/unsubscribe?e=' + encodeURIComponent(email) + '&k=' + sig
+    : '';
+  const listUnsubHeaders = unsubUrl ? {
+    'List-Unsubscribe': '<' + unsubUrl + '>, <mailto:unsubscribe@thefootballledger.co?subject=unsubscribe>',
+    'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+  } : null;
 
   const api = (path, opts) => fetch('https://api.resend.com' + path, Object.assign(
     { headers: { Authorization: 'Bearer ' + KEY, 'Content-Type': 'application/json' } }, opts));
-  const send = (to, subject, html, replyTo) => api('/emails', {
-    method: 'POST',
-    body: JSON.stringify(Object.assign({ from: FROM, to: [to], subject: subject, html: html }, replyTo ? { reply_to: replyTo } : {})),
-  });
+  // opts: { replyTo, headers, text }
+  const send = (to, subject, html, opts) => {
+    opts = opts || {};
+    const payload = { from: FROM, to: [to], subject: subject, html: html };
+    if (opts.replyTo) payload.reply_to = opts.replyTo;
+    if (opts.text) payload.text = opts.text;
+    if (opts.headers) payload.headers = opts.headers;
+    return api('/emails', { method: 'POST', body: JSON.stringify(payload) });
+  };
 
   // 1) Add to the Resend Audience (best-effort; duplicates count as success).
   let audienceStatus = 'skipped';
@@ -60,9 +88,21 @@ module.exports = async function handler(req, res) {
         '<p style="font-size:15px;line-height:1.6;color:#57524A;margin:0 0 16px">Thanks for subscribing to <strong>The Briefing</strong> &mdash; our weekly read on what&rsquo;s moving in the business of football: ownership, capital, media rights, and the operators shaping the game.</p>' +
         '<p style="font-size:15px;line-height:1.6;color:#57524A;margin:0 0 24px">It lands every Monday morning. Before everyone else.</p>' +
         '<a href="https://thefootballledger.co/briefing" style="display:inline-block;background:#0E2B22;color:#F5F2EA;font-size:14px;text-decoration:none;padding:12px 22px;border-radius:2px">Read the latest issue &rarr;</a>' +
-        '<p style="font-size:12px;line-height:1.5;color:#8A8578;margin:32px 0 0;border-top:1px solid #E7E1D4;padding-top:20px">You received this because you subscribed at thefootballledger.co. If this wasn&rsquo;t you, you can ignore this email.</p>' +
+        '<p style="font-size:12px;line-height:1.5;color:#8A8578;margin:32px 0 0;border-top:1px solid #E7E1D4;padding-top:20px">You&rsquo;re receiving this because you subscribed at thefootballledger.co.' +
+          (unsubUrl ? ' <a href="' + unsubUrl + '" style="color:#8A8578">Unsubscribe</a>.' : ' If this wasn&rsquo;t you, you can ignore this email.') +
+        '</p>' +
       '</div>' +
     '</div>';
+
+  const welcomeText =
+    'The Football Ledger — The Business of Football\n\n' +
+    'You’re on the list.\n\n' +
+    'Thanks for subscribing to The Briefing, our weekly read on what’s moving in the ' +
+    'business of football: ownership, capital, media rights, and the operators shaping the game. ' +
+    'It lands every Monday morning. Before everyone else.\n\n' +
+    'Read the latest issue: https://thefootballledger.co/briefing\n\n' +
+    'You’re receiving this because you subscribed at thefootballledger.co.' +
+    (unsubUrl ? '\nUnsubscribe: ' + unsubUrl : '');
 
   const audienceNote = audienceStatus === 'failed'
     ? '<p style="font-size:13px;color:#9a3b3b;margin:0 0 12px">&#9888; Could not add this contact to the Resend audience automatically — please add them manually.</p>'
@@ -77,8 +117,8 @@ module.exports = async function handler(req, res) {
 
   try {
     const [welcome, notify] = await Promise.all([
-      send(email, 'Welcome to The Football Ledger', welcomeHtml),
-      send(OWNER, 'New subscriber: ' + email, notifyHtml, email),
+      send(email, 'Welcome to The Football Ledger', welcomeHtml, { headers: listUnsubHeaders, text: welcomeText }),
+      send(OWNER, 'New subscriber: ' + email, notifyHtml, { replyTo: email }),
     ]);
     if (!(welcome && welcome.ok)) {
       const detail = await welcome.text().catch(function () { return ''; });

@@ -71,7 +71,7 @@ push @arts, {slug=>'macro-football-inflation', title=>"Can football inflation be
 # On / Mbappé — Layer 7 commercial case study on the challenger-brand athlete bet. This Week card.
 push @arts, {slug=>'l7-on-mbappe', title=>"On is running the Jordan play. At full price.", type=>'Case study', theme=>'', layer=>7, date=>'2026-09-18', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l7-on-mbappe.html', dek=>"A challenger running brand has bet on one athlete to open football the way Nike once bet on Michael Jordan to open basketball. On has run a version of this play before, with Roger Federer. The two deals share a structure. They do not share a risk."};
 # Manchester City recount — Layer 1 (Governance). Financial impact of the charges; This Week lead.
-push @arts, {slug=>'l1-city-recount', title=>"City\xE2\x80\x99s title premium was \xC2\xA33.9m. The larger sums lie elsewhere.", type=>'Case study', theme=>'', layer=>1, date=>'2026-09-27', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-recount.html', dek=>"An independent commission has reportedly found Manchester City guilty on 114 of 115 Premier League charges. The debate is about titles; the money is in Champions League places \xE2\x80\x94 and the largest claim is not the one most often named."};
+push @arts, {slug=>'l1-city-recount', title=>"City\xE2\x80\x99s title premium was \xC2\xA33.9m. The larger sums lie elsewhere.", type=>'Case study', theme=>'', layer=>1, date=>'2026-09-27', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-recount.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"An independent commission has reportedly found Manchester City guilty on 114 of 115 Premier League charges. The debate is about titles; the money is in Champions League places \xE2\x80\x94 and the largest claim is not the one most often named."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
@@ -718,6 +718,20 @@ sub build_article {
   my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
   my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
 
+  # Optional author byline (rendered only when the article names an author).
+  my $byline = '';
+  if (($a->{author}//'') ne '') {
+    my $aimg = $a->{author_img} // '';
+    my $av = ($aimg && -e $aimg)
+      ? '<img src="/'.$aimg.'?v='.((stat($aimg))[9]).'" alt="'.esc($a->{author}).'" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block;">'
+      : '';
+    my $nm = ($a->{author_url}//'') ne ''
+      ? '<a href="'.esc($a->{author_url}).'" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600;text-decoration:none;">'.esc($a->{author}).'</a>'
+      : '<span style="color:var(--ink);font-weight:600;">'.esc($a->{author}).'</span>';
+    $byline = '<div class="art-byline" style="display:flex;align-items:center;gap:11px;margin:0 0 34px;">'.$av.
+              '<span style="font-family:var(--sans);font-size:14px;color:var(--ink-3);">Written by '.$nm.'</span></div>'."\n      ";
+  }
+
   # body content
   my $body_main;
   if ($is_live) {
@@ -771,7 +785,7 @@ sub build_article {
       <div class="art-breadcrumb">$bc</div>
       <h1 class="art-title">$title_html</h1>
       <p class="art-standfirst">$standfirst</p>
-      $hero
+      $byline$hero
       <div class="art-metastrip">$metastrip</div>
       $body_main
     </article>

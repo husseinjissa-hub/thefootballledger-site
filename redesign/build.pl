@@ -277,15 +277,18 @@ $bySlug{'profile-nasser-al-khelaifi'} = $nasser;
 # Gary Neville — a People profile promoted to a live article and This Week card.
 my $neville = {slug=>'profile-gary-neville', name=>'Gary Neville', blurb=>'The analyst the market keeps buying.', title=>'Five buyers for one voice.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-12', read=>9, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-gary-neville.html', dek=>"His club, hotels and university all lose money. The one asset the market keeps buying is his voice \xE2\x80\x94 priced five times over by five different buyers."};
 $bySlug{'profile-gary-neville'} = $neville;
+# Fabrizio Romano — People profile promoted to a live article and This Week lead.
+my $fabrizio = {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"The individual who became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-10-04', read=>8, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Seven years earning the trust of agents and players became 'Here We Go' \xE2\x80\x94 a contact book turned into football's most powerful one-man newsroom."};
+$bySlug{'profile-fabrizio-romano'} = $fabrizio;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'l1-city-recount'} // $live[0];
+my $lead = $bySlug{'profile-fabrizio-romano'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l7-on-mbappe macro-football-inflation);
+               map  { $bySlug{$_} } qw(l1-city-recount macro-football-inflation);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -295,7 +298,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("An independent commission has reportedly found Manchester City guilty on 114 of 115 charges. The title premium was \xC2\xA33.9m \xE2\x80\x94 the larger sums lie in the Champions League places beneath it.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Fabrizio Romano spent seven years earning the trust of agents and players, then took the news onto his own channels. 'Here We Go' turned a contact book into football's most powerful one-man newsroom.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';
@@ -458,12 +461,13 @@ my $nl_dots_html = join('', map {
 my @PEOPLE = (
   {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
   $beckham,
-  {slug=>'profile-fabrizio-romano', name=>'Fabrizio Romano', blurb=>'The new power in football media.', title=>"How one voice became football's most powerful newsroom.", type=>'Profile', theme=>'', layer=>'', date=>'2026-07-11', read=>7, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-fabrizio-romano.html', dek=>"How one voice became football's most powerful newsroom."},
+  $fabrizio,
+  {slug=>'profile-jorge-mendes', name=>'Jorge Mendes', blurb=>'The agent who became a network.', title=>"Jorge Mendes stopped negotiating for Ronaldo. The network kept growing.", type=>'Profile', theme=>'', layer=>'', date=>'2026-10-04', read=>6, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-jorge-mendes.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"For two decades Jorge Mendes was defined by one client. When Ronaldo left in 2022 the business didn't shrink \xE2\x80\x94 what he built was never a client list but a network with a seat on more than one side of the deal."},
   $nasser,
   $neville,
   {slug=>'profile-florentino-perez', name=>'Florentino Pérez', blurb=>'The blueprint for running a club as a business.', title=>'How Florentino Pérez laid the blueprint for the modern football club.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-19', read=>10, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-florentino-perez.html', dek=>"Real Madrid was over \xE2\x82\xAC250m in debt when Florentino P\xC3\xA9rez first won the presidency. Today it is football's richest club, and its financial model has become the template."},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%');
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text
 # over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {

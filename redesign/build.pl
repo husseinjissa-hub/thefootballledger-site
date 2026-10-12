@@ -72,6 +72,10 @@ push @arts, {slug=>'macro-football-inflation', title=>"Can football inflation be
 push @arts, {slug=>'l7-on-mbappe', title=>"On is running the Jordan play. At full price.", type=>'Case study', theme=>'', layer=>7, date=>'2026-09-18', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l7-on-mbappe.html', dek=>"A challenger running brand has bet on one athlete to open football the way Nike once bet on Michael Jordan to open basketball. On has run a version of this play before, with Roger Federer. The two deals share a structure. They do not share a risk."};
 # Manchester City recount — Layer 1 (Governance). Financial impact of the charges; This Week lead.
 push @arts, {slug=>'l1-city-recount', title=>"City\xE2\x80\x99s title premium was \xC2\xA33.9m. The larger sums lie elsewhere.", type=>'Case study', theme=>'', layer=>1, date=>'2026-09-27', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-recount.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"An independent commission has reportedly found Manchester City guilty on 114 of 115 Premier League charges. The debate is about titles; the money is in Champions League places \xE2\x80\x94 and the largest claim is not the one most often named."};
+# City beneficiaries — filed under Leagues (Layer 2): who else gained from the ADUG money. This Week lead.
+push @arts, {slug=>'l1-city-beneficiaries', title=>"Only City is in the dock. The whole game shared the growth.", type=>'Case study', theme=>'', layer=>2, date=>'2026-10-11', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-beneficiaries.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Manchester City were found guilty on 114 charges of inflating revenue by more than \xC2\xA3900m over nine seasons. But the club was not the only beneficiary of the Abu Dhabi money \xE2\x80\x94 the whole English game shared the growth."};
+# Players are the distribution — Layer 4 (Capital): players as investors, and what the funds really buy. This Week card.
+push @arts, {slug=>'l4-players-are-the-distribution', title=>"Footballers became investors. The funds are selling their names.", type=>'Case study', theme=>'', layer=>4, date=>'2026-10-11', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-players-are-the-distribution.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"A generation ago the story about footballers and money was bankruptcy. Now players invest in clubs, leagues and funds \xE2\x80\x94 but in almost every deal an institution leads, and what it wants is not the player's cheque but his credibility and audience."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
@@ -288,10 +292,10 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'profile-fabrizio-romano'} // $live[0];
+my $lead = $bySlug{'l1-city-beneficiaries'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l1-city-recount profile-jorge-mendes);
+               map  { $bySlug{$_} } qw(profile-fabrizio-romano l4-players-are-the-distribution);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
@@ -301,7 +305,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Fabrizio Romano spent seven years earning the trust of agents and players, then took the news onto his own channels. 'Here We Go' turned a contact book into football's most powerful one-man newsroom.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Manchester City were found guilty of inflating revenue by more than \xC2\xA3900m over nine seasons. But the club was never the only beneficiary of the Abu Dhabi money \xE2\x80\x94 the whole English game shared the growth.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

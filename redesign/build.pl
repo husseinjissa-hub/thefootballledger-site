@@ -266,7 +266,7 @@ sub ov_parts {
 sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
 sub art_thumb {
   my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
-  my $v = $a->{is_person} ? '?v=4' : '';   # profile images were re-cropped; bust stale caches
+  my $v = $a->{is_person} ? '?v=4' : ((-e $p) ? '?v='.((stat($p))[9]) : '');   # bust stale caches (persons pinned at v4)
   return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.$v.'" alt="" loading="lazy"></div>'
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }

@@ -238,13 +238,8 @@ sub layer_row {
   '      </div>'.$expand."\n".
   '    </div>';
 }
-my $rows = join("\n    ", map { layer_row($_) } @LAYERS);
-my $eco = slurp("redesign/pages/ecosystem.html");
-$eco =~ s/\{\{LAYER_ROWS\}\}/    $rows/;
-render_page(out=>"ecosystem.html", active=>"ecosystem",
-  title=>"Ecosystem — The Football Ledger",
-  desc=>"The nine-layer map of football's business — governance, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium — with the key entities in each layer.",
-  canonical=>"/ecosystem", body=>$eco);
+# The standalone /ecosystem page was merged into the Entities directory (now
+# labelled "Ecosystem"); @LAYERS/layer_row retained above but no longer rendered.
 
 # ============================================================
 #  THE LEDGER — landing
@@ -985,7 +980,7 @@ sub build_entity {
   # breadcrumb
   my ($dl) = grep { $_->{id} eq $e->{layer} } @DIRLAYERS;
   my $lname = $dl ? $dl->{tag} : 'Layer '.$e->{layer};
-  my $crumbs = '<a href="/entities">Entities</a><span class="sep">/</span><a href="/entities#layer-'.$e->{layer}.'">Layer '.sprintf('%02d',$e->{layer}).' · '.$lname.'</a><span class="sep">/</span><span>'.esc($e->{name}).'</span>';
+  my $crumbs = '<a href="/entities">Ecosystem</a><span class="sep">/</span><a href="/entities#layer-'.$e->{layer}.'">Layer '.sprintf('%02d',$e->{layer}).' · '.$lname.'</a><span class="sep">/</span><span>'.esc($e->{name}).'</span>';
 
   my $body = <<"HTML";
 <div class="art-wrap">
@@ -1002,7 +997,7 @@ sub build_entity {
 
   <div class="art-grid">
     <aside class="art-side">
-      <a class="art-back" href="/entities"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to Entities</a>
+      <a class="art-back" href="/entities"><span class="arw" style="transform:rotate(180deg);display:inline-block">→</span> Back to Ecosystem</a>
       <div class="art-block art-block--toc">
         <div class="art-side-label">On this profile</div>
         <ul class="toc-list">
@@ -1031,7 +1026,7 @@ $prose
         <p>Explore how @{[esc($e->{name})]} fits into the football business ecosystem — and how value flows between every layer.</p>
       </div>
     </div>
-    <a class="btn btn--primary" href="/ecosystem">Explore the ecosystem <span class="arw">→</span></a>
+    <a class="btn btn--primary" href="/entities">Explore the ecosystem <span class="arw">→</span></a>
   </div>
 </section>
 <script>
@@ -1059,7 +1054,7 @@ $dir =~ s/\{\{DIR_RAIL_LAYERS\}\}/          $dir_rail/;
 $dir =~ s/\{\{DIR_TYPE_OPTIONS\}\}/          $dir_types/;
 $dir =~ s/\{\{DIR_SECTIONS\}\}/    $dir_sections/;
 render_page(out=>"entities/index.html", active=>"entities",
-  title=>"Entities — The Football Ledger",
+  title=>"Ecosystem — The Football Ledger",
   desc=>"A searchable directory of every actor in football's business — governing bodies, leagues, clubs, capital, agencies, media, commercial, football-tech and stadium operators.",
   canonical=>"/entities", body=>$dir);
 

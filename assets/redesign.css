@@ -927,7 +927,10 @@ mark { background: rgba(156,136,89,0.34); color: inherit; border-radius: 2px; pa
 .dir-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
 .dir-layer:not(.dir-layer--grouped) .dir-cards .ent-card:nth-child(n+6) { display: none; }
 .dir-layer.open .dir-cards .ent-card:nth-child(n+6) { display: flex; }
-.ent-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 2px; background: var(--card); padding: 22px 18px 18px; transition: border-color 0.18s ease, transform 0.18s ease; }
+/* Entity cards are a deliberate white surface — brand logos read best on
+   white, and it sets the directory apart from the uniform warm paper. */
+.ent-card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 2px; background: #FFFFFF; padding: 22px 18px 18px; transition: border-color 0.18s ease, transform 0.18s ease; }
+:root[data-theme="dark"] .ent-card { background: var(--card); }
 .ent-card:hover { border-color: var(--green); transform: translateY(-2px); }
 .ent-card-logo { height: 60px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
 .ent-card-logo img { max-height: 52px; max-width: 100%; width: auto; object-fit: contain; }

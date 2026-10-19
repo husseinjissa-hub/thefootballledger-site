@@ -6,7 +6,8 @@
     { "source": "/briefing", "destination": "/record", "permanent": true },
     { "source": "/briefing/:path*", "destination": "/record/:path*", "permanent": true },
     { "source": "/ledger", "destination": "/", "permanent": true },
-    { "source": "/overview", "destination": "/", "permanent": true }
+    { "source": "/overview", "destination": "/", "permanent": true },
+    { "source": "/ecosystem", "destination": "/entities", "permanent": true }
   ],
   "headers": [
     {

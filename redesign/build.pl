@@ -1,4 +1,5 @@
 use strict; use warnings;
+use Digest::SHA qw(sha1_hex);
 # Static-site generator for the redesign. Run from repo root:  perl redesign/build.pl
 # Assembles pages from shared partials (head/header/footer) + page bodies + content.json data.
 # No per-page duplication: the design system lives in assets/redesign.css and these partials.
@@ -6,11 +7,16 @@ use strict; use warnings;
 sub slurp { my ($f)=@_; open(my $fh,'<:raw',$f) or die "read $f: $!"; local $/; my $c=<$fh>; close $fh; return $c; }
 sub spit  { my ($f,$c)=@_; open(my $fh,'>:raw',$f) or die "write $f: $!"; print $fh $c; close $fh; }
 
+# Content-hash cache-bust: the ?v changes only when a file's CONTENTS change — never on a
+# rebuild or branch checkout. Deterministic across machines/branches, so generated HTML no
+# longer churns (and merges stop conflicting on every page). mtime-based busting did the opposite.
+sub fver { my ($f)=@_; return (-e $f) ? substr(sha1_hex(slurp($f)),0,10) : '1'; }
+
 my $head   = slurp("redesign/partials/head.html");
 my $header = slurp("redesign/partials/header.html");
 my $footer = slurp("redesign/partials/footer.html");
-# Cache-bust the stylesheet by its mtime so CSS edits always reach browsers.
-my $CSSVER = (stat("assets/redesign.css"))[9] || 1;
+# Cache-bust the stylesheet by its content hash so CSS edits reach browsers (and only then).
+my $CSSVER = fver("assets/redesign.css");
 
 sub render_page {
   my (%o) = @_;   # out,title,desc,canonical,active,body
@@ -143,7 +149,7 @@ sub story_card {
   my $meta = fmtdate($a->{date});
   $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
-  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
+  my $iv = (-e $imgp) ? '?v='.fver($imgp) : '';
   my $media = (-e $imgp)
     ? '<div class="acard-media"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
@@ -261,7 +267,7 @@ sub ov_parts {
 sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
 sub art_thumb {
   my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
-  my $v = $a->{is_person} ? '?v=4' : ((-e $p) ? '?v='.((stat($p))[9]) : '');   # bust stale caches (persons pinned at v4)
+  my $v = $a->{is_person} ? '?v=4' : ((-e $p) ? '?v='.fver($p) : '');   # bust stale caches (persons pinned at v4)
   return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.$v.'" alt="" loading="lazy"></div>'
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
@@ -293,7 +299,7 @@ my @featured = grep { $_->{slug} ne $lead->{slug} }
                map  { $bySlug{$_} } qw(profile-fabrizio-romano l4-players-are-the-distribution);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
-my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
+my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
   '<a class="es-lead2" href="'.esc($lead->{url}).'">'.
     '<div class="es-lead2-media"><span class="es-lead2-badge">Editor\'s Selection</span><img src="'.$lead_img.'" alt="" loading="lazy"></div>'.
@@ -394,7 +400,7 @@ sub nl_card {
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
-  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
+  my $iv = (-e $imgp) ? '?v='.fver($imgp) : '';
   my $mcls = $wide ? 'acard-media acard-media--wide' : 'acard-media';
   my $media = (-e $imgp)
     ? '<div class="'.$mcls.'"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
@@ -722,14 +728,14 @@ sub build_article {
   my $hp = (-e "assets/img/articles/$slug-hero.jpg") ? "assets/img/articles/$slug-hero.jpg" : "assets/img/articles/$slug.jpg";
   my %HERO_FULL = ('l9-stadium-365-day-venue'=>1, 'profile-david-beckham'=>1, 'l4-fsg-liverpool'=>1);   # composite/montage/illustration heroes shown uncropped (natural aspect)
   my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
-  my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
+  my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.fver($hp).'" alt="" ></div>' : '';
 
   # Optional author byline (rendered only when the article names an author).
   my $byline = '';
   if (($a->{author}//'') ne '') {
     my $aimg = $a->{author_img} // '';
     my $av = ($aimg && -e $aimg)
-      ? '<img src="/'.$aimg.'?v='.((stat($aimg))[9]).'" alt="'.esc($a->{author}).'" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block;">'
+      ? '<img src="/'.$aimg.'?v='.fver($aimg).'" alt="'.esc($a->{author}).'" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block;">'
       : '';
     my $nm = ($a->{author_url}//'') ne ''
       ? '<a href="'.esc($a->{author_url}).'" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600;text-decoration:none;">'.esc($a->{author}).'</a>'

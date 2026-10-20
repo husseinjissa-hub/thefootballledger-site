@@ -26,7 +26,7 @@
   --sans: 'Inter','GT America','Helvetica Neue',Arial,sans-serif;
 
   /* rhythm */
-  --wrap: 1240px;
+  --wrap: 1320px;
   --gutter: 40px;
   --radius: 2px;
 }
@@ -416,12 +416,12 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* ===== This Week at the Ledger (homepage hero) ===== */
 .thisweek { padding-top: 40px; padding-bottom: 8px; }
-.tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; }
+.tw-grid { display: grid; grid-template-columns: minmax(0,1fr) 340px; gap: 48px; align-items: stretch; padding-bottom: 18px; }
 .tw-main { display: flex; flex-direction: column; }
 .tw-main .sec-head { margin-bottom: 22px; }
 /* editor's selection — horizontal lead */
-.es-lead2 { display: grid; grid-template-columns: 54% 1fr; gap: 0; border: 0; border-radius: 0; overflow: hidden; background: var(--card); }
-.es-lead2-media { position: relative; background: var(--cream); }
+.es-lead2 { display: grid; grid-template-columns: 54% 1fr; gap: 0; border: 0; border-radius: 0; overflow: hidden; background: var(--card); align-items: start; }
+.es-lead2-media { position: relative; background: var(--cream); aspect-ratio: 3 / 2; }
 .es-lead2-media img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 250px; }
 .es-lead2-badge { position: absolute; top: 16px; left: 16px; font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #F5F2EA; background: rgba(14,43,34,0.72); border-radius: 2px; padding: 5px 10px; -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
 .es-lead2-body { padding: 28px 34px 30px; display: flex; flex-direction: column; }

@@ -1,16 +1,21 @@
 use strict; use warnings;
+use Digest::SHA qw(sha1_hex);
 # Static-site generator for the redesign. Run from repo root:  perl redesign/build.pl
 # Assembles pages from shared partials (head/header/footer) + page bodies + content.json data.
 # No per-page duplication: the design system lives in assets/redesign.css and these partials.
 
 sub slurp { my ($f)=@_; open(my $fh,'<:raw',$f) or die "read $f: $!"; local $/; my $c=<$fh>; close $fh; return $c; }
 sub spit  { my ($f,$c)=@_; open(my $fh,'>:raw',$f) or die "write $f: $!"; print $fh $c; close $fh; }
+# Content-hash cache-bust: the ?v changes only when a file's CONTENTS change — never on a
+# rebuild or branch checkout. Deterministic across machines/branches, so generated HTML no
+# longer churns (and merges stop conflicting on every page). mtime-based busting did the opposite.
+sub fver { my ($f)=@_; return (-e $f) ? substr(sha1_hex(slurp($f)),0,10) : '1'; }
 
 my $head   = slurp("redesign/partials/head.html");
 my $header = slurp("redesign/partials/header.html");
 my $footer = slurp("redesign/partials/footer.html");
-# Cache-bust the stylesheet by its mtime so CSS edits always reach browsers.
-my $CSSVER = (stat("assets/redesign.css"))[9] || 1;
+# Cache-bust the stylesheet by its content hash so CSS edits reach browsers (and only then).
+my $CSSVER = fver("assets/redesign.css");
 
 sub render_page {
   my (%o) = @_;   # out,title,desc,canonical,active,body
@@ -74,6 +79,8 @@ push @arts, {slug=>'l7-on-mbappe', title=>"On is running the Jordan play. At ful
 push @arts, {slug=>'l1-city-recount', title=>"City\xE2\x80\x99s title premium was \xC2\xA33.9m. The larger sums lie elsewhere.", type=>'Case study', theme=>'', layer=>1, date=>'2026-09-27', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-recount.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"An independent commission has reportedly found Manchester City guilty on 114 of 115 Premier League charges. The debate is about titles; the money is in Champions League places \xE2\x80\x94 and the largest claim is not the one most often named."};
 # City beneficiaries — filed under Leagues (Layer 2): who else gained from the ADUG money. This Week lead.
 push @arts, {slug=>'l1-city-beneficiaries', title=>"Only City is in the dock. The whole game shared the growth.", type=>'Case study', theme=>'', layer=>2, date=>'2026-10-11', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-city-beneficiaries.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Manchester City were found guilty on 114 charges of inflating revenue by more than \xC2\xA3900m over nine seasons. But the club was not the only beneficiary of the Abu Dhabi money \xE2\x80\x94 the whole English game shared the growth."};
+# Chelsea transfer strategy — Layer 3 (Clubs): amortisation, player trading, academy-sale profit. This Week lead.
+push @arts, {slug=>'l1-chelsea-transfer-strategy', title=>"A look into Chelsea's 'unique' transfer strategy.", type=>'Case study', theme=>'', layer=>3, date=>'2026-10-19', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-chelsea-transfer-strategy.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Chelsea's transfer business has raised eyebrows since the 2022 takeover \xE2\x80\x94 long contracts that spread fees thin, heavy player trading, and academy sales booked as near-pure profit. After another change at the top, what comes next?"};
 # Players are the distribution — Layer 4 (Capital): players as investors, and what the funds really buy. This Week card.
 push @arts, {slug=>'l4-players-are-the-distribution', title=>"Footballers became investors. The funds are selling their names.", type=>'Case study', theme=>'', layer=>4, date=>'2026-10-11', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-players-are-the-distribution.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"A generation ago the story about footballers and money was bankruptcy. Now players invest in clubs, leagues and funds \xE2\x80\x94 but in almost every deal an institution leads, and what it wants is not the player's cheque but his credibility and audience."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
@@ -143,7 +150,7 @@ sub story_card {
   my $meta = fmtdate($a->{date});
   $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
-  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
+  my $iv = (-e $imgp) ? '?v='.fver($imgp) : '';
   my $media = (-e $imgp)
     ? '<div class="acard-media"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
     : '<div class="acard-media img-ph"><span>Image</span></div>';
@@ -261,7 +268,7 @@ sub ov_parts {
 sub art_meta { my ($a)=@_; my $m=fmtdate($a->{date})||'In production'; $m.=' · '.$a->{read}.' min read' if $a->{read} ne ''; return $m; }
 sub art_thumb {
   my ($a,$cls)=@_; my $p="assets/img/articles/".$a->{slug}.".jpg";
-  my $v = $a->{is_person} ? '?v=4' : ((-e $p) ? '?v='.((stat($p))[9]) : '');   # bust stale caches (persons pinned at v4)
+  my $v = $a->{is_person} ? '?v=4' : ((-e $p) ? '?v='.fver($p) : '');   # bust stale caches (persons pinned at v4)
   return (-e $p) ? '<div class="'.$cls.'"><img src="/'.$p.$v.'" alt="" loading="lazy"></div>'
                  : '<div class="'.$cls.' img-ph"><span>Image</span></div>';
 }
@@ -287,20 +294,20 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'l1-city-beneficiaries'} // $live[0];
+my $lead = $bySlug{'l1-chelsea-transfer-strategy'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(profile-fabrizio-romano l4-players-are-the-distribution);
+               map  { $bySlug{$_} } qw(l1-city-beneficiaries l4-players-are-the-distribution);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
-my $lead_img = (-e $lp) ? "/".$lp."?v=".((stat($lp))[9]) : "/assets/img/articles/macro-01-lead.jpg";
+my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
 my $lead_html =
   '<a class="es-lead2" href="'.esc($lead->{url}).'">'.
     '<div class="es-lead2-media"><span class="es-lead2-badge">Editor\'s Selection</span><img src="'.$lead_img.'" alt="" loading="lazy"></div>'.
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Manchester City were found guilty of inflating revenue by more than \xC2\xA3900m over nine seasons. But the club was never the only beneficiary of the Abu Dhabi money \xE2\x80\x94 the whole English game shared the growth.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Chelsea's transfer business has raised eyebrows since the 2022 takeover \xE2\x80\x94 long contracts that spread fees thin, heavy player trading, and academy sales booked as near-pure profit. After another change at the top, what comes next?").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';
@@ -394,7 +401,7 @@ sub nl_card {
   my $theme = $a->{theme} ne '' ? '<span class="acard-cat" style="color:var(--ink-3);font-weight:500">'.esc($a->{theme}).'</span>' : '';
   my $meta = fmtdate($a->{date}); $meta .= ' · '.$a->{read}.' min' if $a->{read} ne '';
   my $imgp = "assets/img/articles/".$a->{slug}.".jpg";
-  my $iv = (-e $imgp) ? '?v='.((stat($imgp))[9]) : '';
+  my $iv = (-e $imgp) ? '?v='.fver($imgp) : '';
   my $mcls = $wide ? 'acard-media acard-media--wide' : 'acard-media';
   my $media = (-e $imgp)
     ? '<div class="'.$mcls.'"><img src="/'.$imgp.$iv.'" alt="'.esc($a->{title}).'" loading="lazy"></div>'
@@ -722,14 +729,14 @@ sub build_article {
   my $hp = (-e "assets/img/articles/$slug-hero.jpg") ? "assets/img/articles/$slug-hero.jpg" : "assets/img/articles/$slug.jpg";
   my %HERO_FULL = ('l9-stadium-365-day-venue'=>1, 'profile-david-beckham'=>1, 'l4-fsg-liverpool'=>1);   # composite/montage/illustration heroes shown uncropped (natural aspect)
   my $hcls = $HERO_FULL{$slug} ? ' art-hero--full' : '';
-  my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.((stat($hp))[9]).'" alt="" ></div>' : '';
+  my $hero = (-e $hp) ? '<div class="art-hero'.$hcls.'"><img src="/'.$hp.'?v='.fver($hp).'" alt="" ></div>' : '';
 
   # Optional author byline (rendered only when the article names an author).
   my $byline = '';
   if (($a->{author}//'') ne '') {
     my $aimg = $a->{author_img} // '';
     my $av = ($aimg && -e $aimg)
-      ? '<img src="/'.$aimg.'?v='.((stat($aimg))[9]).'" alt="'.esc($a->{author}).'" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block;">'
+      ? '<img src="/'.$aimg.'?v='.fver($aimg).'" alt="'.esc($a->{author}).'" width="32" height="32" style="width:32px;height:32px;border-radius:50%;object-fit:cover;border:1px solid var(--line);flex-shrink:0;display:block;">'
       : '';
     my $nm = ($a->{author_url}//'') ne ''
       ? '<a href="'.esc($a->{author_url}).'" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600;text-decoration:none;">'.esc($a->{author}).'</a>'

@@ -536,7 +536,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 
 /* ===== Framed editorial section containers (approved homepage mockup §3/§20/§24) ===== */
 /* Sections build from typography, rules and whitespace — not a heavy outer box. */
-.hpframe { border: 0; border-radius: 0; background: transparent; padding: 0 var(--gutter); margin: 8px auto 0; }
+.hpframe { border: 0; border-radius: 0; background: transparent; padding: 0 var(--gutter); margin: 32px auto 0; }
 .hpframe + .hpframe { margin-top: 0; border-top: 1px solid var(--line); padding-top: 40px; }
 @media (max-width: 900px) { .hpframe + .hpframe { padding-top: 30px; } }
 

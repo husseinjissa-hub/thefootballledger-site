@@ -289,6 +289,9 @@ $bySlug{'profile-fabrizio-romano'} = $fabrizio;
 # Jorge Mendes — People profile, live; a var so it can be a This Week card.
 my $mendes = {slug=>'profile-jorge-mendes', name=>'Jorge Mendes', blurb=>'The agent who became a network.', title=>"Jorge Mendes stopped negotiating for Ronaldo. The network kept growing.", type=>'Profile', theme=>'', layer=>'', date=>'2026-10-04', read=>6, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-jorge-mendes.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"For two decades Jorge Mendes was defined by one client. When Ronaldo left in 2022 the business didn't shrink \xE2\x80\x94 what he built was never a client list but a network with a seat on more than one side of the deal."};
 $bySlug{'profile-jorge-mendes'} = $mendes;
+# Rio Ferdinand — People profile, live; a var so it can be a This Week card.
+my $rio = {slug=>'profile-rio-ferdinand', name=>'Rio Ferdinand', blurb=>'The pundit who took his audience with him.', title=>'Rio Ferdinand gave up his TV seat. His audience came with him.', type=>'Profile', theme=>'', layer=>'', date=>'2026-10-23', read=>6, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-rio-ferdinand.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"In 2025 he left TNT Sports for his own channel after sixteen years building it. The companies are growing fast \xE2\x80\x94 the open question is whether anyone will ever pay for them."};
+$bySlug{'profile-rio-ferdinand'} = $rio;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -297,7 +300,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l1-chelsea-transfer-strategy'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l1-city-beneficiaries l4-players-are-the-distribution);
+               map  { $bySlug{$_} } qw(l1-city-beneficiaries profile-rio-ferdinand);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
@@ -474,9 +477,10 @@ my @PEOPLE = (
   $mendes,
   $nasser,
   $neville,
+  $rio,
   {slug=>'profile-florentino-perez', name=>'Florentino Pérez', blurb=>'The blueprint for running a club as a business.', title=>'How Florentino Pérez laid the blueprint for the modern football club.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-19', read=>10, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-florentino-perez.html', dek=>"Real Madrid was over \xE2\x82\xAC250m in debt when Florentino P\xC3\xA9rez first won the presidency. Today it is football's richest club, and its financial model has become the template."},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%');
+my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%', 'profile-rio-ferdinand'=>'50% 20%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text
 # over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {

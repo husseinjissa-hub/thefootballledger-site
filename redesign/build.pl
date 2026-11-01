@@ -294,6 +294,9 @@ $bySlug{'profile-jorge-mendes'} = $mendes;
 # Rio Ferdinand — People profile, live; a var so it can be a This Week card.
 my $rio = {slug=>'profile-rio-ferdinand', name=>'Rio Ferdinand', blurb=>'The pundit who took his audience with him.', title=>'Rio Ferdinand gave up his TV seat. His audience came with him.', type=>'Profile', theme=>'', layer=>'', date=>'2026-10-23', read=>6, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-rio-ferdinand.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"In 2025 he left TNT Sports for his own channel after sixteen years building it. The companies are growing fast \xE2\x80\x94 the open question is whether anyone will ever pay for them."};
 $bySlug{'profile-rio-ferdinand'} = $rio;
+# Cristiano Ronaldo — profile promoted from in-production to a live article; a var so it can be a This Week card.
+my $ronaldo = {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>"Cristiano Ronaldo's football-to-business evolution. Where does his name go next?", type=>'Profile', theme=>'', layer=>'', date=>'2026-10-24', read=>7, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"Ronaldo went from player to the world's most marketable athlete to a business owner \xE2\x80\x94 carried through each stage by the same asset: an audience that follows him everywhere. For years companies paid to borrow it; now he builds things he owns."};
+$bySlug{'profile-cristiano-ronaldo'} = $ronaldo;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -302,7 +305,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l1-football-education-gap'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l1-chelsea-transfer-strategy profile-rio-ferdinand);
+               map  { $bySlug{$_} } qw(l1-chelsea-transfer-strategy profile-cristiano-ronaldo);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
@@ -473,7 +476,7 @@ my $nl_dots_html = join('', map {
 # layer=people rows, and filterable via the new "People" layer chip. All three are
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
-  {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>'The footballer who became a distribution platform.', type=>'Profile', theme=>'', layer=>'', date=>'2026-07-24', read=>10, status=>'prod', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', dek=>'The footballer who became a distribution platform.'},
+  $ronaldo,
   $beckham,
   $fabrizio,
   $mendes,

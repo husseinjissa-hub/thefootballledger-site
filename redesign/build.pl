@@ -85,6 +85,8 @@ push @arts, {slug=>'l1-chelsea-transfer-strategy', title=>"A look into Chelsea's
 push @arts, {slug=>'l1-football-education-gap', title=>"What do the football universities teach?", type=>'Case study', theme=>'', layer=>1, date=>'2026-10-24', read=>7, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-football-education-gap.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"We mapped 253 programmes from 149 providers that train people for football's business side. Data is now one of the best-taught subjects, but mostly to analysts \xE2\x80\x94 of the 91 degrees built to train the people who will run clubs, only six make it a core subject."};
 # McDonald's World Cup exit — Layer 7 (Commercial): why a four-yearly sponsorship no longer fits, and what it means for FIFA's sponsor list. This Week card.
 push @arts, {slug=>'l7-mcdonalds-world-cup-exit', title=>"McDonald's didn't leave football. It left the four-week rental.", type=>'Case study', theme=>'', layer=>7, date=>'2026-11-05', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l7-mcdonalds-world-cup-exit.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"McDonald's is leaving the World Cup after 32 years, but not football. Why a four-yearly tournament no longer fits its marketing, and what that means for FIFA's sponsor list."};
+# Women's football ecosystem — Layer 1 analysis: audiences/capital rising fast, but revenue concentrated in three clubs and broadcast money thin. This Week lead (Editor's Selection).
+push @arts, {slug=>'l1-womens-football-ecosystem', title=>"An Emerging Ecosystem: The Business Behind the Evolution of Women's Football", type=>'Case study', theme=>'', layer=>1, date=>'2026-11-08', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/l1-womens-football-ecosystem.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Crowds and revenues in women's football are growing fast, but three clubs earn almost half the money and broadcasting brings in little. What it takes to turn momentum into a sustainable industry."};
 # Players are the distribution — Layer 4 (Capital): players as investors, and what the funds really buy. This Week card.
 push @arts, {slug=>'l4-players-are-the-distribution', title=>"Footballers became investors. The funds are selling their names.", type=>'Case study', theme=>'', layer=>4, date=>'2026-10-11', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l4-players-are-the-distribution.html', author=>'Anthony Raad', author_url=>'https://www.linkedin.com/in/anthony-raad/', author_img=>'assets/img/authors/anthony-raad.jpg', dek=>"A generation ago the story about footballers and money was bankruptcy. Now players invest in clubs, leagues and funds \xE2\x80\x94 but in almost every deal an institution leads, and what it wants is not the player's cheque but his credibility and audience."};
 # Streamers renting football's podcasts — Layer 6 (Media). Full live article.
@@ -304,10 +306,10 @@ sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n
 
 # --- Editor's Selection (This Week lead + two cards) ---
 sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{type}); }
-my $lead = $bySlug{'l1-football-education-gap'} // $live[0];
+my $lead = $bySlug{'l1-womens-football-ecosystem'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l7-mcdonalds-world-cup-exit profile-cristiano-ronaldo);
+               map  { $bySlug{$_} } qw(l7-mcdonalds-world-cup-exit l1-football-education-gap);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
@@ -317,7 +319,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Clubs are hiring for data, preparing for new financial rules and joining multi-club groups. We mapped 253 programmes from 149 providers that train people for football's business side, from university degrees to club schools and online courses.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("The women's game is pulling in record crowds, fresh capital and serious commercial attention. But three clubs take almost half the revenue and broadcasting still pays little \xE2\x80\x94 the test now is turning momentum into a sustainable industry.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

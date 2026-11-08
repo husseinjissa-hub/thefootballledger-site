@@ -477,7 +477,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 }
 
 /* ===== Explore the Nine Layers ===== */
-.nine-layers { padding-top: 44px; padding-bottom: 8px; }
+.nine-layers { padding-top: 44px; padding-bottom: 36px; }
 .nl-head { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 24px; align-items: center; margin-bottom: 24px; }
 .nl-title .nl-sub { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
 .nl-tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }

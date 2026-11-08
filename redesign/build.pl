@@ -319,7 +319,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("The women's game is pulling in record crowds, fresh capital and serious commercial attention. But three clubs take almost half the revenue and broadcasting still pays little \xE2\x80\x94 the test now is turning momentum into a sustainable industry.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("The women's game is attracting record crowds, fresh capital and commercial attention. But three clubs take almost half the revenue, and the test now is turning momentum into a sustainable industry.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';

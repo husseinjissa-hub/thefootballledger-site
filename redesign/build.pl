@@ -301,6 +301,8 @@ $bySlug{'profile-rio-ferdinand'} = $rio;
 # Cristiano Ronaldo — profile promoted from in-production to a live article; a var so it can be a This Week card.
 my $ronaldo = {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blurb=>'Redefining leverage on and off the pitch.', title=>"Cristiano Ronaldo's football-to-business evolution. Where does his name go next?", type=>'Profile', theme=>'', layer=>'', date=>'2026-10-24', read=>7, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-cristiano-ronaldo.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"Ronaldo went from player to the world's most marketable athlete to a business owner \xE2\x80\x94 carried through each stage by the same asset: an audience that follows him everywhere. For years companies paid to borrow it; now he builds things he owns."};
 $bySlug{'profile-cristiano-ronaldo'} = $ronaldo;
+my $kang = {slug=>'profile-michele-kang', name=>'Michele Kang', blurb=>'Building a women-only football group.', title=>'Michele Kang', type=>'Profile', theme=>'', layer=>'', date=>'2026-11-13', read=>7, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-michele-kang.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"How Michele Kang is building Kynisca, a women-only football group spanning the Washington Spirit, OL Lyonnes and London City Lionesses, and what her model means for the economics of the women's game."};
+$bySlug{'profile-michele-kang'} = $kang;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -309,7 +311,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l1-womens-football-ecosystem'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l7-mcdonalds-world-cup-exit l1-football-education-gap);
+               map  { $bySlug{$_} } qw(profile-michele-kang l1-football-education-gap);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
@@ -480,6 +482,7 @@ my $nl_dots_html = join('', map {
 # layer=people rows, and filterable via the new "People" layer chip. All three are
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
+  $kang,
   $ronaldo,
   $beckham,
   $fabrizio,
@@ -489,7 +492,7 @@ my @PEOPLE = (
   $rio,
   {slug=>'profile-florentino-perez', name=>'Florentino Pérez', blurb=>'The blueprint for running a club as a business.', title=>'How Florentino Pérez laid the blueprint for the modern football club.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-19', read=>10, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-florentino-perez.html', dek=>"Real Madrid was over \xE2\x82\xAC250m in debt when Florentino P\xC3\xA9rez first won the presidency. Today it is football's richest club, and its financial model has become the template."},
 );
-my %OBJPOS = ('profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%', 'profile-rio-ferdinand'=>'50% 20%');
+my %OBJPOS = ('profile-michele-kang'=>'50% 32%', 'profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%', 'profile-rio-ferdinand'=>'50% 20%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text
 # over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {

@@ -93,6 +93,8 @@ push @arts, {slug=>'l4-players-are-the-distribution', title=>"Footballers became
 push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting football's podcasts. Audience included.", type=>'Trend', theme=>'', layer=>6, date=>'2026-08-28', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l6-streamers-rent-podcasts.html', dek=>"Disney+ and Netflix have attached themselves to football's two biggest talk shows. Neither discovered an audience \xE2\x80\x94 both are paying for access to audiences outside media capital had already consolidated."};
 # AI value chain (Part 1) — Layer 8 case study: where AI is actually bought across a club's value chain, who supplies it, and the gap between the steps. This Week lead (Editor's Selection).
 push @arts, {slug=>'l8-ai-value-chain', title=>"Football can buy AI for every step. It cannot buy the link.", type=>'Case study', theme=>'', layer=>8, date=>'2026-11-17', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/l8-ai-value-chain.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Clubs can buy AI for almost every step of the value chain, from scouting to ticketing, and the suppliers are multiplying. The first part of a four-part study maps where demand is real, who supplies it, and the one thing no vendor sells \xE2\x80\x94 the link between the steps."};
+# AI by club size (Part 2) — Layer 8 case study: splits the AI picture by the size of the club. This Week card (Editor's Selection), in place of Michele Kang.
+push @arts, {slug=>'l8-ai-club-size', title=>"Football's need for AI holds below the top. The money does not.", type=>'Case study', theme=>'', layer=>8, date=>'2026-11-19', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l8-ai-club-size.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"The second part of a four-part study of AI in football splits the market by the size of the club: who needs AI, who can pay for it, and who buys for the clubs that cannot \xE2\x80\x94 because below the top, need and money part ways."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -313,7 +315,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l8-ai-value-chain'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(profile-michele-kang l1-womens-football-ecosystem);
+               map  { $bySlug{$_} } qw(l8-ai-club-size l1-womens-football-ecosystem);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";

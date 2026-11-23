@@ -529,7 +529,7 @@ h1,h2,h3,h4 { font-family: var(--serif); font-weight: 400; color: var(--ink); li
 .nl-peek:hover { opacity: 1; }
 .nl-empty { flex: 1 1 auto; display: flex; align-items: center; justify-content: center; min-height: 200px; font-family: var(--serif); font-style: italic; color: var(--ink-3); border: 1px dashed var(--line); border-radius: var(--radius); padding: 30px; }
 /* carousel progress dots */
-.nl-dots { display: flex; justify-content: center; gap: 8px; margin-top: 24px; }
+.nl-dots { display: flex; justify-content: center; gap: 8px; margin: 28px 0 44px; }
 .nl-dot { width: 22px; height: 3px; border-radius: 2px; background: var(--line); border: 0; padding: 0; cursor: pointer; transition: background 0.2s ease; }
 .nl-dot.on { background: var(--green); }
 @media (max-width: 900px) { .nl-head { grid-template-columns: 1fr; gap: 14px; } .nl-nav { display: none; } .nl-row .acard--split { flex-basis: 340px; grid-template-columns: 1fr; } .nl-row .acard--split .acard-media { min-height: 160px; } }

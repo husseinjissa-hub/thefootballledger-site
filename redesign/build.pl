@@ -307,6 +307,9 @@ my $ronaldo = {slug=>'profile-cristiano-ronaldo', name=>'Cristiano Ronaldo', blu
 $bySlug{'profile-cristiano-ronaldo'} = $ronaldo;
 my $kang = {slug=>'profile-michele-kang', name=>'Michele Kang', blurb=>'Building a women-only football group.', title=>'Michele Kang', type=>'Profile', theme=>'', layer=>'', date=>'2026-11-13', read=>7, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-michele-kang.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"How Michele Kang is building Kynisca, a women-only football group spanning the Washington Spirit, OL Lyonnes and London City Lionesses, and what her model means for the economics of the women's game."};
 $bySlug{'profile-michele-kang'} = $kang;
+# Khaldoon Al Mubarak — People profile promoted to a live article (author Marcus Puhalj).
+my $khaldoon = {slug=>'profile-khaldoon-al-mubarak', name=>'Khaldoon Al Mubarak', blurb=>"Abu Dhabi's link to world football.", title=>"Khaldoon Al Mubarak built Abu Dhabi's football empire. Now it faces its biggest test.", type=>'Profile', theme=>'', layer=>'', date=>'2026-11-27', read=>8, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-khaldoon-al-mubarak.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Chairman of Manchester City and City Football Group, and chief executive of Mubadala: Khaldoon Al Mubarak is Abu Dhabi's link to the football world. The verdict against City now tests the network he built."};
+$bySlug{'profile-khaldoon-al-mubarak'} = $khaldoon;
 # Truncate to the last full sentence within ~n chars (clean, no mid-sentence cut).
 sub dek_sentence { my ($s,$n)=@_; $s//=''; $n||=170; return $s if length($s)<=$n; my $c=substr($s,0,$n+12); return $1 if $c =~ /^(.*[.!?])(?:\s|$)/s; $c=substr($s,0,$n); $c=~s/\s+\S*$//; return $c.'…'; }
 
@@ -325,7 +328,7 @@ my $lead_html =
     '<div class="es-lead2-body">'.
       '<div class="es-lead2-tag">'.esc(es_tag($lead)).'</div>'.
       '<h2 class="es-lead2-title">'.esc($lead->{title}).'</h2>'.
-      '<p class="es-lead2-dek">'.esc("Clubs can now buy AI for almost every step of what they do, from scouting to ticketing, and the suppliers keep multiplying. What no vendor sells is the link between those steps, and that is the gap this four-part study opens with.").'</p>'.
+      '<p class="es-lead2-dek">'.esc("Clubs can buy AI for almost every step, from scouting to ticketing. What no vendor sells is the link between them — the gap this four-part study opens with.").'</p>'.
       '<div class="es-lead2-cta"><span class="es-lead2-meta">'.art_meta($lead).'</span><span class="link-arw">Read article <span class="arw">→</span></span></div>'.
     '</div>'.
   '</a>';
@@ -486,6 +489,7 @@ my $nl_dots_html = join('', map {
 # layer=people rows, and filterable via the new "People" layer chip. All three are
 # in-production, so each carries the "In production" tag and links to a stub page.
 my @PEOPLE = (
+  $khaldoon,
   $kang,
   $ronaldo,
   $beckham,
@@ -496,7 +500,7 @@ my @PEOPLE = (
   $rio,
   {slug=>'profile-florentino-perez', name=>'Florentino Pérez', blurb=>'The blueprint for running a club as a business.', title=>'How Florentino Pérez laid the blueprint for the modern football club.', type=>'Profile', theme=>'', layer=>'', date=>'2026-09-19', read=>10, status=>'live', featured=>0, is_person=>1, url=>'/posts/profile-florentino-perez.html', dek=>"Real Madrid was over \xE2\x82\xAC250m in debt when Florentino P\xC3\xA9rez first won the presidency. Today it is football's richest club, and its financial model has become the template."},
 );
-my %OBJPOS = ('profile-michele-kang'=>'50% 32%', 'profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%', 'profile-rio-ferdinand'=>'50% 20%');
+my %OBJPOS = ('profile-khaldoon-al-mubarak'=>'50% 24%', 'profile-michele-kang'=>'50% 32%', 'profile-cristiano-ronaldo'=>'50% 18%', 'profile-david-beckham'=>'50% 18%', 'profile-fabrizio-romano'=>'50% 20%', 'profile-jorge-mendes'=>'50% 20%', 'profile-nasser-al-khelaifi'=>'50% 22%', 'profile-florentino-perez'=>'50% 25%', 'profile-rio-ferdinand'=>'50% 20%');
 # Full-image profile card (one continuous photograph, deep-green gradient, text
 # over the photo) — the approved profile-card treatment, per PDF §15.
 sub person_card {

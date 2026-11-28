@@ -95,6 +95,8 @@ push @arts, {slug=>'l6-streamers-rent-podcasts', title=>"Streamers are renting f
 push @arts, {slug=>'l8-ai-value-chain', title=>"Football can buy AI for every step. It cannot buy the link. (Part 1)", type=>'Case study', theme=>'', layer=>8, date=>'2026-11-17', read=>9, status=>'live', featured=>0, is_person=>0, url=>'/posts/l8-ai-value-chain.html', author=>'Marcus Puhalj', author_url=>'https://www.linkedin.com/in/marcus-puhalj-47706a385/', author_img=>'assets/img/authors/marcus-puhalj.jpg', dek=>"Clubs can buy AI for almost every step of the value chain, from scouting to ticketing, and the suppliers are multiplying. The first part of a four-part study maps where demand is real, who supplies it, and the one thing no vendor sells \xE2\x80\x94 the link between the steps."};
 # AI by club size (Part 2) — Layer 8 case study: splits the AI picture by the size of the club. This Week card (Editor's Selection), in place of Michele Kang.
 push @arts, {slug=>'l8-ai-club-size', title=>"Football's need for AI holds below the top. The money does not. (Part 2)", type=>'Case study', theme=>'', layer=>8, date=>'2026-11-19', read=>8, status=>'live', featured=>0, is_person=>0, url=>'/posts/l8-ai-club-size.html', author=>'Ali Ahmed', author_url=>'https://www.linkedin.com/in/ali-ahmed-423892196/', author_img=>'assets/img/authors/ali-ahmed.jpg', dek=>"The second part of a four-part study of AI in football splits the market by the size of the club: who needs AI, who can pay for it, and who buys for the clubs that cannot \xE2\x80\x94 because below the top, need and money part ways."};
+# Agent fees — Layer 5 (Agencies): FA vs FIFA data on whether agents take a bigger cut or the market just grew. Full live article (not featured in This Week, per request).
+push @arts, {slug=>'l5-agent-fees', title=>"Agent fees doubled. The agents' cut barely moved.", type=>'Case study', theme=>'', layer=>5, date=>'2026-11-27', read=>6, status=>'live', featured=>0, is_person=>0, url=>'/posts/l5-agent-fees.html', author=>'Loan-Henri Michea', author_url=>'https://www.linkedin.com/in/loan-henri-michea-098031252/', author_img=>'assets/img/authors/loan-henri-michea.jpg', dek=>"Agent fees have doubled since 2019, but agents' share of transfer spending has stayed near a tenth. A fee cap on the rate may miss what is really driving the bill."};
 my @live = sort { $b->{date} cmp $a->{date} } grep { $_->{status} eq 'live' } @arts;
 
 my @mon = qw(Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec);
@@ -318,7 +320,7 @@ sub es_tag { my ($a)=@_; return $a->{theme} ne '' ? uc($a->{theme}) : uc($a->{ty
 my $lead = $bySlug{'l8-ai-value-chain'} // $live[0];
 my @featured = grep { $_->{slug} ne $lead->{slug} }
                grep { $bySlug{$_->{slug}} }
-               map  { $bySlug{$_} } qw(l8-ai-club-size l1-womens-football-ecosystem);
+               map  { $bySlug{$_} } qw(l8-ai-club-size profile-khaldoon-al-mubarak);
 my $lp = "assets/img/articles/".$lead->{slug}."-lead.jpg";   # use a curated lead image if one exists
 $lp = "assets/img/articles/".$lead->{slug}.".jpg" unless -e $lp;
 my $lead_img = (-e $lp) ? "/".$lp."?v=".fver($lp) : "/assets/img/articles/macro-01-lead.jpg";
